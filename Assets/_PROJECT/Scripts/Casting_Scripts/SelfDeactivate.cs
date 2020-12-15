@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class SelfDeactivate : MonoBehaviour
 {
-
     Rigidbody2D rb;
+    public float deactivateLevel = -2500.0f;
 
     void Start()
     {
@@ -14,12 +14,11 @@ public class SelfDeactivate : MonoBehaviour
     }
 
     void Update()
-    {    
-        if (transform.position.y <= -40f)
+    {
+        if (GetComponent<RectTransform>().anchoredPosition.y <= deactivateLevel)
         {
             rb.velocity = new Vector2(0, -10);
             gameObject.SetActive(false);
         }
-        
     }
 }

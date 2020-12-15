@@ -70,7 +70,8 @@ public class CastingManager : MonoBehaviour
         
         leftSide = initialSpawn.anchoredPosition.x - rect.width / 2;
         rightSide = initialSpawn.anchoredPosition.x + rect.width / 2;
-        topSide = initialSpawn.anchoredPosition.y + rect.height;
+        // topSide = initialSpawn.anchoredPosition.y + rect.height;
+        topSide = 0.0f;
         
         GameObject item = castPool.GetPooledObject(CastingPoolType.CANDY1);
         RectTransform runeRect = item.GetComponent<RectTransform>();
