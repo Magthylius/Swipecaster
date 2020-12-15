@@ -14,15 +14,9 @@ public class CastingManager : MonoBehaviour
     public GameObject candy;
     public RectTransform dropZone;
 
-
-    [Header("Set Item's Max Velocity")]
+    [Header("Item's Max Velocity")]
     public float maxVel;
-
-    [Header("Numbers of column indexes")]
-    public int col;
-
-    [Header("Interval")]
-    public int intervalTime;
+    public int spawnNum;
 
     [SerializeField] GameState castingState = GameState.PRE_CASTING;
     int targetSpawn;
@@ -33,7 +27,6 @@ public class CastingManager : MonoBehaviour
     {
         if (instance != null) Destroy(this.gameObject);
         else instance = this;
-        
     }
 
     void Start()
@@ -48,10 +41,9 @@ public class CastingManager : MonoBehaviour
     {
         int selfTick = e.tick;
 
-
         if (selfTick > targetSpawn)
         {
-            print("Check");
+            //print("Check");
             SpawnItem();
             targetSpawn += Random.Range(1, 3);
         }
@@ -59,8 +51,7 @@ public class CastingManager : MonoBehaviour
 
     void SpawnItem()
     {
-
-        for (int i = 0; i < Random.Range(1, 4); i++)
+        for (int i = 0; i < spawnNum; i++)
         {
             CastingPoolType pool = (CastingPoolType) Random.Range(1, 4);
             GameObject item = castPool.GetPooledObject(pool);
