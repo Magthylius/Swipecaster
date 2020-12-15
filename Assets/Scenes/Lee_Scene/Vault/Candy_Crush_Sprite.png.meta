@@ -1,0 +1,2038 @@
+fileFormatVersion: 2
+guid: 29989d48a162e76488ea171b67ef1722
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6909770799716724078
+    second: Candy_Crush_Sprite_0
+  - first:
+      213: 1642913460801961699
+    second: Candy_Crush_Sprite_1
+  - first:
+      213: -4265221223910037801
+    second: Candy_Crush_Sprite_2
+  - first:
+      213: 5418631837040227457
+    second: Candy_Crush_Sprite_3
+  - first:
+      213: -2581617546422140311
+    second: Candy_Crush_Sprite_4
+  - first:
+      213: 1130217956860034586
+    second: Candy_Crush_Sprite_5
+  - first:
+      213: -4122738045463806678
+    second: Candy_Crush_Sprite_6
+  - first:
+      213: 7533050654707540482
+    second: Candy_Crush_Sprite_7
+  - first:
+      213: 4538299792757509664
+    second: Candy_Crush_Sprite_8
+  - first:
+      213: 1596795076211529122
+    second: Candy_Crush_Sprite_9
+  - first:
+      213: 4881702971850814182
+    second: Candy_Crush_Sprite_10
+  - first:
+      213: -3706080731362195886
+    second: Candy_Crush_Sprite_11
+  - first:
+      213: -5805552725232957003
+    second: Candy_Crush_Sprite_12
+  - first:
+      213: 5362671562039545772
+    second: Candy_Crush_Sprite_13
+  - first:
+      213: 8068242039126942800
+    second: Candy_Crush_Sprite_14
+  - first:
+      213: 3908282054011081188
+    second: Candy_Crush_Sprite_15
+  - first:
+      213: 6839826475265061428
+    second: Candy_Crush_Sprite_16
+  - first:
+      213: -7033022137458376495
+    second: Candy_Crush_Sprite_17
+  - first:
+      213: 5103982012377917884
+    second: Candy_Crush_Sprite_18
+  - first:
+      213: 212408844960992613
+    second: Candy_Crush_Sprite_19
+  - first:
+      213: 2751707738697588372
+    second: Candy_Crush_Sprite_20
+  - first:
+      213: 892143301226813345
+    second: Candy_Crush_Sprite_21
+  - first:
+      213: 5509159251267359978
+    second: Candy_Crush_Sprite_22
+  - first:
+      213: -2438347878696698035
+    second: Candy_Crush_Sprite_23
+  - first:
+      213: -1243062738907006679
+    second: Candy_Crush_Sprite_24
+  - first:
+      213: 4187720492046076606
+    second: Candy_Crush_Sprite_25
+  - first:
+      213: -3299917595392833924
+    second: Candy_Crush_Sprite_26
+  - first:
+      213: 7503232593442968318
+    second: Candy_Crush_Sprite_27
+  - first:
+      213: 8813171500270925236
+    second: Candy_Crush_Sprite_28
+  - first:
+      213: -5942594884957240681
+    second: Candy_Crush_Sprite_29
+  - first:
+      213: -720113170902871785
+    second: Candy_Crush_Sprite_30
+  - first:
+      213: 8585424603847298698
+    second: Candy_Crush_Sprite_31
+  - first:
+      213: 7677073306262461595
+    second: Candy_Crush_Sprite_32
+  - first:
+      213: 8592045480144790243
+    second: Candy_Crush_Sprite_33
+  - first:
+      213: 5276054644620599876
+    second: Candy_Crush_Sprite_34
+  - first:
+      213: 7828801542852831826
+    second: Candy_Crush_Sprite_35
+  - first:
+      213: 1629543660731980828
+    second: Candy_Crush_Sprite_36
+  - first:
+      213: 5566844845402387923
+    second: Candy_Crush_Sprite_37
+  - first:
+      213: -2103897172018090523
+    second: Candy_Crush_Sprite_38
+  - first:
+      213: -6747572126879925164
+    second: Candy_Crush_Sprite_39
+  - first:
+      213: -236545671619064717
+    second: Candy_Crush_Sprite_40
+  - first:
+      213: 5901458208405029778
+    second: Candy_Crush_Sprite_41
+  - first:
+      213: 7842152730021423587
+    second: Candy_Crush_Sprite_42
+  - first:
+      213: 4136773542964743311
+    second: Candy_Crush_Sprite_43
+  - first:
+      213: 1309577257273745052
+    second: Candy_Crush_Sprite_44
+  - first:
+      213: -1985757905768995134
+    second: Candy_Crush_Sprite_45
+  - first:
+      213: 1585597033962143847
+    second: Candy_Crush_Sprite_46
+  - first:
+      213: 4635866112636758902
+    second: Candy_Crush_Sprite_47
+  - first:
+      213: -377913563329386892
+    second: Candy_Crush_Sprite_48
+  - first:
+      213: 6559982075100186964
+    second: Candy_Crush_Sprite_49
+  - first:
+      213: -2307894262580676713
+    second: Candy_Crush_Sprite_50
+  - first:
+      213: 7914920628994788113
+    second: Candy_Crush_Sprite_51
+  - first:
+      213: -7207600654144257750
+    second: Candy_Crush_Sprite_52
+  - first:
+      213: -4275004772301230561
+    second: Candy_Crush_Sprite_53
+  - first:
+      213: -9095709228252137218
+    second: Candy_Crush_Sprite_54
+  - first:
+      213: -8430900341069370922
+    second: Candy_Crush_Sprite_55
+  - first:
+      213: -4785350317709373462
+    second: Candy_Crush_Sprite_56
+  - first:
+      213: -1317536908420740110
+    second: Candy_Crush_Sprite_57
+  - first:
+      213: -537949352883199460
+    second: Candy_Crush_Sprite_58
+  - first:
+      213: 3243970662995193947
+    second: Candy_Crush_Sprite_59
+  - first:
+      213: 7258203943464020827
+    second: Candy_Crush_Sprite_60
+  - first:
+      213: -1735430472531530517
+    second: Candy_Crush_Sprite_61
+  - first:
+      213: 2693407079820511120
+    second: Candy_Crush_Sprite_62
+  - first:
+      213: -3974791155235109392
+    second: Candy_Crush_Sprite_63
+  - first:
+      213: 3616149319586413974
+    second: Candy_Crush_Sprite_64
+  - first:
+      213: 3960383662974728116
+    second: Candy_Crush_Sprite_65
+  - first:
+      213: 3780723756223868886
+    second: Candy_Crush_Sprite_66
+  - first:
+      213: 7784668708922760202
+    second: Candy_Crush_Sprite_67
+  - first:
+      213: -5971738163823893069
+    second: Candy_Crush_Sprite_68
+  - first:
+      213: 5374258290498559926
+    second: Candy_Crush_Sprite_69
+  - first:
+      213: 7500849954097481095
+    second: Candy_Crush_Sprite_70
+  - first:
+      213: -7785237134860400041
+    second: Candy_Crush_Sprite_71
+  - first:
+      213: 9054066329901823515
+    second: Candy_Crush_Sprite_72
+  - first:
+      213: -6960964303131953576
+    second: Candy_Crush_Sprite_73
+  - first:
+      213: 1727035168065123714
+    second: Candy_Crush_Sprite_74
+  - first:
+      213: -4585501410749313309
+    second: Candy_Crush_Sprite_75
+  - first:
+      213: 2904744269467058195
+    second: Candy_Crush_Sprite_76
+  - first:
+      213: -8188832612579845083
+    second: Candy_Crush_Sprite_77
+  - first:
+      213: 8057429164895847452
+    second: Candy_Crush_Sprite_78
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: 2
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1730
+        width: 800
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6d6b7cceef64ef50800000000000000
+      internalID: 6909770799716724078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_1
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 1625
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3eefecb861dccc610800000000000000
+      internalID: 1642913460801961699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_2
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 1621
+        width: 69
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d6a26c15e3eec4c0800000000000000
+      internalID: -4265221223910037801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_3
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 1622
+        width: 74
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 184b76752f8d23b40800000000000000
+      internalID: 5418631837040227457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_4
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 1621
+        width: 82
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 962c79ff4804c2cd0800000000000000
+      internalID: -2581617546422140311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_5
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 1623
+        width: 91
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1ef86d5e375faf00800000000000000
+      internalID: 1130217956860034586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_6
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 1623
+        width: 91
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2d3422479719c6c0800000000000000
+      internalID: -4122738045463806678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_7
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 1488
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 202eddc98a5ca8860800000000000000
+      internalID: 7533050654707540482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_8
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 1485
+        width: 76
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02e4a87dd974bfe30800000000000000
+      internalID: 4538299792757509664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_9
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 1486
+        width: 81
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a55ea069a4f82610800000000000000
+      internalID: 1596795076211529122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_10
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 1486
+        width: 88
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e2f2201dfa4fb340800000000000000
+      internalID: 4881702971850814182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_11
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 1488
+        width: 96
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2568c32e53b519cc0800000000000000
+      internalID: -3706080731362195886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_12
+      rect:
+        serializedVersion: 2
+        x: 685
+        y: 1487
+        width: 98
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b940b73e888e6fa0800000000000000
+      internalID: -5805552725232957003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_13
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 1358
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cafc47e7f590c6a40800000000000000
+      internalID: 5362671562039545772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_14
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 1355
+        width: 68
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 054e800236728ff60800000000000000
+      internalID: 8068242039126942800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_15
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 1355
+        width: 73
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e15d5732d10d3630800000000000000
+      internalID: 3908282054011081188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_16
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 1355
+        width: 82
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4327c77b0f1fbee50800000000000000
+      internalID: 6839826475265061428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_17
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 1356
+        width: 92
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d0c557e0afa56e90800000000000000
+      internalID: -7033022137458376495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_18
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 1356
+        width: 91
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb9e4c3299cf4d640800000000000000
+      internalID: 5103982012377917884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_19
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 1225
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56d0d0718b0a2f200800000000000000
+      internalID: 212408844960992613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_20
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 1224
+        width: 68
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49e53c2fb97003620800000000000000
+      internalID: 2751707738697588372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_21
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 1222
+        width: 73
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a75e5e0b97816c00800000000000000
+      internalID: 892143301226813345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_22
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 1221
+        width: 82
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae419d67627747c40800000000000000
+      internalID: 5509159251267359978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_23
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 1223
+        width: 92
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4fb473f58f392ed0800000000000000
+      internalID: -2438347878696698035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_24
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 1223
+        width: 91
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9297ce56601cfbee0800000000000000
+      internalID: -1243062738907006679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_25
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 1093
+        width: 94
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebac70b9995cd1a30800000000000000
+      internalID: 4187720492046076606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_26
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 1092
+        width: 98
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c768c824e665432d0800000000000000
+      internalID: -3299917595392833924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_27
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 1092
+        width: 98
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef21d473a46d02860800000000000000
+      internalID: 7503232593442968318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_28
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 1092
+        width: 98
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b5be3a09ccae4a70800000000000000
+      internalID: 8813171500270925236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_29
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 1093
+        width: 96
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7920216ff69a78da0800000000000000
+      internalID: -5942594884957240681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_30
+      rect:
+        serializedVersion: 2
+        x: 685
+        y: 1093
+        width: 96
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 711114ae2e4a106f0800000000000000
+      internalID: -720113170902871785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_31
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 958
+        width: 96
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8e873e803e852770800000000000000
+      internalID: 8585424603847298698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_32
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 958
+        width: 100
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9c58664f717a8a60800000000000000
+      internalID: 7677073306262461595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_33
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 958
+        width: 96
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e2e70277d31d3770800000000000000
+      internalID: 8592045480144790243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_34
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 958
+        width: 96
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 442292cdebf483940800000000000000
+      internalID: 5276054644620599876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_35
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 958
+        width: 98
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25ae5c2468d75ac60800000000000000
+      internalID: 7828801542852831826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_36
+      rect:
+        serializedVersion: 2
+        x: 686
+        y: 958
+        width: 96
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1c5be3635d4d9610800000000000000
+      internalID: 1629543660731980828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_37
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 826
+        width: 96
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d57ce974e7614d40800000000000000
+      internalID: 5566844845402387923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_38
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 826
+        width: 100
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5eda9e14ba47dc2e0800000000000000
+      internalID: -2103897172018090523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_39
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 826
+        width: 96
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45cbef896eecb52a0800000000000000
+      internalID: -6747572126879925164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_40
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 826
+        width: 96
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37c4df507fe97bcf0800000000000000
+      internalID: -236545671619064717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_41
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 826
+        width: 99
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2938bc829f036e150800000000000000
+      internalID: 5901458208405029778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_42
+      rect:
+        serializedVersion: 2
+        x: 686
+        y: 826
+        width: 96
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e96943cb5ce4dc60800000000000000
+      internalID: 7842152730021423587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_43
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 683
+        width: 109
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8cc5a8ae95c86930800000000000000
+      internalID: 4136773542964743311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_44
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 686
+        width: 104
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9e5bb9b39d8c2210800000000000000
+      internalID: 1309577257273745052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_45
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 687
+        width: 107
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c627b8a4bb2174e0800000000000000
+      internalID: -1985757905768995134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_46
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 687
+        width: 104
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7600a3ef91c210610800000000000000
+      internalID: 1585597033962143847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_47
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 687
+        width: 105
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67b2cf5eaa7e55040800000000000000
+      internalID: 4635866112636758902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_48
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 686
+        width: 107
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47623fdcd9161caf0800000000000000
+      internalID: -377913563329386892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_49
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 559
+        width: 102
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 459c647e0fcb90b50800000000000000
+      internalID: 6559982075100186964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_50
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 558
+        width: 102
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79777bb5566b8ffd0800000000000000
+      internalID: -2307894262580676713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_51
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 558
+        width: 104
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11b45a4806277dd60800000000000000
+      internalID: 7914920628994788113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_52
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 558
+        width: 104
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a21cbde746579fb90800000000000000
+      internalID: -7207600654144257750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_53
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 558
+        width: 102
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1ea2ed3fc12ca4c0800000000000000
+      internalID: -4275004772301230561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_54
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 558
+        width: 104
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef8f9c5e5ac85c180800000000000000
+      internalID: -9095709228252137218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_55
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 424
+        width: 86
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d927d10fcc6ffa80800000000000000
+      internalID: -8430900341069370922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_56
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 422
+        width: 88
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aef412b6d35079db0800000000000000
+      internalID: -4785350317709373462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_57
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 422
+        width: 88
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fb8d13992b27bde0800000000000000
+      internalID: -1317536908420740110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_58
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 423
+        width: 88
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c12ee3ae9e1d888f0800000000000000
+      internalID: -537949352883199460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_59
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 423
+        width: 88
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b50fd957126e40d20800000000000000
+      internalID: 3243970662995193947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_60
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 423
+        width: 87
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5b238de7025ab460800000000000000
+      internalID: 7258203943464020827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_61
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 290
+        width: 82
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: becae501e238ae7e0800000000000000
+      internalID: -1735430472531530517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_62
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 290
+        width: 79
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09749340877e06520800000000000000
+      internalID: 2693407079820511120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_63
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 290
+        width: 81
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f5c8dfe084b6d8c0800000000000000
+      internalID: -3974791155235109392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_64
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 290
+        width: 79
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69df7b0a5a42f2230800000000000000
+      internalID: 3616149319586413974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_65
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 290
+        width: 82
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b77edd55fb16f630800000000000000
+      internalID: 3960383662974728116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_66
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 290
+        width: 80
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dfaa93a934d77430800000000000000
+      internalID: 3780723756223868886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_67
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 162
+        width: 91
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0c907122f2b80c60800000000000000
+      internalID: 7784668708922760202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_68
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 162
+        width: 92
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b522a597cf102da0800000000000000
+      internalID: -5971738163823893069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_69
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 158
+        width: 87
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bf5d50f073359a40800000000000000
+      internalID: 5374258290498559926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_70
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 158
+        width: 87
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7854c73ca4f581860800000000000000
+      internalID: 7500849954097481095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_71
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 158
+        width: 90
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75a4774e21845f390800000000000000
+      internalID: -7785237134860400041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_72
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 162
+        width: 87
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b167f964b5186ad70800000000000000
+      internalID: 9054066329901823515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_73
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 25
+        width: 87
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85635a9d8dfa56f90800000000000000
+      internalID: -6960964303131953576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_74
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 27
+        width: 90
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 285f02bc559a7f710800000000000000
+      internalID: 1727035168065123714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_75
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 23
+        width: 90
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ee0c3f03c60d50c0800000000000000
+      internalID: -4585501410749313309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_76
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 26
+        width: 90
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3108fe8e589bf4820800000000000000
+      internalID: 2904744269467058195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_77
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 18
+        width: 98
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52c5b0a002c6b5e80800000000000000
+      internalID: -8188832612579845083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Candy_Crush_Sprite_78
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 17
+        width: 101
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c144d78a22db1df60800000000000000
+      internalID: 8057429164895847452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 4978f963c9fc2cf43a42d17013f517ab
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
