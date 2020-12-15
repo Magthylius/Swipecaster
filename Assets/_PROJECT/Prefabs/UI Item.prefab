@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4884922028651966228}
   - component: {fileID: 4008564795505217095}
   m_Layer: 5
-  m_Name: Button
+  m_Name: 'Button - '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4008564795505217095}
         m_TargetAssemblyTypeName: DebugButton, Assembly-CSharp
         m_MethodName: Button_DebugOnClick
         m_Mode: 1
@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da0c8fc5d9fbd724cbe002190bd4c18b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disable: 0
 --- !u!1 &7003243717869042035
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,8 +203,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.373042, g: 0.8899906, b: 0.9528302, a: 0.7058824}
-  m_RaycastTarget: 1
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -229,6 +230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6009385805284027203}
   - component: {fileID: 3552971983317644576}
+  - component: {fileID: -5792148614648933893}
   m_Layer: 5
   m_Name: UI Item
   m_TagString: Untagged
@@ -277,3 +279,21 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &-5792148614648933893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8586286313023801095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0d933f67034a7d46bc7f3d6d2f4166d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _disableButtonDebugs: 0
+  _title: 
+  _button: {fileID: 4884922028651966228}
+  _debugButton: {fileID: 4008564795505217095}
+  _image: {fileID: 6355227473898673624}
+  _imageColour: {r: 0, g: 0, b: 0, a: 0}
