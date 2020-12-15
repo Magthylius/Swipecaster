@@ -13,7 +13,6 @@ public class CastingManager : MonoBehaviour
     public RectTransform initialSpawn;
     public GameObject candy;
     public RectTransform dropZone;
-    public List<GameObject> spawnPosList = new List<GameObject>();
 
 
     [Header("Set Item's Max Velocity")]
@@ -26,11 +25,10 @@ public class CastingManager : MonoBehaviour
     public int intervalTime;
 
     [SerializeField] GameState castingState = GameState.PRE_CASTING;
+    int targetSpawn;
+    float leftSide, rightSide, topSide;
+    float runeWidth, runeHeight;
 
-    [SerializeField]int targetSpawn;
-
-    bool[] slot;
-    
     void Awake()
     {
         if (instance != null) Destroy(this.gameObject);
@@ -41,10 +39,10 @@ public class CastingManager : MonoBehaviour
     void Start()
     {
         castPool = CastingPoolManager.instance;
+        Init();
         TickSystem.OnTick += SpawningInterval;
     }
-
-
+    
 
     void SpawningInterval(object sender, TickSystem.OnTickEvent e)
     {
@@ -55,46 +53,41 @@ public class CastingManager : MonoBehaviour
         {
             print("Check");
             SpawnItem();
-            targetSpawn += intervalTime;
+            targetSpawn += Random.Range(1, 3);
         }
-        //print("Tick: " + selfTick);       
     }
 
     void SpawnItem()
     {
-        slot = new bool[col];
-        bool temp;
-        
-        int randItem = Random.Range(1, col);
 
-        for (int i = 0; i < randItem; i++)
+        for (int i = 0; i < Random.Range(1, 4); i++)
         {
-            slot[i] = true;
-        }
-
-        for (int i = 0; i < slot.Length; i++)
-        {
-            int rnd = Random.Range(0, slot.Length);
-            temp = slot[rnd];
-            slot[rnd] = slot[i];
-            slot[i] = temp;
-        }
-
-        for (int i = 0; i < slot.Length; i++)
-        {
-            if (slot[i])
+            CastingPoolType pool = (CastingPoolType) Random.Range(1, 4);
+            GameObject item = castPool.GetPooledObject(pool);
+            if (item != null)
             {
-                GameObject item = castPool.GetPooledObject(CastingPoolType.ITEM);
-                if (item != null)
-                {
-                    //item.transform.SetParent(dropZone, false);
-                    item.SetActive(true);
-                    item.GetComponent<RectTransform>().position = spawnPosList[i].GetComponent<RectTransform>().position;
-                }
+                item.transform.SetParent(initialSpawn.transform);
+                item.SetActive(true);
+                item.GetComponent<RectTransform>().anchoredPosition = new Vector2(Random.Range(leftSide + runeWidth, rightSide - runeWidth), topSide);
             }
         }
-        
-
     }
+
+    void Init()
+    {
+        Rect rect = initialSpawn.rect;
+        
+        leftSide = initialSpawn.anchoredPosition.x - rect.width / 2;
+        rightSide = initialSpawn.anchoredPosition.x + rect.width / 2;
+        topSide = initialSpawn.anchoredPosition.y + rect.height;
+        
+        GameObject item = castPool.GetPooledObject(CastingPoolType.CANDY1);
+        RectTransform runeRect = item.GetComponent<RectTransform>();
+        
+        runeWidth = (runeRect.offsetMax.x - runeRect.offsetMin.x) / 2;
+        
+        print(runeWidth);
+    }
+    
     
 }

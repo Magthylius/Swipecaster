@@ -4,7 +4,10 @@ using UnityEngine;
 
 public enum CastingPoolType
 {
-    ITEM = 1,
+    CANDY1 = 1,
+    CANDY2,
+    CANDY3
+    
 
 }
 

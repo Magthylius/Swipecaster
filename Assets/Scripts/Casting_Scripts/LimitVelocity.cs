@@ -13,12 +13,10 @@ public class LimitVelocity : MonoBehaviour
     void Start()
     {
         GetMaxVelocity();
-        rb.velocity = new Vector2(0, -maxVelocity);
     }
 
     void FixedUpdate()
     {
-        rb.velocity = new Vector2(0, -maxVelocity);
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
     }
 

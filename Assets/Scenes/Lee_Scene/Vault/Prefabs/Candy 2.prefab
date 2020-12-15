@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1569115979765538415}
   - component: {fileID: -6921271106835855832}
   m_Layer: 5
-  m_Name: Candy
+  m_Name: Candy 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1642913460801961699, guid: 29989d48a162e76488ea171b67ef1722, type: 3}
+  m_Sprite: {fileID: 1130217956860034586, guid: 29989d48a162e76488ea171b67ef1722, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

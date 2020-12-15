@@ -17,7 +17,7 @@ public class SelfDeactivate : MonoBehaviour
     {    
         if (transform.position.y <= -40f)
         {
-            
+            rb.velocity = new Vector2(0, -10);
             gameObject.SetActive(false);
         }
         
