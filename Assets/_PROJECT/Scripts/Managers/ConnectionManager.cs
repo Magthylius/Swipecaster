@@ -22,15 +22,12 @@ public class ConnectionManager : MonoBehaviour
         if (selectionStarted)
         {
             Vector3[] posList = new Vector3[selectionList.Count];
-            foreach(RuneBehaviour rune in selectionList)
-            {
-                posList.Add(rune.GetPosition());
-            }
             for (int i = 0; i < selectionList.Count; i++)
             {
                 posList[i] = selectionList[i].GetPosition();
             }
-            line.SetPositions()
+            line.positionCount = selectionList.Count;
+            line.SetPositions(posList);
 
             if(Input.GetMouseButtonUp(0))
             {
