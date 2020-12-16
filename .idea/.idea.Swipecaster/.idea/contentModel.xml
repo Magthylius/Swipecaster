@@ -7,6 +7,13 @@
       <e p="Assets" t="Include">
         <e p="_PROJECT" t="Include">
           <e p="Scripts" t="Include">
+            <e p="Battle Scripts" t="Include">
+              <e p="BattlestageManager.cs" t="Include" />
+              <e p="HeroBehaviour.cs" t="Include" />
+            </e>
+            <e p="Camera" t="Include">
+              <e p="CameraSizeAdjuster.cs" t="Include" />
+            </e>
             <e p="Casting_Scripts" t="Include">
               <e p="CastingManager.cs" t="Include" />
               <e p="CastingState.cs" t="Include" />
