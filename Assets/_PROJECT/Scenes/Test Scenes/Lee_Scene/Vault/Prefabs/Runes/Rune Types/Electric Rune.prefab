@@ -99,5 +99,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Electric Rune
       objectReference: {fileID: 0}
+    - target: {fileID: 2095015691607258383, guid: bef18d3480e786647a3b019d08978699, type: 3}
+      propertyPath: m_TagString
+      value: Rune1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076672981752723939, guid: bef18d3480e786647a3b019d08978699, type: 3}
+      propertyPath: type
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bef18d3480e786647a3b019d08978699, type: 3}

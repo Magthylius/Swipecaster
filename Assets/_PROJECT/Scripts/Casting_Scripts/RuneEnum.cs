@@ -1,5 +1,6 @@
 public enum RuneType
 {
+    NULL = 0,
     GROUND = 1,
     FIRE,
     ELECTRIC,

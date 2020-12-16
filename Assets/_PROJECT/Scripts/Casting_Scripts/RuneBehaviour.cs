@@ -1,23 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CameraFunctions;
 
 public class RuneBehaviour : MonoBehaviour
 {
-    CastingManager castingManager;
-    
-    public float deactivateLevel = -2500.0f;
-    
-    float maxVelocity;
-    
+    RuneManager runeManager;
+    ConnectionManager connectionManager;
+
     Rigidbody2D rb;
-    
-    void Awake() => rb = GetComponent<Rigidbody2D>();
+    RectTransform rt;
+
+    float maxVelocity;
+    GameObject self;
+    bool selected = false;
+
+    bool allowMouse = false;
+
+    public RuneType type;
+
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        rt = GetComponent<RectTransform>();
+        self = gameObject;
+    }
     
     void Start()
     {
-        castingManager = CastingManager.instance;
-        GetMaxVelocity();
+        runeManager = RuneManager.instance;
+        connectionManager = ConnectionManager.instance;
+
+        maxVelocity = runeManager.maxVelocity;
+        allowMouse = runeManager.allowMouse;
     }
     
     void Update()
@@ -30,18 +45,36 @@ public class RuneBehaviour : MonoBehaviour
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
     }
 
-    void SelfDeactivate()
+    public void SelfDeactivate()
     {
-        if (GetComponent<RectTransform>().anchoredPosition.y <= deactivateLevel)
+        if (!Cam.IsVisibleFrom(rt, Camera.main))
         {
-            castingManager.runeList.Remove(this.gameObject);
+            runeManager.GetActiveRuneList().Remove(this.gameObject);
             rb.velocity = new Vector2(0, -10);
             gameObject.SetActive(false);
+
+            if (selected) connectionManager.Disconnect(this);
         }
     }
 
-    #region Global Accessors
-    void GetMaxVelocity() => maxVelocity = castingManager.maxVel;
+    public void Selected()
+    {
+        if (allowMouse && !Input.GetMouseButton(0)) return;
+
+        selected = true;
+
+        if (!connectionManager.GetSelectionStart())
+            connectionManager.StartSelection(this);
+        else if (connectionManager.GetSelectionType() == type)
+        {
+            //print("connect");
+            connectionManager.Connect(this);
+        }
+    }
+
+    #region Queries
+    public RuneType GetRuneType() => type;
+    public GameObject GetSelf() => self;
     #endregion
 
 }

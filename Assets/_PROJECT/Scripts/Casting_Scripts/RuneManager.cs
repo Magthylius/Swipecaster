@@ -4,26 +4,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class CastingManager : MonoBehaviour
+public class RuneManager : MonoBehaviour
 {
-    public static CastingManager instance;
+    public static RuneManager instance;
     PoolManager castPool;
 
+    [Header("Debug Settings")]
+    public bool allowMouse = true;
+
+    [Header("Spawn Settings")]
     public GameObject spawner;
     public RectTransform initialSpawn;
-    public GameObject candy;
     public RectTransform dropZone;
 
-    [Header("Item's Max Velocity")]
-    public float maxVel;
+    [Header("Rune Settings")]
+    public float maxVelocity;
     public int spawnNum;
-
     [SerializeField] GameState castingState = GameState.PRE_CASTING;
+
     int targetSpawn;
     float leftSide, rightSide, topSide;
     float runeWidth, runeHeight;
     
-    public List<GameObject> runeList = new List<GameObject>();
+    List<GameObject> activeRuneList = new List<GameObject>();
 
     void Awake()
     {
@@ -34,10 +37,15 @@ public class CastingManager : MonoBehaviour
     void Start()
     {
         castPool = PoolManager.instance;
-        Init();
+
+        InitSpawn();
         TickSystem.OnTick += SpawningInterval;
     }
-    
+
+    #region Queries
+    public List<GameObject> GetActiveRuneList() => activeRuneList;
+
+    #endregion
 
     void SpawningInterval(object sender, TickSystem.OnTickEvent e)
     {
@@ -59,7 +67,7 @@ public class CastingManager : MonoBehaviour
             GameObject item = castPool.GetPooledObject(runeType);
             if (item != null)
             {
-                runeList.Add(item);
+                activeRuneList.Add(item);
                 item.transform.SetParent(initialSpawn.transform);
                 item.SetActive(true);
                 item.GetComponent<RectTransform>().anchoredPosition = new Vector2(Random.Range(leftSide + runeWidth, rightSide - runeWidth), topSide);
@@ -67,7 +75,7 @@ public class CastingManager : MonoBehaviour
         }
     }
 
-    void Init()
+    void InitSpawn()
     {
         Rect rect = initialSpawn.rect;
         
@@ -82,6 +90,5 @@ public class CastingManager : MonoBehaviour
         
         //print(runeWidth);
     }
-    
-    
+
 }

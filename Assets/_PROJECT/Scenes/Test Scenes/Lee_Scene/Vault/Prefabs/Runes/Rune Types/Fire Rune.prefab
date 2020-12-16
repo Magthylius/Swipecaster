@@ -93,7 +93,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2063856530727743406, guid: 9fa981b8d9adc2945bac10005811965c, type: 3}
       propertyPath: m_Name
-      value: Ground Rune
+      value: Fire Rune
+      objectReference: {fileID: 0}
+    - target: {fileID: 2063856530727743406, guid: 9fa981b8d9adc2945bac10005811965c, type: 3}
+      propertyPath: m_TagString
+      value: Rune1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3099671683293946690, guid: 9fa981b8d9adc2945bac10005811965c, type: 3}
+      propertyPath: type
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fa981b8d9adc2945bac10005811965c, type: 3}
