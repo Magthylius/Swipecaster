@@ -20,13 +20,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b2ff588-542f-45f5-abf5-6973ac360757" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Swipecaster/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Swipecaster/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Swipecaster/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Swipecaster/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Swipecaster/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Swipecaster/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Lee_Scene/Vault/Prefabs/Candy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Lee_Scene/Vault/Prefabs/Candy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Casting_Scripts/CastingManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Casting_Scripts/CastingManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Casting_Scripts/CastingPoolManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Casting_Scripts/CastingPoolManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Casting_Scripts/CastingPoolManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Casting_Scripts/CastingPoolManager.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Casting_Scripts/LimitVelocity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Casting_Scripts/LimitVelocity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Casting_Scripts/SelfDeactivate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Casting_Scripts/SelfDeactivate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EasyMobile/Packages/ExternalDependencyManager/external-dependency-manager-latest.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EasyMobile/Packages/PlayMakerActions/PlayMakerActions.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/android.arch.core.common-1.0.0.jar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/android.arch.core.common-1.0.0.jar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/android.arch.lifecycle.common-1.0.0.jar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/android.arch.lifecycle.common-1.0.0.jar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/android.arch.lifecycle.runtime-1.0.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/android.arch.lifecycle.runtime-1.0.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.android.support.animated-vector-drawable-26.1.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/com.android.support.animated-vector-drawable-26.1.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.android.support.appcompat-v7-26.1.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/com.android.support.appcompat-v7-26.1.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.android.support.support-annotations-26.1.0.jar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/com.android.support.support-annotations-26.1.0.jar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.android.support.support-compat-26.1.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/com.android.support.support-compat-26.1.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.android.support.support-core-ui-26.1.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/com.android.support.support-core-ui-26.1.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.android.support.support-core-utils-26.1.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/com.android.support.support-core-utils-26.1.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.android.support.support-fragment-26.1.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/com.android.support.support-fragment-26.1.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.android.support.support-media-compat-26.1.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/com.android.support.support-media-compat-26.1.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.android.support.support-v4-26.1.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/com.android.support.support-v4-26.1.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.android.support.support-vector-drawable-26.1.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/com.android.support.support-vector-drawable-26.1.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.android.play.core-1.8.3.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/com.google.android.play.core-1.8.3.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.sglib.easymobile.easy-mobile-1.4.0.aar" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/com.sglib.easymobile.easy-mobile-1.4.0.aar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/com.sglib.easymobile.easy-mobile-1.4.0.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/com.sglib.easymobile.easy-mobile-1.4.0.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Prefabs/UI Item.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_PROJECT/Prefabs/UI Item.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Scenes/Test Scenes/Lee_Scene/Vault/Prefabs/Candy 1.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Scenes/Test Scenes/Lee_Scene/Vault/Prefabs/Candy 1.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Scenes/Test Scenes/Lee_Scene/Vault/Prefabs/Candy 2.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Scenes/Test Scenes/Lee_Scene/Vault/Prefabs/Candy 2.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Scenes/Test Scenes/Lee_Scene/Vault/Prefabs/Candy.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Scenes/Test Scenes/Lee_Scene/Vault/Prefabs/Candy.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Casting_Scripts/CastingManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Casting_Scripts/CastingManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Casting_Scripts/CastingPoolManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Casting_Scripts/CastingPoolManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,11 +62,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Casting_Scripts/CastingState.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Casting_Scripts/LimitVelocity.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Casting_Scripts/SelfDeactivate.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -54,6 +76,15 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Casting_Scripts/SelfDeactivate.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Casting_Scripts/CastingPoolManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Casting_Scripts/CastingManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Casting_Scripts/RuneEnum.cs" />
+        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Casting_Scripts/CastingPoolManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Casting_Scripts/RuneType.cs" />
+        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Editor/ToDo.cs" />
+        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/ToDo.cs" />
+        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Editor/ToDoEditor.cs" />
+        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Casting_Scripts/PoolManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Casting_Scripts/CastingManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Casting_Scripts/RuneBehaviour.cs" />
       </list>
     </option>
   </component>
@@ -67,6 +98,7 @@
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="discord-application" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -97,6 +129,7 @@
       <option name="presentableId" value="Default" />
       <updated>1608018163944</updated>
       <workItem from="1608018184059" duration="21250000" />
+      <workItem from="1608113848719" duration="2551000" />
     </task>
     <servers />
   </component>
@@ -112,8 +145,19 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="337" y="162" key="SettingsEditor" timestamp="1608114365183">
+      <screen x="86" y="0" width="1834" height="1080" />
+    </state>
+    <state x="337" y="162" key="SettingsEditor/86.0.1834.1080@86.0.1834.1080" timestamp="1608114365183" />
+    <state x="666" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1608114842074">
+      <screen x="86" y="0" width="1834" height="1080" />
+    </state>
+    <state x="666" y="235" width="672" height="678" key="search.everywhere.popup/86.0.1834.1080@86.0.1834.1080" timestamp="1608114842074" />
   </component>
 </project>

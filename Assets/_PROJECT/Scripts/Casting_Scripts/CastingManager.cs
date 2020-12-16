@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 public class CastingManager : MonoBehaviour
 {
     public static CastingManager instance;
-    CastingPoolManager castPool;
+    PoolManager castPool;
 
     public GameObject spawner;
     public RectTransform initialSpawn;
@@ -22,6 +22,8 @@ public class CastingManager : MonoBehaviour
     int targetSpawn;
     float leftSide, rightSide, topSide;
     float runeWidth, runeHeight;
+    
+    public List<GameObject> runeList = new List<GameObject>();
 
     void Awake()
     {
@@ -31,7 +33,7 @@ public class CastingManager : MonoBehaviour
 
     void Start()
     {
-        castPool = CastingPoolManager.instance;
+        castPool = PoolManager.instance;
         Init();
         TickSystem.OnTick += SpawningInterval;
     }
@@ -53,10 +55,11 @@ public class CastingManager : MonoBehaviour
     {
         for (int i = 0; i < spawnNum; i++)
         {
-            CastingPoolType pool = (CastingPoolType) Random.Range(1, 4);
-            GameObject item = castPool.GetPooledObject(pool);
+            RuneType runeType = (RuneType) Random.Range(1, 4);
+            GameObject item = castPool.GetPooledObject(runeType);
             if (item != null)
             {
+                runeList.Add(item);
                 item.transform.SetParent(initialSpawn.transform);
                 item.SetActive(true);
                 item.GetComponent<RectTransform>().anchoredPosition = new Vector2(Random.Range(leftSide + runeWidth, rightSide - runeWidth), topSide);
@@ -72,7 +75,7 @@ public class CastingManager : MonoBehaviour
         rightSide = initialSpawn.anchoredPosition.x + rect.width / 2;
         topSide = 0.0f;
         
-        GameObject item = castPool.GetPooledObject(CastingPoolType.CANDY1);
+        GameObject item = castPool.GetPooledObject(RuneType.ELECTRIC);
         RectTransform runeRect = item.GetComponent<RectTransform>();
         
         runeWidth = (runeRect.offsetMax.x - runeRect.offsetMin.x) / 2;

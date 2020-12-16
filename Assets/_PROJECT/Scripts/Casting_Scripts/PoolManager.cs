@@ -2,28 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum CastingPoolType
-{
-    CANDY1 = 1,
-    CANDY2,
-    CANDY3
-}
-
 [System.Serializable]
 public class PooledObject
 {
     public GameObject prefab;
-    public CastingPoolType type;
+    public RuneType runeType;
     public int initialPoolCount;
     public bool canExpand;
 }
 
-public class CastingPoolManager : MonoBehaviour
+public class PoolManager : MonoBehaviour
 {
-    public static CastingPoolManager instance;
+    public static PoolManager instance;
 
     public List<PooledObject> pooledObjectsList = new List<PooledObject>();
-    Dictionary<CastingPoolType, List<GameObject>> poolList = new Dictionary<CastingPoolType, List<GameObject>>();
+    Dictionary<RuneType, List<GameObject>> poolList = new Dictionary<RuneType, List<GameObject>>();
 
     void Awake()
     {
@@ -45,11 +38,11 @@ public class CastingPoolManager : MonoBehaviour
                 obj.transform.SetParent(transform, false);
                 tempList.Add(obj);
             }
-            poolList.Add(pooledObjectsList[i].type, tempList);
+            poolList.Add(pooledObjectsList[i].runeType, tempList);
         }
     }
 
-    public GameObject GetPooledObject(CastingPoolType type)
+    public GameObject GetPooledObject(RuneType type)
     {
         List<GameObject> foundList = new List<GameObject>();
         if (poolList.TryGetValue(type, out foundList))
@@ -66,7 +59,7 @@ public class CastingPoolManager : MonoBehaviour
         for (int j = 0; j < pooledObjectsList.Count; j++)
         {
             PooledObject pooledObject = pooledObjectsList[j];
-            if (pooledObject.type == type)
+            if (pooledObject.runeType == type)
             {
                 if (pooledObject.canExpand == true)
                 {
@@ -86,11 +79,5 @@ public class CastingPoolManager : MonoBehaviour
         // check if pool can be expanded
         return null;
     }
-
-    public void NewObjectPool()
-    {
-        pooledObjectsList.Add(null);
-    }
-
 }
 
