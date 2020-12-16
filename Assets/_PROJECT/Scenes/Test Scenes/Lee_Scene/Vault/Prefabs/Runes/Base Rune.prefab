@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2063856530727743392}
   - component: {fileID: 1526136216357555082}
   - component: {fileID: 3099671683293946690}
-  - component: {fileID: 3403747152605527241}
   m_Layer: 5
   m_Name: Base Rune
   m_TagString: Rune3
@@ -112,17 +111,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deactivateLevel: -1000
---- !u!114 &3403747152605527241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2063856530727743406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ae66cd1129b7ca48902b757f878c71b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  listName: To Do
-  list: []
