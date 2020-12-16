@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Rune1
+  - Rune2
+  - Rune3
   layers:
   - Default
   - TransparentFX

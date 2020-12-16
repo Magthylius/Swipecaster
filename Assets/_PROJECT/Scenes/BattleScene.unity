@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 187784950}
   - component: {fileID: 187784949}
   m_Layer: 0
-  m_Name: Casting
+  m_Name: Casting BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 305040052}
   - component: {fileID: 305040051}
   m_Layer: 0
-  m_Name: Environment
+  m_Name: Environment BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -715,7 +715,7 @@ GameObject:
   m_Component:
   - component: {fileID: 958179102}
   m_Layer: 5
-  m_Name: Background Group
+  m_Name: All Groups
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1182,7 +1182,7 @@ GameObject:
   - component: {fileID: 2001390486}
   - component: {fileID: 2001390488}
   m_Layer: 0
-  m_Name: Info
+  m_Name: Info BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

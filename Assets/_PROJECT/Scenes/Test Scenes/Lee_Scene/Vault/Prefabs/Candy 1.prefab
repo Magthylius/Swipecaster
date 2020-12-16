@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 4479342428006808083}
   - component: {fileID: 1569115979765538415}
   - component: {fileID: -6921271106835855832}
+  - component: {fileID: 4772551754468040132}
   m_Layer: 5
   m_Name: Candy 1
-  m_TagString: Untagged
+  m_TagString: Rune1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,3 +125,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deactivateLevel: -1250
+--- !u!114 &4772551754468040132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4008331681253695031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee158225ee1e59f4791627785501d950, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

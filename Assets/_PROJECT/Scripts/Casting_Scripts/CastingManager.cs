@@ -70,7 +70,6 @@ public class CastingManager : MonoBehaviour
         
         leftSide = initialSpawn.anchoredPosition.x - rect.width / 2;
         rightSide = initialSpawn.anchoredPosition.x + rect.width / 2;
-        // topSide = initialSpawn.anchoredPosition.y + rect.height;
         topSide = 0.0f;
         
         GameObject item = castPool.GetPooledObject(CastingPoolType.CANDY1);
@@ -78,7 +77,7 @@ public class CastingManager : MonoBehaviour
         
         runeWidth = (runeRect.offsetMax.x - runeRect.offsetMin.x) / 2;
         
-        print(runeWidth);
+        //print(runeWidth);
     }
     
     

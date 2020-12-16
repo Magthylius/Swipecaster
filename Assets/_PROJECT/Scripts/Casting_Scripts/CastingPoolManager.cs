@@ -7,8 +7,6 @@ public enum CastingPoolType
     CANDY1 = 1,
     CANDY2,
     CANDY3
-    
-
 }
 
 [System.Serializable]
