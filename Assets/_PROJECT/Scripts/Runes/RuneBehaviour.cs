@@ -14,6 +14,7 @@ public class RuneBehaviour : MonoBehaviour
     float maxVelocity;
     GameObject self;
     bool selected = false;
+    Vector2 position;
 
     bool allowMouse = false;
 
@@ -37,6 +38,7 @@ public class RuneBehaviour : MonoBehaviour
     
     void Update()
     {
+        position = rt.anchoredPosition;
         SelfDeactivate();
     }
     
@@ -75,6 +77,7 @@ public class RuneBehaviour : MonoBehaviour
     #region Queries
     public RuneType GetRuneType() => type;
     public GameObject GetSelf() => self;
+    public Vector2 GetPosition() => position;
     #endregion
 
 }

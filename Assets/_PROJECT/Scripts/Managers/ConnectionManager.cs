@@ -5,6 +5,7 @@ using UnityEngine;
 public class ConnectionManager : MonoBehaviour
 {
     public static ConnectionManager instance;
+    public LineRenderer line;
 
     RuneType selectionType;
     bool selectionStarted = false;
@@ -18,10 +19,24 @@ public class ConnectionManager : MonoBehaviour
     
     void Update()
     {
-        if (selectionStarted && Input.GetMouseButtonUp(0))
+        if (selectionStarted)
         {
-            selectionStarted = false;
-            Time.timeScale = 1.0f;
+            Vector3[] posList = new Vector3[selectionList.Count];
+            foreach(RuneBehaviour rune in selectionList)
+            {
+                posList.Add(rune.GetPosition());
+            }
+            for (int i = 0; i < selectionList.Count; i++)
+            {
+                posList[i] = selectionList[i].GetPosition();
+            }
+            line.SetPositions()
+
+            if(Input.GetMouseButtonUp(0))
+            {
+                selectionStarted = false;
+                Time.timeScale = 1.0f;
+            }
         }
     }
 
@@ -31,7 +46,6 @@ public class ConnectionManager : MonoBehaviour
         selectionType = rune.type;
         selectionList = new List<RuneBehaviour>();
         selectionList.Add(rune);
-        //print("selection start");
         Time.timeScale = 0.2f;
     }
 
