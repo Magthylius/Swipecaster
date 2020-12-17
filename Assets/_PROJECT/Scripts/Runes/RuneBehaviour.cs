@@ -17,7 +17,7 @@ public class RuneBehaviour : MonoBehaviour
     Rigidbody2D rb;
     Transform _transform;
     GameObject self;
-    Vector2 position;
+    Vector2 exitPos;
     SpriteRenderer sr;
     float spriteHeight;
 
@@ -46,7 +46,7 @@ public class RuneBehaviour : MonoBehaviour
     
     void Update()
     {
-        position = new Vector2(_transform.position.x, _transform.position.y);
+        exitPos = new Vector2(_transform.position.x, _transform.position.y + spriteHeight);
         SelfDeactivate();
     }
     
@@ -57,7 +57,7 @@ public class RuneBehaviour : MonoBehaviour
 
     public void SelfDeactivate()
     {
-        Vector3 viewPos = cam.WorldToViewportPoint(position);
+        Vector3 viewPos = cam.WorldToViewportPoint(exitPos);
 
         if (viewPos.y < 0)
         {
@@ -76,13 +76,18 @@ public class RuneBehaviour : MonoBehaviour
     {
         if (allowMouse && !Input.GetMouseButton(0)) return;
 
-        selected = true;
+
 
         if (!connectionManager.GetSelectionStart())
+        {
+            selected = true;
             connectionManager.StartSelection(this);
+        }
+            
         else if (connectionManager.GetSelectionType() == type)
         {
             //print("connect");
+            selected = true;
             connectionManager.Connect(this);
         }
     }
@@ -90,7 +95,7 @@ public class RuneBehaviour : MonoBehaviour
     #region Queries
     public RuneType GetRuneType() => type;
     public GameObject GetSelf() => self;
-    public Vector2 GetPosition() => position;
+    public Vector2 GetPosition() => transform.position;
 
     public bool GetSelected() => selected;
 
