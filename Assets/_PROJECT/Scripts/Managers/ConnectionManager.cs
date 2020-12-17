@@ -68,9 +68,14 @@ public class ConnectionManager : MonoBehaviour
         if (selectionStarted)
         {
             Vector3[] posList = new Vector3[selectionList.Count];
+
             for (int i = 0; i < selectionList.Count; i++)
             {
-                posList[i] = selectionList[i].GetPosition();
+                Vector2 temp = selectionList[i].GetPosition();
+                
+                Vector3 temp2 = new Vector3(temp.x, temp.y, -5);
+                
+                posList[i] = temp2;
             }
             line.positionCount = selectionList.Count;
             line.SetPositions(posList);

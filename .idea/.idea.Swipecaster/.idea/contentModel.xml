@@ -17,6 +17,11 @@
             <e p="Editor" t="Include">
               <e p="HierarchyLabel.cs" t="Include" />
             </e>
+            <e p="Entity" t="Include">
+              <e p="Entity.cs" t="Include" />
+              <e p="Foe.cs" t="Include" />
+              <e p="Unit.cs" t="Include" />
+            </e>
             <e p="Managers" t="Include">
               <e p="ComboManager.cs" t="Include" />
               <e p="ConnectionManager.cs" t="Include" />
@@ -46,9 +51,6 @@
             <e p="UI" t="Include">
               <e p="DebugButton.cs" t="Include" />
               <e p="UIItem.cs" t="Include" />
-            </e>
-            <e p="Unit" t="Include">
-              <e p="Unit.cs" t="Include" />
             </e>
           </e>
         </e>
