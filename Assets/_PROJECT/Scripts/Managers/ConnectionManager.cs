@@ -1,10 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ConnectionManager : MonoBehaviour
 {
     public static ConnectionManager instance;
+    ComboManager comboManager;
+
+
+    
     public LineRenderer line;
 
     RuneType selectionType;
@@ -20,7 +25,12 @@ public class ConnectionManager : MonoBehaviour
         cam = Camera.main;
         line.gameObject.SetActive(false);
     }
-    
+
+    void Start()
+    {
+        comboManager = ComboManager.instance;
+    }
+
     void Update()
     {
         if (Input.GetMouseButton(0))
@@ -41,6 +51,15 @@ public class ConnectionManager : MonoBehaviour
                         line.gameObject.SetActive(true);
                     }
 
+                    if (selectionList.Count >= 2)
+                    {
+                        if (!comboManager.GetIsStart())
+                        {
+                            comboManager.SetCountdownTimer();
+                            comboManager.SetIsStart();
+                        }
+                        
+                    }
                 }
             }
         }
@@ -62,9 +81,14 @@ public class ConnectionManager : MonoBehaviour
                 Time.timeScale = 1.0f;
                 line.gameObject.SetActive(false);
 
+                if (selectionList.Count >= 2)
+                {
+                    comboManager.CollectDamage();
+                }
+                
                 for (int i = 0; i < selectionList.Count; i++)
                 {
-                    selectionList[i].GetComponent<RuneBehaviour>();
+                    selectionList[i].GetComponent<RuneBehaviour>().SetSelected(false);
                 }
                 
             }
@@ -101,5 +125,8 @@ public class ConnectionManager : MonoBehaviour
     #region Queries
     public bool GetSelectionStart() => selectionStarted;
     public RuneType GetSelectionType() => selectionType;
+
+    public List<RuneBehaviour> GetSelectedRuneList() => selectionList;
+
     #endregion
 }

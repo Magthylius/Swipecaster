@@ -7,18 +7,20 @@ public class RuneBehaviour : MonoBehaviour
 {
     RuneManager runeManager;
     ConnectionManager connectionManager;
-
-    Rigidbody2D rb;
-    Transform _transform;
+    
+    public RuneType type;
 
     float maxVelocity;
-    GameObject self;
     bool selected = false;
-    Vector2 position;
-
     bool allowMouse = false;
+    
+    Rigidbody2D rb;
+    Transform _transform;
+    GameObject self;
+    Vector2 position;
+    SpriteRenderer sr;
+    float spriteHeight;
 
-    public RuneType type;
     Camera cam;
 
     void Awake()
@@ -27,10 +29,14 @@ public class RuneBehaviour : MonoBehaviour
         _transform = GetComponent<Transform>();
         cam = Camera.main;
         self = gameObject;
+        sr = GetComponent<SpriteRenderer>();
+        spriteHeight = sr.sprite.bounds.size.y / 2;
+
     }
     
     void Start()
     {
+
         runeManager = RuneManager.instance;
         connectionManager = ConnectionManager.instance;
 
@@ -40,7 +46,7 @@ public class RuneBehaviour : MonoBehaviour
     
     void Update()
     {
-        position = _transform.position;
+        position = new Vector2(_transform.position.x, _transform.position.y);
         SelfDeactivate();
     }
     
@@ -88,7 +94,7 @@ public class RuneBehaviour : MonoBehaviour
 
     public bool GetSelected() => selected;
 
-    public bool SetSelected(bool set) => selected = false;
+    public bool SetSelected(bool set) => selected = set;
 
     #endregion
 
