@@ -48,6 +48,9 @@ TagManager:
   - name: FX
     uniqueID: 701992667
     locked: 0
+  - name: Background
+    uniqueID: 1592225735
+    locked: 0
   - name: Rune
     uniqueID: 1825124645
     locked: 0
