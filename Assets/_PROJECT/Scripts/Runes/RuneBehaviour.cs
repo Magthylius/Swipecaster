@@ -9,7 +9,7 @@ public class RuneBehaviour : MonoBehaviour
     ConnectionManager connectionManager;
 
     Rigidbody2D rb;
-    RectTransform rt;
+    Transform _transform;
 
     float maxVelocity;
     GameObject self;
@@ -19,11 +19,13 @@ public class RuneBehaviour : MonoBehaviour
     bool allowMouse = false;
 
     public RuneType type;
+    Camera cam;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        rt = GetComponent<RectTransform>();
+        _transform = GetComponent<Transform>();
+        cam = Camera.main;
         self = gameObject;
     }
     
@@ -38,7 +40,7 @@ public class RuneBehaviour : MonoBehaviour
     
     void Update()
     {
-        position = rt.anchoredPosition;
+        position = _transform.position;
         SelfDeactivate();
     }
     
@@ -49,14 +51,19 @@ public class RuneBehaviour : MonoBehaviour
 
     public void SelfDeactivate()
     {
-        if (!Cam.IsVisibleFrom(rt, Camera.main))
+        Vector3 viewPos = cam.WorldToViewportPoint(position);
+
+        if (viewPos.y < 0)
         {
             runeManager.GetActiveRuneList().Remove(this.gameObject);
             rb.velocity = new Vector2(0, -10);
             gameObject.SetActive(false);
-
+     
             if (selected) connectionManager.Disconnect(this);
+
+            selected = false;
         }
+
     }
 
     public void Selected()
@@ -78,6 +85,11 @@ public class RuneBehaviour : MonoBehaviour
     public RuneType GetRuneType() => type;
     public GameObject GetSelf() => self;
     public Vector2 GetPosition() => position;
+
+    public bool GetSelected() => selected;
+
+    public bool SetSelected(bool set) => selected = false;
+
     #endregion
 
 }

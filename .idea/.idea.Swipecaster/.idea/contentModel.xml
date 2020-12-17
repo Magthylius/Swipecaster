@@ -14,24 +14,27 @@
             <e p="Camera" t="Include">
               <e p="CameraSizeAdjuster.cs" t="Include" />
             </e>
-            <e p="Casting_Scripts" t="Include">
-              <e p="CastingManager.cs" t="Include" />
-              <e p="CastingState.cs" t="Include" />
-              <e p="LimitVelocity.cs" t="Include" />
-              <e p="PoolManager.cs" t="Include" />
-              <e p="RuneBehaviour.cs" t="Include" />
-              <e p="RuneEnum.cs" t="Include" />
-              <e p="SelfDeactivate.cs" t="Include" />
-              <e p="TickSystem.cs" t="Include" />
-            </e>
             <e p="Editor" t="Include">
               <e p="HierarchyLabel.cs" t="Include" />
             </e>
             <e p="Managers" t="Include">
               <e p="ConnectionManager.cs" t="Include" />
+              <e p="RuneLineManager.cs" t="Include" />
             </e>
             <e p="Namespaces" t="Include">
-              <e p="Lerp.cs" t="Include" />
+              <e p="CameraFunctions.cs" t="Include" />
+              <e p="LerpFunctions.cs" t="Include" />
+            </e>
+            <e p="Renderers" t="Include">
+              <e p="SwipeTrail.cs" t="Include" />
+            </e>
+            <e p="Runes" t="Include">
+              <e p="CastingState.cs" t="Include" />
+              <e p="PoolManager.cs" t="Include" />
+              <e p="RuneBehaviour.cs" t="Include" />
+              <e p="RuneEnum.cs" t="Include" />
+              <e p="RuneManager.cs" t="Include" />
+              <e p="TickSystem.cs" t="Include" />
             </e>
             <e p="UI" t="Include">
               <e p="DebugButton.cs" t="Include" />
@@ -2139,14 +2142,6 @@
         <e p="URP Samples" t="Include">
           <e p="Scripts" t="Include">
             <e p="SimpleCameraController.cs" t="Include" />
-          </e>
-          <e p="TutorialInfo" t="Include">
-            <e p="Scripts" t="Include">
-              <e p="Editor" t="Include">
-                <e p="ReadmeEditor.cs" t="Include" />
-              </e>
-              <e p="Readme.cs" t="Include" />
-            </e>
           </e>
         </e>
       </e>

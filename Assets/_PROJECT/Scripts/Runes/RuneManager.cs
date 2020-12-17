@@ -23,8 +23,8 @@ public class RuneManager : MonoBehaviour
     [SerializeField] GameState castingState = GameState.PRE_CASTING;
 
     int targetSpawn;
-    float leftSide, rightSide, topSide;
-    float runeWidth, runeHeight;
+    public float leftSide, rightSide, topSide;
+    float runeWidth;
     
     List<GameObject> activeRuneList = new List<GameObject>();
 
@@ -70,7 +70,7 @@ public class RuneManager : MonoBehaviour
                 activeRuneList.Add(item);
                 item.transform.SetParent(initialSpawn.transform);
                 item.SetActive(true);
-                item.GetComponent<RectTransform>().anchoredPosition = new Vector2(Random.Range(leftSide + runeWidth, rightSide - runeWidth), topSide);
+                item.GetComponent<Transform>().localPosition = new Vector2(Random.Range(leftSide + runeWidth, rightSide - runeWidth), topSide);
             }
         }
     }
@@ -83,10 +83,12 @@ public class RuneManager : MonoBehaviour
         rightSide = initialSpawn.anchoredPosition.x + rect.width / 2;
         topSide = 0.0f;
         
-        GameObject item = castPool.GetPooledObject(RuneType.ELECTRIC);
-        RectTransform runeRect = item.GetComponent<RectTransform>();
+        print(leftSide + rightSide);
         
-        runeWidth = (runeRect.offsetMax.x - runeRect.offsetMin.x) / 2;
+        GameObject item = castPool.GetPooledObject(RuneType.ELECTRIC);
+        SpriteRenderer runeSR = item.GetComponent<SpriteRenderer>();
+        
+        runeWidth = runeSR.sprite.rect.width / 2;
         
         //print(runeWidth);
     }
