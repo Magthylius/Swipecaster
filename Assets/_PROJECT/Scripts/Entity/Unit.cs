@@ -4,6 +4,8 @@ using UnityEngine;
 
 public sealed class Unit : Entity
 {
+    public UnitObject BaseUnit => baseUnit;
+
     private void Awake()
     {
         

@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public static Player Instance;
+
     private int _experience;
     private int _level;
     private int _standardCurrency;
@@ -17,4 +19,10 @@ public class Player : MonoBehaviour
     public int PremiumCurrency => _premiumCurrency;
     public int TotalPremiumCurrency => _freemiumCurrency + _premiumCurrency;
     public List<Unit> UnitLoadOut => loadOut;
+
+    private void Awake()
+    {
+        if (Instance != null) Destroy(gameObject);
+        else Instance = this;
+    }
 }
