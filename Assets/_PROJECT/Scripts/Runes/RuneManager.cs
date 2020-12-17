@@ -14,7 +14,7 @@ public class RuneManager : MonoBehaviour
 
     [Header("Spawn Settings")]
     public GameObject spawner;
-    public RectTransform initialSpawn;
+    public Transform initialSpawn;
     public RectTransform dropZone;
 
     [Header("Rune Settings")]
@@ -77,10 +77,9 @@ public class RuneManager : MonoBehaviour
 
     void InitSpawn()
     {
-        Rect rect = initialSpawn.rect;
-        
-        leftSide = initialSpawn.anchoredPosition.x - rect.width / 2;
-        rightSide = initialSpawn.anchoredPosition.x + rect.width / 2;
+
+        leftSide = initialSpawn.position.x - Screen.width / 2;
+        rightSide = initialSpawn.position.x + Screen.width / 2;
         topSide = 0.0f;
         
         print(leftSide + rightSide);

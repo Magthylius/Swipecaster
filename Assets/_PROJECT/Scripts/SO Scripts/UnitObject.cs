@@ -18,6 +18,7 @@ public class UnitObject : ScriptableObject
     [TextArea(1, 5)] public string SkillDescription;
 
     [Header("UI/Visual")]
-    public Image SplashArt;
-    public Image PortraitArt;
+    public GameObject FullArtPrefab;
+    public GameObject SpriteHolderPrefab;
+    public Sprite PortraitArt;
 }

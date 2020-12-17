@@ -20,7 +20,9 @@ public class BattlestageManager : MonoBehaviour
 
     [Header("Hero spawn (Debug use)")] 
     public GameObject heroes;
-    
+
+    private Player player;
+
     GameObject[] playerTeam = new GameObject[4];
     GameObject[] enemyTeam = new GameObject[4];
 
@@ -37,6 +39,11 @@ public class BattlestageManager : MonoBehaviour
             instance = this;
         
         cam = Camera.main;
+    }
+
+    private void Start()
+    {
+        player = Player.Instance;
         InitPositions();
     }
 
@@ -71,9 +78,11 @@ public class BattlestageManager : MonoBehaviour
         //! Set Player hero's position
         for (int i = 0; i < leftSidePos.Length; i++)
         {
+            GameObject loadOutUnit = player.UnitLoadOut[i].BaseUnit.FullArtPrefab;
+
             leftSidePos[i].localPosition = new Vector2(leftSidePos[i].localPosition.x - (heroGap * i), leftSidePos[i].localPosition.y);
             
-            GameObject temp = Instantiate(heroes, leftSidePos[i].position, Quaternion.identity);
+            GameObject temp = Instantiate(loadOutUnit, leftSidePos[i].position, Quaternion.identity);
             playerTeam[i] = temp;
         }
         

@@ -20,5 +20,6 @@ MonoBehaviour:
   MaxDefence: 468
   CharacterDescription: Meow Test Meow
   SkillDescription: Meow Ta Ta Meow Meow Meow!
-  SplashArt: {fileID: 0}
+  FullArtPrefab: {fileID: 0}
+  SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}
   PortraitArt: {fileID: 0}
