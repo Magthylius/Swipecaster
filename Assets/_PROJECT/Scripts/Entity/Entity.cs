@@ -3,39 +3,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Unit : MonoBehaviour
+public class Entity : MonoBehaviour
 {
     [Header("General")]
-    [SerializeField] private UnitObject baseUnit;
-    [Range(1, 50), SerializeField] private int _currentLevel;
-    private int _currentRarity;
-    [SerializeField] private int _totalHealth;
-    [SerializeField] private int _totalAttack;
-    [SerializeField] private int _totalDefence;
+    [SerializeField] protected UnitObject baseUnit;
+    [Range(1, 50), SerializeField] protected int _currentLevel;
+    protected int _currentRarity;
+    [SerializeField] protected int _totalHealth;
+    [SerializeField] protected int _totalAttack;
+    [SerializeField] protected int _totalDefence;
 
     [Header("Stat Ratio Multipliers")]
-    [SerializeField] private float baseStatMultiplier;
-    [SerializeField] private float paraCapMultiplier;
-    [SerializeField] private float baseStatCapMultiplier;
+    [SerializeField] protected float baseStatMultiplier;
+    [SerializeField] protected float paraCapMultiplier;
+    [SerializeField] protected float baseStatCapMultiplier;
 
-    private void Awake()
-    {
-        
-    }
-
-    private void Initialise()
+    protected void Initialise()
     {
         _currentLevel = 1;
         _currentRarity = baseUnit.BaseRarity;
         CalculateActualStats();
     }
 
-    private void OnValidate()
+    protected virtual void OnValidate()
     {
         CalculateActualStats();
     }
 
-    private void CalculateActualStats()
+    protected void CalculateActualStats()
     {
         if (baseUnit == null) return;
 

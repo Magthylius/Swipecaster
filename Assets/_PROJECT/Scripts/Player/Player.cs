@@ -9,12 +9,12 @@ public class Player : MonoBehaviour
     private int _freemiumCurrency;
     private int _premiumCurrency;
 
-    //private List<>
+    [SerializeField] private List<Unit> loadOut;
 
     public int Experience => _experience;
     public int Level => _level;
     public int FreemiumCurrency => _freemiumCurrency;
     public int PremiumCurrency => _premiumCurrency;
     public int TotalPremiumCurrency => _freemiumCurrency + _premiumCurrency;
-    
+    public List<Unit> UnitLoadOut => loadOut;
 }
