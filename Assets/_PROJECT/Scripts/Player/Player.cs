@@ -11,14 +11,16 @@ public class Player : MonoBehaviour
     private int _freemiumCurrency;
     private int _premiumCurrency;
 
-    [SerializeField] private List<Unit> loadOut;
+    [SerializeField] private int maxLoadOutSize;
+    [SerializeField] private GameObject inventoryHolder;
+    [SerializeField] private List<UnitEntry> loadOut;
 
     public int Experience => _experience;
     public int Level => _level;
     public int FreemiumCurrency => _freemiumCurrency;
     public int PremiumCurrency => _premiumCurrency;
     public int TotalPremiumCurrency => _freemiumCurrency + _premiumCurrency;
-    public List<Unit> UnitLoadOut => loadOut;
+    public List<UnitEntry> UnitLoadOut => loadOut;
 
     private void Awake()
     {
