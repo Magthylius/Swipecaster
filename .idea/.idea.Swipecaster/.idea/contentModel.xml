@@ -21,6 +21,7 @@
               <e p="Entity.cs" t="Include" />
               <e p="Foe.cs" t="Include" />
               <e p="Unit.cs" t="Include" />
+              <e p="UnitEntry.cs" t="Include" />
             </e>
             <e p="Managers" t="Include">
               <e p="ComboManager.cs" t="Include" />

@@ -75,15 +75,13 @@ public class RuneBehaviour : MonoBehaviour
     public void Selected()
     {
         if (allowMouse && !Input.GetMouseButton(0)) return;
-
-
+        
 
         if (!connectionManager.GetSelectionStart())
         {
             selected = true;
             connectionManager.StartSelection(this);
         }
-            
         else if (connectionManager.GetSelectionType() == type)
         {
             //print("connect");

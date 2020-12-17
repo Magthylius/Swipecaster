@@ -24,8 +24,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Swipecaster/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Swipecaster/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/EasyMobile/Packages/ExternalDependencyManager/external-dependency-manager-latest.unitypackage.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/EasyMobile/Packages/PlayMakerActions/PlayMakerActions.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Prefabs/Entities.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_PROJECT/Prefabs/Entities.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Prefabs/Player.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_PROJECT/Prefabs/Player.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/ComboManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/ComboManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Runes/RuneBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Runes/RuneBehaviour.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,10 +66,10 @@
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Camera/CameraSizeAdjuster.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/HeroBehaviour.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/BattlestageManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/ConnectionManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/ComboManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Runes/RuneManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/ConnectionManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Runes/RuneBehaviour.cs" />
+        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/ComboManager.cs" />
       </list>
     </option>
   </component>
@@ -115,7 +115,7 @@
       <updated>1608018163944</updated>
       <workItem from="1608018184059" duration="21250000" />
       <workItem from="1608113848719" duration="17299000" />
-      <workItem from="1608189011045" duration="21325000" />
+      <workItem from="1608189011045" duration="24997000" />
     </task>
     <servers />
   </component>
@@ -141,10 +141,10 @@
       <screen x="86" y="0" width="1834" height="1080" />
     </state>
     <state x="337" y="162" key="SettingsEditor/86.0.1834.1080@86.0.1834.1080" timestamp="1608137730899" />
-    <state x="154" y="92" width="1674" height="896" key="VCS.FileHistoryDialog" timestamp="1608194392964">
+    <state x="154" y="92" width="1674" height="896" key="VCS.FileHistoryDialog" timestamp="1608225415742">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
-    <state x="154" y="92" width="1674" height="896" key="VCS.FileHistoryDialog/62.0.1858.1080@62.0.1858.1080" timestamp="1608194392964" />
+    <state x="154" y="92" width="1674" height="896" key="VCS.FileHistoryDialog/62.0.1858.1080@62.0.1858.1080" timestamp="1608225415742" />
     <state x="666" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1608114842074">
       <screen x="86" y="0" width="1834" height="1080" />
     </state>
