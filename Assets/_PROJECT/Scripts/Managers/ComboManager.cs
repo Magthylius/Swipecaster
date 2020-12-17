@@ -20,6 +20,7 @@ public class ComboManager : MonoBehaviour
     
     public static ComboManager instance;
     ConnectionManager connectionManager;
+    RuneManager runeManager;
 
     public float runeDamage;
     [Header("Countdown Timer")]
@@ -49,6 +50,7 @@ public class ComboManager : MonoBehaviour
     void Start()
     {
         connectionManager = ConnectionManager.instance;
+        runeManager = RuneManager.instance;
     }
 
     void Update()
@@ -60,6 +62,7 @@ public class ComboManager : MonoBehaviour
             if (timer <= 0)
             {
                 DealDamage();
+                runeManager.SpawnDeactivate();
             }
         }
     }

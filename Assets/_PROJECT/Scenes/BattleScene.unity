@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 60006155}
   - component: {fileID: 60006154}
   m_Layer: 0
-  m_Name: Battlestage Manager
+  m_Name: BattlestageManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

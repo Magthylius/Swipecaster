@@ -55,21 +55,25 @@ public class RuneBehaviour : MonoBehaviour
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
     }
 
+    public void Deactivate()
+    {
+        runeManager.GetActiveRuneList().Remove(this.gameObject);
+        rb.velocity = new Vector2(0, -10);
+        gameObject.SetActive(false);
+
+        if (selected) connectionManager.Disconnect(this);
+
+        selected = false;
+    }
+
     public void SelfDeactivate()
     {
         Vector3 viewPos = cam.WorldToViewportPoint(exitPos);
 
         if (viewPos.y < 0)
         {
-            runeManager.GetActiveRuneList().Remove(this.gameObject);
-            rb.velocity = new Vector2(0, -10);
-            gameObject.SetActive(false);
-     
-            if (selected) connectionManager.Disconnect(this);
-
-            selected = false;
+            Deactivate();
         }
-
     }
 
     public void Selected()

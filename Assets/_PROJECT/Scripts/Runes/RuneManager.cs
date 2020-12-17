@@ -25,6 +25,7 @@ public class RuneManager : MonoBehaviour
     int targetSpawn;
     public float leftSide, rightSide, topSide;
     float runeWidth;
+    bool allowSpawn = false;
     
     List<GameObject> activeRuneList = new List<GameObject>();
 
@@ -40,22 +41,22 @@ public class RuneManager : MonoBehaviour
 
         InitSpawn();
         TickSystem.OnTick += SpawningInterval;
+
+        allowSpawn = true;
     }
-
-    #region Queries
-    public List<GameObject> GetActiveRuneList() => activeRuneList;
-
-    #endregion
 
     void SpawningInterval(object sender, TickSystem.OnTickEvent e)
     {
-        int selfTick = e.tick;
-
-        if (selfTick > targetSpawn)
+        if (allowSpawn)
         {
-            //print("Check");
-            SpawnItem();
-            targetSpawn += Random.Range(1, 3);
+            int selfTick = e.tick;
+
+            if (selfTick > targetSpawn)
+            {
+                //print("Check");
+                SpawnItem();
+                targetSpawn += Random.Range(1, 3);
+            }
         }
     }
 
@@ -77,9 +78,8 @@ public class RuneManager : MonoBehaviour
 
     void InitSpawn()
     {
-
-        leftSide = initialSpawn.position.x - Screen.width / 2;
-        rightSide = initialSpawn.position.x + Screen.width / 2;
+        leftSide = initialSpawn.position.x - Screen.width * 0.5f;
+        rightSide = initialSpawn.position.x + Screen.width * 0.5f;
         topSide = 0.0f;
         
         print(leftSide + rightSide);
@@ -87,9 +87,32 @@ public class RuneManager : MonoBehaviour
         GameObject item = castPool.GetPooledObject(RuneType.ELECTRIC);
         SpriteRenderer runeSR = item.GetComponent<SpriteRenderer>();
         
-        runeWidth = runeSR.sprite.rect.width / 2;
+        runeWidth = runeSR.sprite.rect.width * 0.5f;
         
         //print(runeWidth);
     }
+
+    public void SpawnActivate()
+    {
+        allowSpawn = true;
+    }
+
+    public void SpawnDeactivate()
+    {
+        allowSpawn = false;
+        /*foreach (GameObject rune in activeRuneList)
+        {
+            rune.GetComponent<RuneBehaviour>().Deactivate();
+        }*/
+
+        while (activeRuneList.Count > 0)
+        {
+            activeRuneList[0].GetComponent<RuneBehaviour>().Deactivate();
+        }
+    }
+
+    #region Queries
+    public List<GameObject> GetActiveRuneList() => activeRuneList;
+    #endregion
 
 }
