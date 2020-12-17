@@ -82,7 +82,7 @@ public class BattlestageManager : MonoBehaviour
 
             leftSidePos[i].localPosition = new Vector2(leftSidePos[i].localPosition.x - (heroGap * i), leftSidePos[i].localPosition.y);
             
-            GameObject temp = Instantiate(loadOutUnit, leftSidePos[i].position, Quaternion.identity);
+            GameObject temp = Instantiate(loadOutUnit, leftSidePos[i].position, Quaternion.identity, leftSidePos[i]);
             playerTeam[i] = temp;
         }
         
