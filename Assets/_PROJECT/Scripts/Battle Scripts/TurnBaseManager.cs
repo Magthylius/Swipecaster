@@ -16,6 +16,8 @@ public class TurnBaseManager : MonoBehaviour
     int casterUnitTurn = 0;
     int enemyUnitTurn = 0;
 
+    bool isPlayerTurn = false;
+
     [SerializeField] GameObject caster;
     [SerializeField] GameObject enemy;
     
@@ -36,15 +38,23 @@ public class TurnBaseManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && isPlayerTurn)
         {
             OnCasterAttack();
+            isPlayerTurn = false;
         }
     }
 
     void CasterTurn()
     {
         print("Is " + caster.name + " turn");
+        isPlayerTurn = true;
+    }
+
+    void EnemyTurn()
+    {
+        print("Is " + enemy.name + " turn");
+        OnEnemyAttack();
     }
 
     void OnCasterAttack()
@@ -57,7 +67,7 @@ public class TurnBaseManager : MonoBehaviour
 
     void OnEnemyAttack()
     {
-        
+        StartCoroutine(EnemyAttack());
     }
 
     void Endturn()
@@ -65,14 +75,21 @@ public class TurnBaseManager : MonoBehaviour
         switch (battleState)
         {
             case GameStateEnum.CASTERTURN:
-                if (casterUnitTurn > 3) casterUnitTurn = 0;
+                if (casterUnitTurn >= battlestageManager.GetCastersTeam().Length - 1) casterUnitTurn = 0;
                 else casterUnitTurn++;
 
-                battleState = GameStateEnum.CASTERTURN;
-                CasterTurn();
-                
+                battleState = GameStateEnum.ENEMYTURN;
+                enemy = battlestageManager.GetCurrentEnemy(enemyUnitTurn);
+                EnemyTurn();
                 break;
+            
             case GameStateEnum.ENEMYTURN:
+                if (enemyUnitTurn >= battlestageManager.GetEnemyTeam().Length - 1) enemyUnitTurn = 0;
+                else enemyUnitTurn++;
+
+                battleState = GameStateEnum.CASTERTURN;
+                caster = battlestageManager.GetCurrentCaster(casterUnitTurn);
+                CasterTurn();
                 break;
         }
     }
@@ -81,7 +98,7 @@ public class TurnBaseManager : MonoBehaviour
     {
 
         caster = battlestageManager.GetCurrentCaster(casterUnitTurn);
-        enemy = battlestageManager.GetCurrentEnemy(enemyUnitTurn);
+
         
         yield return new WaitForSeconds(delaysInBetween);
         battleState = GameStateEnum.CASTERTURN;
@@ -89,6 +106,12 @@ public class TurnBaseManager : MonoBehaviour
     }
 
     IEnumerator CasterAttack()
+    {
+        yield return new WaitForSeconds(delaysInBetween);
+        Endturn();
+    }
+
+    IEnumerator EnemyAttack()
     {
         yield return new WaitForSeconds(delaysInBetween);
         Endturn();

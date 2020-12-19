@@ -94,9 +94,10 @@ GameObject:
   - component: {fileID: -446955115425626010}
   - component: {fileID: 9017588005580383242}
   - component: {fileID: -8861115439225845430}
+  - component: {fileID: -7382178382849526537}
   m_Layer: 8
   m_Name: Cat 2
-  m_TagString: Untagged
+  m_TagString: Hero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,7 +173,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.08112824, y: 0.7419853}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -183,8 +184,20 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.1766284, y: 7.3275805}
   m_EdgeRadius: 0
+--- !u!114 &-7382178382849526537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9017588005580383243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 782f7bc962752534082c63a5b1666869, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9017588006158168867
 GameObject:
   m_ObjectHideFlags: 0

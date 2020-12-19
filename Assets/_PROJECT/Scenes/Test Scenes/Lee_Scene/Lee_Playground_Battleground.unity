@@ -737,7 +737,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   battleState: 0
-  delaysInBetween: 0
+  delaysInBetween: 1
   caster: {fileID: 0}
   enemy: {fileID: 0}
 --- !u!1 &615187864
@@ -1393,6 +1393,7 @@ MonoBehaviour:
   - {fileID: 615187865}
   - {fileID: 2049509023}
   heroes: {fileID: 1342186363962593935, guid: 7bf6f4e9267a7c04199a005ccbddd474, type: 3}
+  cam: {fileID: 1833506689}
 --- !u!1 &1428885884
 GameObject:
   m_ObjectHideFlags: 0

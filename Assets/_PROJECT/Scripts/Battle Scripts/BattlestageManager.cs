@@ -30,7 +30,7 @@ public class BattlestageManager : MonoBehaviour
     Transform holder = null;
     Vector2 holderOriginalPos;
     bool isHolding = false;
-    Camera cam;
+    public Camera cam;
 
     void Awake()
     {
@@ -39,7 +39,6 @@ public class BattlestageManager : MonoBehaviour
         else
             instance = this;
         
-        cam = Camera.main;
     }
 
     private void Start()
@@ -110,6 +109,7 @@ public class BattlestageManager : MonoBehaviour
             {
 
                 holder = hit.collider.transform;
+                print(holder.name);
                 holder.GetComponent<HeroBehaviour>().SetIsHeld(true);
 
                 for (int i = 0; i < playerTeam.Length; i++)
@@ -142,7 +142,9 @@ public class BattlestageManager : MonoBehaviour
 
     public GameObject GetCurrentCaster(int getCaster) => playerTeam[getCaster];
     public GameObject GetCurrentEnemy(int getEnemy) => enemyTeam[getEnemy];
-    public GameObject[] GetEnemyTeam => enemyTeam;
+
+    public GameObject[] GetCastersTeam() => playerTeam;
+    public GameObject[] GetEnemyTeam() => enemyTeam;
 
     #endregion
 
