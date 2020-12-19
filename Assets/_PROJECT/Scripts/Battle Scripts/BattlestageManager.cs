@@ -6,6 +6,7 @@ using UnityEngine;
 public class BattlestageManager : MonoBehaviour
 {
     public static BattlestageManager instance;
+    TurnBaseManager turnBaseManager;
     
     public Transform battlestageCenter;
     public Transform playerTeamGroup, enemyTeamGroup;
@@ -136,4 +137,13 @@ public class BattlestageManager : MonoBehaviour
             }
         }
     }
+
+    #region Accessors
+
+    public GameObject GetCurrentCaster(int getCaster) => playerTeam[getCaster];
+    public GameObject GetCurrentEnemy(int getEnemy) => enemyTeam[getEnemy];
+    public GameObject[] GetEnemyTeam => enemyTeam;
+
+    #endregion
+
 }

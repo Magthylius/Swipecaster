@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3109290898961220036}
   - component: {fileID: 7491599550680692357}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cat 4_Sprite sheet_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1562838888213161608}
   - component: {fileID: 8052079048645474463}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cat 4_Sprite sheet_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 801330957942425889}
   - component: {fileID: 8099004610606539031}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cat 4_Sprite sheet_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2782041958839298979}
   - component: {fileID: 7176909914782786290}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cat 4_Sprite sheet_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -441,7 +441,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8043860864007906297}
   - component: {fileID: 7018032461682378094}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cat 4_Sprite sheet_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}

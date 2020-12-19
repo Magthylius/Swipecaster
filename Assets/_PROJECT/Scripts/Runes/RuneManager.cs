@@ -81,9 +81,7 @@ public class RuneManager : MonoBehaviour
         leftSide = initialSpawn.position.x - Screen.width * 0.5f;
         rightSide = initialSpawn.position.x + Screen.width * 0.5f;
         topSide = 0.0f;
-        
-        print(leftSide + rightSide);
-        
+
         GameObject item = castPool.GetPooledObject(RuneType.ELECTRIC);
         SpriteRenderer runeSR = item.GetComponent<SpriteRenderer>();
         

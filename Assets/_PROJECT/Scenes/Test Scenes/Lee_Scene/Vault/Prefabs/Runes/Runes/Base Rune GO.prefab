@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8921575577946023338}
   - component: {fileID: 8921575577946023339}
   - component: {fileID: -6872223854397634389}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Base Rune GO
   m_TagString: Rune1
   m_Icon: {fileID: 0}

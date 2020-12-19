@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1684667032584426301}
   - component: {fileID: 1684667032584426300}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cat 1_Sprite sheet_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,7 +50,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1684667032784210723}
   - component: {fileID: 1684667032784210722}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cat 1_Sprite sheet_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -174,7 +174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1684667032787608015}
   - component: {fileID: 1684667032787608014}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cat 1_Sprite sheet_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -256,7 +256,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1684667032820789372}
   - component: {fileID: 1684667032820789375}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cat 1_Sprite sheet_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -296,7 +296,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -338,7 +338,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1684667033202092489}
   - component: {fileID: 1684667033202092488}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cat 1_Sprite sheet_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -378,7 +378,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
