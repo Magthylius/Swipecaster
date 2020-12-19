@@ -61,7 +61,7 @@ public class ComboManager : MonoBehaviour
             slideTimer.value = timer;
             if (timer <= 0)
             {
-                DealDamage();
+                //DealDamage();
                 runeManager.SpawnDeactivate();
             }
         }
