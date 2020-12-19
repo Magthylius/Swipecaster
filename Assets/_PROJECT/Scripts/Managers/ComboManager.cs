@@ -96,10 +96,14 @@ public class ComboManager : MonoBehaviour
 
     public void SetCountdownTimer() => timer = countdownTimer;
     public void SetIsStart() => isStart = true;
-    void DealDamage()
+    void DealDamage(GameObject attacker, GameObject enemy)
     {
         print("FireRune: " + fireRune.amount + "GroundRune: " + groundRune.amount + "ElectricRune: " + electricRune.amount);
-
+        float attackerDamage = attacker.GetComponent<UnitEntry>().GetAttack();
+        float totalDamage = attackerDamage * fireRune.amount + attackerDamage * groundRune.amount + attackerDamage * electricRune.amount;
+        float enemyDefense = enemy.GetComponent<UnitEntry>().GetDefence();
+        attackerDamage = (attackerDamage - enemyDefense) / attackerDamage;
+        print("Total Damage :" + attackerDamage);
         fireRune.amount = 0;
         groundRune.amount = 0;
         electricRune.amount = 0;
