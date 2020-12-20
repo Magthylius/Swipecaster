@@ -31,6 +31,7 @@ public abstract class Entity : MonoBehaviour
     public abstract void TakeDamage(Entity damager, int damageAmount);
     public abstract void RecieveHealing(Entity healer, int healAmount);
     public abstract void DoDamage(Entity focusTarget, List<Entity> affectedTargets, RuneCollection runes);
+    public abstract int CalculateDamage(Entity focusTarget, List<Entity> affectedTargets, RuneCollection runes);
     public abstract List<Entity> GetAffectedTargets(Entity focusTarget, List<Entity> allEntities);
 
     #endregion
