@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class ConnectionManager : MonoBehaviour
@@ -8,12 +6,10 @@ public class ConnectionManager : MonoBehaviour
     public static ConnectionManager instance;
     ComboManager comboManager;
 
-
-    
     public LineRenderer line;
 
     RuneType selectionType;
-    bool selectionStarted = false;
+    bool selectionStarted;
     Camera cam;
     List<RuneBehaviour> selectionList = new List<RuneBehaviour>();
 
@@ -21,7 +17,7 @@ public class ConnectionManager : MonoBehaviour
     {
         if (instance != null) Destroy(gameObject);
         else instance = this;
-        
+
         cam = Camera.main;
         line.gameObject.SetActive(false);
     }
@@ -58,13 +54,12 @@ public class ConnectionManager : MonoBehaviour
                             comboManager.SetCountdownTimer();
                             comboManager.SetIsStart();
                         }
-                        
                     }
                 }
             }
         }
-        
-        
+
+
         if (selectionStarted)
         {
             Vector3[] posList = new Vector3[selectionList.Count];
@@ -72,15 +67,16 @@ public class ConnectionManager : MonoBehaviour
             for (int i = 0; i < selectionList.Count; i++)
             {
                 Vector2 temp = selectionList[i].GetPosition();
-                
+
                 Vector3 temp2 = new Vector3(temp.x, temp.y, -5);
-                
+
                 posList[i] = temp2;
             }
+
             line.positionCount = selectionList.Count;
             line.SetPositions(posList);
 
-            if(Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonUp(0))
             {
                 selectionStarted = false;
                 Time.timeScale = 1.0f;
@@ -90,12 +86,11 @@ public class ConnectionManager : MonoBehaviour
                 {
                     comboManager.CollectDamage();
                 }
-                
-                for (int i = 0; i < selectionList.Count; i++)
+
+                foreach (var rune in selectionList)
                 {
-                    selectionList[i].GetComponent<RuneBehaviour>().SetSelected(false);
+                    rune.GetComponent<RuneBehaviour>().ResetToActivateSprite();
                 }
-                
             }
         }
     }
@@ -128,6 +123,7 @@ public class ConnectionManager : MonoBehaviour
     }
 
     #region Queries
+
     public bool GetSelectionStart() => selectionStarted;
     public RuneType GetSelectionType() => selectionType;
 

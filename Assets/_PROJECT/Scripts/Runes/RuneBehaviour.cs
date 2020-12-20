@@ -9,17 +9,19 @@ public class RuneBehaviour : MonoBehaviour
     ConnectionManager connectionManager;
     
     public RuneType type;
+    public Sprite activatedSprite;
+    public Sprite deactivatedSprite;
 
-    float maxVelocity;
-    bool selected = false;
-    bool allowMouse = false;
-    
     Rigidbody2D rb;
     Transform _transform;
     GameObject self;
     Vector2 exitPos;
     SpriteRenderer sr;
     float spriteHeight;
+
+    float maxVelocity;
+    bool selected = false;
+    bool allowMouse = false;
 
     Camera cam;
 
@@ -31,12 +33,10 @@ public class RuneBehaviour : MonoBehaviour
         self = gameObject;
         sr = GetComponent<SpriteRenderer>();
         spriteHeight = sr.sprite.bounds.size.y / 2;
-
     }
     
     void Start()
     {
-
         runeManager = RuneManager.instance;
         connectionManager = ConnectionManager.instance;
 
@@ -48,6 +48,20 @@ public class RuneBehaviour : MonoBehaviour
     {
         exitPos = new Vector2(_transform.position.x, _transform.position.y + spriteHeight);
         SelfDeactivate();
+
+        if (selected) 
+        {
+            if (!allowMouse && Input.touchCount < 1)
+            {
+                selected = false;
+                sr.sprite = deactivatedSprite;
+            }
+            else if (allowMouse && Input.GetMouseButtonUp(0))
+            {
+                selected = false;
+                sr.sprite = deactivatedSprite;
+            }
+        }
     }
     
     void FixedUpdate()
@@ -64,6 +78,7 @@ public class RuneBehaviour : MonoBehaviour
         if (selected) connectionManager.Disconnect(this);
 
         selected = false;
+        sr.sprite = deactivatedSprite;
     }
 
     public void SelfDeactivate()
@@ -84,14 +99,21 @@ public class RuneBehaviour : MonoBehaviour
         if (!connectionManager.GetSelectionStart())
         {
             selected = true;
+            sr.sprite = activatedSprite;
             connectionManager.StartSelection(this);
         }
         else if (connectionManager.GetSelectionType() == type)
         {
-            //print("connect");
             selected = true;
+            sr.sprite = activatedSprite;
             connectionManager.Connect(this);
         }
+    }
+
+    public void ResetToActivateSprite()
+    {
+        selected = false;
+        sr.sprite = deactivatedSprite;
     }
 
     #region Queries
