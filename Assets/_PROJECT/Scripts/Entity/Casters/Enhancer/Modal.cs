@@ -1,18 +1,33 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Modal : MonoBehaviour
+public class Modal : Unit
 {
-    // Start is called before the first frame update
-    void Start()
+    #region Public Override Methods
+
+    public override void TakeDamage(Entity damager, int damageAmount)
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void RecieveHealing(Entity healer, int healAmount)
     {
-        
+
     }
+
+    public override void DoDamage(Entity focusTarget, List<Entity> affectedTargets, RuneCollection runes)
+    {
+
+    }
+
+    public override List<Entity> GetAffectedTargets(Entity focusTarget, List<Entity> allEntities)
+    {
+        return null;
+    }
+
+    #endregion
+
+
+
 }
