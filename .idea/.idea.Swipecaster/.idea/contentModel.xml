@@ -91,6 +91,42 @@
             <e p="SetGlobalTime.cs" t="Include" />
           </e>
         </e>
+        <e p="Auto Letterbox" t="Include">
+          <e p="Demos" t="Include">
+            <e p="Game Demo" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="DragonClass.cs" t="Include" />
+                <e p="Editor" t="Include">
+                  <e p="TerrainSegmentEditor.cs" t="Include" />
+                </e>
+                <e p="EnemyClass.cs" t="Include" />
+                <e p="FollowCam.cs" t="Include" />
+                <e p="FoodTracker.cs" t="Include" />
+                <e p="GameManager.cs" t="Include" />
+                <e p="LetterboxGameDemo.cs" t="Include" />
+                <e p="Parralax.cs" t="Include" />
+                <e p="PlayerMovement.cs" t="Include" />
+                <e p="PlayerScrollScript.cs" t="Include" />
+                <e p="TeleportPlayer.cs" t="Include" />
+                <e p="Terrain" t="Include">
+                  <e p="LoopingTerrain.cs" t="Include" />
+                  <e p="TerrainSegment.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="Multi-Cam Demo" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="Demo.cs" t="Include" />
+                <e p="MenuSpin.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Editor" t="Include">
+            <e p="ForceCameraRatioEditor.cs" t="Include" />
+          </e>
+          <e p="ForceCameraRatio.cs" t="Include" />
+          <e p="Util.cs" t="Include" />
+        </e>
         <e p="ConsolePro" t="Include">
           <e p="ConsoleProDebug.cs" t="Include" />
           <e p="Remote" t="Include">
