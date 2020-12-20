@@ -48,6 +48,20 @@ public class RuneBehaviour : MonoBehaviour
     {
         exitPos = new Vector2(_transform.position.x, _transform.position.y + spriteHeight);
         SelfDeactivate();
+
+        if (selected) 
+        {
+            if (!allowMouse && Input.touchCount < 1)
+            {
+                selected = false;
+                sr.sprite = deactivatedSprite;
+            }
+            else if (allowMouse && Input.GetMouseButtonUp(0))
+            {
+                selected = false;
+                sr.sprite = deactivatedSprite;
+            }
+        }
     }
     
     void FixedUpdate()
@@ -90,7 +104,6 @@ public class RuneBehaviour : MonoBehaviour
         }
         else if (connectionManager.GetSelectionType() == type)
         {
-            //print("connect");
             selected = true;
             sr.sprite = activatedSprite;
             connectionManager.Connect(this);
