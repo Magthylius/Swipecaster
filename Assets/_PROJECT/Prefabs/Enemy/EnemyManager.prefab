@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7435e2a051f0064086882140d9e67d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLoadOutSize: 2
+  maxLoadOutSize: 4
   inventoryHolder: {fileID: 1465745499963879118}
   loadOut:
   - {fileID: 0}

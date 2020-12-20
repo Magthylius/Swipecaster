@@ -14,6 +14,10 @@ public class TurnBaseManager : MonoBehaviour
     [Header("Delay between states")]
     public float delaysInBetween; // Delays in between states
 
+    public GameObject highlighter;
+    [Header("Highlighter vertical positions")]
+    public float gap;
+
     int casterUnitTurn = 0;
     int enemyUnitTurn = 0;
 
@@ -41,7 +45,14 @@ public class TurnBaseManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isPlayerTurn)
+        if (!isPlayerTurn)
+        {
+            return;
+        }
+        
+        highlighter.transform.position = new Vector3( caster.transform.position.x, caster.transform.position.y + gap, caster.transform.position.z);
+        
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             OnCasterAttack();
             isPlayerTurn = false;
@@ -50,13 +61,19 @@ public class TurnBaseManager : MonoBehaviour
 
     void CasterTurn()
     {
+        caster = CastersTeamList[casterUnitTurn];
+        unitPositionManager.SetHolder(caster);
+        
+        highlighter.transform.position = new Vector3( caster.transform.position.x, caster.transform.position.y + gap, caster.transform.position.z);
+        highlighter.SetActive(true);
+        
         print("Is " + caster.name + " turn");
-        //print(Array.IndexOf(battlestageManager.GetCastersTeam(), caster));
         isPlayerTurn = true;    
     }
 
     void EnemyTurn()
     {
+        highlighter.SetActive(false);
         print("Is " + enemy.name + " turn");
         OnEnemyAttack();
     }
@@ -87,32 +104,31 @@ public class TurnBaseManager : MonoBehaviour
                 break;
             
             case GameStateEnum.ENEMYTURN:
-                if (enemyUnitTurn >= battlestageManager.GetEnemyTeam().Length - 1) enemyUnitTurn = 0;
+                if (enemyUnitTurn >= battlestageManager.GetEnemyTeam().Count - 1) enemyUnitTurn = 0;
                 else enemyUnitTurn++;
 
                 battleState = GameStateEnum.CASTERTURN;
-                caster = CastersTeamList[casterUnitTurn];
-                unitPositionManager.SetHolder(caster);
                 CasterTurn();
                 break;
         }
     }
     
+    
     public IEnumerator InitBattle()
     {
         CastersTeamList = (GameObject[])battlestageManager.GetCastersTeam().Clone();
-        
-        caster = CastersTeamList[casterUnitTurn];
-        unitPositionManager.SetHolder(caster);
+        highlighter = Instantiate(highlighter);
+        highlighter.SetActive(false);
 
         yield return new WaitForSeconds(delaysInBetween);
+
         battleState = GameStateEnum.CASTERTURN;
         CasterTurn();
     }
 
     IEnumerator CasterAttack()
     {
-        yield return new WaitForSeconds(delaysInBetween);
+        yield return null;
         Endturn();
     }
 
