@@ -46,6 +46,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/TurnBaseManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/UnitPositionManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Camera/CameraSizeAdjuster.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/63DD8BF9-8CFA-4BA9-85AF-735EF1A56BA9/ea/f860c90c/Array.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/ComboManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/BattlestageManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -81,8 +82,8 @@
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Runes/RuneManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/UnitSwapHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/UnitPositionManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/TurnBaseManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/BattlestageManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/TurnBaseManager.cs" />
       </list>
     </option>
   </component>
@@ -130,7 +131,7 @@
       <workItem from="1608113848719" duration="17299000" />
       <workItem from="1608189011045" duration="24997000" />
       <workItem from="1608371747144" duration="5639000" />
-      <workItem from="1608445133268" duration="11457000" />
+      <workItem from="1608445133268" duration="14518000" />
     </task>
     <servers />
   </component>

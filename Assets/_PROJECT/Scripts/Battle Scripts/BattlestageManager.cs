@@ -25,7 +25,7 @@ public class BattlestageManager : MonoBehaviour
     private Enemy enemy;
 
     GameObject[] playerTeam = new GameObject[4];
-    GameObject[] enemyTeam = new GameObject[4];
+    List<GameObject> enemyTeam = new List<GameObject>();
     
 
     void Awake()
@@ -70,7 +70,7 @@ public class BattlestageManager : MonoBehaviour
             
             //! Bottom codes should not be use for actual gameplay
             GameObject temp = Instantiate(loadOutUnit, rightSidePos[i].position, Quaternion.identity, rightSidePos[i]);
-            enemyTeam[i] = temp;
+            enemyTeam.Add(temp);
         }
 
     }
@@ -82,7 +82,7 @@ public class BattlestageManager : MonoBehaviour
     public GameObject GetCurrentEnemy(int getEnemy) => enemyTeam[getEnemy];
 
     public GameObject[] GetCastersTeam() => playerTeam;
-    public GameObject[] GetEnemyTeam() => enemyTeam;
+    public List<GameObject> GetEnemyTeam() => enemyTeam;
 
     #endregion
 
