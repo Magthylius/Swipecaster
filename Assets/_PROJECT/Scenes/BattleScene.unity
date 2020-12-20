@@ -7910,6 +7910,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e11dec761d7ef7f49b7b527a369823be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fyorCount: {fileID: 1709844587}
+  aquaCount: {fileID: 22301499}
+  tehkCount: {fileID: 673411414}
 --- !u!1 &2104851156
 GameObject:
   m_ObjectHideFlags: 0

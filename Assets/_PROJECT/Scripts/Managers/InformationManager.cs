@@ -11,8 +11,6 @@ public class InformationManager : MonoBehaviour
     public TextMeshProUGUI aquaCount;
     public TextMeshProUGUI tehkCount;
 
-    FullRuneData connectData;
-
     void Awake()
     {
         if (instance != null) Destroy(this);
@@ -21,7 +19,7 @@ public class InformationManager : MonoBehaviour
 
     void Start()
     {
-        connectData = new FullRuneData();
+        //connectData = new FullRuneData();
         EndConnectionUI();
     }
 

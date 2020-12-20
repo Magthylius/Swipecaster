@@ -12,11 +12,11 @@ public struct RuneRelations
 
         switch(rune)
         {
-            case RuneType.GROUND:
+            case RuneType.GRON:
                 break;
-            case RuneType.FIRE:
+            case RuneType.FYOR:
                 break;
-            case RuneType.ELECTRIC:
+            case RuneType.TEHK:
                 break;
             case RuneType.AQUA:
                 break;
@@ -26,7 +26,7 @@ public struct RuneRelations
                 break;
             case RuneType.MIND:
                 break;
-            case RuneType.AIR:
+            case RuneType.AYRO:
                 break;
             case RuneType.NULL:
                 break;
