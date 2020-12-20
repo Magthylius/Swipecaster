@@ -42,33 +42,29 @@ public class UnitPositionManager : MonoBehaviour
     void SwapLeftPosition()
     {
         GameObject temp;
+        int curCasterIndex;
         Vector2 tempHolderPos;
 
-        for (int i = 0; i < battleStageManager.GetCastersTeam().Length; i++)
+        curCasterIndex = Array.IndexOf(battleStageManager.GetCastersTeam(), holder);
+        
+        if (curCasterIndex + 1 > battleStageManager.GetCastersTeam().Length - 1)
         {
-            if (holder == battleStageManager.GetCurrentCaster(i))
-            {
-                if (i + 1 > battleStageManager.GetCastersTeam().Length - 1)
-                {
-                    print("Is too left");
-                    return;
-                }
-                else
-                {
-                    temp = battleStageManager.GetCurrentCaster(i + 1);
-                    tempHolderPos = holder.transform.position;
-                    
-                    battleStageManager.GetCastersTeam()[i].transform.position = temp.transform.position;
-                    battleStageManager.GetCastersTeam()[i + 1].transform.position = tempHolderPos;
-                    
-                    battleStageManager.GetCastersTeam()[i + 1] = battleStageManager.GetCastersTeam()[i];
-                    battleStageManager.GetCastersTeam()[i] = temp;
-                    
-                    break;
-                }
-            }
+            print("Is too left");
+            return;
         }
+        else
+        {
+            temp = battleStageManager.GetCurrentCaster(curCasterIndex + 1);
+            tempHolderPos = holder.transform.position;
+                
+            battleStageManager.GetCastersTeam()[curCasterIndex].transform.position = temp.transform.position;
+            battleStageManager.GetCastersTeam()[curCasterIndex + 1].transform.position = tempHolderPos;
+                
+            battleStageManager.GetCastersTeam()[curCasterIndex + 1] = battleStageManager.GetCastersTeam()[curCasterIndex];
+            battleStageManager.GetCastersTeam()[curCasterIndex] = temp;
 
+        }
+        
         temp = null;
         tempHolderPos = Vector2.zero;
     }
@@ -76,31 +72,26 @@ public class UnitPositionManager : MonoBehaviour
     void SwapRightPosition()
     {
         GameObject temp;
+        int curCasterIndex;
         Vector2 tempHolderPos;
 
-        for (int i = 0; i < battleStageManager.GetCastersTeam().Length; i++)
+        curCasterIndex = Array.IndexOf(battleStageManager.GetCastersTeam(), holder);
+        
+        if (curCasterIndex - 1 < 0)
         {
-            if (holder == battleStageManager.GetCurrentCaster(i))
-            {
-                if (i - 1 < 0)
-                {
-                    print("Is too right");
-                    return;
-                }
-                else
-                {
-                    temp = battleStageManager.GetCurrentCaster(i - 1);
-                    tempHolderPos = holder.transform.position;
-                    
-                    battleStageManager.GetCastersTeam()[i].transform.position = temp.transform.position;
-                    battleStageManager.GetCastersTeam()[i - 1].transform.position = tempHolderPos;
-                    
-                    battleStageManager.GetCastersTeam()[i - 1] = battleStageManager.GetCastersTeam()[i];
-                    battleStageManager.GetCastersTeam()[i] = temp;
-                    
-                    break;
-                }
-            }
+            print("Is too left");
+            return;
+        }
+        else
+        {
+            temp = battleStageManager.GetCurrentCaster(curCasterIndex - 1);
+            tempHolderPos = holder.transform.position;
+                
+            battleStageManager.GetCastersTeam()[curCasterIndex].transform.position = temp.transform.position;
+            battleStageManager.GetCastersTeam()[curCasterIndex - 1].transform.position = tempHolderPos;
+                
+            battleStageManager.GetCastersTeam()[curCasterIndex - 1] = battleStageManager.GetCastersTeam()[curCasterIndex];
+            battleStageManager.GetCastersTeam()[curCasterIndex] = temp;
         }
 
         temp = null;
