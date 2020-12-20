@@ -8,14 +8,7 @@ public class RoomScriptable : ScriptableObject
     [Header("Enemies")]
 
     public List<EnemyData> enemies;
-   // [Header("Skill")]
-    //public Skill UnitSkill;
-    //[TextArea(1, 5)] public string SkillDescription;
 
-  //  [Header("UI/Visual")]
- /*   public GameObject FullArtPrefab;
-    public GameObject SpriteHolderPrefab;
-    public Sprite PortraitArt;*/
 }
 
 [System.Serializable]
