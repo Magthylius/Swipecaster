@@ -9,4 +9,5 @@ public enum RuneType
     DARK,
     MIND,
     AIR,
+    RUNE_TOTAL
 }

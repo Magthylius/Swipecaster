@@ -6183,8 +6183,8 @@ MonoBehaviour:
   maxVelocity: 5
   spawnNum: 1
   castingState: 0
-  leftSide: 0
-  rightSide: 0
+  leftSide: -10
+  rightSide: 10
   topSide: 0
 --- !u!4 &1373914560
 Transform:
@@ -6870,7 +6870,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: -5}
-  - {x: 540, y: 960, z: -5}
+  - {x: 1, y: 1, z: -5}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
