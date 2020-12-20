@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class RuneManager : MonoBehaviour
@@ -14,6 +15,9 @@ public class RuneManager : MonoBehaviour
 
     [Header("Spawn Settings")]
     public Transform initialSpawn;
+    public CanvasScaler referenceScale;
+    public GameObject castingGroup;
+    public float offsetMult = 0.1f;
 
     [Header("Rune Settings")]
     public float maxVelocity;
@@ -62,12 +66,21 @@ public class RuneManager : MonoBehaviour
     void SpawnItem()
     {
         Vector2 tempPos;
-
+        int loopCount = 0;
         do
         {
-            tempPos = new Vector2(Random.Range(leftSide + runeWidth, rightSide - runeWidth), topSide);
-        } while (tempPos.x < lastPos.x - runeWidth || tempPos.x > lastPos.x + runeWidth);
-        
+            tempPos = new Vector2(Random.Range(leftSide, rightSide), topSide);
+
+            if (loopCount > 100)
+            {
+                Debug.LogError("Loop exceeded 100!");
+                return;
+            }
+
+        } while (tempPos.x > lastPos.x - runeWidth && tempPos.x < lastPos.x + runeWidth);
+
+        //tempPos = new Vector2(Random.Range(leftSide, rightSide), topSide);
+
         for (int i = 0; i < spawnNum; i++)
         {
             RuneType runeType = (RuneType) Random.Range(1, (int)RuneType.RUNE_TOTAL);
@@ -85,21 +98,22 @@ public class RuneManager : MonoBehaviour
 
     void InitSpawn()
     {
-        /*leftSide = initialSpawn.position.x - Screen.width * 0.5f;
-        rightSide = initialSpawn.position.x + Screen.width * 0.5f;*/
-        leftSide = initialSpawn.position.x - 3.0f;
-        rightSide = initialSpawn.position.x + 3.0f;
+        float widthRatio = referenceScale.referenceResolution.y / Screen.height;
+        float heightRatio = referenceScale.referenceResolution.x / Screen.width;
+
+        float halfHeight = referenceScale.referenceResolution.y * 0.5f * heightRatio;
+        float halfWidth = referenceScale.referenceResolution.x * 0.5f * widthRatio;
+
+        float offsetMargin = referenceScale.referenceResolution.x * offsetMult * widthRatio;
+
+        leftSide = initialSpawn.position.x - halfWidth + offsetMargin;
+        rightSide = initialSpawn.position.x + halfWidth - offsetMargin;
         topSide = 0.0f;
 
         GameObject item = castPool.GetPooledObject(RuneType.ELECTRIC);
         SpriteRenderer runeSR = item.GetComponent<SpriteRenderer>();
-        
-        //runeWidth = runeSR.sprite.rect.width * 0.5f;
-        runeWidth = 0.0f;
-
+        runeWidth = runeSR.sprite.rect.width * 0.5f ;
         print(runeWidth);
-        Debug.DrawLine(new Vector3(leftSide, 10000.0f), new Vector3(leftSide, -10000.0f), Color.yellow, 10000.0f);
-        Debug.DrawLine(new Vector3(rightSide, 10000.0f), new Vector3(rightSide, -10000.0f), Color.yellow, 10000.0f);
     }
 
     public void SpawnActivate()
