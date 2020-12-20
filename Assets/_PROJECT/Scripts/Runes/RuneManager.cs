@@ -13,9 +13,7 @@ public class RuneManager : MonoBehaviour
     public bool allowMouse = true;
 
     [Header("Spawn Settings")]
-    public GameObject spawner;
     public Transform initialSpawn;
-    public RectTransform dropZone;
 
     [Header("Rune Settings")]
     public float maxVelocity;
@@ -23,9 +21,10 @@ public class RuneManager : MonoBehaviour
     [SerializeField] GameState castingState = GameState.PRE_CASTING;
 
     int targetSpawn;
-    public float leftSide, rightSide, topSide;
+    [SerializeField]float leftSide, rightSide, topSide;
     float runeWidth;
     bool allowSpawn = false;
+    Vector2 lastPos = new Vector2(0,0);
     
     List<GameObject> activeRuneList = new List<GameObject>();
 
@@ -62,6 +61,13 @@ public class RuneManager : MonoBehaviour
 
     void SpawnItem()
     {
+        Vector2 tempPos;
+
+        do
+        {
+            tempPos = new Vector2(Random.Range(leftSide + runeWidth, rightSide - runeWidth), topSide);
+        } while (tempPos.x < lastPos.x - runeWidth || tempPos.x > lastPos.x + runeWidth);
+        
         for (int i = 0; i < spawnNum; i++)
         {
             RuneType runeType = (RuneType) Random.Range(1, 4);
@@ -71,7 +77,8 @@ public class RuneManager : MonoBehaviour
                 activeRuneList.Add(item);
                 item.transform.SetParent(initialSpawn.transform);
                 item.SetActive(true);
-                item.GetComponent<Transform>().localPosition = new Vector2(Random.Range(leftSide + runeWidth, rightSide - runeWidth), topSide);
+                item.GetComponent<Transform>().localPosition = tempPos;
+                lastPos = tempPos;
             }
         }
     }
@@ -86,7 +93,7 @@ public class RuneManager : MonoBehaviour
         SpriteRenderer runeSR = item.GetComponent<SpriteRenderer>();
         
         runeWidth = runeSR.sprite.rect.width * 0.5f;
-        
+
         //print(runeWidth);
     }
 

@@ -243,7 +243,6 @@ MonoBehaviour:
   - {fileID: 1842630309}
   - {fileID: 237236055}
   heroes: {fileID: 1342186363962593935, guid: 7bf6f4e9267a7c04199a005ccbddd474, type: 3}
-  cam: {fileID: 333797267}
 --- !u!4 &60006155
 Transform:
   m_ObjectHideFlags: 0
@@ -6180,9 +6179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowMouse: 1
-  spawner: {fileID: 8307448625410285470, guid: bb7508c9c63102d40815ac1e2504288d, type: 3}
   initialSpawn: {fileID: 634921706}
-  dropZone: {fileID: 0}
   maxVelocity: 5
   spawnNum: 1
   castingState: 0
@@ -6502,7 +6499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0fe10b0465537a45923a4667fabfac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  setTick: 0.25
+  setTick: 0.1
 --- !u!4 &1436904356
 Transform:
   m_ObjectHideFlags: 0

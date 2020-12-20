@@ -10,8 +10,8 @@
             <e p="Battle Scripts" t="Include">
               <e p="BattlestageManager.cs" t="Include" />
               <e p="GameStateEnum.cs" t="Include" />
-              <e p="HeroBehaviour.cs" t="Include" />
               <e p="TurnBaseManager.cs" t="Include" />
+              <e p="UnitPositionManager.cs" t="Include" />
               <e p="UnitSwapHandler.cs" t="Include" />
             </e>
             <e p="Camera" t="Include">

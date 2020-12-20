@@ -44,10 +44,10 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/TurnBaseManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/UnitPositionManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Camera/CameraSizeAdjuster.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/ComboManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/BattlestageManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/HeroBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -73,15 +73,16 @@
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Casting_Scripts/RuneBehaviour.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Camera/CameraSizeAdjuster.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/HeroBehaviour.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/ConnectionManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Runes/RuneBehaviour.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/ComboManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/GameState.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/GameStateEnum.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Runes/RuneManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/TurnBaseManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/UnitSwapHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/BattlestageManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/UnitSwapHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Runes/RuneBehaviour.cs" />
+        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/ConnectionManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/UnitPositionManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Runes/RuneManager.cs" />
       </list>
     </option>
   </component>
@@ -129,6 +130,7 @@
       <workItem from="1608113848719" duration="17299000" />
       <workItem from="1608189011045" duration="24997000" />
       <workItem from="1608371747144" duration="5639000" />
+      <workItem from="1608445133268" duration="5288000" />
     </task>
     <servers />
   </component>
@@ -150,6 +152,10 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="719" y="264" key="RiderGenerateDialog" timestamp="1608453925157">
+      <screen x="62" y="0" width="1858" height="1080" />
+    </state>
+    <state x="719" y="264" key="RiderGenerateDialog/62.0.1858.1080@62.0.1858.1080" timestamp="1608453925157" />
     <state x="337" y="162" key="SettingsEditor" timestamp="1608137730899">
       <screen x="86" y="0" width="1834" height="1080" />
     </state>
@@ -158,9 +164,10 @@
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state x="154" y="92" width="1674" height="896" key="VCS.FileHistoryDialog/62.0.1858.1080@62.0.1858.1080" timestamp="1608225415742" />
-    <state x="666" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1608114842074">
-      <screen x="86" y="0" width="1834" height="1080" />
+    <state x="650" y="235" width="681" height="678" key="search.everywhere.popup" timestamp="1608453632100">
+      <screen x="62" y="0" width="1858" height="1080" />
     </state>
+    <state x="650" y="235" width="681" height="678" key="search.everywhere.popup/62.0.1858.1080@62.0.1858.1080" timestamp="1608453632100" />
     <state x="666" y="235" width="672" height="678" key="search.everywhere.popup/86.0.1834.1080@86.0.1834.1080" timestamp="1608114842074" />
   </component>
 </project>

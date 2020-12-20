@@ -110,6 +110,12 @@ public class RuneBehaviour : MonoBehaviour
         }
     }
 
+    public void ResetToActivateSprite()
+    {
+        selected = false;
+        sr.sprite = deactivatedSprite;
+    }
+
     #region Queries
     public RuneType GetRuneType() => type;
     public GameObject GetSelf() => self;

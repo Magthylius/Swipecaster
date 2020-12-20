@@ -6,7 +6,6 @@ using UnityEngine;
 public class BattlestageManager : MonoBehaviour
 {
     public static BattlestageManager instance;
-    TurnBaseManager turnBaseManager;
     
     public Transform battlestageCenter;
     public Transform playerTeamGroup, enemyTeamGroup;
@@ -26,11 +25,7 @@ public class BattlestageManager : MonoBehaviour
 
     GameObject[] playerTeam = new GameObject[4];
     GameObject[] enemyTeam = new GameObject[4];
-
-    Transform holder = null;
-    Vector2 holderOriginalPos;
-    bool isHolding = false;
-    public Camera cam;
+    
 
     void Awake()
     {
@@ -45,28 +40,6 @@ public class BattlestageManager : MonoBehaviour
     {
         player = Player.Instance;
         InitPositions();
-    }
-
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            DetectHero();
-        }
-
-        if (isHolding)
-        {
-            Vector2 pos = cam.ScreenToWorldPoint(Input.mousePosition);
-            
-            holder.position = pos;
-        }
-
-        if (Input.GetMouseButtonUp(0) && isHolding)
-        {
-            isHolding = false;
-            holder.GetComponent<HeroBehaviour>().SetIsHeld(false);
-            holder.position = holderOriginalPos;
-        }
     }
 
     void InitPositions()
@@ -97,46 +70,7 @@ public class BattlestageManager : MonoBehaviour
         }
 
     }
-
-    void DetectHero()
-    {
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
-
-        if (hit.collider != null)
-        {
-            if (hit.collider.CompareTag("Hero"))
-            {
-
-                holder = hit.collider.transform;
-                print(holder.name);
-                holder.GetComponent<HeroBehaviour>().SetIsHeld(true);
-
-                for (int i = 0; i < playerTeam.Length; i++)
-                {
-                    if (playerTeam[i] == holder.gameObject)
-                    {
-                        holderOriginalPos = (Vector2)leftSidePos[i].position;
-                    }
-                }
-                
-
-                isHolding = true;
-            }
-           
-        }
-    }
-
-    public void CheckPosition(GameObject toCompare)
-    {
-        for (int i = 0; i < playerTeam.Length; i++)
-        {
-            if (playerTeam[i] == toCompare)
-            {
-                playerTeam[i].transform.position = holderOriginalPos;
-            }
-        }
-    }
+    
 
     #region Accessors
 
