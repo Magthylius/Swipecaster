@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1465745499963879112}
   - component: {fileID: 1465745499963879119}
+  - component: {fileID: 80817144}
   m_Layer: 0
   m_Name: EnemyLibrary
   m_TagString: Untagged
@@ -44,6 +45,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseUnit: {fileID: 11400000, guid: 9570a34fa79060d4695ff44d79a9f784, type: 2}
+  _currentLevel: 1
+  _totalHealth: 35842
+  _totalAttack: 0
+  _totalDefence: 0
+  baseStatMultiplier: 0.3333333
+  paraCapMultiplier: 0.6
+  baseStatCapMultiplier: 0.4
+--- !u!114 &80817144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465745499963879118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4e6dc1f1582f0a4786b39047ea3396a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseUnit: {fileID: 11400000, guid: 8179fc491f2337a4c9196cfa259dee72, type: 2}
   _currentLevel: 1
   _totalHealth: 35842
   _totalAttack: 0
@@ -98,4 +119,10 @@ MonoBehaviour:
   maxLoadOutSize: 2
   inventoryHolder: {fileID: 1465745499963879118}
   loadOut:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  enemyLibrary:
   - {fileID: 1465745499963879119}
+  - {fileID: 80817144}
