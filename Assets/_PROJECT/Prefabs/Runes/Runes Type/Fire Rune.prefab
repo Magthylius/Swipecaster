@@ -82,7 +82,7 @@ PrefabInstance:
     - target: {fileID: 8921575577946023333, guid: 859ecd38af09782438b831ba420020db, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 3122b81da098a484096112a0e1a4099a, type: 3}
+      objectReference: {fileID: 21300000, guid: dc37ad3b4d588dd4a80afdd1e5d2cd06, type: 3}
     - target: {fileID: 8921575577946023337, guid: 859ecd38af09782438b831ba420020db, type: 3}
       propertyPath: m_Name
       value: Fire Rune

@@ -74,7 +74,7 @@ PrefabInstance:
     - target: {fileID: 8921575577946023333, guid: 859ecd38af09782438b831ba420020db, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b75439d22e0390a46ba5d1e583212f82, type: 3}
+      objectReference: {fileID: 21300000, guid: fd8c537ff811bbc4c855a46aedb626eb, type: 3}
     - target: {fileID: 8921575577946023337, guid: 859ecd38af09782438b831ba420020db, type: 3}
       propertyPath: m_Name
       value: Electric Rune
