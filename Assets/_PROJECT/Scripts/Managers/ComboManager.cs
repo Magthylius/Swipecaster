@@ -5,23 +5,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using LerpFunctions;
 
-public struct RuneStorage
-{
-    public RuneType runeType;
-    public int amount;
-
-    public RuneStorage(RuneType _runeType, int _amount)
-    {
-        runeType = _runeType;
-        amount = _amount;
-    }
-}
-
 public class ComboManager : MonoBehaviour
 {
     public static ComboManager instance;
     ConnectionManager connectionManager;
     RuneManager runeManager;
+    InformationManager infoManager;
 
     public float runeDamage;
 
@@ -38,9 +27,9 @@ public class ComboManager : MonoBehaviour
 
     RuneType runeType;
 
-    RuneStorage groundRune = new RuneStorage(RuneType.GROUND, 0);
-    RuneStorage fireRune = new RuneStorage(RuneType.FIRE, 0);
-    RuneStorage electricRune = new RuneStorage(RuneType.ELECTRIC, 0);
+    RuneStorage groundRune = new RuneStorage(RuneType.GRON, 0);
+    RuneStorage fireRune = new RuneStorage(RuneType.FYOR, 0);
+    RuneStorage electricRune = new RuneStorage(RuneType.TEHK, 0);
 
     void Awake()
     {
@@ -54,6 +43,7 @@ public class ComboManager : MonoBehaviour
     {
         connectionManager = ConnectionManager.instance;
         runeManager = RuneManager.instance;
+        infoManager = InformationManager.instance;
     }
 
     void Update()
@@ -95,13 +85,13 @@ public class ComboManager : MonoBehaviour
 
         switch (runetype)
         {
-            case RuneType.GROUND:
+            case RuneType.GRON:
                 groundRune.amount += comboList.Count;
                 break;
-            case RuneType.FIRE:
+            case RuneType.FYOR:
                 fireRune.amount += comboList.Count;
                 break;
-            case RuneType.ELECTRIC:
+            case RuneType.TEHK:
                 electricRune.amount += comboList.Count;
                 break;
         }
@@ -118,6 +108,8 @@ public class ComboManager : MonoBehaviour
     public void SetIsStart() => isStart = true;
     void DealDamage(GameObject attacker, GameObject enemy)
     {
+        //! Update infomanager with UpdateConnectionUI(RuneStorage storage)
+
         print("FireRune: " + fireRune.amount + "GroundRune: " + groundRune.amount + "ElectricRune: " + electricRune.amount);
         float attackerDamage = attacker.GetComponent<UnitEntry>().GetAttack;
         float totalDamage = attackerDamage * fireRune.amount + attackerDamage * groundRune.amount + attackerDamage * electricRune.amount;

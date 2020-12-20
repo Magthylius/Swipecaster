@@ -122,7 +122,7 @@ public class RuneManager : MonoBehaviour
         leftMarginObj.localPosition = new Vector2(leftSide, 0.0f);
         rightMarginObj.localPosition = new Vector2(rightSide, 0.0f);
 
-        GameObject item = castPool.GetPooledObject(RuneType.ELECTRIC);
+        GameObject item = castPool.GetPooledObject(RuneType.TEHK);
         SpriteRenderer runeSR = item.GetComponent<SpriteRenderer>();
         runeWidth = runeSR.sprite.rect.width * 0.5f ;
         //print(runeWidth);
