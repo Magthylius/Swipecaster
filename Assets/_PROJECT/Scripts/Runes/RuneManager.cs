@@ -12,6 +12,8 @@ public class RuneManager : MonoBehaviour
 
     [Header("Debug Settings")]
     public bool allowMouse = true;
+    public Transform leftMarginObj;
+    public Transform rightMarginObj;
 
     [Header("Spawn Settings")]
     public Transform initialSpawn;
@@ -101,19 +103,29 @@ public class RuneManager : MonoBehaviour
         float widthRatio = referenceScale.referenceResolution.y / Screen.height;
         float heightRatio = referenceScale.referenceResolution.x / Screen.width;
 
+        if ((float)Screen.height / Screen.width == referenceScale.referenceResolution.y / referenceScale.referenceResolution.x)
+        {
+            //print("ratioed");
+            widthRatio = 1.0f;
+            heightRatio = 1.0f;
+        }
+
         float halfHeight = referenceScale.referenceResolution.y * 0.5f * heightRatio;
         float halfWidth = referenceScale.referenceResolution.x * 0.5f * widthRatio;
 
         float offsetMargin = referenceScale.referenceResolution.x * offsetMult * widthRatio;
-
+        //print(offsetMargin);
         leftSide = initialSpawn.position.x - halfWidth + offsetMargin;
         rightSide = initialSpawn.position.x + halfWidth - offsetMargin;
         topSide = 0.0f;
 
+        leftMarginObj.localPosition = new Vector2(leftSide, 0.0f);
+        rightMarginObj.localPosition = new Vector2(rightSide, 0.0f);
+
         GameObject item = castPool.GetPooledObject(RuneType.ELECTRIC);
         SpriteRenderer runeSR = item.GetComponent<SpriteRenderer>();
         runeWidth = runeSR.sprite.rect.width * 0.5f ;
-        print(runeWidth);
+        //print(runeWidth);
     }
 
     public void SpawnActivate()
