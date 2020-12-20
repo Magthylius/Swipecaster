@@ -105,7 +105,7 @@ public class RuneManager : MonoBehaviour
 
         if ((float)Screen.height / Screen.width == referenceScale.referenceResolution.y / referenceScale.referenceResolution.x)
         {
-            print("ratioed");
+            //print("ratioed");
             widthRatio = 1.0f;
             heightRatio = 1.0f;
         }
@@ -114,7 +114,7 @@ public class RuneManager : MonoBehaviour
         float halfWidth = referenceScale.referenceResolution.x * 0.5f * widthRatio;
 
         float offsetMargin = referenceScale.referenceResolution.x * offsetMult * widthRatio;
-        print(offsetMargin);
+        //print(offsetMargin);
         leftSide = initialSpawn.position.x - halfWidth + offsetMargin;
         rightSide = initialSpawn.position.x + halfWidth - offsetMargin;
         topSide = 0.0f;
