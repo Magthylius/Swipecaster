@@ -22,6 +22,7 @@ public class BattlestageManager : MonoBehaviour
     public GameObject heroes;
 
     private Player player;
+    private Enemy enemy;
 
     GameObject[] playerTeam = new GameObject[4];
     GameObject[] enemyTeam = new GameObject[4];
@@ -39,6 +40,7 @@ public class BattlestageManager : MonoBehaviour
     private void Start()
     {
         player = Player.Instance;
+        enemy = Enemy.Instance;
         InitPositions();
     }
 
@@ -60,12 +62,14 @@ public class BattlestageManager : MonoBehaviour
         }
         
         //! Set Enemy's Position
-        for (int i = 0; i < rightSidePos.Length; i++)
+        for (int i = 0; i < enemy.UnitLoadOut.Count; i++)
         {
-            rightSidePos[i].localPosition = new Vector2(rightSidePos[i].localPosition.x + (heroGap * i), rightSidePos[i].localPosition.y);
+            GameObject loadOutUnit = enemy.UnitLoadOut[i].BaseUnit.FullArtPrefab;
+            rightSidePos[i].localPosition = new Vector2(rightSidePos[i].localPosition.x + (heroGap * i),
+                rightSidePos[i].localPosition.y);
             
             //! Bottom codes should not be use for actual gameplay
-            GameObject temp = Instantiate(heroes, rightSidePos[i].position, Quaternion.identity, rightSidePos[i]);
+            GameObject temp = Instantiate(loadOutUnit, rightSidePos[i].position, Quaternion.identity, rightSidePos[i]);
             enemyTeam[i] = temp;
         }
 

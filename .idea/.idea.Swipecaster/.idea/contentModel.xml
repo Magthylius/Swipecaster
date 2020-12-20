@@ -20,6 +20,9 @@
             <e p="Editor" t="Include">
               <e p="HierarchyLabel.cs" t="Include" />
             </e>
+            <e p="Enemy" t="Include">
+              <e p="Enemy.cs" t="Include" />
+            </e>
             <e p="Entity" t="Include">
               <e p="Entity.cs" t="Include" />
               <e p="Foe.cs" t="Include" />

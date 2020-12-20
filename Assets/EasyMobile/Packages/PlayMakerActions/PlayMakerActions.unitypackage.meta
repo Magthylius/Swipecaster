@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/_PROJECT/Prefabs/Entities/Enemies.meta
+guid: 2227ab2a779dafd43a62002fbb224959
+folderAsset: yes
+=======
 guid: 20f4b2c71bf56490093cafecbc8fd604
+>>>>>>> 0e67e9028ed48059e627b8588a5cc2e14e835bab:Assets/EasyMobile/Packages/PlayMakerActions/PlayMakerActions.unitypackage.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
