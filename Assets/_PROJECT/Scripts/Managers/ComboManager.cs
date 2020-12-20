@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using LerpFunctions;
 
 public class ComboManager : MonoBehaviour
 {
@@ -23,15 +24,17 @@ public class ComboManager : MonoBehaviour
     RuneManager runeManager;
 
     public float runeDamage;
+
     [Header("Countdown Timer")]
     public float countdownTimer;
-
     public Slider slideTimer;
+    public Image slider;
     
     List<RuneBehaviour> comboList = new List<RuneBehaviour>();
     float totalDamage;
     float timer;
     bool isStart = false;
+    bool sliderAnim = false;
 
     RuneType runeType;
 
@@ -55,14 +58,31 @@ public class ComboManager : MonoBehaviour
 
     void Update()
     {
-        if (isStart)
+        if (isStart && !sliderAnim)
         {
             timer -= Time.unscaledDeltaTime;
-            slideTimer.value = timer;
+            //slideTimer.value = timer;
+            slider.fillAmount = timer / countdownTimer;
             if (timer <= 0)
             {
-                //DealDamage();
+                isStart = false;
+                sliderAnim = true;
+                timer = countdownTimer;
+                //slider.fillAmount = 1.0f;
+                
                 runeManager.SpawnDeactivate();
+
+                //DealDamage();
+            }
+        }
+        else if (sliderAnim)
+        {
+            slider.fillAmount = Mathf.Lerp(slider.fillAmount, 1.0f, 2.0f * Time.unscaledDeltaTime);
+
+            if (slider.fillAmount >= 0.999f)
+            {
+                slider.fillAmount = 1.0f;
+                sliderAnim = false;
             }
         }
     }
