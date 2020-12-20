@@ -9,17 +9,19 @@ public class RuneBehaviour : MonoBehaviour
     ConnectionManager connectionManager;
     
     public RuneType type;
+    public Sprite activatedSprite;
+    public Sprite deactivatedSprite;
 
-    float maxVelocity;
-    bool selected = false;
-    bool allowMouse = false;
-    
     Rigidbody2D rb;
     Transform _transform;
     GameObject self;
     Vector2 exitPos;
     SpriteRenderer sr;
     float spriteHeight;
+
+    float maxVelocity;
+    bool selected = false;
+    bool allowMouse = false;
 
     Camera cam;
 
@@ -31,12 +33,10 @@ public class RuneBehaviour : MonoBehaviour
         self = gameObject;
         sr = GetComponent<SpriteRenderer>();
         spriteHeight = sr.sprite.bounds.size.y / 2;
-
     }
     
     void Start()
     {
-
         runeManager = RuneManager.instance;
         connectionManager = ConnectionManager.instance;
 
@@ -64,6 +64,7 @@ public class RuneBehaviour : MonoBehaviour
         if (selected) connectionManager.Disconnect(this);
 
         selected = false;
+        sr.sprite = deactivatedSprite;
     }
 
     public void SelfDeactivate()
@@ -84,12 +85,14 @@ public class RuneBehaviour : MonoBehaviour
         if (!connectionManager.GetSelectionStart())
         {
             selected = true;
+            sr.sprite = activatedSprite;
             connectionManager.StartSelection(this);
         }
         else if (connectionManager.GetSelectionType() == type)
         {
             //print("connect");
             selected = true;
+            sr.sprite = activatedSprite;
             connectionManager.Connect(this);
         }
     }
