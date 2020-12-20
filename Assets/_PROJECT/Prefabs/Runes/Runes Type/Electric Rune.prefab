@@ -9,15 +9,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6872223854397634389, guid: 859ecd38af09782438b831ba420020db, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.99
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: -6872223854397634389, guid: 859ecd38af09782438b831ba420020db, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.83
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 8921575577946023332, guid: 859ecd38af09782438b831ba420020db, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8921575577946023332, guid: 859ecd38af09782438b831ba420020db, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8921575577946023332, guid: 859ecd38af09782438b831ba420020db, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8921575577946023332, guid: 859ecd38af09782438b831ba420020db, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 8921575577946023332, guid: 859ecd38af09782438b831ba420020db, type: 3}
       propertyPath: m_LocalPosition.x
@@ -62,7 +74,7 @@ PrefabInstance:
     - target: {fileID: 8921575577946023333, guid: 859ecd38af09782438b831ba420020db, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 5901458208405029778, guid: 29989d48a162e76488ea171b67ef1722, type: 3}
+      objectReference: {fileID: 21300000, guid: b75439d22e0390a46ba5d1e583212f82, type: 3}
     - target: {fileID: 8921575577946023337, guid: 859ecd38af09782438b831ba420020db, type: 3}
       propertyPath: m_Name
       value: Electric Rune

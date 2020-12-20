@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1320369295990426173
+--- !u!1001 &1242014035149877981
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,16 +8,40 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -6872223854397634389, guid: 859ecd38af09782438b831ba420020db, type: 3}
+      propertyPath: m_Size.x
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -6872223854397634389, guid: 859ecd38af09782438b831ba420020db, type: 3}
+      propertyPath: m_Size.y
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -6872223854397634389, guid: 859ecd38af09782438b831ba420020db, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6872223854397634389, guid: 859ecd38af09782438b831ba420020db, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.69
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: -6872223854397634389, guid: 859ecd38af09782438b831ba420020db, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.9
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 8921575577946023332, guid: 859ecd38af09782438b831ba420020db, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8921575577946023332, guid: 859ecd38af09782438b831ba420020db, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8921575577946023332, guid: 859ecd38af09782438b831ba420020db, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8921575577946023332, guid: 859ecd38af09782438b831ba420020db, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 8921575577946023332, guid: 859ecd38af09782438b831ba420020db, type: 3}
       propertyPath: m_LocalPosition.x
@@ -62,14 +86,14 @@ PrefabInstance:
     - target: {fileID: 8921575577946023333, guid: 859ecd38af09782438b831ba420020db, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -4265221223910037801, guid: 29989d48a162e76488ea171b67ef1722, type: 3}
+      objectReference: {fileID: 21300000, guid: af30beaf733ad2e42adc11e56ae65fd5, type: 3}
     - target: {fileID: 8921575577946023337, guid: 859ecd38af09782438b831ba420020db, type: 3}
       propertyPath: m_Name
-      value: Fire Rune
+      value: Aqua Rune
       objectReference: {fileID: 0}
     - target: {fileID: 8921575577946023339, guid: 859ecd38af09782438b831ba420020db, type: 3}
       propertyPath: type
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 859ecd38af09782438b831ba420020db, type: 3}

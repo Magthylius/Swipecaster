@@ -168,6 +168,7 @@ MonoBehaviour:
   - {fileID: 1842630309}
   - {fileID: 237236055}
   heroes: {fileID: 1342186363962593935, guid: 7bf6f4e9267a7c04199a005ccbddd474, type: 3}
+  cam: {fileID: 333797267}
 --- !u!4 &60006155
 Transform:
   m_ObjectHideFlags: 0
@@ -503,7 +504,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &305040050
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6988,8 +6989,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooledObjectsList:
-  - prefab: {fileID: 6685211193776861305, guid: f60c6e78a0ab4534c94e5e2d3d6984a8, type: 3}
-    runeType: 1
+  - prefab: {fileID: 7706583200795826036, guid: c177778c9cee91f4ea3fec7f253a825e, type: 3}
+    runeType: 4
     initialPoolCount: 10
     canExpand: 1
   - prefab: {fileID: 7610284408420069268, guid: 4c930cebaa5b51b429fedabb1d2eb71a, type: 3}
