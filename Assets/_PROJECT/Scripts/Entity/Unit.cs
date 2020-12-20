@@ -1,21 +1,20 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public sealed class Unit : Entity
+public class Unit : Entity
 {
-    public UnitObject BaseUnit => baseUnit;
+    
 
+    #region Private Methods
 
-    private void Awake()
+    protected override void Awake()
     {
-        
+        base.Awake();
+
     }
 
-    #region Shorthands
-
-    public float GetAttack => _totalAttack;
-    public float GetDefence => _totalDefence;
-    
     #endregion
+
+    
 }
