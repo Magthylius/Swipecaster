@@ -64,6 +64,7 @@
               <e p="Entity.cs" t="Include" />
               <e p="Foe.cs" t="Include" />
               <e p="RuneCollection.cs" t="Include" />
+              <e p="RuneRelations.cs" t="Include" />
               <e p="Unit.cs" t="Include" />
               <e p="UnitEntry.cs" t="Include" />
             </e>

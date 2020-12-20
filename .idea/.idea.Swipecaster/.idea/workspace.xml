@@ -78,13 +78,13 @@
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/ComboManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/GameState.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/GameStateEnum.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Runes/RuneBehaviour.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/ConnectionManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Runes/RuneManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/UnitSwapHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/UnitPositionManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/BattlestageManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/TurnBaseManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Runes/RuneManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Runes/RuneBehaviour.cs" />
       </list>
     </option>
   </component>
@@ -132,7 +132,7 @@
       <workItem from="1608113848719" duration="17299000" />
       <workItem from="1608189011045" duration="24997000" />
       <workItem from="1608371747144" duration="5639000" />
-      <workItem from="1608445133268" duration="18521000" />
+      <workItem from="1608445133268" duration="25878000" />
     </task>
     <servers />
   </component>

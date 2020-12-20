@@ -152,6 +152,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 14822024}
+  - {fileID: 1468685632}
+  - {fileID: 1839180138}
   m_Father: {fileID: 1576871061}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1521,6 +1523,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1428885884}
   m_CullTransparentMesh: 1
+--- !u!1 &1468685631
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1468685632}
+  m_Layer: 0
+  m_Name: LeftMarginDebug
+  m_TagString: Untagged
+  m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1468685632
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468685631}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 223.77641, z: -0.0004916191}
+  m_LocalScale: {x: 1.000521, y: 1.000521, z: 1.000521}
+  m_Children: []
+  m_Father: {fileID: 11573457}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1505570206
 GameObject:
   m_ObjectHideFlags: 0
@@ -6456,7 +6488,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1757199075
 Transform:
   m_ObjectHideFlags: 0
@@ -6484,8 +6516,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowMouse: 1
-  leftMarginObj: {fileID: 0}
-  rightMarginObj: {fileID: 0}
+  leftMarginObj: {fileID: 1468685632}
+  rightMarginObj: {fileID: 1839180138}
   initialSpawn: {fileID: 11573457}
   referenceScale: {fileID: 0}
   castingGroup: {fileID: 0}
@@ -6602,6 +6634,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1839180137
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1839180138}
+  m_Layer: 0
+  m_Name: RightMarginDebug
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1839180138
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839180137}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 223.77641, z: -0.0004916191}
+  m_LocalScale: {x: 1.000521, y: 1.000521, z: 1.000521}
+  m_Children: []
+  m_Father: {fileID: 11573457}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1845465078
 GameObject:
@@ -7348,6 +7410,7 @@ MonoBehaviour:
   runeDamage: 10
   countdownTimer: 5
   slideTimer: {fileID: 721059649}
+  slider: {fileID: 0}
 --- !u!1 &2144834963
 GameObject:
   m_ObjectHideFlags: 0

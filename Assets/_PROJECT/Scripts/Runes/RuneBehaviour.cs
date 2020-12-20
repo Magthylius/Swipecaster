@@ -15,7 +15,7 @@ public class RuneBehaviour : MonoBehaviour
     Rigidbody2D rb;
     Transform _transform;
     GameObject self;
-    Vector2 exitPos;
+    Vector2 positionInScreen;
     SpriteRenderer sr;
     float spriteHeight;
 
@@ -32,7 +32,7 @@ public class RuneBehaviour : MonoBehaviour
         cam = Camera.main;
         self = gameObject;
         sr = GetComponent<SpriteRenderer>();
-        spriteHeight = sr.sprite.bounds.size.y / 2;
+
     }
     
     void Start()
@@ -46,7 +46,6 @@ public class RuneBehaviour : MonoBehaviour
     
     void Update()
     {
-        exitPos = new Vector2(_transform.position.x, _transform.position.y + spriteHeight);
         SelfDeactivate();
 
         if (selected) 
@@ -82,14 +81,13 @@ public class RuneBehaviour : MonoBehaviour
     }
 
     public void SelfDeactivate()
-    {
-        Vector3 viewPos = cam.WorldToViewportPoint(exitPos);
-
-        if (viewPos.y < 0)
-        {
-            Deactivate();
-        }
-    }
+     {
+         if (!sr.isVisible)
+         {
+             Deactivate();
+         }
+     }
+    
 
     public void Selected()
     {
