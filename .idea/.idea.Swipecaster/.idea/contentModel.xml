@@ -22,10 +22,48 @@
             </e>
             <e p="Enemy" t="Include">
               <e p="Enemy.cs" t="Include" />
+              <e p="RoomScriptable.cs" t="Include" />
             </e>
             <e p="Entity" t="Include">
+              <e p="Casters" t="Include">
+                <e p="Antipathic" t="Include">
+                  <e p="Debuffer.cs" t="Include" />
+                  <e p="Spreader.cs" t="Include" />
+                </e>
+                <e p="Artillery" t="Include">
+                  <e p="ArtilleryOverhead.cs" t="Include" />
+                  <e p="Howitzer.cs" t="Include" />
+                </e>
+                <e p="Conjuror" t="Include">
+                  <e p="Aegismancer.cs" t="Include" />
+                  <e p="Antagomancer.cs" t="Include" />
+                </e>
+                <e p="Curative" t="Include">
+                  <e p="Conversions.cs" t="Include" />
+                  <e p="MultiTarget.cs" t="Include" />
+                  <e p="SingleTarget.cs" t="Include" />
+                </e>
+                <e p="Enhancer" t="Include">
+                  <e p="Damagist.cs" t="Include" />
+                  <e p="Modal.cs" t="Include" />
+                </e>
+                <e p="Kinectist" t="Include">
+                  <e p="Deflector.cs" t="Include" />
+                  <e p="Reflector.cs" t="Include" />
+                </e>
+                <e p="Pinpoint" t="Include">
+                  <e p="PinpointOverhead.cs" t="Include" />
+                  <e p="PinpointPiercer.cs" t="Include" />
+                </e>
+                <e p="Stoic" t="Include">
+                  <e p="Riposter.cs" t="Include" />
+                  <e p="Solitarist.cs" t="Include" />
+                  <e p="Tauntist.cs" t="Include" />
+                </e>
+              </e>
               <e p="Entity.cs" t="Include" />
               <e p="Foe.cs" t="Include" />
+              <e p="RuneCollection.cs" t="Include" />
               <e p="Unit.cs" t="Include" />
               <e p="UnitEntry.cs" t="Include" />
             </e>
