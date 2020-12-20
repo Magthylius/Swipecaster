@@ -1,3 +1,5 @@
+using System;
+using EasyMobile;
 using UnityEngine;
 
 public class UnitPositionManager : MonoBehaviour
@@ -5,11 +7,8 @@ public class UnitPositionManager : MonoBehaviour
     public static UnitPositionManager instance;
     BattlestageManager battleStageManager;
     TurnBaseManager turnBaseManager;
-    
-    Transform holder;
-    Vector2 holderOriginalPos;
-    bool isHolding;
-    public Camera cam;
+
+    [SerializeField]GameObject holder;
 
     void Awake()
     {
@@ -27,62 +26,92 @@ public class UnitPositionManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (turnBaseManager.GetCurrentState() != GameStateEnum.CASTERTURN)
+            return;
+        
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            DetectHero();
+            SwapLeftPosition();
         }
-
-        if (isHolding)
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            Vector2 pos = cam.ScreenToWorldPoint(Input.mousePosition);
-            
-            holder.position = pos;
-        }
-
-        if (Input.GetMouseButtonUp(0) && isHolding)
-        {
-            isHolding = false;
-            holder.GetComponent<UnitSwapHandler>().SetIsHeld(false);
-            holder.position = holderOriginalPos;
+            SwapRightPosition();
         }
     }
-    
-    void DetectHero()
+
+    void SwapLeftPosition()
     {
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
+        GameObject temp;
+        Vector2 tempHolderPos;
 
-        if (hit.collider != null)
-        {
-            if (hit.collider.CompareTag("Hero"))
-            {
-
-                holder = hit.collider.transform;
-                print(holder.name);
-                holder.GetComponent<UnitSwapHandler>().SetIsHeld(true);
-
-                for (int i = 0; i < battleStageManager.GetCastersTeam().Length; i++)
-                {
-                    if (battleStageManager.GetCastersTeam()[i] == holder.gameObject)
-                    {
-                        holderOriginalPos = battleStageManager.GetCurrentCaster(i).transform.position;
-                    }
-                }
-
-                isHolding = true;
-            }
-           
-        }
-    }
-    
-    public void CheckPosition(GameObject toCompare)
-    {
         for (int i = 0; i < battleStageManager.GetCastersTeam().Length; i++)
         {
-            if (battleStageManager.GetCurrentCaster(i) == toCompare)
+            if (holder == battleStageManager.GetCurrentCaster(i))
             {
-                battleStageManager.GetCurrentCaster(i).transform.position = holderOriginalPos;
+                if (i + 1 > battleStageManager.GetCastersTeam().Length - 1)
+                {
+                    print("Is too left");
+                    return;
+                }
+                else
+                {
+                    temp = battleStageManager.GetCurrentCaster(i + 1);
+                    tempHolderPos = holder.transform.position;
+                    
+                    battleStageManager.GetCastersTeam()[i].transform.position = temp.transform.position;
+                    battleStageManager.GetCastersTeam()[i + 1].transform.position = tempHolderPos;
+                    
+                    battleStageManager.GetCastersTeam()[i + 1] = battleStageManager.GetCastersTeam()[i];
+                    battleStageManager.GetCastersTeam()[i] = temp;
+                    
+                    break;
+                }
             }
         }
+
+        temp = null;
+        tempHolderPos = Vector2.zero;
     }
+
+    void SwapRightPosition()
+    {
+        GameObject temp;
+        Vector2 tempHolderPos;
+
+        for (int i = 0; i < battleStageManager.GetCastersTeam().Length; i++)
+        {
+            if (holder == battleStageManager.GetCurrentCaster(i))
+            {
+                if (i - 1 < 0)
+                {
+                    print("Is too right");
+                    return;
+                }
+                else
+                {
+                    temp = battleStageManager.GetCurrentCaster(i - 1);
+                    tempHolderPos = holder.transform.position;
+                    
+                    battleStageManager.GetCastersTeam()[i].transform.position = temp.transform.position;
+                    battleStageManager.GetCastersTeam()[i - 1].transform.position = tempHolderPos;
+                    
+                    battleStageManager.GetCastersTeam()[i - 1] = battleStageManager.GetCastersTeam()[i];
+                    battleStageManager.GetCastersTeam()[i] = temp;
+                    
+                    break;
+                }
+            }
+        }
+
+        temp = null;
+        tempHolderPos = Vector2.zero;
+    }
+
+    #region Accessors
+
+    public GameObject SetHolder(GameObject _holder) => holder = _holder;
+
+    #endregion
+
+
 }

@@ -99,4 +99,3 @@ MonoBehaviour:
   inventoryHolder: {fileID: 1465745499963879118}
   loadOut:
   - {fileID: 1465745499963879119}
-  - {fileID: 0}
