@@ -12,6 +12,7 @@ public abstract class Entity : MonoBehaviour
     [SerializeField] protected int _totalAttack;
     [SerializeField] protected int _totalDefence;
     protected int _currentHealth;
+    protected RuneType _runeType;
 
     [Header("Stat Ratio Multipliers")]
     [SerializeField] protected float baseStatMultiplier;
@@ -19,6 +20,7 @@ public abstract class Entity : MonoBehaviour
     [SerializeField] protected float baseStatCapMultiplier;
 
     [Header("Action Events")]
+    protected static Action _deathEvent;
     protected Action<Entity, int> _grazeEvent;
     protected Action<Entity, int> _hitEvent;
     protected Action _turnBegin;
@@ -35,9 +37,17 @@ public abstract class Entity : MonoBehaviour
 
     #region Public Virtual Methods
 
-    public virtual float GetAttack => _totalAttack;
-    public virtual float GetDefence => _totalDefence;
-    public virtual float GetHealth => _totalHealth;
+    public virtual int GetAttack => _totalAttack;
+    public virtual int GetDefence => _totalDefence;
+    public virtual int GetMaxHealth => _totalHealth;
+    public virtual int GetCurrentHealth => _currentHealth;
+
+    #endregion
+
+    #region Public Static Methods
+
+    public static void SubscribeDeathEvent(Action method) => _deathEvent += method;
+    public static void UnsubscribeDeathEvent(Action method) => _deathEvent -= method;
 
     #endregion
 
@@ -124,6 +134,9 @@ public abstract class Entity : MonoBehaviour
 
     #region Shorthands
 
+    public void AddHealth(int amount) => _currentHealth += amount;
+    public void SetHealth(int amount) => _currentHealth = amount;
+    public RuneType GetRuneType => _runeType;
     public UnitObject BaseUnit => baseUnit;
 
     #endregion
