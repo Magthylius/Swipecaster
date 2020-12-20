@@ -6104,6 +6104,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowMouse: 1
   initialSpawn: {fileID: 634921706}
+  referenceScale: {fileID: 0}
+  castingGroup: {fileID: 0}
+  offsetMult: 0.1
   maxVelocity: 1
   spawnNum: 1
   castingState: 0
@@ -7312,6 +7315,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1465745499963879119, guid: 2c8e33731643177499539917e4fbc416, type: 3}
+      propertyPath: _totalAttack
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1465745499963879119, guid: 2c8e33731643177499539917e4fbc416, type: 3}
+      propertyPath: _totalHealth
+      value: 35842
+      objectReference: {fileID: 0}
+    - target: {fileID: 1465745499963879119, guid: 2c8e33731643177499539917e4fbc416, type: 3}
+      propertyPath: _currentLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1465745499963879119, guid: 2c8e33731643177499539917e4fbc416, type: 3}
+      propertyPath: _totalDefence
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1465745501014420392, guid: 2c8e33731643177499539917e4fbc416, type: 3}
       propertyPath: m_Name
       value: EnemyManager

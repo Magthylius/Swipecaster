@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         int listsize = Random.Range(1, maxLoadOutSize);
-        loadOut = new List<UnitEntry>(new UnitEntry[listsize]);
+        loadOut = new List<UnitEntry>(listsize);
         for (int i = 0; i < loadOut.Count; i++)
         {
             loadOut[i] = enemyLibrary[Random.Range(0, enemyLibrary.Count)];

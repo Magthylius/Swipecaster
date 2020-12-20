@@ -5,20 +5,20 @@ using UnityEngine;
 using UnityEngine.UI;
 using LerpFunctions;
 
+public struct RuneStorage
+{
+    public RuneType runeType;
+    public int amount;
+
+    public RuneStorage(RuneType _runeType, int _amount)
+    {
+        runeType = _runeType;
+        amount = _amount;
+    }
+}
+
 public class ComboManager : MonoBehaviour
 {
-    public struct RuneStorage
-    {
-        public RuneType runeType;
-        public int amount;
-
-        public RuneStorage(RuneType _runeType, int _amount)
-        {
-            runeType = _runeType;
-            amount = _amount;
-        }
-    }
-    
     public static ComboManager instance;
     ConnectionManager connectionManager;
     RuneManager runeManager;
@@ -119,9 +119,9 @@ public class ComboManager : MonoBehaviour
     void DealDamage(GameObject attacker, GameObject enemy)
     {
         print("FireRune: " + fireRune.amount + "GroundRune: " + groundRune.amount + "ElectricRune: " + electricRune.amount);
-        float attackerDamage = attacker.GetComponent<UnitEntry>().GetAttack();
+        float attackerDamage = attacker.GetComponent<UnitEntry>().GetAttack;
         float totalDamage = attackerDamage * fireRune.amount + attackerDamage * groundRune.amount + attackerDamage * electricRune.amount;
-        float enemyDefense = enemy.GetComponent<UnitEntry>().GetDefence();
+        float enemyDefense = enemy.GetComponent<UnitEntry>().GetDefence;
         attackerDamage = (attackerDamage - enemyDefense) / attackerDamage;
         print("Total Damage :" + attackerDamage);
         fireRune.amount = 0;

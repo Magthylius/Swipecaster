@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class UnitEntry : Entity
 {
-    public UnitObject BaseUnit => baseUnit;
     public int UnitID => Convert.ToInt32(baseUnit.ID);
 
-
-    #region Queries
-    public float GetAttack() => _totalAttack;
-    public float GetDefence() => _totalDefence;
-    #endregion
+    public override void TakeDamage(Entity damager, int damageAmount) { }
+    public override void RecieveHealing(Entity healer, int healAmount) { }
+    public override void DoDamage(Entity focusTarget, List<Entity> affectedTargets, RuneCollection runes) { }
+    public override List<Entity> GetAffectedTargets(Entity focusTarget, List<Entity> allEntities) => null;
 }
