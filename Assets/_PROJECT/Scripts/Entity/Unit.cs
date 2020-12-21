@@ -36,6 +36,8 @@ public abstract class Unit : Entity
         UpdateStatusEffects();
         int totalDamage = Round(CalculateDamage(targetInfo, runes) * damageMultiplier);
 
+        print("total damage" + totalDamage);
+        print("target info" + targetInfo.Focus);
         int nettDamage = totalDamage - targetInfo.Focus.GetCurrentDefence;
         if (nettDamage < 0) nettDamage = 0;
 
@@ -95,6 +97,7 @@ public abstract class Unit : Entity
     {
         UnsubscribeTurnEndEvent(ResetAttackStatus);
         UnsubscribeTurnEndEvent(DeductStatusEffectTurns);
+        UnsubscribeHitEvent(TakeDamage);
     }
 
     #endregion
@@ -106,6 +109,7 @@ public abstract class Unit : Entity
         base.Awake();
         _currentHealth = _totalHealth;
         SetProjectile(new CrowFlies());
+        SubscribeHitEvent(TakeDamage);
         SubscribeTurnEndEvent(ResetAttackStatus);
         SubscribeTurnEndEvent(DeductStatusEffectTurns);
     }

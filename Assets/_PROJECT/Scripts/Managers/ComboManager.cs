@@ -11,7 +11,9 @@ public class ComboManager : MonoBehaviour
     ConnectionManager connectionManager;
     RuneManager runeManager;
     InformationManager infoManager;
-
+    TurnBaseManager turnBaseManger;
+    RoomManager roomManager;
+    BattlestageManager battleStageManager;
     public float runeDamage;
 
     [Header("Countdown Timer")]
@@ -44,6 +46,9 @@ public class ComboManager : MonoBehaviour
         connectionManager = ConnectionManager.instance;
         runeManager = RuneManager.instance;
         infoManager = InformationManager.instance;
+        turnBaseManger = TurnBaseManager.instance;
+        roomManager = RoomManager.Instance;
+        battleStageManager = BattlestageManager.instance;
     }
 
     void Update()
@@ -61,8 +66,7 @@ public class ComboManager : MonoBehaviour
                 //slider.fillAmount = 1.0f;
                 
                 runeManager.SpawnDeactivate();
-
-                //DealDamage();
+                AssessRunes(turnBaseManger.GetCurrentCaster(),battleStageManager.GetEnemyTeam()[0]);
             }
         }
         else if (sliderAnim)
@@ -117,7 +121,7 @@ public class ComboManager : MonoBehaviour
         Entity damager = damagerObject.GetComponent<Entity>();
         Entity target = targetObject.GetComponent<Entity>();
         List<Entity> allEntities = new List<Entity>();
-        
+
         for(int i = 0; i < battleStage.rightSidePos.Length; i++)
         {
             Entity e = battleStage.rightSidePos[i].GetComponent<Entity>();
