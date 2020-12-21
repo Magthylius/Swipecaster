@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class CrowFlies : Projectile
 {
@@ -17,8 +18,6 @@ public class CrowFlies : Projectile
 
     public override TargetInfo GetTargets(Entity focus, List<Entity> allEntities)
     {
-        if (!allEntities.Contains(focus)) return TargetInfo.Null;
-        
         var collateral = new List<Entity>();
         var grazed = new List<Entity>();
         int focusIndex = allEntities.IndexOf(focus);

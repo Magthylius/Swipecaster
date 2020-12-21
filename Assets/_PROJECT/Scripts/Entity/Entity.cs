@@ -9,9 +9,9 @@ public abstract class Entity : MonoBehaviour
     [SerializeField] protected int _totalHealth;
     [SerializeField] protected int _totalAttack;
     [SerializeField] protected int _totalDefence;
-    protected int _currentHealth;
-    protected int _currentAttack;
-    protected int _currentDefence;
+    [SerializeField] protected int _currentHealth;
+    [SerializeField] protected int _currentAttack;
+    [SerializeField] protected int _currentDefence;
     protected int _currentRarity;
 
     [Header("Attributes")]
@@ -113,6 +113,9 @@ public abstract class Entity : MonoBehaviour
     {
         _turnBegin = null;
         _turnEnd = null;
+        _currentHealth = _totalHealth;
+        _currentAttack = _totalAttack;
+        _currentDefence = _totalDefence;
         _statusEffects = new List<StatusEffect>();
     }
 
