@@ -66,20 +66,63 @@ public class BattlestageManager : MonoBehaviour
                 }
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Tab)) SpawnRandomEntityLeft();
     }
 
-    void RegroupLeftPositions()
+    void RegroupLeftPositions(bool instant)
     {
         int activeMult = 0;
-        foreach (Transform obj in allLeftPositions)
+        if (instant)
         {
-            if (obj.gameObject.activeInHierarchy)
+            foreach (Transform obj in allLeftPositions)
             {
-                obj.localPosition = new Vector2(-(unitGap * activeMult), obj.localPosition.y);
-                activeMult++;
+                if (obj.gameObject.activeInHierarchy)
+                {
+                    obj.localPosition = new Vector2(-(unitGap * activeMult), obj.localPosition.y);
+                    activeMult++;
+                }
+            }
+        }
+        else
+        {
+            foreach (Transform obj in allLeftPositions)
+            {
+                if (obj.gameObject.activeInHierarchy)
+                {
+                    obj.GetComponent<UnitPositionBehavior>().SetTargetPosition(new Vector2(-(unitGap * activeMult), obj.localPosition.y));
+                    activeMult++;
+                }
             }
         }
     }
+
+    void RegroupRightPosition(bool instant)
+    {
+        int activeMult = 0;
+        if (instant)
+        {
+            foreach (Transform obj in allRightPositions)
+            {
+                if (obj.gameObject.activeInHierarchy)
+                {
+                    obj.localPosition = new Vector2((unitGap * activeMult), obj.localPosition.y);
+                    activeMult++;
+                }
+            }
+        }
+        else
+        {
+            foreach (Transform obj in allRightPositions)
+            {
+                if (obj.gameObject.activeInHierarchy)
+                {
+                    obj.GetComponent<UnitPositionBehavior>().SetTargetPosition(new Vector2((unitGap * activeMult), obj.localPosition.y));
+                    activeMult++;
+                }
+            }
+        }
+    }    
 
     void InitPositions()
     {
@@ -98,7 +141,6 @@ public class BattlestageManager : MonoBehaviour
             allLeftPositions.Add(casterEntityPositions[i + 1]);
         }
 
-
         //! Deactivate entities
         foreach (Transform entity in casterEntityPositions) entity.gameObject.SetActive(false);
 
@@ -110,7 +152,23 @@ public class BattlestageManager : MonoBehaviour
             playerTeam[i] = temp;
         }
 
-        RegroupLeftPositions();
+        RegroupLeftPositions(false);
+
+        //=================================================================\\
+
+        //! Initialize right side positions
+        allRightPositions = new List<Transform>();
+        if (enemyEntityPositions.Length <= enemyPositions.Length) Debug.LogError("Enemy entity positions less than enemies!");
+
+        allRightPositions.Add(enemyEntityPositions[0]);
+        for (int i = 0; i < enemyPositions.Length; i++)
+        {
+            allRightPositions.Add(enemyPositions[i]);
+            allRightPositions.Add(enemyEntityPositions[i + 1]);
+        }
+
+        //! Deactivate entities
+        foreach (Transform entity in enemyEntityPositions) entity.gameObject.SetActive(false);
 
         //! Set Enemy's Position
         RoomSetUp tempRoom = roomManager.Rooms[0];
@@ -132,8 +190,8 @@ public class BattlestageManager : MonoBehaviour
                 int randomAvailableEnemy = UnityEngine.Random.Range(0, availableEnemyType.Count);
                 GameObject loadOutUnit = availableEnemyType[randomAvailableEnemy].enemySO.FullArtPrefab;
                 loadOutUnit.GetComponent<Foe>().SetCurrentLevel(availableEnemyType[randomAvailableEnemy].level);
-                enemyPositions[i].localPosition = new Vector2(enemyPositions[i].localPosition.x + (unitGap * i),
-                    enemyPositions[i].localPosition.y);
+                //enemyPositions[i].localPosition = new Vector2(enemyPositions[i].localPosition.x + (unitGap * i),
+                //   enemyPositions[i].localPosition.y);
 
                 GameObject temp = Instantiate(loadOutUnit, enemyPositions[i].position, Quaternion.identity, enemyPositions[i]);
                 enemyTeam.Add(temp);
@@ -145,14 +203,16 @@ public class BattlestageManager : MonoBehaviour
             {
                 GameObject loadOutUnit = tempRoom.roomSO.enemies[i].enemySO.FullArtPrefab;
                 loadOutUnit.GetComponent<Foe>().SetCurrentLevel(tempRoom.roomSO.enemies[i].level);
-                enemyPositions[i].localPosition = new Vector2(enemyPositions[i].localPosition.x + (unitGap * i),
-                    enemyPositions[i].localPosition.y);
+                //enemyPositions[i].localPosition = new Vector2(enemyPositions[i].localPosition.x + (unitGap * i),
+                //    enemyPositions[i].localPosition.y);
 
                 //! Bottom codes should not be use for actual gameplay
                 GameObject temp = Instantiate(loadOutUnit, enemyPositions[i].position, Quaternion.identity, enemyPositions[i]);
                 enemyTeam.Add(temp);
             }
         }
+
+        RegroupRightPosition(false);
     }
 
     #region Accessors
@@ -166,14 +226,21 @@ public class BattlestageManager : MonoBehaviour
 
     #endregion
 
-
     #region Debugs
     [ContextMenu("Spawn random entity left")]
     public void SpawnRandomEntityLeft()
     {
-        int r = UnityEngine.Random.Range(1, casterEntityPositions.Length);
+        int r = UnityEngine.Random.Range(0, casterEntityPositions.Length);
         casterEntityPositions[r].gameObject.SetActive(true);
-        RegroupLeftPositions();
-    }    
+        RegroupLeftPositions(false);
+    }
+
+    [ContextMenu("Spawn random entity right")]
+    public void SpawnRandomEntityRight()
+    {
+        int r = UnityEngine.Random.Range(0, enemyEntityPositions.Length);
+        enemyEntityPositions[r].gameObject.SetActive(true);
+        RegroupRightPosition(false);
+    }
     #endregion
 }

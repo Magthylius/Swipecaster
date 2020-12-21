@@ -162,16 +162,17 @@ namespace LerpFunctions
         }
 
         // vector
-        public static Vector2 Vector(Vector2 target, Vector2 destination, float lerpSpeed = 1f)
+        public static bool Vector(Vector2 target, Vector2 destination, float lerpSpeed = 1f)
         {
             target = Vector2.Lerp(target, destination, lerpSpeed * Time.deltaTime);
 
             if (NegligibleDistance(target, destination))
             {
                 target = destination;
+                return true;
             }
 
-            return target;
+            return false;
         }
 
         // size delta
@@ -263,7 +264,8 @@ namespace LerpFunctions
         public static bool OnAPosition(RectTransform target1, RectTransform target2) => target1.anchoredPosition == target2.anchoredPosition;
         public static bool OnAPosition(RectTransform target1, Vector2 target2) => target1.anchoredPosition == target2;
         public static bool OnOFPosition(RectTransform target1, RectTransform target2) => target1.offsetMax == target2.offsetMax && target1.offsetMin == target2.offsetMin;
-        public static bool NegligibleDistance(Vector2 a, Vector2 b, float condition = 0.1f) => Mathf.Abs(a.x - b.x) < condition && Mathf.Abs(a.y - b.y) < condition;
+        //public static bool NegligibleDistance(Vector2 a, Vector2 b, float condition = 0.1f) => Vector2.Distance(a, b) < condition;
+        public static bool NegligibleDistance(Vector3 a, Vector3 b, float condition = 0.1f) => Vector3.Distance(a, b) < condition;
         public static bool NegligibleDistance(float a, float b, float condition = 0.1f) => Mathf.Abs(a - b) < condition;
 
         #region QUATENIONS
@@ -375,10 +377,12 @@ namespace LerpFunctions
 
     public class Get : MonoBehaviour
     {
-        public static RectTransform Rect(GameObject g) => g.GetComponent<RectTransform>();
-        public static RectTransform Rect(Transform g) => g.GetComponent<RectTransform>();
-        public static RectTransform Rect(Component g) => g.GetComponent<RectTransform>();
+        public static RectTransform RectTr(Component g) => g.GetComponent<RectTransform>();
+        public static RectTransform RectTransform(Component g) => g.GetComponent<RectTransform>();
+        public static CanvasGroup CG(Component g) => g.GetComponent<CanvasGroup>();
         public static CanvasGroup CanvasGroup(Component g) => g.GetComponent<CanvasGroup>();
+        public static Transform Tr(Component g) => g.GetComponent<Transform>();
+        public static Transform Transform(Component g) => g.GetComponent<Transform>();
     }
 }
 
