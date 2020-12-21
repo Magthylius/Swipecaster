@@ -70,7 +70,13 @@ public class BattlestageManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab)) SpawnRandomEntityLeft();
     }
 
-    void RegroupLeftPositions(bool instant)
+    public void RegroupAllPositons(bool instant)
+    {
+        RegroupLeftPositions(instant);
+        RegroupRightPositions(instant);
+    }
+
+    public void RegroupLeftPositions(bool instant)
     {
         int activeMult = 0;
         if (instant)
@@ -97,7 +103,7 @@ public class BattlestageManager : MonoBehaviour
         }
     }
 
-    void RegroupRightPosition(bool instant)
+    public void RegroupRightPositions(bool instant)
     {
         int activeMult = 0;
         if (instant)
@@ -212,7 +218,7 @@ public class BattlestageManager : MonoBehaviour
             }
         }
 
-        RegroupRightPosition(false);
+        RegroupRightPositions(false);
     }
 
     #region Accessors
@@ -240,7 +246,7 @@ public class BattlestageManager : MonoBehaviour
     {
         int r = UnityEngine.Random.Range(0, enemyEntityPositions.Length);
         enemyEntityPositions[r].gameObject.SetActive(true);
-        RegroupRightPosition(false);
+        RegroupRightPositions(false);
     }
     #endregion
 }
