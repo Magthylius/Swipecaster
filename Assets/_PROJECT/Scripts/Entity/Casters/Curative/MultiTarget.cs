@@ -5,8 +5,6 @@ public class MultiTarget : Unit
 {
     [SerializeField] private bool randomHeal;
     [SerializeField, Range(2, 4)] private int targetCount;
-    [SerializeField] private float damageToHealPercent;
-    private const int partySize = 4;
 
     #region Public Override Methods
 
@@ -14,6 +12,7 @@ public class MultiTarget : Unit
     public override void RecieveHealing(Entity healer, int healAmount) => base.RecieveHealing(healer, healAmount);
     public override void DoAction(TargetInfo targetInfo, RuneCollection runes)
     {
+        UpdateStatusEffects();
         var battleStage = BattlestageManager.instance;
         if (battleStage == null) return;
 
@@ -30,7 +29,7 @@ public class MultiTarget : Unit
 
         if(randomHeal)
         {
-            int deleteCount = partySize - targetCount;
+            int deleteCount = PartySize - targetCount;
             for(int i = 0; i < deleteCount; i++) healList.RemoveAt(Random.Range(0, healList.Count));
         }
 

@@ -36,7 +36,7 @@ public class InformationManager : MonoBehaviour
             case RuneType.FYOR:
                 text = fyorCount;
                 break;
-            case RuneType.AQUA:
+            case RuneType.KHUA:
                 text = aquaCount;
                 break;
 

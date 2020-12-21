@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 public class Overhead : Projectile
 {
@@ -7,8 +6,10 @@ public class Overhead : Projectile
     {
         if (info.Focus == null) return;
 
+        float subtotalDamage = damage * _damageMultiplier;
+
         //! Damage
-        info.Focus.TakeHit(damager, damage);
+        info.Focus.TakeHit(damager, Round(subtotalDamage));
     }
 
     public override TargetInfo GetTargets(Entity focus, List<Entity> allEntities)
@@ -21,5 +22,6 @@ public class Overhead : Projectile
         return new TargetInfo(focus, collateral, grazed);
     }
 
-    public Overhead() { }
+    public Overhead() => _damageMultiplier = 1.0f;
+    public Overhead(float damageMultiplier) : base(damageMultiplier) { }
 }

@@ -10,12 +10,15 @@ public abstract class Entity : MonoBehaviour
     [SerializeField] protected int _totalAttack;
     [SerializeField] protected int _totalDefence;
     protected int _currentHealth;
+    protected int _currentAttack;
+    protected int _currentDefence;
     protected int _currentRarity;
 
     [Header("Attributes")]
     protected RuneType _runeType;
     protected AttackStatus _attackStatus = AttackStatus.Normal;
-    protected Projectile projectile;
+    protected Projectile _projectile;
+    protected List<StatusEffect> _statusEffects;
     [SerializeField] protected UnitObject baseUnit;
 
     [Header("Stat Ratio Multipliers")]
@@ -42,10 +45,21 @@ public abstract class Entity : MonoBehaviour
 
     #region Public Virtual Methods
 
-    public virtual int GetAttack => _totalAttack;
-    public virtual int GetDefence => _totalDefence;
+    public virtual int GetBaseAttack => _totalAttack;
+    public virtual int GetCurrentAttack => _currentAttack;
+    public virtual void AddCurrentAttack(int amount) => _currentAttack += amount;
+    public virtual int GetBaseDefence => _totalDefence;
+    public virtual int GetCurrentDefence => _currentDefence;
+    public virtual void AddCurrentDefence(int amount) => _currentDefence += amount;
     public virtual int GetMaxHealth => _totalHealth;
     public virtual int GetCurrentHealth => _currentHealth;
+
+    public virtual int GetCurrentLevel => _currentLevel;
+    public virtual void SetCurrentLevel(int amount)
+    {
+        _currentLevel = amount;
+        CalculateActualStats();
+    }
 
     #endregion
 
@@ -78,8 +92,10 @@ public abstract class Entity : MonoBehaviour
     public void SetAttackStatus(AttackStatus status) => _attackStatus = status;
     public AttackStatus AttackStatus => _attackStatus;
 
-    public void SetProjectile(Projectile p) => projectile = p;
-    public Projectile Projectile => projectile;
+    public void SetProjectile(Projectile p) => _projectile = p;
+    public Projectile Projectile => _projectile;
+
+    public List<StatusEffect> StatusEffects => _statusEffects;
 
     #endregion
 
@@ -89,6 +105,7 @@ public abstract class Entity : MonoBehaviour
     {
         _turnBegin = null;
         _turnEnd = null;
+        _statusEffects = new List<StatusEffect>();
     }
 
     protected virtual void OnValidate() => CalculateActualStats();
@@ -122,12 +139,6 @@ public abstract class Entity : MonoBehaviour
         currentInfo = GenerateStatInfo(baseUnit.MaxDefence);
         _totalDefence = Mathf.RoundToInt(CalculateLevelParabolicStat(currentInfo) + CalculateLevelLinearStat(currentInfo));
     }
-
-    #endregion
-
-    #region Private Virtual Methods
-
-
 
     #endregion
 

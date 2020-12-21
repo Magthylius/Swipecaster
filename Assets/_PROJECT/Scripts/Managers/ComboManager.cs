@@ -27,9 +27,9 @@ public class ComboManager : MonoBehaviour
 
     RuneType runeType;
 
-    RuneStorage groundRune = new RuneStorage(RuneType.GRON, 0);
-    RuneStorage fireRune = new RuneStorage(RuneType.FYOR, 0);
-    RuneStorage electricRune = new RuneStorage(RuneType.TEHK, 0);
+    RuneStorage gronRune = new RuneStorage(RuneType.GRON, 0);
+    RuneStorage fyorRune = new RuneStorage(RuneType.FYOR, 0);
+    RuneStorage tehkRune = new RuneStorage(RuneType.TEHK, 0);
 
     void Awake()
     {
@@ -86,13 +86,13 @@ public class ComboManager : MonoBehaviour
         switch (runetype)
         {
             case RuneType.GRON:
-                groundRune.amount += comboList.Count;
+                gronRune.amount += comboList.Count;
                 break;
             case RuneType.FYOR:
-                fireRune.amount += comboList.Count;
+                fyorRune.amount += comboList.Count;
                 break;
             case RuneType.TEHK:
-                electricRune.amount += comboList.Count;
+                tehkRune.amount += comboList.Count;
                 break;
         }
         
@@ -106,21 +106,39 @@ public class ComboManager : MonoBehaviour
 
     public void SetCountdownTimer() => timer = countdownTimer;
     public void SetIsStart() => isStart = true;
-    void DealDamage(GameObject attacker, GameObject enemy)
+    void AssessRunes(GameObject damagerObject, GameObject targetObject)
     {
         //! Update infomanager with UpdateConnectionUI(RuneStorage storage)
-
-        print("FireRune: " + fireRune.amount + "GroundRune: " + groundRune.amount + "ElectricRune: " + electricRune.amount);
-        float attackerDamage = attacker.GetComponent<UnitEntry>().GetAttack;
-        float totalDamage = attackerDamage * fireRune.amount + attackerDamage * groundRune.amount + attackerDamage * electricRune.amount;
-        float enemyDefense = enemy.GetComponent<UnitEntry>().GetDefence;
-        attackerDamage = (attackerDamage - enemyDefense) / attackerDamage;
-        print("Total Damage :" + attackerDamage);
-        fireRune.amount = 0;
-        groundRune.amount = 0;
-        electricRune.amount = 0;
+        print("FireRune: " + fyorRune.amount + "GroundRune: " + gronRune.amount + "ElectricRune: " + tehkRune.amount);
         
+        var battleStage = BattlestageManager.instance;
+        if (battleStage == null) { isStart = false; return; }
+
+        Entity damager = damagerObject.GetComponent<Entity>();
+        Entity target = targetObject.GetComponent<Entity>();
+        List<Entity> allEntities = new List<Entity>();
+        
+        for(int i = 0; i < battleStage.rightSidePos.Length; i++)
+        {
+            Entity e = battleStage.rightSidePos[i].GetComponent<Entity>();
+            if (e == null) continue;
+
+            allEntities.Add(e);
+        }
+
+        TargetInfo targetInfo = damager.GetAffectedTargets(target, allEntities);
+        RuneCollection collection = new RuneCollection(gronRune, fyorRune, tehkRune, RuneStorage.Null, RuneStorage.Null);
+        damager.DoAction(targetInfo, collection);
+
+        ResetRunes();
         isStart = false;
+    }
+
+    private void ResetRunes()
+    {
+        gronRune.amount = 0;
+        fyorRune.amount = 0;
+        tehkRune.amount = 0;
     }
 
     #region Accessors
