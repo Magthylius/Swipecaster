@@ -26,7 +26,9 @@ public class BattlestageManager : MonoBehaviour
 
     GameObject[] playerTeam = new GameObject[4];
     List<GameObject> enemyTeam = new List<GameObject>();
-    
+
+    [Header("Target Selection")]
+    [SerializeField] private List<Collider2D> targets = new List<Collider2D>();
 
     void Awake()
     {
