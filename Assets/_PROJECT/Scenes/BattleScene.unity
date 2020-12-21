@@ -507,6 +507,18 @@ MonoBehaviour:
   - {fileID: 93344417}
   - {fileID: 1842630309}
   - {fileID: 237236055}
+  casterEntityPositions:
+  - {fileID: 1655285184}
+  - {fileID: 223321036}
+  - {fileID: 1264890181}
+  - {fileID: 227439485}
+  - {fileID: 897419856}
+  enemyEntityPositions:
+  - {fileID: 143832224}
+  - {fileID: 2094145391}
+  - {fileID: 1663153854}
+  - {fileID: 1208501394}
+  - {fileID: 413978741}
   heroes: {fileID: 1342186363962593935, guid: 7bf6f4e9267a7c04199a005ccbddd474, type: 3}
   selectedTarget: {fileID: 0}
 --- !u!4 &60006155
@@ -563,7 +575,7 @@ GameObject:
   m_Component:
   - component: {fileID: 143832224}
   m_Layer: 0
-  m_Name: Pos Af
+  m_Name: Pos EntA
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -745,7 +757,7 @@ GameObject:
   m_Component:
   - component: {fileID: 223321036}
   m_Layer: 0
-  m_Name: Pos 2f
+  m_Name: Pos Ent2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -868,7 +880,7 @@ GameObject:
   m_Component:
   - component: {fileID: 227439485}
   m_Layer: 0
-  m_Name: Pos 4f
+  m_Name: Pos Ent4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1149,7 +1161,7 @@ GameObject:
   m_Component:
   - component: {fileID: 413978741}
   m_Layer: 0
-  m_Name: Pos Ef
+  m_Name: Pos EntF
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1619,7 +1631,7 @@ GameObject:
   m_Component:
   - component: {fileID: 897419856}
   m_Layer: 0
-  m_Name: Pos 5f
+  m_Name: Pos Ent5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6707,7 +6719,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1208501394}
   m_Layer: 0
-  m_Name: Pos Df
+  m_Name: Pos EntD
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -6781,7 +6793,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1264890181}
   m_Layer: 0
-  m_Name: Pos 3f
+  m_Name: Pos Ent3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7542,7 +7554,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1655285184}
   m_Layer: 0
-  m_Name: Pos 1f
+  m_Name: Pos Ent1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7572,7 +7584,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1663153854}
   m_Layer: 0
-  m_Name: Pos Cf
+  m_Name: Pos EntC
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -8279,7 +8291,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2094145391}
   m_Layer: 0
-  m_Name: Pos Bf
+  m_Name: Pos EntB
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

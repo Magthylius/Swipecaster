@@ -17,6 +17,10 @@ public class BattlestageManager : MonoBehaviour
     [Header("Team's Positions")]
     public Transform[] casterPositions;
     public Transform[] enemyPositions;
+    public Transform[] casterEntityPositions;
+    public Transform[] enemyEntityPositions;
+    List<Transform> allLeftPositions;
+    List<Transform> allRightPositions;
 
     [Header("Hero spawn (Debug use)")] 
     public GameObject heroes;
@@ -64,22 +68,49 @@ public class BattlestageManager : MonoBehaviour
         }
     }
 
+    void RegroupLeftPositions()
+    {
+        int activeMult = 0;
+        foreach (Transform obj in allLeftPositions)
+        {
+            if (obj.gameObject.activeInHierarchy)
+            {
+                obj.localPosition = new Vector2(-(unitGap * activeMult), obj.localPosition.y);
+                activeMult++;
+            }
+        }
+    }
+
     void InitPositions()
     {
         //! Set gap between 2 teams
         playerTeamGroup.position = new Vector2(battlestageCenter.position.x - centerGap, battlestageCenter.position.y);
         enemyTeamGroup.position = new Vector2(battlestageCenter.position.x + centerGap, battlestageCenter.position.y);
 
-        //! Set Player hero's position
+        //! Initialize left side positions
+        allLeftPositions = new List<Transform>();
+        if (casterEntityPositions.Length <= casterPositions.Length) Debug.LogError("Caster entity positions less than casters!");
+
+        allLeftPositions.Add(casterEntityPositions[0]);
+        for (int i = 0; i < casterPositions.Length; i++)
+        {
+            allLeftPositions.Add(casterPositions[i]);
+            allLeftPositions.Add(casterEntityPositions[i + 1]);
+        }
+
+
+        //! Deactivate entities
+        foreach (Transform entity in casterEntityPositions) entity.gameObject.SetActive(false);
+
+        //! Spawn casters
         for (int i = 0; i < casterPositions.Length; i++)
         {
             GameObject loadOutUnit = player.UnitLoadOut[i].BaseUnit.FullArtPrefab;
-
-            casterPositions[i].localPosition = new Vector2(casterPositions[i].localPosition.x - (unitGap * i), casterPositions[i].localPosition.y);
-
             GameObject temp = Instantiate(loadOutUnit, casterPositions[i].position, Quaternion.identity, casterPositions[i]);
             playerTeam[i] = temp;
         }
+
+        RegroupLeftPositions();
 
         //! Set Enemy's Position
         RoomSetUp tempRoom = roomManager.Rooms[0];
@@ -135,4 +166,14 @@ public class BattlestageManager : MonoBehaviour
 
     #endregion
 
+
+    #region Debugs
+    [ContextMenu("Spawn random entity left")]
+    public void SpawnRandomEntityLeft()
+    {
+        int r = UnityEngine.Random.Range(1, casterEntityPositions.Length);
+        casterEntityPositions[r].gameObject.SetActive(true);
+        RegroupLeftPositions();
+    }    
+    #endregion
 }
