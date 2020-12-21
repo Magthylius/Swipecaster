@@ -43,6 +43,7 @@ public class ConnectionManager : MonoBehaviour
 
                     if (!tempRB.GetSelected())
                     {
+                        
                         tempRB.Selected();
                         line.gameObject.SetActive(true);
                     }
@@ -68,6 +69,7 @@ public class ConnectionManager : MonoBehaviour
             {
                 Vector2 temp = selectionList[i].GetPosition();
 
+                
                 Vector3 temp2 = new Vector3(temp.x, temp.y, -5);
 
                 posList[i] = temp2;

@@ -15,13 +15,14 @@
               <e p="UnitSwapHandler.cs" t="Include" />
             </e>
             <e p="Camera" t="Include">
+              <e p="CameraManager.cs" t="Include" />
               <e p="CameraSizeAdjuster.cs" t="Include" />
             </e>
             <e p="Editor" t="Include">
               <e p="HierarchyLabel.cs" t="Include" />
             </e>
             <e p="Enemy" t="Include">
-              <e p="Enemy.cs" t="Include" />
+              <e p="RoomManager.cs" t="Include" />
               <e p="RoomScriptable.cs" t="Include" />
             </e>
             <e p="Entity" t="Include">
@@ -39,8 +40,8 @@
                   <e p="Antagomancer.cs" t="Include" />
                 </e>
                 <e p="Curative" t="Include">
-                  <e p="Conversions.cs" t="Include" />
                   <e p="MultiTarget.cs" t="Include" />
+                  <e p="Scrounger.cs" t="Include" />
                   <e p="SingleTarget.cs" t="Include" />
                 </e>
                 <e p="Enhancer" t="Include">
@@ -63,15 +64,22 @@
               </e>
               <e p="Entity.cs" t="Include" />
               <e p="Foe.cs" t="Include" />
-              <e p="RuneCollection.cs" t="Include" />
-              <e p="RuneRelations.cs" t="Include" />
+              <e p="Projectiles" t="Include">
+                <e p="Blast.cs" t="Include" />
+                <e p="CrowFlies.cs" t="Include" />
+                <e p="Overhead.cs" t="Include" />
+                <e p="Piercing.cs" t="Include" />
+                <e p="Projectile.cs" t="Include" />
+                <e p="SplashOverhead.cs" t="Include" />
+                <e p="TargetInfo.cs" t="Include" />
+              </e>
               <e p="Unit.cs" t="Include" />
               <e p="UnitEntry.cs" t="Include" />
             </e>
             <e p="Managers" t="Include">
               <e p="ComboManager.cs" t="Include" />
               <e p="ConnectionManager.cs" t="Include" />
-              <e p="RuneLineManager.cs" t="Include" />
+              <e p="InformationManager.cs" t="Include" />
             </e>
             <e p="Namespaces" t="Include">
               <e p="CameraFunctions.cs" t="Include" />
@@ -87,12 +95,22 @@
               <e p="CastingState.cs" t="Include" />
               <e p="PoolManager.cs" t="Include" />
               <e p="RuneBehaviour.cs" t="Include" />
-              <e p="RuneEnum.cs" t="Include" />
               <e p="RuneManager.cs" t="Include" />
+              <e p="RuneStructures.cs" t="Include" />
               <e p="TickSystem.cs" t="Include" />
             </e>
             <e p="SO Scripts" t="Include">
               <e p="UnitObject.cs" t="Include" />
+            </e>
+            <e p="Status Effects" t="Include">
+              <e p="AttackBuff.cs" t="Include" />
+              <e p="AttackDebuff.cs" t="Include" />
+              <e p="DefenceBuff.cs" t="Include" />
+              <e p="DefenceDebuff.cs" t="Include" />
+              <e p="PoisonStatus.cs" t="Include" />
+              <e p="RegenerateStatus.cs" t="Include" />
+              <e p="ScaledPoisonStatus.cs" t="Include" />
+              <e p="StatusEffect.cs" t="Include" />
             </e>
             <e p="UI" t="Include">
               <e p="DebugButton.cs" t="Include" />

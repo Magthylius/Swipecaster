@@ -95,7 +95,10 @@ public class TurnBaseManager : MonoBehaviour
         switch (battleState)
         {
             case GameStateEnum.CASTERTURN:
-                if (casterUnitTurn >= CastersTeamList.Length - 1) casterUnitTurn = 0;
+                if (casterUnitTurn >= CastersTeamList.Length - 1)
+                {
+                    casterUnitTurn = 0;
+                }
                 else casterUnitTurn++;
 
                 battleState = GameStateEnum.ENEMYTURN;
@@ -114,6 +117,7 @@ public class TurnBaseManager : MonoBehaviour
     }
     
     
+    //! Setting Up the battlestage
     public IEnumerator InitBattle()
     {
         CastersTeamList = (GameObject[])battlestageManager.GetCastersTeam().Clone();
