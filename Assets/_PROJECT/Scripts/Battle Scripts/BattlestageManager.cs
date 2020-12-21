@@ -67,7 +67,7 @@ public class BattlestageManager : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Tab)) SpawnRandomEntityLeft();
+        //if (Input.GetKeyDown(KeyCode.Tab)) SpawnRandomEntityLeft();
     }
 
     public void RegroupAllPositons(bool instant)
