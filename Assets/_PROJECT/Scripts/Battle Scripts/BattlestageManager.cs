@@ -28,7 +28,9 @@ public class BattlestageManager : MonoBehaviour
     List<GameObject> enemyTeam = new List<GameObject>();
 
     [Header("Target Selection")]
-    [SerializeField] private List<Collider2D> targets = new List<Collider2D>();
+    [SerializeField] private GameObject selectedTarget = null;
+    private Camera _mainCamera = null;
+    private List<Collider2D> targets = new List<Collider2D>();
 
     void Awake()
     {
@@ -44,6 +46,26 @@ public class BattlestageManager : MonoBehaviour
         player = Player.Instance;
         roomManager = RoomManager.Instance;
         InitPositions();
+        GetEnemyColliders();
+        _mainCamera = Camera.main;
+    }
+
+    private void Update()
+    {
+        if(Input.GetMouseButtonDown(0))
+        {
+            if(Physics.Raycast(_mainCamera.ScreenPointToRay(Input.mousePosition), out var hitInfo))
+            {
+                if(hitInfo.transform.gameObject.CompareTag("Foe"))
+                {
+                    print("Foe");
+                }
+            }
+            else
+            {
+                print("No");
+            }
+        }
     }
 
     void InitPositions()
@@ -78,6 +100,15 @@ public class BattlestageManager : MonoBehaviour
 
     }
     
+    private void GetEnemyColliders()
+    {
+        for(int i = 0; i < enemyTeam.Count; i++)
+        {
+            var e = enemyTeam[i];
+            var collider = e.GetComponent<Collider2D>();
+            if(collider != null) targets.Add(collider);
+        }
+    }
 
     #region Accessors
 

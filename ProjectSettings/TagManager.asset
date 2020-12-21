@@ -8,6 +8,7 @@ TagManager:
   - Rune2
   - Rune3
   - Hero
+  - Foe
   layers:
   - Default
   - TransparentFX

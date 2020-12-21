@@ -140,7 +140,7 @@ public class ComboManager : MonoBehaviour
         }
 
         TargetInfo targetInfo = damager.GetAffectedTargets(target, allEntities);
-        RuneCollection collection = new RuneCollection(gronRune, fyorRune, tehkRune, RuneStorage.Null, RuneStorage.Null);
+        RuneCollection collection = new RuneCollection(gronRune, fyorRune, tehkRune, khuaRune, RuneStorage.Null);
         damager.DoAction(targetInfo, collection);
 
         ResetRunes();
