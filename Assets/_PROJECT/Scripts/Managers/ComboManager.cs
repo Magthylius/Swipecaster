@@ -33,6 +33,7 @@ public class ComboManager : MonoBehaviour
     RuneStorage fyorRune = new RuneStorage(RuneType.FYOR, 0);
     RuneStorage tehkRune = new RuneStorage(RuneType.TEHK, 0);
     RuneStorage khuaRune = new RuneStorage(RuneType.KHUA, 0);
+    RuneStorage ayroRune = new RuneStorage(RuneType.AYRO, 0);
 
     void Awake()
     {
@@ -66,11 +67,10 @@ public class ComboManager : MonoBehaviour
                 timer = countdownTimer;
                 //slider.fillAmount = 1.0f;
 
-                GameObject targetObject = battleStageManager.GetSelectedTarget();
-                if (targetObject == null) targetObject = battleStageManager.GetEnemyTeam()[0];
+                GameObject targetObject = (battleStageManager.GetSelectedTarget() != null) ? battleStageManager.GetSelectedTarget() : battleStageManager.GetEnemyTeam()[0];
 
                 runeManager.SpawnDeactivate();
-                AssessRunes(turnBaseManger.GetCurrentCaster(), battleStageManager.GetEnemyTeam()[0]);
+                AssessRunes(turnBaseManger.GetCurrentCaster(), targetObject);
             }
         }
         else if (sliderAnim)
@@ -105,6 +105,9 @@ public class ComboManager : MonoBehaviour
             case RuneType.KHUA:
                 khuaRune.amount += comboList.Count;
                 break;
+            case RuneType.AYRO:
+                ayroRune.amount += comboList.Count;
+                break;
         }
         
         for (int i = 0; i < comboList.Count; i++)
@@ -119,12 +122,12 @@ public class ComboManager : MonoBehaviour
     public void SetIsStart() => isStart = true;
     void AssessRunes(GameObject damagerObject, GameObject targetObject)
     {
-        //! Update infomanager with UpdateConnectionUI(RuneStorage storage)
-        print("Fyor: " + fyorRune.amount + " Gron: " + gronRune.amount + " Tehk: " + tehkRune.amount + " Khua: " + khuaRune.amount);
+        print("Gron: " + gronRune.amount + " | Fyor: " + fyorRune.amount + " | Tehk: " + tehkRune.amount + " | Khua: " + khuaRune.amount + " | Ayro: " + ayroRune.amount);
         infoManager.UpdateConnectionUI(fyorRune);
         infoManager.UpdateConnectionUI(gronRune);
         infoManager.UpdateConnectionUI(tehkRune);
         infoManager.UpdateConnectionUI(khuaRune);
+        infoManager.UpdateConnectionUI(ayroRune);
 
         if (battleStageManager == null) { ResetRunes(); isStart = false; return; }
 
@@ -141,7 +144,7 @@ public class ComboManager : MonoBehaviour
         }
 
         TargetInfo targetInfo = damager.GetAffectedTargets(target, allEntities);
-        RuneCollection collection = new RuneCollection(gronRune, fyorRune, tehkRune, khuaRune, RuneStorage.Null);
+        RuneCollection collection = new RuneCollection(gronRune, fyorRune, tehkRune, khuaRune, ayroRune);
         damager.DoAction(targetInfo, collection);
 
         ResetRunes();
@@ -154,6 +157,7 @@ public class ComboManager : MonoBehaviour
         fyorRune.amount = 0;
         tehkRune.amount = 0;
         khuaRune.amount = 0;
+        ayroRune.amount = 0;
     }
 
     #region Accessors
