@@ -26,7 +26,10 @@ public class BattlestageManager : MonoBehaviour
 
     GameObject[] playerTeam = new GameObject[4];
     List<GameObject> enemyTeam = new List<GameObject>();
-    
+
+    [Header("Target Selection")]
+    [SerializeField] private GameObject selectedTarget = null;
+    private Camera _mainCamera = null;
 
     void Awake()
     {
@@ -42,6 +45,23 @@ public class BattlestageManager : MonoBehaviour
         player = Player.Instance;
         roomManager = RoomManager.Instance;
         InitPositions();
+        _mainCamera = Camera.main;
+    }
+
+    private void Update()
+    {
+        if(Input.GetMouseButtonDown(0))
+        {
+            if(Physics.Raycast(_mainCamera.ScreenPointToRay(Input.mousePosition), out var hitInfo))
+            {
+                GameObject o = hitInfo.transform.gameObject;
+                if(o.CompareTag("Foe"))
+                {
+                    if (selectedTarget == o) selectedTarget = null;
+                    else selectedTarget = o;
+                }
+            }
+        }
     }
 
     void InitPositions()
@@ -75,7 +95,6 @@ public class BattlestageManager : MonoBehaviour
         }
 
     }
-    
 
     #region Accessors
 
@@ -84,6 +103,7 @@ public class BattlestageManager : MonoBehaviour
 
     public GameObject[] GetCastersTeam() => playerTeam;
     public List<GameObject> GetEnemyTeam() => enemyTeam;
+    public GameObject GetSelectedTarget() => selectedTarget;
 
     #endregion
 

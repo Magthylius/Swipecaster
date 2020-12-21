@@ -28,7 +28,7 @@ public class InformationManager : MonoBehaviour
         
     }
 
-    void UpdateConnectionUI(RuneStorage storage)
+    public void UpdateConnectionUI(RuneStorage storage)
     {
         TextMeshProUGUI text = null;
         switch (storage.runeType)
@@ -53,7 +53,7 @@ public class InformationManager : MonoBehaviour
         }
     }
 
-    void EndConnectionUI()
+    public void EndConnectionUI()
     {
         fyorCount.gameObject.SetActive(false);
         aquaCount.gameObject.SetActive(false);
