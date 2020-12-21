@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 3584987251671932301}
   m_Layer: 8
   m_Name: PlaceHolder Enemy 2
-  m_TagString: Untagged
+  m_TagString: Foe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -458,11 +458,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 926cfa707220e70489c9de2aad0761ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseUnit: {fileID: 11400000, guid: 9570a34fa79060d4695ff44d79a9f784, type: 2}
   _currentLevel: 1
-  _totalHealth: 35842
+  _totalHealth: 4
   _totalAttack: 0
   _totalDefence: 0
+  _currentHealth: 0
+  _currentAttack: 0
+  _currentDefence: 0
+  baseUnit: {fileID: 11400000, guid: 9570a34fa79060d4695ff44d79a9f784, type: 2}
   baseStatMultiplier: 0.3333333
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
