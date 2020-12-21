@@ -135,9 +135,9 @@ public class ComboManager : MonoBehaviour
         Entity target = targetObject.GetComponent<Entity>();
         List<Entity> allEntities = new List<Entity>();
 
-        for(int i = 0; i < battleStageManager.rightSidePos.Length; i++)
+        for(int i = 0; i < battleStageManager.enemyPositions.Length; i++)
         {
-            Entity e = battleStageManager.rightSidePos[i].GetComponent<Entity>();
+            Entity e = battleStageManager.enemyPositions[i].GetComponent<Entity>();
             if (e == null) continue;
 
             allEntities.Add(e);

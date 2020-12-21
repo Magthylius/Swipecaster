@@ -12,11 +12,11 @@ public class BattlestageManager : MonoBehaviour
 
     [Header("Gaps Settings")]
     public float centerGap;
-    public float heroGap;
+    public float unitGap;
     
     [Header("Team's Positions")]
-    public Transform[] leftSidePos;
-    public Transform[] rightSidePos;
+    public Transform[] casterPositions;
+    public Transform[] enemyPositions;
 
     [Header("Hero spawn (Debug use)")] 
     public GameObject heroes;
@@ -71,13 +71,13 @@ public class BattlestageManager : MonoBehaviour
         enemyTeamGroup.position = new Vector2(battlestageCenter.position.x + centerGap, battlestageCenter.position.y);
 
         //! Set Player hero's position
-        for (int i = 0; i < leftSidePos.Length; i++)
+        for (int i = 0; i < casterPositions.Length; i++)
         {
             GameObject loadOutUnit = player.UnitLoadOut[i].BaseUnit.FullArtPrefab;
 
-            leftSidePos[i].localPosition = new Vector2(leftSidePos[i].localPosition.x - (heroGap * i), leftSidePos[i].localPosition.y);
+            casterPositions[i].localPosition = new Vector2(casterPositions[i].localPosition.x - (unitGap * i), casterPositions[i].localPosition.y);
 
-            GameObject temp = Instantiate(loadOutUnit, leftSidePos[i].position, Quaternion.identity, leftSidePos[i]);
+            GameObject temp = Instantiate(loadOutUnit, casterPositions[i].position, Quaternion.identity, casterPositions[i]);
             playerTeam[i] = temp;
         }
 
@@ -101,10 +101,10 @@ public class BattlestageManager : MonoBehaviour
                 int randomAvailableEnemy = UnityEngine.Random.Range(0, availableEnemyType.Count);
                 GameObject loadOutUnit = availableEnemyType[randomAvailableEnemy].enemySO.FullArtPrefab;
                 loadOutUnit.GetComponent<Foe>().SetCurrentLevel(availableEnemyType[randomAvailableEnemy].level);
-                rightSidePos[i].localPosition = new Vector2(rightSidePos[i].localPosition.x + (heroGap * i),
-                    rightSidePos[i].localPosition.y);
+                enemyPositions[i].localPosition = new Vector2(enemyPositions[i].localPosition.x + (unitGap * i),
+                    enemyPositions[i].localPosition.y);
 
-                GameObject temp = Instantiate(loadOutUnit, rightSidePos[i].position, Quaternion.identity, rightSidePos[i]);
+                GameObject temp = Instantiate(loadOutUnit, enemyPositions[i].position, Quaternion.identity, enemyPositions[i]);
                 enemyTeam.Add(temp);
             }
         }
@@ -114,11 +114,11 @@ public class BattlestageManager : MonoBehaviour
             {
                 GameObject loadOutUnit = tempRoom.roomSO.enemies[i].enemySO.FullArtPrefab;
                 loadOutUnit.GetComponent<Foe>().SetCurrentLevel(tempRoom.roomSO.enemies[i].level);
-                rightSidePos[i].localPosition = new Vector2(rightSidePos[i].localPosition.x + (heroGap * i),
-                    rightSidePos[i].localPosition.y);
+                enemyPositions[i].localPosition = new Vector2(enemyPositions[i].localPosition.x + (unitGap * i),
+                    enemyPositions[i].localPosition.y);
 
                 //! Bottom codes should not be use for actual gameplay
-                GameObject temp = Instantiate(loadOutUnit, rightSidePos[i].position, Quaternion.identity, rightSidePos[i]);
+                GameObject temp = Instantiate(loadOutUnit, enemyPositions[i].position, Quaternion.identity, enemyPositions[i]);
                 enemyTeam.Add(temp);
             }
         }

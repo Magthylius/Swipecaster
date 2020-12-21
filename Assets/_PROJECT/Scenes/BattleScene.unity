@@ -496,13 +496,13 @@ MonoBehaviour:
   playerTeamGroup: {fileID: 951813713}
   enemyTeamGroup: {fileID: 1184321072}
   centerGap: 0.8
-  heroGap: 0.6
-  leftSidePos:
+  unitGap: 0.6
+  casterPositions:
   - {fileID: 2124983772}
   - {fileID: 1410219119}
   - {fileID: 1779393384}
   - {fileID: 2137414999}
-  rightSidePos:
+  enemyPositions:
   - {fileID: 397061375}
   - {fileID: 93344417}
   - {fileID: 1842630309}
