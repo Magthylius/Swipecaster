@@ -508,6 +508,7 @@ MonoBehaviour:
   - {fileID: 1842630309}
   - {fileID: 237236055}
   heroes: {fileID: 1342186363962593935, guid: 7bf6f4e9267a7c04199a005ccbddd474, type: 3}
+  selectedTarget: {fileID: 0}
 --- !u!4 &60006155
 Transform:
   m_ObjectHideFlags: 0
@@ -7697,7 +7698,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: cc9a4d7dd55c1f14d907ef3355220317, type: 2}
     - target: {fileID: 1465745501014420393, guid: 2c8e33731643177499539917e4fbc416, type: 3}
       propertyPath: rooms.Array.data[0].isRandom
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1465745501014420393, guid: 2c8e33731643177499539917e4fbc416, type: 3}
       propertyPath: rooms.Array.data[0].maxEnemySize

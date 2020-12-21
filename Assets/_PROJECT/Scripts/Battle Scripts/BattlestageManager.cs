@@ -76,24 +76,50 @@ public class BattlestageManager : MonoBehaviour
             GameObject loadOutUnit = player.UnitLoadOut[i].BaseUnit.FullArtPrefab;
 
             leftSidePos[i].localPosition = new Vector2(leftSidePos[i].localPosition.x - (heroGap * i), leftSidePos[i].localPosition.y);
-            
+
             GameObject temp = Instantiate(loadOutUnit, leftSidePos[i].position, Quaternion.identity, leftSidePos[i]);
             playerTeam[i] = temp;
         }
 
         //! Set Enemy's Position
-        for (int i = 0; i < roomManager.Rooms[0].enemies.Count; i++)
+        RoomSetUp tempRoom = roomManager.Rooms[0];
+        if (tempRoom.isRandom)
         {
-            GameObject loadOutUnit = roomManager.Rooms[0].enemies[i].enemySO.FullArtPrefab;
-            loadOutUnit.GetComponent<Foe>().SetCurrentLevel(roomManager.Rooms[0].enemies[i].level);
-            rightSidePos[i].localPosition = new Vector2(rightSidePos[i].localPosition.x + (heroGap * i),
-                rightSidePos[i].localPosition.y);
+            List<EnemyData> availableEnemyType = new List<EnemyData>(0);
+            for (int j = 0; j < tempRoom.roomSO.enemies.Count; j++)
+            {
+                if (!availableEnemyType.Contains(tempRoom.roomSO.enemies[j]))
+                {
+                    availableEnemyType.Add(tempRoom.roomSO.enemies[j]);
+                }
+            }
 
-            //! Bottom codes should not be use for actual gameplay
-            GameObject temp = Instantiate(loadOutUnit, rightSidePos[i].position, Quaternion.identity, rightSidePos[i]);
-            enemyTeam.Add(temp);
+            for (int i = 0; i < tempRoom.maxEnemySize; i++)
+            {
+                int randomAvailableEnemy = UnityEngine.Random.Range(0, availableEnemyType.Count);
+                GameObject loadOutUnit = availableEnemyType[randomAvailableEnemy].enemySO.FullArtPrefab;
+                loadOutUnit.GetComponent<Foe>().SetCurrentLevel(availableEnemyType[randomAvailableEnemy].level);
+                rightSidePos[i].localPosition = new Vector2(rightSidePos[i].localPosition.x + (heroGap * i),
+                    rightSidePos[i].localPosition.y);
+
+                GameObject temp = Instantiate(loadOutUnit, rightSidePos[i].position, Quaternion.identity, rightSidePos[i]);
+                enemyTeam.Add(temp);
+            }
         }
+        else
+        {
+            for (int i = 0; i < tempRoom.roomSO.enemies.Count; i++)
+            {
+                GameObject loadOutUnit = tempRoom.roomSO.enemies[i].enemySO.FullArtPrefab;
+                loadOutUnit.GetComponent<Foe>().SetCurrentLevel(tempRoom.roomSO.enemies[i].level);
+                rightSidePos[i].localPosition = new Vector2(rightSidePos[i].localPosition.x + (heroGap * i),
+                    rightSidePos[i].localPosition.y);
 
+                //! Bottom codes should not be use for actual gameplay
+                GameObject temp = Instantiate(loadOutUnit, rightSidePos[i].position, Quaternion.identity, rightSidePos[i]);
+                enemyTeam.Add(temp);
+            }
+        }
     }
 
     #region Accessors
