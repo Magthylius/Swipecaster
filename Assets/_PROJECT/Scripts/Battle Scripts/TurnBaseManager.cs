@@ -25,7 +25,7 @@ public class TurnBaseManager : MonoBehaviour
 
     [SerializeField] GameObject caster;
     [SerializeField] GameObject enemy;
-    [SerializeField]GameObject[] CastersTeamList = new GameObject[4];
+    [SerializeField] GameObject[] CastersTeamList = new GameObject[4];
     
     void Awake()
     {
