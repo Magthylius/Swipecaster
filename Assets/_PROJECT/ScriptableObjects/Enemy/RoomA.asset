@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74b9f84b2eeb2dc4292cf80572d16c5a, type: 3}
   m_Name: RoomA
   m_EditorClassIdentifier: 
-  enemies: []
+  enemies:
+  - enemy: {fileID: 11400000, guid: 9570a34fa79060d4695ff44d79a9f784, type: 2}
+    level: 2
+  - enemy: {fileID: 11400000, guid: 8179fc491f2337a4c9196cfa259dee72, type: 2}
+    level: 2
