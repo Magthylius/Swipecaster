@@ -18,17 +18,19 @@ public struct RuneCollection
     public RuneStorage AyroRunes => _allRunes[Convert.ToInt32(RuneType.AYRO) - 1];
     public List<RuneStorage> GetAllStorages => _allRunes;
 
-    public RuneCollection(RuneStorage ground, RuneStorage fire, RuneStorage electric, RuneStorage aqua,
-        RuneStorage light, RuneStorage dark, RuneStorage mind, RuneStorage air)
+    public RuneCollection(RuneStorage gron, RuneStorage fyor, RuneStorage tehk, RuneStorage aqua,
+        RuneStorage light, RuneStorage dark, RuneStorage mind, RuneStorage ayro)
     {
-        _allRunes = new List<RuneStorage>(Convert.ToInt32(RuneType.RUNE_TOTAL) - 1);
-        _allRunes.Add(ground);
-        _allRunes.Add(fire);
-        _allRunes.Add(electric);
-        _allRunes.Add(aqua);
-        _allRunes.Add(light);
-        _allRunes.Add(dark);
-        _allRunes.Add(mind);
-        _allRunes.Add(air);
+        _allRunes = new List<RuneStorage>(Convert.ToInt32(RuneType.RUNE_TOTAL) - 1)
+        {
+            gron,
+            fyor,
+            tehk,
+            aqua,
+            light,
+            dark,
+            mind,
+            ayro
+        };
     }
 }

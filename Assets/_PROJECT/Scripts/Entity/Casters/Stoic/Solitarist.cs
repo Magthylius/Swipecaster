@@ -8,11 +8,11 @@ public class Solitarist : Unit
 
     #region Public Override Methods
 
-    public override void TakeDamage(Entity damager, int damageAmount) => base.TakeDamage(damager, damageAmount);
+    public override void TakeHit(Entity damager, int damageAmount) => base.TakeHit(damager, damageAmount);
     public override void RecieveHealing(Entity healer, int healAmount) { }
-    public override void DoDamage(Entity focusTarget, List<Entity> affectedTargets, RuneCollection runes) => base.DoDamage(focusTarget, affectedTargets, runes);
-    public override int CalculateDamage(Entity focusTarget, List<Entity> affectedTargets, RuneCollection runes) => base.CalculateDamage(focusTarget, affectedTargets, runes);
-    public override List<Entity> GetAffectedTargets(Entity focusTarget, List<Entity> allEntities) => base.GetAffectedTargets(focusTarget, allEntities);
+    public override void DoAction(TargetInfo targetInfo, RuneCollection runes) => base.DoAction(targetInfo, runes);
+    public override int CalculateDamage(TargetInfo targetInfo, RuneCollection runes) => base.CalculateDamage(targetInfo, runes);
+    public override TargetInfo GetAffectedTargets(Entity focusTarget, List<Entity> allEntities) => base.GetAffectedTargets(focusTarget, allEntities);
 
     #endregion
 
@@ -24,13 +24,17 @@ public class Solitarist : Unit
         SubscribeTurnBeginEvent(PassiveHeal);
     }
 
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        UnsubscribeTurnBeginEvent(PassiveHeal);
+    }
+
     #endregion
 
     #region Private Methods
 
     private void PassiveHeal() => AddHealth(Mathf.Abs(passiveHealAmount));
-    private void OnDestroy() => UnsubscribeTurnBeginEvent(PassiveHeal);
-
+    
     #endregion
-
 }

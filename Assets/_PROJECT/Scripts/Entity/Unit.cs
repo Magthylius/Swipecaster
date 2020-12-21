@@ -9,20 +9,20 @@ public abstract class Unit : Entity
 
     #region Public Override Methods
 
-    public override void TakeDamage(Entity damager, int damageAmount) => AddHealth(-Mathf.Abs(damageAmount));
+    public override void TakeHit(Entity damager, int damageAmount) => InvokeHitEvent(damager, damageAmount);
     public override void RecieveHealing(Entity healer, int healAmount) => AddHealth(Math.Abs(healAmount));
 
-    public override void DoDamage(Entity focusTarget, List<Entity> affectedTargets, RuneCollection runes)
+    public override void DoAction(TargetInfo targetInfo, RuneCollection runes)
     {
-        int totalDamage = CalculateDamage(focusTarget, affectedTargets, runes);
+        int totalDamage = CalculateDamage(targetInfo, runes);
 
-        int nettDamage = totalDamage - focusTarget.GetDefence;
+        int nettDamage = totalDamage - targetInfo.Focus.GetDefence;
         if (nettDamage < 0) nettDamage = 0;
 
-        focusTarget.TakeDamage(this, nettDamage);
+        Projectile.AssignTargetDamage(this, targetInfo, nettDamage);
     }
 
-    public override int CalculateDamage(Entity focusTarget, List<Entity> affectedTargets, RuneCollection runes)
+    public override int CalculateDamage(TargetInfo targetInfo, RuneCollection runes)
     {
         int totalDamage = 0;
         var relations = RuneRelations.GetRelations(GetRuneType);
@@ -45,7 +45,18 @@ public abstract class Unit : Entity
 
         return totalDamage;
     }
-    public override List<Entity> GetAffectedTargets(Entity focusTarget, List<Entity> allEntities) => null;
+    public override TargetInfo GetAffectedTargets(Entity focusTarget, List<Entity> allEntities)
+        => projectile.GetTargets(focusTarget, allEntities);
+
+    #endregion
+
+    #region Protected Virtual Methods
+
+    protected virtual void TakeDamage(Entity damager, int damageAmount)
+    {
+        if (damager.AttackStatus != AttackStatus.Normal) return;
+        AddHealth(-Mathf.Abs(damageAmount));
+    }
 
     #endregion
 
@@ -55,6 +66,8 @@ public abstract class Unit : Entity
     {
         base.Awake();
         _currentHealth = _totalHealth;
+        SetProjectile(new CrowFlies());
+        SubscribeTurnEndEvent(ResetAttackStatus);
     }
 
     #endregion
@@ -63,6 +76,13 @@ public abstract class Unit : Entity
 
     protected int Round(float number) => Mathf.RoundToInt(number);
     protected int ToInt(bool statement) => Convert.ToInt32(statement);
+    protected virtual void OnDestroy() => UnsubscribeTurnEndEvent(ResetAttackStatus);
+    
+    #endregion
+
+    #region Private Methods
+
+    private void ResetAttackStatus() => SetAttackStatus(AttackStatus.Normal);
 
     #endregion
 }

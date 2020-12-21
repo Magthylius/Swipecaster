@@ -6,28 +6,14 @@ public class Debuffer : Unit
 {
     #region Public Override Methods
 
-    public override void TakeDamage(Entity damager, int damageAmount)
+    public override void TakeHit(Entity damager, int damageAmount) => base.TakeHit(damager, damageAmount);
+    public override void RecieveHealing(Entity healer, int healAmount) => base.RecieveHealing(healer, healAmount);
+    public override void DoAction(TargetInfo targetInfo, RuneCollection runes)
     {
-
+        base.DoAction(targetInfo, runes);
     }
-
-    public override void RecieveHealing(Entity healer, int healAmount)
-    {
-
-    }
-
-    public override void DoDamage(Entity focusTarget, List<Entity> affectedTargets, RuneCollection runes)
-    {
-        
-    }
-
-    public override List<Entity> GetAffectedTargets(Entity focusTarget, List<Entity> allEntities)
-    {
-        return null;
-    }
+    public override int CalculateDamage(TargetInfo targetInfo, RuneCollection runes) => base.CalculateDamage(targetInfo, runes);
+    public override TargetInfo GetAffectedTargets(Entity focusTarget, List<Entity> allEntities) => base.GetAffectedTargets(focusTarget, allEntities);
 
     #endregion
-
-
-
 }

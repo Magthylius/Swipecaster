@@ -5,14 +5,18 @@ using UnityEngine;
 public abstract class Entity : MonoBehaviour
 {
     [Header("General")]
-    [SerializeField] protected UnitObject baseUnit;
     [Range(1, 50), SerializeField] protected int _currentLevel;
-    protected int _currentRarity;
     [SerializeField] protected int _totalHealth;
     [SerializeField] protected int _totalAttack;
     [SerializeField] protected int _totalDefence;
     protected int _currentHealth;
+    protected int _currentRarity;
+
+    [Header("Attributes")]
     protected RuneType _runeType;
+    protected AttackStatus _attackStatus = AttackStatus.Normal;
+    protected Projectile projectile;
+    [SerializeField] protected UnitObject baseUnit;
 
     [Header("Stat Ratio Multipliers")]
     [SerializeField] protected float baseStatMultiplier;
@@ -28,11 +32,11 @@ public abstract class Entity : MonoBehaviour
 
     #region Public Abstract Methods
 
-    public abstract void TakeDamage(Entity damager, int damageAmount);
+    public abstract void TakeHit(Entity damager, int damageAmount);
     public abstract void RecieveHealing(Entity healer, int healAmount);
-    public abstract void DoDamage(Entity focusTarget, List<Entity> affectedTargets, RuneCollection runes);
-    public abstract int CalculateDamage(Entity focusTarget, List<Entity> affectedTargets, RuneCollection runes);
-    public abstract List<Entity> GetAffectedTargets(Entity focusTarget, List<Entity> allEntities);
+    public abstract void DoAction(TargetInfo targetInfo, RuneCollection runes);
+    public abstract int CalculateDamage(TargetInfo targetInfo, RuneCollection runes);
+    public abstract TargetInfo GetAffectedTargets(Entity focusTarget, List<Entity> allEntities);
 
     #endregion
 
@@ -49,6 +53,7 @@ public abstract class Entity : MonoBehaviour
 
     public static void SubscribeDeathEvent(Action method) => _deathEvent += method;
     public static void UnsubscribeDeathEvent(Action method) => _deathEvent -= method;
+    public static void InvokeDeathEvent() => _deathEvent?.Invoke();
 
     #endregion
 
@@ -56,12 +61,25 @@ public abstract class Entity : MonoBehaviour
 
     public void SubscribeGrazeEvent(Action<Entity, int> method) => _grazeEvent += method;
     public void UnsubscribeGrazeEvent(Action<Entity, int> method) => _grazeEvent -= method;
+    public void InvokeGrazeEvent(Entity a, int b) => _grazeEvent?.Invoke(a, b);
+
     public void SubscribeHitEvent(Action<Entity, int> method) => _hitEvent += method;
     public void UnsubscribeHitEvent(Action<Entity, int> method) => _hitEvent -= method;
+    public void InvokeHitEvent(Entity a, int b) => _hitEvent?.Invoke(a, b);
+
     public void SubscribeTurnBeginEvent(Action method) => _turnBegin += method;
     public void UnsubscribeTurnBeginEvent(Action method) => _turnBegin -= method;
+    public void InvokeTurnBeginEvent() => _turnBegin?.Invoke();
+
     public void SubscribeTurnEndEvent(Action method) => _turnEnd += method;
     public void UnsubscribeTurnEndEvent(Action method) => _turnEnd -= method;
+    public void InvokeTurnEndEvent() => _turnEnd?.Invoke();
+
+    public void SetAttackStatus(AttackStatus status) => _attackStatus = status;
+    public AttackStatus AttackStatus => _attackStatus;
+
+    public void SetProjectile(Projectile p) => projectile = p;
+    public Projectile Projectile => projectile;
 
     #endregion
 
@@ -156,3 +174,10 @@ public struct StatInfo
         this.baseStatCap = baseStatCap;
     }
 };
+
+public enum AttackStatus
+{
+    Normal = 0,
+    Deflected,
+    Reflected
+}
