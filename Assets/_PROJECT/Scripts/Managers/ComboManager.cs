@@ -32,6 +32,7 @@ public class ComboManager : MonoBehaviour
     RuneStorage gronRune = new RuneStorage(RuneType.GRON, 0);
     RuneStorage fyorRune = new RuneStorage(RuneType.FYOR, 0);
     RuneStorage tehkRune = new RuneStorage(RuneType.TEHK, 0);
+    RuneStorage khuaRune = new RuneStorage(RuneType.KHUA, 0);
 
     void Awake()
     {
@@ -66,7 +67,7 @@ public class ComboManager : MonoBehaviour
                 //slider.fillAmount = 1.0f;
                 
                 runeManager.SpawnDeactivate();
-                AssessRunes(turnBaseManger.GetCurrentCaster(),battleStageManager.GetEnemyTeam()[0]);
+                AssessRunes(turnBaseManger.GetCurrentCaster(), battleStageManager.GetEnemyTeam()[0]);
             }
         }
         else if (sliderAnim)
@@ -98,6 +99,9 @@ public class ComboManager : MonoBehaviour
             case RuneType.TEHK:
                 tehkRune.amount += comboList.Count;
                 break;
+            case RuneType.KHUA:
+                khuaRune.amount += comboList.Count;
+                break;
         }
         
         for (int i = 0; i < comboList.Count; i++)
@@ -113,8 +117,13 @@ public class ComboManager : MonoBehaviour
     void AssessRunes(GameObject damagerObject, GameObject targetObject)
     {
         //! Update infomanager with UpdateConnectionUI(RuneStorage storage)
-        print("FireRune: " + fyorRune.amount + "GroundRune: " + gronRune.amount + "ElectricRune: " + tehkRune.amount);
-        
+        print("Fyor: " + fyorRune.amount + " Gron: " + gronRune.amount + " Tehk: " + tehkRune.amount + " Khua: " + khuaRune.amount);
+        infoManager.UpdateConnectionUI(fyorRune);
+        infoManager.UpdateConnectionUI(gronRune);
+        infoManager.UpdateConnectionUI(tehkRune);
+        infoManager.UpdateConnectionUI(khuaRune);
+
+
         var battleStage = BattlestageManager.instance;
         if (battleStage == null) { isStart = false; return; }
 
