@@ -29,6 +29,7 @@ public class BattlestageManager : MonoBehaviour
 
     [Header("Target Selection")]
     [SerializeField] private GameObject selectedTarget = null;
+    private Camera _mainCamera = null;
     private List<Collider2D> targets = new List<Collider2D>();
 
     void Awake()
@@ -46,13 +47,24 @@ public class BattlestageManager : MonoBehaviour
         roomManager = RoomManager.Instance;
         InitPositions();
         GetEnemyColliders();
+        _mainCamera = Camera.main;
     }
 
     private void Update()
     {
         if(Input.GetMouseButtonDown(0))
         {
-            
+            if(Physics.Raycast(_mainCamera.ScreenPointToRay(Input.mousePosition), out var hitInfo))
+            {
+                if(hitInfo.transform.gameObject.CompareTag("Foe"))
+                {
+                    print("Foe");
+                }
+            }
+            else
+            {
+                print("No");
+            }
         }
     }
 
