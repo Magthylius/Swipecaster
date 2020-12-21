@@ -93,9 +93,9 @@ public abstract class Unit : Entity
 
     protected virtual void OnDestroy()
     {
-        UnsubscribeTurnEndEvent(ResetAttackStatus);
-        UnsubscribeTurnEndEvent(DeductStatusEffectTurns);
         UnsubscribeHitEvent(TakeDamage);
+        UnsubscribeTurnEndEvent(ResetAttackStatus);
+        UnsubscribeTurnEndEvent(PostStatusEffect);
     }
 
     #endregion
@@ -108,7 +108,7 @@ public abstract class Unit : Entity
         SetProjectile(new CrowFlies());
         SubscribeHitEvent(TakeDamage);
         SubscribeTurnEndEvent(ResetAttackStatus);
-        SubscribeTurnEndEvent(DeductStatusEffectTurns);
+        SubscribeTurnEndEvent(PostStatusEffect);
     }
 
     #endregion
@@ -122,7 +122,7 @@ public abstract class Unit : Entity
 
     #region Private Methods
 
-    private void DeductStatusEffectTurns() => _statusEffects.ForEach(i => i.DoPostEffect(this));
+    private void PostStatusEffect() => _statusEffects.ForEach(i => i.DoPostEffect(this));
     private void ResetAttackStatus() => SetAttackStatus(AttackStatus.Normal);
 
     #endregion
