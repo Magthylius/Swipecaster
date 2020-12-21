@@ -94,7 +94,9 @@ public class BattlestageManager : MonoBehaviour
                 }
             }
 
-            for (int i = 0; i < tempRoom.maxEnemySize; i++)
+            int enemySize = UnityEngine.Random.Range(1, tempRoom.maxEnemySize);
+
+            for (int i = 0; i < enemySize; i++)
             {
                 int randomAvailableEnemy = UnityEngine.Random.Range(0, availableEnemyType.Count);
                 GameObject loadOutUnit = availableEnemyType[randomAvailableEnemy].enemySO.FullArtPrefab;
