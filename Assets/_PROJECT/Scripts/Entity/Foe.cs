@@ -4,7 +4,21 @@ using UnityEngine;
 
 public class Foe : Entity
 {
-    public override void TakeHit(Entity damager, int damageAmount) { AddHealth(-10); }
+    BattlestageManager battleStageManager;
+    protected virtual void Start()
+    {
+        battleStageManager = BattlestageManager.instance;
+    }
+
+    public override void TakeHit(Entity damager, int damageAmount) 
+    { 
+        AddHealth(-10); 
+        if(GetCurrentHealth<=0)
+        {
+            battleStageManager.GetEnemyTeam().Remove(gameObject);
+            Destroy(gameObject);
+        }
+    }
     public override void RecieveHealing(Entity healer, int healAmount) { }
     public override void DoAction(TargetInfo targetInfo, RuneCollection runes) { }
     public override int CalculateDamage(TargetInfo targetInfo, RuneCollection runes) => -1;
