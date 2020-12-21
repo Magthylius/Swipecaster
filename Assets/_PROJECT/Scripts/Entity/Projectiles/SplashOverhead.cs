@@ -3,18 +3,19 @@
 public class SplashOverhead : Projectile
 {
     private float _splashDamagePercent;
-
     public void SetSplashDamagePercent(float percent) => _splashDamagePercent = percent;
 
     public override void AssignTargetDamage(Entity damager, TargetInfo info, int damage)
     {
         if (info.Focus == null) return;
 
+        float subtotalDamage = damage * _damageMultiplier;
+
         //! Damage
-        info.Focus.TakeHit(damager, damage);
+        info.Focus.TakeHit(damager, Round(subtotalDamage));
 
         //! Collateral
-        info.Collateral.ForEach(i => i.TakeHit(damager, Round(damage * _splashDamagePercent)));
+        info.Collateral.ForEach(i => i.TakeHit(damager, Round(subtotalDamage * _splashDamagePercent)));
     }
 
     public override TargetInfo GetTargets(Entity focus, List<Entity> allEntities)
@@ -31,6 +32,13 @@ public class SplashOverhead : Projectile
         return new TargetInfo(focus, collateral, grazed);
     }
 
-    public SplashOverhead() => _splashDamagePercent = 0.3f;
-    public SplashOverhead(float splashDamagePercent) => _splashDamagePercent = splashDamagePercent;
+    public SplashOverhead()
+    {
+        _damageMultiplier = 1.0f;
+        _splashDamagePercent = 0.3f;
+    }
+    public SplashOverhead(float damageMultiplier, float splashDamagePercent) : base(damageMultiplier)
+    {
+        _splashDamagePercent = splashDamagePercent;
+    }
 }

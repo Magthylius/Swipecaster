@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class SingleTarget : Unit
 {
-    [SerializeField] private float damageToHealPercent;
-
     #region Public Override Methods
 
     public override void TakeHit(Entity damager, int damageAmount) => base.TakeHit(damager, damageAmount);
     public override void RecieveHealing(Entity healer, int healAmount) => base.RecieveHealing(healer, healAmount);
     public override void DoAction(TargetInfo targetInfo, RuneCollection runes)
     {
+        UpdateStatusEffects();
         var battleStage = BattlestageManager.instance;
         if (battleStage == null) return;
 

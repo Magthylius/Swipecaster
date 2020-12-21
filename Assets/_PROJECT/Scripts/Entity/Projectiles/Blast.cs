@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 public class Blast : Projectile
 {
-    private float _damageMultiplier;
-
     public override void AssignTargetDamage(Entity damager, TargetInfo info, int damage)
     {
         if (info.Focus == null) return;
 
+        float subtotalDamage = damage * _damageMultiplier;
+
         //! Damage
-        int totalDamage = Round(damage * _damageMultiplier);
-        info.Focus.TakeHit(damager, totalDamage);
-        info.Collateral.ForEach(i => i.TakeHit(damager, totalDamage));
+        info.Focus.TakeHit(damager, Round(subtotalDamage));
+        info.Collateral.ForEach(i => i.TakeHit(damager, Round(subtotalDamage)));
     }
 
     public override TargetInfo GetTargets(Entity focus, List<Entity> allEntities)
@@ -33,5 +31,5 @@ public class Blast : Projectile
     }
 
     public Blast() => _damageMultiplier = 1.0f;
-    public Blast(float damageMultiplier) => _damageMultiplier = damageMultiplier;
+    public Blast(float damageMultiplier) : base(damageMultiplier) { }
 }

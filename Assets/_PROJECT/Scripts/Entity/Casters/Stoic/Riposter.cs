@@ -5,7 +5,6 @@ using UnityEngine;
 public class Riposter : Unit
 {
     private Entity _recentDamager = null;
-    [SerializeField] private float reboundPercent = 0.2f;
 
     #region Public Override Methods
 

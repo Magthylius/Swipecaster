@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Solitarist : Unit
 {
-    [SerializeField] private int passiveHealAmount = 100;
-
     #region Public Override Methods
 
     public override void TakeHit(Entity damager, int damageAmount) => base.TakeHit(damager, damageAmount);

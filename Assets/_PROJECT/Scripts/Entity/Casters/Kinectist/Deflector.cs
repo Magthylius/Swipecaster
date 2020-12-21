@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Deflector : Unit
 {
-    [SerializeField, Range(0.0f, 1.0f)] private float probability = 0.05f;
     private bool triggerOnce = false;
 
     #region Public Override Methods
