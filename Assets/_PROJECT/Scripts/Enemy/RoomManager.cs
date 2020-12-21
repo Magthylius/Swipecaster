@@ -6,9 +6,9 @@ public class RoomManager : MonoBehaviour
     public static RoomManager Instance;
 
     [SerializeField] private int maxLoadOutSize;
-    [SerializeField] private List<RoomScriptable> rooms;
-
-    public List<RoomScriptable> Rooms => rooms;
+    [SerializeField] private bool isRandom;
+    [SerializeField] private List<RoomSetUp> rooms;
+    public List<RoomSetUp> Rooms => rooms;
     private void Awake()
     {
         if (Instance != null) Destroy(gameObject);
@@ -17,37 +17,22 @@ public class RoomManager : MonoBehaviour
 
     private void Start()
     {
-        int listsize = Random.Range(1, maxLoadOutSize);
-
+   
     }
 }
 
-/*public static Enemy Instance;
-
-private int _experience;
-private int _level;
-
-
-[SerializeField] private int maxLoadOutSize;
-[SerializeField] private GameObject inventoryHolder;
-[SerializeField] private List<UnitEntry> loadOut;
-[SerializeField] private List<UnitEntry> enemyLibrary;
-public int Experience => _experience;
-public int Level => _level;
-public List<UnitEntry> UnitLoadOut => loadOut;
-public List<UnitEntry> EnemyLibrary => enemyLibrary;
-private void Awake()
+[System.Serializable]
+public struct RoomSetUp
 {
-    if (Instance != null) Destroy(gameObject);
-    else Instance = this;
-}
+    public RoomScriptable roomSO;
+    public int maxEnemySize;
+    public bool isRandom;
 
-private void Start()
-{
-    int listsize = Random.Range(1, maxLoadOutSize);
-    loadOut = new List<UnitEntry>(listsize);
-    for (int i = 0; i < loadOut.Count; i++)
+    public RoomSetUp(RoomScriptable roomSO, int maxEnemySize, bool isRandom)
     {
-        loadOut[i] = enemyLibrary[Random.Range(0, enemyLibrary.Count)];
+        this.roomSO = roomSO;
+        this.maxEnemySize = maxEnemySize;
+        this.isRandom = isRandom;
     }
-}*/
+}
+
