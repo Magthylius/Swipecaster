@@ -30,7 +30,6 @@ public class BattlestageManager : MonoBehaviour
     [Header("Target Selection")]
     [SerializeField] private GameObject selectedTarget = null;
     private Camera _mainCamera = null;
-    private List<Collider2D> targets = new List<Collider2D>();
 
     void Awake()
     {
@@ -46,7 +45,6 @@ public class BattlestageManager : MonoBehaviour
         player = Player.Instance;
         roomManager = RoomManager.Instance;
         InitPositions();
-        GetEnemyColliders();
         _mainCamera = Camera.main;
     }
 
@@ -56,14 +54,12 @@ public class BattlestageManager : MonoBehaviour
         {
             if(Physics.Raycast(_mainCamera.ScreenPointToRay(Input.mousePosition), out var hitInfo))
             {
-                if(hitInfo.transform.gameObject.CompareTag("Foe"))
+                GameObject o = hitInfo.transform.gameObject;
+                if(o.CompareTag("Foe"))
                 {
-                    print("Foe");
+                    if (selectedTarget == o) selectedTarget = null;
+                    else selectedTarget = o;
                 }
-            }
-            else
-            {
-                print("No");
             }
         }
     }
@@ -99,16 +95,6 @@ public class BattlestageManager : MonoBehaviour
         }
 
     }
-    
-    private void GetEnemyColliders()
-    {
-        for(int i = 0; i < enemyTeam.Count; i++)
-        {
-            var e = enemyTeam[i];
-            var collider = e.GetComponent<Collider2D>();
-            if(collider != null) targets.Add(collider);
-        }
-    }
 
     #region Accessors
 
@@ -117,6 +103,7 @@ public class BattlestageManager : MonoBehaviour
 
     public GameObject[] GetCastersTeam() => playerTeam;
     public List<GameObject> GetEnemyTeam() => enemyTeam;
+    public GameObject GetSelectedTarget() => selectedTarget;
 
     #endregion
 

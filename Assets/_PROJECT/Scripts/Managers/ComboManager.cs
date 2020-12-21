@@ -65,7 +65,10 @@ public class ComboManager : MonoBehaviour
                 sliderAnim = true;
                 timer = countdownTimer;
                 //slider.fillAmount = 1.0f;
-                
+
+                GameObject targetObject = battleStageManager.GetSelectedTarget();
+                if (targetObject == null) targetObject = battleStageManager.GetEnemyTeam()[0];
+
                 runeManager.SpawnDeactivate();
                 AssessRunes(turnBaseManger.GetCurrentCaster(), battleStageManager.GetEnemyTeam()[0]);
             }
@@ -123,17 +126,15 @@ public class ComboManager : MonoBehaviour
         infoManager.UpdateConnectionUI(tehkRune);
         infoManager.UpdateConnectionUI(khuaRune);
 
-
-        var battleStage = BattlestageManager.instance;
-        if (battleStage == null) { isStart = false; return; }
+        if (battleStageManager == null) { ResetRunes(); isStart = false; return; }
 
         Entity damager = damagerObject.GetComponent<Entity>();
         Entity target = targetObject.GetComponent<Entity>();
         List<Entity> allEntities = new List<Entity>();
 
-        for(int i = 0; i < battleStage.rightSidePos.Length; i++)
+        for(int i = 0; i < battleStageManager.rightSidePos.Length; i++)
         {
-            Entity e = battleStage.rightSidePos[i].GetComponent<Entity>();
+            Entity e = battleStageManager.rightSidePos[i].GetComponent<Entity>();
             if (e == null) continue;
 
             allEntities.Add(e);
@@ -152,6 +153,7 @@ public class ComboManager : MonoBehaviour
         gronRune.amount = 0;
         fyorRune.amount = 0;
         tehkRune.amount = 0;
+        khuaRune.amount = 0;
     }
 
     #region Accessors
