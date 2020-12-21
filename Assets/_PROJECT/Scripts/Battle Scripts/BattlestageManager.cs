@@ -22,7 +22,7 @@ public class BattlestageManager : MonoBehaviour
     public GameObject heroes;
 
     private Player player;
-    private Enemy enemy;
+    private RoomManager roomManager;
 
     GameObject[] playerTeam = new GameObject[4];
     List<GameObject> enemyTeam = new List<GameObject>();
@@ -40,7 +40,7 @@ public class BattlestageManager : MonoBehaviour
     private void Start()
     {
         player = Player.Instance;
-        enemy = Enemy.Instance;
+        roomManager = RoomManager.Instance;
         InitPositions();
     }
 
@@ -60,14 +60,15 @@ public class BattlestageManager : MonoBehaviour
             //GameObject temp = Instantiate(loadOutUnit, leftSidePos[i].position, Quaternion.identity, leftSidePos[i]);
             //playerTeam[i] = temp;
         }
-        
+
         //! Set Enemy's Position
-        for (int i = 0; i < enemy.UnitLoadOut.Count; i++)
+        for (int i = 0; i < roomManager.Rooms[0].enemies.Count; i++)
         {
-            GameObject loadOutUnit = enemy.UnitLoadOut[i].BaseUnit.FullArtPrefab;
+            GameObject loadOutUnit = roomManager.Rooms[0].enemies[i].enemySO.FullArtPrefab;
+            loadOutUnit.GetComponent<Foe>().SetCurrentLevel(roomManager.Rooms[0].enemies[i].level);
             rightSidePos[i].localPosition = new Vector2(rightSidePos[i].localPosition.x + (heroGap * i),
                 rightSidePos[i].localPosition.y);
-            
+
             //! Bottom codes should not be use for actual gameplay
             GameObject temp = Instantiate(loadOutUnit, rightSidePos[i].position, Quaternion.identity, rightSidePos[i]);
             enemyTeam.Add(temp);

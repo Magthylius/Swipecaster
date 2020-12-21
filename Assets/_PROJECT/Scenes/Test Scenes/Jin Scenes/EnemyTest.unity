@@ -6103,6 +6103,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowMouse: 1
+  leftMarginObj: {fileID: 0}
+  rightMarginObj: {fileID: 0}
   initialSpawn: {fileID: 634921706}
   referenceScale: {fileID: 0}
   castingGroup: {fileID: 0}
@@ -7186,6 +7188,7 @@ MonoBehaviour:
   runeDamage: 10
   countdownTimer: 5
   slideTimer: {fileID: 1492741540}
+  slider: {fileID: 0}
 --- !u!1 &2124983771
 GameObject:
   m_ObjectHideFlags: 0
@@ -7315,22 +7318,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1465745499963879119, guid: 2c8e33731643177499539917e4fbc416, type: 3}
-      propertyPath: _totalAttack
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1465745499963879119, guid: 2c8e33731643177499539917e4fbc416, type: 3}
-      propertyPath: _totalHealth
-      value: 35842
-      objectReference: {fileID: 0}
-    - target: {fileID: 1465745499963879119, guid: 2c8e33731643177499539917e4fbc416, type: 3}
-      propertyPath: _currentLevel
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1465745499963879119, guid: 2c8e33731643177499539917e4fbc416, type: 3}
-      propertyPath: _totalDefence
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1465745501014420392, guid: 2c8e33731643177499539917e4fbc416, type: 3}
       propertyPath: m_Name
       value: EnemyManager

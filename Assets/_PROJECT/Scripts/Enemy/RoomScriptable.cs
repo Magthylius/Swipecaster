@@ -14,12 +14,12 @@ public class RoomScriptable : ScriptableObject
 [System.Serializable]
 public struct EnemyData
 {
-    public UnitObject enemy;
+    public UnitObject enemySO;
     public int level;
 
-    public EnemyData(UnitObject enemy, int level)
+    public EnemyData(UnitObject enemySO, int level)
     {
-        this.enemy = enemy;
+        this.enemySO = enemySO;
         this.level = level;
     }
 }
