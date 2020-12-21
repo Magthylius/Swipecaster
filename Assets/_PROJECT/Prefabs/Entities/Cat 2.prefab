@@ -131,17 +131,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 9017588005580383243}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ec7154245caa9b408c6e935cf8ca118, type: 3}
+  m_Script: {fileID: 11500000, guid: a48f311a0c7eacb4fb246ca64f95c214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseUnit: {fileID: 11400000, guid: 9695ed1ed58629d4c9348597e62f8536, type: 2}
   _currentLevel: 1
   _totalHealth: 415
   _totalAttack: 316
   _totalDefence: 152
+  baseUnit: {fileID: 11400000, guid: 9695ed1ed58629d4c9348597e62f8536, type: 2}
   baseStatMultiplier: 0.33333334
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
+  runeAdvantageMultiplier: 1.5
+  runeWeaknessMultiplier: 0.5
+  damageMultiplier: 1
+  passiveHealAmount: 0
+  damageToHealPercent: 0
+  reboundPercent: 0.2
+  probability: 0.05
 --- !u!95 &9017588005580383242
 Animator:
   serializedVersion: 3

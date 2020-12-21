@@ -22,9 +22,9 @@ public abstract class Entity : MonoBehaviour
     [SerializeField] protected UnitObject baseUnit;
 
     [Header("Stat Ratio Multipliers")]
-    [SerializeField] protected float baseStatMultiplier;
-    [SerializeField] protected float paraCapMultiplier;
-    [SerializeField] protected float baseStatCapMultiplier;
+    [SerializeField] protected float baseStatMultiplier = 1/3f;
+    [SerializeField] protected float paraCapMultiplier = 0.6f;
+    [SerializeField] protected float baseStatCapMultiplier = 0.4f;
 
     [Header("Action Events")]
     protected static Action _deathEvent;
@@ -47,10 +47,18 @@ public abstract class Entity : MonoBehaviour
 
     public virtual int GetBaseAttack => _totalAttack;
     public virtual int GetCurrentAttack => _currentAttack;
-    public virtual void AddCurrentAttack(int amount) => _currentAttack += amount;
+    public virtual void AddCurrentAttack(int amount)
+    {
+        _currentAttack += amount;
+        if (_currentAttack < 0) _currentAttack = 0;
+    }
     public virtual int GetBaseDefence => _totalDefence;
     public virtual int GetCurrentDefence => _currentDefence;
-    public virtual void AddCurrentDefence(int amount) => _currentDefence += amount;
+    public virtual void AddCurrentDefence(int amount)
+    {
+        _currentDefence += amount;
+        if (_currentDefence < 1) _currentDefence = 1;
+    }
     public virtual int GetMaxHealth => _totalHealth;
     public virtual int GetCurrentHealth => _currentHealth;
 
