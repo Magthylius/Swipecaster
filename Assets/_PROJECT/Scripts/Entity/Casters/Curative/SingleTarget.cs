@@ -17,7 +17,7 @@ public class SingleTarget : Unit
         int totalDamage = CalculateDamage(targetInfo, runes);
         int lowestHp = int.MaxValue;
         Entity target = null;
-        Transform[] party = battleStage.leftSidePos;
+        Transform[] party = battleStage.casterPositions;
         for(int i = 0; i < party.Length; i++)
         {
             var entity = party[i].GetChild(0).GetComponent<Entity>();

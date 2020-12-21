@@ -18,7 +18,7 @@ public class MultiTarget : Unit
 
         int totalDamage = CalculateDamage(targetInfo, runes);
         
-        Transform[] party = battleStage.leftSidePos;
+        Transform[] party = battleStage.casterPositions;
         List<Entity> healList = new List<Entity>();
         for(int i = 0; i < party.Length; i++)
         {
