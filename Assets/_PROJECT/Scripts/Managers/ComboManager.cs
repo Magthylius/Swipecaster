@@ -71,6 +71,8 @@ public class ComboManager : MonoBehaviour
 
                 runeManager.SpawnDeactivate();
                 AssessRunes(turnBaseManger.GetCurrentCaster(), targetObject);
+                EnemyAttack(battleStageManager.GetCurrentEnemy(0), turnBaseManger.GetCurrentCaster());
+
             }
         }
         else if (sliderAnim)
@@ -149,6 +151,26 @@ public class ComboManager : MonoBehaviour
 
         ResetRunes();
         isStart = false;
+    }
+
+    void EnemyAttack(GameObject damagerObject, GameObject targetObject)
+    {
+        if (battleStageManager == null) { return; }
+        Entity damager = damagerObject.GetComponent<Entity>();
+        Entity target = targetObject.GetComponent<Entity>();
+        List<Entity> allEntities = new List<Entity>();
+
+        for (int i = 0; i < battleStageManager.casterPositions.Length; i++)
+        {
+            Entity e = battleStageManager.casterPositions[i].GetComponent<Entity>();
+            if (e == null) continue;
+
+            allEntities.Add(e);
+        }
+
+        TargetInfo targetInfo = damager.GetAffectedTargets(target, allEntities);
+        RuneCollection collection = new RuneCollection(gronRune, fyorRune, tehkRune, khuaRune, ayroRune);
+        damager.DoAction(targetInfo, collection);
     }
 
     private void ResetRunes()

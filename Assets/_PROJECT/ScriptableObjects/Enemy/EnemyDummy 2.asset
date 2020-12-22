@@ -16,8 +16,8 @@ MonoBehaviour:
   BaseRarity: 5
   MaxLevel: 50
   MaxHealth: 10
-  MaxAttack: 1
-  MaxDefence: 1
+  MaxAttack: 900
+  MaxDefence: 20
   CharacterDescription: Enemy Dummy
   SkillDescription: He is the dumb dumb 2
   FullArtPrefab: {fileID: 5174482566258772389, guid: fb303c6849be88749b1d91341ddabf10, type: 3}
