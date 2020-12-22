@@ -30,7 +30,8 @@ public abstract class StatusEffect
 
     #region Virtual Methods
 
-    public virtual float GetStatusDamageModifier() => 0.0f;
+    public virtual float GetStatusDamageOutModifier() => 0.0f;
+    public virtual float GetStatusDamageInModifier() => 0.0f;
     public virtual void DeductRemainingTurns()
     {
         if (ShouldClear() || EffectIsPermanent) return;

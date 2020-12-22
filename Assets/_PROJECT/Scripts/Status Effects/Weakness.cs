@@ -17,7 +17,7 @@ public class Weakness : StatusEffect
     public override void DoPreEffect(Entity target) { }
     public override void DoEffectOnAction(Entity target) { }
     public override void DoPostEffect(Entity target) => DeductRemainingTurns();
-    public override float GetStatusDamageModifier() => DamageMultiplier;
+    public override float GetStatusDamageInModifier() => DamageMultiplier;
     protected override int GetCountOfType(List<StatusEffect> statusList) => statusList.OfType<Weakness>().Count();
 
     #endregion
