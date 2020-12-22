@@ -46,7 +46,7 @@ public class Riposter : Unit
         PrimeRecentDamager(damager);
         damager.TakeHit(this, Round(totalDamage * reboundPercent));
     }
-    private bool CanRebound(Entity damager) => _recentDamager != damager;
+    private bool CanRebound(Entity damager) => _recentDamager != damager && damager != null;
     private void PrimeRecentDamager(Entity damager) => _recentDamager = damager;
     private void ResetRecentDamager() => _recentDamager = null;
 

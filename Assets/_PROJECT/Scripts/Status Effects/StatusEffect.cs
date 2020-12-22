@@ -30,7 +30,8 @@ public abstract class StatusEffect
 
     #region Virtual Methods
 
-    public virtual float GetStatusDamageModifier() => 0.0f;
+    public virtual float GetStatusDamageOutModifier() => 0.0f;
+    public virtual float GetStatusDamageInModifier() => 0.0f;
     public virtual void DeductRemainingTurns()
     {
         if (ShouldClear() || EffectIsPermanent) return;
@@ -43,7 +44,7 @@ public abstract class StatusEffect
     #region Public Methods
 
     public bool ShouldClear() => _remainingTurns <= 0 && !EffectIsPermanent;
-    public bool ProbabilityHit(List<StatusEffect> statuses) => Random.Range(0.0f, 1.0f) < CalculateResistance(GetCountOfType(statuses));
+    public bool ProbabilityHit(List<StatusEffect> statuses) => Random.Range(0.0f, 1.0f - float.Epsilon) < CalculateResistance(GetCountOfType(statuses));
 
     #endregion
 

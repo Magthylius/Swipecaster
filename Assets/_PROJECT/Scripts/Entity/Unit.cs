@@ -63,11 +63,10 @@ public abstract class Unit : Entity
             totalDamage += GetCurrentAttack * r.amount;
         }
 
-        float statusMultiplier = 1.0f;
-        for(int i = 0; i < GetStatusEffects.Count; i++) statusMultiplier += GetStatusEffects[i].GetStatusDamageModifier();
-        totalDamage = Round(totalDamage * statusMultiplier);
-
-        return totalDamage;
+        float statusOutMultiplier = 1.0f;
+        for(int i = 0; i < GetStatusEffects.Count; i++) statusOutMultiplier += GetStatusEffects[i].GetStatusDamageOutModifier();
+        
+        return Mathf.Abs(Round(totalDamage * statusOutMultiplier));
     }
     public override TargetInfo GetAffectedTargets(Entity focusTarget, List<Entity> allEntities)
         => GetProjectile.GetTargets(focusTarget, allEntities);
@@ -79,7 +78,10 @@ public abstract class Unit : Entity
     protected virtual void TakeDamage(Entity damager, int damageAmount)
     {
         if (damager.GetAttackStatus != AttackStatus.Normal) return;
-        AddHealth(-Mathf.Abs(damageAmount));
+        float statusInMultiplier = 1.0f;
+        for (int i = 0; i < GetStatusEffects.Count; i++) statusInMultiplier += GetStatusEffects[i].GetStatusDamageInModifier();
+        
+        AddHealth(-Mathf.Abs(Round(damageAmount * statusInMultiplier)));
     }
 
     protected virtual void UpdatePreStatusEffects()
@@ -122,7 +124,7 @@ public abstract class Unit : Entity
 
     #region Protected Methods
 
-    protected bool ProbabilityHit => Random.Range(0.0f, 1.0f) < probability;
+    protected bool ProbabilityHit => Random.Range(0.0f, 1.0f - float.Epsilon) < probability;
     protected int Round(float number) => Mathf.RoundToInt(number);
     protected int ToInt(bool statement) => Convert.ToInt32(statement);
     
