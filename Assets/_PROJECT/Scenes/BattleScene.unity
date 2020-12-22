@@ -521,6 +521,7 @@ MonoBehaviour:
   - {fileID: 413978741}
   heroes: {fileID: 1342186363962593935, guid: 7bf6f4e9267a7c04199a005ccbddd474, type: 3}
   selectedTarget: {fileID: 0}
+  enableEntityDebugging: 1
 --- !u!4 &60006155
 Transform:
   m_ObjectHideFlags: 0
