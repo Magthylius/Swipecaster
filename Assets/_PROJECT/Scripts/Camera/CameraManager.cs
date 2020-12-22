@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CameraManager : MonoBehaviour
 {
@@ -17,12 +18,15 @@ public class CameraManager : MonoBehaviour
 
     Vector3 touchPos;
 
+    bool isInBound { get; set; }
     
 
     void LateUpdate()
     {
-        CheckIsWithinCamBound();
-        
+
+        if (!isInBound)
+            return;
+
         CameraPanning();
         CameraZoom();
     }
@@ -76,8 +80,7 @@ public class CameraManager : MonoBehaviour
         }
     }
 
-    void CheckIsWithinCamBound()
-    {
-        print(cam.ViewportToWorldPoint(Input.mousePosition));
-    }
+    public void IsInBoundary() => isInBound = true;
+    public void IsNotInBound() => isInBound = false;
+
 }
