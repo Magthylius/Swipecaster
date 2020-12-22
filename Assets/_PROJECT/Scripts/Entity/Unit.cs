@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public abstract class Unit : Entity
 {
@@ -79,8 +80,7 @@ public abstract class Unit : Entity
 
     protected virtual void UpdatePreStatusEffects()
     {
-        _currentAttack = GetCurrentAttack;
-        _currentDefence = GetCurrentDefence;
+        ResetAtkDefStats();
 
         for(int i = _statusEffects.Count - 1; i >= 0; i--)
         {
@@ -116,6 +116,7 @@ public abstract class Unit : Entity
 
     #region Protected Methods
 
+    protected bool ProbabilityHit => Random.Range(0.0f, 1.0f) <= probability;
     protected int Round(float number) => Mathf.RoundToInt(number);
     protected int ToInt(bool statement) => Convert.ToInt32(statement);
     

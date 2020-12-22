@@ -150,6 +150,12 @@ public abstract class Entity : MonoBehaviour
 
     protected virtual void OnValidate() => CalculateActualStats();
 
+    protected virtual void ResetAtkDefStats()
+    {
+        _currentAttack = GetBaseAttack;
+        _currentDefence = GetBaseDefence;
+    }
+
     #endregion
 
     #region Protected Methods

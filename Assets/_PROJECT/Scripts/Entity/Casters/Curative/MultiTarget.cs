@@ -12,7 +12,6 @@ public class MultiTarget : Unit
     public override void RecieveHealing(Entity healer, int healAmount) => base.RecieveHealing(healer, healAmount);
     public override void DoAction(TargetInfo targetInfo, RuneCollection runes)
     {
-        UpdatePreStatusEffects();
         var battleStage = BattlestageManager.instance;
         if (battleStage == null) return;
 

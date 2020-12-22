@@ -50,7 +50,5 @@ public class Deflector : Unit
 
     private void ResetTrigger() => triggerOnce = false;
 
-    private bool ProbabilityHit => Random.Range(0.0f, 1.0f) <= probability;
-
     #endregion
 }
