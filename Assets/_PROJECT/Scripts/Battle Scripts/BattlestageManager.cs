@@ -35,6 +35,9 @@ public class BattlestageManager : MonoBehaviour
     [SerializeField] private GameObject selectedTarget = null;
     private Camera _mainCamera = null;
 
+    [Header("Debug")]
+    public bool enableEntityDebugging = false;
+
     void Awake()
     {
         if (instance != null)
@@ -50,6 +53,11 @@ public class BattlestageManager : MonoBehaviour
         roomManager = RoomManager.Instance;
         InitPositions();
         _mainCamera = Camera.main;
+
+        if (enableEntityDebugging)
+        {
+            Debug.LogWarning("BattlestageManager: Debugging Enabled");
+        }
     }
 
     private void Update()
@@ -67,7 +75,11 @@ public class BattlestageManager : MonoBehaviour
             }
         }
 
-        //if (Input.GetKeyDown(KeyCode.Tab)) SpawnRandomEntityLeft();
+        if (enableEntityDebugging)
+        {
+            if (Input.GetKeyDown(KeyCode.Tab)) SpawnRandomEntityLeft();
+            if (Input.GetKeyDown(KeyCode.Backspace)) SpawnRandomEntityRight();
+        }
     }
 
     public void RegroupAllPositons(bool instant)
