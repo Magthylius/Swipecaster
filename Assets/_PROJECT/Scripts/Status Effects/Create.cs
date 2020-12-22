@@ -20,6 +20,5 @@ namespace Create
                 new Poison().GetType(),
                 new Weakness().GetType()
             };
-
     }
 }
