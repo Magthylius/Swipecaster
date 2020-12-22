@@ -7,7 +7,8 @@ public abstract class StatusEffect
     protected int _remainingTurns;
     public int RemainingTurns => _remainingTurns;
 
-    public abstract void DoImmediateEffect(Entity target);
+    public abstract void DoPreEffect(Entity target);
+    public abstract void DoEffectOnAction(Entity target);
     public abstract void DoPostEffect(Entity target);
     public virtual void DeductRemainingTurns()
     {

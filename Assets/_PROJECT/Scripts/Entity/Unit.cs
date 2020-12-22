@@ -33,7 +33,6 @@ public abstract class Unit : Entity
 
     public override void DoAction(TargetInfo targetInfo, RuneCollection runes)
     {
-        UpdateStatusEffects();
         int totalDamage = Round(CalculateDamage(targetInfo, runes) * damageMultiplier);
 
         int nettDamage = totalDamage - targetInfo.Focus.GetCurrentDefence;
@@ -78,17 +77,17 @@ public abstract class Unit : Entity
         AddHealth(-Mathf.Abs(damageAmount));
     }
 
-    protected virtual void UpdateStatusEffects()
+    protected virtual void UpdatePreStatusEffects()
     {
-        _currentAttack = GetBaseAttack;
-        _currentDefence = GetBaseDefence;
+        _currentAttack = GetCurrentAttack;
+        _currentDefence = GetCurrentDefence;
 
         for(int i = _statusEffects.Count - 1; i >= 0; i--)
         {
             if(_statusEffects[i].ShouldClear()) _statusEffects.RemoveAt(i);
         }
 
-        _statusEffects.ForEach(j => j.DoImmediateEffect(this));
+        _statusEffects.ForEach(j => j.DoPreEffect(this));
     }
 
     protected virtual void OnDestroy()
@@ -96,6 +95,7 @@ public abstract class Unit : Entity
         UnsubscribeHitEvent(TakeDamage);
         UnsubscribeTurnEndEvent(ResetAttackStatus);
         UnsubscribeTurnEndEvent(PostStatusEffect);
+        UnsubscribeTurnBeginEvent(UpdatePreStatusEffects);
     }
 
     #endregion
@@ -109,6 +109,7 @@ public abstract class Unit : Entity
         SubscribeHitEvent(TakeDamage);
         SubscribeTurnEndEvent(ResetAttackStatus);
         SubscribeTurnEndEvent(PostStatusEffect);
+        SubscribeTurnBeginEvent(UpdatePreStatusEffects);
     }
 
     #endregion

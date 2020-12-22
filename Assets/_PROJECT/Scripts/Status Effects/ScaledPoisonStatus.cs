@@ -6,7 +6,8 @@ public class ScaledPoisonStatus : StatusEffect
     private float _maxHealthPercent;
     public float MaxHealthPercent => Mathf.Abs(_maxHealthPercent);
 
-    public override void DoImmediateEffect(Entity target) { }
+    public override void DoPreEffect(Entity target) { }
+    public override void DoEffectOnAction(Entity target) { }
     public override void DoPostEffect(Entity target)
     {
         if (ShouldClear()) return;
