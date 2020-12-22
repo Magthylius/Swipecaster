@@ -10,7 +10,7 @@ public class SingleTarget : Unit
     public override void RecieveHealing(Entity healer, int healAmount) => base.RecieveHealing(healer, healAmount);
     public override void DoAction(TargetInfo targetInfo, RuneCollection runes)
     {
-        UpdateStatusEffects();
+        UpdatePreStatusEffects();
         var battleStage = BattlestageManager.instance;
         if (battleStage == null) return;
 

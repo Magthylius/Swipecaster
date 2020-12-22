@@ -5,7 +5,8 @@ public class RegenerateStatus : StatusEffect
     private int _healPerTurn;
     public int HealPerTurn => Mathf.Abs(_healPerTurn);
 
-    public override void DoImmediateEffect(Entity target) { }
+    public override void DoPreEffect(Entity target) { }
+    public override void DoEffectOnAction(Entity target) { }
     public override void DoPostEffect(Entity target)
     {
         if (ShouldClear()) return;
