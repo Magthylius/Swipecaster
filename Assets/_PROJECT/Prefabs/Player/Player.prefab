@@ -50,7 +50,7 @@ MonoBehaviour:
   - {fileID: 4826909198700131864}
   - {fileID: 1744261095539532251}
   - {fileID: 3815417436609696641}
-  - {fileID: 3177290578253056147}
+  - {fileID: 1258749800706187545}
 --- !u!1 &4774800167615034334
 GameObject:
   m_ObjectHideFlags: 0
@@ -64,6 +64,7 @@ GameObject:
   - component: {fileID: 1744261095539532251}
   - component: {fileID: 3815417436609696641}
   - component: {fileID: 3177290578253056147}
+  - component: {fileID: 1258749800706187545}
   m_Layer: 0
   m_Name: Inventory Holder
   m_TagString: Untagged
@@ -97,11 +98,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4e6dc1f1582f0a4786b39047ea3396a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseUnit: {fileID: 11400000, guid: f7448f282a1da544f99405f812c4d011, type: 2}
   _currentLevel: 1
   _totalHealth: 615
   _totalAttack: 183
   _totalDefence: 151
+  _currentHealth: 0
+  _currentAttack: 0
+  _currentDefence: 0
+  baseUnit: {fileID: 11400000, guid: f7448f282a1da544f99405f812c4d011, type: 2}
   baseStatMultiplier: 0.33333334
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
@@ -117,11 +121,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4e6dc1f1582f0a4786b39047ea3396a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseUnit: {fileID: 11400000, guid: 9695ed1ed58629d4c9348597e62f8536, type: 2}
   _currentLevel: 1
   _totalHealth: 415
   _totalAttack: 316
   _totalDefence: 152
+  _currentHealth: 0
+  _currentAttack: 0
+  _currentDefence: 0
+  baseUnit: {fileID: 11400000, guid: 9695ed1ed58629d4c9348597e62f8536, type: 2}
   baseStatMultiplier: 0.33333334
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
@@ -137,11 +144,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4e6dc1f1582f0a4786b39047ea3396a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseUnit: {fileID: 11400000, guid: aa5c31b08424036488b0011ec08c0302, type: 2}
   _currentLevel: 1
   _totalHealth: 372
   _totalAttack: 242
   _totalDefence: 152
+  _currentHealth: 0
+  _currentAttack: 0
+  _currentDefence: 0
+  baseUnit: {fileID: 11400000, guid: aa5c31b08424036488b0011ec08c0302, type: 2}
   baseStatMultiplier: 0.33333334
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
@@ -157,11 +167,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4e6dc1f1582f0a4786b39047ea3396a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseUnit: {fileID: 11400000, guid: dd7d2e8f18c0d6f49bbe430968e93bed, type: 2}
   _currentLevel: 1
   _totalHealth: 565
   _totalAttack: 186
   _totalDefence: 161
+  _currentHealth: 0
+  _currentAttack: 0
+  _currentDefence: 0
+  baseUnit: {fileID: 11400000, guid: dd7d2e8f18c0d6f49bbe430968e93bed, type: 2}
+  baseStatMultiplier: 0.33333334
+  paraCapMultiplier: 0.6
+  baseStatCapMultiplier: 0.4
+--- !u!114 &1258749800706187545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4774800167615034334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4e6dc1f1582f0a4786b39047ea3396a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentLevel: 1
+  _totalHealth: 793
+  _totalAttack: 189
+  _totalDefence: 295
+  _currentHealth: 0
+  _currentAttack: 0
+  _currentDefence: 0
+  baseUnit: {fileID: 11400000, guid: 3481361ab8028e94ab3dfa1de233e620, type: 2}
   baseStatMultiplier: 0.33333334
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4

@@ -8,9 +8,11 @@ public class RegenerateStatus : StatusEffect
     public override void DoImmediateEffect(Entity target) { }
     public override void DoPostEffect(Entity target)
     {
+        if (ShouldClear()) return;
         target.AddHealth(HealPerTurn);
         DeductRemainingTurns();
     }
 
+    public RegenerateStatus() : base() => _healPerTurn = 0;
     public RegenerateStatus(int turns, int healPerTurn) : base(turns) => _healPerTurn = healPerTurn;
 }

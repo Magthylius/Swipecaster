@@ -4,14 +4,14 @@ using UnityEngine;
 
 public abstract class StatusEffect
 {
-    private int _remainingTurns;
+    protected int _remainingTurns;
     public int RemainingTurns => _remainingTurns;
 
     public abstract void DoImmediateEffect(Entity target);
     public abstract void DoPostEffect(Entity target);
     public virtual void DeductRemainingTurns()
     {
-        if (_remainingTurns <= 0) return;
+        if (ShouldClear()) return;
 
         _remainingTurns--;
     }
@@ -19,5 +19,6 @@ public abstract class StatusEffect
 
     protected int Round(float number) => Mathf.RoundToInt(number);
 
+    public StatusEffect() => _remainingTurns = 0;
     public StatusEffect(int turns) => _remainingTurns = turns;
 }

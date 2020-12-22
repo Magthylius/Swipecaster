@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Type = System.Type;
 
 public abstract class Entity : MonoBehaviour
 {
@@ -80,6 +81,21 @@ public abstract class Entity : MonoBehaviour
     #endregion
 
     #region Public Methods
+    
+    public UnitObject BaseUnit => baseUnit;
+
+    public void AddHealth(int amount)
+    {
+        _currentHealth += amount;
+        if (_currentHealth < 0) _currentHealth = 0;
+    }
+    public void SetHealth(int amount)
+    {
+        _currentHealth = amount;
+        if (_currentHealth < 0) _currentHealth = 0;
+    }
+
+    #region Events
 
     public void SubscribeGrazeEvent(Action<Entity, int> method) => _grazeEvent += method;
     public void UnsubscribeGrazeEvent(Action<Entity, int> method) => _grazeEvent -= method;
@@ -97,13 +113,26 @@ public abstract class Entity : MonoBehaviour
     public void UnsubscribeTurnEndEvent(Action method) => _turnEnd -= method;
     public void InvokeTurnEndEvent() => _turnEnd?.Invoke();
 
+    #endregion
+
+    public void SetRuneType(RuneType type) => _runeType = type;
+    public RuneType GetRuneType => _runeType;
+
     public void SetAttackStatus(AttackStatus status) => _attackStatus = status;
     public AttackStatus AttackStatus => _attackStatus;
 
     public void SetProjectile(Projectile p) => _projectile = p;
     public Projectile Projectile => _projectile;
 
-    public List<StatusEffect> StatusEffects => _statusEffects;
+    public void AddStatusEffect(StatusEffect status) => _statusEffects.Add(status);
+    public void RemoveAllStatusEffectsOfType(Type effectType)
+    {
+        for(int i = _statusEffects.Count - 1; i >= 0; i--)
+        {
+            var effect = _statusEffects[i];
+            if (effect.GetType() == effectType) _statusEffects.RemoveAt(i);
+        }
+    }
 
     #endregion
 
@@ -170,15 +199,6 @@ public abstract class Entity : MonoBehaviour
         float linearGradient = (info.baseStatCap - info.baseStat) / baseUnit.MaxLevel;
         return linearGradient * _currentLevel + info.baseStat;
     }
-
-    #endregion
-
-    #region Shorthands
-
-    public void AddHealth(int amount) => _currentHealth += amount;
-    public void SetHealth(int amount) => _currentHealth = amount;
-    public RuneType GetRuneType => _runeType;
-    public UnitObject BaseUnit => baseUnit;
 
     #endregion
 }

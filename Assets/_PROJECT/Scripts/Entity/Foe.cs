@@ -12,7 +12,7 @@ public class Foe : Entity
 
     public override void TakeHit(Entity damager, int damageAmount) 
     { 
-        AddHealth(-10); 
+        AddHealth(-1); 
         if(GetCurrentHealth<=0)
         {
             battleStageManager.GetEnemyTeam().Remove(gameObject);
