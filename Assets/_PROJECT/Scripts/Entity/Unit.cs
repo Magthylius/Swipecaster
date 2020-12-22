@@ -122,7 +122,7 @@ public abstract class Unit : Entity
 
     #region Protected Methods
 
-    protected bool ProbabilityHit => Random.Range(0.0f, 1.0f) < probability;
+    protected bool ProbabilityHit => Random.Range(0.0f, 1.0f - float.Epsilon) < probability;
     protected int Round(float number) => Mathf.RoundToInt(number);
     protected int ToInt(bool statement) => Convert.ToInt32(statement);
     
