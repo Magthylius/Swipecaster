@@ -7,9 +7,10 @@ public abstract class Unit : Entity
 {
     #region Variable Definitions
 
-    [Header("Rune Relation Multiplier")]
-    [SerializeField] protected float runeAdvantageMultiplier = 1.5f;
-    [SerializeField] protected float runeWeaknessMultiplier = 0.5f;
+    //! Attributes
+    private AttackStatus _attackStatus = AttackStatus.Normal;
+    private Projectile _projectile;
+    private List<StatusEffect> _statusEffects;
 
     [Header("Other Multipliers")]
     [SerializeField] protected float damageMultiplier = 1.0f;
@@ -25,82 +26,113 @@ public abstract class Unit : Entity
     [SerializeField, Range(0.0f, 1.0f)] protected float probability = 0.05f;
     protected const int PartySize = 4;
 
+    [Header("Skills")]
+    [SerializeField] private int currentSkillCharge;
+    [SerializeField] private int _skillChargeCount;
+    private ActiveSkill _activeSkill;
+
+    [Header("Action Events")]
+    private static Action<Unit> _deathEvent;
+    private Action<Unit, int> _grazeEvent;
+    private Action<Unit, int> _hitEvent;
+    private Action _healthChangeEvent;
+    private Action _turnBegin;
+    private Action _turnEnd;
+
+    #endregion
+
+    #region Public Abstract Methods
+
+    public abstract void UseSkill(Unit focusTarget, List<Unit> allCasters, List<Unit> allFoes);
+    public abstract void TakeHit(Unit damager, int damageAmount);
+    public abstract void RecieveHealing(Unit healer, int healAmount);
+    public abstract void DoAction(TargetInfo targetInfo, RuneCollection runes);
+    public abstract int CalculateDamage(TargetInfo targetInfo, RuneCollection runes);
+    public abstract TargetInfo GetAffectedTargets(Unit focusTarget, List<Unit> allEntities);
+
     #endregion
 
     #region Public Override Methods
 
-    public override void TakeHit(Entity damager, int damageAmount) => InvokeHitEvent(damager, damageAmount);
-    public override void RecieveHealing(Entity healer, int healAmount) => AddHealth(Math.Abs(healAmount));
-
-    public override void DoAction(TargetInfo targetInfo, RuneCollection runes)
+    public override void SetCurrentHealth(int amount)
     {
-        int totalDamage = Round(CalculateDamage(targetInfo, runes) * damageMultiplier);
-
-        int nettDamage = totalDamage - targetInfo.Focus.GetCurrentDefence;
-        if (nettDamage < 0) nettDamage = 0;
-
-        GetProjectile.AssignTargetDamage(this, targetInfo, nettDamage);
+        base.SetCurrentHealth(amount);
+        InvokeHealthChangeEvent();
     }
 
-    public override int CalculateDamage(TargetInfo targetInfo, RuneCollection runes)
+    #endregion
+
+    #region Public Methods
+
+    public void SetAttackStatus(AttackStatus status) => _attackStatus = status;
+    public AttackStatus GetAttackStatus => _attackStatus;
+
+    public void SetProjectile(Projectile p) => _projectile = p;
+    public Projectile GetProjectile => _projectile;
+
+    public void AddStatusEffect(StatusEffect status) => _statusEffects.Add(status);
+    public void RemoveAllStatusEffectsOfType(Type effectType)
     {
-        int totalDamage = 0;
-        var relations = RuneRelations.GetRelations(GetRuneType);
-        for (int i = 0; i < runes.GetAllStorages.Count; i++)
+        for (int i = _statusEffects.Count - 1; i >= 0; i--)
         {
-            var r = runes.GetAllStorages[i];
-            for (int j = 0; j < relations.Advantage.Count; j++)
-            {
-                totalDamage += Round(GetCurrentAttack * r.amount * runeAdvantageMultiplier) * ToInt(relations.Advantage[j] == r.runeType);
-                r.amount *= ToInt(relations.Advantage[j] != r.runeType);
-            }
-            for (int k = 0; k < relations.Weakness.Count; k++)
-            {
-                totalDamage += Round(GetCurrentAttack * r.amount * runeWeaknessMultiplier) * ToInt(relations.Weakness[k] == r.runeType);
-                r.amount *= ToInt(relations.Weakness[k] != r.runeType);
-            }
-
-            totalDamage += GetCurrentAttack * r.amount;
+            var effect = _statusEffects[i];
+            if (effect.GetType() == effectType) _statusEffects.RemoveAt(i);
         }
-
-        float statusOutMultiplier = 1.0f;
-        for(int i = 0; i < GetStatusEffects.Count; i++) statusOutMultiplier += GetStatusEffects[i].GetStatusDamageOutModifier();
-        
-        return Mathf.Abs(Round(totalDamage * statusOutMultiplier));
     }
-    public override TargetInfo GetAffectedTargets(Entity focusTarget, List<Entity> allEntities)
-        => GetProjectile.GetTargets(focusTarget, allEntities);
+    public List<StatusEffect> GetStatusEffects => _statusEffects;
+
+    public void SetSkillChargeCount(int count) => _skillChargeCount = count;
+    public void ResetSkillCharge() => currentSkillCharge = _skillChargeCount;
+    public void DeductSkillCharge() => currentSkillCharge = Mathf.Clamp(--currentSkillCharge, 0, _skillChargeCount);
+    public bool SkillIsReady => currentSkillCharge == 0;
+    public ActiveSkill GetActiveSkill => _activeSkill;
+
+    #region Events
+
+    public static void SubscribeDeathEvent(Action<Unit> method) => _deathEvent += method;
+    public static void UnsubscribeDeathEvent(Action<Unit> method) => _deathEvent -= method;
+    public static void InvokeDeathEvent(Unit a) => _deathEvent?.Invoke(a);
+
+    public void SubscribeGrazeEvent(Action<Unit, int> method) => _grazeEvent += method;
+    public void UnsubscribeGrazeEvent(Action<Unit, int> method) => _grazeEvent -= method;
+    public void InvokeGrazeEvent(Unit a, int b) => _grazeEvent?.Invoke(a, b);
+
+    public void SubscribeHitEvent(Action<Unit, int> method) => _hitEvent += method;
+    public void UnsubscribeHitEvent(Action<Unit, int> method) => _hitEvent -= method;
+    public void InvokeHitEvent(Unit a, int b) => _hitEvent?.Invoke(a, b);
+
+    public void SubscribeHealthChangeEvent(Action method) => _healthChangeEvent += method;
+    public void UnsubscribeHealthChangeEvent(Action method) => _healthChangeEvent -= method;
+    public void InvokeHealthChangeEvent() => _healthChangeEvent?.Invoke();
+
+    public void SubscribeTurnBeginEvent(Action method) => _turnBegin += method;
+    public void UnsubscribeTurnBeginEvent(Action method) => _turnBegin -= method;
+    public void InvokeTurnBeginEvent() => _turnBegin?.Invoke();
+
+    public void SubscribeTurnEndEvent(Action method) => _turnEnd += method;
+    public void UnsubscribeTurnEndEvent(Action method) => _turnEnd -= method;
+    public void InvokeTurnEndEvent() => _turnEnd?.Invoke();
+
+    #endregion
 
     #endregion
 
     #region Protected Virtual Methods
 
-    protected virtual void TakeDamage(Entity damager, int damageAmount)
+    protected virtual void TakeDamage(Unit damager, int damageAmount)
     {
         if (damager.GetAttackStatus != AttackStatus.Normal) return;
         float statusInMultiplier = 1.0f;
         for (int i = 0; i < GetStatusEffects.Count; i++) statusInMultiplier += GetStatusEffects[i].GetStatusDamageInModifier();
         
-        AddHealth(-Mathf.Abs(Round(damageAmount * statusInMultiplier)));
-    }
-
-    protected virtual void UpdatePreStatusEffects()
-    {
-        ResetAtkDefStats();
-
-        for(int i = GetStatusEffects.Count - 1; i >= 0; i--)
-        {
-            if(GetStatusEffects[i].ShouldClear()) GetStatusEffects.RemoveAt(i);
-        }
-
-        GetStatusEffects.ForEach(j => j.DoPreEffect(this));
+        AddCurrentHealth(-Mathf.Abs(Round(damageAmount * statusInMultiplier)));
+        GetStatusEffects.ForEach(i => i.DoOnHitEffect(this));
     }
 
     protected virtual void OnDestroy()
     {
         UnsubscribeHitEvent(TakeDamage);
-        UnsubscribeTurnEndEvent(ResetAttackStatus);
-        UnsubscribeTurnEndEvent(PostStatusEffect);
+        UnsubscribeTurnEndEvent(EndTurnMethods);
         UnsubscribeTurnBeginEvent(UpdatePreStatusEffects);
         UnsubscribeHealthChangeEvent(CheckDeathEvent);
     }
@@ -112,10 +144,11 @@ public abstract class Unit : Entity
     protected override void Awake()
     {
         base.Awake();
+        _statusEffects = new List<StatusEffect>();
+
         SetProjectile(new CrowFlies());
         SubscribeHitEvent(TakeDamage);
-        SubscribeTurnEndEvent(ResetAttackStatus);
-        SubscribeTurnEndEvent(PostStatusEffect);
+        SubscribeTurnEndEvent(EndTurnMethods);
         SubscribeTurnBeginEvent(UpdatePreStatusEffects);
         SubscribeHealthChangeEvent(CheckDeathEvent);
     }
@@ -127,17 +160,49 @@ public abstract class Unit : Entity
     protected bool ProbabilityHit => Random.Range(0.0f, 1.0f - float.Epsilon) < probability;
     protected int Round(float number) => Mathf.RoundToInt(number);
     protected int ToInt(bool statement) => Convert.ToInt32(statement);
-    
+    protected void ResetAtkDefStats()
+    {
+        SetCurrentAttack(GetBaseAttack);
+        SetCurrentDefence(GetBaseDefence);
+    }
+    protected void ResetAllEffects()
+    {
+
+    }
+
     #endregion
 
     #region Private Methods
 
-    private void PostStatusEffect() => GetStatusEffects.ForEach(i => i.DoPostEffect(this));
+    private void EndTurnMethods()
+    {
+        ResetAttackStatus();
+        PostStatusEffect();
+    }
     private void ResetAttackStatus() => SetAttackStatus(AttackStatus.Normal);
     private void CheckDeathEvent()
     {
         if (GetCurrentHealth <= 0) InvokeDeathEvent(this);
     }
+    private void UpdatePreStatusEffects()
+    {
+        ResetAtkDefStats();
+
+        for (int i = GetStatusEffects.Count - 1; i >= 0; i--)
+        {
+            if (GetStatusEffects[i].ShouldClear()) GetStatusEffects.RemoveAt(i);
+        }
+
+        GetStatusEffects.ForEach(j => j.DoPreEffect(this));
+    }
+    private void PostStatusEffect() => GetStatusEffects.ForEach(i => i.DoPostEffect(this));
 
     #endregion
+}
+
+public enum AttackStatus
+{
+    Normal = 0,
+    Deflected,
+    Reflected
 }

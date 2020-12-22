@@ -2,15 +2,16 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Modal : Unit
+public class Modal : Enhancer
 {
-    #region Public Override Methods
+    #region Protected Override Methods
 
-    public override void TakeHit(Entity damager, int damageAmount) => base.TakeHit(damager, damageAmount);
-    public override void RecieveHealing(Entity healer, int healAmount) => base.RecieveHealing(healer, healAmount);
-    public override void DoAction(TargetInfo targetInfo, RuneCollection runes) => base.DoAction(targetInfo, runes);
-    public override int CalculateDamage(TargetInfo targetInfo, RuneCollection runes) => base.CalculateDamage(targetInfo, runes);
-    public override TargetInfo GetAffectedTargets(Entity focusTarget, List<Entity> allEntities) => base.GetAffectedTargets(focusTarget, allEntities);
+    protected override void Awake()
+    {
+        base.Awake();
+
+        SetArchMinor(ArchTypeMinor.Modal);
+    }
 
     #endregion
 }

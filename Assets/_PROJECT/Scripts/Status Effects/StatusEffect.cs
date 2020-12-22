@@ -21,9 +21,10 @@ public abstract class StatusEffect
 
     #region Abstract Methods
 
-    public abstract void DoPreEffect(Entity target);
-    public abstract void DoEffectOnAction(Entity target);
-    public abstract void DoPostEffect(Entity target);
+    public abstract void DoPreEffect(Unit target);
+    public abstract void DoEffectOnAction(Unit target);
+    public abstract void DoOnHitEffect(Unit target);
+    public abstract void DoPostEffect(Unit target);
     protected abstract int GetCountOfType(List<StatusEffect> statusList);
 
     #endregion

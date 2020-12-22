@@ -1,19 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Reflector : Unit
+public class Reflector : Kinectist
 {
     private bool triggerOnce = false;
-
-    #region Public Override Methods
-
-    public override void TakeHit(Entity damager, int damageAmount) => base.TakeHit(damager, damageAmount);
-    public override void RecieveHealing(Entity healer, int healAmount) => base.RecieveHealing(healer, healAmount);
-    public override void DoAction(TargetInfo targetInfo, RuneCollection runes) => base.DoAction(targetInfo, runes);
-    public override int CalculateDamage(TargetInfo targetInfo, RuneCollection runes) => base.CalculateDamage(targetInfo, runes);
-    public override TargetInfo GetAffectedTargets(Entity focusTarget, List<Entity> allEntities) => base.GetAffectedTargets(focusTarget, allEntities);
-
-    #endregion
 
     #region Protected Override Methods
 
@@ -22,6 +12,8 @@ public class Reflector : Unit
         base.Awake();
         SubscribeGrazeEvent(Reflect);
         SubscribeTurnEndEvent(ResetTrigger);
+
+        SetArchMinor(ArchTypeMinor.Reflector);
     }
 
     protected override void OnDestroy()
@@ -31,7 +23,7 @@ public class Reflector : Unit
         UnsubscribeTurnEndEvent(ResetTrigger);
     }
 
-    protected override void TakeDamage(Entity damager, int damageAmount)
+    protected override void TakeDamage(Unit damager, int damageAmount)
     {
         Reflect(damager, damageAmount);
         base.TakeDamage(damager, damageAmount);
@@ -41,7 +33,7 @@ public class Reflector : Unit
 
     #region Private Methods
 
-    private void Reflect(Entity damager, int damageAmount)
+    private void Reflect(Unit damager, int damageAmount)
     {
         if (!ProbabilityHit || triggerOnce) return;
         triggerOnce = true;

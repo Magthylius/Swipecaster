@@ -16,18 +16,19 @@ public class Poison : StatusEffect
 
     #region Override Methods
 
-    public override void DoPreEffect(Entity target)
+    public override void DoPreEffect(Unit target)
     {
         if (ShouldClear()) return;
         int defenceToDeduct = Mathf.Abs(Round(target.GetBaseDefence * DefenceDownPercent));
         target.AddCurrentDefence(-defenceToDeduct);
     }
-    public override void DoEffectOnAction(Entity target) { }
-    public override void DoPostEffect(Entity target)
+    public override void DoEffectOnAction(Unit target) { }
+    public override void DoOnHitEffect(Unit target) { }
+    public override void DoPostEffect(Unit target)
     {
         if (ShouldClear()) return;
         int hpToDeduct = Mathf.Abs(Round(target.GetMaxHealth * MaxHealthPercent));
-        target.AddHealth(-hpToDeduct);
+        target.AddCurrentHealth(-hpToDeduct);
 
         DeductRemainingTurns();
     }

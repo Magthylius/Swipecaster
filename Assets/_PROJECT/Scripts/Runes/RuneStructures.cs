@@ -80,6 +80,7 @@ public struct RuneCollection
     public RuneStorage KhuaRunes => _allRunes[Convert.ToInt32(RuneType.KHUA) - 1];
     public RuneStorage AyroRunes => _allRunes[Convert.ToInt32(RuneType.AYRO) - 1];
     public List<RuneStorage> GetAllStorages => _allRunes;
+    public static RuneCollection Null => new RuneCollection(RuneStorage.Null, RuneStorage.Null, RuneStorage.Null, RuneStorage.Null, RuneStorage.Null);
 
     public RuneCollection(RuneStorage gron, RuneStorage fyor, RuneStorage tehk, RuneStorage khua, RuneStorage ayro)
     {

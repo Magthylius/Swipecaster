@@ -1,4 +1,4 @@
-using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -133,19 +133,19 @@ public class ComboManager : MonoBehaviour
 
         if (battleStageManager == null) { ResetRunes(); isStart = false; return; }
 
-        Entity damager = damagerObject.GetComponent<Entity>();
-        Entity target = targetObject.GetComponent<Entity>();
-        List<Entity> allEntities = new List<Entity>();
+        var damager = damagerObject.GetComponent<Unit>();
+        var target = targetObject.GetComponent<Unit>();
+        var allFoes = new List<Unit>();
 
         for(int i = 0; i < battleStageManager.enemyPositions.Length; i++)
         {
-            Entity e = battleStageManager.enemyPositions[i].GetComponent<Entity>();
+            var e = battleStageManager.enemyPositions[i].GetComponent<Unit>();
             if (e == null) continue;
 
-            allEntities.Add(e);
+            allFoes.Add(e);
         }
 
-        TargetInfo targetInfo = damager.GetAffectedTargets(target, allEntities);
+        TargetInfo targetInfo = damager.GetAffectedTargets(target, allFoes);
         RuneCollection collection = new RuneCollection(gronRune, fyorRune, tehkRune, khuaRune, ayroRune);
         damager.DoAction(targetInfo, collection);
 
@@ -156,19 +156,19 @@ public class ComboManager : MonoBehaviour
     public void EnemyAttack(GameObject damagerObject, GameObject targetObject)
     {
         if (battleStageManager == null) { return; }
-        Entity damager = damagerObject.GetComponent<Entity>();
-        Entity target = targetObject.GetComponent<Entity>();
-        List<Entity> allEntities = new List<Entity>();
+        var damager = damagerObject.GetComponent<Unit>();
+        var target = targetObject.GetComponent<Unit>();
+        var allCasters = new List<Unit>();
 
         for (int i = 0; i < battleStageManager.casterPositions.Length; i++)
         {
-            Entity e = battleStageManager.casterPositions[i].GetComponent<Entity>();
+            var e = battleStageManager.casterPositions[i].GetComponent<Unit>();
             if (e == null) continue;
 
-            allEntities.Add(e);
+            allCasters.Add(e);
         }
 
-        TargetInfo targetInfo = damager.GetAffectedTargets(target, allEntities);
+        TargetInfo targetInfo = damager.GetAffectedTargets(target, allCasters);
         RuneCollection collection = new RuneCollection(gronRune, fyorRune, tehkRune, khuaRune, ayroRune);
         damager.DoAction(targetInfo, collection);
     }

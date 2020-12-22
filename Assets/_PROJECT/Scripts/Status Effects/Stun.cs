@@ -13,14 +13,15 @@ public class Stun : StatusEffect
 
     #region Override Methods
 
-    public override void DoPreEffect(Entity target)
+    public override void DoPreEffect(Unit target)
     {
         if (_turnBaseManager == null) return;
 
         // end turn code
     }
-    public override void DoEffectOnAction(Entity target) { }
-    public override void DoPostEffect(Entity target) => DeductRemainingTurns();
+    public override void DoEffectOnAction(Unit target) { }
+    public override void DoOnHitEffect(Unit target) { }
+    public override void DoPostEffect(Unit target) => DeductRemainingTurns();
     protected override int GetCountOfType(List<StatusEffect> statusList) => statusList.OfType<Stun>().Count();
 
     #endregion

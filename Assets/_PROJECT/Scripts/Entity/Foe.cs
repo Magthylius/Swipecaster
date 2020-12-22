@@ -10,22 +10,9 @@ public class Foe : Unit
         battleStageManager = BattlestageManager.instance;
     }
 
-    public override void TakeHit(Entity damager, int damageAmount)
-    {
-        base.TakeHit(damager, damageAmount);
-    }
-
-    protected override void TakeDamage(Entity damager, int damageAmount)
-    {
-        base.TakeDamage(damager, damageAmount);
-        if (GetCurrentHealth <= 0)
-        {
-            battleStageManager.GetEnemyTeam().Remove(gameObject);
-            Destroy(gameObject);
-        }
-    }
-
-    public override void RecieveHealing(Entity healer, int healAmount) { }
+    public override void UseSkill(Unit focusTarget, List<Unit> allCasters, List<Unit> allFoes) { }
+    public override void TakeHit(Unit damager, int damageAmount) => InvokeHitEvent(damager, damageAmount);
+    public override void RecieveHealing(Unit healer, int healAmount) { }
     public override void DoAction(TargetInfo targetInfo, RuneCollection runes)
     {
         int totalDamage = Round(CalculateDamage(targetInfo, runes) * damageMultiplier);
@@ -36,6 +23,16 @@ public class Foe : Unit
         GetProjectile.AssignTargetDamage(this, targetInfo, nettDamage);
     }
     public override int CalculateDamage(TargetInfo targetInfo, RuneCollection runes) => GetCurrentAttack;
-    public override TargetInfo GetAffectedTargets(Entity focusTarget, List<Entity> allEntities) => base.GetAffectedTargets(focusTarget, allEntities);
+    public override TargetInfo GetAffectedTargets(Unit focusTarget, List<Unit> allEntities)
+        => GetProjectile.GetTargets(focusTarget, allEntities);
 
+    protected override void TakeDamage(Unit damager, int damageAmount)
+    {
+        base.TakeDamage(damager, damageAmount);
+        if (GetCurrentHealth <= 0)
+        {
+            battleStageManager.GetEnemyTeam().Remove(gameObject);
+            Destroy(gameObject);
+        }
+    }
 }

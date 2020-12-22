@@ -16,17 +16,18 @@ public class Flame : StatusEffect
 
     #region Override Methods
 
-    public override void DoPreEffect(Entity target)
+    public override void DoPreEffect(Unit target)
     {
         if (ShouldClear()) return;
         int attackToDeduct = Mathf.Abs(Round(target.GetBaseAttack * AttackDownPercent));
         target.AddCurrentAttack(-attackToDeduct);
     }
-    public override void DoEffectOnAction(Entity target) { }
-    public override void DoPostEffect(Entity target)
+    public override void DoEffectOnAction(Unit target) { }
+    public override void DoOnHitEffect(Unit target) { }
+    public override void DoPostEffect(Unit target)
     {
         int hpToDeduct = Mathf.Abs(Round(target.GetMaxHealth * MaxHealthPercent));
-        target.AddHealth(-hpToDeduct);
+        target.AddCurrentHealth(-hpToDeduct);
 
         DeductRemainingTurns();
     }
