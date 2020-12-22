@@ -2,19 +2,21 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class TurnBaseManager : MonoBehaviour
 {
     public static TurnBaseManager instance;
     BattlestageManager battlestageManager;
     UnitPositionManager unitPositionManager;
+    ComboManager comboManager;
 
     [SerializeField] GameStateEnum battleState;
-    
-    [Header("Delay between states")]
-    public float delaysInBetween; // Delays in between states
+
+    [Header("Delay between states")] public float delaysInBetween; // Delays in between states
 
     public GameObject highlighter;
+
     [Header("Highlighter vertical positions")]
     public float gap;
 
@@ -25,8 +27,9 @@ public class TurnBaseManager : MonoBehaviour
 
     [SerializeField] GameObject caster;
     [SerializeField] GameObject enemy;
-    [SerializeField] GameObject[] CastersTeamList = new GameObject[4];
-    
+    [SerializeField] List<GameObject> castersOrderList;
+    [SerializeField] List<GameObject> enemiesOrderList;
+
     void Awake()
     {
         if (instance != null)
@@ -39,6 +42,7 @@ public class TurnBaseManager : MonoBehaviour
     {
         battlestageManager = BattlestageManager.instance;
         unitPositionManager = UnitPositionManager.instance;
+        comboManager = ComboManager.instance;
         battleState = GameStateEnum.INIT;
         StartCoroutine(InitBattle());
     }
@@ -46,12 +50,12 @@ public class TurnBaseManager : MonoBehaviour
     void Update()
     {
         if (!isPlayerTurn)
-        {
             return;
-        }
-        
-        highlighter.transform.position = new Vector3( caster.transform.position.x, caster.transform.position.y + gap, caster.transform.position.z);
-        
+
+        highlighter.transform.position = new Vector3(caster.transform.position.x, caster.transform.position.y + gap,
+            caster.transform.position.z);
+
+        //! End caster's turn
         if (Input.GetKeyDown(KeyCode.Space))
         {
             OnCasterAttack();
@@ -59,30 +63,41 @@ public class TurnBaseManager : MonoBehaviour
         }
     }
 
+    #region Unit Turn
+
     void CasterTurn()
     {
-        caster = CastersTeamList[casterUnitTurn];
+        //! Point caster when is their turn
+        caster = castersOrderList[casterUnitTurn];
         unitPositionManager.SetHolder(caster);
-        
-        highlighter.transform.position = new Vector3( caster.transform.position.x, caster.transform.position.y + gap, caster.transform.position.z);
+
+        //! Reposition highlighter
+        highlighter.transform.position = new Vector3(caster.transform.position.x, caster.transform.position.y + gap,
+            caster.transform.position.z);
         highlighter.SetActive(true);
-        
+
         print("Is " + caster.name + " turn");
-        isPlayerTurn = true;    
+        isPlayerTurn = true;
     }
 
     void EnemyTurn()
     {
+        //! Point enemy when is their turn
+        enemy = enemiesOrderList[enemyUnitTurn];
+
         highlighter.SetActive(false);
         print("Is " + enemy.name + " turn");
         OnEnemyAttack();
     }
 
+    #endregion
+
+    #region Unit Actions
+
     void OnCasterAttack()
     {
         if (battleState != GameStateEnum.CASTERTURN) return;
         StartCoroutine(CasterAttack());
-
     }
 
     void OnEnemyAttack()
@@ -90,37 +105,58 @@ public class TurnBaseManager : MonoBehaviour
         StartCoroutine(EnemyAttack());
     }
 
-    void Endturn()
+    #endregion
+    
+    void EndTurn()
     {
         switch (battleState)
         {
             case GameStateEnum.CASTERTURN:
-                if (casterUnitTurn >= CastersTeamList.Length - 1)
+                
+                //! if the entire casters team finish their turn, is enemy team turns
+                if (casterUnitTurn >= castersOrderList.Count - 1)
                 {
                     casterUnitTurn = 0;
+                    battleState = GameStateEnum.ENEMYTURN;
+                    enemy = battlestageManager.GetCurrentEnemy(enemyUnitTurn);
+                    EnemyTurn();
                 }
-                else casterUnitTurn++;
+                else
+                {
+                    //! Next caster turn
+                    casterUnitTurn++;
+                    CasterTurn();
+                }
 
-                battleState = GameStateEnum.ENEMYTURN;
-                enemy = battlestageManager.GetCurrentEnemy(enemyUnitTurn);
-                EnemyTurn();
                 break;
-            
-            case GameStateEnum.ENEMYTURN:
-                if (enemyUnitTurn >= battlestageManager.GetEnemyTeam().Count - 1) enemyUnitTurn = 0;
-                else enemyUnitTurn++;
 
-                battleState = GameStateEnum.CASTERTURN;
-                CasterTurn();
+            case GameStateEnum.ENEMYTURN:
+                
+                //! if the entire casters team finish their turn, is enemy team turns
+                if (enemyUnitTurn >= battlestageManager.GetEnemyTeam().Count - 1)
+                {
+                    enemyUnitTurn = 0;
+                    battleState = GameStateEnum.CASTERTURN;
+                    CasterTurn();
+                }
+                else
+                {
+                    //! Next enemy turn
+                    enemyUnitTurn++;
+                    EnemyTurn();
+                }
+
                 break;
         }
     }
-    
-    
-    //! Setting Up the battlestage
+
+    //**************************************************************\\
+
+    //! Set Up the battlestage
     public IEnumerator InitBattle()
     {
-        CastersTeamList = (GameObject[])battlestageManager.GetCastersTeam().Clone();
+        castersOrderList = new List<GameObject>(battlestageManager.GetCastersTeam());
+        enemiesOrderList = new List<GameObject>(battlestageManager.GetEnemyTeam());
         highlighter = Instantiate(highlighter);
         highlighter.SetActive(false);
 
@@ -132,21 +168,26 @@ public class TurnBaseManager : MonoBehaviour
 
     IEnumerator CasterAttack()
     {
-        yield return null;
-        Endturn();
+        yield return new WaitForSeconds(delaysInBetween);
+        EndTurn();
     }
 
     IEnumerator EnemyAttack()
     {
+        comboManager.EnemyAttack(enemy, castersOrderList[Random.Range(0, castersOrderList.Count)]);
+
         yield return new WaitForSeconds(delaysInBetween);
-        Endturn();
+        EndTurn();
     }
     
+    //**************************************************************\\
+
     #region Accessors
 
     public GameStateEnum GetCurrentState() => battleState;
     public GameObject GetCurrentCaster() => caster;
 
-    #endregion
+    public bool GetIsPLayerTurn() => isPlayerTurn;
 
+    #endregion
 }

@@ -28,7 +28,7 @@ public class BattlestageManager : MonoBehaviour
     private Player player;
     private RoomManager roomManager;
 
-    GameObject[] playerTeam = new GameObject[4];
+    List<GameObject> playerTeam = new List<GameObject>();
     List<GameObject> enemyTeam = new List<GameObject>();
 
     [Header("Target Selection")]
@@ -167,7 +167,7 @@ public class BattlestageManager : MonoBehaviour
         {
             GameObject loadOutUnit = player.UnitLoadOut[i].BaseUnit.FullArtPrefab;
             GameObject temp = Instantiate(loadOutUnit, casterPositions[i].position, Quaternion.identity, casterPositions[i]);
-            playerTeam[i] = temp;
+            playerTeam.Add(temp);
         }
 
         RegroupLeftPositions(false);
@@ -238,7 +238,7 @@ public class BattlestageManager : MonoBehaviour
     public GameObject GetCurrentCaster(int getCaster) => playerTeam[getCaster];
     public GameObject GetCurrentEnemy(int getEnemy) => enemyTeam[getEnemy];
 
-    public GameObject[] GetCastersTeam() => playerTeam;
+    public List<GameObject> GetCastersTeam() => playerTeam;
     public List<GameObject> GetEnemyTeam() => enemyTeam;
     public GameObject GetSelectedTarget() => selectedTarget;
 

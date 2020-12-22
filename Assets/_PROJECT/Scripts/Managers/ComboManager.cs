@@ -71,7 +71,7 @@ public class ComboManager : MonoBehaviour
 
                 runeManager.SpawnDeactivate();
                 AssessRunes(turnBaseManger.GetCurrentCaster(), targetObject);
-                EnemyAttack(battleStageManager.GetCurrentEnemy(0), turnBaseManger.GetCurrentCaster());
+                //EnemyAttack(battleStageManager.GetCurrentEnemy(0), turnBaseManger.GetCurrentCaster());
 
             }
         }
@@ -153,7 +153,7 @@ public class ComboManager : MonoBehaviour
         isStart = false;
     }
 
-    void EnemyAttack(GameObject damagerObject, GameObject targetObject)
+    public void EnemyAttack(GameObject damagerObject, GameObject targetObject)
     {
         if (battleStageManager == null) { return; }
         Entity damager = damagerObject.GetComponent<Entity>();
