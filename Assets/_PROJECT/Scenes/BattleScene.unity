@@ -172,11 +172,8 @@ MonoBehaviour:
   gap: -0.7
   caster: {fileID: 0}
   enemy: {fileID: 0}
-  CastersTeamList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  castersOrderList: []
+  enemiesOrderList: []
 --- !u!1 &3216386
 GameObject:
   m_ObjectHideFlags: 0
@@ -6715,7 +6712,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1080, y: 1920}
-  m_ScreenMatchMode: 2
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
