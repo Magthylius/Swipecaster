@@ -11,6 +11,7 @@
               <e p="BattlestageManager.cs" t="Include" />
               <e p="GameStateEnum.cs" t="Include" />
               <e p="TurnBaseManager.cs" t="Include" />
+              <e p="UnitPositionBehavior.cs" t="Include" />
               <e p="UnitPositionManager.cs" t="Include" />
               <e p="UnitSwapHandler.cs" t="Include" />
             </e>
@@ -55,6 +56,7 @@
                 <e p="Pinpoint" t="Include">
                   <e p="PinpointOverhead.cs" t="Include" />
                   <e p="PinpointPiercer.cs" t="Include" />
+                  <e p="Volleyer.cs" t="Include" />
                 </e>
                 <e p="Stoic" t="Include">
                   <e p="Riposter.cs" t="Include" />
@@ -67,6 +69,7 @@
               <e p="Projectiles" t="Include">
                 <e p="Blast.cs" t="Include" />
                 <e p="CrowFlies.cs" t="Include" />
+                <e p="Dual.cs" t="Include" />
                 <e p="Overhead.cs" t="Include" />
                 <e p="Piercing.cs" t="Include" />
                 <e p="Projectile.cs" t="Include" />
