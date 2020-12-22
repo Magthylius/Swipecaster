@@ -65,6 +65,7 @@
                 </e>
               </e>
               <e p="Entity.cs" t="Include" />
+              <e p="EnumeratorMethods.cs" t="Include" />
               <e p="Foe.cs" t="Include" />
               <e p="Projectiles" t="Include">
                 <e p="Blast.cs" t="Include" />
@@ -106,14 +107,12 @@
               <e p="UnitObject.cs" t="Include" />
             </e>
             <e p="Status Effects" t="Include">
-              <e p="AttackBuff.cs" t="Include" />
-              <e p="AttackDebuff.cs" t="Include" />
-              <e p="DefenceBuff.cs" t="Include" />
-              <e p="DefenceDebuff.cs" t="Include" />
-              <e p="PoisonStatus.cs" t="Include" />
-              <e p="RegenerateStatus.cs" t="Include" />
-              <e p="ScaledPoisonStatus.cs" t="Include" />
+              <e p="DefenceDown.cs" t="Include" />
+              <e p="Flame.cs" t="Include" />
+              <e p="Poison.cs" t="Include" />
               <e p="StatusEffect.cs" t="Include" />
+              <e p="Stun.cs" t="Include" />
+              <e p="Weakness.cs" t="Include" />
             </e>
             <e p="UI" t="Include">
               <e p="DebugButton.cs" t="Include" />

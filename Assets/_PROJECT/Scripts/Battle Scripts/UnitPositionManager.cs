@@ -26,7 +26,7 @@ public class UnitPositionManager : MonoBehaviour
 
     void Update()
     {
-        if (turnBaseManager.GetCurrentState() != GameStateEnum.CASTERTURN)
+        if (!turnBaseManager.GetIsPLayerTurn())
             return;
         
         if (Input.GetKeyDown(KeyCode.LeftArrow))
@@ -45,9 +45,9 @@ public class UnitPositionManager : MonoBehaviour
         int curCasterIndex;
         Vector2 tempHolderPos;
 
-        curCasterIndex = Array.IndexOf(battleStageManager.GetCastersTeam(), holder);
+        curCasterIndex = battleStageManager.GetCastersTeam().IndexOf(holder);
         
-        if (curCasterIndex + 1 > battleStageManager.GetCastersTeam().Length - 1)
+        if (curCasterIndex + 1 > battleStageManager.GetCastersTeam().Count - 1)
         {
             print("Is too left");
             return;
@@ -75,7 +75,7 @@ public class UnitPositionManager : MonoBehaviour
         int curCasterIndex;
         Vector2 tempHolderPos;
 
-        curCasterIndex = Array.IndexOf(battleStageManager.GetCastersTeam(), holder);
+        curCasterIndex = battleStageManager.GetCastersTeam().IndexOf(holder);
         
         if (curCasterIndex - 1 < 0)
         {
