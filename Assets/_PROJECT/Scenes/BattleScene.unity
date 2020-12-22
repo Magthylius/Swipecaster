@@ -7769,8 +7769,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1404324106}
   zoomModifierSpeed: 3
-  minZoom: 10
-  maxZoom: 20
+  minZoom: 1
+  maxZoom: 6
   panSpeed: 0
 --- !u!1 &1605034234
 GameObject:
