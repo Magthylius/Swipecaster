@@ -82,12 +82,12 @@
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Runes/RuneManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/ConnectionManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Runes/RuneBehaviour.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Camera/CameraManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/BattlestageManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/ComboManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Player/Player.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/TurnBaseManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/UnitPositionManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/TurnBaseManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Camera/CameraManager.cs" />
       </list>
     </option>
   </component>
@@ -136,7 +136,7 @@
       <workItem from="1608189011045" duration="24997000" />
       <workItem from="1608371747144" duration="5639000" />
       <workItem from="1608445133268" duration="25878000" />
-      <workItem from="1608617766216" duration="13008000" />
+      <workItem from="1608617766216" duration="13371000" />
     </task>
     <servers />
   </component>
@@ -178,10 +178,10 @@
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state x="154" y="92" width="1674" height="896" key="VCS.FileHistoryDialog/62.0.1858.1080@62.0.1858.1080" timestamp="1608225415742" />
-    <state x="650" y="235" width="681" height="678" key="search.everywhere.popup" timestamp="1608638806952">
+    <state x="650" y="235" width="681" height="678" key="search.everywhere.popup" timestamp="1608639511449">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
-    <state x="650" y="235" width="681" height="678" key="search.everywhere.popup/62.0.1858.1080@62.0.1858.1080" timestamp="1608638806952" />
+    <state x="650" y="235" width="681" height="678" key="search.everywhere.popup/62.0.1858.1080@62.0.1858.1080" timestamp="1608639511449" />
     <state x="666" y="235" width="672" height="678" key="search.everywhere.popup/86.0.1834.1080@86.0.1834.1080" timestamp="1608114842074" />
   </component>
 </project>

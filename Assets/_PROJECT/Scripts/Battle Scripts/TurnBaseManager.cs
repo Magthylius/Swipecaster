@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,10 +19,10 @@ public class TurnBaseManager : MonoBehaviour
     [Header("Highlighter vertical positions")]
     public float gap;
 
-    int casterUnitTurn = 0;
-    int enemyUnitTurn = 0;
+    int casterUnitTurn;
+    int enemyUnitTurn;
 
-    bool isPlayerTurn = false;
+    bool isPlayerTurn;
 
     [SerializeField] GameObject caster;
     [SerializeField] GameObject enemy;
@@ -102,6 +101,7 @@ public class TurnBaseManager : MonoBehaviour
 
     void OnEnemyAttack()
     {
+        if (battleState != GameStateEnum.ENEMYTURN) return; 
         StartCoroutine(EnemyAttack());
     }
 
@@ -150,10 +150,11 @@ public class TurnBaseManager : MonoBehaviour
         }
     }
 
-    //**************************************************************\\
+    
+    //*****************************| Ienumerators |*********************************\\
 
     //! Set Up the battlestage
-    public IEnumerator InitBattle()
+    IEnumerator InitBattle()
     {
         castersOrderList = new List<GameObject>(battlestageManager.GetCastersTeam());
         enemiesOrderList = new List<GameObject>(battlestageManager.GetEnemyTeam());
@@ -180,7 +181,7 @@ public class TurnBaseManager : MonoBehaviour
         EndTurn();
     }
     
-    //**************************************************************\\
+    //******************************************************************************\\
 
     #region Accessors
 
