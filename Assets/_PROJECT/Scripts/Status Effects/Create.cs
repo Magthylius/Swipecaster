@@ -3,7 +3,7 @@ using Type = System.Type;
 
 namespace Create
 {
-    public static class AStatus
+    public static class A_Status
     {
         public static StatusEffect Stun(int turns = 1) => new Stun(turns, 1.0f, false, null);
         public static StatusEffect DefenceDown(int turns) => new DefenceDown(turns, 0.5f, false, 0.1f);
