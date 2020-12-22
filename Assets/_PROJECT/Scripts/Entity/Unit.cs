@@ -39,7 +39,7 @@ public abstract class Unit : Entity
         int nettDamage = totalDamage - targetInfo.Focus.GetCurrentDefence;
         if (nettDamage < 0) nettDamage = 0;
 
-        Projectile.AssignTargetDamage(this, targetInfo, nettDamage);
+        GetProjectile.AssignTargetDamage(this, targetInfo, nettDamage);
     }
 
     public override int CalculateDamage(TargetInfo targetInfo, RuneCollection runes)
@@ -63,10 +63,14 @@ public abstract class Unit : Entity
             totalDamage += GetCurrentAttack * r.amount;
         }
 
+        float statusMultiplier = 1.0f;
+        for(int i = 0; i < GetStatusEffects.Count; i++) statusMultiplier += GetStatusEffects[i].GetStatusDamageModifier();
+        totalDamage = Round(totalDamage * statusMultiplier);
+
         return totalDamage;
     }
     public override TargetInfo GetAffectedTargets(Entity focusTarget, List<Entity> allEntities)
-        => _projectile.GetTargets(focusTarget, allEntities);
+        => GetProjectile.GetTargets(focusTarget, allEntities);
 
     #endregion
 
@@ -74,7 +78,7 @@ public abstract class Unit : Entity
 
     protected virtual void TakeDamage(Entity damager, int damageAmount)
     {
-        if (damager.AttackStatus != AttackStatus.Normal) return;
+        if (damager.GetAttackStatus != AttackStatus.Normal) return;
         AddHealth(-Mathf.Abs(damageAmount));
     }
 
@@ -82,12 +86,12 @@ public abstract class Unit : Entity
     {
         ResetAtkDefStats();
 
-        for(int i = _statusEffects.Count - 1; i >= 0; i--)
+        for(int i = GetStatusEffects.Count - 1; i >= 0; i--)
         {
-            if(_statusEffects[i].ShouldClear()) _statusEffects.RemoveAt(i);
+            if(GetStatusEffects[i].ShouldClear()) GetStatusEffects.RemoveAt(i);
         }
 
-        _statusEffects.ForEach(j => j.DoPreEffect(this));
+        GetStatusEffects.ForEach(j => j.DoPreEffect(this));
     }
 
     protected virtual void OnDestroy()
@@ -96,6 +100,7 @@ public abstract class Unit : Entity
         UnsubscribeTurnEndEvent(ResetAttackStatus);
         UnsubscribeTurnEndEvent(PostStatusEffect);
         UnsubscribeTurnBeginEvent(UpdatePreStatusEffects);
+        UnsubscribeHealthChangeEvent(CheckDeathEvent);
     }
 
     #endregion
@@ -110,13 +115,14 @@ public abstract class Unit : Entity
         SubscribeTurnEndEvent(ResetAttackStatus);
         SubscribeTurnEndEvent(PostStatusEffect);
         SubscribeTurnBeginEvent(UpdatePreStatusEffects);
+        SubscribeHealthChangeEvent(CheckDeathEvent);
     }
 
     #endregion
 
     #region Protected Methods
 
-    protected bool ProbabilityHit => Random.Range(0.0f, 1.0f) <= probability;
+    protected bool ProbabilityHit => Random.Range(0.0f, 1.0f) < probability;
     protected int Round(float number) => Mathf.RoundToInt(number);
     protected int ToInt(bool statement) => Convert.ToInt32(statement);
     
@@ -124,8 +130,12 @@ public abstract class Unit : Entity
 
     #region Private Methods
 
-    private void PostStatusEffect() => _statusEffects.ForEach(i => i.DoPostEffect(this));
+    private void PostStatusEffect() => GetStatusEffects.ForEach(i => i.DoPostEffect(this));
     private void ResetAttackStatus() => SetAttackStatus(AttackStatus.Normal);
+    private void CheckDeathEvent()
+    {
+        if (GetCurrentHealth <= 0) InvokeDeathEvent(this);
+    }
 
     #endregion
 }

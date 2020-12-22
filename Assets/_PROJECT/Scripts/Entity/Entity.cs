@@ -5,34 +5,39 @@ using Type = System.Type;
 
 public abstract class Entity : MonoBehaviour
 {
+    #region Variable Definitions
+
     [Header("General")]
-    [Range(1, 50), SerializeField] protected int _currentLevel;
-    [SerializeField] protected int _totalHealth;
-    [SerializeField] protected int _totalAttack;
-    [SerializeField] protected int _totalDefence;
-    [SerializeField] protected int _currentHealth;
-    [SerializeField] protected int _currentAttack;
-    [SerializeField] protected int _currentDefence;
-    protected int _currentRarity;
+    [Range(1, 50), SerializeField] private int _currentLevel;
+    [SerializeField] private int _totalHealth;
+    [SerializeField] private int _totalAttack;
+    [SerializeField] private int _totalDefence;
+    [SerializeField] private int _currentHealth;
+    [SerializeField] private int _currentAttack;
+    [SerializeField] private int _currentDefence;
+    private int _currentRarity;
 
     [Header("Attributes")]
-    protected RuneType _runeType;
-    protected AttackStatus _attackStatus = AttackStatus.Normal;
-    protected Projectile _projectile;
-    protected List<StatusEffect> _statusEffects;
-    [SerializeField] protected UnitObject baseUnit;
+    private RuneType _runeType;
+    private AttackStatus _attackStatus = AttackStatus.Normal;
+    private Projectile _projectile;
+    private List<StatusEffect> _statusEffects;
+    [SerializeField] private UnitObject baseUnit;
 
     [Header("Stat Ratio Multipliers")]
-    [SerializeField] protected float baseStatMultiplier = 1/3f;
-    [SerializeField] protected float paraCapMultiplier = 0.6f;
-    [SerializeField] protected float baseStatCapMultiplier = 0.4f;
+    [SerializeField] private float baseStatMultiplier = 1/3f;
+    [SerializeField] private float paraCapMultiplier = 0.6f;
+    [SerializeField] private float baseStatCapMultiplier = 0.4f;
 
     [Header("Action Events")]
-    protected static Action _deathEvent;
-    protected Action<Entity, int> _grazeEvent;
-    protected Action<Entity, int> _hitEvent;
-    protected Action _turnBegin;
-    protected Action _turnEnd;
+    private static Action<Entity> _deathEvent;
+    private Action<Entity, int> _grazeEvent;
+    private Action<Entity, int> _hitEvent;
+    private Action _healthChangeEvent;
+    private Action _turnBegin;
+    private Action _turnEnd;
+
+    #endregion
 
     #region Public Abstract Methods
 
@@ -74,25 +79,21 @@ public abstract class Entity : MonoBehaviour
 
     #region Public Static Methods
 
-    public static void SubscribeDeathEvent(Action method) => _deathEvent += method;
-    public static void UnsubscribeDeathEvent(Action method) => _deathEvent -= method;
-    public static void InvokeDeathEvent() => _deathEvent?.Invoke();
+    public static void SubscribeDeathEvent(Action<Entity> method) => _deathEvent += method;
+    public static void UnsubscribeDeathEvent(Action<Entity> method) => _deathEvent -= method;
+    public static void InvokeDeathEvent(Entity a) => _deathEvent?.Invoke(a);
 
     #endregion
 
     #region Public Methods
-    
+
     public UnitObject BaseUnit => baseUnit;
 
-    public void AddHealth(int amount)
-    {
-        _currentHealth += amount;
-        if (_currentHealth < 0) _currentHealth = 0;
-    }
+    public void AddHealth(int amount) => SetHealth(GetCurrentHealth + amount);
     public void SetHealth(int amount)
     {
-        _currentHealth = amount;
-        if (_currentHealth < 0) _currentHealth = 0;
+        _currentHealth = Mathf.Clamp(amount, 0, GetMaxHealth);
+        InvokeHealthChangeEvent();
     }
 
     #region Events
@@ -104,6 +105,10 @@ public abstract class Entity : MonoBehaviour
     public void SubscribeHitEvent(Action<Entity, int> method) => _hitEvent += method;
     public void UnsubscribeHitEvent(Action<Entity, int> method) => _hitEvent -= method;
     public void InvokeHitEvent(Entity a, int b) => _hitEvent?.Invoke(a, b);
+
+    public void SubscribeHealthChangeEvent(Action method) => _healthChangeEvent += method;
+    public void UnsubscribeHealthChangeEvent(Action method) => _healthChangeEvent -= method;
+    public void InvokeHealthChangeEvent() => _healthChangeEvent?.Invoke();
 
     public void SubscribeTurnBeginEvent(Action method) => _turnBegin += method;
     public void UnsubscribeTurnBeginEvent(Action method) => _turnBegin -= method;
@@ -119,10 +124,10 @@ public abstract class Entity : MonoBehaviour
     public RuneType GetRuneType => _runeType;
 
     public void SetAttackStatus(AttackStatus status) => _attackStatus = status;
-    public AttackStatus AttackStatus => _attackStatus;
+    public AttackStatus GetAttackStatus => _attackStatus;
 
     public void SetProjectile(Projectile p) => _projectile = p;
-    public Projectile Projectile => _projectile;
+    public Projectile GetProjectile => _projectile;
 
     public void AddStatusEffect(StatusEffect status) => _statusEffects.Add(status);
     public void RemoveAllStatusEffectsOfType(Type effectType)
@@ -133,6 +138,7 @@ public abstract class Entity : MonoBehaviour
             if (effect.GetType() == effectType) _statusEffects.RemoveAt(i);
         }
     }
+    public List<StatusEffect> GetStatusEffects => _statusEffects;
 
     #endregion
 

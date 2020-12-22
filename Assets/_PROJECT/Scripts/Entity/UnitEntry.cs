@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UnitEntry : Entity
 {
-    public int UnitID => Convert.ToInt32(baseUnit.ID);
+    public int UnitID => Convert.ToInt32(BaseUnit.ID);
 
     public override void TakeHit(Entity damager, int damageAmount) { }
     public override void RecieveHealing(Entity healer, int healAmount) { }

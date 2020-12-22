@@ -33,7 +33,7 @@ public class Foe : Unit
         int nettDamage = totalDamage - targetInfo.Focus.GetCurrentDefence;
         if (nettDamage < 0) nettDamage = 0;
 
-        Projectile.AssignTargetDamage(this, targetInfo, nettDamage);
+        GetProjectile.AssignTargetDamage(this, targetInfo, nettDamage);
     }
     public override int CalculateDamage(TargetInfo targetInfo, RuneCollection runes) => GetCurrentAttack;
     public override TargetInfo GetAffectedTargets(Entity focusTarget, List<Entity> allEntities) => base.GetAffectedTargets(focusTarget, allEntities);

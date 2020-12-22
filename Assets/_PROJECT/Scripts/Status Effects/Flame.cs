@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class Flame : StatusEffect
 {
+    #region Variables and Properties
+
     private float _maxHealthPercent;
     private float _attackDownPercent;
     public float MaxHealthPercent => Mathf.Abs(_maxHealthPercent);
     public float AttackDownPercent => Mathf.Abs(_attackDownPercent);
     public override string StatusName => "Aflame";
+
+    #endregion
+
+    #region Override Methods
 
     public override void DoPreEffect(Entity target)
     {
@@ -24,7 +30,9 @@ public class Flame : StatusEffect
 
         DeductRemainingTurns();
     }
-    public override int GetCountOfType(List<StatusEffect> statusList) => statusList.OfType<Flame>().Count();
+    protected override int GetCountOfType(List<StatusEffect> statusList) => statusList.OfType<Flame>().Count();
+
+    #endregion
 
     public Flame() : base()
     {

@@ -14,7 +14,7 @@ public class Scrounger : Unit
         if (battleStage == null) return;
 
         int totalDamage = CalculateDamage(targetInfo, runes);
-        Projectile.AssignTargetDamage(this, targetInfo, totalDamage);
+        GetProjectile.AssignTargetDamage(this, targetInfo, totalDamage);
 
         Transform[] party = battleStage.casterPositions;
         List<Entity> healList = new List<Entity>();

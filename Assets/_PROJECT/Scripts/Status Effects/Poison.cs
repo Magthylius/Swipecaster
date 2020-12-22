@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class Poison : StatusEffect
 {
+    #region Variables and Properties
+
     private float _maxHealthPercent;
     private float _defenceDownPercent;
     public float MaxHealthPercent => Mathf.Abs(_maxHealthPercent);
     public float DefenceDownPercent => Mathf.Abs(_defenceDownPercent);
     public override string StatusName => "Poisoned";
+
+    #endregion
+
+    #region Override Methods
 
     public override void DoPreEffect(Entity target)
     {
@@ -25,7 +31,9 @@ public class Poison : StatusEffect
 
         DeductRemainingTurns();
     }
-    public override int GetCountOfType(List<StatusEffect> statusList) => statusList.OfType<Poison>().Count();
+    protected override int GetCountOfType(List<StatusEffect> statusList) => statusList.OfType<Poison>().Count();
+
+    #endregion
 
     public Poison() : base()
     {
