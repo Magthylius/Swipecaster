@@ -22,4 +22,4 @@ MonoBehaviour:
   SkillDescription: Meow Ta Ta Meow Meow Meow!
   FullArtPrefab: {fileID: 8693132999388973629, guid: b6ca726fa946a4d46afb4390ee578254, type: 3}
   SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}
-  PortraitArt: {fileID: 0}
+  PortraitArt: {fileID: 2848640792621507367, guid: 813a7113e8b30a64bb694e7e454fa145, type: 3}
