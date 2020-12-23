@@ -100,6 +100,8 @@ public abstract class Entity : MonoBehaviour
         //! Defence
         currentInfo = GenerateStatInfo(baseUnit.MaxDefence);
         _totalDefence = Mathf.RoundToInt(CalculateLevelParabolicStat(currentInfo) + CalculateLevelLinearStat(currentInfo));
+
+        UpdateCalculatedStats();
     }
 
     #endregion
