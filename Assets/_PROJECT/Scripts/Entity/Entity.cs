@@ -76,6 +76,13 @@ public abstract class Entity : MonoBehaviour
         CalculateActualStats();
     }
 
+    protected void UpdateCalculatedStats()
+    {
+        SetCurrentAttack(GetBaseAttack);
+        SetCurrentDefence(GetBaseDefence);
+        SetCurrentHealth(GetMaxHealth);
+    }
+
     protected void CalculateActualStats()
     {
         if (baseUnit == null) return;
