@@ -6,7 +6,7 @@ public class EnemyAttackManager : MonoBehaviour
 {
     public static EnemyAttackManager instance;
     BattlestageManager battleStageManager;
-    List<GameObject> target = null;
+    public List<GameObject> target = new List<GameObject>();
 
     RuneStorage gronRune = new RuneStorage(RuneType.GRON, 0);
     RuneStorage fyorRune = new RuneStorage(RuneType.FYOR, 0);
@@ -56,22 +56,22 @@ public class EnemyAttackManager : MonoBehaviour
     {
         for (int i = 0; i < battleStageManager.GetEnemyTeam().Count; i++)
         {
-            battleStageManager.GetEnemyTeam()[i].GetComponent<Caster>().SetPriorityNum(1);
+            battleStageManager.GetCastersTeam()[i].GetComponent<Caster>().SetPriorityNum(1);
         }
 
         int highestPriotyNum = -1;
 
         for (int i = 0; i < battleStageManager.GetEnemyTeam().Count; i++)
         {
-            if (highestPriotyNum < battleStageManager.GetEnemyTeam()[i].GetComponent<Caster>().GetPriorityNum)
-            {
+            if (highestPriotyNum < battleStageManager.GetCastersTeam()[i].GetComponent<Caster>().GetPriorityNum)
+            {              
                 target.Clear();
-                target.Add(battleStageManager.GetEnemyTeam()[i]);
-                highestPriotyNum = battleStageManager.GetEnemyTeam()[i].GetComponent<Caster>().GetPriorityNum;
+                target.Add(battleStageManager.GetCastersTeam()[i]);
+                highestPriotyNum = battleStageManager.GetCastersTeam()[i].GetComponent<Caster>().GetPriorityNum;
             }
-            else if (highestPriotyNum == battleStageManager.GetEnemyTeam()[i].GetComponent<Caster>().GetPriorityNum)
+            else if (highestPriotyNum == battleStageManager.GetCastersTeam()[i].GetComponent<Caster>().GetPriorityNum)
             {
-                target.Add(battleStageManager.GetEnemyTeam()[i]);
+                target.Add(battleStageManager.GetCastersTeam()[i]);
             }
         }
 

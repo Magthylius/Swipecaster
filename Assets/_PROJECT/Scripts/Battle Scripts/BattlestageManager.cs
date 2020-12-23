@@ -220,7 +220,6 @@ public class BattlestageManager : MonoBehaviour
                 //! Bottom codes should not be use for actual gameplay
                 GameObject temp = Instantiate(loadOutUnit, enemyPositions[i].position, Quaternion.identity, enemyPositions[i]);
                 temp.GetComponent<Foe>().SetCurrentLevel(tempRoom.roomSO.enemies[i].level);
-                print("new level" + temp.GetComponent<Foe>().GetCurrentLevel);
                 enemyTeam.Add(temp);
             }
         }
