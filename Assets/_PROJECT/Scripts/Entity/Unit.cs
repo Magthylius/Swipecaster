@@ -11,6 +11,7 @@ public abstract class Unit : Entity
     private AttackStatus _attackStatus = AttackStatus.Normal;
     private Projectile _projectile;
     private List<StatusEffect> _statusEffects;
+    [SerializeField] private int priorityNum = 0;
 
     [Header("Other Multipliers")]
     [SerializeField] protected float damageMultiplier = 1.0f;
@@ -86,6 +87,9 @@ public abstract class Unit : Entity
     public void DeductSkillCharge() => currentSkillCharge = Mathf.Clamp(--currentSkillCharge, 0, _skillChargeCount);
     public bool SkillIsReady => currentSkillCharge == 0;
     public ActiveSkill GetActiveSkill => _activeSkill;
+
+    public int GetPriorityNum => priorityNum;
+    public void SetPriorityNum(int newPriority) => priorityNum = newPriority;
 
     #region Events
 
