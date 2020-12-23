@@ -1,6 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BattlestageManager : MonoBehaviour
@@ -231,9 +231,22 @@ public class BattlestageManager : MonoBehaviour
 
     public GameObject GetCurrentCaster(int getCaster) => playerTeam[getCaster];
     public GameObject GetCurrentEnemy(int getEnemy) => enemyTeam[getEnemy];
-
+    
     public List<GameObject> GetCastersTeam() => playerTeam;
     public List<GameObject> GetEnemyTeam() => enemyTeam;
+    public IEnumerable<Unit> GetCasterTeamAsUnit()
+    {
+        var list = new List<Unit>();
+        foreach (var o in GetCastersTeam()) GetCastersTeam().ForEach(o => list.Add(o.GetComponent<Unit>()));
+        return list;
+    }
+    public IEnumerable<Unit> GetEnemyTeamAsUnit()
+    {
+        var list = new List<Unit>();
+        foreach (var o in GetEnemyTeam()) GetEnemyTeam().ForEach(o => list.Add(o.GetComponent<Unit>()));
+        return list;
+    }
+
     public GameObject GetSelectedTarget() => selectedTarget;
 
     #endregion

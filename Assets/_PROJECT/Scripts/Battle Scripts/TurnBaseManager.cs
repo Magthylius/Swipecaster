@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ConversionFunctions;
 using Random = UnityEngine.Random;
 
 public class TurnBaseManager : MonoBehaviour
@@ -11,6 +12,7 @@ public class TurnBaseManager : MonoBehaviour
     ComboManager comboManager;
     EnemyAttackManager enemyAttackManager;
     RuneManager runeManager;
+    InformationManager infoManager;
 
     [SerializeField] GameStateEnum battleState;
 
@@ -46,6 +48,7 @@ public class TurnBaseManager : MonoBehaviour
         comboManager = ComboManager.instance;
         runeManager = RuneManager.instance;
         enemyAttackManager = EnemyAttackManager.instance;
+        infoManager = InformationManager.instance;
         battleState = GameStateEnum.INIT;
         StartCoroutine(InitBattle());
     }
@@ -83,6 +86,9 @@ public class TurnBaseManager : MonoBehaviour
 
         print("Is " + caster.name + " turn");
         isPlayerTurn = true;
+
+        infoManager.UpdateCasterProtrait(GetCurrentCaster().AsUnit());
+        infoManager.UpdateSkillChargeBar(GetCurrentCaster().AsUnit());
     }
 
     void EnemyTurn()
