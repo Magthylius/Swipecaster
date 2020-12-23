@@ -9,6 +9,7 @@ public class TurnBaseManager : MonoBehaviour
     BattlestageManager battlestageManager;
     UnitPositionManager unitPositionManager;
     ComboManager comboManager;
+    EnemyAttackManager enemyAttackManager;
     RuneManager runeManager;
 
     [SerializeField] GameStateEnum battleState;
@@ -44,6 +45,7 @@ public class TurnBaseManager : MonoBehaviour
         unitPositionManager = UnitPositionManager.instance;
         comboManager = ComboManager.instance;
         runeManager = RuneManager.instance;
+        enemyAttackManager = EnemyAttackManager.instance;
         battleState = GameStateEnum.INIT;
         StartCoroutine(InitBattle());
     }
@@ -179,7 +181,7 @@ public class TurnBaseManager : MonoBehaviour
 
     IEnumerator EnemyAttack()
     {
-        comboManager.EnemyAttack(enemy, castersOrderList[Random.Range(0, castersOrderList.Count)]);
+        enemyAttackManager.CalculatePriotity(enemy);
 
         yield return new WaitForSeconds(delaysInBetween);
         EndTurn();

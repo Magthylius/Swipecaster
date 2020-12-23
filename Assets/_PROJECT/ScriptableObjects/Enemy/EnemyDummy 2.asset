@@ -15,7 +15,7 @@ MonoBehaviour:
   ID: 1002
   BaseRarity: 5
   MaxLevel: 50
-  MaxHealth: 10
+  MaxHealth: 999999
   MaxAttack: 900
   MaxDefence: 20
   CharacterDescription: Enemy Dummy

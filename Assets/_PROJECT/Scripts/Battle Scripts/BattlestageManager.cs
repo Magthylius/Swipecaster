@@ -207,11 +207,8 @@ public class BattlestageManager : MonoBehaviour
             {
                 int randomAvailableEnemy = UnityEngine.Random.Range(0, availableEnemyType.Count);
                 GameObject loadOutUnit = availableEnemyType[randomAvailableEnemy].enemySO.FullArtPrefab;
-                loadOutUnit.GetComponent<Foe>().SetCurrentLevel(availableEnemyType[randomAvailableEnemy].level);
-                //enemyPositions[i].localPosition = new Vector2(enemyPositions[i].localPosition.x + (unitGap * i),
-                //   enemyPositions[i].localPosition.y);
-
                 GameObject temp = Instantiate(loadOutUnit, enemyPositions[i].position, Quaternion.identity, enemyPositions[i]);
+                temp.GetComponent<Foe>().SetCurrentLevel(availableEnemyType[randomAvailableEnemy].level);
                 enemyTeam.Add(temp);
             }
         }
@@ -220,12 +217,9 @@ public class BattlestageManager : MonoBehaviour
             for (int i = 0; i < tempRoom.roomSO.enemies.Count; i++)
             {
                 GameObject loadOutUnit = tempRoom.roomSO.enemies[i].enemySO.FullArtPrefab;
-                loadOutUnit.GetComponent<Foe>().SetCurrentLevel(tempRoom.roomSO.enemies[i].level);
-                //enemyPositions[i].localPosition = new Vector2(enemyPositions[i].localPosition.x + (unitGap * i),
-                //    enemyPositions[i].localPosition.y);
-
                 //! Bottom codes should not be use for actual gameplay
                 GameObject temp = Instantiate(loadOutUnit, enemyPositions[i].position, Quaternion.identity, enemyPositions[i]);
+                temp.GetComponent<Foe>().SetCurrentLevel(tempRoom.roomSO.enemies[i].level);
                 enemyTeam.Add(temp);
             }
         }

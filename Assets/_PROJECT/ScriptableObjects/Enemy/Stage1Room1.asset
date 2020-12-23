@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies:
   - enemySO: {fileID: 11400000, guid: 9570a34fa79060d4695ff44d79a9f784, type: 2}
-    level: 1
+    level: 50
   - enemySO: {fileID: 11400000, guid: 8179fc491f2337a4c9196cfa259dee72, type: 2}
-    level: 1
+    level: 50

@@ -11,6 +11,7 @@ public abstract class Unit : Entity
     private AttackStatus _attackStatus = AttackStatus.Normal;
     private Projectile _projectile;
     private List<StatusEffect> _statusEffects;
+    [SerializeField] private int priorityNum = 0;
 
     [Header("Other Multipliers")]
     [SerializeField] protected float damageMultiplier = 1.0f;
@@ -35,7 +36,7 @@ public abstract class Unit : Entity
     private static Action<Unit> _deathEvent;
     private Action<Unit, int> _grazeEvent;
     private Action<Unit, int> _hitEvent;
-    private Action _healthChangeEvent;
+    private Action<Unit> _healthChangeEvent;
     private Action _turnBegin;
     private Action _turnEnd;
 
@@ -57,7 +58,7 @@ public abstract class Unit : Entity
     public override void SetCurrentHealth(int amount)
     {
         base.SetCurrentHealth(amount);
-        InvokeHealthChangeEvent();
+        InvokeHealthChangeEvent(this);
     }
 
     #endregion
@@ -87,6 +88,9 @@ public abstract class Unit : Entity
     public bool SkillIsReady => currentSkillCharge == 0;
     public ActiveSkill GetActiveSkill => _activeSkill;
 
+    public int GetPriorityNum => priorityNum;
+    public void SetPriorityNum(int newPriority) => priorityNum = newPriority;
+
     #region Events
 
     public static void SubscribeDeathEvent(Action<Unit> method) => _deathEvent += method;
@@ -101,9 +105,9 @@ public abstract class Unit : Entity
     public void UnsubscribeHitEvent(Action<Unit, int> method) => _hitEvent -= method;
     public void InvokeHitEvent(Unit a, int b) => _hitEvent?.Invoke(a, b);
 
-    public void SubscribeHealthChangeEvent(Action method) => _healthChangeEvent += method;
-    public void UnsubscribeHealthChangeEvent(Action method) => _healthChangeEvent -= method;
-    public void InvokeHealthChangeEvent() => _healthChangeEvent?.Invoke();
+    public void SubscribeHealthChangeEvent(Action<Unit> method) => _healthChangeEvent += method;
+    public void UnsubscribeHealthChangeEvent(Action<Unit> method) => _healthChangeEvent -= method;
+    public void InvokeHealthChangeEvent(Unit a) => _healthChangeEvent?.Invoke(a);
 
     public void SubscribeTurnBeginEvent(Action method) => _turnBegin += method;
     public void UnsubscribeTurnBeginEvent(Action method) => _turnBegin -= method;
@@ -180,9 +184,9 @@ public abstract class Unit : Entity
         PostStatusEffect();
     }
     private void ResetAttackStatus() => SetAttackStatus(AttackStatus.Normal);
-    private void CheckDeathEvent()
+    private void CheckDeathEvent(Unit unit)
     {
-        if (GetCurrentHealth <= 0) InvokeDeathEvent(this);
+        if (GetCurrentHealth <= 0) InvokeDeathEvent(unit);
     }
     private void UpdatePreStatusEffects()
     {
