@@ -31,24 +31,13 @@ public class CameraManager : MonoBehaviour
 
     void LateUpdate()
     {
+        CameraZoom();
+
         if (!isInBound)
             return;
 
-        
-        if (cam.transform.position.x < leftBound + 1f)
-        {
-            cam.transform.position = new Vector3(leftBound, cam.transform.position.y, cam.transform.position.z);
-        }
-
-        if (cam.transform.position.x > rightBound - 1f)
-        {
-            cam.transform.position = new Vector3(rightBound, cam.transform.position.y, cam.transform.position.z);
-        }
-        
         UpdateCameraBoundary();
-        
         CameraPanning();
-        CameraZoom();
     }
 
     void CameraZoom()
@@ -100,11 +89,13 @@ public class CameraManager : MonoBehaviour
     {
         if (Input.touchCount >= 2) return;
 
-        if (Input.GetMouseButtonDown(0)) touchPos = GetWorldPos();
+        if (Input.GetMouseButtonDown(0))
+        {
+            touchPos = GetWorldPos();
+        }
 
         if (Input.GetMouseButton(0))
         {
-         
             Vector3 direction = touchPos - GetWorldPos();
             cam.transform.position = new Vector3(Mathf.Clamp(cam.transform.position.x + direction.x, leftBound, rightBound) * panSpeed,
                 cam.transform.position.y, cam.transform.position.z);
@@ -120,7 +111,6 @@ public class CameraManager : MonoBehaviour
         
         leftBound = (levelBounds.min.x) + (horizontalCamSize + 1);
         rightBound = (levelBounds.max.x) - (horizontalCamSize + 1);
-        
     }
     
     public void IsInBoundary() => isInBound = true;
