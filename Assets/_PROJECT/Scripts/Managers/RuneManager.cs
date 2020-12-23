@@ -19,6 +19,7 @@ public class RuneManager : MonoBehaviour
     public Transform initialSpawn;
     public CanvasScaler referenceScale;
     public GameObject castingGroup;
+    public int spawnDelay;
     public float offsetMult = 0.1f;
 
     [Header("Rune Settings")]
@@ -45,11 +46,11 @@ public class RuneManager : MonoBehaviour
         castPool = PoolManager.instance;
 
         InitSpawn();
-        TickSystem.OnTick += SpawningInterval;
+        TickManager.OnTick += SpawningInterval;
 
     }
 
-    void SpawningInterval(object sender, TickSystem.OnTickEvent e)
+    void SpawningInterval(object sender, TickManager.OnTickEvent e)
     {
         if (allowSpawn)
         {
@@ -59,7 +60,7 @@ public class RuneManager : MonoBehaviour
             {
                 //print("Check");
                 SpawnItem();
-                targetSpawn += Random.Range(1, 3);
+                targetSpawn += spawnDelay;
             }
         }
     }

@@ -3,14 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TickSystem : MonoBehaviour
+public class TickManager : MonoBehaviour
 {
     public class OnTickEvent : EventArgs
     {
         public int tick;
     }
 
-    public static TickSystem instance;
+    public static TickManager instance;
 
     public static event EventHandler<OnTickEvent> OnTick;
     

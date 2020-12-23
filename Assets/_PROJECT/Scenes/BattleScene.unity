@@ -7428,6 +7428,7 @@ MonoBehaviour:
   initialSpawn: {fileID: 634921706}
   referenceScale: {fileID: 1094320788}
   castingGroup: {fileID: 1728044590}
+  spawnDelay: 5
   offsetMult: 0.1
   maxVelocity: 5
   spawnNum: 1
