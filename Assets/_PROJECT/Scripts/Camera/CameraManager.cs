@@ -24,6 +24,7 @@ public class CameraManager : MonoBehaviour
     bool allowPan = false;
 
     bool isInBound { get; set; }
+
     Vector3 touchPos;
 
     void Start()
@@ -34,13 +35,26 @@ public class CameraManager : MonoBehaviour
 
     void LateUpdate()
     {
-        CameraZoom();
-        CameraPanning();
+        
+        if (allowZoom)
+        {
+            cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, targetZoom, zoomModifierSpeed * Time.unscaledDeltaTime);
 
+            if (Lerp.NegligibleDistance(cam.orthographicSize, targetZoom, 0.001f))
+            {
+                cam.orthographicSize = targetZoom;
+                allowZoom = false;
+            }
+        }
+        
+        UpdateCameraBoundary();
+        
         if (!isInBound)
             return;
 
-        UpdateCameraBoundary(); 
+        CameraZoom();
+        CameraPanning();
+
     }
 
     void CameraZoom()
@@ -52,7 +66,18 @@ public class CameraManager : MonoBehaviour
 
             targetZoom = Mathf.Clamp(cam.orthographicSize - zoom, minZoom, maxZoom);
             
-            cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, targetZoom, zoomModifierSpeed * Time.unscaledDeltaTime);
+        }
+        
+        if (allowPan)
+        {
+            float actualPan = Mathf.Lerp(cam.transform.position.x, targetPan, panSpeed * Time.unscaledDeltaTime);
+            cam.transform.position = new Vector3(actualPan, cam.transform.position.y, cam.transform.position.z);
+
+            if (Lerp.NegligibleDistance(cam.orthographicSize, targetPan, 0.001f))
+            {
+                cam.transform.position = new Vector3(targetPan, cam.transform.position.y, cam.transform.position.z);
+                allowPan = false;
+            }
         }
 
 
@@ -76,16 +101,7 @@ public class CameraManager : MonoBehaviour
             }
         }
 
-        if (allowZoom)
-        {
-            cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, targetZoom, zoomModifierSpeed * Time.unscaledDeltaTime);
 
-            if (Lerp.NegligibleDistance(cam.orthographicSize, targetZoom, 0.001f))
-            {
-                cam.orthographicSize = targetZoom;
-                allowZoom = false;
-            }
-        }
     }
 
     void CameraPanning()
@@ -105,17 +121,7 @@ public class CameraManager : MonoBehaviour
             targetPan = Mathf.Clamp(cam.transform.position.x + direction.x, leftBound, rightBound);
         }
 
-        if (allowPan)
-        {
-            float actualPan = Mathf.Lerp(cam.transform.position.x, targetPan, panSpeed * Time.unscaledDeltaTime);
-            cam.transform.position = new Vector3(actualPan, cam.transform.position.y, cam.transform.position.z);
 
-            if (Lerp.NegligibleDistance(cam.orthographicSize, targetPan, 0.001f))
-            {
-                cam.transform.position = new Vector3(targetPan, cam.transform.position.y, cam.transform.position.z);
-                allowPan = false;
-            }
-        }
     }
 
     void UpdateCameraBoundary()
@@ -125,8 +131,8 @@ public class CameraManager : MonoBehaviour
 
         Bounds levelBounds = backgroundEnvSpr.bounds;
         
-        leftBound = (levelBounds.min.x) + (horizontalCamSize + 1);
-        rightBound = (levelBounds.max.x) - (horizontalCamSize + 1);
+        leftBound = (levelBounds.min.x) + (horizontalCamSize + 1f);
+        rightBound = (levelBounds.max.x) - (horizontalCamSize + 1f);
     }
     
     public void IsInBoundary() => isInBound = true;
@@ -141,4 +147,5 @@ public class CameraManager : MonoBehaviour
 
         return ray.GetPoint(dist);
     }
+    
 }
