@@ -34,6 +34,7 @@ public class EnemyAttackManager : MonoBehaviour
 
     public void EnemyAttack(GameObject damagerObject, GameObject targetObject)
     {
+        print(targetObject.name + "being attacked!");
         if (battleStageManager == null) { return; }
         var damager = damagerObject.GetComponent<Unit>();
         var target = targetObject.GetComponent<Unit>();
@@ -54,14 +55,14 @@ public class EnemyAttackManager : MonoBehaviour
 
     public void CalculatePriotity(GameObject attacker)
     {
-        for (int i = 0; i < battleStageManager.GetEnemyTeam().Count; i++)
+        for (int i = 0; i < battleStageManager.GetCastersTeam().Count; i++)
         {
             battleStageManager.GetCastersTeam()[i].GetComponent<Caster>().SetPriorityNum(1);
         }
 
         int highestPriotyNum = -1;
 
-        for (int i = 0; i < battleStageManager.GetEnemyTeam().Count; i++)
+        for (int i = 0; i < battleStageManager.GetCastersTeam().Count; i++)
         {
             if (highestPriotyNum < battleStageManager.GetCastersTeam()[i].GetComponent<Caster>().GetPriorityNum)
             {              
