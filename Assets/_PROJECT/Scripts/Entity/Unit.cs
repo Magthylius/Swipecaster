@@ -85,6 +85,8 @@ public abstract class Unit : Entity
     public void SetSkillChargeCount(int count) => _skillChargeCount = count;
     public void ResetSkillCharge() => currentSkillCharge = _skillChargeCount;
     public void DeductSkillCharge() => currentSkillCharge = Mathf.Clamp(--currentSkillCharge, 0, _skillChargeCount);
+    public int GetMaxSkillChargeCount => _skillChargeCount;
+    public int GetCurrentSkillChargeCount => currentSkillCharge;
     public bool SkillIsReady => currentSkillCharge == 0;
     public ActiveSkill GetActiveSkill => _activeSkill;
 
