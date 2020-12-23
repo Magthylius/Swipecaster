@@ -7973,7 +7973,7 @@ MonoBehaviour:
   zoomModifierSpeed: 5
   minZoom: 1
   maxZoom: 4
-  panSpeed: 1
+  panSpeed: 4
   backgroundEnvSpr: {fileID: 1212827364}
 --- !u!1 &1605034234
 GameObject:

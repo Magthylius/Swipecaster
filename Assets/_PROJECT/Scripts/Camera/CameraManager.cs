@@ -20,6 +20,9 @@ public class CameraManager : MonoBehaviour
     float targetZoom = 0f;
     bool allowZoom = false;
 
+    float targetPan = 0f;
+    bool allowPan = false;
+
     bool isInBound { get; set; }
     Vector3 touchPos;
 
@@ -32,12 +35,12 @@ public class CameraManager : MonoBehaviour
     void LateUpdate()
     {
         CameraZoom();
+        CameraPanning();
 
         if (!isInBound)
             return;
 
-        UpdateCameraBoundary();
-        CameraPanning();
+        UpdateCameraBoundary(); 
     }
 
     void CameraZoom()
@@ -97,8 +100,21 @@ public class CameraManager : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             Vector3 direction = touchPos - GetWorldPos();
-            cam.transform.position = new Vector3(Mathf.Clamp(cam.transform.position.x + direction.x, leftBound, rightBound) * panSpeed,
-                cam.transform.position.y, cam.transform.position.z);
+            if (direction.sqrMagnitude >= 1) allowPan = true;
+
+            targetPan = Mathf.Clamp(cam.transform.position.x + direction.x, leftBound, rightBound);
+        }
+
+        if (allowPan)
+        {
+            float actualPan = Mathf.Lerp(cam.transform.position.x, targetPan, panSpeed * Time.unscaledDeltaTime);
+            cam.transform.position = new Vector3(actualPan, cam.transform.position.y, cam.transform.position.z);
+
+            if (Lerp.NegligibleDistance(cam.orthographicSize, targetPan, 0.001f))
+            {
+                cam.transform.position = new Vector3(targetPan, cam.transform.position.y, cam.transform.position.z);
+                allowPan = false;
+            }
         }
     }
 
