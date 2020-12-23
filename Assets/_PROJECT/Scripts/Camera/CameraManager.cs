@@ -47,6 +47,18 @@ public class CameraManager : MonoBehaviour
             }
         }
         
+        if (allowPan)
+        {
+            float actualPan = Mathf.Lerp(cam.transform.position.x, targetPan, panSpeed * Time.unscaledDeltaTime);
+            cam.transform.position = new Vector3(actualPan, cam.transform.position.y, cam.transform.position.z);
+
+            if (Lerp.NegligibleDistance(cam.orthographicSize, targetPan, 0.001f))
+            {
+                cam.transform.position = new Vector3(targetPan, cam.transform.position.y, cam.transform.position.z);
+                allowPan = false;
+            }
+        }
+        
         UpdateCameraBoundary();
         
         if (!isInBound)
@@ -68,18 +80,6 @@ public class CameraManager : MonoBehaviour
             
         }
         
-        if (allowPan)
-        {
-            float actualPan = Mathf.Lerp(cam.transform.position.x, targetPan, panSpeed * Time.unscaledDeltaTime);
-            cam.transform.position = new Vector3(actualPan, cam.transform.position.y, cam.transform.position.z);
-
-            if (Lerp.NegligibleDistance(cam.orthographicSize, targetPan, 0.001f))
-            {
-                cam.transform.position = new Vector3(targetPan, cam.transform.position.y, cam.transform.position.z);
-                allowPan = false;
-            }
-        }
-
 
         if (Input.touchCount == 2)
         {
