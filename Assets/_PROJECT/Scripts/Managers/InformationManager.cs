@@ -21,11 +21,8 @@ public class InformationManager : MonoBehaviour
     public TextMeshProUGUI aquaCount;
     public TextMeshProUGUI tehkCount;
 
-    public void UpdateCasterProtrait()
+    public void UpdateCasterProtrait(Unit unit)
     {
-        if (_turnBaseManager == null) return;
-
-        var unit = _turnBaseManager.GetCurrentCaster().GetComponent<Unit>();
         if (unit == null) return;
 
         Sprite spriteArt = unit.BaseUnit.PortraitArt;
@@ -33,11 +30,8 @@ public class InformationManager : MonoBehaviour
         casterPortrait.sprite = spriteArt;
     }
 
-    public void UpdateSkillChargeBar()
+    public void UpdateSkillChargeBar(Unit unit)
     {
-        if (_turnBaseManager == null) return;
-
-        var unit = _turnBaseManager.GetCurrentCaster().GetComponent<Unit>();
         if (unit == null) return;
 
         skillChargeBar.fillAmount = unit.GetCurrentSkillChargeCount / unit.GetMaxSkillChargeCount;
