@@ -76,6 +76,13 @@ public abstract class Entity : MonoBehaviour
         CalculateActualStats();
     }
 
+    protected void UpdateCalculatedStats()
+    {
+        SetCurrentAttack(GetBaseAttack);
+        SetCurrentDefence(GetBaseDefence);
+        SetCurrentHealth(GetMaxHealth);
+    }
+
     protected void CalculateActualStats()
     {
         if (baseUnit == null) return;
@@ -93,6 +100,8 @@ public abstract class Entity : MonoBehaviour
         //! Defence
         currentInfo = GenerateStatInfo(baseUnit.MaxDefence);
         _totalDefence = Mathf.RoundToInt(CalculateLevelParabolicStat(currentInfo) + CalculateLevelLinearStat(currentInfo));
+
+        UpdateCalculatedStats();
     }
 
     #endregion
