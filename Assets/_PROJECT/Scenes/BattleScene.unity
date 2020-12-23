@@ -7313,7 +7313,7 @@ Camera:
   far clip plane: 1000
   field of view: 20
   orthographic: 1
-  orthographic size: 4
+  orthographic size: 3.5
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -7970,11 +7970,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1404324106}
-  horizontalOffset: 0
+  horizontalOffset: 1
   verticalOffset: 0
   zoomModifierSpeed: 5
   minZoom: 1
-  maxZoom: 4
+  maxZoom: 3.5
   panSpeed: 4
   backgroundEnvSpr: {fileID: 1212827364}
 --- !u!1 &1605034234
