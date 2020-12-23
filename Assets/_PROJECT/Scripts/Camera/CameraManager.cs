@@ -30,6 +30,17 @@ public class CameraManager : MonoBehaviour
         if (!isInBound)
             return;
 
+        
+        if (cam.transform.position.x < leftBound + 1f)
+        {
+            cam.transform.position = new Vector3(leftBound, cam.transform.position.y, cam.transform.position.z);
+        }
+
+        if (cam.transform.position.x > rightBound - 1f)
+        {
+            cam.transform.position = new Vector3(rightBound, cam.transform.position.y, cam.transform.position.z);
+        }
+        
         UpdateCameraBoundary();
         
         CameraPanning();
@@ -50,7 +61,6 @@ public class CameraManager : MonoBehaviour
             {
                 cam.orthographicSize = targetMouseZoom;
             }
-            print("Editor Zoom");
         }
 
 
@@ -75,8 +85,9 @@ public class CameraManager : MonoBehaviour
             {
                 cam.orthographicSize = targetZoom;
             }
-            print("Phone Zoom");
+
         }
+
     }
 
     void CameraPanning()
@@ -101,8 +112,9 @@ public class CameraManager : MonoBehaviour
 
         Bounds levelBounds = backgroundEnvSpr.bounds;
         
-        leftBound = (levelBounds.min.x) + horizontalCamSize;
-        rightBound = (levelBounds.max.x) - horizontalCamSize;
+        leftBound = (levelBounds.min.x) + (horizontalCamSize + 1);
+        rightBound = (levelBounds.max.x) - (horizontalCamSize + 1);
+        
     }
     
     public void IsInBoundary() => isInBound = true;

@@ -86,8 +86,8 @@
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/UnitPositionManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Runes/RuneManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/TurnBaseManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Camera/CameraManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/ComboManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Camera/CameraManager.cs" />
       </list>
     </option>
   </component>
@@ -138,7 +138,7 @@
       <workItem from="1608445133268" duration="25878000" />
       <workItem from="1608617766216" duration="13371000" />
       <workItem from="1608643239852" duration="6089000" />
-      <workItem from="1608717553841" duration="297000" />
+      <workItem from="1608717553841" duration="2282000" />
     </task>
     <servers />
   </component>
