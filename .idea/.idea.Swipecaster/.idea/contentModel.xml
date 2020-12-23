@@ -7,6 +7,9 @@
       <e p="Assets" t="Include">
         <e p="_PROJECT" t="Include">
           <e p="Scripts" t="Include">
+            <e p="Active Skills" t="Include">
+              <e p="ActiveSkill.cs" t="Include" />
+            </e>
             <e p="Battle Scripts" t="Include">
               <e p="BattlestageManager.cs" t="Include" />
               <e p="GameStateEnum.cs" t="Include" />
@@ -29,31 +32,40 @@
             <e p="Entity" t="Include">
               <e p="Casters" t="Include">
                 <e p="Antipathic" t="Include">
+                  <e p="Antipathic.cs" t="Include" />
                   <e p="Debuffer.cs" t="Include" />
                   <e p="Spreader.cs" t="Include" />
                 </e>
+                <e p="ArchType.cs" t="Include" />
                 <e p="Artillery" t="Include">
+                  <e p="Artillery.cs" t="Include" />
                   <e p="ArtilleryOverhead.cs" t="Include" />
                   <e p="Howitzer.cs" t="Include" />
                 </e>
+                <e p="Caster.cs" t="Include" />
                 <e p="Conjuror" t="Include">
                   <e p="Aegismancer.cs" t="Include" />
                   <e p="Antagomancer.cs" t="Include" />
+                  <e p="Conjuror.cs" t="Include" />
                 </e>
                 <e p="Curative" t="Include">
+                  <e p="Curative.cs" t="Include" />
                   <e p="MultiTarget.cs" t="Include" />
                   <e p="Scrounger.cs" t="Include" />
                   <e p="SingleTarget.cs" t="Include" />
                 </e>
                 <e p="Enhancer" t="Include">
                   <e p="Damagist.cs" t="Include" />
+                  <e p="Enhancer.cs" t="Include" />
                   <e p="Modal.cs" t="Include" />
                 </e>
                 <e p="Kinectist" t="Include">
                   <e p="Deflector.cs" t="Include" />
+                  <e p="Kinectist.cs" t="Include" />
                   <e p="Reflector.cs" t="Include" />
                 </e>
                 <e p="Pinpoint" t="Include">
+                  <e p="Pinpoint.cs" t="Include" />
                   <e p="PinpointOverhead.cs" t="Include" />
                   <e p="PinpointPiercer.cs" t="Include" />
                   <e p="Volleyer.cs" t="Include" />
@@ -61,11 +73,11 @@
                 <e p="Stoic" t="Include">
                   <e p="Riposter.cs" t="Include" />
                   <e p="Solitarist.cs" t="Include" />
+                  <e p="Stoic.cs" t="Include" />
                   <e p="Tauntist.cs" t="Include" />
                 </e>
               </e>
               <e p="Entity.cs" t="Include" />
-              <e p="EnumeratorMethods.cs" t="Include" />
               <e p="Foe.cs" t="Include" />
               <e p="Projectiles" t="Include">
                 <e p="Blast.cs" t="Include" />
@@ -107,6 +119,7 @@
               <e p="UnitObject.cs" t="Include" />
             </e>
             <e p="Status Effects" t="Include">
+              <e p="Create.cs" t="Include" />
               <e p="DefenceDown.cs" t="Include" />
               <e p="Flame.cs" t="Include" />
               <e p="Poison.cs" t="Include" />

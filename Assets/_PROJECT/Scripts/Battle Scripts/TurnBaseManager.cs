@@ -9,6 +9,7 @@ public class TurnBaseManager : MonoBehaviour
     BattlestageManager battlestageManager;
     UnitPositionManager unitPositionManager;
     ComboManager comboManager;
+    RuneManager runeManager;
 
     [SerializeField] GameStateEnum battleState;
 
@@ -42,6 +43,7 @@ public class TurnBaseManager : MonoBehaviour
         battlestageManager = BattlestageManager.instance;
         unitPositionManager = UnitPositionManager.instance;
         comboManager = ComboManager.instance;
+        runeManager = RuneManager.instance;
         battleState = GameStateEnum.INIT;
         StartCoroutine(InitBattle());
     }
@@ -66,6 +68,8 @@ public class TurnBaseManager : MonoBehaviour
 
     void CasterTurn()
     {
+        runeManager.SpawnActivate();
+        
         //! Point caster when is their turn
         caster = castersOrderList[casterUnitTurn];
         unitPositionManager.SetHolder(caster);
@@ -93,7 +97,7 @@ public class TurnBaseManager : MonoBehaviour
 
     #region Unit Actions
 
-    void OnCasterAttack()
+    public void OnCasterAttack()
     {
         if (battleState != GameStateEnum.CASTERTURN) return;
         StartCoroutine(CasterAttack());

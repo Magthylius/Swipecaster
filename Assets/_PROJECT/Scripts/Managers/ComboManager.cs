@@ -72,7 +72,7 @@ public class ComboManager : MonoBehaviour
                 runeManager.SpawnDeactivate();
                 AssessRunes(turnBaseManger.GetCurrentCaster(), targetObject);
                 //EnemyAttack(battleStageManager.GetCurrentEnemy(0), turnBaseManger.GetCurrentCaster());
-
+                turnBaseManger.OnCasterAttack();
             }
         }
         else if (sliderAnim)

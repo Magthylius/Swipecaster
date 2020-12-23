@@ -47,7 +47,6 @@ public class RuneManager : MonoBehaviour
         InitSpawn();
         TickSystem.OnTick += SpawningInterval;
 
-        allowSpawn = true;
     }
 
     void SpawningInterval(object sender, TickSystem.OnTickEvent e)
