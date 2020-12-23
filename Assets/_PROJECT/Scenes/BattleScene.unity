@@ -1213,7 +1213,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 762aaef8bd8ca44418dfbe541b089bb6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 075a7db10b6fd4740a9a093024108d85, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1971,7 +1971,7 @@ GameObject:
   - component: {fileID: 847145324}
   - component: {fileID: 847145323}
   m_Layer: 0
-  m_Name: BG
+  m_Name: Hole Filler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2016,7 +2016,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4160cf5e84a1b9f449981a753c441898, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1a8c7697e9997e94690a3bfba21b5ae9, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -9382,8 +9382,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2e587970e70920d458d77c679494ee24, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: a559c19d92a7d2a458c7bdc60696109b, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

@@ -34,6 +34,12 @@ public class InformationManager : MonoBehaviour
     {
         if (unit == null) return;
 
+        if (unit.GetMaxSkillChargeCount == 0)
+        {
+            Debug.LogError("Unit skill charge is 0");
+            return;
+        }
+
         skillChargeBar.fillAmount = unit.GetCurrentSkillChargeCount / unit.GetMaxSkillChargeCount;
     }
 
