@@ -16,6 +16,7 @@ public class CameraManager : MonoBehaviour
     public SpriteRenderer backgroundEnvSpr;
     
     float leftBound, rightBound, topBound, bottomBound;
+    float targetZoom = 0f;
 
     bool isInBound { get; set; }
     Vector3 touchPos;
@@ -23,6 +24,7 @@ public class CameraManager : MonoBehaviour
     void Start()
     {
         UpdateCameraBoundary();
+        targetZoom = cam.orthographicSize;
     }
 
     void LateUpdate()
@@ -51,16 +53,13 @@ public class CameraManager : MonoBehaviour
     {
         if (Input.GetAxisRaw("Mouse ScrollWheel") != 0f)
         {
-            float zoom = Input.GetAxisRaw("Mouse ScrollWheel") * zoomModifierSpeed;
+            float zoom = Input.GetAxisRaw("Mouse ScrollWheel");
+            //print(zoom);
+
+            targetZoom = Mathf.Clamp(cam.orthographicSize - zoom, minZoom, maxZoom);
+            //print(targetMouseZoom);
             
-            float targetMouseZoom = Mathf.Clamp(cam.orthographicSize - zoom, minZoom, maxZoom);
-            
-            cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, targetMouseZoom, zoomModifierSpeed * Time.unscaledDeltaTime);
-            
-            if (Lerp.NegligibleDistance(cam.orthographicSize, targetMouseZoom, 0.001f))
-            {
-                cam.orthographicSize = targetMouseZoom;
-            }
+            cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, targetZoom, zoomModifierSpeed * Time.unscaledDeltaTime);
         }
 
 
@@ -77,15 +76,13 @@ public class CameraManager : MonoBehaviour
 
             float difference = currentMagnitude - prevMagnitude;
             
-            float targetZoom = Mathf.Clamp(cam.orthographicSize - difference * 0.01f, minZoom, maxZoom);
-            
-            cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, targetZoom, zoomModifierSpeed * Time.unscaledDeltaTime);
+            targetZoom = Mathf.Clamp(cam.orthographicSize - difference * 0.01f, minZoom, maxZoom);
+        }
 
-            if (Lerp.NegligibleDistance(cam.orthographicSize, targetZoom))
-            {
-                cam.orthographicSize = targetZoom;
-            }
-
+        cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, targetZoom, zoomModifierSpeed * Time.unscaledDeltaTime);
+        if (Lerp.NegligibleDistance(cam.orthographicSize, targetZoom, 0.001f))
+        {
+            cam.orthographicSize = targetZoom;
         }
 
     }

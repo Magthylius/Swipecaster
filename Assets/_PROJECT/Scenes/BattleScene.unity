@@ -7970,7 +7970,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1404324106}
-  zoomModifierSpeed: 10
+  zoomModifierSpeed: 5
   minZoom: 1
   maxZoom: 4
   panSpeed: 1
