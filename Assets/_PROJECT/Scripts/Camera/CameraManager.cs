@@ -7,10 +7,15 @@ public class CameraManager : MonoBehaviour
 {
     public Camera cam;
 
-    [Header("Zoom settings")] public float zoomModifierSpeed;
+    [Header("Edge offset values")] 
+    public float horizontalOffset;
+    public float verticalOffset;
     
+    [Header("Zoom settings")] 
+    public float zoomModifierSpeed;
     public float minZoom;
     public float maxZoom;
+    
     [Header("Pan Settings")] public float panSpeed;
     
     public SpriteRenderer backgroundEnvSpr;
@@ -31,6 +36,7 @@ public class CameraManager : MonoBehaviour
     {
         UpdateCameraBoundary();
         targetZoom = cam.orthographicSize;
+        cam.transform.position = new Vector3(cam.transform.position.x, bottomBound, cam.transform.position.z);
     }
 
     void LateUpdate()
@@ -100,7 +106,8 @@ public class CameraManager : MonoBehaviour
                 targetZoom = Mathf.Clamp(cam.orthographicSize - difference * 0.01f, minZoom, maxZoom);
             }
         }
-
+        
+        cam.transform.position = new Vector3(cam.transform.position.x, bottomBound, cam.transform.position.z);
 
     }
 
@@ -131,8 +138,11 @@ public class CameraManager : MonoBehaviour
 
         Bounds levelBounds = backgroundEnvSpr.bounds;
         
-        leftBound = (levelBounds.min.x) + (horizontalCamSize + 1f);
-        rightBound = (levelBounds.max.x) - (horizontalCamSize + 1f);
+        leftBound = (levelBounds.min.x) + (horizontalCamSize + horizontalOffset);
+        rightBound = (levelBounds.max.x) - (horizontalCamSize + horizontalOffset);
+        bottomBound = (levelBounds.min.y) + (verticalCamSize + verticalOffset);
+
+
     }
     
     public void IsInBoundary() => isInBound = true;
