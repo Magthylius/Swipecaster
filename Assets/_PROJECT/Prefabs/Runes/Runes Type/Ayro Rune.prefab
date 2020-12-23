@@ -9,11 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6872223854397634389, guid: 859ecd38af09782438b831ba420020db, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.92
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: -6872223854397634389, guid: 859ecd38af09782438b831ba420020db, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.87
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 8921575577946023332, guid: 859ecd38af09782438b831ba420020db, type: 3}
       propertyPath: m_RootOrder
@@ -62,7 +62,7 @@ PrefabInstance:
     - target: {fileID: 8921575577946023333, guid: 859ecd38af09782438b831ba420020db, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -7033022137458376495, guid: 29989d48a162e76488ea171b67ef1722, type: 3}
+      objectReference: {fileID: 21300000, guid: e5c0fe7f25bd06e42a72f39bf0949dae, type: 3}
     - target: {fileID: 8921575577946023337, guid: 859ecd38af09782438b831ba420020db, type: 3}
       propertyPath: m_Name
       value: Air Rune
@@ -71,5 +71,13 @@ PrefabInstance:
       propertyPath: type
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8921575577946023339, guid: 859ecd38af09782438b831ba420020db, type: 3}
+      propertyPath: activatedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: da9d0b44881c96d4c85d8ad270d8bb68, type: 3}
+    - target: {fileID: 8921575577946023339, guid: 859ecd38af09782438b831ba420020db, type: 3}
+      propertyPath: deactivatedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e5c0fe7f25bd06e42a72f39bf0949dae, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 859ecd38af09782438b831ba420020db, type: 3}

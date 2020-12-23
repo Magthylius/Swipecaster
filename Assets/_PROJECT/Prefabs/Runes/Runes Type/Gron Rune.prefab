@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6872223854397634389, guid: 859ecd38af09782438b831ba420020db, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -6872223854397634389, guid: 859ecd38af09782438b831ba420020db, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 5.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8921575577946023332, guid: 859ecd38af09782438b831ba420020db, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -51,6 +59,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8921575577946023333, guid: 859ecd38af09782438b831ba420020db, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 23ad4b3cc24c8aa4da2d1461501a0d4c, type: 3}
     - target: {fileID: 8921575577946023337, guid: 859ecd38af09782438b831ba420020db, type: 3}
       propertyPath: m_Name
       value: Ground Rune
@@ -59,5 +71,13 @@ PrefabInstance:
       propertyPath: type
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8921575577946023339, guid: 859ecd38af09782438b831ba420020db, type: 3}
+      propertyPath: activatedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d068e2e236f13714194db3869b264911, type: 3}
+    - target: {fileID: 8921575577946023339, guid: 859ecd38af09782438b831ba420020db, type: 3}
+      propertyPath: deactivatedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 23ad4b3cc24c8aa4da2d1461501a0d4c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 859ecd38af09782438b831ba420020db, type: 3}
