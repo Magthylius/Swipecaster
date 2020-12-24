@@ -20,8 +20,11 @@ public class Caster : Unit
 
     public override void UseSkill(Unit focusTarget, List<Unit> allCasters, List<Unit> allFoes)
     {
+        print("ues");
+        /*
         var info = GetActiveSkill.GetActiveSkillTargets(focusTarget, allCasters, allFoes);
         GetActiveSkill.TriggerSkill(info, allCasters, allFoes);
+        */
     }
     public override void TakeHit(Unit damager, int damageAmount) => InvokeHitEvent(damager, damageAmount);
     public override void RecieveHealing(Unit healer, int healAmount) => AddCurrentHealth(Mathf.Abs(healAmount));
