@@ -249,13 +249,13 @@ public class BattlestageManager : MonoBehaviour
     public IEnumerable<Unit> GetCasterTeamAsUnit()
     {
         var list = new List<Unit>();
-        foreach (var o in GetCastersTeam()) GetCastersTeam().ForEach(o => list.Add(o.GetComponent<Unit>()));
+        GetCastersTeam().ForEach(o => list.Add(o.GetComponent<Unit>()));
         return list;
     }
     public IEnumerable<Unit> GetEnemyTeamAsUnit()
     {
         var list = new List<Unit>();
-        foreach (var o in GetEnemyTeam()) GetEnemyTeam().ForEach(o => list.Add(o.GetComponent<Unit>()));
+        GetEnemyTeam().ForEach(o => list.Add(o.GetComponent<Unit>()));
         return list;
     }
 
