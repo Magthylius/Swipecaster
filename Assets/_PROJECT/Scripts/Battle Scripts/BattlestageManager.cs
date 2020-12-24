@@ -13,7 +13,7 @@ public class BattlestageManager : MonoBehaviour
     public Transform battlestageCenter;
     public Transform playerTeamGroup, enemyTeamGroup;
     private TurnBaseManager _turnBaseManager;
-    private Camera _mainCamera = null;
+    public Camera battleCamera = null;
 
     [Header("Gaps Settings")] 
     public float centerGap;
@@ -67,7 +67,6 @@ public class BattlestageManager : MonoBehaviour
         roomManager = RoomManager.Instance;
         _turnBaseManager = TurnBaseManager.instance;
         InitPositions();
-        _mainCamera = Camera.main;
 
         if (enableEntityDebugging)
         {
@@ -81,8 +80,14 @@ public class BattlestageManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (Physics.Raycast(_mainCamera.ScreenPointToRay(Input.mousePosition), out var hitInfo))
+            Ray ray = battleCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit2D hitInfo = Physics2D.GetRayIntersection(ray);
+            if (hitInfo.collider != null)
+            {
                 SelectTarget(hitInfo);
+            }
+
+
         }
 
         if (enableEntityDebugging)
@@ -338,8 +343,9 @@ public class BattlestageManager : MonoBehaviour
         RegroupRightPositions(false);
     }
 
-    private void SelectTarget(RaycastHit info)
+    private void SelectTarget(RaycastHit2D info)
     {
+
         GameObject o = info.transform.gameObject;
         if (!o.CompareTag("Foe")) return;
 
