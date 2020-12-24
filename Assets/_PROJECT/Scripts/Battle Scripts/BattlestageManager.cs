@@ -167,7 +167,7 @@ public class BattlestageManager : MonoBehaviour
         if (GetSelectedTarget())
         {
             enemyExecutionTransform = _enemy.transform;
-            enemySortingGroup = GetSelectedTarget().GetComponent<SortingGroup>();
+            enemySortingGroup = enemyExecutionTransform.GetComponent<SortingGroup>();
             prevPosEnemy = enemyExecutionTransform.position;
             prevScaleEnemy = enemyExecutionTransform.localScale;
             enemyExecutionTransform.localScale = new Vector3(-0.25f, 0.25f, 1);

@@ -200,7 +200,7 @@ public class TurnBaseManager : MonoBehaviour
     {
         cameraManager.ZoomToCenter();
         enemyAttackManager.CalculatePriotity(enemy);
-        battlestageManager.ExecuteAction(enemyAttackManager.GetCaster(), battlestageManager.GetSelectedTarget());
+        battlestageManager.ExecuteAction(enemyAttackManager.GetCaster(), enemy);
         while (!cameraManager.GetIsFree())
         {
             yield return null;
