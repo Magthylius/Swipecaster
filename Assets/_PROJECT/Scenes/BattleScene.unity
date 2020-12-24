@@ -492,6 +492,7 @@ MonoBehaviour:
   battlestageCenter: {fileID: 1457096772}
   playerTeamGroup: {fileID: 951813713}
   enemyTeamGroup: {fileID: 1184321072}
+  battleCamera: {fileID: 1404324106}
   centerGap: 0.8
   unitGap: 0.6
   battleGap: 1
