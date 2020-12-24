@@ -8,6 +8,7 @@ using UnityEngine;
 public class CameraManager : MonoBehaviour
 {
     public static CameraManager instance;
+    TurnBaseManager turnBaseManager;
 
     public Camera cam;
 
@@ -23,11 +24,16 @@ public class CameraManager : MonoBehaviour
     public float maxZoom;
     float zoomDifference;
 
-    [Header("Pan Settings")] public float panSpeed;
+    [Header("Pan Settings")] 
+    public float panSpeed;
 
-    [Header("Unit Zoom")] float unitZoomAnimation = 2;
+    [Header("Unit Zoom")] 
+    float unitZoomAnimation = 2;
 
-    public SpriteRenderer backgroundEnvSpr;
+    [Header("Battle Zoom Settings")] 
+    public float zoomRotation;
+    public float zoomSpeed;
+    
 
     float leftBound, rightBound, topBound, bottomBound;
 
@@ -51,6 +57,10 @@ public class CameraManager : MonoBehaviour
 
     #endregion
 
+    [Header("")]
+    public SpriteRenderer backgroundEnvSpr;
+    public Transform battlestageCenter;
+    
     void Awake()
     {
         if (instance != null)
@@ -61,6 +71,8 @@ public class CameraManager : MonoBehaviour
 
     void Start()
     {
+        turnBaseManager = TurnBaseManager.instance;
+
         UpdateCameraBoundary();
         targetZoom = cam.orthographicSize;
         cam.transform.position = new Vector3(cam.transform.position.x, bottomBound, cam.transform.position.z);
@@ -71,6 +83,8 @@ public class CameraManager : MonoBehaviour
 
     void LateUpdate()
     {
+        UpdateCameraBoundary();
+        
         if (allowZoom)
         {
             cam.orthographicSize =
@@ -95,7 +109,7 @@ public class CameraManager : MonoBehaviour
             }
         }
 
-        UpdateCameraBoundary();
+  
 
         if (!isInBound || !isFree)
             return;
@@ -171,10 +185,10 @@ public class CameraManager : MonoBehaviour
         cam.transform.position = new Vector3(cam.transform.position.x, bottomBound, cam.transform.position.z);
     }
 
-    public void ZoomToUnit(GameObject unit)
+    public void ZoomToCenter()
     {
         //! Get Target Unit
-        targetUnit = unit.transform;
+        targetUnit = battlestageCenter.transform;
 
         //! 
         prevZoom = targetZoom;
@@ -182,7 +196,7 @@ public class CameraManager : MonoBehaviour
 
         isFree = false;
         targetZoom = unitZoomAnimation;
-        targetPan = unit.transform.position.x;
+        targetPan = battlestageCenter.transform.position.x;
         allowPan = true;
         allowZoom = true;
         StartCoroutine(ZoomInTimer());
@@ -190,7 +204,7 @@ public class CameraManager : MonoBehaviour
 
     public void MoveToUnit(GameObject unit)
     {
-        targetPan = unit.transform.position.x;
+        targetPan = Mathf.Clamp(unit.transform.position.x, leftBound, rightBound);
         allowPan = true;
     }
     
@@ -211,21 +225,47 @@ public class CameraManager : MonoBehaviour
     IEnumerator ZoomInTimer()
     {
         float timer = 0;
+        float rotValue = 0;
+
 
         while (timer <= countdown)
         {
-            print(timer);
+            
+            if (turnBaseManager.GetCurrentState() == GameStateEnum.CASTERTURN)
+            {
+                rotValue = Mathf.Lerp(rotValue, zoomRotation, timer / zoomSpeed);
+                cam.transform.rotation = Quaternion.Euler(0,0,rotValue);
+            }
+            else if(turnBaseManager.GetCurrentState() == GameStateEnum.ENEMYTURN)
+            {
+                rotValue = Mathf.Lerp(rotValue, -zoomRotation, timer / zoomSpeed);
+                cam.transform.rotation = Quaternion.Euler(0,0,rotValue);
+            }
+            
             timer += Time.deltaTime;
 
             yield return null;
         }
-
-
+        
+        
         targetPan = prevPan;
         targetZoom = prevZoom;
         allowPan = true;
         allowZoom = true;
+        timer = 0;
+        
+        while (timer < zoomSpeed)
+        {
+            
+            rotValue = Mathf.Lerp(rotValue, 0, timer / zoomSpeed);
+            cam.transform.rotation = Quaternion.Euler(0,0,rotValue);
+            
+            timer += Time.deltaTime;
 
+            yield return null;
+        }
+        
+        cam.transform.rotation = Quaternion.Euler(0,0,0);
         isFree = true;
     }
 

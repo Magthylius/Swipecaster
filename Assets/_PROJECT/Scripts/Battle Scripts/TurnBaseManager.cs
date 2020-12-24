@@ -187,7 +187,8 @@ public class TurnBaseManager : MonoBehaviour
 
     IEnumerator CasterAttack()
     {
-        cameraManager.ZoomToUnit(caster);
+        cameraManager.ZoomToCenter();
+        battlestageManager.ExecuteAction(caster, battlestageManager.GetSelectedTarget());
         while (!cameraManager.GetIsFree())
         {
             yield return null;
@@ -197,9 +198,13 @@ public class TurnBaseManager : MonoBehaviour
 
     IEnumerator EnemyAttack()
     {
+        cameraManager.ZoomToCenter();
         enemyAttackManager.CalculatePriotity(enemy);
-
-        yield return new WaitForSeconds(delaysInBetween);
+        battlestageManager.ExecuteAction(enemyAttackManager.GetCaster(), battlestageManager.GetSelectedTarget());
+        while (!cameraManager.GetIsFree())
+        {
+            yield return null;
+        }
         EndTurn();
     }
     
@@ -211,6 +216,7 @@ public class TurnBaseManager : MonoBehaviour
     public GameObject GetCurrentCaster() => caster;
 
     public bool GetIsPLayerTurn() => isPlayerTurn;
+    
 
     #endregion
 }

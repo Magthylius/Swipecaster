@@ -424,6 +424,7 @@ GameObject:
   - component: {fileID: -1066055640534647160}
   - component: {fileID: -4063940301113705543}
   - component: {fileID: 788126252313006045}
+  - component: {fileID: -6983390104560281251}
   m_Layer: 8
   m_Name: Cat 1
   m_TagString: Hero
@@ -466,17 +467,25 @@ MonoBehaviour:
   _totalHealth: 615
   _totalAttack: 183
   _totalDefence: 151
+  _currentHealth: 615
+  _currentAttack: 183
+  _currentDefence: 151
   baseUnit: {fileID: 11400000, guid: f7448f282a1da544f99405f812c4d011, type: 2}
   baseStatMultiplier: 0.33333334
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
-  runeAdvantageMultiplier: 1.5
-  runeWeaknessMultiplier: 0.5
   damageMultiplier: 1
   passiveHealAmount: 0
   damageToHealPercent: 0
   reboundPercent: 0
   probability: 0.05
+  priority: 0
+  currentSkillCharge: 0
+  _skillChargeCount: 0
+  archMajor: -1
+  archMinor: -1
+  runeAdvantageMultiplier: 1.5
+  runeWeaknessMultiplier: 0.5
 --- !u!95 &1684667033599397279
 Animator:
   serializedVersion: 3
@@ -555,3 +564,14 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!210 &-6983390104560281251
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684667033599397265}
+  m_Enabled: 1
+  m_SortingLayerID: -663063965
+  m_SortingLayer: 2
+  m_SortingOrder: 0
