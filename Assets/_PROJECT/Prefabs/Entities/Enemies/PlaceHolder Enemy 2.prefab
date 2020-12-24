@@ -342,6 +342,7 @@ GameObject:
   - component: {fileID: 3584987251671932301}
   - component: {fileID: -4011381584030354537}
   - component: {fileID: -7920996580593489851}
+  - component: {fileID: 7319350405687395676}
   m_Layer: 8
   m_Name: PlaceHolder Enemy 2
   m_TagString: Foe
@@ -412,16 +413,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentLevel: 1
-  _totalHealth: 4
-  _totalAttack: 0
-  _totalDefence: 0
-  _currentHealth: 0
-  _currentAttack: 0
-  _currentDefence: 0
+  _totalHealth: 35842
+  _totalAttack: 323
+  _totalDefence: 7
+  _currentHealth: 35842
+  _currentAttack: 323
+  _currentDefence: 7
   baseUnit: {fileID: 11400000, guid: 9570a34fa79060d4695ff44d79a9f784, type: 2}
   baseStatMultiplier: 0.3333333
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
+  damageMultiplier: 1
+  passiveHealAmount: 0
+  damageToHealPercent: 0
+  reboundPercent: 0.2
+  probability: 0.05
+  priority: 0
+  currentSkillCharge: 0
+  _skillChargeCount: 0
 --- !u!65 &-4011381584030354537
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -451,6 +460,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!210 &7319350405687395676
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5174482566258772389}
+  m_Enabled: 1
+  m_SortingLayerID: -663063965
+  m_SortingLayer: 2
+  m_SortingOrder: 0
 --- !u!1 &6940784841177529082
 GameObject:
   m_ObjectHideFlags: 0

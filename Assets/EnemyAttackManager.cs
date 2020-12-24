@@ -13,6 +13,9 @@ public class EnemyAttackManager : MonoBehaviour
     RuneStorage tehkRune = new RuneStorage(RuneType.TEHK, 0);
     RuneStorage khuaRune = new RuneStorage(RuneType.KHUA, 0);
     RuneStorage ayroRune = new RuneStorage(RuneType.AYRO, 0);
+
+    GameObject targetCaster;
+    
     // Start is called before the first frame update
     void Awake()
     {
@@ -76,7 +79,16 @@ public class EnemyAttackManager : MonoBehaviour
             }
         }
 
-        EnemyAttack( attacker, target[Random.Range(0,target.Count)] );
+        targetCaster = target[Random.Range(0, target.Count)];
+        
+        EnemyAttack( attacker, targetCaster);
 
     }
+
+    #region Accessors
+
+    public GameObject GetCaster() => targetCaster;
+
+    #endregion
+
 }

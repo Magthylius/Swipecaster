@@ -519,6 +519,8 @@ MonoBehaviour:
   heroes: {fileID: 1342186363962593935, guid: 7bf6f4e9267a7c04199a005ccbddd474, type: 3}
   selectedTarget: {fileID: 0}
   enableEntityDebugging: 1
+  speed: 10
+  countdownTimer: 3
 --- !u!4 &60006155
 Transform:
   m_ObjectHideFlags: 0
@@ -2373,7 +2375,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 701992667
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -7701,7 +7703,7 @@ TrailRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 701992667
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Time: 0.5
   m_Parameters:
@@ -8641,15 +8643,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1404324106}
   horizontalOffset: 1
-  minZoomOffset: 1.1
+  minZoomOffset: 1.5
   maxZoomOffset: -0.5
   verticalOffset: 0
   zoomModifierSpeed: 5
   minZoom: 1.5
   maxZoom: 3.5
   panSpeed: 4
-  backgroundEnvSpr: {fileID: 1212827364}
+  zoomRotation: 3
+  zoomSpeed: 1
   countdown: 3
+  backgroundEnvSpr: {fileID: 1212827364}
+  battlestageCenter: {fileID: 1457096772}
 --- !u!1 &1605034234
 GameObject:
   m_ObjectHideFlags: 0
@@ -9078,7 +9083,7 @@ LineRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 701992667
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: -5}
