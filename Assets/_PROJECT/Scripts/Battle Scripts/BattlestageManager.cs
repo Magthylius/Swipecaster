@@ -18,6 +18,7 @@ public class BattlestageManager : MonoBehaviour
     [Header("Gaps Settings")] 
     public float centerGap;
     public float unitGap;
+    public float battleGap = 1;
 
     [Header("Team's Positions")] 
     public Transform[] casterPositions;
@@ -96,14 +97,14 @@ public class BattlestageManager : MonoBehaviour
                 timer -= Time.deltaTime;
                 
                 casterExecutionTransform.position =
-                    Vector3.Lerp(casterExecutionTransform.position, new Vector3(battlestageCenter.position.x - 1f,
+                    Vector3.Lerp(casterExecutionTransform.position, new Vector3(battlestageCenter.position.x - battleGap,
                             casterExecutionTransform.position.y, casterExecutionTransform.position.z),
                         speed * Time.unscaledDeltaTime);
 
                 if (GetSelectedTarget())
                 {
                     enemyExecutionTransform.position =
-                        Vector3.Lerp(enemyExecutionTransform.position, new Vector3(battlestageCenter.position.x + 1f,
+                        Vector3.Lerp(enemyExecutionTransform.position, new Vector3(battlestageCenter.position.x + battleGap,
                                 enemyExecutionTransform.position.y, enemyExecutionTransform.position.z),
                             speed * Time.unscaledDeltaTime);
                 }

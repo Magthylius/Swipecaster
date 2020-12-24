@@ -136,7 +136,7 @@ public abstract class Unit : Entity
         AddCurrentHealth(-Mathf.Abs(Round(damageAmount * statusInMultiplier)));
         GetStatusEffects.ForEach(i => i.DoOnHitEffect(this));
 
-        gameObject.transform.parent.GetChild(0).GetComponent<DamagePopUp>().showDamage(Mathf.Abs(Round(damageAmount * statusInMultiplier)));
+        //gameObject.transform.parent.GetChild(0).GetComponent<DamagePopUp>().showDamage(Mathf.Abs(Round(damageAmount * statusInMultiplier)));
     }
 
     protected virtual void OnDestroy()
