@@ -81,6 +81,8 @@ public class TurnBaseManager : MonoBehaviour
         caster = castersOrderList[casterUnitTurn];
         unitPositionManager.SetHolder(caster);
 
+        cameraManager.MoveToUnit(caster);
+        
         //! Reposition highlighter
         highlighter.transform.position = new Vector3(caster.transform.position.x, caster.transform.position.y + gap,
             caster.transform.position.z);
@@ -97,6 +99,8 @@ public class TurnBaseManager : MonoBehaviour
     {
         //! Point enemy when is their turn
         enemy = enemiesOrderList[enemyUnitTurn];
+        
+        cameraManager.MoveToUnit(enemy);
 
         highlighter.SetActive(false);
         print("Is " + enemy.name + " turn");

@@ -8,22 +8,24 @@ using UnityEngine;
 public class CameraManager : MonoBehaviour
 {
     public static CameraManager instance;
-    
+
     public Camera cam;
 
     [Header("Edge offset values")] 
     public float horizontalOffset;
     public float verticalOffset;
-    
+
     [Header("Zoom settings")] 
     public float zoomModifierSpeed;
     public float minZoom;
     public float maxZoom;
-    
+
     [Header("Pan Settings")] public float panSpeed;
-    
+
+    [Header("Unit Zoom")] float unitZoomAnimation = 2;
+
     public SpriteRenderer backgroundEnvSpr;
-    
+
     float leftBound, rightBound, topBound, bottomBound;
 
     float targetZoom = 0f;
@@ -42,8 +44,7 @@ public class CameraManager : MonoBehaviour
 
     #region Debug Zoom Animation
 
-    [Header("Debug Zoom Animation")] 
-    public float countdown;
+    [Header("Debug Zoom Animation")] public float countdown;
 
     #endregion
 
@@ -65,10 +66,10 @@ public class CameraManager : MonoBehaviour
 
     void LateUpdate()
     {
-        
         if (allowZoom)
         {
-            cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, targetZoom, zoomModifierSpeed * Time.unscaledDeltaTime);
+            cam.orthographicSize =
+                Mathf.Lerp(cam.orthographicSize, targetZoom, zoomModifierSpeed * Time.unscaledDeltaTime);
 
             if (Lerp.NegligibleDistance(cam.orthographicSize, targetZoom, 0.001f))
             {
@@ -76,7 +77,7 @@ public class CameraManager : MonoBehaviour
                 allowZoom = false;
             }
         }
-        
+
         if (allowPan)
         {
             float actualPan = Mathf.Lerp(cam.transform.position.x, targetPan, panSpeed * Time.unscaledDeltaTime);
@@ -88,15 +89,14 @@ public class CameraManager : MonoBehaviour
                 allowPan = false;
             }
         }
-        
+
         UpdateCameraBoundary();
-        
+
         if (!isInBound || !isFree)
             return;
 
         CameraZoom();
         CameraPanning();
-
     }
 
     void CameraZoom()
@@ -107,9 +107,8 @@ public class CameraManager : MonoBehaviour
             float zoom = Input.GetAxisRaw("Mouse ScrollWheel");
 
             targetZoom = Mathf.Clamp(cam.orthographicSize - zoom, minZoom, maxZoom);
-            
         }
-        
+
 
         if (Input.touchCount == 2)
         {
@@ -124,15 +123,12 @@ public class CameraManager : MonoBehaviour
 
             float difference = currentMagnitude - prevMagnitude;
 
-            if (difference != 0) 
+            if (difference != 0)
             {
                 allowZoom = true;
                 targetZoom = Mathf.Clamp(cam.orthographicSize - difference * 0.01f, minZoom, maxZoom);
             }
         }
-        
-
-
     }
 
     void CameraPanning()
@@ -159,7 +155,7 @@ public class CameraManager : MonoBehaviour
         float horizontalCamSize = (verticalCamSize * cam.aspect);
 
         Bounds levelBounds = backgroundEnvSpr.bounds;
-        
+
         leftBound = (levelBounds.min.x) + (horizontalCamSize + horizontalOffset);
         rightBound = (levelBounds.max.x) - (horizontalCamSize + horizontalOffset);
         bottomBound = (levelBounds.min.y) + (verticalCamSize + verticalOffset);
@@ -169,21 +165,29 @@ public class CameraManager : MonoBehaviour
 
     public void ZoomToUnit(GameObject unit)
     {
-        
+        //! Get Target Unit
         targetUnit = unit.transform;
 
+        //! 
         prevZoom = targetZoom;
         prevPan = targetPan;
 
         isFree = false;
-        targetZoom = minZoom;
+        targetZoom = unitZoomAnimation;
         targetPan = unit.transform.position.x;
         allowPan = true;
         allowZoom = true;
         StartCoroutine(ZoomInTimer());
+    }
 
+    public void MoveToUnit(GameObject unit)
+    {
+        targetPan = unit.transform.position.x;
+        allowPan = true;
     }
     
+    
+
     public void IsInBoundary() => isInBound = true;
     public void IsNotInBound() => isInBound = false;
 
@@ -199,31 +203,28 @@ public class CameraManager : MonoBehaviour
     IEnumerator ZoomInTimer()
     {
         float timer = 0;
-        
-        while (timer <= 3)
+
+        while (timer <= countdown)
         {
             print(timer);
             timer += Time.deltaTime;
-            
+
             yield return null;
         }
-        
 
 
         targetPan = prevPan;
         targetZoom = prevZoom;
         allowPan = true;
         allowZoom = true;
-        
-        isFree = true;
 
+        isFree = true;
     }
-    
+
     #region Accessors
 
     public void SetIsFree(bool _isFree) => isFree = _isFree;
     public bool GetIsFree() => isFree;
 
     #endregion
-
 }
