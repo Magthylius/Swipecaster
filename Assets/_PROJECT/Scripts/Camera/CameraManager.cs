@@ -1,10 +1,14 @@
 using System;
+using System.Collections;
 using LerpFunctions;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 
 public class CameraManager : MonoBehaviour
 {
+    public static CameraManager instance;
+    
     public Camera cam;
 
     [Header("Edge offset values")] 
@@ -23,20 +27,40 @@ public class CameraManager : MonoBehaviour
     float leftBound, rightBound, topBound, bottomBound;
 
     float targetZoom = 0f;
+    float prevZoom;
     bool allowZoom = false;
 
     float targetPan = 0f;
+    float prevPan;
     bool allowPan = false;
 
     bool isInBound { get; set; }
+    bool isFree { get; set; }
 
     Vector3 touchPos;
+    Transform targetUnit;
+
+    #region Debug Zoom Animation
+
+    [Header("Debug Zoom Animation")] 
+    public float countdown;
+
+    #endregion
+
+    void Awake()
+    {
+        if (instance != null)
+            Destroy(this.gameObject);
+        else
+            instance = this;
+    }
 
     void Start()
     {
         UpdateCameraBoundary();
         targetZoom = cam.orthographicSize;
         cam.transform.position = new Vector3(cam.transform.position.x, bottomBound, cam.transform.position.z);
+        isFree = true;
     }
 
     void LateUpdate()
@@ -67,7 +91,7 @@ public class CameraManager : MonoBehaviour
         
         UpdateCameraBoundary();
         
-        if (!isInBound)
+        if (!isInBound || !isFree)
             return;
 
         CameraZoom();
@@ -107,7 +131,7 @@ public class CameraManager : MonoBehaviour
             }
         }
         
-        cam.transform.position = new Vector3(cam.transform.position.x, bottomBound, cam.transform.position.z);
+
 
     }
 
@@ -127,8 +151,6 @@ public class CameraManager : MonoBehaviour
 
             targetPan = Mathf.Clamp(cam.transform.position.x + direction.x, leftBound, rightBound);
         }
-
-
     }
 
     void UpdateCameraBoundary()
@@ -142,11 +164,27 @@ public class CameraManager : MonoBehaviour
         rightBound = (levelBounds.max.x) - (horizontalCamSize + horizontalOffset);
         bottomBound = (levelBounds.min.y) + (verticalCamSize + verticalOffset);
 
+        cam.transform.position = new Vector3(cam.transform.position.x, bottomBound, cam.transform.position.z);
+    }
+
+    public void ZoomToUnit(GameObject unit)
+    {
+        
+        targetUnit = unit.transform;
+
+        prevZoom = targetZoom;
+        prevPan = targetPan;
+
+        isFree = false;
+        targetZoom = minZoom;
+        targetPan = unit.transform.position.x;
+        allowPan = true;
+        allowZoom = true;
+        StartCoroutine(ZoomInTimer());
 
     }
     
     public void IsInBoundary() => isInBound = true;
-
     public void IsNotInBound() => isInBound = false;
 
     Vector3 GetWorldPos()
@@ -157,5 +195,35 @@ public class CameraManager : MonoBehaviour
 
         return ray.GetPoint(dist);
     }
+
+    IEnumerator ZoomInTimer()
+    {
+        float timer = 0;
+        
+        while (timer <= 3)
+        {
+            print(timer);
+            timer += Time.deltaTime;
+            
+            yield return null;
+        }
+        
+
+
+        targetPan = prevPan;
+        targetZoom = prevZoom;
+        allowPan = true;
+        allowZoom = true;
+        
+        isFree = true;
+
+    }
     
+    #region Accessors
+
+    public void SetIsFree(bool _isFree) => isFree = _isFree;
+    public bool GetIsFree() => isFree;
+
+    #endregion
+
 }

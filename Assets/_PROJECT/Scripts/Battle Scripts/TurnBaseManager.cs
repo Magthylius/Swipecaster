@@ -13,6 +13,7 @@ public class TurnBaseManager : MonoBehaviour
     EnemyAttackManager enemyAttackManager;
     RuneManager runeManager;
     InformationManager infoManager;
+    CameraManager cameraManager;
 
     [SerializeField] GameStateEnum battleState;
 
@@ -49,6 +50,7 @@ public class TurnBaseManager : MonoBehaviour
         runeManager = RuneManager.instance;
         enemyAttackManager = EnemyAttackManager.instance;
         infoManager = InformationManager.instance;
+        cameraManager = CameraManager.instance;
         battleState = GameStateEnum.INIT;
         StartCoroutine(InitBattle());
     }
@@ -181,7 +183,11 @@ public class TurnBaseManager : MonoBehaviour
 
     IEnumerator CasterAttack()
     {
-        yield return new WaitForSeconds(delaysInBetween);
+        cameraManager.ZoomToUnit(caster);
+        while (!cameraManager.GetIsFree())
+        {
+            yield return null;
+        }
         EndTurn();
     }
 
