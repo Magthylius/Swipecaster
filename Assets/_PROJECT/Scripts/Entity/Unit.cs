@@ -105,8 +105,10 @@ public abstract class Unit : Entity
 
     public void SubscribeHitEvent(Action<Unit, int> method) => _hitEvent += method;
     public void UnsubscribeHitEvent(Action<Unit, int> method) => _hitEvent -= method;
-    public void InvokeHitEvent(Unit a, int b) => _hitEvent?.Invoke(a, b);
-
+    public void InvokeHitEvent(Unit a, int b)
+    {
+        _hitEvent?.Invoke(a, b);
+    }
     public void SubscribeHealthChangeEvent(Action<Unit> method) => _healthChangeEvent += method;
     public void UnsubscribeHealthChangeEvent(Action<Unit> method) => _healthChangeEvent -= method;
     public void InvokeHealthChangeEvent(Unit a) => _healthChangeEvent?.Invoke(a);
@@ -133,6 +135,8 @@ public abstract class Unit : Entity
         
         AddCurrentHealth(-Mathf.Abs(Round(damageAmount * statusInMultiplier)));
         GetStatusEffects.ForEach(i => i.DoOnHitEffect(this));
+
+        gameObject.transform.parent.GetChild(0).GetComponent<DamagePopUp>().showDamage(Mathf.Abs(Round(damageAmount * statusInMultiplier)));
     }
 
     protected virtual void OnDestroy()
