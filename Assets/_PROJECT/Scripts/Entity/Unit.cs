@@ -11,7 +11,6 @@ public abstract class Unit : Entity
     private AttackStatus _attackStatus = AttackStatus.Normal;
     private Projectile _projectile;
     private List<StatusEffect> _statusEffects;
-    [SerializeField] private int priorityNum = 0;
 
     [Header("Other Multipliers")]
     [SerializeField] protected float damageMultiplier = 1.0f;
@@ -25,6 +24,7 @@ public abstract class Unit : Entity
 
     [Header("RNG")]
     [SerializeField, Range(0.0f, 1.0f)] protected float probability = 0.05f;
+    [SerializeField] private int priority;
     protected const int PartySize = 4;
 
     [Header("Skills")]
@@ -90,8 +90,8 @@ public abstract class Unit : Entity
     public bool SkillIsReady => currentSkillCharge == 0;
     public ActiveSkill GetActiveSkill => _activeSkill;
 
-    public int GetPriorityNum => priorityNum;
-    public void SetPriorityNum(int newPriority) => priorityNum = newPriority;
+    public int GetUnitPriority => priority;
+    public void SetUnitPriority(int newPriority) => priority = newPriority;
 
     #region Events
 
@@ -156,6 +156,7 @@ public abstract class Unit : Entity
         base.Awake();
         _statusEffects = new List<StatusEffect>();
 
+        SetUnitPriority(1);
         SetProjectile(new CrowFlies());
         SubscribeHitEvent(TakeDamage);
         SubscribeTurnEndEvent(EndTurnMethods);

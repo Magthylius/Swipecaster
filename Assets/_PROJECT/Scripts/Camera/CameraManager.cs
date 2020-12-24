@@ -1,50 +1,80 @@
 using System;
+using System.Collections;
 using LerpFunctions;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 
 public class CameraManager : MonoBehaviour
 {
+    public static CameraManager instance;
+
     public Camera cam;
 
     [Header("Edge offset values")] 
     public float horizontalOffset;
-    public float verticalOffset;
-    
+    public float minZoomOffset = 1.5f;
+    public float maxZoomOffset = -0.5f;
+    [SerializeField] float verticalOffset;
+
     [Header("Zoom settings")] 
     public float zoomModifierSpeed;
     public float minZoom;
     public float maxZoom;
-    
+    float zoomDifference;
+
     [Header("Pan Settings")] public float panSpeed;
-    
+
+    [Header("Unit Zoom")] float unitZoomAnimation = 2;
+
     public SpriteRenderer backgroundEnvSpr;
-    
+
     float leftBound, rightBound, topBound, bottomBound;
 
     float targetZoom = 0f;
+    float prevZoom;
     bool allowZoom = false;
 
     float targetPan = 0f;
+    float prevPan;
     bool allowPan = false;
 
     bool isInBound { get; set; }
+    bool isFree { get; set; }
 
     Vector3 touchPos;
+    Transform targetUnit;
+
+    #region Debug Zoom Animation
+
+    [Header("Debug Zoom Animation")] public float countdown;
+
+    #endregion
+
+    void Awake()
+    {
+        if (instance != null)
+            Destroy(this.gameObject);
+        else
+            instance = this;
+    }
 
     void Start()
     {
         UpdateCameraBoundary();
         targetZoom = cam.orthographicSize;
         cam.transform.position = new Vector3(cam.transform.position.x, bottomBound, cam.transform.position.z);
+        isFree = true;
+
+        zoomDifference = maxZoom - minZoom;
     }
 
     void LateUpdate()
     {
-        
         if (allowZoom)
         {
-            cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, targetZoom, zoomModifierSpeed * Time.unscaledDeltaTime);
+            cam.orthographicSize =
+                Mathf.Lerp(cam.orthographicSize, targetZoom, zoomModifierSpeed * Time.unscaledDeltaTime);
 
             if (Lerp.NegligibleDistance(cam.orthographicSize, targetZoom, 0.001f))
             {
@@ -52,7 +82,7 @@ public class CameraManager : MonoBehaviour
                 allowZoom = false;
             }
         }
-        
+
         if (allowPan)
         {
             float actualPan = Mathf.Lerp(cam.transform.position.x, targetPan, panSpeed * Time.unscaledDeltaTime);
@@ -64,15 +94,14 @@ public class CameraManager : MonoBehaviour
                 allowPan = false;
             }
         }
-        
+
         UpdateCameraBoundary();
-        
-        if (!isInBound)
+
+        if (!isInBound || !isFree)
             return;
 
         CameraZoom();
         CameraPanning();
-
     }
 
     void CameraZoom()
@@ -83,9 +112,8 @@ public class CameraManager : MonoBehaviour
             float zoom = Input.GetAxisRaw("Mouse ScrollWheel");
 
             targetZoom = Mathf.Clamp(cam.orthographicSize - zoom, minZoom, maxZoom);
-            
         }
-        
+
 
         if (Input.touchCount == 2)
         {
@@ -100,15 +128,12 @@ public class CameraManager : MonoBehaviour
 
             float difference = currentMagnitude - prevMagnitude;
 
-            if (difference != 0) 
+            if (difference != 0)
             {
                 allowZoom = true;
                 targetZoom = Mathf.Clamp(cam.orthographicSize - difference * 0.01f, minZoom, maxZoom);
             }
         }
-        
-        cam.transform.position = new Vector3(cam.transform.position.x, bottomBound, cam.transform.position.z);
-
     }
 
     void CameraPanning()
@@ -127,8 +152,6 @@ public class CameraManager : MonoBehaviour
 
             targetPan = Mathf.Clamp(cam.transform.position.x + direction.x, leftBound, rightBound);
         }
-
-
     }
 
     void UpdateCameraBoundary()
@@ -137,16 +160,43 @@ public class CameraManager : MonoBehaviour
         float horizontalCamSize = (verticalCamSize * cam.aspect);
 
         Bounds levelBounds = backgroundEnvSpr.bounds;
-        
+
+        float zoomIndex = (cam.orthographicSize - minZoom) / zoomDifference;
+        verticalOffset = Mathf.Lerp(minZoomOffset, maxZoomOffset, zoomIndex);
+
         leftBound = (levelBounds.min.x) + (horizontalCamSize + horizontalOffset);
         rightBound = (levelBounds.max.x) - (horizontalCamSize + horizontalOffset);
         bottomBound = (levelBounds.min.y) + (verticalCamSize + verticalOffset);
 
+        cam.transform.position = new Vector3(cam.transform.position.x, bottomBound, cam.transform.position.z);
+    }
 
+    public void ZoomToUnit(GameObject unit)
+    {
+        //! Get Target Unit
+        targetUnit = unit.transform;
+
+        //! 
+        prevZoom = targetZoom;
+        prevPan = targetPan;
+
+        isFree = false;
+        targetZoom = unitZoomAnimation;
+        targetPan = unit.transform.position.x;
+        allowPan = true;
+        allowZoom = true;
+        StartCoroutine(ZoomInTimer());
+    }
+
+    public void MoveToUnit(GameObject unit)
+    {
+        targetPan = unit.transform.position.x;
+        allowPan = true;
     }
     
-    public void IsInBoundary() => isInBound = true;
+    
 
+    public void IsInBoundary() => isInBound = true;
     public void IsNotInBound() => isInBound = false;
 
     Vector3 GetWorldPos()
@@ -157,5 +207,32 @@ public class CameraManager : MonoBehaviour
 
         return ray.GetPoint(dist);
     }
-    
+
+    IEnumerator ZoomInTimer()
+    {
+        float timer = 0;
+
+        while (timer <= countdown)
+        {
+            print(timer);
+            timer += Time.deltaTime;
+
+            yield return null;
+        }
+
+
+        targetPan = prevPan;
+        targetZoom = prevZoom;
+        allowPan = true;
+        allowZoom = true;
+
+        isFree = true;
+    }
+
+    #region Accessors
+
+    public void SetIsFree(bool _isFree) => isFree = _isFree;
+    public bool GetIsFree() => isFree;
+
+    #endregion
 }

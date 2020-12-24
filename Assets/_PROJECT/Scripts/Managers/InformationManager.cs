@@ -34,13 +34,10 @@ public class InformationManager : MonoBehaviour
     {
         if (unit == null) return;
 
-        if (unit.GetMaxSkillChargeCount == 0)
-        {
-            Debug.LogError("Unit skill charge is 0");
-            return;
-        }
+        float fill = 0.01f;
+        if (unit.GetMaxSkillChargeCount != 0) fill = unit.GetCurrentSkillChargeCount / unit.GetMaxSkillChargeCount;
 
-        skillChargeBar.fillAmount = unit.GetCurrentSkillChargeCount / unit.GetMaxSkillChargeCount;
+        skillChargeBar.fillAmount = fill;
     }
 
     public void TriggerCurrentUnitSkill(Unit focusTarget, List<Unit> allCasters, List<Unit> allFoes)
@@ -60,7 +57,10 @@ public class InformationManager : MonoBehaviour
         var currentUnit = _turnBaseManager.GetCurrentCaster().GetComponent<Unit>();
         if (currentUnit == null || currentUnit != unit) return;
 
-        healthBar.fillAmount = unit.GetCurrentHealth / unit.GetMaxHealth;
+        float fill = 0.01f;
+        if (unit.GetMaxHealth != 0) fill = unit.GetCurrentHealth / unit.GetMaxHealth;
+
+        healthBar.fillAmount = fill;
     }
 
     private void SubscribeEvents()

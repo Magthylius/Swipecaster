@@ -13,6 +13,7 @@ public class TurnBaseManager : MonoBehaviour
     EnemyAttackManager enemyAttackManager;
     RuneManager runeManager;
     InformationManager infoManager;
+    CameraManager cameraManager;
 
     [SerializeField] GameStateEnum battleState;
 
@@ -49,6 +50,7 @@ public class TurnBaseManager : MonoBehaviour
         runeManager = RuneManager.instance;
         enemyAttackManager = EnemyAttackManager.instance;
         infoManager = InformationManager.instance;
+        cameraManager = CameraManager.instance;
         battleState = GameStateEnum.INIT;
         StartCoroutine(InitBattle());
     }
@@ -79,6 +81,8 @@ public class TurnBaseManager : MonoBehaviour
         caster = castersOrderList[casterUnitTurn];
         unitPositionManager.SetHolder(caster);
 
+        cameraManager.MoveToUnit(caster);
+        
         //! Reposition highlighter
         highlighter.transform.position = new Vector3(caster.transform.position.x, caster.transform.position.y + gap,
             caster.transform.position.z);
@@ -95,6 +99,8 @@ public class TurnBaseManager : MonoBehaviour
     {
         //! Point enemy when is their turn
         enemy = enemiesOrderList[enemyUnitTurn];
+        
+        cameraManager.MoveToUnit(enemy);
 
         highlighter.SetActive(false);
         print("Is " + enemy.name + " turn");
@@ -181,7 +187,11 @@ public class TurnBaseManager : MonoBehaviour
 
     IEnumerator CasterAttack()
     {
-        yield return new WaitForSeconds(delaysInBetween);
+        cameraManager.ZoomToUnit(caster);
+        while (!cameraManager.GetIsFree())
+        {
+            yield return null;
+        }
         EndTurn();
     }
 
