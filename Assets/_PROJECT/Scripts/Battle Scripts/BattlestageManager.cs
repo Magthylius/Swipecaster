@@ -144,6 +144,7 @@ public class BattlestageManager : MonoBehaviour
                     if (Lerp.NegligibleDistance(casterExecutionTransform.position.x, prevPosCaster.x, 0.001f))
                     {
                         casterSortGroup.sortingOrder = 0;
+                        enemySortingGroup.sortingOrder = 0;
                         allowExecutionAction = false;
                     }
                 }
