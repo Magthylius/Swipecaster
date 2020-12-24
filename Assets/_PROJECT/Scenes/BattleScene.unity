@@ -8641,9 +8641,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1404324106}
   horizontalOffset: 1
-  verticalOffset: -0.1
+  minZoomOffset: 1.1
+  maxZoomOffset: -0.5
+  verticalOffset: 0
   zoomModifierSpeed: 5
-  minZoom: 2
+  minZoom: 1.5
   maxZoom: 3.5
   panSpeed: 4
   backgroundEnvSpr: {fileID: 1212827364}

@@ -13,12 +13,15 @@ public class CameraManager : MonoBehaviour
 
     [Header("Edge offset values")] 
     public float horizontalOffset;
-    public float verticalOffset;
+    public float minZoomOffset = 1.5f;
+    public float maxZoomOffset = -0.5f;
+    [SerializeField] float verticalOffset;
 
     [Header("Zoom settings")] 
     public float zoomModifierSpeed;
     public float minZoom;
     public float maxZoom;
+    float zoomDifference;
 
     [Header("Pan Settings")] public float panSpeed;
 
@@ -62,6 +65,8 @@ public class CameraManager : MonoBehaviour
         targetZoom = cam.orthographicSize;
         cam.transform.position = new Vector3(cam.transform.position.x, bottomBound, cam.transform.position.z);
         isFree = true;
+
+        zoomDifference = maxZoom - minZoom;
     }
 
     void LateUpdate()
@@ -155,6 +160,9 @@ public class CameraManager : MonoBehaviour
         float horizontalCamSize = (verticalCamSize * cam.aspect);
 
         Bounds levelBounds = backgroundEnvSpr.bounds;
+
+        float zoomIndex = (cam.orthographicSize - minZoom) / zoomDifference;
+        verticalOffset = Mathf.Lerp(minZoomOffset, maxZoomOffset, zoomIndex);
 
         leftBound = (levelBounds.min.x) + (horizontalCamSize + horizontalOffset);
         rightBound = (levelBounds.max.x) - (horizontalCamSize + horizontalOffset);
