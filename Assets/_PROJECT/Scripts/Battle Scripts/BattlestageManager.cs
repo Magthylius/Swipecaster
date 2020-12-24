@@ -1,3 +1,4 @@
+using ConversionFunctions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,8 @@ public class BattlestageManager : MonoBehaviour
     
     public Transform battlestageCenter;
     public Transform playerTeamGroup, enemyTeamGroup;
+    private TurnBaseManager _turnBaseManager;
+    private Camera _mainCamera = null;
 
     [Header("Gaps Settings")]
     public float centerGap;
@@ -33,7 +36,6 @@ public class BattlestageManager : MonoBehaviour
 
     [Header("Target Selection")]
     [SerializeField] private GameObject selectedTarget = null;
-    private Camera _mainCamera = null;
 
     [Header("Debug")]
     public bool enableEntityDebugging = false;
@@ -51,6 +53,7 @@ public class BattlestageManager : MonoBehaviour
     {
         player = Player.Instance;
         roomManager = RoomManager.Instance;
+        _turnBaseManager = TurnBaseManager.instance;
         InitPositions();
         _mainCamera = Camera.main;
 
@@ -64,15 +67,7 @@ public class BattlestageManager : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            if(Physics.Raycast(_mainCamera.ScreenPointToRay(Input.mousePosition), out var hitInfo))
-            {
-                GameObject o = hitInfo.transform.gameObject;
-                if(o.CompareTag("Foe"))
-                {
-                    if (selectedTarget == o) selectedTarget = null;
-                    else selectedTarget = o;
-                }
-            }
+            if(Physics.Raycast(_mainCamera.ScreenPointToRay(Input.mousePosition), out var hitInfo)) SelectTarget(hitInfo);
         }
 
         if (enableEntityDebugging)
@@ -80,6 +75,14 @@ public class BattlestageManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Tab)) SpawnRandomEntityLeft();
             if (Input.GetKeyDown(KeyCode.Backspace)) SpawnRandomEntityRight();
         }
+    }
+
+    public void Button_ActivateSkill()
+    {
+        var target = selectedTarget.AsUnit();
+        var unit = _turnBaseManager.GetCurrentCaster().AsUnit();
+        if (unit == null) return;
+        unit.UseSkill(target, (List<Unit>)GetCasterTeamAsUnit(), (List<Unit>)GetEnemyTeamAsUnit());
     }
 
     public void RegroupAllPositons(bool instant)
@@ -225,6 +228,15 @@ public class BattlestageManager : MonoBehaviour
         }
 
         RegroupRightPositions(false);
+    }
+
+    private void SelectTarget(RaycastHit info)
+    {
+        GameObject o = info.transform.gameObject;
+        if (!o.CompareTag("Foe")) return;
+
+        if (selectedTarget == o) selectedTarget = null;
+        else selectedTarget = o;
     }
 
     #region Accessors

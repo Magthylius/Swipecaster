@@ -57,20 +57,20 @@ public class EnemyAttackManager : MonoBehaviour
     {
         for (int i = 0; i < battleStageManager.GetCastersTeam().Count; i++)
         {
-            battleStageManager.GetCastersTeam()[i].GetComponent<Caster>().SetPriorityNum(1);
+            battleStageManager.GetCastersTeam()[i].GetComponent<Caster>().SetUnitPriority(1);
         }
 
         int highestPriotyNum = -1;
 
         for (int i = 0; i < battleStageManager.GetCastersTeam().Count; i++)
         {
-            if (highestPriotyNum < battleStageManager.GetCastersTeam()[i].GetComponent<Caster>().GetPriorityNum)
+            if (highestPriotyNum < battleStageManager.GetCastersTeam()[i].GetComponent<Caster>().GetUnitPriority)
             {              
                 target.Clear();
                 target.Add(battleStageManager.GetCastersTeam()[i]);
-                highestPriotyNum = battleStageManager.GetCastersTeam()[i].GetComponent<Caster>().GetPriorityNum;
+                highestPriotyNum = battleStageManager.GetCastersTeam()[i].GetComponent<Caster>().GetUnitPriority;
             }
-            else if (highestPriotyNum == battleStageManager.GetCastersTeam()[i].GetComponent<Caster>().GetPriorityNum)
+            else if (highestPriotyNum == battleStageManager.GetCastersTeam()[i].GetComponent<Caster>().GetUnitPriority)
             {
                 target.Add(battleStageManager.GetCastersTeam()[i]);
             }
