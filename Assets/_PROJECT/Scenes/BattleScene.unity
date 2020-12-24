@@ -494,6 +494,7 @@ MonoBehaviour:
   enemyTeamGroup: {fileID: 1184321072}
   centerGap: 0.8
   unitGap: 0.6
+  battleGap: 1
   casterPositions:
   - {fileID: 2124983772}
   - {fileID: 1410219119}
@@ -8643,7 +8644,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1404324106}
   horizontalOffset: 1
-  minZoomOffset: 1.5
+  minZoomOffset: 1
   maxZoomOffset: -0.5
   verticalOffset: 0
   zoomModifierSpeed: 5

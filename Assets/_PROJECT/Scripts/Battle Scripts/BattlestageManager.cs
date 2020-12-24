@@ -73,6 +73,8 @@ public class BattlestageManager : MonoBehaviour
         {
             Debug.LogWarning("BattlestageManager: Debugging Enabled");
         }
+
+        selectedTarget = enemyTeam[0];
     }
 
     private void Update()
