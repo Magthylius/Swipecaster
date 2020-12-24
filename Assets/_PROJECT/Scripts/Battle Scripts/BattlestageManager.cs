@@ -80,7 +80,9 @@ public class BattlestageManager : MonoBehaviour
     public void Button_ActivateSkill()
     {
         var target = selectedTarget.AsUnit();
-        _turnBaseManager.GetCurrentCaster().AsUnit().UseSkill(target, (List<Unit>)GetCasterTeamAsUnit(), (List<Unit>)GetEnemyTeamAsUnit());
+        var unit = _turnBaseManager.GetCurrentCaster().AsUnit();
+        if (unit == null) return;
+        unit.UseSkill(target, (List<Unit>)GetCasterTeamAsUnit(), (List<Unit>)GetEnemyTeamAsUnit());
     }
 
     public void RegroupAllPositons(bool instant)

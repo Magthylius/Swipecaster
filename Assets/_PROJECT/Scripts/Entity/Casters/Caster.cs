@@ -20,7 +20,7 @@ public class Caster : Unit
 
     public override void UseSkill(Unit focusTarget, List<Unit> allCasters, List<Unit> allFoes)
     {
-        print("ues");
+        print($"Major: {ArchMajor}, Minor: {ArchMinor}");
         /*
         var info = GetActiveSkill.GetActiveSkillTargets(focusTarget, allCasters, allFoes);
         GetActiveSkill.TriggerSkill(info, allCasters, allFoes);

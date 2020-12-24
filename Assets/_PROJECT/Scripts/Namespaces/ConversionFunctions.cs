@@ -4,6 +4,6 @@ namespace ConversionFunctions
 {
     public static class GameObjectTo
     {
-        public static Unit AsUnit(this GameObject gameObject) => gameObject.GetComponent<Unit>();
+        public static Unit AsUnit(this GameObject gameObject) => gameObject != null ? gameObject.GetComponent<Unit>() : null;
     }
 }
