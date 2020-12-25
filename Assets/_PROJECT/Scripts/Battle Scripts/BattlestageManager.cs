@@ -98,64 +98,36 @@ public class BattlestageManager : MonoBehaviour
 
         if (allowExecutionAction)
         {
-            
             if (timer >= 0)
             {
                 timer -= Time.deltaTime;
-                
+
                 casterExecutionTransform.position =
                     Vector3.Lerp(casterExecutionTransform.position, new Vector3(battlestageCenter.position.x - battleGap,
                             casterExecutionTransform.position.y, casterExecutionTransform.position.z),
                         speed * Time.unscaledDeltaTime);
 
-                if (GetSelectedTarget())
-                {
-                    enemyExecutionTransform.position =
+                enemyExecutionTransform.position =
                         Vector3.Lerp(enemyExecutionTransform.position, new Vector3(battlestageCenter.position.x + battleGap,
                                 enemyExecutionTransform.position.y, enemyExecutionTransform.position.z),
                             speed * Time.unscaledDeltaTime);
-                }
-                
             }
             else
             {
                 casterExecutionTransform.localScale = prevScaleCaster;
-                if (GetSelectedTarget())
-                {
-                    enemyExecutionTransform.localScale = prevScaleEnemy;
-                }
+                enemyExecutionTransform.localScale = prevScaleEnemy;
 
                 casterExecutionTransform.position = Vector3.Lerp(casterExecutionTransform.position,
                     new Vector3(prevPosCaster.x, prevPosCaster.y, prevPosCaster.z), speed * Time.unscaledDeltaTime);
 
-                if (GetSelectedTarget())
+                if (Lerp.NegligibleDistance(casterExecutionTransform.position.x, prevPosCaster.x, 0.001f)
+                    && Lerp.NegligibleDistance(enemyExecutionTransform.position.x, prevPosEnemy.x, 0.001f))
                 {
-                    enemyExecutionTransform.position = Vector3.Lerp(enemyExecutionTransform.position,
-                        new Vector3(prevPosEnemy.x, prevPosEnemy.y, prevPosEnemy.z), speed * Time.unscaledDeltaTime);
-                }
-
-                if (GetSelectedTarget())
-                {
-                    if (Lerp.NegligibleDistance(casterExecutionTransform.position.x, prevPosCaster.x, 0.001f) 
-                        && Lerp.NegligibleDistance(enemyExecutionTransform.position.x, prevPosEnemy.x, 0.001f))
-                    {
-                        casterSortGroup.sortingOrder = 0;
-                        enemySortingGroup.sortingOrder = 0;
-                        allowExecutionAction = false;
-                    }
-                }
-                else
-                {
-                    if (Lerp.NegligibleDistance(casterExecutionTransform.position.x, prevPosCaster.x, 0.001f))
-                    {
-                        casterSortGroup.sortingOrder = 0;
-                        enemySortingGroup.sortingOrder = 0;
-                        allowExecutionAction = false;
-                    }
+                    casterSortGroup.sortingOrder = 0;
+                    enemySortingGroup.sortingOrder = 0;
+                    allowExecutionAction = false;
                 }
             }
-            
-            
         }
     }
 
