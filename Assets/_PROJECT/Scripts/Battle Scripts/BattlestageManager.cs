@@ -166,7 +166,8 @@ public class BattlestageManager : MonoBehaviour
         prevPosCaster = casterExecutionTransform.position;
         prevScaleCaster = casterExecutionTransform.localScale;
         casterExecutionTransform.localScale = new Vector3(0.25f, 0.25f, 1);
-        casterSortGroup = _turnBaseManager.GetCurrentCaster().GetComponent<SortingGroup>();
+        //casterSortGroup = _turnBaseManager.GetCurrentCaster().GetComponent<SortingGroup>();
+        casterSortGroup = _caster.GetComponent<SortingGroup>();
         casterSortGroup.sortingOrder = 1;
 
         if (GetSelectedTarget())

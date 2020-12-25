@@ -81,7 +81,7 @@ public class EnemyAttackManager : MonoBehaviour
 
         targetCaster = target[Random.Range(0, target.Count)];
         
-        EnemyAttack( attacker, targetCaster);
+        EnemyAttack(attacker, targetCaster);
 
     }
 
