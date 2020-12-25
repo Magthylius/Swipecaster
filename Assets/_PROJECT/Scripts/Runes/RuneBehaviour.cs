@@ -7,6 +7,7 @@ public class RuneBehaviour : MonoBehaviour
 {
     RuneManager runeManager;
     ConnectionManager connectionManager;
+    SettingsManager settingsManager;
     
     public RuneType type;
     public Sprite activatedSprite;
@@ -24,6 +25,7 @@ public class RuneBehaviour : MonoBehaviour
     bool allowMouse = false;
 
     Camera cam;
+    bool isPaused = false;
 
     void Awake()
     {
@@ -32,20 +34,25 @@ public class RuneBehaviour : MonoBehaviour
         cam = Camera.main;
         self = gameObject;
         sr = GetComponent<SpriteRenderer>();
-
     }
     
     void Start()
     {
         runeManager = RuneManager.instance;
         connectionManager = ConnectionManager.instance;
+        settingsManager = SettingsManager.instance;
 
         maxVelocity = runeManager.maxVelocity;
         allowMouse = runeManager.allowMouse;
+
+        settingsManager.pausedEvent.AddListener(SetStatePaused);
+        settingsManager.unpausedEvent.AddListener(SetStateUnpaused);
     }
     
     void Update()
     {
+        if (isPaused) return;
+
         SelfDeactivate();
 
         if (selected) 
@@ -65,11 +72,16 @@ public class RuneBehaviour : MonoBehaviour
     
     void FixedUpdate()
     {
+        if (isPaused) return;
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
     }
 
+    void SetStatePaused() => isPaused = true;
+    void SetStateUnpaused() => isPaused = false;
+
     public void Deactivate()
     {
+        if (isPaused) return;
         runeManager.GetActiveRuneList().Remove(this.gameObject);
         rb.velocity = new Vector2(0, -10);
         gameObject.SetActive(false);
@@ -81,18 +93,19 @@ public class RuneBehaviour : MonoBehaviour
     }
 
     public void SelfDeactivate()
-     {
-         if (!sr.isVisible)
-         {
-             Deactivate();
-         }
-     }
+    {
+        if (isPaused) return;
+        if (!sr.isVisible)
+        {
+            Deactivate();
+        }
+    }
     
 
     public void Selected()
     {
+        if (isPaused) return;
         if (allowMouse && !Input.GetMouseButton(0)) return;
-        
 
         if (!connectionManager.GetSelectionStart())
         {
@@ -110,6 +123,7 @@ public class RuneBehaviour : MonoBehaviour
 
     public void ResetToActivateSprite()
     {
+        if (isPaused) return;
         selected = false;
         sr.sprite = deactivatedSprite;
     }

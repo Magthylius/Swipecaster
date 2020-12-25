@@ -8,21 +8,22 @@ using LerpFunctions;
 public class ComboManager : MonoBehaviour
 {
     public static ComboManager instance;
+
     ConnectionManager connectionManager;
     RuneManager runeManager;
     InformationManager infoManager;
     TurnBaseManager turnBaseManger;
     RoomManager roomManager;
     BattlestageManager battleStageManager;
+    SettingsManager settingsManager;
+
     public float runeDamage;
 
     [Header("Countdown Timer")]
     public float countdownTimer;
-    public Slider slideTimer;
     public Image slider;
     
     List<RuneBehaviour> comboList = new List<RuneBehaviour>();
-    float totalDamage;
     float timer;
     bool isStart = false;
     bool sliderAnim = false;
@@ -51,21 +52,22 @@ public class ComboManager : MonoBehaviour
         turnBaseManger = TurnBaseManager.instance;
         roomManager = RoomManager.Instance;
         battleStageManager = BattlestageManager.instance;
+        settingsManager = SettingsManager.instance;
     }
 
     void Update()
     {
+        if (settingsManager.GetPaused()) return;
+
         if (isStart && !sliderAnim)
         {
             timer -= Time.unscaledDeltaTime;
-            //slideTimer.value = timer;
             slider.fillAmount = timer / countdownTimer;
             if (timer <= 0)
             {
                 isStart = false;
                 sliderAnim = true;
                 timer = countdownTimer;
-                //slider.fillAmount = 1.0f;
 
                 GameObject targetObject = (battleStageManager.GetSelectedTarget() != null) ? battleStageManager.GetSelectedTarget() : battleStageManager.GetEnemyTeam()[0];
 
