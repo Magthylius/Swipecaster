@@ -119,6 +119,9 @@ public class BattlestageManager : MonoBehaviour
 
                 casterExecutionTransform.position = Vector3.Lerp(casterExecutionTransform.position,
                     new Vector3(prevPosCaster.x, prevPosCaster.y, prevPosCaster.z), speed * Time.unscaledDeltaTime);
+                
+                enemyExecutionTransform.position = Vector3.Lerp(enemyExecutionTransform.position,
+                    new Vector3(prevPosEnemy.x, prevPosEnemy.y, prevPosEnemy.z), speed * Time.unscaledDeltaTime);
 
                 if (Lerp.NegligibleDistance(casterExecutionTransform.position.x, prevPosCaster.x, 0.001f)
                     && Lerp.NegligibleDistance(enemyExecutionTransform.position.x, prevPosEnemy.x, 0.001f))
