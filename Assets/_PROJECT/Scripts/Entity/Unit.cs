@@ -44,7 +44,7 @@ public abstract class Unit : Entity
 
     #region Public Abstract Methods
 
-    public abstract void UseSkill(Unit focusTarget, List<Unit> allCasters, List<Unit> allFoes);
+    public abstract void UseSkill(TargetInfo targetInfo, StageInfo stageInfo);
     public abstract void TakeHit(Unit damager, int damageAmount);
     public abstract void RecieveHealing(Unit healer, int healAmount);
     public abstract void DoAction(TargetInfo targetInfo, RuneCollection runes);
