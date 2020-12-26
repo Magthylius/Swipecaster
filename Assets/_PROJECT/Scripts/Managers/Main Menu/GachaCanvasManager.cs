@@ -17,7 +17,7 @@ public enum GachaPoint
     TOP_LEFT
 }
 
-public class GachaCanvasManager : MonoBehaviour
+public class GachaCanvasManager : MenuCanvasPage
 {
     enum GachaCanvasState
     {
@@ -53,7 +53,7 @@ public class GachaCanvasManager : MonoBehaviour
 
     void Awake()
     {
-        if (instance != null) Destroy(gameObject);
+        if (instance != null) Destroy(this);
         else instance = this;
     }
 
@@ -63,6 +63,9 @@ public class GachaCanvasManager : MonoBehaviour
         linePoints = new List<Vector2>();
 
         chargeImg.fillAmount = 0f;
+
+        summonButton.gameObject.SetActive(false);
+        instructionText.gameObject.SetActive(true);
     }
 
     void Update()
@@ -99,8 +102,24 @@ public class GachaCanvasManager : MonoBehaviour
         }
         else if (state == GachaCanvasState.SUMMONING)
         {
-
+            summonButton.gameObject.SetActive(true);
+            instructionText.gameObject.SetActive(false);
         }
+    }
+    
+    public override void Reset()
+    {
+        print("sddd");
+        charge = 0f;
+        chargeImg.gameObject.SetActive(true);
+        chargeImg.fillAmount = charge;
+
+        connectedList = new List<GachaConnectorBehavior>();
+        linePoints = new List<Vector2>();
+
+        summonButton.gameObject.SetActive(false);
+        instructionText.gameObject.SetActive(true);
+        state = GachaCanvasState.IDLE;
     }
 
     public void ConnectGachaPoint(GachaPoint point)
@@ -121,6 +140,33 @@ public class GachaCanvasManager : MonoBehaviour
     public void CoverDischarge()
     {
         state = GachaCanvasState.DISCHARGING;
+    }
+
+    public void BTN_SummonCharacter()
+    {
+        int r = Random.Range(0, 5);
+        switch (r)
+        {
+            case 0:
+                Debug.Log("You summoned: Disappointment!");
+                break;
+
+            case 1:
+                Debug.Log("You summoned: Anxiety!");
+                break;
+
+            case 2:
+                Debug.Log("You summoned: Depression!");
+                break;
+
+            case 3:
+                Debug.Log("You summoned: Depression!");
+                break;
+
+            case 4:
+                Debug.Log("You summoned: Pain!");
+                break;
+        }
     }
 
     #region Accessors

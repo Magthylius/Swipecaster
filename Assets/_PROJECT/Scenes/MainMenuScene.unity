@@ -421,7 +421,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -439,7 +439,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 116330409}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2073405909}
+        m_TargetAssemblyTypeName: GachaCanvasManager, Assembly-CSharp
+        m_MethodName: BTN_SummonCharacter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &116330409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,8 +472,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: d39733cf7db99b940bcc3b48f4535ff4, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -852,6 +864,7 @@ GameObject:
   - component: {fileID: 233503307}
   - component: {fileID: 233503306}
   - component: {fileID: 233503305}
+  - component: {fileID: 233503308}
   m_Layer: 5
   m_Name: Inventory Canvas
   m_TagString: Untagged
@@ -928,6 +941,18 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!114 &233503308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233503303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d344a898d6f81e4fac066aca51873e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &261052139
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1920,7 +1945,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1315001411}
-  - {fileID: 1957755903}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2433,6 +2457,7 @@ GameObject:
   - component: {fileID: 889774820}
   - component: {fileID: 889774819}
   - component: {fileID: 889774822}
+  - component: {fileID: 889774823}
   m_Layer: 5
   m_Name: Map Canvas
   m_TagString: Untagged
@@ -2530,6 +2555,18 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!114 &889774823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889774817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d344a898d6f81e4fac066aca51873e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &986442602
 GameObject:
   m_ObjectHideFlags: 0
@@ -3637,7 +3674,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1957755904}
+        - m_Target: {fileID: 2073405909}
           m_TargetAssemblyTypeName: GachaCanvasManager, Assembly-CSharp
           m_MethodName: CoverCharge
           m_Mode: 1
@@ -3653,7 +3690,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1957755904}
+        - m_Target: {fileID: 2073405909}
           m_TargetAssemblyTypeName: GachaCanvasManager, Assembly-CSharp
           m_MethodName: CoverDischarge
           m_Mode: 1
@@ -3677,6 +3714,7 @@ GameObject:
   - component: {fileID: 1142882402}
   - component: {fileID: 1142882401}
   - component: {fileID: 1142882400}
+  - component: {fileID: 1142882403}
   m_Layer: 5
   m_Name: Home Canvas
   m_TagString: Untagged
@@ -3753,6 +3791,18 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!114 &1142882403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142882398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d344a898d6f81e4fac066aca51873e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1214962462
 GameObject:
   m_ObjectHideFlags: 0
@@ -4612,7 +4662,6 @@ MonoBehaviour:
   gachaCanvas: {fileID: 2073405908}
   shopCanvas: {fileID: 2121997435}
   settingsCanvas: {fileID: 1708089187}
-  pageTransition: 0
 --- !u!4 &1315001411
 Transform:
   m_ObjectHideFlags: 0
@@ -4639,7 +4688,7 @@ GameObject:
   - component: {fileID: 1348400379}
   - component: {fileID: 1348400378}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Price
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5398,6 +5447,7 @@ GameObject:
   - component: {fileID: 1708089187}
   - component: {fileID: 1708089186}
   - component: {fileID: 1708089185}
+  - component: {fileID: 1708089188}
   m_Layer: 5
   m_Name: Settings Canvas
   m_TagString: Untagged
@@ -5474,6 +5524,18 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!114 &1708089188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708089183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d344a898d6f81e4fac066aca51873e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1708877862
 GameObject:
   m_ObjectHideFlags: 0
@@ -6141,6 +6203,7 @@ GameObject:
   - component: {fileID: 1874627586}
   - component: {fileID: 1874627588}
   - component: {fileID: 1874627587}
+  - component: {fileID: 1874627589}
   m_Layer: 5
   m_Name: Party Canvas
   m_TagString: Untagged
@@ -6217,6 +6280,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1874627584}
   m_CullTransparentMesh: 1
+--- !u!114 &1874627589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874627584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d344a898d6f81e4fac066aca51873e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1875084000
 GameObject:
   m_ObjectHideFlags: 0
@@ -6342,63 +6417,6 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
---- !u!1 &1957755902
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1957755903}
-  - component: {fileID: 1957755904}
-  m_Layer: 0
-  m_Name: GachaCanvasManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1957755903
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1957755902}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 710288234}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1957755904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1957755902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f67ba23fcd3df24989ae664b808996a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uiLine: {fileID: 1602222446}
-  connectorList:
-  - {fileID: 1852409546}
-  - {fileID: 2111203691}
-  - {fileID: 806486379}
-  - {fileID: 36593328}
-  - {fileID: 1274805734}
-  - {fileID: 846223339}
-  - {fileID: 1260096782}
-  - {fileID: 581154887}
-  - {fileID: 1250448337}
-  chargeImg: {fileID: 1040037068}
-  coverImg: {fileID: 1119768607}
-  chargeSpeed: 3
 --- !u!1 &1968213159
 GameObject:
   m_ObjectHideFlags: 0
@@ -6725,6 +6743,7 @@ GameObject:
   - component: {fileID: 2073405908}
   - component: {fileID: 2073405907}
   - component: {fileID: 2073405906}
+  - component: {fileID: 2073405909}
   m_Layer: 5
   m_Name: Gacha Canvas
   m_TagString: Untagged
@@ -6799,10 +6818,38 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2073405904}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!114 &2073405909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073405904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f67ba23fcd3df24989ae664b808996a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiLine: {fileID: 1602222446}
+  connectorList:
+  - {fileID: 1852409546}
+  - {fileID: 2111203691}
+  - {fileID: 806486379}
+  - {fileID: 36593328}
+  - {fileID: 1274805734}
+  - {fileID: 846223339}
+  - {fileID: 1260096782}
+  - {fileID: 581154887}
+  - {fileID: 1250448337}
+  chargeImg: {fileID: 1040037068}
+  coverImg: {fileID: 1119768607}
+  chargeSpeed: 3
+  summonButton: {fileID: 116330411}
+  instructionText: {fileID: 313925117}
 --- !u!1 &2080907888
 GameObject:
   m_ObjectHideFlags: 0
@@ -7084,6 +7131,7 @@ GameObject:
   - component: {fileID: 2121997435}
   - component: {fileID: 2121997434}
   - component: {fileID: 2121997433}
+  - component: {fileID: 2121997436}
   m_Layer: 5
   m_Name: Shop Canvas
   m_TagString: Untagged
@@ -7160,6 +7208,18 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!114 &2121997436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2121997431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d344a898d6f81e4fac066aca51873e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2126631156
 PrefabInstance:
   m_ObjectHideFlags: 0

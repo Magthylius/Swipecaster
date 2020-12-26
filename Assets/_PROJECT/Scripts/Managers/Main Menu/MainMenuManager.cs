@@ -18,7 +18,7 @@ public class MainMenuManager : MonoBehaviour
 
     CanvasGroup currentPage;
     CanvasGroup newPage;
-    [SerializeField] bool pageTransition = false;
+    bool pageTransition = false;
     bool isAtHome = true;
 
     void Awake()
@@ -48,6 +48,7 @@ public class MainMenuManager : MonoBehaviour
                 newPage.alpha = 1f;
                 currentPage.interactable = false;
                 currentPage.blocksRaycasts = false;
+                currentPage.GetComponent<MenuCanvasPage>().Reset();
 
                 pageTransition = false;
                 currentPage = newPage;
