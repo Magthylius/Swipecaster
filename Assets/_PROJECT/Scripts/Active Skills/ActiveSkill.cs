@@ -3,10 +3,11 @@ using UnityEngine;
 
 public abstract class ActiveSkill
 {
-    private float _skillDamageMultiplier = 1.0f;
-    private int _effectDuration = 0;
-    private int _maxSkillCharge = 0;
-    private int _chargeGainPerTurn = 0;
+    protected float _skillDamageMultiplier = 1.0f;
+    protected int _effectDuration = 0;
+    protected int _maxSkillCharge = 0;
+    protected int _chargeGainPerTurn = 0;
+    protected Unit _unit = null;
 
     public abstract void TriggerSkill(TargetInfo targetInfo, StageInfo stageInfo);
     public abstract TargetInfo GetActiveSkillTargets(Unit focusTarget, List<Unit> allCasters, List<Unit> allFoes);
@@ -17,6 +18,8 @@ public abstract class ActiveSkill
     public int GetSkillEffectDuration => _effectDuration;
     public int GetMaxSkillCharge => _maxSkillCharge;
     public int GetChargeGainPerTurn => _chargeGainPerTurn;
+    public Unit GetUnit => _unit;
+    public virtual string Description => string.Empty;
 
     public ActiveSkill()
     {
@@ -24,12 +27,14 @@ public abstract class ActiveSkill
         _effectDuration = 0;
         _maxSkillCharge = 0;
         _chargeGainPerTurn = 0;
+        _unit = null;
     }
-    public ActiveSkill(float damageMultiplier, int effectDuration, int maxSkillCharge, int chargeGainPerTurn)
+    public ActiveSkill(float damageMultiplier, int effectDuration, int maxSkillCharge, int chargeGainPerTurn, Unit unit)
     {
         _skillDamageMultiplier = Mathf.Abs(damageMultiplier);
         _effectDuration = Mathf.Abs(effectDuration);
         _maxSkillCharge = Mathf.Abs(maxSkillCharge);
         _chargeGainPerTurn = Mathf.Abs(chargeGainPerTurn);
+        _unit = unit;
     }
 }

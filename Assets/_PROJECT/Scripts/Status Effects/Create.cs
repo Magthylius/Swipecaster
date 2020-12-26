@@ -10,6 +10,7 @@ namespace Create
         public static StatusEffect Flame(int turns) => new Flame(turns, 0.35f, false, 0.05f, 0.05f);
         public static StatusEffect Poison(int turns) => new Poison(turns, 0.35f, false, 0.05f, 0.05f);
         public static StatusEffect Weakness(int turns) => new Weakness(turns, 0.65f, false, 0.2f);
+        public static StatusEffect AttackUp(int turns, float percent) => new AttackUp(turns, 0.0f, false, percent);
 
         public static IEnumerable<Type> List => 
             new List<Type>()
@@ -18,7 +19,8 @@ namespace Create
                 new DefenceDown().GetType(),
                 new Flame().GetType(),
                 new Poison().GetType(),
-                new Weakness().GetType()
+                new Weakness().GetType(),
+                new AttackUp().GetType()
             };
     }
 }
