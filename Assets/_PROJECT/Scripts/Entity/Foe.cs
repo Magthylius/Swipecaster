@@ -10,7 +10,7 @@ public class Foe : Unit
         battleStageManager = BattlestageManager.instance;
     }
 
-    public override void UseSkill(Unit focusTarget, List<Unit> allCasters, List<Unit> allFoes) { }
+    public override void UseSkill(TargetInfo targetInfo, StageInfo stageInfo) { }
     public override void TakeHit(Unit damager, int damageAmount) => InvokeHitEvent(damager, damageAmount);
     public override void RecieveHealing(Unit healer, int healAmount) { }
     public override void DoAction(TargetInfo targetInfo, RuneCollection runes)

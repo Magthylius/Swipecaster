@@ -164,7 +164,11 @@ public class BattlestageManager : MonoBehaviour
         var target = selectedTarget.AsUnit();
         var unit = _turnBaseManager.GetCurrentCaster().AsUnit();
         if (unit == null) return;
-        unit.UseSkill(target, (List<Unit>) GetCasterTeamAsUnit(), (List<Unit>) GetEnemyTeamAsUnit());
+
+        TargetInfo targetInfo = unit.GetActiveSkill.GetActiveSkillTargets(target, (List<Unit>)GetCasterTeamAsUnit(), (List<Unit>)GetEnemyTeamAsUnit());
+        StageInfo stageInfo = new StageInfo(casterPositions.ToList(), enemyPositions.ToList(), casterEntityPositions.ToList(), enemyEntityPositions.ToList());
+
+        unit.UseSkill(targetInfo, stageInfo);
     }
 
     public void RegroupAllPositons(bool instant)

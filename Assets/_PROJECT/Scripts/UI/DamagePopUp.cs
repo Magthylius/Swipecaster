@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class DamagePopUp : MonoBehaviour
 {
-    private void Start()
+    private void Awake()
     {
-        gameObject.transform.position += new Vector3(0.0f, 0.5f, 0.0f);
+       // gameObject.GetComponent<RectTransform>().position += new Vector3(0.0f, 5.0f, 0.0f);
+       // Debug.Log(gameObject.GetComponent<RectTransform>().position.y);
+      //  gameObject.transform.position += new Vector3(0.0f, 1.0f, 0.0f);
     }
 
     public void showDamage(int damage)
@@ -19,7 +21,7 @@ public class DamagePopUp : MonoBehaviour
 
     private IEnumerator popUpTime()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
         gameObject.SetActive(false);
     }
 }
