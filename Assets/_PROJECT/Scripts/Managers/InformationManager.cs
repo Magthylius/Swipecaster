@@ -40,16 +40,6 @@ public class InformationManager : MonoBehaviour
         skillChargeBar.fillAmount = fill;
     }
 
-    public void TriggerCurrentUnitSkill(Unit focusTarget, List<Unit> allCasters, List<Unit> allFoes)
-    {
-        if (_turnBaseManager == null) return;
-
-        var unit = _turnBaseManager.GetCurrentCaster().GetComponent<Unit>();
-        if (unit == null) return;
-
-        unit.UseSkill(focusTarget, allCasters, allFoes);
-    }
-
     private void UpdateHealthBar(Unit unit)
     {
         if (_turnBaseManager == null) return;
