@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class ConnectionManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class ConnectionManager : MonoBehaviour
 
     public LineRenderer line;
 
+    
     RuneType selectionType;
     bool selectionStarted;
     Camera cam;
@@ -29,8 +31,16 @@ public class ConnectionManager : MonoBehaviour
 
     void Update()
     {
+
         if (Input.GetMouseButton(0))
         {
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                print(EventSystem.current.IsPointerOverGameObject());
+                print(EventSystem.current.gameObject.name);
+                return;
+            }
+            
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
 
