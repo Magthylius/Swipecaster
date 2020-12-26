@@ -20,9 +20,9 @@ public class TeapotCrackpot : CasterSkill
     }
 
     public TeapotCrackpot() : base() { }
-    public TeapotCrackpot(float damageMultiplier, int effectDuration, int maxSkillCharge, int chargeGainPerTurn)
-        : base(damageMultiplier, effectDuration, maxSkillCharge, chargeGainPerTurn)
-    {
-
-    }
+    // public TeapotCrackpot(float damageMultiplier, int effectDuration, int maxSkillCharge, int chargeGainPerTurn)
+    //     : base(damageMultiplier, effectDuration, maxSkillCharge, chargeGainPerTurn)
+    // {
+    //
+    // }
 }

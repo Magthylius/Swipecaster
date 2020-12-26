@@ -11,6 +11,8 @@ public class PlayerInventory : MonoBehaviour
     public List<string> playerCasterInventoryID = new List<string>();
 
     [SerializeField] List<CasterData> playerCasterInventory = new List<CasterData>();
+    
+    //! Get all casters in the game
     readonly List<UnitObject> allCasters = new List<UnitObject>();
     readonly List<CasterData> playerCastersData = new List<CasterData>();
 
