@@ -18,13 +18,11 @@ public class Caster : Unit
 
     #region Public Override Methods
 
-    public override void UseSkill(Unit focusTarget, List<Unit> allCasters, List<Unit> allFoes)
+    public override void UseSkill(TargetInfo targetInfo, StageInfo stageInfo)
     {
         print($"Major: {ArchMajor}, Minor: {ArchMinor}");
-        /*
-        var info = GetActiveSkill.GetActiveSkillTargets(focusTarget, allCasters, allFoes);
-        GetActiveSkill.TriggerSkill(info, allCasters, allFoes);
-        */
+        
+        GetActiveSkill.TriggerSkill(targetInfo, stageInfo);
     }
     public override void TakeHit(Unit damager, int damageAmount) => InvokeHitEvent(damager, damageAmount);
     public override void RecieveHealing(Unit healer, int healAmount) => AddCurrentHealth(Mathf.Abs(healAmount));
