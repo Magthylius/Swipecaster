@@ -15,9 +15,25 @@ public class UILineRenderer : Graphic
 
     public float thickness = 10f;
     public bool noBend = false;
-    public List<Vector2> bendPoints;
+    List<Vector2> bendPoints;
+
+    float useless;
+    float Useless
+    {
+        get { return useless; }
+        set 
+        {
+            useless = value;
+		    SetVerticesDirty();
+	    }
+    }
 
     protected override void OnPopulateMesh(VertexHelper vh)
+    {
+        DrawEverything(vh);
+    }
+
+    public void DrawEverything(VertexHelper vh)
     {
         vh.Clear();
 
@@ -61,7 +77,7 @@ public class UILineRenderer : Graphic
                 //print(i + " angle: " + angle);
             }
 
-            for (int i = 0; i < bendPoints.Count - 1; i ++)
+            for (int i = 0; i < bendPoints.Count - 1; i++)
             {
                 int index = i * 2;
                 vh.AddTriangle(index + 0, index + 1, index + 3);
@@ -113,5 +129,7 @@ public class UILineRenderer : Graphic
     public void UpdatePoints(List<Vector2> newPoints)
     {
         points = newPoints;
+        //Canvas.ForceUpdateCanvases();
+        Useless++;
     }
 }

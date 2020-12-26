@@ -2,22 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum GachaPoint
+{
+    CENTER = 0,
+    TOP,
+    TOP_RIGHT,
+    RIGHT,
+    BOT_RIGHT,
+    BOT,
+    BOT_LEFT,
+    LEFT,
+    TOP_LEFT
+}
+
 public class GachaCanvasManager : MonoBehaviour
 {
-    public enum GachaPoint
-    {
-        CENTER = 0,
-        TOP,
-        TOP_RIGHT,
-        RIGHT,
-        BOT_RIGHT,
-        BOT,
-        BOT_LEFT,
-        LEFT,
-        TOP_LEFT
-    }
-
-    [System.Serializable]
+    /*[System.Serializable]
     public struct GachaConnectors
     {
         public RectTransform connector;
@@ -26,30 +26,40 @@ public class GachaCanvasManager : MonoBehaviour
         Vector2 connectorCenter;
         public void CalculateCenter() => connectorCenter = (connector.offsetMax + connector.offsetMin) * 0.5f;
         public Vector2 GetCenter() => connectorCenter;
-    }
+    }*/
+
+    public static GachaCanvasManager instance;
 
     public UILineRenderer uiLine;
-    public List<GachaConnectors> connectorList;
+    public List<GachaConnectorBehavior> connectorList;
 
-    List<GachaConnectors> connectedList;
+    List<GachaConnectorBehavior> connectedList;
     List<Vector2> linePoints;
-    
+
+    bool allowCasting = true;
+
+    void Awake()
+    {
+        if (instance != null) Destroy(gameObject);
+        else instance = this;
+    }
+
     void Start()
     {
-        foreach (GachaConnectors connector in connectorList) connector.CalculateCenter();
-        connectedList = new List<GachaConnectors>();
+        //foreach (GachaConnectors connector in connectorList) connector.CalculateCenter();
+        connectedList = new List<GachaConnectorBehavior>();
 
         linePoints = new List<Vector2>();
-        linePoints.Add(Vector2.zero);
+        //linePoints.Add(Vector2.zero);
     }
 
     void FixedUpdate()
     {
-        if (Input.touchCount > 0 || Input.GetMouseButton(0))
+        /*if (Input.touchCount > 0 || Input.GetMouseButton(0))
         {
             linePoints[linePoints.Count - 1] = Input.mousePosition;
             uiLine.UpdatePoints(linePoints);
-        }
+        }*/
     }
 
     public void ConnectGachaPoint(GachaPoint point)
@@ -57,31 +67,33 @@ public class GachaCanvasManager : MonoBehaviour
         if (CheckEligibleConnector(point))
         {
             connectedList.Add(FindConnector(point));
-            linePoints[linePoints.Count - 1] = FindConnector(point).GetCenter();
-            linePoints.Add(Vector2.zero);
+            linePoints.Add(FindConnector(point).center);
+            //linePoints.Add(Vector2.zero);
+            uiLine.UpdatePoints(linePoints);
         }
     }
 
     #region Accessors
-    GachaConnectors FindConnector(GachaPoint point)
+    GachaConnectorBehavior FindConnector(GachaPoint point)
     {
-        foreach (GachaConnectors connector in connectorList)
+        foreach (GachaConnectorBehavior connector in connectorList)
         {
-            if (point == connector.point) return connector;
+            if (point == connector.type) return connector;
         }
 
         Debug.LogError("GachaConnector not found!");
-        return new GachaConnectors();
+        return null;
     }
 
     bool CheckEligibleConnector(GachaPoint point)
     {
-        foreach (GachaConnectors connector in connectedList)
+        foreach (GachaConnectorBehavior connector in connectedList)
         {
-            if (connector.point == point) return false;
+            if (connector.type == point) return false;
         }
 
         return true;
     }
+    public bool GetAllowCasting() => allowCasting;
     #endregion
 }
