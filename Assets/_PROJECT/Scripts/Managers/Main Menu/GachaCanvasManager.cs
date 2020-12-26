@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public enum GachaPoint
 {
@@ -17,19 +19,18 @@ public enum GachaPoint
 
 public class GachaCanvasManager : MonoBehaviour
 {
-    /*[System.Serializable]
-    public struct GachaConnectors
+    enum GachaCanvasState
     {
-        public RectTransform connector;
-        public GachaPoint point;
-
-        Vector2 connectorCenter;
-        public void CalculateCenter() => connectorCenter = (connector.offsetMax + connector.offsetMin) * 0.5f;
-        public Vector2 GetCenter() => connectorCenter;
-    }*/
+        IDLE = 0,
+        CHARGING,
+        DISCHARGING,
+        SUMMONING
+    }
 
     public static GachaCanvasManager instance;
+    GachaCanvasState state = GachaCanvasState.IDLE;
 
+    [Header("Connector Points")]
     public UILineRenderer uiLine;
     public List<GachaConnectorBehavior> connectorList;
 
@@ -37,6 +38,18 @@ public class GachaCanvasManager : MonoBehaviour
     List<Vector2> linePoints;
 
     bool allowCasting = true;
+
+    [Header("Cover")]
+    public Image chargeImg;
+    public Image coverImg;
+    public float chargeSpeed = 1f;
+   
+    float charge;
+    float chargePrecision = 0.001f;
+
+    [Header("Accessories")]
+    public CanvasGroup summonButton;
+    public TextMeshProUGUI instructionText;
 
     void Awake()
     {
@@ -46,20 +59,48 @@ public class GachaCanvasManager : MonoBehaviour
 
     void Start()
     {
-        //foreach (GachaConnectors connector in connectorList) connector.CalculateCenter();
         connectedList = new List<GachaConnectorBehavior>();
-
         linePoints = new List<Vector2>();
-        //linePoints.Add(Vector2.zero);
+
+        chargeImg.fillAmount = 0f;
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        /*if (Input.touchCount > 0 || Input.GetMouseButton(0))
+        if (state != GachaCanvasState.IDLE && state != GachaCanvasState.SUMMONING)
         {
-            linePoints[linePoints.Count - 1] = Input.mousePosition;
-            uiLine.UpdatePoints(linePoints);
-        }*/
+            if (state == GachaCanvasState.CHARGING)
+            {
+                charge = Mathf.Lerp(charge, 1f, chargeSpeed * Time.unscaledDeltaTime);
+
+                if (1f - charge <= chargePrecision)
+                {
+                    state = GachaCanvasState.IDLE;
+                    charge = 1f;
+                }
+            }
+            else if (state == GachaCanvasState.DISCHARGING)
+            {
+                charge = Mathf.Lerp(charge, 0f, chargeSpeed * Time.unscaledDeltaTime);
+
+                if (charge <= chargePrecision)
+                {
+                    state = GachaCanvasState.IDLE;
+                    charge = 0f;
+                }
+            }
+
+            chargeImg.fillAmount = charge;
+            if (charge >= 1f)
+            {
+                chargeImg.gameObject.SetActive(false);
+                state = GachaCanvasState.SUMMONING;
+            }
+        }
+        else if (state == GachaCanvasState.SUMMONING)
+        {
+
+        }
     }
 
     public void ConnectGachaPoint(GachaPoint point)
@@ -68,9 +109,18 @@ public class GachaCanvasManager : MonoBehaviour
         {
             connectedList.Add(FindConnector(point));
             linePoints.Add(FindConnector(point).center);
-            //linePoints.Add(Vector2.zero);
             uiLine.UpdatePoints(linePoints);
         }
+    }
+
+    public void CoverCharge()
+    {
+        state = GachaCanvasState.CHARGING;
+    }
+
+    public void CoverDischarge()
+    {
+        state = GachaCanvasState.DISCHARGING;
     }
 
     #region Accessors
