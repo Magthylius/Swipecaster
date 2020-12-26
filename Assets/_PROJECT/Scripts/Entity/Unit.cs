@@ -37,6 +37,7 @@ public abstract class Unit : Entity
     private Action<Unit, int> _grazeEvent;
     private Action<Unit, int> _hitEvent;
     private Action<Unit> _healthChangeEvent;
+    private Action<Unit, ActiveSkill> _useSkillEvent;
     private Action _turnBegin;
     private Action _turnEnd;
 
@@ -82,13 +83,16 @@ public abstract class Unit : Entity
     }
     public List<StatusEffect> GetStatusEffects => _statusEffects;
 
-    public void SetSkillChargeCount(int count) => _skillChargeCount = count;
-    public void ResetSkillCharge() => currentSkillCharge = _skillChargeCount;
-    public void DeductSkillCharge() => currentSkillCharge = Mathf.Clamp(--currentSkillCharge, 0, _skillChargeCount);
+    public void SyncSkillChargeCount() => _skillChargeCount = HasActiveSkill ? GetActiveSkill.GetMaxSkillCharge : 0;
+    public void ResetSkillCharge() => currentSkillCharge = 0;
+    public void AddSkillCharge()
+        => currentSkillCharge = Mathf.Clamp(currentSkillCharge += HasActiveSkill ? GetActiveSkill.GetChargeGainPerTurn : 0, 0, _skillChargeCount);
     public int GetMaxSkillChargeCount => _skillChargeCount;
     public int GetCurrentSkillChargeCount => currentSkillCharge;
-    public bool SkillIsReady => currentSkillCharge == 0;
+    public bool SkillIsReady => currentSkillCharge == _skillChargeCount;
     public ActiveSkill GetActiveSkill => _activeSkill;
+    public void SetActiveSkill(ActiveSkill skill) { _activeSkill = skill; SyncSkillChargeCount(); ResetSkillCharge(); }
+    public bool HasActiveSkill => _activeSkill != null;
 
     public int GetUnitPriority => priority;
     public void SetUnitPriority(int newPriority) => priority = newPriority;
@@ -105,13 +109,15 @@ public abstract class Unit : Entity
 
     public void SubscribeHitEvent(Action<Unit, int> method) => _hitEvent += method;
     public void UnsubscribeHitEvent(Action<Unit, int> method) => _hitEvent -= method;
-    public void InvokeHitEvent(Unit a, int b)
-    {
-        _hitEvent?.Invoke(a, b);
-    }
+    public void InvokeHitEvent(Unit a, int b) => _hitEvent?.Invoke(a, b);
+
     public void SubscribeHealthChangeEvent(Action<Unit> method) => _healthChangeEvent += method;
     public void UnsubscribeHealthChangeEvent(Action<Unit> method) => _healthChangeEvent -= method;
     public void InvokeHealthChangeEvent(Unit a) => _healthChangeEvent?.Invoke(a);
+
+    public void SubscribeUseSkillEvent(Action<Unit, ActiveSkill> method) => _useSkillEvent += method;
+    public void UnsubscribeUseSkillEvent(Action<Unit, ActiveSkill> method) => _useSkillEvent -= method;
+    public void InvokeUseSkillEvent(Unit a, ActiveSkill b) => _useSkillEvent?.Invoke(a, b);
 
     public void SubscribeTurnBeginEvent(Action method) => _turnBegin += method;
     public void UnsubscribeTurnBeginEvent(Action method) => _turnBegin -= method;
@@ -143,9 +149,10 @@ public abstract class Unit : Entity
     protected virtual void OnDestroy()
     {
         UnsubscribeHitEvent(TakeDamage);
+        UnsubscribeHealthChangeEvent(CheckDeathEvent);
+        UnsubscribeUseSkillEvent(UpdateStatusEffectsOnSkill);
         UnsubscribeTurnEndEvent(EndTurnMethods);
         UnsubscribeTurnBeginEvent(UpdatePreStatusEffects);
-        UnsubscribeHealthChangeEvent(CheckDeathEvent);
     }
 
     #endregion
@@ -160,9 +167,10 @@ public abstract class Unit : Entity
         SetUnitPriority(1);
         SetProjectile(new CrowFlies());
         SubscribeHitEvent(TakeDamage);
+        SubscribeHealthChangeEvent(CheckDeathEvent);
+        SubscribeUseSkillEvent(UpdateStatusEffectsOnSkill);
         SubscribeTurnEndEvent(EndTurnMethods);
         SubscribeTurnBeginEvent(UpdatePreStatusEffects);
-        SubscribeHealthChangeEvent(CheckDeathEvent);
     }
 
     #endregion
@@ -190,12 +198,14 @@ public abstract class Unit : Entity
     {
         ResetAttackStatus();
         PostStatusEffect();
+        HandleSkillCount();
     }
     private void ResetAttackStatus() => SetAttackStatus(AttackStatus.Normal);
     private void CheckDeathEvent(Unit unit)
     {
         if (GetCurrentHealth <= 0) InvokeDeathEvent(unit);
     }
+    private void UpdateStatusEffectsOnSkill(Unit unit, ActiveSkill skill) => UpdatePreStatusEffects();
     private void UpdatePreStatusEffects()
     {
         ResetAtkDefStats();
@@ -208,6 +218,7 @@ public abstract class Unit : Entity
         GetStatusEffects.ForEach(j => j.DoPreEffect(this));
     }
     private void PostStatusEffect() => GetStatusEffects.ForEach(i => i.DoPostEffect(this));
+    private void HandleSkillCount() => AddSkillCharge();
 
     #endregion
 }
