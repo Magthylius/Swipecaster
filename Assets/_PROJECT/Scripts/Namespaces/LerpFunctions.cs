@@ -62,6 +62,128 @@ namespace LerpFunctions
         }
     }
 
+    [Serializable]
+    public class FlexibleRect
+    {
+        public RectTransform rectTransform;
+
+        public FlexibleRect(RectTransform rectTr)
+        {
+            rectTransform = rectTr;
+        }
+
+        public bool Lerp(Vector2 targetPosition, float speed, float precision = 0.1f)
+        {
+            Vector2 destination = Vector2.Lerp(center, targetPosition, speed);
+
+            if ((targetPosition - destination).sqrMagnitude <= precision * precision)
+            {
+                MoveTo(targetPosition);
+                return true;
+            }
+
+            MoveTo(destination);
+            return false;
+        }
+
+        public void MoveTo(Vector2 targetPosition)
+        {
+            Vector2 diff = targetPosition - center;
+            rectTransform.offsetMax += diff;
+            rectTransform.offsetMin += diff;
+        }
+
+        public Vector2 ofMin => rectTransform.offsetMin;
+        public Vector2 ofMax => rectTransform.offsetMax;
+        public Vector2 center => (ofMin + ofMax) * 0.5f;
+        public float width => rectTransform.rect.width;
+        public float height => rectTransform.rect.height;
+    }
+
+    [Serializable]
+    public class CanvasGroupFader
+    {
+        enum CanvasState
+        {
+            FADE_OUT,
+            FADE_IN
+        }
+
+        public CanvasGroup canvas;
+        public bool affectsTouch;
+        public float precision;
+
+        CanvasState state;
+        bool allowFade;
+
+        public CanvasGroupFader(CanvasGroup canvasGroup, bool startsFadeIn, bool canAffectTouch, float alphaPrecision = 0.001f)
+        {
+            canvas = canvasGroup;
+            affectsTouch = canAffectTouch;
+            if (startsFadeIn) SetStateFadeIn();
+            else SetStateFadeOut();
+
+            allowFade = false;
+            precision = alphaPrecision;
+        }
+
+        public void Step(float speed)
+        {
+            if (allowFade)
+            {
+                if (state == CanvasState.FADE_IN)
+                {
+                    canvas.alpha = Mathf.Lerp(canvas.alpha, 1f, speed);
+
+                    if (1f - canvas.alpha <= precision)
+                    {
+                        allowFade = false;
+                        canvas.alpha = 1f;
+
+                        if (affectsTouch)
+                        {
+                            canvas.blocksRaycasts = true;
+                            canvas.interactable = true;
+                        }
+                    }
+                }
+                else
+                {
+                    canvas.alpha = Mathf.Lerp(canvas.alpha, 0f, speed);
+
+                    if (canvas.alpha <= precision)
+                    {
+                        allowFade = false;
+                        canvas.alpha = 0f;
+
+                        if (affectsTouch)
+                        {
+                            canvas.blocksRaycasts = false;
+                            canvas.interactable = false;
+                        }
+                    }
+                }
+            }
+        }
+
+        public void StartFadeIn()
+        {
+            SetStateFadeIn();
+            TriggerFade();
+        }
+
+        public void StartFadeOut()
+        {
+            SetStateFadeOut();
+            TriggerFade();
+        }
+
+        public void TriggerFade() => allowFade = true;
+        public void SetStateFadeIn() => state = CanvasState.FADE_IN;
+        public void SetStateFadeOut() => state = CanvasState.FADE_OUT;
+        public bool isFading => allowFade;
+    }
+
     public class Lerp : MonoBehaviour
     {
         // rects

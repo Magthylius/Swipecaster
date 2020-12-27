@@ -51,10 +51,13 @@ public class GachaCanvasManager : MenuCanvasPage
     public CanvasGroup summonButton;
     public TextMeshProUGUI instructionText;
 
-    void Awake()
+    public override void Awake()
     {
+        base.Awake();
         if (instance != null) Destroy(this);
         else instance = this;
+
+        //if (mainMenuManager != null) print("hey!");
     }
 
     void Start()
