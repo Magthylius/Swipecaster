@@ -15,6 +15,8 @@ public class ShopCanvasManager : MenuCanvasPage
 
     public List<ShopShelf> shelfList;
 
+    public override void Awake() => base.Awake();
+
     void Start()
     {
         foreach (ShopShelf shelf in shelfList)
@@ -24,6 +26,9 @@ public class ShopCanvasManager : MenuCanvasPage
                 button.button.onClick = shelf.onClick;
             }
         }
+
+        //if (mainMenuManager != null) print("hey!");
+       // print(mainMenuManager);
     }
 
     void Update()
