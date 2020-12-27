@@ -19,10 +19,10 @@ public class InvenSlots : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
-        print("fuck me ");
         if(!item)
         {
             DragHandler.itemBeingDragged.transform.SetParent(transform);
+            transform.parent.GetComponent<MenuParty>().updateTeam();
         }
     }
 }

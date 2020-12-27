@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-[CreateAssetMenu(menuName = "Unit/Menu Unit")]
+[CreateAssetMenu(menuName = "Menu/Menu Unit")]
 public class MenuUnit : ScriptableObject
 {
     [Header("General")]
