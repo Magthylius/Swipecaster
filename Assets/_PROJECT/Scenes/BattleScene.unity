@@ -10013,6 +10013,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2699134069599298206, guid: 31dce05ac994b5a46aa3c4e1178b07de, type: 3}
+      propertyPath: activeMembers
+      value: 
+      objectReference: {fileID: 11400000, guid: 841d043e77972de4fac9d66dfbf3ef93, type: 2}
+    - target: {fileID: 2699134069599298206, guid: 31dce05ac994b5a46aa3c4e1178b07de, type: 3}
+      propertyPath: loadOut.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2699134069599298207, guid: 31dce05ac994b5a46aa3c4e1178b07de, type: 3}
       propertyPath: m_Name
       value: Player
@@ -10021,7 +10029,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4826909198700131864, guid: 31dce05ac994b5a46aa3c4e1178b07de, type: 3}
+    - {fileID: 1744261095539532251, guid: 31dce05ac994b5a46aa3c4e1178b07de, type: 3}
+    - {fileID: 3815417436609696641, guid: 31dce05ac994b5a46aa3c4e1178b07de, type: 3}
+    - {fileID: 3177290578253056147, guid: 31dce05ac994b5a46aa3c4e1178b07de, type: 3}
+    - {fileID: 1258749800706187545, guid: 31dce05ac994b5a46aa3c4e1178b07de, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 31dce05ac994b5a46aa3c4e1178b07de, type: 3}
 --- !u!1 &1497104052
 GameObject:

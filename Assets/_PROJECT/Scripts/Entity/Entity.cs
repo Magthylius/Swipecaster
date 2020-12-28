@@ -48,6 +48,11 @@ public abstract class Entity : MonoBehaviour
 
     public UnitObject BaseUnit => baseUnit;
 
+    public void setBaseUnit (UnitObject newUnit)
+    {
+        baseUnit = newUnit;
+    }
+
     public void SetRuneType(RuneType type) => _runeType = type;
     public RuneType GetRuneType => _runeType;
 
@@ -57,10 +62,10 @@ public abstract class Entity : MonoBehaviour
 
     protected virtual void Awake()
     {
-        Initialise();
+       /* Initialise();
         _currentHealth = _totalHealth;
         _currentAttack = _totalAttack;
-        _currentDefence = _totalDefence;
+        _currentDefence = _totalDefence;*/
     }
 
     protected virtual void OnValidate() => CalculateActualStats();
@@ -69,7 +74,7 @@ public abstract class Entity : MonoBehaviour
 
     #region Protected Methods
 
-    protected void Initialise()
+    public void Initialise()
     {
         _currentLevel = 1;
         _currentRarity = baseUnit.BaseRarity;

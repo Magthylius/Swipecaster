@@ -13,7 +13,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] private int maxLoadOutSize;
     [SerializeField] private GameObject inventoryHolder;
-    [SerializeField] private List<UnitEntry> loadOut;
+    [SerializeField] private List<UnitEntry> loadOut = new List<UnitEntry>();
+    [SerializeField] private MenuPartySO activeMembers;
 
     public int Experience => _experience;
     public int Level => _level;
@@ -26,5 +27,17 @@ public class Player : MonoBehaviour
     {
         if (Instance != null) Destroy(gameObject);
         else Instance = this;
+    }
+
+    private void Start()
+    {
+        foreach (UnitObject temp in activeMembers.activeUnits)
+        {
+            UnitEntry unitEntry = transform.GetChild(0).gameObject.AddComponent<UnitEntry>();
+            unitEntry.setBaseUnit(temp);
+            unitEntry.Initialise();
+            loadOut.Add(unitEntry);
+        }
+
     }
 }
