@@ -24,10 +24,10 @@ public class CasterDataStats
     public string ID;
     public int BaseRarity;
     public int MaxLevel;
+    public int CurLevel;
     public int MaxHealth;
     public int MaxAttack;
     public int MaxDefence;
-    public string CharacterDescription;
 }
 
 [System.Serializable]
