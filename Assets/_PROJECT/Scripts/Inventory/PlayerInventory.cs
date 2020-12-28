@@ -7,7 +7,7 @@ public class PlayerInventory : MonoBehaviour
 {
     public static PlayerInventory instance;
 
-    public string casterLocation = "ScriptableObjects/Casters";
+    string casterLocation = "ScriptableObjects/Casters";
 
     [SerializeField] List<CasterData> playerCasterInventory = new List<CasterData>();
     
