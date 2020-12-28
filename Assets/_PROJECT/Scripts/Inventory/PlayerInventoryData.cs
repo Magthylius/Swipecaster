@@ -22,12 +22,7 @@ public class PlayerInventoryData
 public class CasterDataStats
 {
     public string ID;
-    public int BaseRarity;
-    public int MaxLevel;
     public int CurLevel;
-    public int MaxHealth;
-    public int MaxAttack;
-    public int MaxDefence;
 }
 
 [System.Serializable]
