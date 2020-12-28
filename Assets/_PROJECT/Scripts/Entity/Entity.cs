@@ -131,17 +131,3 @@ public abstract class Entity : MonoBehaviour
 
     #endregion
 }
-
-public struct StatInfo
-{
-    public float baseStat;
-    public float paraCap;
-    public float baseStatCap;
-
-    public StatInfo(float baseStat, float paraCap, float baseStatCap)
-    {
-        this.baseStat = baseStat;
-        this.paraCap = paraCap;
-        this.baseStatCap = baseStatCap;
-    }
-};

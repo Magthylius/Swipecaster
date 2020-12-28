@@ -26,4 +26,17 @@ public class DatabaseManager : MonoBehaviour
         }
     }
 
+    #region Accessors
+
+    // Getter
+    public List<PartyData> GetPartyData() => playerData.partyDatabase;
+    public List<CasterDataStats> GetCasterDataStats() => playerData.casterDatabase;
+    public List<string> GetPlayerCasterInventory() => playerData.inventoryCasterDataSave;
+    
+    // Setter
+    //public void SetPartyData(int partyTeam, int partyIndex) => playerData.partyDatabase[partyIndex]
+
+    #endregion
+
+
 }
