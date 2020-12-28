@@ -14,6 +14,7 @@ public class PlayerInventoryData
     };
     
     public List<CasterDataStats> casterDatabase = new List<CasterDataStats>();
+    public List<PartyData> partyDatabase = new List<PartyData>();
 
 }
 
@@ -32,5 +33,5 @@ public class CasterDataStats
 [System.Serializable]
 public class PartyData
 {
-    
+    public List<int> casterConfig = new List<int>();
 }
