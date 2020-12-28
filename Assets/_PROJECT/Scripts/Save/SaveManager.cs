@@ -21,7 +21,6 @@ public static class SaveManager
     public static PlayerInventoryData Load()
     {
         string path = Application.persistentDataPath + directory + fileName;
-        Debug.Log(path);
         PlayerInventoryData data = new PlayerInventoryData();
 
         if (File.Exists(path))

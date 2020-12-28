@@ -12,8 +12,8 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] List<CasterData> playerCasterInventory = new List<CasterData>();
     
     //! Get all casters in the game
-    readonly List<UnitObject> allCasters = new List<UnitObject>();
-    readonly List<CasterData> playerCastersData = new List<CasterData>();
+     readonly List<UnitObject> allCasters = new List<UnitObject>();
+    [SerializeField] List<CasterData> playerCastersData = new List<CasterData>();
 
     void Awake()
     {
@@ -75,7 +75,7 @@ public class PlayerInventory : MonoBehaviour
     #region Accessors
 
     public List<CasterData> GetPlayerCastersInventory() => playerCasterInventory;
-    public List<CasterData> GetAllCaster() => playerCastersData;
+    public List<UnitObject> GetAllCaster() => allCasters;
 
     #endregion
 }

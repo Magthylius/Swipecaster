@@ -167,7 +167,7 @@
               <e p="SaveTest.cs" t="Include" />
             </e>
             <e p="SO Scripts" t="Include">
-              <e p="ActParty.cs" t="Include" />
+              <e p="MenuPartySO.cs" t="Include" />
               <e p="MenuUnit.cs" t="Include" />
               <e p="RoomScriptable.cs" t="Include" />
               <e p="UnitObject.cs" t="Include" />

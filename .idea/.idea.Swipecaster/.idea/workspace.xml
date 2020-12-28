@@ -93,8 +93,9 @@
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Save/SaveManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Save/SaveTest.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Save/LoadManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Inventory/PlayerInventory.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Inventory/PlayerInventoryData.cs" />
+        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Inventory/PlayerInventory.cs" />
+        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Inventory/InventoryDebug.cs" />
       </list>
     </option>
   </component>
@@ -146,7 +147,7 @@
       <workItem from="1608617766216" duration="13371000" />
       <workItem from="1608643239852" duration="6089000" />
       <workItem from="1608717553841" duration="2282000" />
-      <workItem from="1609144343897" duration="5521000" />
+      <workItem from="1609144343897" duration="5821000" />
     </task>
     <servers />
   </component>
