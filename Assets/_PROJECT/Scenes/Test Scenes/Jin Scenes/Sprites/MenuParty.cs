@@ -5,7 +5,7 @@ using UnityEngine;
 public class MenuParty : MonoBehaviour
 {
     [SerializeField] Transform party;
-    public List<MenuUnit> partyMemberInfo = new List<MenuUnit>();
+    public List<UnitObject> partyMemberInfo = new List<UnitObject>();
     // Start is called before the first frame update
     void Start()
     { 

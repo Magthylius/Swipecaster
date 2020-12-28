@@ -7,5 +7,5 @@ using System.Collections.Generic;
 public class MenuPartySO : ScriptableObject
 {
     [Header("General")]
-    public List<MenuUnit> activeUnits;
+    public List<UnitObject> activeUnits;
 }

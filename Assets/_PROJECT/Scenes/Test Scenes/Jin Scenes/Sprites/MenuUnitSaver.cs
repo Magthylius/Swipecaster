@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class MenuUnitSaver : MonoBehaviour
 {
-    public MenuUnit unit;
+    public UnitObject unit;
 }
