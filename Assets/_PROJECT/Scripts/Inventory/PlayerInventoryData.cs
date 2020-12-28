@@ -23,6 +23,12 @@ public class CasterDataStats
 {
     public string ID;
     public int CurLevel;
+	
+	public CasterDataStats(string id, int level)
+	{
+		ID = id;
+		CurLevel = level;
+	}
 }
 
 [System.Serializable]

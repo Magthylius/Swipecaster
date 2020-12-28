@@ -36,6 +36,15 @@ public class UnitObject : ScriptableObject
     public GameObject SpriteHolderPrefab;
     public Sprite PortraitArt;
 	
+	public void SyncDataForCaster(CasterDataStats data)
+	{
+		if(data.ID != ID) return;
+		
+		CurrentLevel = data.CurLevel;
+	}
+	
+	public CasterDataStats GetCasterData() => new CasterDataStats(ID, CurrentLevel);
+	
 	#region Private Methods
 	
 	private void CalculateActualStats()
