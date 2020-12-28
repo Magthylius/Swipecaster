@@ -40,6 +40,11 @@ public class MapSelectionManager : MenuCanvasPage
         levelSelectCGF.Step(levelSelectorSpeed * Time.unscaledDeltaTime);
     }
 
+    public override void Reset()
+    {
+        BTN_HideLevelSelect();
+    }
+
     public void FullActivation(LevelSelectBehavior self = null)
     {
         if (self == null)

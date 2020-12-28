@@ -112,7 +112,7 @@ public class GachaCanvasManager : MenuCanvasPage
     
     public override void Reset()
     {
-        print("sddd");
+        //print("sddd");
         charge = 0f;
         chargeImg.gameObject.SetActive(true);
         chargeImg.fillAmount = charge;
