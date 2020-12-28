@@ -28,7 +28,6 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         GetComponent<CanvasGroup>().blocksRaycasts = true;
         if (transform != startParent)
         {
-            ActPartySaver.instance.activeParty.updateTeam();
             transform.position = startPosition;
         }  
     }

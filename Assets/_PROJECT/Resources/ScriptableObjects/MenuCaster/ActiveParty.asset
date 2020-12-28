@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ActiveParty
   m_EditorClassIdentifier: 
   activeUnits:
+  - {fileID: 11400000, guid: feb1d308b6a170543ba815e9505f3e21, type: 2}
   - {fileID: 11400000, guid: b27b5ad940fcb814a9c36e67a2cede77, type: 2}
-  - {fileID: 11400000, guid: 9641ce60724b2ce448fd8fe276c69a4e, type: 2}
   - {fileID: 11400000, guid: 036d8b55785ef3d40a1efa1ae6d94958, type: 2}
   - {fileID: 11400000, guid: 1b8457bea26729a4086e69a27c0a1f7f, type: 2}
