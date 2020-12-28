@@ -26,5 +26,6 @@ public class InventoryLoad : MonoBehaviour
             tempChild.GetComponent<MenuUnitSaver>().unit = playerInventory.GetAllCaster()[i];
         }
 
+        this.GetComponent<MenuParty>().updateTeam();
     }
 }
