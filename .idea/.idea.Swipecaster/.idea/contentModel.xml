@@ -6,9 +6,32 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="_PROJECT" t="Include">
+          <e p="Scenes" t="Include">
+            <e p="Test Scenes" t="Include">
+              <e p="Jin Scenes" t="Include">
+                <e p="Sprites" t="Include">
+                  <e p="ActPartySaver.cs" t="Include" />
+                  <e p="DragHandler.cs" t="Include" />
+                  <e p="InvenSlots.cs" t="Include" />
+                  <e p="MenuParty.cs" t="Include" />
+                  <e p="MenuUnitSaver.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+          </e>
           <e p="Scripts" t="Include">
             <e p="Active Skills" t="Include">
               <e p="ActiveSkill.cs" t="Include" />
+              <e p="Caster Skills" t="Include">
+                <e p="CasterSkill.cs" t="Include" />
+                <e p="HardCover.cs" t="Include" />
+                <e p="Shoutdown.cs" t="Include" />
+                <e p="TeapotCrackpot.cs" t="Include" />
+              </e>
+              <e p="Foe Skills" t="Include">
+                <e p="FoeSkill.cs" t="Include" />
+              </e>
+              <e p="StageInfo.cs" t="Include" />
             </e>
             <e p="Battle Scripts" t="Include">
               <e p="BattlestageManager.cs" t="Include" />
@@ -27,7 +50,6 @@
             </e>
             <e p="Enemy" t="Include">
               <e p="RoomManager.cs" t="Include" />
-              <e p="RoomScriptable.cs" t="Include" />
             </e>
             <e p="Entity" t="Include">
               <e p="Casters" t="Include">
@@ -92,13 +114,39 @@
               <e p="Unit.cs" t="Include" />
               <e p="UnitEntry.cs" t="Include" />
             </e>
+            <e p="Inventory" t="Include">
+              <e p="InventoryDebug.cs" t="Include" />
+              <e p="PlayerInventory.cs" t="Include" />
+              <e p="PlayerInventoryData.cs" t="Include" />
+            </e>
+            <e p="Main Menu" t="Include">
+              <e p="GachaCanvasManager.cs" t="Include" />
+              <e p="GachaConnectorBehavior.cs" t="Include" />
+              <e p="LevelSelectBehavior.cs" t="Include" />
+              <e p="MapSelectionManager.cs" t="Include" />
+              <e p="MenuCanvasPage.cs" t="Include" />
+              <e p="ShopButtonBehavior.cs" t="Include" />
+              <e p="ShopCanvasManager.cs" t="Include" />
+            </e>
             <e p="Managers" t="Include">
-              <e p="ComboManager.cs" t="Include" />
-              <e p="ConnectionManager.cs" t="Include" />
-              <e p="InformationManager.cs" t="Include" />
+              <e p="Battle Scene" t="Include">
+                <e p="ComboManager.cs" t="Include" />
+                <e p="ConnectionManager.cs" t="Include" />
+                <e p="EnemyAttackManager.cs" t="Include" />
+                <e p="InformationManager.cs" t="Include" />
+                <e p="PoolManager.cs" t="Include" />
+                <e p="RuneManager.cs" t="Include" />
+                <e p="SettingsManager.cs" t="Include" />
+                <e p="TickManager.cs" t="Include" />
+              </e>
+              <e p="Main Menu" t="Include">
+                <e p="MainMenuManager.cs" t="Include" />
+              </e>
             </e>
             <e p="Namespaces" t="Include">
               <e p="CameraFunctions.cs" t="Include" />
+              <e p="ClampFunctions.cs" t="Include" />
+              <e p="ConversionFunctions.cs" t="Include" />
               <e p="LerpFunctions.cs" t="Include" />
             </e>
             <e p="Player" t="Include">
@@ -106,19 +154,26 @@
             </e>
             <e p="Renderers" t="Include">
               <e p="SwipeTrail.cs" t="Include" />
+              <e p="UILineRenderer.cs" t="Include" />
             </e>
             <e p="Runes" t="Include">
               <e p="CastingState.cs" t="Include" />
-              <e p="PoolManager.cs" t="Include" />
               <e p="RuneBehaviour.cs" t="Include" />
-              <e p="RuneManager.cs" t="Include" />
               <e p="RuneStructures.cs" t="Include" />
-              <e p="TickSystem.cs" t="Include" />
+            </e>
+            <e p="Save" t="Include">
+              <e p="DatabaseManager.cs" t="Include" />
+              <e p="SaveManager.cs" t="Include" />
+              <e p="SaveTest.cs" t="Include" />
             </e>
             <e p="SO Scripts" t="Include">
+              <e p="ActParty.cs" t="Include" />
+              <e p="MenuUnit.cs" t="Include" />
+              <e p="RoomScriptable.cs" t="Include" />
               <e p="UnitObject.cs" t="Include" />
             </e>
             <e p="Status Effects" t="Include">
+              <e p="AttackUp.cs" t="Include" />
               <e p="Create.cs" t="Include" />
               <e p="DefenceDown.cs" t="Include" />
               <e p="Flame.cs" t="Include" />
@@ -128,6 +183,7 @@
               <e p="Weakness.cs" t="Include" />
             </e>
             <e p="UI" t="Include">
+              <e p="DamagePopUp.cs" t="Include" />
               <e p="DebugButton.cs" t="Include" />
               <e p="UIItem.cs" t="Include" />
             </e>

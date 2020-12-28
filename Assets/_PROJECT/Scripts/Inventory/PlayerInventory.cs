@@ -8,7 +8,6 @@ public class PlayerInventory : MonoBehaviour
     public static PlayerInventory instance;
 
     public string casterLocation = "ScriptableObjects/Casters";
-    public List<string> playerCasterInventoryID = new List<string>();
 
     [SerializeField] List<CasterData> playerCasterInventory = new List<CasterData>();
     
@@ -23,7 +22,7 @@ public class PlayerInventory : MonoBehaviour
         else
             instance = this;
 
-
+    
         UnitObject[] tempCaster = Resources.LoadAll<UnitObject>(casterLocation);
 
         foreach (var _caster in tempCaster)
@@ -32,7 +31,6 @@ public class PlayerInventory : MonoBehaviour
         }
         
         CaptureData();
-        SetPlayerInventory();
     }
 
     void CaptureData()
@@ -59,9 +57,9 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
-    void SetPlayerInventory()
+    public void SetPlayerInventory(List<string> castersID)
     {
-        foreach (var id in playerCasterInventoryID)
+        foreach (var id in castersID)
         {
             for (int i = 0; i < playerCastersData.Count; i++)
             {
@@ -77,6 +75,7 @@ public class PlayerInventory : MonoBehaviour
     #region Accessors
 
     public List<CasterData> GetPlayerCastersInventory() => playerCasterInventory;
+    public List<CasterData> GetAllCaster() => playerCastersData;
 
     #endregion
 }
