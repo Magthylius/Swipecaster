@@ -5,9 +5,9 @@ using UnityEngine;
 public class ActPartySaver : MonoBehaviour
 {
     public static ActPartySaver instance;
-    public ActParty activePartySO;
+    public MenuPartySO activePartySO;
     public MenuParty activeParty;
-//    public List<MenuUnit> partyMemberInfo = new List<MenuUnit>();
+    public List<MenuParty> menuParties;
 
     void Awake()
     {
@@ -15,6 +15,11 @@ public class ActPartySaver : MonoBehaviour
             Destroy(this.gameObject);
         else
             instance = this;
+    }
+
+    private void Start()
+    {
+        //activePartySO.activeUnits = menuParties[1].partyMemberInfo;
     }
 
     public void updateTeam()

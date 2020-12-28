@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 [CreateAssetMenu(menuName = "Menu/Active Party")]
-public class ActParty : ScriptableObject
+public class MenuPartySO : ScriptableObject
 {
     [Header("General")]
     public List<MenuUnit> activeUnits;

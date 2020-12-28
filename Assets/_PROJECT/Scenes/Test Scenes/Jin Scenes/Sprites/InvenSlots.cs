@@ -21,7 +21,9 @@ public class InvenSlots : MonoBehaviour, IDropHandler
     {
         if(!item)
         {
+            Transform previousParty = DragHandler.itemBeingDragged.transform.parent.parent;
             DragHandler.itemBeingDragged.transform.SetParent(transform);
+            previousParty.GetComponent<MenuParty>().updateTeam();
             transform.parent.GetComponent<MenuParty>().updateTeam();
         }
     }
