@@ -49,12 +49,15 @@ public class UnitObject : ScriptableObject
 
     public GameObject InstantiateUnit(Vector3 position, Quaternion rotation, Transform parent)
     {
-        GameObject unitObject = new GameObject();
-
+        GameObject unitObject = null;
         if (FullBodyPrefab == null) return unitObject;
         unitObject = Instantiate(FullBodyPrefab, position, rotation, parent);
-        var spriteRenderer = unitObject.GetComponent<SpriteRenderer>();
         
+        var unit = unitObject.GetComponent<Unit>();
+        if (unit == null) return unitObject;
+        unit.SetBaseUnit(this);
+        
+        var spriteRenderer = unitObject.GetComponent<SpriteRenderer>();
         if (spriteRenderer == null) return unitObject;
         spriteRenderer.sprite = FullBodyArt;
 
