@@ -47,10 +47,17 @@ public class UnitObject : ScriptableObject
 	}
 	
 	public CasterDataStats GetCasterData() => new CasterDataStats(ID, CurrentLevel, IsAlive);
-	
-	#region Private Methods
-	
-	private void CalculateActualStats()
+
+    public GameObject InstantiateUnit(Vector3 position, Quaternion rotation, Transform parent)
+    {
+        GameObject temp = new GameObject();
+
+        return temp;
+    }
+
+    #region Public Calculation Method
+
+    public void CalculateActualStats()
     {
         StatInfo currentInfo;
 
@@ -66,7 +73,11 @@ public class UnitObject : ScriptableObject
         currentInfo = GenerateStatInfo(MaxDefence);
         LevelTotalDefence = Mathf.RoundToInt(CalculateLevelParabolicStat(currentInfo) + CalculateLevelLinearStat(currentInfo));
     }
-	
+
+    #endregion
+
+    #region Private Methods
+
     private StatInfo GenerateStatInfo(float maxCap)
         => new StatInfo(maxCap * baseStatMultiplier, maxCap * paraCapMultiplier, maxCap * baseStatCapMultiplier);
 
