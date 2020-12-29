@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
         foreach (UnitObject temp in activeMembers.activeUnits)
         {
             UnitEntry unitEntry = transform.GetChild(0).gameObject.AddComponent<UnitEntry>();
-            unitEntry.setBaseUnit(temp);
+            unitEntry.SetBaseUnit(temp);
             unitEntry.Initialise();
             loadOut.Add(unitEntry);
         }
