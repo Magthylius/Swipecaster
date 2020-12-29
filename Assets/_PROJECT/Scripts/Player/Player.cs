@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField] private int maxLoadOutSize;
     [SerializeField] private GameObject inventoryHolder;
     [SerializeField] private List<UnitEntry> loadOut = new List<UnitEntry>();
-    [SerializeField] private MenuPartySO activeMembers;
+    [SerializeField] private CasterParty activeMembers;
 
     public int Experience => _experience;
     public int Level => _level;
