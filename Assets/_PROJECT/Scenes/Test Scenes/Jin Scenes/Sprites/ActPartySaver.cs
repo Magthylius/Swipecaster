@@ -5,7 +5,7 @@ using UnityEngine;
 public class ActPartySaver : MonoBehaviour
 {
     public static ActPartySaver instance;
-    public MenuPartySO activePartySO;
+    public CasterParty activePartySO;
     public MenuParty activeParty;
     public List<MenuParty> menuParties;
 
