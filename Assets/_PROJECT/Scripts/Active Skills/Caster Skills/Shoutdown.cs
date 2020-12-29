@@ -18,8 +18,8 @@ public class Shoutdown : CasterSkill
         GetUnit.ResetSkillCharge();
     }
 
-    // public Shoutdown(float damageMultiplier, int effectDuration, int maxSkillCharge, int chargeGainPerTurn)
-    //     : base(damageMultiplier, effectDuration, maxSkillCharge, chargeGainPerTurn) { }
+    public Shoutdown(float damageMultiplier, int effectDuration, int maxSkillCharge, int chargeGainPerTurn, Unit unit)
+        : base(damageMultiplier, effectDuration, maxSkillCharge, chargeGainPerTurn, unit) { }
 
     public Shoutdown(Unit unit)
     {

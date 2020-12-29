@@ -10,7 +10,8 @@ public class UnitObject : ScriptableObject
     [Range(3, 5)] public int BaseRarity;
 	public RuneType RuneAlignment;
     public string CharacterDescription;
-	
+    public bool IsAlive;
+
 	[Header("Max Stats")]
 	[Range(1, 100)] public int MaxLevel;
     public int MaxHealth;
@@ -41,9 +42,10 @@ public class UnitObject : ScriptableObject
 		if(data.ID != ID) return;
 		
 		CurrentLevel = data.CurLevel;
+        IsAlive = data.IsAlive;
 	}
 	
-	public CasterDataStats GetCasterData() => new CasterDataStats(ID, CurrentLevel);
+	public CasterDataStats GetCasterData() => new CasterDataStats(ID, CurrentLevel, IsAlive);
 	
 	#region Private Methods
 	
