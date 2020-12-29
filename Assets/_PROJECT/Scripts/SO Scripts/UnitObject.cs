@@ -48,6 +48,13 @@ public class UnitObject : ScriptableObject
 	
 	public CasterDataStats GetCasterData() => new CasterDataStats(ID, CurrentLevel, IsAlive);
 
+    public GameObject InstantiateUnit(Vector3 position, Quaternion rotation, Transform parent)
+    {
+        GameObject temp = new GameObject();
+
+        return temp;
+    }
+
     #region Public Calculation Method
 
     public void CalculateActualStats()
