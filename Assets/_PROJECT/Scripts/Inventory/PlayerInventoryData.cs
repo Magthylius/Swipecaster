@@ -4,16 +4,7 @@ using System.Collections.Generic;
 public class PlayerInventoryData
 {
 
-    public List<string> inventoryCasterDataSave = new List<string>()
-    {
-        //! player default caster
-        "001",
-        "002",
-        "003",
-        "004"
-    };
-    
-    public List<CasterDataStats> casterDatabase = new List<CasterDataStats>();
+	public List<CasterDataStats> casterDatabase = new List<CasterDataStats>();
     public List<PartyData> partyDatabase = new List<PartyData>();
 
 }
