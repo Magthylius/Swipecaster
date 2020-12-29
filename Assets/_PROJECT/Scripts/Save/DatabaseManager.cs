@@ -37,6 +37,11 @@ public class DatabaseManager : MonoBehaviour
         {
             SaveManager.Save(playerData);
         }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            SaveManager.Load();
+        }
     }
 
     public void SetCasterToAlive(CasterDataStats _caster)
