@@ -26,6 +26,30 @@ public class DatabaseManager : MonoBehaviour
         }
     }
 
+    public void AddCasterToPlayerInventory(string _caster)
+    {
+        if (!playerData.inventoryCasterDataSave.Contains(_caster))
+        {
+            playerData.inventoryCasterDataSave.Add(_caster);
+            SaveManager.Save(playerData);
+        }
+
+        else
+            print("Caster already exists");
+    }
+
+    public void RemoveCasterToPlayerInventory(string _caster)
+    {
+        if (playerData.inventoryCasterDataSave.Contains(_caster))
+        {
+            playerData.inventoryCasterDataSave.Remove(_caster);
+            SaveManager.Save(playerData);
+        }
+
+        else
+            print("Caster does not exists");
+    }
+    
     #region Accessors
 
     // Getter
