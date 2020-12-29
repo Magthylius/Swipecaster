@@ -49,7 +49,7 @@ public class PlayerInventory : MonoBehaviour
             
             casterUnit.SkillDescription = allCasters[i].SkillDescription;
             
-            casterUnit.FullArtPrefab = allCasters[i].FullArtPrefab;
+            casterUnit.FullArtPrefab = allCasters[i].FullBodyPrefab;
             casterUnit.SpriteHolderPrefab = allCasters[i].SpriteHolderPrefab;
             casterUnit.PortraitArt = allCasters[i].PortraitArt;
             

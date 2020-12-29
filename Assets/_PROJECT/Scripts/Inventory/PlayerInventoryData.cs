@@ -23,11 +23,13 @@ public class CasterDataStats
 {
     public string ID;
     public int CurLevel;
+    public bool IsAlive;
 	
-	public CasterDataStats(string id, int level)
+	public CasterDataStats(string id, int level, bool isAlive)
 	{
 		ID = id;
 		CurLevel = level;
+        IsAlive = isAlive;
 	}
 }
 

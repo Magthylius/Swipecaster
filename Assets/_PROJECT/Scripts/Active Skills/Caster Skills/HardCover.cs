@@ -18,8 +18,8 @@ public class HardCover : CasterSkill
         GetUnit.ResetSkillCharge();
     }
 
-    // public HardCover(float damageMultiplier, int effectDuration, int maxSkillCharge, int chargeGainPerTurn)
-    //     : base(damageMultiplier, effectDuration, maxSkillCharge, chargeGainPerTurn) { }
+    public HardCover(float damageMultiplier, int effectDuration, int maxSkillCharge, int chargeGainPerTurn, Unit unit)
+        : base(damageMultiplier, effectDuration, maxSkillCharge, chargeGainPerTurn, unit) { }
     public HardCover(Unit unit)
     {
         _skillDamageMultiplier = 1.0f;

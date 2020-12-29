@@ -10,7 +10,8 @@ public class UnitObject : ScriptableObject
     [Range(3, 5)] public int BaseRarity;
 	public RuneType RuneAlignment;
     public string CharacterDescription;
-	
+    public bool IsAlive;
+
 	[Header("Max Stats")]
 	[Range(1, 100)] public int MaxLevel;
     public int MaxHealth;
@@ -32,22 +33,24 @@ public class UnitObject : ScriptableObject
     [TextArea(1, 5)] public string SkillDescription;
 
     [Header("UI/Visual")]
-    public GameObject FullArtPrefab;
+    public GameObject FullBodyPrefab;
     public GameObject SpriteHolderPrefab;
     public Sprite PortraitArt;
+    public Sprite FullBodyArt;
 	
 	public void SyncDataForCaster(CasterDataStats data)
 	{
 		if(data.ID != ID) return;
 		
 		CurrentLevel = data.CurLevel;
+        IsAlive = data.IsAlive;
 	}
 	
-	public CasterDataStats GetCasterData() => new CasterDataStats(ID, CurrentLevel);
-	
-	#region Private Methods
-	
-	private void CalculateActualStats()
+	public CasterDataStats GetCasterData() => new CasterDataStats(ID, CurrentLevel, IsAlive);
+
+    #region Public Calculation Method
+
+    public void CalculateActualStats()
     {
         StatInfo currentInfo;
 
@@ -63,7 +66,11 @@ public class UnitObject : ScriptableObject
         currentInfo = GenerateStatInfo(MaxDefence);
         LevelTotalDefence = Mathf.RoundToInt(CalculateLevelParabolicStat(currentInfo) + CalculateLevelLinearStat(currentInfo));
     }
-	
+
+    #endregion
+
+    #region Private Methods
+
     private StatInfo GenerateStatInfo(float maxCap)
         => new StatInfo(maxCap * baseStatMultiplier, maxCap * paraCapMultiplier, maxCap * baseStatCapMultiplier);
 
