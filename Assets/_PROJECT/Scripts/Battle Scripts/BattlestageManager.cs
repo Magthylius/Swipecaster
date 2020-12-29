@@ -257,7 +257,7 @@ public class BattlestageManager : MonoBehaviour
         //! Spawn casters
         for (int i = 0; i < casterPositions.Length; i++)
         {
-            GameObject loadOutUnit = player.UnitLoadOut[i].BaseUnit.FullArtPrefab;
+            GameObject loadOutUnit = player.UnitLoadOut[i].BaseUnit.FullBodyPrefab;
             GameObject temp = Instantiate(loadOutUnit, casterPositions[i].position, Quaternion.identity,
                 casterPositions[i]);
             playerTeam.Add(temp);
@@ -300,7 +300,7 @@ public class BattlestageManager : MonoBehaviour
             for (int i = 0; i < enemySize; i++)
             {
                 int randomAvailableEnemy = UnityEngine.Random.Range(0, availableEnemyType.Count);
-                GameObject loadOutUnit = availableEnemyType[randomAvailableEnemy].enemySO.FullArtPrefab;
+                GameObject loadOutUnit = availableEnemyType[randomAvailableEnemy].enemySO.FullBodyPrefab;
                 GameObject temp = Instantiate(loadOutUnit, enemyPositions[i].position, Quaternion.identity,
                     enemyPositions[i]);
                 temp.GetComponent<Foe>().SetCurrentLevel(availableEnemyType[randomAvailableEnemy].level);
@@ -311,7 +311,7 @@ public class BattlestageManager : MonoBehaviour
         {
             for (int i = 0; i < tempRoom.roomSO.enemies.Count; i++)
             {
-                GameObject loadOutUnit = tempRoom.roomSO.enemies[i].enemySO.FullArtPrefab;
+                GameObject loadOutUnit = tempRoom.roomSO.enemies[i].enemySO.FullBodyPrefab;
                 //! Bottom codes should not be use for actual gameplay
                 GameObject temp = Instantiate(loadOutUnit, enemyPositions[i].position, Quaternion.identity,
                     enemyPositions[i]);
