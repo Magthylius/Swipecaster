@@ -14,8 +14,6 @@ public abstract class Entity : MonoBehaviour
 
     #region Public Methods
 
-    public void Initialise() => CalculateActualStats();
-
     public int GetBaseAttack => baseUnit.LevelTotalAttack;
     public int GetCurrentAttack => _currentAttack;
     public void AddCurrentAttack(int amount) => SetCurrentAttack(_currentAttack + amount);
@@ -35,7 +33,7 @@ public abstract class Entity : MonoBehaviour
     public void SetCurrentLevel(int amount) { baseUnit.CurrentLevel = amount; CalculateActualStats(); }
 
     public UnitObject BaseUnit => baseUnit;
-    public void SetBaseUnit(UnitObject newUnit) => baseUnit = newUnit;
+    public void SetBaseUnit(UnitObject newUnit) { baseUnit = newUnit; CalculateActualStats(); }
 
     public void SetRuneType(RuneType type) => baseUnit.RuneAlignment = type;
     public RuneType GetRuneType => baseUnit.RuneAlignment;
@@ -44,7 +42,7 @@ public abstract class Entity : MonoBehaviour
 
     #region Protected Virtual Methods
 
-    protected virtual void Awake() => CalculateActualStats();
+    protected virtual void Awake() { }
     protected virtual void OnValidate() => CalculateActualStats();
 
     #endregion
@@ -53,6 +51,7 @@ public abstract class Entity : MonoBehaviour
 
     protected void CalculateActualStats()
     {
+        if (baseUnit == null) return;
         baseUnit.CalculateActualStats();
         UpdateCalculatedStats();
     }

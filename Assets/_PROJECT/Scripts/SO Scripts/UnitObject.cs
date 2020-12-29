@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 [CreateAssetMenu(menuName = "Unit/Unit Object")]
 public class UnitObject : ScriptableObject
@@ -50,9 +49,16 @@ public class UnitObject : ScriptableObject
 
     public GameObject InstantiateUnit(Vector3 position, Quaternion rotation, Transform parent)
     {
-        GameObject temp = new GameObject();
+        GameObject unitObject = new GameObject();
 
-        return temp;
+        if (FullBodyPrefab == null) return unitObject;
+        unitObject = Instantiate(FullBodyPrefab, position, rotation, parent);
+        var spriteRenderer = unitObject.GetComponent<SpriteRenderer>();
+        
+        if (spriteRenderer == null) return unitObject;
+        spriteRenderer.sprite = FullBodyArt;
+
+        return unitObject;
     }
 
     #region Public Calculation Method

@@ -14,12 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 002
   BaseRarity: 4
+  RuneAlignment: 0
+  CharacterDescription: Meow Test Meow
+  IsAlive: 0
   MaxLevel: 50
   MaxHealth: 1159
   MaxAttack: 883
   MaxDefence: 423
-  CharacterDescription: Meow Test Meow
+  CurrentLevel: 1
+  LevelTotalHealth: 415
+  LevelTotalAttack: 316
+  LevelTotalDefence: 152
+  baseStatMultiplier: 0.33333334
+  paraCapMultiplier: 0.6
+  baseStatCapMultiplier: 0.4
   SkillDescription: Meow Ta Ta Meow Meow Meow!
-  FullArtPrefab: {fileID: 9017588005580383243, guid: d673b214d2686dc49adf49dcfb0ea4f1, type: 3}
+  FullBodyPrefab: {fileID: 9017588005580383243, guid: d673b214d2686dc49adf49dcfb0ea4f1, type: 3}
   SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}
   PortraitArt: {fileID: 7275292937166824971, guid: 398fbe95c4eb5fb4abe80725f5aa68a9, type: 3}
+  FullBodyArt: {fileID: 0}
