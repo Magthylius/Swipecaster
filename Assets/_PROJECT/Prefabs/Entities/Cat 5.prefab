@@ -343,6 +343,7 @@ GameObject:
   - component: {fileID: -3096723475491366694}
   - component: {fileID: 4173071284556606721}
   - component: {fileID: 5082181563407611987}
+  - component: {fileID: 7278773919432610737}
   m_Layer: 8
   m_Name: Cat 5
   m_TagString: Hero
@@ -382,17 +383,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f5f4d8c9e67dda4b9e08419a0762798, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentLevel: 0
-  _totalHealth: 737
-  _totalAttack: 176
-  _totalDefence: 274
-  _currentHealth: 737
-  _currentAttack: 176
-  _currentDefence: 274
   baseUnit: {fileID: 11400000, guid: 3481361ab8028e94ab3dfa1de233e620, type: 2}
-  baseStatMultiplier: 0.33333334
-  paraCapMultiplier: 0.6
-  baseStatCapMultiplier: 0.4
+  _currentHealth: 793
+  _currentAttack: 189
+  _currentDefence: 295
   damageMultiplier: 1
   passiveHealAmount: 0
   damageToHealPercent: 0
@@ -494,6 +488,57 @@ SortingGroup:
   m_SortingLayerID: -663063965
   m_SortingLayer: 2
   m_SortingOrder: 0
+--- !u!212 &7278773919432610737
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8693132999388973629}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &8732096524313240326
 GameObject:
   m_ObjectHideFlags: 0
