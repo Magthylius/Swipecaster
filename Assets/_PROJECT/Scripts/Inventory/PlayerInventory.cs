@@ -9,11 +9,11 @@ public class PlayerInventory : MonoBehaviour
 
     string casterLocation = "ScriptableObjects/Casters";
 
-    [SerializeField] List<CasterData> playerCasterInventory = new List<CasterData>();
+    [SerializeField] List<CasterDataInfo> playerCasterInventory = new List<CasterDataInfo>();
     
     //! Get all casters in the game
      readonly List<UnitObject> allCasters = new List<UnitObject>();
-    [SerializeField] List<CasterData> playerCastersData = new List<CasterData>();
+    [SerializeField] List<CasterDataInfo> playerCastersData = new List<CasterDataInfo>();
 
     void Awake()
     {
@@ -37,7 +37,7 @@ public class PlayerInventory : MonoBehaviour
     {
         for (int i = 0; i < allCasters.Count; i++)
         {
-            CasterData casterUnit = new CasterData();
+            CasterDataInfo casterUnit = new CasterDataInfo();
 
             casterUnit.ID = allCasters[i].ID;
             casterUnit.BaseRarity = allCasters[i].BaseRarity;
@@ -74,13 +74,13 @@ public class PlayerInventory : MonoBehaviour
 
     #region Accessors
 
-    public List<CasterData> GetPlayerCastersInventory() => playerCasterInventory;
+    public List<CasterDataInfo> GetPlayerCastersInventory() => playerCasterInventory;
     public List<UnitObject> GetAllCaster() => allCasters;
 
     #endregion
 }
 
-public struct CasterData
+public struct CasterDataInfo
 {
     // General
     public string ID;

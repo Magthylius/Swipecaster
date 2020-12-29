@@ -31,13 +31,12 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        loadOut = new List<UnitEntry>();
         foreach (UnitObject temp in activeMembers.activeUnits)
         {
-            UnitEntry unitEntry = transform.GetChild(0).gameObject.AddComponent<UnitEntry>();
+            UnitEntry unitEntry = inventoryHolder.AddComponent<UnitEntry>();
             unitEntry.SetBaseUnit(temp);
-            unitEntry.Initialise();
             loadOut.Add(unitEntry);
         }
-
     }
 }

@@ -1,12 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using LerpFunctions;
 using UnityEngine;
 
 public class DatabaseManager : MonoBehaviour
 {
     public PlayerInventoryData playerData;
     
+    [SerializeField] List<string> liveCaster = new List<string>();
+
     PlayerInventory playerInventory;
     
     void Start()
@@ -14,8 +17,18 @@ public class DatabaseManager : MonoBehaviour
         playerInventory = PlayerInventory.instance;
         
         playerData = SaveManager.Load();
+
+        foreach (var caster in playerData.casterDatabase)
+        {
+            if (caster.IsAlive)
+            {
+                liveCaster.Add(caster.ID);
+            }
+        }
+
+        CheckCasterIsAlive();
         
-        playerInventory.SetPlayerInventory(playerData.inventoryCasterDataSave);
+        playerInventory.SetPlayerInventory(liveCaster);
     }
     
     void Update()
@@ -24,42 +37,60 @@ public class DatabaseManager : MonoBehaviour
         {
             SaveManager.Save(playerData);
         }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            SaveManager.Load();
+        }
     }
 
-    public void AddCasterToPlayerInventory(string _caster)
+    public void SetCasterToAlive(CasterDataStats _caster)
     {
-        if (!playerData.inventoryCasterDataSave.Contains(_caster))
+        int CDIndex = playerData.casterDatabase.IndexOf(_caster);
+        
+        if (!playerData.casterDatabase[CDIndex].IsAlive)
         {
-            playerData.inventoryCasterDataSave.Add(_caster);
+            playerData.casterDatabase[CDIndex].IsAlive = true;
+            CheckCasterIsAlive();
             SaveManager.Save(playerData);
+            
         }
-
         else
-            print("Caster already exists");
+            print("Caster already alive");
     }
 
-    public void RemoveCasterToPlayerInventory(string _caster)
+    public void SetCasterToDead(CasterDataStats _caster)
     {
-        if (playerData.inventoryCasterDataSave.Contains(_caster))
+        int CDIndex = playerData.casterDatabase.IndexOf(_caster);
+        
+        if (playerData.casterDatabase[CDIndex].IsAlive)
         {
-            playerData.inventoryCasterDataSave.Remove(_caster);
+            playerData.casterDatabase[CDIndex].IsAlive = false;
+            CheckCasterIsAlive();
             SaveManager.Save(playerData);
         }
-
         else
-            print("Caster does not exists");
+            print("Caster already dead");
+    }
+
+    void CheckCasterIsAlive()
+    {
+        liveCaster = new List<string>();
+        
+        foreach (var caster in playerData.casterDatabase)
+        {
+            if (caster.IsAlive)
+            {
+                liveCaster.Add(caster.ID);
+            }
+        }
     }
     
     #region Accessors
-
-    // Getter
+    
     public List<PartyData> GetPartyData() => playerData.partyDatabase;
     public List<CasterDataStats> GetCasterDataStats() => playerData.casterDatabase;
-    public List<string> GetPlayerCasterInventory() => playerData.inventoryCasterDataSave;
     
-    // Setter
-    //public void SetPartyData(int partyTeam, int partyIndex) => playerData.partyDatabase[partyIndex]
-
     #endregion
 
 

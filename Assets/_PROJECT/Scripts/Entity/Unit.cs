@@ -24,7 +24,7 @@ public abstract class Unit : Entity
 
     [Header("RNG")]
     [SerializeField, Range(0.0f, 1.0f)] protected float probability = 0.05f;
-    [SerializeField] private int priority;
+    [SerializeField] private int priority = 1;
     protected const int PartySize = 4;
 
     [Header("Skills")]
@@ -164,7 +164,6 @@ public abstract class Unit : Entity
         base.Awake();
         _statusEffects = new List<StatusEffect>();
 
-        SetUnitPriority(1);
         SetProjectile(new CrowFlies());
         SubscribeHitEvent(TakeDamage);
         SubscribeHealthChangeEvent(CheckDeathEvent);

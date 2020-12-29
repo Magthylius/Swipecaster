@@ -255,12 +255,10 @@ public class BattlestageManager : MonoBehaviour
         foreach (Transform entity in casterEntityPositions) entity.gameObject.SetActive(false);
 
         //! Spawn casters
-        for (int i = 0; i < casterPositions.Length; i++)
+        for (int i = 0; i < player.UnitLoadOut.Count; i++)
         {
-            GameObject loadOutUnit = player.UnitLoadOut[i].BaseUnit.FullBodyPrefab;
-            GameObject temp = Instantiate(loadOutUnit, casterPositions[i].position, Quaternion.identity,
-                casterPositions[i]);
-            playerTeam.Add(temp);
+            var unitObject = player.UnitLoadOut[i].BaseUnit;
+            playerTeam.Add(unitObject.InstantiateUnit(casterPositions[i].position, Quaternion.identity, casterPositions[i]));
         }
 
         RegroupLeftPositions(false);
