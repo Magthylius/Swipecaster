@@ -1266,6 +1266,7 @@ GameObject:
   - component: {fileID: 8750847182013075429}
   - component: {fileID: 4796875683950948378}
   - component: {fileID: 2182923469340822952}
+  - component: {fileID: 1647422310968188066}
   m_Layer: 5
   m_Name: Party Shelf
   m_TagString: Untagged
@@ -1376,3 +1377,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1647422310968188066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2186537070390013515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d8b16499029a0d4a9e2f86c2037d4f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portraitList:
+  - {fileID: 2186537069880900033}
+  - {fileID: 2186537069846914054}
+  - {fileID: 2186537070158970407}
+  - {fileID: 2186537070038573588}

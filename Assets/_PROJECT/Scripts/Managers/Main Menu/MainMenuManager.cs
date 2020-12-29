@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using LerpFunctions;
 
 public class MainMenuManager : MonoBehaviour
 {
     public static MainMenuManager instance;
 
+    [Header("Settings")]
     public float transitionSpeed = 2.0f;
+
+    [Header("Canvas Pages")]
     public CanvasGroup partyCanvas;
     public CanvasGroup inventoryCanvas;
     public CanvasGroup homeCanvas;
@@ -20,6 +24,14 @@ public class MainMenuManager : MonoBehaviour
     CanvasGroup newPage;
     bool pageTransition = false;
     bool isAtHome = true;
+
+    [Header("Settings")]
+    public RectTransform bottomOverlay;
+    public float overlaySpeed = 4f;
+    FlexibleRect bottomOverlayFR;
+
+    bool showBottomOverlay = true;
+    bool allowOverlayTransition = false;
 
     void Awake()
     {
@@ -34,6 +46,8 @@ public class MainMenuManager : MonoBehaviour
         currentPage.interactable = true;
         currentPage.blocksRaycasts = true;
         currentPage.transform.SetAsLastSibling();
+
+        bottomOverlayFR = new FlexibleRect(bottomOverlay);
     }
 
     void Update()
@@ -42,7 +56,7 @@ public class MainMenuManager : MonoBehaviour
         {
             newPage.alpha = Mathf.Lerp(newPage.alpha, 1.0f, transitionSpeed * Time.unscaledDeltaTime);
 
-            if (LerpFunctions.Lerp.NegligibleDistance(newPage.alpha, 1.0f, 0.01f))
+            if (Lerp.NegligibleDistance(newPage.alpha, 1.0f, 0.01f))
             {
                 currentPage.alpha = 0f;
                 newPage.alpha = 1f;
@@ -57,6 +71,18 @@ public class MainMenuManager : MonoBehaviour
                 newPage = null;
             }
         }
+
+        if (allowOverlayTransition)
+        {
+            if (showBottomOverlay)
+            {
+                allowOverlayTransition = !bottomOverlayFR.Lerp(bottomOverlayFR.originalPosition, overlaySpeed * Time.unscaledDeltaTime);
+            }
+            else
+            {  
+                allowOverlayTransition = !bottomOverlayFR.Lerp(bottomOverlayFR.GetBodyOffset(new Vector2(0, -1)), overlaySpeed * Time.unscaledDeltaTime, 1f);
+            }
+        }
     }
 
     void ActivateCanvas(CanvasGroup page)
@@ -65,6 +91,20 @@ public class MainMenuManager : MonoBehaviour
         newPage.transform.SetAsLastSibling();
         pageTransition = true;
     }
+
+    #region Accessors
+    public void ShowBottomOverlay()
+    {
+        showBottomOverlay = true;
+        allowOverlayTransition = true;
+    }
+
+    public void HideBottomOverlay()
+    {
+        showBottomOverlay = false;
+        allowOverlayTransition = true;
+    }
+    #endregion
 
     #region Buttons
     public void BTN_Party()

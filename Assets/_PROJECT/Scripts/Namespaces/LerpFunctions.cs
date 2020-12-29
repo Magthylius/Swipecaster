@@ -66,10 +66,12 @@ namespace LerpFunctions
     public class FlexibleRect
     {
         public RectTransform rectTransform;
+        public Vector2 originalPosition;
 
         public FlexibleRect(RectTransform rectTr)
         {
             rectTransform = rectTr;
+            originalPosition = center;
         }
 
         public bool Lerp(Vector2 targetPosition, float speed, float precision = 0.1f)
@@ -93,11 +95,24 @@ namespace LerpFunctions
             rectTransform.offsetMin += diff;
         }
 
+        public Vector2 GetBodyOffset(Vector2 direction)
+        {
+            return new Vector2(originalPosition.x + (direction.x * width), originalPosition.y + (direction.y * height));
+        }
+
+        public Vector2 GetBodyOffset(Vector2 direction, float degreeOfSelf)
+        {
+            return new Vector2(originalPosition.x + (direction.normalized.x * degreeOfSelf * halfWidth), originalPosition.y + (direction.normalized.y * degreeOfSelf * halfHeight));
+        }
+
         public Vector2 ofMin => rectTransform.offsetMin;
         public Vector2 ofMax => rectTransform.offsetMax;
         public Vector2 center => (ofMin + ofMax) * 0.5f;
+        public Vector2 centerPivoted => (ofMin + ofMax) * 0.5f * rectTransform.pivot;
         public float width => rectTransform.rect.width;
         public float height => rectTransform.rect.height;
+        public float halfWidth => width * 0.5f;
+        public float halfHeight => height * 0.5f;
     }
 
     [Serializable]
