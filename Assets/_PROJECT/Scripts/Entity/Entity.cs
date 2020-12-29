@@ -14,6 +14,8 @@ public abstract class Entity : MonoBehaviour
 
     #region Public Methods
 
+    public void Initialise() => CalculateActualStats();
+
     public int GetBaseAttack => baseUnit.LevelTotalAttack;
     public int GetCurrentAttack => _currentAttack;
     public void AddCurrentAttack(int amount) => SetCurrentAttack(_currentAttack + amount);
