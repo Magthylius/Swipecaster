@@ -12,7 +12,7 @@ public class BattlestageManager : MonoBehaviour
 
     public Transform battlestageCenter;
     public Transform playerTeamGroup, enemyTeamGroup;
-    private TurnBaseManager _turnBaseManager;
+    private TurnBaseManager turnBaseManager;
     public Camera battleCamera = null;
 
     [Header("Gaps Settings")] 
@@ -67,7 +67,7 @@ public class BattlestageManager : MonoBehaviour
     {
         player = Player.Instance;
         roomManager = RoomManager.Instance;
-        _turnBaseManager = TurnBaseManager.instance;
+        turnBaseManager = TurnBaseManager.instance;
         InitPositions();
 
         if (enableEntityDebugging)
@@ -104,7 +104,8 @@ public class BattlestageManager : MonoBehaviour
             {
                 timer -= Time.deltaTime;
 
-                casterExecutionTransform.position =
+                if (casterExecutionTransform)
+                    casterExecutionTransform.position =
                     Vector3.Lerp(casterExecutionTransform.position, new Vector3(battlestageCenter.position.x - battleGap,
                             casterExecutionTransform.position.y, casterExecutionTransform.position.z),
                         speed * Time.unscaledDeltaTime);
@@ -116,24 +117,27 @@ public class BattlestageManager : MonoBehaviour
             }
             else
             {
-                casterExecutionTransform.localScale = prevScaleCaster;
+                if (casterExecutionTransform)
+                    casterExecutionTransform.localScale = prevScaleCaster;
                 enemyExecutionTransform.localScale = prevScaleEnemy;
 
-                casterExecutionTransform.position = Vector3.Lerp(casterExecutionTransform.position,
+                if (casterExecutionTransform)
+                    casterExecutionTransform.position = Vector3.Lerp(casterExecutionTransform.position,
                     new Vector3(prevPosCaster.x, prevPosCaster.y, prevPosCaster.z), speed * Time.unscaledDeltaTime);
                 
                 enemyExecutionTransform.position = Vector3.Lerp(enemyExecutionTransform.position,
                     new Vector3(prevPosEnemy.x, prevPosEnemy.y, prevPosEnemy.z), speed * Time.unscaledDeltaTime);
-
-                if (Lerp.NegligibleDistance(casterExecutionTransform.position.x, prevPosCaster.x, 0.001f)
-                    && Lerp.NegligibleDistance(enemyExecutionTransform.position.x, prevPosEnemy.x, 0.001f))
-                {
-                    casterSortGroup.sortingOrder = 0;
-                    enemySortingGroup.sortingOrder = 0;
-                    allowExecutionAction = false;
-                }
+                
             }
         }
+    }
+
+    public void ResetSortingOrder()
+    {
+        if (casterSortGroup)
+            casterSortGroup.sortingOrder = 0;
+        enemySortingGroup.sortingOrder = 0;
+        allowExecutionAction = false;
     }
 
     public void ExecuteAction(GameObject _caster, GameObject _enemy)
@@ -164,7 +168,7 @@ public class BattlestageManager : MonoBehaviour
     public void Button_ActivateSkill()
     {
         var target = selectedTarget.AsUnit();
-        var unit = _turnBaseManager.GetCurrentCaster().AsUnit();
+        var unit = turnBaseManager.GetCurrentCaster().AsUnit();
         if (unit == null) return;
 
         TargetInfo targetInfo = unit.GetActiveSkill.GetActiveSkillTargets(target, (List<Unit>)GetCasterTeamAsUnit(), (List<Unit>)GetEnemyTeamAsUnit());
@@ -338,8 +342,12 @@ public class BattlestageManager : MonoBehaviour
     
     void KillUnit(Unit u)
     {
-        GetEnemyTeam().Remove(u.gameObject);
+        if (GetCastersTeam().Contains(u.gameObject))
+            GetCastersTeam().Remove(u.gameObject);
+        else if (GetEnemyTeam().Contains(u.gameObject))
+            GetEnemyTeam().Remove(u.gameObject);
         Destroy(u.gameObject);
+        turnBaseManager.UpdateLiveTeam();
     }
     
     void OnDestroy()

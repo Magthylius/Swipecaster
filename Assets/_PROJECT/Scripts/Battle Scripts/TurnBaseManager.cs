@@ -127,7 +127,7 @@ public class TurnBaseManager : MonoBehaviour
         StartCoroutine(EnemyAttack());
     }
 
-    void UpdateLiveTeam()
+    public void UpdateLiveTeam()
     {
         castersOrderList = new List<GameObject>(battlestageManager.GetCastersTeam());
         enemiesOrderList = new List<GameObject>(battlestageManager.GetEnemyTeam());
@@ -137,6 +137,20 @@ public class TurnBaseManager : MonoBehaviour
     
     void EndTurn()
     {
+
+        if (battlestageManager.GetCastersTeam().Count == 0)
+        {
+            battleState = GameStateEnum.END;
+            print("Caster Game Over");
+            return;
+        }
+        else if (battlestageManager.GetEnemyTeam().Count == 0)
+        {
+            battleState = GameStateEnum.END;
+            print("Enemy Game Over");
+            return;
+        }
+        
         switch (battleState)
         {
             case GameStateEnum.CASTERTURN:

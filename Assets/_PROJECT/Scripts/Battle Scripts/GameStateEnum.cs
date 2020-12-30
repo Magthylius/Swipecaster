@@ -4,4 +4,5 @@ public enum GameStateEnum
     INIT = 1,
     CASTERTURN,
     ENEMYTURN,
+    END
 };
