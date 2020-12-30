@@ -59,6 +59,8 @@ public class BattlestageManager : MonoBehaviour
             Destroy(this.gameObject);
         else
             instance = this;
+        
+        Unit.SubscribeDeathEvent(KillUnit);
     }
 
     private void Start()
@@ -258,7 +260,11 @@ public class BattlestageManager : MonoBehaviour
         for (int i = 0; i < player.UnitLoadOut.Count; i++)
         {
             var unitObject = player.UnitLoadOut[i].BaseUnit;
-            playerTeam.Add(unitObject.InstantiateUnit(casterPositions[i].position, Quaternion.identity, casterPositions[i]));
+            if (unitObject)
+            {
+                playerTeam.Add(unitObject.InstantiateUnit(casterPositions[i].position, Quaternion.identity, casterPositions[i]));
+            }
+            
         }
 
         RegroupLeftPositions(false);
@@ -281,40 +287,40 @@ public class BattlestageManager : MonoBehaviour
         foreach (Transform entity in enemyEntityPositions) entity.gameObject.SetActive(false);
 
         //! Set Enemy's Position
-        RoomSetUp tempRoom = roomManager.Rooms[0];
-        if (tempRoom.isRandom)
+        RoomSetUp theRoom = roomManager.Rooms[0];
+        if(theRoom.roomSO)
         {
-            List<EnemyData> availableEnemyType = new List<EnemyData>(0);
-            for (int j = 0; j < tempRoom.roomSO.enemies.Count; j++)
+            if (theRoom.isRandom)
             {
-                if (!availableEnemyType.Contains(tempRoom.roomSO.enemies[j]))
+                List<EnemyData> availableEnemyType = new List<EnemyData>();
+                for (int j = 0; j < theRoom.roomSO.enemies.Count; j++)
                 {
-                    availableEnemyType.Add(tempRoom.roomSO.enemies[j]);
+                    if (!availableEnemyType.Contains(theRoom.roomSO.enemies[j]))
+                    {
+                        availableEnemyType.Add(theRoom.roomSO.enemies[j]);
+                    }
+                }
+
+                int enemySize = UnityEngine.Random.Range(1, theRoom.maxEnemySize);
+
+                for (int i = 0; i < enemySize; i++)
+                {
+                    int randomAvailableEnemy = UnityEngine.Random.Range(0, availableEnemyType.Count);
+                    UnitObject unitObject = availableEnemyType[randomAvailableEnemy].enemySO;
+                    GameObject temp = unitObject.InstantiateUnit(enemyPositions[i].position, Quaternion.identity, enemyPositions[i]);
+                    temp.GetComponent<Foe>().SetCurrentLevel(availableEnemyType[randomAvailableEnemy].level);
+                    enemyTeam.Add(temp);
                 }
             }
-
-            int enemySize = UnityEngine.Random.Range(1, tempRoom.maxEnemySize);
-
-            for (int i = 0; i < enemySize; i++)
+            else
             {
-                int randomAvailableEnemy = UnityEngine.Random.Range(0, availableEnemyType.Count);
-                GameObject loadOutUnit = availableEnemyType[randomAvailableEnemy].enemySO.FullBodyPrefab;
-                GameObject temp = Instantiate(loadOutUnit, enemyPositions[i].position, Quaternion.identity,
-                    enemyPositions[i]);
-                temp.GetComponent<Foe>().SetCurrentLevel(availableEnemyType[randomAvailableEnemy].level);
-                enemyTeam.Add(temp);
-            }
-        }
-        else
-        {
-            for (int i = 0; i < tempRoom.roomSO.enemies.Count; i++)
-            {
-                GameObject loadOutUnit = tempRoom.roomSO.enemies[i].enemySO.FullBodyPrefab;
-                //! Bottom codes should not be use for actual gameplay
-                GameObject temp = Instantiate(loadOutUnit, enemyPositions[i].position, Quaternion.identity,
-                    enemyPositions[i]);
-                temp.GetComponent<Foe>().SetCurrentLevel(tempRoom.roomSO.enemies[i].level);
-                enemyTeam.Add(temp);
+                for (int i = 0; i < theRoom.roomSO.enemies.Count; i++)
+                {
+                    UnitObject unitObject = theRoom.roomSO.enemies[i].enemySO;
+                    GameObject temp = unitObject.InstantiateUnit(enemyPositions[i].position, Quaternion.identity, enemyPositions[i]);
+                    temp.GetComponent<Foe>().SetCurrentLevel(theRoom.roomSO.enemies[i].level);
+                    enemyTeam.Add(temp);
+                }
             }
         }
 
@@ -323,12 +329,22 @@ public class BattlestageManager : MonoBehaviour
 
     private void SelectTarget(RaycastHit2D info)
     {
-
         GameObject o = info.transform.gameObject;
         if (!o.CompareTag("Foe")) return;
 
         if (selectedTarget == o) selectedTarget = null;
         else selectedTarget = o;
+    }
+    
+    void KillUnit(Unit u)
+    {
+        GetEnemyTeam().Remove(u.gameObject);
+        Destroy(u.gameObject);
+    }
+    
+    void OnDestroy()
+    {
+        Unit.UnsubscribeDeathEvent(KillUnit);
     }
 
 

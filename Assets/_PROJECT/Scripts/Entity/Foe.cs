@@ -29,10 +29,5 @@ public class Foe : Unit
     protected override void TakeDamage(Unit damager, int damageAmount)
     {
         base.TakeDamage(damager, damageAmount);
-        if (GetCurrentHealth <= 0)
-        {
-            battleStageManager.GetEnemyTeam().Remove(gameObject);
-            Destroy(gameObject);
-        }
     }
 }

@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class RoomScriptable : ScriptableObject
 {
     [Header("Enemies")]
-
     public List<EnemyData> enemies;
-
+    public int maxEnemySize;
+    public bool isRandom;
 }
 
 [System.Serializable]
