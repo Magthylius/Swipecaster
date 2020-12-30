@@ -6,12 +6,24 @@ using UnityEngine;
 
 public class DatabaseManager : MonoBehaviour
 {
-    public PlayerInventoryData playerData;
+    public static DatabaseManager instance;
+    
+    [SerializeField] PlayerInventoryData playerData;
     
     [SerializeField] List<string> liveCaster = new List<string>();
 
     PlayerInventory playerInventory;
-    
+
+    void Awake()
+    {
+        if (instance != null)
+            Destroy(this.gameObject);
+        else
+            instance = this;
+        
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     void Start()
     {
         playerInventory = PlayerInventory.instance;
