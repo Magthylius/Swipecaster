@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using LerpFunctions;
 using UnityEngine;
 
@@ -41,6 +42,7 @@ public class DatabaseManager : MonoBehaviour
         CheckCasterIsAlive();
         
         playerInventory.SetPlayerInventory(liveCaster);
+
     }
     
     void Update()
@@ -103,9 +105,25 @@ public class DatabaseManager : MonoBehaviour
 
     public void AddCaster(string _id)
     {
-        
-        playerData.casterDatabase.Add(new CasterDataStats(_id, 1, true));
-        
+
+        if (playerData.casterDatabase.Any(item => item.ID == _id))
+        {
+            //! maybe a duplicate function?
+            print("Already Exist");
+        }
+        else
+        {
+
+            for (int i = 0; i < playerInventory.AllCasters.Count; i++)
+            {
+                if (playerInventory.AllCasters[i].ID == _id)
+                {
+                    playerData.casterDatabase.Add(new CasterDataStats(_id, 1, true));
+                    break;
+                }
+            }
+            SaveManager.Save(playerData);
+        }
     }
 
     void CheckCasterIsAlive()
