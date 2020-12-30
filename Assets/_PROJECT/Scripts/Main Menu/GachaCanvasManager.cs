@@ -56,8 +56,6 @@ public class GachaCanvasManager : MenuCanvasPage
         base.Awake();
         if (instance != null) Destroy(this);
         else instance = this;
-
-        //if (mainMenuManager != null) print("hey!");
     }
 
     void Start()
@@ -112,7 +110,6 @@ public class GachaCanvasManager : MenuCanvasPage
     
     public override void Reset()
     {
-        //print("sddd");
         charge = 0f;
         chargeImg.gameObject.SetActive(true);
         chargeImg.fillAmount = charge;
@@ -131,6 +128,16 @@ public class GachaCanvasManager : MenuCanvasPage
         {
             connectedList.Add(FindConnector(point));
             linePoints.Add(FindConnector(point).center);
+            uiLine.UpdatePoints(linePoints);
+        }
+    }
+
+    public void DisconnectGachaPoint(GachaPoint point)
+    {
+        if (CheckEligibleConnector(point))
+        {
+            connectedList.Remove(FindConnector(point));
+            linePoints.Remove(FindConnector(point).center);
             uiLine.UpdatePoints(linePoints);
         }
     }
