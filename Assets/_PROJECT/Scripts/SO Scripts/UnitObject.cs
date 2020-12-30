@@ -47,7 +47,7 @@ public class UnitObject : ScriptableObject
         IsAlive = data.IsAlive;
 	}
 	
-	public CasterDataStats GetCasterData() => new CasterDataStats(ID, CurrentLevel, IsAlive);
+	public CasterDataStats GetCasterData() => new CasterDataStats(ID, CurrentLevel, CharacterMastery, IsAlive);
 
     public GameObject InstantiateUnit(Vector3 position, Quaternion rotation, Transform parent)
     {
