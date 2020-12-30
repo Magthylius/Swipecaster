@@ -7,5 +7,6 @@ using System.Collections.Generic;
 public class CasterParty : ScriptableObject
 {
     [Header("General")]
+    public string partyName = "Squad";
     public List<UnitObject> activeUnits;
 }
