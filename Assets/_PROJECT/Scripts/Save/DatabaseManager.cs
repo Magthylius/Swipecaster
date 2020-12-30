@@ -118,13 +118,8 @@ public class DatabaseManager : MonoBehaviour
             {
                 if (playerInventory.AllCasters[i].ID == _id)
                 {
-                    print("exits");
                     playerData.casterDatabase.Add(new CasterDataStats(_id, 1, true));
                     break;
-                }
-                else
-                {
-                    print("noexits");
                 }
             }
             SaveManager.Save(playerData);
