@@ -494,7 +494,7 @@ MonoBehaviour:
   enemyTeamGroup: {fileID: 1184321072}
   battleCamera: {fileID: 1404324106}
   centerGap: 0.8
-  unitGap: 1.6
+  unitGap: 1
   battleGap: 1
   casterPositions:
   - {fileID: 2124983772}
