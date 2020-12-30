@@ -7,10 +7,11 @@ public class RoomManager : MonoBehaviour
 
     [SerializeField] private int maxLoadOutSize;
     [SerializeField] private bool isRandom;
+    [SerializeField] private List<RoomSetUp> backupRooms;
     [SerializeField] private List<RoomSetUp> rooms;
     [SerializeField] private RoomConfigurationObject roomConfiguration;
 
-    public List<RoomSetUp> Rooms => rooms;
+    public List<RoomSetUp> Rooms => GetRooms();
     private void Awake()
     {
         if (Instance != null) Destroy(gameObject);
@@ -22,7 +23,12 @@ public class RoomManager : MonoBehaviour
     private void SettleActiveRoom()
     {
         rooms = new List<RoomSetUp>();
-        rooms.Add(new RoomSetUp(roomConfiguration.ActiveRoom));
+        if(roomConfiguration.ActiveRoom != null) rooms.Add(new RoomSetUp(roomConfiguration.ActiveRoom));
+    }
+    private List<RoomSetUp> GetRooms()
+    {
+        if(rooms.Count == 0) rooms.Add(new RoomSetUp(backupRooms[0].roomSO));
+        return rooms;
     }
 }
 
