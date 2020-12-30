@@ -44,8 +44,11 @@ public class InformationManager : MonoBehaviour
     {
         if (_turnBaseManager == null) return;
 
-        var currentUnit = _turnBaseManager.GetCurrentCaster().GetComponent<Unit>();
-        if (currentUnit == null || currentUnit != unit) return;
+        var unitObject = _turnBaseManager.GetCurrentCaster();
+        if (unitObject == null) return;
+
+        var currentUnit = unitObject.GetComponent<Unit>();
+        if (currentUnit != unit) return;
 
         float fill = 0.01f;
         if (unit.GetMaxHealth != 0) fill = unit.GetCurrentHealth / unit.GetMaxHealth;
