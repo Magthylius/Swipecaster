@@ -59,6 +59,8 @@ public class BattlestageManager : MonoBehaviour
             Destroy(this.gameObject);
         else
             instance = this;
+        
+        Unit.SubscribeDeathEvent(KillUnit);
     }
 
     private void Start()
@@ -258,7 +260,11 @@ public class BattlestageManager : MonoBehaviour
         for (int i = 0; i < player.UnitLoadOut.Count; i++)
         {
             var unitObject = player.UnitLoadOut[i].BaseUnit;
-            playerTeam.Add(unitObject.InstantiateUnit(casterPositions[i].position, Quaternion.identity, casterPositions[i]));
+            if (unitObject)
+            {
+                playerTeam.Add(unitObject.InstantiateUnit(casterPositions[i].position, Quaternion.identity, casterPositions[i]));
+            }
+            
         }
 
         RegroupLeftPositions(false);
@@ -325,6 +331,17 @@ public class BattlestageManager : MonoBehaviour
 
         if (selectedTarget == o) selectedTarget = null;
         else selectedTarget = o;
+    }
+    
+    void KillUnit(Unit u)
+    {
+        GetEnemyTeam().Remove(u.gameObject);
+        Destroy(u.gameObject);
+    }
+    
+    void OnDestroy()
+    {
+        Unit.UnsubscribeDeathEvent(KillUnit);
     }
 
 
