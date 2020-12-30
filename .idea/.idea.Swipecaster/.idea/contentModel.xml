@@ -13,6 +13,7 @@
                   <e p="ActPartySaver.cs" t="Include" />
                   <e p="DragHandler.cs" t="Include" />
                   <e p="InvenSlots.cs" t="Include" />
+                  <e p="InventoryLoad.cs" t="Include" />
                   <e p="MenuParty.cs" t="Include" />
                   <e p="MenuUnitSaver.cs" t="Include" />
                 </e>
@@ -125,6 +126,7 @@
               <e p="LevelSelectBehavior.cs" t="Include" />
               <e p="MapSelectionManager.cs" t="Include" />
               <e p="MenuCanvasPage.cs" t="Include" />
+              <e p="PartyCanvasManager.cs" t="Include" />
               <e p="ShopButtonBehavior.cs" t="Include" />
               <e p="ShopCanvasManager.cs" t="Include" />
             </e>
@@ -154,7 +156,6 @@
             </e>
             <e p="Renderers" t="Include">
               <e p="SwipeTrail.cs" t="Include" />
-              <e p="UILineRenderer.cs" t="Include" />
             </e>
             <e p="Runes" t="Include">
               <e p="CastingState.cs" t="Include" />
@@ -167,7 +168,7 @@
               <e p="SaveTest.cs" t="Include" />
             </e>
             <e p="SO Scripts" t="Include">
-              <e p="MenuPartySO.cs" t="Include" />
+              <e p="CasterParty.cs" t="Include" />
               <e p="MenuUnit.cs" t="Include" />
               <e p="RoomScriptable.cs" t="Include" />
               <e p="UnitObject.cs" t="Include" />
@@ -185,7 +186,9 @@
             <e p="UI" t="Include">
               <e p="DamagePopUp.cs" t="Include" />
               <e p="DebugButton.cs" t="Include" />
+              <e p="UIFlexibleGrid.cs" t="Include" />
               <e p="UIItem.cs" t="Include" />
+              <e p="UILineRenderer.cs" t="Include" />
             </e>
           </e>
         </e>
