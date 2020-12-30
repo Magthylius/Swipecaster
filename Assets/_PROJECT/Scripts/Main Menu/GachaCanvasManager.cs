@@ -30,6 +30,8 @@ public class GachaCanvasManager : MenuCanvasPage
     public static GachaCanvasManager instance;
     GachaCanvasState state = GachaCanvasState.IDLE;
 
+    DatabaseManager dataManager;
+
     [Header("Connector Points")]
     public UILineRenderer uiLine;
     public List<GachaConnectorBehavior> connectorList;
@@ -60,6 +62,8 @@ public class GachaCanvasManager : MenuCanvasPage
 
     void Start()
     {
+        dataManager = DatabaseManager.instance;
+
         connectedList = new List<GachaConnectorBehavior>();
         linePoints = new List<Vector2>();
 

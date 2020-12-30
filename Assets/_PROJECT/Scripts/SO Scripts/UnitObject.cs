@@ -7,6 +7,7 @@ public class UnitObject : ScriptableObject
     [Header("General")]
     public string ID;
     public string CharacterName;
+    public int CharacterMastery;
     [Range(3, 5)] public int BaseRarity;
 	public RuneType RuneAlignment;
     public string CharacterDescription;
