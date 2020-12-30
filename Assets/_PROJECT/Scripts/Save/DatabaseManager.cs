@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using LerpFunctions;
 using UnityEngine;
 
@@ -27,8 +28,8 @@ public class DatabaseManager : MonoBehaviour
     void Start()
     {
         playerInventory = PlayerInventory.instance;
-        
-        playerData = SaveManager.Load();
+
+        LoadData();
 
         foreach (var caster in playerData.casterDatabase)
         {
@@ -41,6 +42,7 @@ public class DatabaseManager : MonoBehaviour
         CheckCasterIsAlive();
         
         playerInventory.SetPlayerInventory(liveCaster);
+
     }
     
     void Update()
@@ -53,6 +55,22 @@ public class DatabaseManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             SaveManager.Load();
+        }
+    }
+
+    void LoadData()
+    {
+        playerData = SaveManager.Load();
+
+        //! Check if the save file didn't exist and make a new save with default character
+        if (playerData == null)
+        {
+            playerData = new PlayerInventoryData();
+            playerData.casterDatabase.Add(new CasterDataStats("001", 1, 0, true));
+            playerData.casterDatabase.Add(new CasterDataStats("002", 1, 0, true));
+            playerData.casterDatabase.Add(new CasterDataStats("003", 1, 0, true));
+            playerData.casterDatabase.Add(new CasterDataStats("004", 1, 0, true));
+            SaveManager.Save(playerData);
         }
     }
 
@@ -85,6 +103,37 @@ public class DatabaseManager : MonoBehaviour
             print("Caster already dead");
     }
 
+    public void AddCaster(string _id)
+    {
+        if (playerData.casterDatabase.Any(item => item.ID == _id))
+        {
+            //! maybe a duplicate function?
+            print("Already Exist");
+
+            for (int i = 0; i < playerInventory.PlayerCasters.Count; i++)
+            {
+                if (playerInventory.PlayerCasters[i].ID == _id)
+                {
+                    playerData.casterDatabase[i].Mastery++;
+                    break;
+                }
+            }
+            SaveManager.Save(playerData);
+        }
+        else
+        {
+            for (int i = 0; i < playerInventory.AllCasters.Count; i++)
+            {
+                if (playerInventory.AllCasters[i].ID == _id)
+                {
+                    playerData.casterDatabase.Add(new CasterDataStats(_id, 1, 0, true));
+                    break;
+                }
+            }
+            SaveManager.Save(playerData);
+        }
+    }
+
     void CheckCasterIsAlive()
     {
         liveCaster = new List<string>();
@@ -97,6 +146,7 @@ public class DatabaseManager : MonoBehaviour
             }
         }
     }
+    
     
     #region Accessors
     

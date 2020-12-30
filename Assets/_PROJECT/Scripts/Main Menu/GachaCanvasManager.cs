@@ -30,6 +30,8 @@ public class GachaCanvasManager : MenuCanvasPage
     public static GachaCanvasManager instance;
     GachaCanvasState state = GachaCanvasState.IDLE;
 
+    DatabaseManager dataManager;
+
     [Header("Connector Points")]
     public UILineRenderer uiLine;
     public List<GachaConnectorBehavior> connectorList;
@@ -56,12 +58,12 @@ public class GachaCanvasManager : MenuCanvasPage
         base.Awake();
         if (instance != null) Destroy(this);
         else instance = this;
-
-        //if (mainMenuManager != null) print("hey!");
     }
 
     void Start()
     {
+        dataManager = DatabaseManager.instance;
+
         connectedList = new List<GachaConnectorBehavior>();
         linePoints = new List<Vector2>();
 
@@ -112,7 +114,6 @@ public class GachaCanvasManager : MenuCanvasPage
     
     public override void Reset()
     {
-        //print("sddd");
         charge = 0f;
         chargeImg.gameObject.SetActive(true);
         chargeImg.fillAmount = charge;
@@ -127,10 +128,20 @@ public class GachaCanvasManager : MenuCanvasPage
 
     public void ConnectGachaPoint(GachaPoint point)
     {
-        if (CheckEligibleConnector(point))
+        if (!CheckConnectorConnected(point))
         {
             connectedList.Add(FindConnector(point));
             linePoints.Add(FindConnector(point).center);
+            uiLine.UpdatePoints(linePoints);
+        }
+    }
+
+    public void DisconnectGachaPoint(GachaPoint point)
+    {
+        if (CheckConnectorConnected(point))
+        {
+            connectedList.Remove(FindConnector(point));
+            linePoints.Remove(FindConnector(point).center);
             uiLine.UpdatePoints(linePoints);
         }
     }
@@ -184,14 +195,14 @@ public class GachaCanvasManager : MenuCanvasPage
         return null;
     }
 
-    bool CheckEligibleConnector(GachaPoint point)
+    bool CheckConnectorConnected(GachaPoint point)
     {
         foreach (GachaConnectorBehavior connector in connectedList)
         {
-            if (connector.type == point) return false;
+            if (connector.type == point) return true;
         }
 
-        return true;
+        return false;
     }
     public bool GetAllowCasting() => allowCasting;
     #endregion
