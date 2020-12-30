@@ -14,12 +14,12 @@ public class InventoryDebug : MonoBehaviour
     {
         playerInventory = PlayerInventory.instance;
 
-        for (int i = 0; i < playerInventory.GetPlayerAvailableCastersInventory().Count; i++)
+        for (int i = 0; i < playerInventory.PlayerCasters.Count; i++)
         {
             GameObject temp = Instantiate(imageUnit, transform.position, Quaternion.identity, transform);
-            if (playerInventory.GetPlayerAvailableCastersInventory()[i].PortraitArt)
+            if (playerInventory.PlayerCasters[i].PortraitArt)
             {
-                temp.GetComponent<Image>().sprite = playerInventory.GetPlayerAvailableCastersInventory()[i].PortraitArt;
+                temp.GetComponent<Image>().sprite = playerInventory.PlayerCasters[i].PortraitArt;
             }
         }
         

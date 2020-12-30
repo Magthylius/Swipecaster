@@ -45,8 +45,8 @@ public class PlayerInventory : MonoBehaviour
 
     #region Accessors
 
-    public List<UnitObject> GetPlayerAvailableCastersInventory() => playerAvailableCasters;
-    public List<UnitObject> GetAllCaster() => allCasters;
+    public List<UnitObject> PlayerCasters => playerAvailableCasters;
+    public List<UnitObject> AllCasters => allCasters;
 
     #endregion
 }

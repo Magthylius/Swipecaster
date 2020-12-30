@@ -14,16 +14,16 @@ public class InventoryLoad : MonoBehaviour
     {
         playerInventory = PlayerInventory.instance;
 
-        for (int i = 0; i < playerInventory.GetAllCaster().Count; i++)
+        for (int i = 0; i < playerInventory.AllCasters.Count; i++)
         {
             GameObject temp = Instantiate(PanelPrefab, transform.position, Quaternion.identity, transform);
             GameObject tempChild = Instantiate(heroPrefab, transform.position, Quaternion.identity, temp.transform);
-            if (playerInventory.GetAllCaster()[i].PortraitArt)
+            if (playerInventory.AllCasters[i].PortraitArt)
             {
-                tempChild.GetComponent<Image>().sprite = playerInventory.GetAllCaster()[i].PortraitArt;
+                tempChild.GetComponent<Image>().sprite = playerInventory.AllCasters[i].PortraitArt;
             }
 
-            tempChild.GetComponent<MenuUnitSaver>().unit = playerInventory.GetAllCaster()[i];
+            tempChild.GetComponent<MenuUnitSaver>().unit = playerInventory.AllCasters[i];
         }
 
         this.GetComponent<MenuParty>().updateTeam();
