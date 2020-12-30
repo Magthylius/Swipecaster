@@ -5,23 +5,22 @@ using UnityEngine;
 
 public class DamagePopUp : MonoBehaviour
 {
+    [SerializeField] private float popUpTime = 1.5f;
+    private TextMeshPro _textMesh;
+
     private void Awake()
     {
-       // gameObject.GetComponent<RectTransform>().position += new Vector3(0.0f, 5.0f, 0.0f);
-       // Debug.Log(gameObject.GetComponent<RectTransform>().position.y);
-      //  gameObject.transform.position += new Vector3(0.0f, 1.0f, 0.0f);
+        _textMesh = GetComponent<TextMeshPro>();
+        _textMesh.enabled = false;
     }
 
-    public void showDamage(int damage)
-    {
-        gameObject.GetComponent<TextMeshPro>().text = damage.ToString();
-        gameObject.SetActive(true);
-        StartCoroutine(popUpTime());
-    }
+    public void ShowDamage(int damage) => StartCoroutine(DoPopUp(damage));
 
-    private IEnumerator popUpTime()
+    private IEnumerator DoPopUp(int damage)
     {
-        yield return new WaitForSeconds(1.5f);
-        gameObject.SetActive(false);
+        _textMesh.enabled = true;
+        _textMesh.text = damage.ToString();
+        yield return new WaitForSeconds(popUpTime);
+        _textMesh.enabled = false;
     }
 }
