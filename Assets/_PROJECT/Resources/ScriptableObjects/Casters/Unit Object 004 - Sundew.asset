@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Unit Object 004 - Sundew
   m_EditorClassIdentifier: 
   ID: 004
+  CharacterName: Sundew
   BaseRarity: 4
   RuneAlignment: 4
   CharacterDescription: Meow Test Meow

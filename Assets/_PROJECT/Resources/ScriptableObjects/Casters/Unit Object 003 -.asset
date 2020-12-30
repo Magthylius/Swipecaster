@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Unit Object 003 -
   m_EditorClassIdentifier: 
   ID: 003
+  CharacterName: Scholar
   BaseRarity: 4
   RuneAlignment: 3
   CharacterDescription: Meow Test Meow

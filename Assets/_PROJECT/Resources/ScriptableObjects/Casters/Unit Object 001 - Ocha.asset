@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Unit Object 001 - Ocha
   m_EditorClassIdentifier: 
   ID: 001
+  CharacterName: Ocha
   BaseRarity: 4
   RuneAlignment: 1
   CharacterDescription: Meow Test Meow

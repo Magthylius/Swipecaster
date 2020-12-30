@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Unit Object 002 - Searing
   m_EditorClassIdentifier: 
   ID: 002
+  CharacterName: Searing
   BaseRarity: 4
   RuneAlignment: 2
   CharacterDescription: Meow Test Meow
