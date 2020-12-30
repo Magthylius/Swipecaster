@@ -288,36 +288,39 @@ public class BattlestageManager : MonoBehaviour
 
         //! Set Enemy's Position
         RoomSetUp theRoom = roomManager.Rooms[0];
-        if (theRoom.isRandom)
+        if(theRoom.roomSO)
         {
-            List<EnemyData> availableEnemyType = new List<EnemyData>();
-            for (int j = 0; j < theRoom.roomSO.enemies.Count; j++)
+            if (theRoom.isRandom)
             {
-                if (!availableEnemyType.Contains(theRoom.roomSO.enemies[j]))
+                List<EnemyData> availableEnemyType = new List<EnemyData>();
+                for (int j = 0; j < theRoom.roomSO.enemies.Count; j++)
                 {
-                    availableEnemyType.Add(theRoom.roomSO.enemies[j]);
+                    if (!availableEnemyType.Contains(theRoom.roomSO.enemies[j]))
+                    {
+                        availableEnemyType.Add(theRoom.roomSO.enemies[j]);
+                    }
+                }
+
+                int enemySize = UnityEngine.Random.Range(1, theRoom.maxEnemySize);
+
+                for (int i = 0; i < enemySize; i++)
+                {
+                    int randomAvailableEnemy = UnityEngine.Random.Range(0, availableEnemyType.Count);
+                    UnitObject unitObject = availableEnemyType[randomAvailableEnemy].enemySO;
+                    GameObject temp = unitObject.InstantiateUnit(enemyPositions[i].position, Quaternion.identity, enemyPositions[i]);
+                    temp.GetComponent<Foe>().SetCurrentLevel(availableEnemyType[randomAvailableEnemy].level);
+                    enemyTeam.Add(temp);
                 }
             }
-
-            int enemySize = UnityEngine.Random.Range(1, theRoom.maxEnemySize);
-
-            for (int i = 0; i < enemySize; i++)
+            else
             {
-                int randomAvailableEnemy = UnityEngine.Random.Range(0, availableEnemyType.Count);
-                UnitObject unitObject = availableEnemyType[randomAvailableEnemy].enemySO;
-                GameObject temp = unitObject.InstantiateUnit(enemyPositions[i].position, Quaternion.identity, enemyPositions[i]);
-                temp.GetComponent<Foe>().SetCurrentLevel(availableEnemyType[randomAvailableEnemy].level);
-                enemyTeam.Add(temp);
-            }
-        }
-        else
-        {
-            for (int i = 0; i < theRoom.roomSO.enemies.Count; i++)
-            {
-                UnitObject unitObject = theRoom.roomSO.enemies[i].enemySO;
-                GameObject temp = unitObject.InstantiateUnit(enemyPositions[i].position, Quaternion.identity, enemyPositions[i]);
-                temp.GetComponent<Foe>().SetCurrentLevel(theRoom.roomSO.enemies[i].level);
-                enemyTeam.Add(temp);
+                for (int i = 0; i < theRoom.roomSO.enemies.Count; i++)
+                {
+                    UnitObject unitObject = theRoom.roomSO.enemies[i].enemySO;
+                    GameObject temp = unitObject.InstantiateUnit(enemyPositions[i].position, Quaternion.identity, enemyPositions[i]);
+                    temp.GetComponent<Foe>().SetCurrentLevel(theRoom.roomSO.enemies[i].level);
+                    enemyTeam.Add(temp);
+                }
             }
         }
 
