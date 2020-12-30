@@ -12,7 +12,7 @@ public class BattlestageManager : MonoBehaviour
 
     public Transform battlestageCenter;
     public Transform playerTeamGroup, enemyTeamGroup;
-    private TurnBaseManager _turnBaseManager;
+    private TurnBaseManager turnBaseManager;
     public Camera battleCamera = null;
 
     [Header("Gaps Settings")] 
@@ -67,7 +67,7 @@ public class BattlestageManager : MonoBehaviour
     {
         player = Player.Instance;
         roomManager = RoomManager.Instance;
-        _turnBaseManager = TurnBaseManager.instance;
+        turnBaseManager = TurnBaseManager.instance;
         InitPositions();
 
         if (enableEntityDebugging)
@@ -168,7 +168,7 @@ public class BattlestageManager : MonoBehaviour
     public void Button_ActivateSkill()
     {
         var target = selectedTarget.AsUnit();
-        var unit = _turnBaseManager.GetCurrentCaster().AsUnit();
+        var unit = turnBaseManager.GetCurrentCaster().AsUnit();
         if (unit == null) return;
 
         TargetInfo targetInfo = unit.GetActiveSkill.GetActiveSkillTargets(target, (List<Unit>)GetCasterTeamAsUnit(), (List<Unit>)GetEnemyTeamAsUnit());
@@ -347,6 +347,7 @@ public class BattlestageManager : MonoBehaviour
         else if (GetEnemyTeam().Contains(u.gameObject))
             GetEnemyTeam().Remove(u.gameObject);
         Destroy(u.gameObject);
+        turnBaseManager.UpdateLiveTeam();
     }
     
     void OnDestroy()
