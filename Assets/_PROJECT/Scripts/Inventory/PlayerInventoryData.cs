@@ -14,12 +14,14 @@ public class CasterDataStats
 {
     public string ID;
     public int CurLevel;
+    public int Mastery;
     public bool IsAlive;
 	
-	public CasterDataStats(string id, int level, bool isAlive)
+	public CasterDataStats(string id, int level, int mastery, bool isAlive)
 	{
 		ID = id;
 		CurLevel = level;
+		Mastery = mastery;
         IsAlive = isAlive;
 	}
 }

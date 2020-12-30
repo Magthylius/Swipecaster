@@ -66,10 +66,10 @@ public class DatabaseManager : MonoBehaviour
         if (playerData == null)
         {
             playerData = new PlayerInventoryData();
-            playerData.casterDatabase.Add(new CasterDataStats("001", 1, true));
-            playerData.casterDatabase.Add(new CasterDataStats("002", 1, true));
-            playerData.casterDatabase.Add(new CasterDataStats("003", 1, true));
-            playerData.casterDatabase.Add(new CasterDataStats("004", 1, true));
+            playerData.casterDatabase.Add(new CasterDataStats("001", 1, 0, true));
+            playerData.casterDatabase.Add(new CasterDataStats("002", 1, 0, true));
+            playerData.casterDatabase.Add(new CasterDataStats("003", 1, 0, true));
+            playerData.casterDatabase.Add(new CasterDataStats("004", 1, 0, true));
             SaveManager.Save(playerData);
         }
     }
@@ -114,11 +114,11 @@ public class DatabaseManager : MonoBehaviour
             {
                 if (playerInventory.PlayerCasters[i].ID == _id)
                 {
-                    playerInventory.PlayerCasters[i].CharacterMastery++;
+                    playerData.casterDatabase[i].Mastery++;
                     break;
                 }
             }
-
+            SaveManager.Save(playerData);
         }
         else
         {
@@ -126,7 +126,7 @@ public class DatabaseManager : MonoBehaviour
             {
                 if (playerInventory.AllCasters[i].ID == _id)
                 {
-                    playerData.casterDatabase.Add(new CasterDataStats(_id, 1, true));
+                    playerData.casterDatabase.Add(new CasterDataStats(_id, 1, 0, true));
                     break;
                 }
             }
