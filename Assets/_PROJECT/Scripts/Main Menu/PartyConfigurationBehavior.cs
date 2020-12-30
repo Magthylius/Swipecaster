@@ -28,9 +28,10 @@ public class PartyConfigurationBehavior : MonoBehaviour
 
     public void UpdatePortraits()
     {
-        for (int i = 0; i < configurationParty.activeUnits.Count; i++)
+        for (int i = 0; i < 4; i++)
         {
-            portraitList[i].sprite = configurationParty.activeUnits[i].PortraitArt;
+            if (i < configurationParty.activeUnits.Count) portraitList[i].sprite = configurationParty.activeUnits[i].PortraitArt;
+            else portraitList[i].sprite = null;
         }
     }
 }

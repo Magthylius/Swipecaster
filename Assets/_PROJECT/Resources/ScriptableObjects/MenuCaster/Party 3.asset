@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98f97db78843ab84f8a92760b6ebf3bd, type: 3}
   m_Name: Party 3
   m_EditorClassIdentifier: 
+  partyName: Squad Charlie
   activeUnits:
   - {fileID: 11400000, guid: f7448f282a1da544f99405f812c4d011, type: 2}
   - {fileID: 11400000, guid: f7448f282a1da544f99405f812c4d011, type: 2}
