@@ -9,6 +9,7 @@ public class CameraManager : MonoBehaviour
 {
     public static CameraManager instance;
     TurnBaseManager turnBaseManager;
+    BattlestageManager battlestageManager;
 
     public Camera cam;
 
@@ -72,6 +73,7 @@ public class CameraManager : MonoBehaviour
     void Start()
     {
         turnBaseManager = TurnBaseManager.instance;
+        battlestageManager = BattlestageManager.instance;
 
         UpdateCameraBoundary();
         targetZoom = cam.orthographicSize;
@@ -266,6 +268,7 @@ public class CameraManager : MonoBehaviour
         }
         
         cam.transform.rotation = Quaternion.Euler(0,0,0);
+        battlestageManager.ResetSortingOrder();
         isFree = true;
     }
 
