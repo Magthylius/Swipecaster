@@ -9,16 +9,26 @@ public class InventoryManager : MenuCanvasPage
 
     List<UnitObject> casterInventory;
 
+    public GameObject uiCasterObject;
+    public Transform castersParent;
+
     void Start()
     {
         databaseManager = DatabaseManager.instance;
         playerInventory = PlayerInventory.instance;
 
-        casterInventory = playerInventory.PlayerCasters;
+        UpdateInventory();
     }
 
-    void Update()
+    void UpdateInventory()
     {
-        
+        casterInventory = new List<UnitObject>();
+        casterInventory = playerInventory.PlayerCasters;
+
+        foreach (UnitObject unit in casterInventory)
+        {
+            GameObject spawn = Instantiate(uiCasterObject, castersParent);
+            spawn.GetComponent<CasterInventoryBehavior>().Init(unit);
+        }
     }
 }

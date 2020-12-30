@@ -21,10 +21,11 @@ public class GachaConnectorBehavior : MonoBehaviour
     public void PNTR_Enter()
     {
         if (!gachaManager.GetAllowCasting()) return;
-        if (isActivated) return;
 
-        gachaManager.ConnectGachaPoint(pointType);
-        isActivated = true;
+        if (isActivated) gachaManager.DisconnectGachaPoint(pointType);
+        else gachaManager.ConnectGachaPoint(pointType);
+
+        isActivated = !isActivated;
     }
 
     public void SetActviation(bool activation)
