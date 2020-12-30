@@ -27,8 +27,8 @@ public class DatabaseManager : MonoBehaviour
     void Start()
     {
         playerInventory = PlayerInventory.instance;
-        
-        playerData = SaveManager.Load();
+
+        LoadData();
 
         foreach (var caster in playerData.casterDatabase)
         {
@@ -53,6 +53,22 @@ public class DatabaseManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             SaveManager.Load();
+        }
+    }
+
+    void LoadData()
+    {
+        playerData = SaveManager.Load();
+
+        //! Check if the save file didn't exist and make a new save with default character
+        if (playerData == null)
+        {
+            playerData = new PlayerInventoryData();
+            playerData.casterDatabase.Add(new CasterDataStats("001", 1, true));
+            playerData.casterDatabase.Add(new CasterDataStats("002", 1, true));
+            playerData.casterDatabase.Add(new CasterDataStats("003", 1, true));
+            playerData.casterDatabase.Add(new CasterDataStats("004", 1, true));
+            SaveManager.Save(playerData);
         }
     }
 
@@ -85,6 +101,13 @@ public class DatabaseManager : MonoBehaviour
             print("Caster already dead");
     }
 
+    public void AddCaster(string _id)
+    {
+        
+        playerData.casterDatabase.Add(new CasterDataStats(_id, 1, true));
+        
+    }
+
     void CheckCasterIsAlive()
     {
         liveCaster = new List<string>();
@@ -97,6 +120,7 @@ public class DatabaseManager : MonoBehaviour
             }
         }
     }
+    
     
     #region Accessors
     

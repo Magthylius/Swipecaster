@@ -31,6 +31,7 @@ public static class SaveManager
         else
         {
             Debug.Log("Missing save data");
+            return null;
         }
 
         return data;
