@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Unit Object 010 - Sparkshot
   m_EditorClassIdentifier: 
   ID: 010
+  CharacterName: Sparkshot
   BaseRarity: 3
   RuneAlignment: 3
   CharacterDescription: Meow Test Meow
@@ -31,5 +32,5 @@ MonoBehaviour:
   SkillDescription: Meow Ta Ta Meow Meow Meow!
   FullBodyPrefab: {fileID: 7792443217028439265, guid: 460cab7ba77acb042953ef780e39dd50, type: 3}
   SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}
-  PortraitArt: {fileID: 21300000, guid: 76beeb9d897c1d847974e86fd001bd8b, type: 3}
+  PortraitArt: {fileID: 21300000, guid: 0ff57c18b8287434d9d2368ff48c4401, type: 3}
   FullBodyArt: {fileID: 21300000, guid: 76beeb9d897c1d847974e86fd001bd8b, type: 3}
