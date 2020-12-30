@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Caster : Unit
 {
-
     #region Variable Definitions
 
     [Header("Arch")]
@@ -21,20 +20,14 @@ public class Caster : Unit
 
     public override void UseSkill(TargetInfo targetInfo, StageInfo stageInfo)
     {
-        print($"Major: {ArchMajor}, Minor: {ArchMinor}");
-        
         GetActiveSkill.TriggerSkill(targetInfo, stageInfo);
     }
     public override void TakeHit(Unit damager, int damageAmount) => InvokeHitEvent(damager, damageAmount);
     public override void RecieveHealing(Unit healer, int healAmount) => AddCurrentHealth(Mathf.Abs(healAmount));
     public override void DoAction(TargetInfo targetInfo, RuneCollection runes)
     {
-        int totalDamage = Round(CalculateDamage(targetInfo, runes) * damageMultiplier);
-
-        int nettDamage = totalDamage - targetInfo.Focus.GetCurrentDefence;
-        if (nettDamage < 0) nettDamage = 0;
-
-        GetProjectile.AssignTargetDamage(this, targetInfo, nettDamage);
+        int rawDamage = Round(CalculateDamage(targetInfo, runes) * damageMultiplier);
+        GetProjectile.AssignTargetDamage(this, targetInfo, rawDamage);
     }
     public override int CalculateDamage(TargetInfo targetInfo, RuneCollection runes)
     {

@@ -1,3 +1,4 @@
+using ClampFunctions;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,6 +32,9 @@ public abstract class Unit : Entity
     [SerializeField] private int currentSkillCharge;
     [SerializeField] private int _skillChargeCount;
     private ActiveSkill _activeSkill;
+
+    [Header("UI")]
+    [SerializeField] private DamagePopUp damagePopUp;
 
     [Header("Action Events")]
     private static Action<Unit> _deathEvent;
@@ -138,16 +142,13 @@ public abstract class Unit : Entity
         if (damager.GetAttackStatus != AttackStatus.Normal) return;
         float statusInMultiplier = 1.0f;
         for (int i = 0; i < GetStatusEffects.Count; i++) statusInMultiplier += GetStatusEffects[i].GetStatusDamageInModifier();
-        
-        AddCurrentHealth(-Mathf.Abs(Round(damageAmount * statusInMultiplier)));
+
+        int totalDamage = (Mathf.Abs(Round(damageAmount * statusInMultiplier)) - GetCurrentDefence).Clamp0();
+        AddCurrentHealth(-totalDamage);
         GetStatusEffects.ForEach(i => i.DoOnHitEffect(this));
 
-        if (gameObject.transform.Find("DamagePopUp"))
-        {
-            gameObject.transform.Find("DamagePopUp").GetComponentInChildren<DamagePopUp>().showDamage(Mathf.Abs(Round(damageAmount * statusInMultiplier)));
-        }
-
-       // gameObject.transform.GetChild(0).GetComponent<DamagePopUp>().showDamage(Mathf.Abs(Round(damageAmount * statusInMultiplier)));
+        if (damagePopUp == null) return;
+        damagePopUp.ShowDamage(totalDamage);
     }
 
     protected virtual void OnDestroy()
