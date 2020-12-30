@@ -19,17 +19,6 @@ public class RoomManager : MonoBehaviour
     {
 
     }
-
-    public void SetRoomConfiguration(RoomConfigurationObject configuration)
-    {
-        for (int i = 0; i < configuration.ActiveRoom.Count; i++)
-        {
-            var room = configuration.ActiveRoom[i];
-            if (room == null) continue;
-
-            rooms.Add(new RoomSetUp(room));
-        }
-    }
 }
 
 [System.Serializable]
