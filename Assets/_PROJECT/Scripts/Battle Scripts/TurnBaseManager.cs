@@ -137,6 +137,8 @@ public class TurnBaseManager : MonoBehaviour
     
     void EndTurn()
     {
+        UpdateLiveTeam();
+        
         switch (battleState)
         {
             case GameStateEnum.CASTERTURN:

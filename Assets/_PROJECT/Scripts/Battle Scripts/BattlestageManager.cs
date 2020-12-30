@@ -104,7 +104,8 @@ public class BattlestageManager : MonoBehaviour
             {
                 timer -= Time.deltaTime;
 
-                casterExecutionTransform.position =
+                if (casterExecutionTransform)
+                    casterExecutionTransform.position =
                     Vector3.Lerp(casterExecutionTransform.position, new Vector3(battlestageCenter.position.x - battleGap,
                             casterExecutionTransform.position.y, casterExecutionTransform.position.z),
                         speed * Time.unscaledDeltaTime);
@@ -116,24 +117,27 @@ public class BattlestageManager : MonoBehaviour
             }
             else
             {
-                casterExecutionTransform.localScale = prevScaleCaster;
+                if (casterExecutionTransform)
+                    casterExecutionTransform.localScale = prevScaleCaster;
                 enemyExecutionTransform.localScale = prevScaleEnemy;
 
-                casterExecutionTransform.position = Vector3.Lerp(casterExecutionTransform.position,
+                if (casterExecutionTransform)
+                    casterExecutionTransform.position = Vector3.Lerp(casterExecutionTransform.position,
                     new Vector3(prevPosCaster.x, prevPosCaster.y, prevPosCaster.z), speed * Time.unscaledDeltaTime);
                 
                 enemyExecutionTransform.position = Vector3.Lerp(enemyExecutionTransform.position,
                     new Vector3(prevPosEnemy.x, prevPosEnemy.y, prevPosEnemy.z), speed * Time.unscaledDeltaTime);
-
-                if (Lerp.NegligibleDistance(casterExecutionTransform.position.x, prevPosCaster.x, 0.001f)
-                    && Lerp.NegligibleDistance(enemyExecutionTransform.position.x, prevPosEnemy.x, 0.001f))
-                {
-                    casterSortGroup.sortingOrder = 0;
-                    enemySortingGroup.sortingOrder = 0;
-                    allowExecutionAction = false;
-                }
+                
             }
         }
+    }
+
+    public void ResetSortingOrder()
+    {
+        if (casterSortGroup)
+            casterSortGroup.sortingOrder = 0;
+        enemySortingGroup.sortingOrder = 0;
+        allowExecutionAction = false;
     }
 
     public void ExecuteAction(GameObject _caster, GameObject _enemy)
@@ -338,7 +342,10 @@ public class BattlestageManager : MonoBehaviour
     
     void KillUnit(Unit u)
     {
-        GetEnemyTeam().Remove(u.gameObject);
+        if (GetCastersTeam().Contains(u.gameObject))
+            GetCastersTeam().Remove(u.gameObject);
+        else if (GetEnemyTeam().Contains(u.gameObject))
+            GetEnemyTeam().Remove(u.gameObject);
         Destroy(u.gameObject);
     }
     
