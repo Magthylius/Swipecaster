@@ -53,6 +53,9 @@ public class GachaCanvasManager : MenuCanvasPage
     public CanvasGroup summonButton;
     public TextMeshProUGUI instructionText;
 
+    [Header("Gacha Settings")]
+    public GachaBanner activeBanner;
+
     public override void Awake()
     {
         base.Awake();
@@ -158,7 +161,7 @@ public class GachaCanvasManager : MenuCanvasPage
 
     public void BTN_SummonCharacter()
     {
-        int r = Random.Range(0, 5);
+        /*int r = Random.Range(0, 5);
         switch (r)
         {
             case 0:
@@ -180,7 +183,11 @@ public class GachaCanvasManager : MenuCanvasPage
             case 4:
                 Debug.Log("You summoned: Pain!");
                 break;
-        }
+        }*/
+        //print(activeBanner.GetAllChances());
+        UnitObject pull = activeBanner.PullCaster();
+        print("You pulled " + pull.CharacterName);
+        dataManager.AddCaster(pull.ID);
     }
 
     #region Accessors
