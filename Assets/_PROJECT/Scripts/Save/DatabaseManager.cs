@@ -105,15 +105,23 @@ public class DatabaseManager : MonoBehaviour
 
     public void AddCaster(string _id)
     {
-
         if (playerData.casterDatabase.Any(item => item.ID == _id))
         {
             //! maybe a duplicate function?
             print("Already Exist");
+
+            for (int i = 0; i < playerInventory.PlayerCasters.Count; i++)
+            {
+                if (playerInventory.PlayerCasters[i].ID == _id)
+                {
+                    playerInventory.PlayerCasters[i].CharacterMastery++;
+                    break;
+                }
+            }
+
         }
         else
         {
-
             for (int i = 0; i < playerInventory.AllCasters.Count; i++)
             {
                 if (playerInventory.AllCasters[i].ID == _id)
