@@ -29,7 +29,7 @@ public class PlayerInventory : MonoBehaviour
     }
     
 
-    public void SetPlayerInventory(List<string> castersID)
+    public void UpdatePlayerInventory(List<string> castersID)
     {
         foreach (var id in castersID)
         {

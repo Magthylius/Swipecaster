@@ -25,6 +25,7 @@ public class InventoryManager : MenuCanvasPage
     public void UpdateCasterInventory()
     {
         ClearCasterInventory();
+        databaseManager.RefreshInventory();
         casterInventory = new List<UnitObject>();
         casterInventory = playerInventory.PlayerCasters;
 
