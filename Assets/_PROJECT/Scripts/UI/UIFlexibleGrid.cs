@@ -33,6 +33,8 @@ public class UIFlexibleGrid : LayoutGroup
 
         if (autoRowCount) rows = rectChildren.Count / columns + 1;
 
+        if (rows <= 0) rows = 1;
+        if (columns <= 0) columns = 1;
 
         if (fitType == FitType.WIDTH || fitType == FitType.HEIGHT || fitType == FitType.UNIFORM)
         {
