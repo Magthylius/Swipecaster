@@ -124,7 +124,7 @@ public class GachaCanvasManager : MenuCanvasPage
 
     public void ConnectGachaPoint(GachaPoint point)
     {
-        if (CheckEligibleConnector(point))
+        if (!CheckConnectorConnected(point))
         {
             connectedList.Add(FindConnector(point));
             linePoints.Add(FindConnector(point).center);
@@ -134,7 +134,7 @@ public class GachaCanvasManager : MenuCanvasPage
 
     public void DisconnectGachaPoint(GachaPoint point)
     {
-        if (CheckEligibleConnector(point))
+        if (CheckConnectorConnected(point))
         {
             connectedList.Remove(FindConnector(point));
             linePoints.Remove(FindConnector(point).center);
@@ -191,14 +191,14 @@ public class GachaCanvasManager : MenuCanvasPage
         return null;
     }
 
-    bool CheckEligibleConnector(GachaPoint point)
+    bool CheckConnectorConnected(GachaPoint point)
     {
         foreach (GachaConnectorBehavior connector in connectedList)
         {
-            if (connector.type == point) return false;
+            if (connector.type == point) return true;
         }
 
-        return true;
+        return false;
     }
     public bool GetAllowCasting() => allowCasting;
     #endregion
