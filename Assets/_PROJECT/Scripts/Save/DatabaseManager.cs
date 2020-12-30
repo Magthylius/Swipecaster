@@ -40,8 +40,8 @@ public class DatabaseManager : MonoBehaviour
         }
 
         CheckCasterIsAlive();
-        
-        playerInventory.SetPlayerInventory(liveCaster);
+
+        RefreshInventory();
 
     }
     
@@ -58,6 +58,11 @@ public class DatabaseManager : MonoBehaviour
         }
     }
 
+    public void RefreshInventory()
+    {
+        playerInventory.UpdatePlayerInventory(liveCaster);
+    }
+    
     void LoadData()
     {
         playerData = SaveManager.Load();
