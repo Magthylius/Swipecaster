@@ -60,8 +60,12 @@ public class TurnBaseManager : MonoBehaviour
         if (!isPlayerTurn)
             return;
 
-        highlighter.transform.position = new Vector3(caster.transform.position.x, caster.transform.position.y + gap,
-            caster.transform.position.z);
+        if (caster)
+        {
+            highlighter.transform.position = new Vector3(caster.transform.position.x, caster.transform.position.y + gap,
+                caster.transform.position.z);
+        }
+
 
         //! End caster's turn
         if (Input.GetKeyDown(KeyCode.Space))
@@ -123,6 +127,12 @@ public class TurnBaseManager : MonoBehaviour
         StartCoroutine(EnemyAttack());
     }
 
+    void UpdateLiveTeam()
+    {
+        castersOrderList = new List<GameObject>(battlestageManager.GetCastersTeam());
+        enemiesOrderList = new List<GameObject>(battlestageManager.GetEnemyTeam());
+    }
+
     #endregion
     
     void EndTurn()
@@ -174,8 +184,7 @@ public class TurnBaseManager : MonoBehaviour
     //! Set Up the battlestage
     IEnumerator InitBattle()
     {
-        castersOrderList = new List<GameObject>(battlestageManager.GetCastersTeam());
-        enemiesOrderList = new List<GameObject>(battlestageManager.GetEnemyTeam());
+        UpdateLiveTeam();
         highlighter = Instantiate(highlighter);
         highlighter.SetActive(false);
 
