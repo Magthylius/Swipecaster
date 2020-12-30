@@ -14,7 +14,7 @@ public class Overhead : Projectile
 
     public override TargetInfo GetTargets(Unit focus, List<Unit> allEntities)
     {
-        if (!allEntities.Contains(focus)) return TargetInfo.Null;
+        //if (!allEntities.Contains(focus)) return TargetInfo.Null;
 
         var collateral = new List<Unit>();
         var grazed = new List<Unit>();
