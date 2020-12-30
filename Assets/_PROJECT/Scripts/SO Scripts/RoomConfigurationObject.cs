@@ -15,6 +15,7 @@ public class RoomConfigurationObject : ScriptableObject
 
     public void Stage1Room1() => ActiveRoom = GetRoom(nameof(Stage1Room1));
     public void Stage1Room2() => ActiveRoom = GetRoom(nameof(Stage1Room2));
+    public void Stage1Room3() => ActiveRoom = GetRoom(nameof(Stage1Room3));
 
     #endregion
 

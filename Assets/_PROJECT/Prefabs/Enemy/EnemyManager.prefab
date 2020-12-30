@@ -52,3 +52,4 @@ MonoBehaviour:
   - roomSO: {fileID: 11400000, guid: cc9a4d7dd55c1f14d907ef3355220317, type: 2}
     maxEnemySize: 4
     isRandom: 0
+  roomConfiguration: {fileID: 11400000, guid: b4cd5a1c9119936409cb70238dad25c9, type: 2}
