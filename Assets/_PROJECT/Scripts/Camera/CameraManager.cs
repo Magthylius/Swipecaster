@@ -268,7 +268,7 @@ public class CameraManager : MonoBehaviour
         }
         
         cam.transform.rotation = Quaternion.Euler(0,0,0);
-        battlestageManager.ResetSortingOrder();
+        //battlestageManager.ResetSortingOrder();
         isFree = true;
     }
 
