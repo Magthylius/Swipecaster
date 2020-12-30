@@ -10,7 +10,7 @@ public class PlayerInventory : MonoBehaviour
     string casterLocation = "ScriptableObjects/Casters";
 
     //! Get all casters in the game
-     readonly List<UnitObject> allCasters = new List<UnitObject>();
+    [SerializeField] List<UnitObject> allCasters = new List<UnitObject>();
     [SerializeField] List<UnitObject> playerAvailableCasters = new List<UnitObject>();
 
     void Awake()
@@ -37,7 +37,10 @@ public class PlayerInventory : MonoBehaviour
             {
                 if (id == allCasters[i].ID)
                 {
-                    playerAvailableCasters.Add(allCasters[i]);
+                    if (!playerAvailableCasters.Contains(allCasters[i]))
+                    {
+                        playerAvailableCasters.Add(allCasters[i]);
+                    }
                 }
             }
         }
