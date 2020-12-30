@@ -36,8 +36,9 @@ public struct RoomSetUp
     public RoomSetUp(RoomScriptable roomSO)
     {
         this.roomSO = roomSO;
-        maxEnemySize = roomSO.maxEnemySize;
-        isRandom = roomSO.isRandom;
+        bool notNull = roomSO != null;
+        maxEnemySize = notNull ? roomSO.maxEnemySize : 4;
+        isRandom = notNull ? roomSO.isRandom : false;
     }
 }
 

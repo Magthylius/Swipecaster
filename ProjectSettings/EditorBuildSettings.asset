@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/URP Samples/Scenes/SampleScene.unity
     guid: d1c3109bdb54ad54c8a2b2838528e640
   - enabled: 1
+    path: Assets/_PROJECT/Scenes/MainMenuScene.unity
+    guid: 72464caa94e509a4c8c571bfe8e175b0
+  - enabled: 1
     path: Assets/_PROJECT/Scenes/BattleScene.unity
     guid: 41c0ddaa3d24f304bb271e9c051b1d3d
   m_configObjects: {}
