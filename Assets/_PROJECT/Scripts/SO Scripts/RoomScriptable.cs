@@ -6,9 +6,12 @@ using UnityEngine.UI;
 public class RoomScriptable : ScriptableObject
 {
     [Header("Enemies")]
-
+    public string roomName;
     public List<EnemyData> enemies;
+    public int maxEnemySize;
+    public bool isRandom;
 
+    private void Awake() => roomName = name;
 }
 
 [System.Serializable]

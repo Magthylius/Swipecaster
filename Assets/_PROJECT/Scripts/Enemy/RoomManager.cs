@@ -17,7 +17,18 @@ public class RoomManager : MonoBehaviour
 
     private void Start()
     {
-   
+
+    }
+
+    public void SetRoomConfiguration(RoomConfigurationObject configuration)
+    {
+        for (int i = 0; i < configuration.ActiveRoom.Count; i++)
+        {
+            var room = configuration.ActiveRoom[i];
+            if (room == null) continue;
+
+            rooms.Add(new RoomSetUp(room));
+        }
     }
 }
 
@@ -28,11 +39,11 @@ public struct RoomSetUp
     public int maxEnemySize;
     public bool isRandom;
 
-    public RoomSetUp(RoomScriptable roomSO, int maxEnemySize, bool isRandom)
+    public RoomSetUp(RoomScriptable roomSO)
     {
         this.roomSO = roomSO;
-        this.maxEnemySize = maxEnemySize;
-        this.isRandom = isRandom;
+        maxEnemySize = roomSO.maxEnemySize;
+        isRandom = roomSO.isRandom;
     }
 }
 
