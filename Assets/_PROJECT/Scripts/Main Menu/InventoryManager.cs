@@ -17,18 +17,18 @@ public class InventoryManager : MenuCanvasPage
         databaseManager = DatabaseManager.instance;
         playerInventory = PlayerInventory.instance;
 
+        UpdateInventory();
+    }
+
+    void UpdateInventory()
+    {
+        casterInventory = new List<UnitObject>();
         casterInventory = playerInventory.PlayerCasters;
 
-        print(casterInventory.Count);
         foreach (UnitObject unit in casterInventory)
         {
             GameObject spawn = Instantiate(uiCasterObject, castersParent);
             spawn.GetComponent<CasterInventoryBehavior>().Init(unit);
         }
-    }
-
-    void Update()
-    {
-        
     }
 }
