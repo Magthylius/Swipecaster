@@ -29,5 +29,13 @@ public class CasterDataStats
 [System.Serializable]
 public class PartyData
 {
-    public List<int> casterConfig = new List<int>();
+	public string PartyName;
+    public List<string> CasterConfig;
+
+    public PartyData(string partyName, List<string> casterConfig)
+    {
+	    PartyName = partyName;
+	    CasterConfig = casterConfig;
+    }
+    
 }

@@ -14,7 +14,7 @@ public class InventoryLoad : MonoBehaviour
     {
         databaseManager = DatabaseManager.instance;
 
-        for (int i = 0; i < databaseManager.AllCasters.Count; i++)
+        for (int i = 0; i < databaseManager.PlayerCasters.Count; i++)
         {
             GameObject temp = Instantiate(PanelPrefab, transform.position, Quaternion.identity, transform);
             GameObject tempChild = Instantiate(heroPrefab, transform.position, Quaternion.identity, temp.transform);

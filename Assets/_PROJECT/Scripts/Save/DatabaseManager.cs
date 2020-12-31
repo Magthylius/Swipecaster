@@ -8,17 +8,16 @@ using UnityEngine;
 public class DatabaseManager : MonoBehaviour
 {
     public static DatabaseManager instance;
-    
-    [SerializeField] PlayerInventoryData playerData;
+
     string casterLocation = "ScriptableObjects/Casters";
     
+    [SerializeField] PlayerInventoryData playerData;
+
     [SerializeField] List<string> liveCaster = new List<string>();
     
-    
-
     //! Get all casters in the game
-    [SerializeField] List<UnitObject> allCasters = new List<UnitObject>();
-    [SerializeField] List<UnitObject> playerAvailableCasters = new List<UnitObject>();
+    List<UnitObject> allCasters = new List<UnitObject>();
+    List<UnitObject> playerAvailableCasters = new List<UnitObject>();
     
 
     void Awake()
@@ -26,7 +25,7 @@ public class DatabaseManager : MonoBehaviour
         if (instance != null)
             Destroy(this.gameObject);
         else
-            instance = this;
+            instance = this;    
         
         UnitObject[] tempCaster = Resources.LoadAll<UnitObject>(casterLocation);
 
@@ -51,12 +50,6 @@ public class DatabaseManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    void Start()
-    {
-
-
-    }
-    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.O))
@@ -67,6 +60,11 @@ public class DatabaseManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             SaveManager.Load();
+        }
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+
         }
     }
 
@@ -94,15 +92,25 @@ public class DatabaseManager : MonoBehaviour
         //! Check if the save file didn't exist and make a new save with default character
         if (playerData == null)
         {
-            playerData = new PlayerInventoryData();
-            playerData.casterDatabase.Add(new CasterDataStats("001", 1, 0, true));
-            playerData.casterDatabase.Add(new CasterDataStats("002", 1, 0, true));
-            playerData.casterDatabase.Add(new CasterDataStats("003", 1, 0, true));
-            playerData.casterDatabase.Add(new CasterDataStats("004", 1, 0, true));
-            SaveManager.Save(playerData);
+            GenerateNewSaveData();
         }
     }
-
+    
+    public void GenerateNewSaveData()
+    {
+        playerData = new PlayerInventoryData();
+        playerData.casterDatabase.Add(new CasterDataStats("001", 1, 0, true));
+        playerData.casterDatabase.Add(new CasterDataStats("002", 1, 0, true));
+        playerData.casterDatabase.Add(new CasterDataStats("003", 1, 0, true));
+        playerData.casterDatabase.Add(new CasterDataStats("004", 1, 0, true));
+        playerData.partyDatabase.Add(new PartyData("Team A", new List<string>(){"001", "002", "003", "004"}));
+        playerData.partyDatabase.Add(new PartyData("Team B", new List<string>(){"001", "002", "003", "004"}));
+        playerData.partyDatabase.Add(new PartyData("Team C", new List<string>(){"001", "002", "003", "004"}));
+        playerData.partyDatabase.Add(new PartyData("Team D", new List<string>(){"001", "002", "003", "004"}));
+        SaveManager.Save(playerData);
+        playerData = null;
+    }
+    
     public void SetCasterToAlive(CasterDataStats _caster)
     {
         int CDIndex = playerData.casterDatabase.IndexOf(_caster);
@@ -183,7 +191,8 @@ public class DatabaseManager : MonoBehaviour
     public List<CasterDataStats> GetCasterDataStats() => playerData.casterDatabase;
     public List<UnitObject> PlayerCasters => playerAvailableCasters;
     public List<UnitObject> AllCasters => allCasters;
-    
+    public PlayerInventoryData GetPlayerData() => playerData;
+
     #endregion
 
 

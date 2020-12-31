@@ -167,6 +167,7 @@
             </e>
             <e p="Save" t="Include">
               <e p="DatabaseManager.cs" t="Include" />
+              <e p="DatabaseManagerEditor.cs" t="Include" />
               <e p="SaveManager.cs" t="Include" />
               <e p="SaveTest.cs" t="Include" />
             </e>
