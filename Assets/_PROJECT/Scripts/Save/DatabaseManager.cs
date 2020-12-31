@@ -10,10 +10,16 @@ public class DatabaseManager : MonoBehaviour
     public static DatabaseManager instance;
     
     [SerializeField] PlayerInventoryData playerData;
+    string casterLocation = "ScriptableObjects/Casters";
     
     [SerializeField] List<string> liveCaster = new List<string>();
+    
+    
 
-    PlayerInventory playerInventory;
+    //! Get all casters in the game
+    [SerializeField] List<UnitObject> allCasters = new List<UnitObject>();
+    [SerializeField] List<UnitObject> playerAvailableCasters = new List<UnitObject>();
+    
 
     void Awake()
     {
@@ -22,13 +28,13 @@ public class DatabaseManager : MonoBehaviour
         else
             instance = this;
         
-        DontDestroyOnLoad(this.gameObject);
-    }
+        UnitObject[] tempCaster = Resources.LoadAll<UnitObject>(casterLocation);
 
-    void Start()
-    {
-        playerInventory = PlayerInventory.instance;
-
+        foreach (var _caster in tempCaster)
+        {
+            allCasters.Add(_caster);
+        }
+        
         LoadData();
 
         foreach (var caster in playerData.casterDatabase)
@@ -40,8 +46,14 @@ public class DatabaseManager : MonoBehaviour
         }
 
         CheckCasterIsAlive();
-
         RefreshInventory();
+        
+        DontDestroyOnLoad(this.gameObject);
+    }
+
+    void Start()
+    {
+
 
     }
     
@@ -60,9 +72,21 @@ public class DatabaseManager : MonoBehaviour
 
     public void RefreshInventory()
     {
-        playerInventory.UpdatePlayerInventory(liveCaster);
+        foreach (var id in liveCaster)
+        {
+            for (int i = 0; i < allCasters.Count; i++)
+            {
+                if (id == allCasters[i].ID)
+                {
+                    if (!playerAvailableCasters.Contains(allCasters[i]))
+                    {
+                        playerAvailableCasters.Add(allCasters[i]);
+                    }
+                }
+            }
+        }
     }
-    
+
     void LoadData()
     {
         playerData = SaveManager.Load();
@@ -115,9 +139,9 @@ public class DatabaseManager : MonoBehaviour
             //! maybe a duplicate function?
             print("Already Exist");
 
-            for (int i = 0; i < playerInventory.PlayerCasters.Count; i++)
+            for (int i = 0; i < playerAvailableCasters.Count; i++)
             {
-                if (playerInventory.PlayerCasters[i].ID == _id)
+                if (playerAvailableCasters[i].ID == _id)
                 {
                     playerData.casterDatabase[i].Mastery++;
                     break;
@@ -127,9 +151,9 @@ public class DatabaseManager : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < playerInventory.AllCasters.Count; i++)
+            for (int i = 0; i < allCasters.Count; i++)
             {
-                if (playerInventory.AllCasters[i].ID == _id)
+                if (allCasters[i].ID == _id)
                 {
                     playerData.casterDatabase.Add(new CasterDataStats(_id, 1, 0, true));
                     break;
@@ -157,6 +181,8 @@ public class DatabaseManager : MonoBehaviour
     
     public List<PartyData> GetPartyData() => playerData.partyDatabase;
     public List<CasterDataStats> GetCasterDataStats() => playerData.casterDatabase;
+    public List<UnitObject> PlayerCasters => playerAvailableCasters;
+    public List<UnitObject> AllCasters => allCasters;
     
     #endregion
 
