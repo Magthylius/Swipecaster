@@ -1,4 +1,3 @@
-using ConversionFunctions;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +11,7 @@ public class MothLamp : CasterSkill
         for (int i = 0; i < casterEntityPos.Count; i++)
         {
             var p = casterEntityPos[i];
-            positionAvailable[i] = p.childCount != 0;
+            positionAvailable.Add(p.childCount != 0);
         }
 
         int index = -1;
@@ -29,10 +28,16 @@ public class MothLamp : CasterSkill
 
         casterEntityPos[index].gameObject.SetActive(true);
         GetUnit.GetBaseUnit.InstantiateSummon(casterEntityPos[index].position, Quaternion.identity, casterEntityPos[index]);
+
+        battleStage.RegroupLeftPositions(false);
     }
 
     public override TargetInfo GetActiveSkillTargets(Unit focusTarget, List<Unit> allCasters, List<Unit> allFoes)
     {
         return TargetInfo.Null;
     }
+
+    public MothLamp() : base() { }
+    public MothLamp(float damageMultiplier, int effectDuration, int maxSkillCharge, int chargeGainPerTurn, Unit unit)
+        : base(damageMultiplier, effectDuration, maxSkillCharge, chargeGainPerTurn, unit) { }
 }
