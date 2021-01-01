@@ -14,8 +14,6 @@ public class SceneTransitionManager : MonoBehaviour
     CanvasGroupFader canvasCG;
     string targetScene;
 
-    AsyncOperation asyncLoad;
-
     void OnEnable()
     {
         
@@ -44,18 +42,12 @@ public class SceneTransitionManager : MonoBehaviour
     void Update()
     {
         canvasCG.Step(transitionSpeed * Time.unscaledDeltaTime);
-        if (Time.unscaledDeltaTime >= 0.01f) print(Time.unscaledDeltaTime); 
+        //if (Time.unscaledDeltaTime >= 0.01f) print(Time.unscaledDeltaTime); 
     }
 
     void OnSceneLoad(Scene scene, LoadSceneMode mode)
     {
-        //StartCoroutine(Delay(1f));
-        while (!asyncLoad.isDone)
-        {
-
-        }
-
-        DeactivateTransition();
+        //StartCoroutine(SceneLoadDelay(1f));
     }
 
     public void ActivateTransition(string transitionTarget)
@@ -80,12 +72,27 @@ public class SceneTransitionManager : MonoBehaviour
         if (canvasCG.State == CanvasGroupFader.CanvasState.FADE_IN)
         {
             SetObjectActives(true);
-            asyncLoad = SceneManager.LoadSceneAsync(targetScene);
+            StartCoroutine(LoadAsyncScene());
         }
     }
 
-    IEnumerator Delay(float time)
-    {
+    IEnumerator SceneLoadDelay(float time)
+    {  
         yield return new WaitForSeconds(time);
-    }    
+        print("activation2");
+        DeactivateTransition();
+    }
+    
+    IEnumerator LoadAsyncScene()
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(targetScene);
+
+        while(!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
+        print("activation1");
+        DeactivateTransition();
+    }
 }

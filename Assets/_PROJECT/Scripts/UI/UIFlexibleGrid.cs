@@ -92,7 +92,6 @@ public class UIFlexibleGrid : LayoutGroup
 
             lastRowOffset = (parentWidth - padding.left - padding.right - lastRowWidth) * 0.5f;
             lastRowOffset -= centerXOffset;
-            print(lastRowOffset);
         }
 
         for (int i = 0; i < rectChildren.Count; i++)
