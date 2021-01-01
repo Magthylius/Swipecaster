@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using LerpFunctions;
+using Unity.Collections;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -33,6 +34,12 @@ public class MainMenuManager : MonoBehaviour
     bool showBottomOverlay = true;
     bool allowOverlayTransition = false;
 
+    [Header("Energy")]
+    [Min(1f)] public float maxEnergy;
+    public Image energyFillImage;
+    public bool startWithMaxEnergy;
+    [SerializeField] float currentEnergy;
+
     void Awake()
     {
         if (instance != null) Destroy(gameObject);
@@ -48,6 +55,9 @@ public class MainMenuManager : MonoBehaviour
         currentPage.transform.SetAsLastSibling();
 
         bottomOverlayFR = new FlexibleRect(bottomOverlay);
+
+        if (startWithMaxEnergy) currentEnergy = maxEnergy;
+        UpdateEnergyFill();
     }
 
     void Update()
@@ -90,6 +100,17 @@ public class MainMenuManager : MonoBehaviour
         newPage = page;
         newPage.transform.SetAsLastSibling();
         pageTransition = true;
+    }
+
+    public void UpdateEnergyFill()
+    {
+        energyFillImage.fillAmount = currentEnergy / maxEnergy;
+    }
+
+    public void SpendEnergy(float energyCost)
+    {
+        currentEnergy -= energyCost;
+        UpdateEnergyFill();
     }
 
     #region Accessors
@@ -144,6 +165,14 @@ public class MainMenuManager : MonoBehaviour
     {
         if (pageTransition || settingsCanvas == currentPage) return;
         ActivateCanvas(settingsCanvas);
+    }
+    #endregion
+
+    #region Debugs
+    [ContextMenu("Spend 20 Energy")]
+    public void DEBUG_Spend20Energy()
+    {
+        SpendEnergy(20f);
     }
     #endregion
 }
