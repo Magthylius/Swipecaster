@@ -32,6 +32,7 @@ public class UnitObject : ScriptableObject
 	
     [Header("Skill")]
     [TextArea(1, 5)] public string SkillDescription;
+    public GameObject SummonPrefab;
 
     [Header("UI/Visual")]
     public GameObject FullBodyPrefab;
@@ -64,6 +65,12 @@ public class UnitObject : ScriptableObject
         spriteRenderer.sprite = FullBodyArt;
 
         return unitObject;
+    }
+
+    public GameObject InstantiateSummon(Vector3 position, Quaternion rotation, Transform parent)
+    {
+        if (SummonPrefab == null) return null;
+        return Instantiate(SummonPrefab, position, rotation, parent);
     }
 
     #region Public Calculation Method

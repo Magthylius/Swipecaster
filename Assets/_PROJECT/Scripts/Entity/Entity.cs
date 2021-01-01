@@ -42,7 +42,7 @@ public abstract class Entity : MonoBehaviour
 
     #region Protected Virtual Methods
 
-    protected virtual void Awake() { }
+    protected virtual void Awake() => UpdateCalculatedStats();
     protected virtual void OnValidate() => CalculateActualStats();
 
     #endregion
