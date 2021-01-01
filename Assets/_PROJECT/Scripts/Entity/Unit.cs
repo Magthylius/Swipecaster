@@ -12,6 +12,7 @@ public abstract class Unit : Entity
     private AttackStatus _attackStatus = AttackStatus.Normal;
     private Projectile _projectile;
     private List<StatusEffect> _statusEffects;
+    [SerializeField] private bool isPlayer;
 
     [Header("Other Multipliers")]
     [SerializeField] protected float damageMultiplier = 1.0f;
@@ -49,7 +50,7 @@ public abstract class Unit : Entity
 
     #region Public Abstract Methods
 
-    public abstract void UseSkill(TargetInfo targetInfo, StageInfo stageInfo);
+    public abstract void UseSkill(TargetInfo targetInfo, BattlestageManager battleStage);
     public abstract void TakeHit(Unit damager, int damageAmount);
     public abstract void RecieveHealing(Unit healer, int healAmount);
     public abstract void DoAction(TargetInfo targetInfo, RuneCollection runes);
@@ -69,6 +70,9 @@ public abstract class Unit : Entity
     #endregion
 
     #region Public Methods
+
+    public void SetIsPlayer(bool statement) => isPlayer = statement;
+    public bool GetIsPlayer => isPlayer;
 
     public void SetAttackStatus(AttackStatus status) => _attackStatus = status;
     public AttackStatus GetAttackStatus => _attackStatus;

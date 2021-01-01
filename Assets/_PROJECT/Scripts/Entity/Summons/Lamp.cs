@@ -14,6 +14,7 @@ public class Lamp : Summon
         _latestDamager = damager;
         damager.TakeHit(damager, Round(damageAmount * reboundPercent));
     }
+
     protected override void EndTurnMethods()
     {
         base.EndTurnMethods();
@@ -23,6 +24,9 @@ public class Lamp : Summon
     protected override void Awake()
     {
         base.Awake();
+
+        SetIsPlayer(true);
         reboundPercent = 1.0f;
+        SetUnitPriority(2);
     }
 }

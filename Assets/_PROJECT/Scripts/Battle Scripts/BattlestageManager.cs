@@ -173,9 +173,8 @@ public class BattlestageManager : MonoBehaviour
 
         var unit = unitObject.AsUnit();
         TargetInfo targetInfo = unit.GetActiveSkill.GetActiveSkillTargets(target, (List<Unit>)GetCasterTeamAsUnit(), (List<Unit>)GetEnemyTeamAsUnit());
-        StageInfo stageInfo = new StageInfo(casterPositions.ToList(), enemyPositions.ToList(), casterEntityPositions.ToList(), enemyEntityPositions.ToList(), this);
-
-        unit.UseSkill(targetInfo, stageInfo);
+        
+        unit.UseSkill(targetInfo, this);
     }
 
     public void RegroupAllPositons(bool instant)
@@ -264,7 +263,7 @@ public class BattlestageManager : MonoBehaviour
         //! Spawn casters
         for (int i = 0; i < player.UnitLoadOut.Count; i++)
         {
-            var unitObject = player.UnitLoadOut[i].BaseUnit;
+            var unitObject = player.UnitLoadOut[i].GetBaseUnit;
             if (unitObject)
             {
                 playerTeam.Add(unitObject.InstantiateUnit(casterPositions[i].position, Quaternion.identity, casterPositions[i]));

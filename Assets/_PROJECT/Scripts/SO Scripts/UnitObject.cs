@@ -39,6 +39,7 @@ public class UnitObject : ScriptableObject
     public GameObject SpriteHolderPrefab;
     public Sprite PortraitArt;
     public Sprite FullBodyArt;
+    public Sprite SummonArt;
 	
 	public void SyncDataForCaster(CasterDataStats data)
 	{
@@ -69,8 +70,15 @@ public class UnitObject : ScriptableObject
 
     public GameObject InstantiateSummon(Vector3 position, Quaternion rotation, Transform parent)
     {
-        if (SummonPrefab == null) return null;
-        return Instantiate(SummonPrefab, position, rotation, parent);
+        GameObject summonObject = null;
+        if (SummonPrefab == null) return summonObject;
+        summonObject = Instantiate(SummonPrefab, position, rotation, parent);
+
+        var spriteRenderer = summonObject.GetComponent<SpriteRenderer>();
+        if (spriteRenderer == null || SummonArt == null) return summonObject;
+        spriteRenderer.sprite = SummonArt;
+
+        return summonObject;
     }
 
     #region Public Calculation Method

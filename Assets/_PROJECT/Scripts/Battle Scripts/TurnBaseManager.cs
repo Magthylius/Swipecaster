@@ -95,8 +95,12 @@ public class TurnBaseManager : MonoBehaviour
         print("Is " + caster.name + " turn");
         isPlayerTurn = true;
 
-        infoManager.UpdateCasterProtrait(GetCurrentCaster().AsUnit());
-        infoManager.UpdateSkillChargeBar(GetCurrentCaster().AsUnit());
+        var current = GetCurrentCaster().AsUnit();
+        if (current == null) return;
+        infoManager.UpdateCasterProtrait(current);
+        infoManager.UpdateSkillChargeBar(current);
+
+        current.InvokeTurnBeginEvent();
     }
 
     void EnemyTurn()
@@ -108,6 +112,10 @@ public class TurnBaseManager : MonoBehaviour
 
         highlighter.SetActive(false);
         print("Is " + enemy.name + " turn");
+
+        var current = GetCurrentCaster().AsUnit();
+        if (current != null) current.InvokeTurnBeginEvent();
+
         OnEnemyAttack();
     }
 
@@ -135,7 +143,7 @@ public class TurnBaseManager : MonoBehaviour
 
     #endregion
     
-    void EndTurn()
+    public void EndTurn()
     {
 
         if (battlestageManager.GetCastersTeam().Count == 0)
@@ -150,11 +158,14 @@ public class TurnBaseManager : MonoBehaviour
             print("Enemy Game Over");
             return;
         }
-        
+
+        var current = GetCurrentCaster().AsUnit();
+        if (current != null) current.InvokeTurnEndEvent();
+
         switch (battleState)
         {
             case GameStateEnum.CASTERTURN:
-                
+
                 //! if the entire casters team finish their turn, is enemy team turns
                 if (casterUnitTurn >= castersOrderList.Count - 1)
                 {

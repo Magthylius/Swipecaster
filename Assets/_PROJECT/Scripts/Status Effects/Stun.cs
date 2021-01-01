@@ -17,8 +17,7 @@ public class Stun : StatusEffect
     {
         if (_turnBaseManager == null) return;
 
-        // if (player) end turn code
-        // if (enemy) do not attack
+        _turnBaseManager.EndTurn();
     }
     public override void DoEffectOnAction(Unit target) { }
     public override void DoOnHitEffect(Unit target) { }

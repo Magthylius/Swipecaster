@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Caster : Unit
+public abstract class Caster : Unit
 {
     #region Variable Definitions
 
@@ -18,9 +18,9 @@ public class Caster : Unit
 
     #region Public Override Methods
 
-    public override void UseSkill(TargetInfo targetInfo, StageInfo stageInfo)
+    public override void UseSkill(TargetInfo targetInfo, BattlestageManager battleStage)
     {
-        GetActiveSkill.TriggerSkill(targetInfo, stageInfo);
+        GetActiveSkill.TriggerSkill(targetInfo, battleStage);
     }
     public override void TakeHit(Unit damager, int damageAmount) => InvokeHitEvent(damager, damageAmount);
     public override void RecieveHealing(Unit healer, int healAmount) => AddCurrentHealth(Mathf.Abs(healAmount));
@@ -66,6 +66,16 @@ public class Caster : Unit
     public ArchTypeMajor ArchMajor => archMajor;
     public void SetArchMinor(ArchTypeMinor minor) => archMinor = minor;
     public ArchTypeMinor ArchMinor => archMinor;
+
+    #endregion
+
+    #region Protected Override Methods
+
+    protected override void Awake()
+    {
+        base.Awake();
+        SetIsPlayer(true);
+    }
 
     #endregion
 }

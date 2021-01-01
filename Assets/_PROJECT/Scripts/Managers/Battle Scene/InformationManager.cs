@@ -25,7 +25,7 @@ public class InformationManager : MonoBehaviour
     {
         if (unit == null) return;
 
-        Sprite spriteArt = unit.BaseUnit.PortraitArt;
+        Sprite spriteArt = unit.GetBaseUnit.PortraitArt;
         if (spriteArt == null) return;
         casterPortrait.sprite = spriteArt;
     }

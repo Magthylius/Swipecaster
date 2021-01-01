@@ -9,7 +9,7 @@ public abstract class ActiveSkill
     protected int _chargeGainPerTurn = 0;
     protected Unit _unit = null;
 
-    public abstract void TriggerSkill(TargetInfo targetInfo, StageInfo stageInfo);
+    public abstract void TriggerSkill(TargetInfo targetInfo, BattlestageManager battleStage);
     public abstract TargetInfo GetActiveSkillTargets(Unit focusTarget, List<Unit> allCasters, List<Unit> allFoes);
 
     protected int Round(float number) => Mathf.RoundToInt(number);

@@ -10,7 +10,7 @@ public class HardCover : CasterSkill
     public override TargetInfo GetActiveSkillTargets(Unit focusTarget, List<Unit> allCasters, List<Unit> allFoes)
         => new TargetInfo(focusTarget, null, null, allCasters, allFoes);
 
-    public override void TriggerSkill(TargetInfo targetInfo, StageInfo stageInfo)
+    public override void TriggerSkill(TargetInfo targetInfo, BattlestageManager battleStage)
     {
         if (targetInfo.Foes == null || targetInfo.Foes.Count == 0) return;
 

@@ -7,7 +7,7 @@ public class TeapotCrackpot : CasterSkill
     public override string Description
         => "Heals team with 10% of current ATK, adds deflection by 15%";
 
-    public override void TriggerSkill(TargetInfo targetInfo, StageInfo stageInfo)
+    public override void TriggerSkill(TargetInfo targetInfo, BattlestageManager battleStage)
     {
         
     }

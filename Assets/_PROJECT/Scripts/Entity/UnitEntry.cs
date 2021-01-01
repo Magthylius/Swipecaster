@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class UnitEntry : Entity
 {
-    public int UnitID => Convert.ToInt32(BaseUnit.ID);
+    public int UnitID => Convert.ToInt32(GetBaseUnit.ID);
 }
