@@ -9437,7 +9437,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1647422310968188066, guid: d9b3e6a5e5e9ce948be1d3ffbec8f134, type: 3}
   m_PrefabInstance: {fileID: 1990042025}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1907414775}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d8b16499029a0d4a9e2f86c2037d4f9, type: 3}
@@ -21953,6 +21953,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897636109}
   m_CullTransparentMesh: 1
+--- !u!1 &1907414775 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2186537070390013515, guid: d9b3e6a5e5e9ce948be1d3ffbec8f134, type: 3}
+  m_PrefabInstance: {fileID: 1990042025}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1920931622
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22714,7 +22719,7 @@ PrefabInstance:
     - target: {fileID: 2182923469340822952, guid: d9b3e6a5e5e9ce948be1d3ffbec8f134, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1922097427}
+      objectReference: {fileID: 1907414775}
     - target: {fileID: 2182923469340822952, guid: d9b3e6a5e5e9ce948be1d3ffbec8f134, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: PartyGroupBehavior, Assembly-CSharp
