@@ -7,13 +7,17 @@ using UnityEngine.UI;
 public class SettingsManager : MonoBehaviour
 {
     public static SettingsManager instance;
+    SceneTransitionManager stManager;
 
+    [Header("Setup")]
     public Image meterLeft1;
     public Image meterLeft2;
     public Image meterRight1;
     public Image meterRight2;
     public CanvasGroup settingsCanvas;
+    public string mainMenuScenePath;
 
+    [Header("Settings")]
     public float chargeSpeed = 1f;
     public float transitionSpeed = 5f;
     float trueCharge = 0f;
@@ -26,6 +30,7 @@ public class SettingsManager : MonoBehaviour
     float maxCharge = 1.0f;
     float minCharge = 0.0f;
 
+    [HideInInspector]
     public UnityEvent pausedEvent;
     public UnityEvent unpausedEvent;
 
@@ -37,6 +42,8 @@ public class SettingsManager : MonoBehaviour
 
     void Start()
     {
+        stManager = SceneTransitionManager.instance;
+
         meterLeft1.fillAmount = 0f;
         meterLeft2.fillAmount = 0f;
         meterRight1.fillAmount = 0f;
@@ -91,6 +98,8 @@ public class SettingsManager : MonoBehaviour
                 {
                     allowCharge = false;
                     trueCharge = maxCharge;
+
+                    stManager.ActivateTransition(mainMenuScenePath);
                 }
             }
             else

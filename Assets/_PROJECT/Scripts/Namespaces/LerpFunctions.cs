@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
 
 namespace LerpFunctions
 {
@@ -141,7 +142,7 @@ namespace LerpFunctions
     [Serializable]
     public class CanvasGroupFader
     {
-        enum CanvasState
+        public enum CanvasState
         {
             FADE_OUT,
             FADE_IN
@@ -150,19 +151,21 @@ namespace LerpFunctions
         public CanvasGroup canvas;
         public bool affectsTouch;
         public float precision;
+        public UnityEvent fadeEndedEvent;
 
         CanvasState state;
         bool allowFade;
 
-        public CanvasGroupFader(CanvasGroup canvasGroup, bool startsFadeIn, bool canAffectTouch, float alphaPrecision = 0.001f)
+        public CanvasGroupFader(CanvasGroup canvasGroup, bool setFadeInState, bool canAffectTouch, float alphaPrecision = 0.001f)
         {
             canvas = canvasGroup;
             affectsTouch = canAffectTouch;
-            if (startsFadeIn) SetStateFadeIn();
+            if (setFadeInState) SetStateFadeIn();
             else SetStateFadeOut();
 
             allowFade = false;
             precision = alphaPrecision;
+            fadeEndedEvent = new UnityEvent();
         }
 
         public void Step(float speed)
@@ -183,6 +186,8 @@ namespace LerpFunctions
                             canvas.blocksRaycasts = true;
                             canvas.interactable = true;
                         }
+
+                        fadeEndedEvent.Invoke();
                     }
                 }
                 else
@@ -199,6 +204,8 @@ namespace LerpFunctions
                             canvas.blocksRaycasts = false;
                             canvas.interactable = false;
                         }
+
+                        fadeEndedEvent.Invoke();
                     }
                 }
             }
@@ -225,6 +232,7 @@ namespace LerpFunctions
         public void SetStateFadeIn() => state = CanvasState.FADE_IN;
         public void SetStateFadeOut() => state = CanvasState.FADE_OUT;
         public bool isFading => allowFade;
+        public CanvasState State => state;
     }
 
     public class Lerp : MonoBehaviour
