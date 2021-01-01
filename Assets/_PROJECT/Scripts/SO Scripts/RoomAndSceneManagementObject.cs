@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [CreateAssetMenu(menuName = "Unit/Room Configuration Object")]
-public class RoomConfigurationObject : ScriptableObject
+public class RoomAndSceneManagementObject : ScriptableObject
 {
     private const string _roomLocation = "ScriptableObjects/Enemy/Rooms";
     private static List<RoomScriptable> _resourceRooms = new List<RoomScriptable>();
