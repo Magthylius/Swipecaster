@@ -168,9 +168,10 @@ public class BattlestageManager : MonoBehaviour
     public void Button_ActivateSkill()
     {
         var target = selectedTarget.AsUnit();
-        var unit = turnBaseManager.GetCurrentCaster().AsUnit();
-        if (unit == null) return;
+        var unitObject = turnBaseManager.GetCurrentCaster();
+        if (unitObject == null) return;
 
+        var unit = unitObject.AsUnit();
         TargetInfo targetInfo = unit.GetActiveSkill.GetActiveSkillTargets(target, (List<Unit>)GetCasterTeamAsUnit(), (List<Unit>)GetEnemyTeamAsUnit());
         StageInfo stageInfo = new StageInfo(casterPositions.ToList(), enemyPositions.ToList(), casterEntityPositions.ToList(), enemyEntityPositions.ToList(), this);
 

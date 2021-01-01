@@ -58,6 +58,7 @@ public abstract class Entity : MonoBehaviour
 
     protected void UpdateCalculatedStats()
     {
+        if (baseUnit == null) return;
         SetCurrentAttack(GetBaseAttack);
         SetCurrentDefence(GetBaseDefence);
         SetCurrentHealth(GetMaxHealth);

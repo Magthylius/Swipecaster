@@ -63,6 +63,8 @@ public class EnergyManager : MonoBehaviour
         if (scene.name == "MainMenuScene") CheckMainMenu();
     }
 
+    public float GetCurrentEnergy => currentEnergy;
+
     public void AddEnergy(float energyAdd)
     {
         currentEnergy += energyAdd;
