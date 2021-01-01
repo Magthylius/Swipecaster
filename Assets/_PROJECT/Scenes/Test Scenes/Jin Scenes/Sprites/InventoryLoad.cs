@@ -5,25 +5,25 @@ using UnityEngine.UI;
 
 public class InventoryLoad : MonoBehaviour
 {
-    PlayerInventory playerInventory;
+    DatabaseManager databaseManager;
 
     public GameObject PanelPrefab;
     public GameObject heroPrefab;
 
     void Start()
     {
-        playerInventory = PlayerInventory.instance;
+        databaseManager = DatabaseManager.instance;
 
-        for (int i = 0; i < playerInventory.AllCasters.Count; i++)
+        for (int i = 0; i < databaseManager.PlayerCasters.Count; i++)
         {
             GameObject temp = Instantiate(PanelPrefab, transform.position, Quaternion.identity, transform);
             GameObject tempChild = Instantiate(heroPrefab, transform.position, Quaternion.identity, temp.transform);
-            if (playerInventory.AllCasters[i].PortraitArt)
+            if (databaseManager.AllCasters[i].PortraitArt)
             {
-                tempChild.GetComponent<Image>().sprite = playerInventory.AllCasters[i].PortraitArt;
+                tempChild.GetComponent<Image>().sprite = databaseManager.AllCasters[i].PortraitArt;
             }
 
-            tempChild.GetComponent<MenuUnitSaver>().unit = playerInventory.AllCasters[i];
+            tempChild.GetComponent<MenuUnitSaver>().unit = databaseManager.AllCasters[i];
         }
 
         this.GetComponent<MenuParty>().updateTeam();

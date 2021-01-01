@@ -117,16 +117,19 @@
             </e>
             <e p="Inventory" t="Include">
               <e p="InventoryDebug.cs" t="Include" />
-              <e p="PlayerInventory.cs" t="Include" />
               <e p="PlayerInventoryData.cs" t="Include" />
             </e>
             <e p="Main Menu" t="Include">
+              <e p="CasterInventoryBehavior.cs" t="Include" />
               <e p="GachaCanvasManager.cs" t="Include" />
               <e p="GachaConnectorBehavior.cs" t="Include" />
+              <e p="InventoryManager.cs" t="Include" />
               <e p="LevelSelectBehavior.cs" t="Include" />
               <e p="MapSelectionManager.cs" t="Include" />
               <e p="MenuCanvasPage.cs" t="Include" />
               <e p="PartyCanvasManager.cs" t="Include" />
+              <e p="PartyConfigurationBehavior.cs" t="Include" />
+              <e p="PartyGroupBehavior.cs" t="Include" />
               <e p="ShopButtonBehavior.cs" t="Include" />
               <e p="ShopCanvasManager.cs" t="Include" />
             </e>
@@ -164,12 +167,15 @@
             </e>
             <e p="Save" t="Include">
               <e p="DatabaseManager.cs" t="Include" />
+              <e p="DatabaseManagerEditor.cs" t="Include" />
               <e p="SaveManager.cs" t="Include" />
               <e p="SaveTest.cs" t="Include" />
             </e>
             <e p="SO Scripts" t="Include">
               <e p="CasterParty.cs" t="Include" />
+              <e p="GachaBanner.cs" t="Include" />
               <e p="MenuUnit.cs" t="Include" />
+              <e p="RoomConfigurationObject.cs" t="Include" />
               <e p="RoomScriptable.cs" t="Include" />
               <e p="UnitObject.cs" t="Include" />
             </e>

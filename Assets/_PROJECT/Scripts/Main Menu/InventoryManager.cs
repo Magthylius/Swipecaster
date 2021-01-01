@@ -5,7 +5,6 @@ using UnityEngine;
 public class InventoryManager : MenuCanvasPage
 {
     DatabaseManager databaseManager;
-    PlayerInventory playerInventory;
 
     List<UnitObject> casterInventory;
 
@@ -17,7 +16,6 @@ public class InventoryManager : MenuCanvasPage
     void Start()
     {
         databaseManager = DatabaseManager.instance;
-        playerInventory = PlayerInventory.instance;
 
         UpdateCasterInventory();
     }
@@ -27,7 +25,7 @@ public class InventoryManager : MenuCanvasPage
         ClearCasterInventory();
         databaseManager.RefreshInventory();
         casterInventory = new List<UnitObject>();
-        casterInventory = playerInventory.PlayerCasters;
+        casterInventory = databaseManager.PlayerCasters;
 
         foreach (UnitObject unit in casterInventory)
         {
