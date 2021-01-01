@@ -162,9 +162,6 @@
               <e p="ConversionFunctions.cs" t="Include" />
               <e p="LerpFunctions.cs" t="Include" />
             </e>
-            <e p="Party" t="Include">
-              <e p="PartyUnitID.cs" t="Include" />
-            </e>
             <e p="Player" t="Include">
               <e p="Player.cs" t="Include" />
             </e>
@@ -188,6 +185,7 @@
               <e p="MenuUnit.cs" t="Include" />
               <e p="RoomAndSceneManagementObject.cs" t="Include" />
               <e p="RoomScriptable.cs" t="Include" />
+              <e p="SummonObject.cs" t="Include" />
               <e p="UnitObject.cs" t="Include" />
             </e>
             <e p="Status Effects" t="Include">

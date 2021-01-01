@@ -106,11 +106,11 @@
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Save/DatabaseManagerEditor.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/Battle Scene/InformationManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scenes/Test Scenes/Jin Scenes/Sprites/MenuParty.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyGroupBehavior.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/SO Scripts/CasterParty.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Inventory/PartyUnitID.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyCasterInventoryManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyInventoryBehaviour.cs" />
+        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyGroupBehavior.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyConfigurationBehavior.cs" />
       </list>
     </option>

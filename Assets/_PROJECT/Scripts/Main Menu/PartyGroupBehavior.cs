@@ -12,25 +12,40 @@ public class PartyGroupBehavior : MonoBehaviour
     public TextMeshProUGUI partyName;
     public TextMeshProUGUI squadNumber;
 
+    List<UnitObject> castersList;
+
     void Start()
     {
         UpdateImages();
-
-        partyName.text = party.partyName;
+        UpdatePartyName();
+        UpdateCasters();
         squadNumber.text = (transform.GetSiblingIndex() + 1).ToString();
     }
 
     public void UpdateAll()
     {
         UpdateImages();
+        UpdatePartyName();
+        UpdateCasters();
     }
 
+    public void UpdateCasters()
+    {
+        castersList = new List<UnitObject>();
+        castersList = party.activeUnits;
+    }
+    
     public void UpdateImages()
     {
         for (int i = 0; i < party.activeUnits.Count; i++)
         {
             portraitList[i].sprite = party.activeUnits[i].PortraitArt;
         }
+    }
+
+    public void UpdatePartyName()
+    {
+        partyName.text = party.partyName;
     }
 
     public void SetParty(CasterParty casterParty)

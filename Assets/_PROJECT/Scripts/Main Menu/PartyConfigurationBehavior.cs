@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,17 +8,20 @@ public class PartyConfigurationBehavior : MonoBehaviour
 {
     CasterParty configurationParty;
     DatabaseManager databaseManager;
-    CasterParty curParty;
-    
+
     public Transform castersParent;
     public UIFlexibleGrid grid;
     public List<Image> portraitList;
+    public TMP_InputField partyInputField;
 
+    GameObject curParty;
+    CasterParty curPartyData;
+    List<UnitObject> castersList;
     
     List<UnitObject> casterInventory;
     List<GameObject> casterInvList;
     List<string> curPartyList;
-
+    
 
 
     void Start()
@@ -56,19 +60,21 @@ public class PartyConfigurationBehavior : MonoBehaviour
     
     public void GetCurrentOpenedParty(GameObject _party)
     {
-        curParty = _party.GetComponent<PartyGroupBehavior>().party;
+        curParty = _party;
+        curPartyData = curParty.GetComponent<PartyGroupBehavior>().party;
         curPartyList = new List<string>();
 
-        foreach (var unit in curParty.activeUnits)
+        foreach (var unit in curPartyData.activeUnits)
         {
             curPartyList.Add(unit.ID);
         }
+
+        partyInputField.text = curPartyData.partyName;
         
         UpdateCasterInventory();
         DisablePickedCaster();
 
     }
-    
     void DisablePickedCaster()
     {
 
@@ -119,7 +125,6 @@ public class PartyConfigurationBehavior : MonoBehaviour
         configurationParty = party;
         grid.CalculateLayoutInputHorizontal();
     }
-
     public void UpdatePortraits()
     {
         for (int i = 0; i < 4; i++)
@@ -128,4 +133,29 @@ public class PartyConfigurationBehavior : MonoBehaviour
             else portraitList[i].sprite = null;
         }
     }
+    
+    public void UpdateCasters()
+    {
+        castersList = new List<UnitObject>();
+        castersList = curPartyData.activeUnits;
+    }
+
+    public void Remove(int slot)
+    {
+        if ()
+        {
+            
+        }
+    }
+    
+    public void SaveParty()
+    {
+        curPartyData.partyName = partyInputField.text;
+        curParty.GetComponent<PartyGroupBehavior>().UpdateAll();
+
+        curParty = null;
+        curPartyData = null;
+    }
+    
+    
 }
