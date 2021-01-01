@@ -111,6 +111,7 @@
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Inventory/PartyUnitID.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyCasterInventoryManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyInventoryBehaviour.cs" />
+        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyConfigurationBehavior.cs" />
       </list>
     </option>
   </component>
