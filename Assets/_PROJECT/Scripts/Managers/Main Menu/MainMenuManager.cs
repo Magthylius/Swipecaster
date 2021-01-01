@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using LerpFunctions;
 using Unity.Collections;
+using TMPro;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -35,10 +36,10 @@ public class MainMenuManager : MonoBehaviour
     bool allowOverlayTransition = false;
 
     [Header("Energy")]
-    [Min(1f)] public float maxEnergy;
+    public TextMeshProUGUI energyCurrent;
+    public TextMeshProUGUI energyMax;
     public Image energyFillImage;
-    public bool startWithMaxEnergy;
-    [SerializeField] float currentEnergy;
+
 
     void Awake()
     {
@@ -55,9 +56,6 @@ public class MainMenuManager : MonoBehaviour
         currentPage.transform.SetAsLastSibling();
 
         bottomOverlayFR = new FlexibleRect(bottomOverlay);
-
-        if (startWithMaxEnergy) currentEnergy = maxEnergy;
-        UpdateEnergyFill();
     }
 
     void Update()
@@ -102,15 +100,12 @@ public class MainMenuManager : MonoBehaviour
         pageTransition = true;
     }
 
-    public void UpdateEnergyFill()
+    public void UpdateEnergyFill(float currentEnergy, float maxEnergy)
     {
         energyFillImage.fillAmount = currentEnergy / maxEnergy;
-    }
 
-    public void SpendEnergy(float energyCost)
-    {
-        currentEnergy -= energyCost;
-        UpdateEnergyFill();
+        energyCurrent.text = currentEnergy.ToString();
+        energyMax.text = maxEnergy.ToString();
     }
 
     #region Accessors
@@ -168,11 +163,4 @@ public class MainMenuManager : MonoBehaviour
     }
     #endregion
 
-    #region Debugs
-    [ContextMenu("Spend 20 Energy")]
-    public void DEBUG_Spend20Energy()
-    {
-        SpendEnergy(20f);
-    }
-    #endregion
 }
