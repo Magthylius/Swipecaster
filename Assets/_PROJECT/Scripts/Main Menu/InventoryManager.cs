@@ -23,7 +23,9 @@ public class InventoryManager : MenuCanvasPage
     public float transitionSpeed = 10f;
 
     [Header("Focus References")]
-    //! missing level and mastery
+    //! missing mastery
+    public TextMeshProUGUI levelNum;
+    public TextMeshProUGUI levelLabel;
     public TextMeshProUGUI casterName;
     public TextMeshProUGUI casterDescription;
     public TextMeshProUGUI atkStat;

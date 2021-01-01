@@ -23,7 +23,7 @@ public class SceneTransitionManager : MonoBehaviour
     void Awake()
     {
         if (instance != null)
-            Destroy(this);
+            Destroy(gameObject);
         else
         {
             instance = this;
@@ -59,6 +59,7 @@ public class SceneTransitionManager : MonoBehaviour
 
     void DeactivateTransition()
     {
+        print("called");
         SetObjectActives(false);
         canvasCG.StartFadeOut();
     }
@@ -80,7 +81,6 @@ public class SceneTransitionManager : MonoBehaviour
     IEnumerator SceneLoadDelay(float time)
     {  
         yield return new WaitForSecondsRealtime(time);
-        print("activation2");
         DeactivateTransition();
     }
     
@@ -92,8 +92,5 @@ public class SceneTransitionManager : MonoBehaviour
         {
             yield return null;
         }
-
-        //print("activation1");
-        //DeactivateTransition();
     }
 }
