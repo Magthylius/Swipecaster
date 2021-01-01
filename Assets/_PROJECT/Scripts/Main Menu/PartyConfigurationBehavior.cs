@@ -142,10 +142,7 @@ public class PartyConfigurationBehavior : MonoBehaviour
 
     public void Remove(int slot)
     {
-        if ()
-        {
-            
-        }
+
     }
     
     public void SaveParty()
