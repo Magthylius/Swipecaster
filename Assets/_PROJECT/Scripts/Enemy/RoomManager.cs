@@ -9,7 +9,7 @@ public class RoomManager : MonoBehaviour
     [SerializeField] private bool isRandom;
     [SerializeField] private List<RoomSetUp> backupRooms;
     [SerializeField] private List<RoomSetUp> rooms;
-    [SerializeField] private RoomConfigurationObject roomConfiguration;
+    [SerializeField] private RoomAndSceneManagementObject roomConfiguration;
 
     public List<RoomSetUp> Rooms => GetRooms();
     private void Awake()
