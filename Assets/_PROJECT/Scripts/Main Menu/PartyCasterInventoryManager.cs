@@ -35,8 +35,7 @@ public class PartyCasterInventoryManager : MonoBehaviour
         {
             GameObject caster = FindNextInactiveChild();
             caster.SetActive(true);
-            caster.GetComponent<CasterInventoryBehavior>().Init(unit);
-            caster.GetComponent<PartyUnitID>().SetID(unit);
+            caster.GetComponent<PartyInventoryBehaviour>().Init(unit);
         }
     }
 
@@ -85,7 +84,7 @@ public class PartyCasterInventoryManager : MonoBehaviour
         {
             for (int i = 0; i < casterInvList.Count; i++)
             {
-                if (casterInvList[i].GetComponent<PartyUnitID>().GetId() == unit)
+                if (casterInvList[i].GetComponent<PartyInventoryBehaviour>().GetId() == unit)
                 {
                     Image[] temp = casterInvList[i].GetComponentsInChildren<Image>();
                     

@@ -85,8 +85,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1055314239308554422}
   - component: {fileID: 1055314239308554416}
-  - component: {fileID: 5777788258558156020}
-  - component: {fileID: 8930107031407140217}
+  - component: {fileID: 1605197971674780032}
   m_Layer: 5
   m_Name: PartyInvObject
   m_TagString: Untagged
@@ -127,7 +126,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1055314239308554423}
   m_CullTransparentMesh: 1
---- !u!114 &5777788258558156020
+--- !u!114 &1605197971674780032
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,23 +135,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1055314239308554423}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 562d763f4bdd27840a8926861d30247e, type: 3}
+  m_Script: {fileID: 11500000, guid: c5099eb2842b4124d878f2a0c890b492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   portrait: {fileID: 1055314239069589341}
   casterName: {fileID: 9211029049335027839}
---- !u!114 &8930107031407140217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1055314239308554423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90fb0903793df0e4493e4694d97da96c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  id: 
 --- !u!1 &1055314239434667196
 GameObject:
   m_ObjectHideFlags: 0

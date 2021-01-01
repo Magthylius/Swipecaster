@@ -122,7 +122,6 @@
             </e>
             <e p="Inventory" t="Include">
               <e p="InventoryDebug.cs" t="Include" />
-              <e p="PartyUnitID.cs" t="Include" />
               <e p="PlayerInventoryData.cs" t="Include" />
             </e>
             <e p="Main Menu" t="Include">
@@ -137,6 +136,7 @@
               <e p="PartyCasterInventoryManager.cs" t="Include" />
               <e p="PartyConfigurationBehavior.cs" t="Include" />
               <e p="PartyGroupBehavior.cs" t="Include" />
+              <e p="PartyInventoryBehaviour.cs" t="Include" />
               <e p="ShopButtonBehavior.cs" t="Include" />
               <e p="ShopCanvasManager.cs" t="Include" />
             </e>
@@ -161,6 +161,9 @@
               <e p="ClampFunctions.cs" t="Include" />
               <e p="ConversionFunctions.cs" t="Include" />
               <e p="LerpFunctions.cs" t="Include" />
+            </e>
+            <e p="Party" t="Include">
+              <e p="PartyUnitID.cs" t="Include" />
             </e>
             <e p="Player" t="Include">
               <e p="Player.cs" t="Include" />
