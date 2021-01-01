@@ -44,17 +44,19 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/TurnBaseManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Inventory/PlayerInventoryData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyInventoryBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E414E10B-FE5F-4572-9FF1-22F3359DE21B/fc/d2d224c8/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/BattlestageManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Save/SaveManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Save/SaveTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Save/DatabaseManagerEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyCasterInventoryManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/UnitPositionManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/63DD8BF9-8CFA-4BA9-85AF-735EF1A56BA9/22/1a106110/String.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Camera/CameraSizeAdjuster.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Camera/CameraManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/63DD8BF9-8CFA-4BA9-85AF-735EF1A56BA9/ea/f860c90c/Array.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Inventory/PlayerInventoryData.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E414E10B-FE5F-4572-9FF1-22F3359DE21B/fc/d2d224c8/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/BattlestageManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Save/SaveManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -102,6 +104,13 @@
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Inventory/PlayerInventoryData.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Save/DatabaseManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Save/DatabaseManagerEditor.cs" />
+        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/Battle Scene/InformationManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scenes/Test Scenes/Jin Scenes/Sprites/MenuParty.cs" />
+        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyGroupBehavior.cs" />
+        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/SO Scripts/CasterParty.cs" />
+        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Inventory/PartyUnitID.cs" />
+        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyCasterInventoryManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyInventoryBehaviour.cs" />
       </list>
     </option>
   </component>
@@ -155,7 +164,8 @@
       <workItem from="1608717553841" duration="2282000" />
       <workItem from="1609144343897" duration="9685000" />
       <workItem from="1609309768055" duration="2148000" />
-      <workItem from="1609396124495" duration="4743000" />
+      <workItem from="1609396124495" duration="6245000" />
+      <workItem from="1609491224362" duration="10078000" />
     </task>
     <servers />
   </component>

@@ -67,11 +67,34 @@ namespace LerpFunctions
     {
         public RectTransform rectTransform;
         public Vector2 originalPosition;
+        public Vector2 endPosition;
+
+        bool allowTransition = false;
 
         public FlexibleRect(RectTransform rectTr)
         {
             rectTransform = rectTr;
             originalPosition = center;
+            endPosition = Vector2.zero;
+        }
+
+        public void Step(float speed, float precision = 0.1f)
+        {
+            if (allowTransition)
+            {
+                allowTransition = !Lerp(endPosition, speed, precision);
+            }
+        }
+
+        public void StartLerp(Vector2 endPos)
+        {
+            allowTransition = true;
+            endPosition = endPos;
+        }
+
+        public void EndLerp()
+        {
+            allowTransition = false;
         }
 
         public bool Lerp(Vector2 targetPosition, float speed, float precision = 0.1f)
@@ -179,6 +202,11 @@ namespace LerpFunctions
                     }
                 }
             }
+        }
+
+        public void SetAlpha(float alpha)
+        {
+            canvas.alpha = alpha;
         }
 
         public void StartFadeIn()

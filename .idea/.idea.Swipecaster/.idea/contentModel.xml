@@ -26,6 +26,7 @@
               <e p="Caster Skills" t="Include">
                 <e p="CasterSkill.cs" t="Include" />
                 <e p="HardCover.cs" t="Include" />
+                <e p="MothLamp.cs" t="Include" />
                 <e p="Shoutdown.cs" t="Include" />
                 <e p="TeapotCrackpot.cs" t="Include" />
               </e>
@@ -112,6 +113,10 @@
                 <e p="SplashOverhead.cs" t="Include" />
                 <e p="TargetInfo.cs" t="Include" />
               </e>
+              <e p="Summons" t="Include">
+                <e p="Lamp.cs" t="Include" />
+                <e p="Summon.cs" t="Include" />
+              </e>
               <e p="Unit.cs" t="Include" />
               <e p="UnitEntry.cs" t="Include" />
             </e>
@@ -128,8 +133,10 @@
               <e p="MapSelectionManager.cs" t="Include" />
               <e p="MenuCanvasPage.cs" t="Include" />
               <e p="PartyCanvasManager.cs" t="Include" />
+              <e p="PartyCasterInventoryManager.cs" t="Include" />
               <e p="PartyConfigurationBehavior.cs" t="Include" />
               <e p="PartyGroupBehavior.cs" t="Include" />
+              <e p="PartyInventoryBehaviour.cs" t="Include" />
               <e p="ShopButtonBehavior.cs" t="Include" />
               <e p="ShopCanvasManager.cs" t="Include" />
             </e>
@@ -145,6 +152,7 @@
                 <e p="TickManager.cs" t="Include" />
               </e>
               <e p="Main Menu" t="Include">
+                <e p="EnergyManager.cs" t="Include" />
                 <e p="MainMenuManager.cs" t="Include" />
               </e>
             </e>
@@ -153,6 +161,9 @@
               <e p="ClampFunctions.cs" t="Include" />
               <e p="ConversionFunctions.cs" t="Include" />
               <e p="LerpFunctions.cs" t="Include" />
+            </e>
+            <e p="Party" t="Include">
+              <e p="PartyUnitID.cs" t="Include" />
             </e>
             <e p="Player" t="Include">
               <e p="Player.cs" t="Include" />
@@ -175,7 +186,7 @@
               <e p="CasterParty.cs" t="Include" />
               <e p="GachaBanner.cs" t="Include" />
               <e p="MenuUnit.cs" t="Include" />
-              <e p="RoomConfigurationObject.cs" t="Include" />
+              <e p="RoomAndSceneManagementObject.cs" t="Include" />
               <e p="RoomScriptable.cs" t="Include" />
               <e p="UnitObject.cs" t="Include" />
             </e>
