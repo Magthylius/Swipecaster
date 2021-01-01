@@ -513,6 +513,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 749871470}
     m_Modifications:
+    - target: {fileID: 196301698707233802, guid: d9b3e6a5e5e9ce948be1d3ffbec8f134, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 23.588379
+      objectReference: {fileID: 0}
     - target: {fileID: 1647422310968188066, guid: d9b3e6a5e5e9ce948be1d3ffbec8f134, type: 3}
       propertyPath: party
       value: 
@@ -2418,7 +2422,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 233503303}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -4301,6 +4305,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 749871470}
     m_Modifications:
+    - target: {fileID: 196301698707233802, guid: d9b3e6a5e5e9ce948be1d3ffbec8f134, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 23.588379
+      objectReference: {fileID: 0}
     - target: {fileID: 1647422310968188066, guid: d9b3e6a5e5e9ce948be1d3ffbec8f134, type: 3}
       propertyPath: party
       value: 
@@ -17599,7 +17607,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1874627584}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -18540,6 +18548,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 749871470}
     m_Modifications:
+    - target: {fileID: 196301698707233802, guid: d9b3e6a5e5e9ce948be1d3ffbec8f134, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 23.588379
+      objectReference: {fileID: 0}
     - target: {fileID: 1647422310968188066, guid: d9b3e6a5e5e9ce948be1d3ffbec8f134, type: 3}
       propertyPath: party
       value: 
@@ -21840,6 +21852,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 749871470}
     m_Modifications:
+    - target: {fileID: 196301698707233802, guid: d9b3e6a5e5e9ce948be1d3ffbec8f134, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 23.588379
+      objectReference: {fileID: 0}
     - target: {fileID: 1647422310968188066, guid: d9b3e6a5e5e9ce948be1d3ffbec8f134, type: 3}
       propertyPath: party
       value: 
