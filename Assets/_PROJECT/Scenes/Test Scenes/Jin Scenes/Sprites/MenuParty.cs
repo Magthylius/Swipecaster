@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,15 @@ public class MenuParty : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     { 
-        updateTeam();
+        
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            updateTeam();
+        }
     }
 
     public void updateTeam()
