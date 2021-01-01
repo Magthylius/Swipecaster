@@ -2659,8 +2659,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e11dec761d7ef7f49b7b527a369823be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
-  skillChargeBar: {fileID: 0}
+  healthBar: {fileID: 1737482268}
+  skillChargeBar: {fileID: 262287319}
   casterPortrait: {fileID: 1410585892}
   skillActivator: {fileID: 1855558218}
   fyorCount: {fileID: 1709844587}
