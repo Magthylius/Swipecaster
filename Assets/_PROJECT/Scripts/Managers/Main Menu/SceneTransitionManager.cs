@@ -9,6 +9,7 @@ public class SceneTransitionManager : MonoBehaviour
     public static SceneTransitionManager instance;
 
     public float transitionSpeed = 10f;
+    public float sceneDelay = 2f;
     public List<GameObject> loadingObjects;
 
     CanvasGroupFader canvasCG;
@@ -47,7 +48,7 @@ public class SceneTransitionManager : MonoBehaviour
 
     void OnSceneLoad(Scene scene, LoadSceneMode mode)
     {
-        //StartCoroutine(SceneLoadDelay(1f));
+        StartCoroutine(SceneLoadDelay(sceneDelay));
     }
 
     public void ActivateTransition(string transitionTarget)
@@ -78,7 +79,7 @@ public class SceneTransitionManager : MonoBehaviour
 
     IEnumerator SceneLoadDelay(float time)
     {  
-        yield return new WaitForSeconds(time);
+        yield return new WaitForSecondsRealtime(time);
         print("activation2");
         DeactivateTransition();
     }
@@ -92,7 +93,7 @@ public class SceneTransitionManager : MonoBehaviour
             yield return null;
         }
 
-        print("activation1");
-        DeactivateTransition();
+        //print("activation1");
+        //DeactivateTransition();
     }
 }
