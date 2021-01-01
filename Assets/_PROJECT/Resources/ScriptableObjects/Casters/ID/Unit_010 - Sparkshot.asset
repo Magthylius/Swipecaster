@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e7e52d39d75b844b8234a3d73a5093b, type: 3}
+  m_Name: Unit_010 - Sparkshot
+  m_EditorClassIdentifier: 
+  ID: 010
+  CharacterName: Sparkshot
+  CharacterMastery: 0
+  BaseRarity: 3
+  ArchTypeMajor: -1
+  RuneAlignment: 3
+  CharacterDescription: 
+  IsAlive: 0
+  MaxLevel: 50
+  MaxHealth: 1304
+  MaxAttack: 704
+  MaxDefence: 499
+  CurrentLevel: 1
+  LevelTotalHealth: 467
+  LevelTotalAttack: 252
+  LevelTotalDefence: 179
+  baseStatMultiplier: 0.33333334
+  paraCapMultiplier: 0.6
+  baseStatCapMultiplier: 0.4
+  SkillName: 
+  SkillDescription: 
+  SummonPrefab: {fileID: 0}
+  FullBodyPrefab: {fileID: 7792443217028439265, guid: 460cab7ba77acb042953ef780e39dd50, type: 3}
+  SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}
+  PortraitArt: {fileID: 21300000, guid: 0ff57c18b8287434d9d2368ff48c4401, type: 3}
+  FullBodyArt: {fileID: 21300000, guid: 76beeb9d897c1d847974e86fd001bd8b, type: 3}
+  SummonArt: {fileID: 0}

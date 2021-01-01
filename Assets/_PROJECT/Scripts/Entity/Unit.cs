@@ -32,7 +32,7 @@ public abstract class Unit : Entity
     [Header("Skills")]
     [SerializeField] private int currentSkillCharge;
     [SerializeField] private int _skillChargeCount;
-    private ActiveSkill _activeSkill;
+    [SerializeField] private ActiveSkill _activeSkill;
 
     [Header("UI")]
     [SerializeField] private DamagePopUp damagePopUp;

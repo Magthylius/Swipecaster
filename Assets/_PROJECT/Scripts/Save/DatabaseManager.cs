@@ -9,7 +9,7 @@ public class DatabaseManager : MonoBehaviour
 {
     public static DatabaseManager instance;
 
-    string casterLocation = "ScriptableObjects/Casters";
+    string casterLocation = "ScriptableObjects/Casters/Generic";
     
     [SerializeField] PlayerInventoryData playerData;
 

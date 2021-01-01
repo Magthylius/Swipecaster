@@ -9,6 +9,7 @@ public class UnitObject : ScriptableObject
     public string CharacterName;
     public int CharacterMastery;
     [Range(3, 5)] public int BaseRarity;
+    public ArchTypeMajor ArchTypeMajor = ArchTypeMajor.None;
 	public RuneType RuneAlignment;
     public string CharacterDescription;
     public bool IsAlive;
@@ -29,8 +30,9 @@ public class UnitObject : ScriptableObject
     [SerializeField] private float baseStatMultiplier = 1/3f;
     [SerializeField] private float paraCapMultiplier = 0.6f;
     [SerializeField] private float baseStatCapMultiplier = 0.4f;
-	
+
     [Header("Skill")]
+    public string SkillName;
     [TextArea(1, 5)] public string SkillDescription;
     public GameObject SummonPrefab;
 
@@ -40,8 +42,12 @@ public class UnitObject : ScriptableObject
     public Sprite PortraitArt;
     public Sprite FullBodyArt;
     public Sprite SummonArt;
-	
-	public void SyncDataForCaster(CasterDataStats data)
+
+    #region Utility Methods
+
+    public string GetArchAsString => ArchTypeMajor.ToString();
+
+    public void SyncDataForCaster(CasterDataStats data)
 	{
 		if(data.ID != ID) return;
 		
@@ -80,6 +86,14 @@ public class UnitObject : ScriptableObject
 
         return summonObject;
     }
+
+    #endregion
+
+    #region ID Specific Methods
+
+    public virtual ActiveSkill GetUnitActiveSkill(Unit unit) => null;
+
+    #endregion
 
     #region Public Calculation Method
 

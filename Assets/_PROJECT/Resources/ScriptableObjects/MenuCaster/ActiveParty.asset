@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98f97db78843ab84f8a92760b6ebf3bd, type: 3}
   m_Name: ActiveParty
   m_EditorClassIdentifier: 
+  partyName: Squad
   activeUnits:
-  - {fileID: 11400000, guid: 9695ed1ed58629d4c9348597e62f8536, type: 2}
+  - {fileID: 11400000, guid: 1f02333c637b40c478d39b88de70c18a, type: 2}
   - {fileID: 11400000, guid: 9695ed1ed58629d4c9348597e62f8536, type: 2}
   - {fileID: 11400000, guid: 9695ed1ed58629d4c9348597e62f8536, type: 2}
   - {fileID: 0}
