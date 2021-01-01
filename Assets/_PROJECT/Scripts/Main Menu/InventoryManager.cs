@@ -99,19 +99,22 @@ public class InventoryManager : MenuCanvasPage
     {
         mainMenuManager.HideBottomOverlay();
 
+        levelNum.text = unit.CurrentLevel.ToString();
+        if (unit.CurrentLevel == unit.MaxLevel) levelLabel.text = "MAXED";
+        else levelLabel.text = "LV";
+
         casterName.text = unit.CharacterName;
         casterDescription.text = unit.CharacterDescription;
         atkStat.text = unit.LevelTotalAttack.ToString();
         defStat.text = unit.LevelTotalDefence.ToString();
-        skillName.text = "?";
+        skillName.text = unit.SkillName;
         skillDescription.text = unit.SkillDescription;
-        casterArch.text = "?";
+        casterArch.text = unit.ArchTypeMajor.ToString();
 
         splashArt.sprite = unit.FullBodyArt;
 
         textCGF.StartFadeIn();
         artFR.StartLerp(artFR.originalPosition);
-        //cancelButton.interactable = true;
     }
 
     public void DeactivateFocus()
@@ -119,6 +122,5 @@ public class InventoryManager : MenuCanvasPage
         mainMenuManager.ShowBottomOverlay();
         textCGF.StartFadeOut();
         artFR.StartLerp(artFR.GetBodyOffset(Vector2.right, 2f));
-        //cancelButton.interactable = false;
     }
 }
