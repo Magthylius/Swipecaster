@@ -6,19 +6,20 @@ using TMPro;
 
 public class CasterInventoryBehavior : MonoBehaviour
 {
+    InventoryManager inventoryManager;
+
     public Image portrait;
     public TextMeshProUGUI casterName;
 
-    public void Init(UnitObject unit)
+    UnitObject assignedUnit;
+
+    public void Init(UnitObject unit, InventoryManager invManager)
     {
         portrait.sprite = unit.PortraitArt;
         casterName.text = unit.CharacterName;
-    }
+        assignedUnit = unit;
 
-    public void Init(Sprite portraitImg, string name)
-    {
-        portrait.sprite = portraitImg;
-        casterName.text = name;
+        inventoryManager = invManager;
     }
 
     public void ChangePortrait(Sprite portraitImg)
@@ -29,5 +30,10 @@ public class CasterInventoryBehavior : MonoBehaviour
     public void ChangeName(string name)
     {
         casterName.text = name;
+    }
+
+    public void BTN_Focus()
+    {
+        inventoryManager.ActivateFocus(assignedUnit);
     }
 }
