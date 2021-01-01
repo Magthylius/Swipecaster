@@ -9,33 +9,33 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da6fd3f3203f59641831657fc819d3fb, type: 3}
-  m_Name: Unit_002 - Searing
+  m_Script: {fileID: 11500000, guid: 0eb7bc9a36abb5247bc765e687dc3059, type: 3}
+  m_Name: Unit_008 - Candlewick
   m_EditorClassIdentifier: 
-  ID: 002
-  CharacterName: Searing
+  ID: 008
+  CharacterName: Candlewick
   CharacterMastery: 0
-  BaseRarity: 4
+  BaseRarity: 3
   ArchTypeMajor: -1
-  RuneAlignment: 2
+  RuneAlignment: 5
   CharacterDescription: 
   IsAlive: 0
   MaxLevel: 50
-  MaxHealth: 1159
-  MaxAttack: 883
-  MaxDefence: 423
+  MaxHealth: 1736
+  MaxAttack: 798
+  MaxDefence: 471
   CurrentLevel: 1
-  LevelTotalHealth: 415
-  LevelTotalAttack: 316
-  LevelTotalDefence: 152
+  LevelTotalHealth: 622
+  LevelTotalAttack: 286
+  LevelTotalDefence: 169
   baseStatMultiplier: 0.33333334
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
   SkillName: 
   SkillDescription: 
   SummonPrefab: {fileID: 0}
-  FullBodyPrefab: {fileID: 7792443217028439265, guid: d8f67bb7383f69c4eabbe5bbc5433be8, type: 3}
+  FullBodyPrefab: {fileID: 7792443217028439265, guid: 57ecedea955ebe54aa70b7fe604c8a89, type: 3}
   SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}
-  PortraitArt: {fileID: 21300000, guid: c9f93474bf9fc5c48ae100f612edd6b0, type: 3}
-  FullBodyArt: {fileID: 21300000, guid: 1676db3191ee3304180550f98c4a2f18, type: 3}
+  PortraitArt: {fileID: 21300000, guid: 2166ae01c7dddb44ba0b91366be73cf0, type: 3}
+  FullBodyArt: {fileID: 21300000, guid: 44a77429d07b7bc4cbade8478e3eb083, type: 3}
   SummonArt: {fileID: 0}
