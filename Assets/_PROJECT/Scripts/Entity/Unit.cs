@@ -151,6 +151,13 @@ public abstract class Unit : Entity
         damagePopUp.ShowDamage(totalDamage);
     }
 
+    protected virtual void EndTurnMethods()
+    {
+        ResetAttackStatus();
+        PostStatusEffect();
+        HandleSkillCount();
+    }
+
     protected virtual void OnDestroy()
     {
         UnsubscribeHitEvent(TakeDamage);
@@ -198,12 +205,6 @@ public abstract class Unit : Entity
 
     #region Private Methods
 
-    private void EndTurnMethods()
-    {
-        ResetAttackStatus();
-        PostStatusEffect();
-        HandleSkillCount();
-    }
     private void ResetAttackStatus() => SetAttackStatus(AttackStatus.Normal);
     private void CheckDeathEvent(Unit unit)
     {
