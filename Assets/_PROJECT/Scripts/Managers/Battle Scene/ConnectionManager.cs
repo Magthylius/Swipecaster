@@ -36,8 +36,6 @@ public class ConnectionManager : MonoBehaviour
         {
             if (EventSystem.current.IsPointerOverGameObject())
             {
-                print(EventSystem.current.IsPointerOverGameObject());
-                print(EventSystem.current.gameObject.name);
                 return;
             }
             
