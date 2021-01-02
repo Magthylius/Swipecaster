@@ -15,7 +15,7 @@ public class PartyCanvasManager : MenuCanvasPage
     public CanvasGroup interactionGroup;
     public CanvasGroup configurationGroup;
     public CanvasGroup buttonGroup;
-    public List<PartyGroupBehavior> partyList;
+
     public PartyConfigurationBehavior partyConfigurator;
     public RectTransform arrowSetter;
 
@@ -102,6 +102,7 @@ public class PartyCanvasManager : MenuCanvasPage
         
         partyConfigurator.SetConfigParty(partyGroup.party);
         partyConfigurator.UpdatePortraits();
+        partyConfigurator.UpdateShelfPlusSlot();
 
         EditMode();
     }
