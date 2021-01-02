@@ -137,7 +137,6 @@ public class PartyConfigurationBehavior : MonoBehaviour
     
     public void SetActiveParty(CasterParty party)
     {
-        print("called");
         activeParty.activeUnits = party.activeUnits;
         activeParty.partyName = party.partyName;
     }
