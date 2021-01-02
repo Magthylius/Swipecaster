@@ -181,7 +181,7 @@ public class PartyConfigurationBehavior : MonoBehaviour
     {
         if (curPartyList.Count >= 4)
         {
-            print("party full!");
+            print("Party Full!");
             return;
         }
         
@@ -198,4 +198,11 @@ public class PartyConfigurationBehavior : MonoBehaviour
         curParty = null;
         curPartyData = null;
     }
+
+    #region Accessors
+
+    public List<UnitObject> GetCurPartyList() => curPartyList;
+
+    #endregion
+
 }

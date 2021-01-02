@@ -43,6 +43,11 @@ public class PartyInventoryBehaviour : MonoBehaviour
         }
         else if (button.IsInteractable())
         {
+            if (partyConfigurationBehavior.GetCurPartyList().Count >= 4)
+            {
+                print("Party Full!");
+                return;
+            }
             button.interactable = false;
         }
     }
