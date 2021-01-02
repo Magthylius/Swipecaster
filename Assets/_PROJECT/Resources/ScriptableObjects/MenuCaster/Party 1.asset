@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98f97db78843ab84f8a92760b6ebf3bd, type: 3}
   m_Name: Party 1
   m_EditorClassIdentifier: 
-  partyName: Squad Alpha
+  partyName: Niga Kuri War
   activeUnits:
   - {fileID: 11400000, guid: f7448f282a1da544f99405f812c4d011, type: 2}
-  - {fileID: 11400000, guid: aa5c31b08424036488b0011ec08c0302, type: 2}
-  - {fileID: 11400000, guid: 3481361ab8028e94ab3dfa1de233e620, type: 2}
   - {fileID: 11400000, guid: 9695ed1ed58629d4c9348597e62f8536, type: 2}
+  - {fileID: 11400000, guid: dd7d2e8f18c0d6f49bbe430968e93bed, type: 2}
+  - {fileID: 11400000, guid: b164a2640c6922c469d9db0893d49186, type: 2}

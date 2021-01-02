@@ -72,7 +72,6 @@ public class PartyCanvasManager : MenuCanvasPage
     {
         partyConfigurator.SetConfigParty(partyGroup.party);
         partyConfigurator.UpdatePortraits();
-        partyConfigurator.UpdateCasters();
 
         EditMode();
     }

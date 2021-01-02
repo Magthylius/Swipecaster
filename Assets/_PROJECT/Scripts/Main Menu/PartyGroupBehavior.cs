@@ -37,9 +37,12 @@ public class PartyGroupBehavior : MonoBehaviour
     
     public void UpdateImages()
     {
-        for (int i = 0; i < party.activeUnits.Count; i++)
+        for (int i = 0; i < 4; i++)
         {
-            portraitList[i].sprite = party.activeUnits[i].PortraitArt;
+            if (i < party.activeUnits.Count)
+                portraitList[i].sprite = party.activeUnits[i].PortraitArt;
+            else portraitList[i].sprite = null;
+
         }
     }
 

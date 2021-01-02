@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,6 +7,8 @@ using UnityEngine.UI;
 
 public class PartyConfigurationBehavior : MonoBehaviour
 {
+    public static PartyConfigurationBehavior instance;
+    
     CasterParty configurationParty;
     DatabaseManager databaseManager;
 
@@ -15,11 +18,19 @@ public class PartyConfigurationBehavior : MonoBehaviour
     public TMP_InputField partyInputField;
 
     GameObject curParty;
+    CasterParty curPartyData;
 
     List<UnitObject> casterInventory;
     List<GameObject> casterInvList;
-    List<UnitObject> castersList;
+    List<UnitObject> curPartyList;
 
+    void Awake()
+    {
+        if (instance != null)
+            Destroy(this.gameObject);
+        else
+            instance = this;
+    }
 
     void Start()
     {
@@ -59,7 +70,16 @@ public class PartyConfigurationBehavior : MonoBehaviour
     //! Open Selected Party
     public void GetCurrentOpenedParty(GameObject _party)
     {
-        partyInputField.text = configurationParty.partyName;
+        curParty = _party;
+        curPartyData = curParty.GetComponent<PartyGroupBehavior>().party;
+        curPartyList = new List<UnitObject>();
+
+        foreach (var unit in curPartyData.activeUnits)
+        {
+            curPartyList.Add(unit);
+        }
+
+        partyInputField.text = curPartyData.partyName;
 
         UpdateCasterInventory();
         DisablePickedCaster();
@@ -70,29 +90,25 @@ public class PartyConfigurationBehavior : MonoBehaviour
     {
         foreach (GameObject casters in casterInvList)
         {
-            Image[] temp = casters.GetComponentsInChildren<Image>();
+            Button[] temp = casters.GetComponentsInChildren<Button>();
 
-            foreach (Image img in temp)
+            foreach (Button _button in temp)
             {
-                var tempColor = img.color;
-                tempColor.a = 1f;
-                img.color = tempColor;
+                _button.interactable = true;
             }
         }
 
-        foreach (UnitObject unit in configurationParty.activeUnits)
+        foreach (UnitObject unit in curPartyList)
         {
             for (int i = 0; i < casterInvList.Count; i++)
             {
                 if (casterInvList[i].GetComponent<PartyInventoryBehaviour>().GetId() == unit.ID)
                 {
-                    Image[] temp = casterInvList[i].GetComponentsInChildren<Image>();
+                    Button[] temp = casterInvList[i].GetComponentsInChildren<Button>();
 
-                    foreach (Image img in temp)
+                    foreach (Button _button in temp)
                     {
-                        var tempColor = img.color;
-                        tempColor.a = 0.1f;
-                        img.color = tempColor;
+                        _button.interactable = false;
                     }
                 }
             }
@@ -111,7 +127,8 @@ public class PartyConfigurationBehavior : MonoBehaviour
     }
 
     #endregion
-    
+
+
     public void SetConfigParty(CasterParty party)
     {
         configurationParty = party;
@@ -128,23 +145,45 @@ public class PartyConfigurationBehavior : MonoBehaviour
         }
     }
 
-    public void UpdateCasters()
+    //! Update casters and Portraits before saving
+    void UpdatePortraitsPreSave()
     {
-        castersList = new List<UnitObject>();
-        castersList = configurationParty.activeUnits;
+        for (int i = 0; i < 4; i++)
+        {
+            if (i < curPartyList.Count)
+                portraitList[i].sprite = curPartyList[i].PortraitArt;
+            else portraitList[i].sprite = null;
+        }
     }
+    
 
     public void Remove(int slot)
     {
+        curPartyList.RemoveAt(slot);
+        UpdatePortraitsPreSave();
+        DisablePickedCaster();
+    }
+
+    public void Add(UnitObject unit)
+    {
+        if (curPartyList.Count >= 4)
+        {
+            print("party full!");
+            return;
+        }
         
+        curPartyList.Add(unit);
+        UpdatePortraitsPreSave();
+        DisablePickedCaster();
     }
 
     public void SaveParty()
     {
-        configurationParty.partyName = partyInputField.text;
-        configurationParty.activeUnits = castersList;
+        curPartyData.partyName = partyInputField.text;
+        curPartyData.activeUnits = curPartyList;
         curParty.GetComponent<PartyGroupBehavior>().UpdateAll();
 
         curParty = null;
+        curPartyData = null;
     }
 }

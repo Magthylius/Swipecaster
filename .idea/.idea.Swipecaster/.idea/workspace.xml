@@ -61,7 +61,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/TileManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Match3_Scripts/TileManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Casting_Scripts/TickSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Casting_Scripts/CastingState.cs" />
@@ -109,8 +108,9 @@
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/SO Scripts/CasterParty.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Inventory/PartyUnitID.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyCasterInventoryManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyInventoryBehaviour.cs" />
+        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyCanvasManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyGroupBehavior.cs" />
+        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyInventoryBehaviour.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyConfigurationBehavior.cs" />
       </list>
     </option>

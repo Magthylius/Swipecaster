@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,13 +7,18 @@ using UnityEngine.UI;
 
 public class PartyInventoryBehaviour : MonoBehaviour
 {
-
-
+    PartyConfigurationBehavior partyConfigurationBehavior;
+    
     public Image portrait;
     public TextMeshProUGUI casterName;
     string id;
 
     UnitObject assignedUnit;
+
+    void Start()
+    {
+        partyConfigurationBehavior = PartyConfigurationBehavior.instance;
+    }
 
     public void Init(UnitObject unit)
     {
@@ -22,6 +28,16 @@ public class PartyInventoryBehaviour : MonoBehaviour
         assignedUnit = unit;
     }
 
+    public void SelfAdd()
+    {
+        partyConfigurationBehavior.Add(assignedUnit);
+    }
+
+    #region Accessors
+
     public string GetId() => id;
+
+    #endregion
+
 
 }
