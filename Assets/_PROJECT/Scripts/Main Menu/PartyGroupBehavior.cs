@@ -40,9 +40,14 @@ public class PartyGroupBehavior : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             if (i < party.activeUnits.Count)
+            {
                 portraitList[i].sprite = party.activeUnits[i].PortraitArt;
+                portraitList[i].transform.GetChild(0).gameObject.SetActive(false);
+            }
             else portraitList[i].sprite = null;
 
+            if (portraitList[i].sprite == null)
+                portraitList[i].transform.GetChild(0).gameObject.SetActive(true);
         }
     }
 

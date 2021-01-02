@@ -147,7 +147,9 @@ public class PartyConfigurationBehavior : MonoBehaviour
         {
             if (i < configurationParty.activeUnits.Count)
                 portraitList[i].sprite = configurationParty.activeUnits[i].PortraitArt;
-            else portraitList[i].sprite = null;
+            else 
+                portraitList[i].sprite = null;
+            
         }
     }
 
@@ -161,7 +163,19 @@ public class PartyConfigurationBehavior : MonoBehaviour
             else portraitList[i].sprite = null;
         }
     }
-    
+
+    public void UpdateShelfPlusSlot()
+    {
+        foreach (Image img in portraitList)
+        {
+            GameObject plus = img.transform.GetChild(0).gameObject;
+            
+            if (img.sprite == null)
+                plus.SetActive(true);
+            else
+                plus.SetActive(false);
+        }
+    }
 
     public void Remove(int slot)
     {
@@ -173,13 +187,16 @@ public class PartyConfigurationBehavior : MonoBehaviour
         
         curPartyList.RemoveAt(slot);
         UpdatePortraitsPreSave();
+        UpdateShelfPlusSlot();
         DisablePickedCaster();
     }
+    
 
     public void RemoveDirectly(UnitObject unit)
     {
         curPartyList.Remove(unit);
         UpdatePortraitsPreSave();
+        UpdateShelfPlusSlot();
         DisablePickedCaster();
     }
     
@@ -193,6 +210,7 @@ public class PartyConfigurationBehavior : MonoBehaviour
         
         curPartyList.Add(unit);
         UpdatePortraitsPreSave();
+        UpdateShelfPlusSlot();
     }
 
     public void SaveParty()
