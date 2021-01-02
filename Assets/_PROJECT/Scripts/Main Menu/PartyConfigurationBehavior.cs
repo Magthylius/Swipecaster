@@ -159,6 +159,12 @@ public class PartyConfigurationBehavior : MonoBehaviour
 
     public void Remove(int slot)
     {
+        if (curPartyList.Count <= 0)
+        {
+            print("party empty!");
+            return;
+        }
+        
         curPartyList.RemoveAt(slot);
         UpdatePortraitsPreSave();
         DisablePickedCaster();
