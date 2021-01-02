@@ -146,9 +146,16 @@ public class PartyConfigurationBehavior : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             if (i < configurationParty.activeUnits.Count)
+
+            {
+                portraitList[i].enabled = true;
                 portraitList[i].sprite = configurationParty.activeUnits[i].PortraitArt;
-            else 
+            }
+            else
+            {
+                portraitList[i].enabled = false;
                 portraitList[i].sprite = null;
+            }
             
         }
     }
@@ -159,8 +166,15 @@ public class PartyConfigurationBehavior : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             if (i < curPartyList.Count)
+            {
+                portraitList[i].enabled = true;
                 portraitList[i].sprite = curPartyList[i].PortraitArt;
-            else portraitList[i].sprite = null;
+            }
+            else
+            {
+                portraitList[i].enabled = false;
+                portraitList[i].sprite = null;
+            }
         }
     }
 

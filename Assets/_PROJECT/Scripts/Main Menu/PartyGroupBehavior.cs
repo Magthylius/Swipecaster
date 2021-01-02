@@ -41,10 +41,11 @@ public class PartyGroupBehavior : MonoBehaviour
         {
             if (i < party.activeUnits.Count)
             {
+                portraitList[i].enabled = true;
                 portraitList[i].sprite = party.activeUnits[i].PortraitArt;
                 portraitList[i].transform.GetChild(0).gameObject.SetActive(false);
             }
-            else portraitList[i].sprite = null;
+            else portraitList[i].enabled = false;
 
             if (portraitList[i].sprite == null)
                 portraitList[i].transform.GetChild(0).gameObject.SetActive(true);
