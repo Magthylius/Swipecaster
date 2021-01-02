@@ -13,6 +13,7 @@ public class PartyConfigurationBehavior : MonoBehaviour
     DatabaseManager databaseManager;
 
     public Transform castersParent;
+    public CasterParty activeParty;
     public UIFlexibleGrid grid;
     public List<Image> portraitList;
     public TMP_InputField partyInputField;
@@ -127,12 +128,18 @@ public class PartyConfigurationBehavior : MonoBehaviour
     }
 
     #endregion
-
-
+    
     public void SetConfigParty(CasterParty party)
     {
         configurationParty = party;
         grid.CalculateLayoutInputHorizontal();
+    }
+    
+    public void SetActiveParty(CasterParty party)
+    {
+        print("called");
+        activeParty.activeUnits = party.activeUnits;
+        activeParty.partyName = party.partyName;
     }
 
     public void UpdatePortraits()

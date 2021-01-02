@@ -171,6 +171,12 @@ public class DatabaseManager : MonoBehaviour
         }
     }
 
+    public void SetArrowTransform(Vector3 arrow)
+    {
+        playerData.arrowTransform = arrow;
+        SaveManager.Save(playerData);
+    }
+
     void CheckCasterIsAlive()
     {
         liveCaster = new List<string>();
@@ -192,6 +198,7 @@ public class DatabaseManager : MonoBehaviour
     public List<UnitObject> PlayerCasters => playerAvailableCasters;
     public List<UnitObject> AllCasters => allCasters;
     public PlayerInventoryData GetPlayerData() => playerData;
+    public Vector3 GetArrowTransform() => playerData.arrowTransform;
 
     #endregion
 

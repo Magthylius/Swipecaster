@@ -110,8 +110,8 @@
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyCasterInventoryManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyCanvasManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyGroupBehavior.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyConfigurationBehavior.cs" />
         <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyInventoryBehaviour.cs" />
+        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyConfigurationBehavior.cs" />
       </list>
     </option>
   </component>
@@ -133,7 +133,7 @@
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="selectedOptions">
-        <set />
+        <list />
       </option>
       <method v="2" />
     </configuration>
@@ -142,7 +142,7 @@
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="selectedOptions">
-        <set />
+        <list />
       </option>
       <method v="2" />
     </configuration>

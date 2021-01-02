@@ -28,11 +28,6 @@ public class PartyInventoryBehaviour : MonoBehaviour
         assignedUnit = unit;
     }
 
-    public void SelfAdd()
-    {
-        partyConfigurationBehavior.Add(assignedUnit);
-    }
-
     public void SelfRemove(Button button)
     {
         
@@ -48,6 +43,7 @@ public class PartyInventoryBehaviour : MonoBehaviour
                 print("Party Full!");
                 return;
             }
+            partyConfigurationBehavior.Add(assignedUnit);
             button.interactable = false;
         }
     }

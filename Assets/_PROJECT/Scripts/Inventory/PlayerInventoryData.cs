@@ -1,12 +1,13 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 [System.Serializable]
 public class PlayerInventoryData
 {
-
 	public List<CasterDataStats> casterDatabase = new List<CasterDataStats>();
     public List<PartyData> partyDatabase = new List<PartyData>();
 
+    public Vector3 arrowTransform;
 }
 
 [System.Serializable]
