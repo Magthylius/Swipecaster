@@ -15,25 +15,22 @@ public class PartyConfigurationBehavior : MonoBehaviour
     public TMP_InputField partyInputField;
 
     GameObject curParty;
-    CasterParty curPartyData;
-    List<UnitObject> castersList;
-    
+
     List<UnitObject> casterInventory;
     List<GameObject> casterInvList;
-    List<string> curPartyList;
-    
+    List<UnitObject> castersList;
 
 
     void Start()
     {
         databaseManager = DatabaseManager.instance;
-
         UpdateCasterInventory();
     }
 
     #region PlayerInventory
-    
-    public void UpdateCasterInventory()
+
+    //! Update Player's Casters Inventory
+    void UpdateCasterInventory()
     {
         ClearCasterInventory();
         databaseManager.RefreshInventory();
@@ -47,8 +44,9 @@ public class PartyConfigurationBehavior : MonoBehaviour
             caster.GetComponent<PartyInventoryBehaviour>().Init(unit);
         }
     }
-    
-    public void ClearCasterInventory()
+
+    //! Disable unused Portraits
+    void ClearCasterInventory()
     {
         casterInvList = new List<GameObject>();
         for (int i = 0; i < castersParent.childCount; i++)
@@ -57,48 +55,39 @@ public class PartyConfigurationBehavior : MonoBehaviour
             castersParent.GetChild(i).gameObject.SetActive(false);
         }
     }
-    
+
+    //! Open Selected Party
     public void GetCurrentOpenedParty(GameObject _party)
     {
-        curParty = _party;
-        curPartyData = curParty.GetComponent<PartyGroupBehavior>().party;
-        curPartyList = new List<string>();
+        partyInputField.text = configurationParty.partyName;
 
-        foreach (var unit in curPartyData.activeUnits)
-        {
-            curPartyList.Add(unit.ID);
-        }
-
-        partyInputField.text = curPartyData.partyName;
-        
         UpdateCasterInventory();
         DisablePickedCaster();
-
     }
+
+    //! Fadeout selected casters in selected party
     void DisablePickedCaster()
     {
-
         foreach (GameObject casters in casterInvList)
         {
             Image[] temp = casters.GetComponentsInChildren<Image>();
-            
+
             foreach (Image img in temp)
             {
                 var tempColor = img.color;
                 tempColor.a = 1f;
                 img.color = tempColor;
             }
-            
         }
-        
-        foreach (string unit in curPartyList)
+
+        foreach (UnitObject unit in configurationParty.activeUnits)
         {
             for (int i = 0; i < casterInvList.Count; i++)
             {
-                if (casterInvList[i].GetComponent<PartyInventoryBehaviour>().GetId() == unit)
+                if (casterInvList[i].GetComponent<PartyInventoryBehaviour>().GetId() == unit.ID)
                 {
                     Image[] temp = casterInvList[i].GetComponentsInChildren<Image>();
-                    
+
                     foreach (Image img in temp)
                     {
                         var tempColor = img.color;
@@ -109,11 +98,14 @@ public class PartyConfigurationBehavior : MonoBehaviour
             }
         }
     }
-    
+
+    //! Fine Next Inactive portrait
     GameObject FindNextInactiveChild()
     {
-        foreach (GameObject child in casterInvList) if (!child.activeInHierarchy) return child;
-    
+        foreach (GameObject child in casterInvList)
+            if (!child.activeInHierarchy)
+                return child;
+
         Debug.LogError("No caster inventory space left");
         return null;
     }
@@ -125,34 +117,34 @@ public class PartyConfigurationBehavior : MonoBehaviour
         configurationParty = party;
         grid.CalculateLayoutInputHorizontal();
     }
+
     public void UpdatePortraits()
     {
         for (int i = 0; i < 4; i++)
         {
-            if (i < configurationParty.activeUnits.Count) portraitList[i].sprite = configurationParty.activeUnits[i].PortraitArt;
+            if (i < configurationParty.activeUnits.Count)
+                portraitList[i].sprite = configurationParty.activeUnits[i].PortraitArt;
             else portraitList[i].sprite = null;
         }
     }
-    
+
     public void UpdateCasters()
     {
         castersList = new List<UnitObject>();
-        castersList = curPartyData.activeUnits;
+        castersList = configurationParty.activeUnits;
     }
 
     public void Remove(int slot)
     {
-
+        
     }
-    
+
     public void SaveParty()
     {
-        curPartyData.partyName = partyInputField.text;
+        configurationParty.partyName = partyInputField.text;
+        configurationParty.activeUnits = castersList;
         curParty.GetComponent<PartyGroupBehavior>().UpdateAll();
 
         curParty = null;
-        curPartyData = null;
     }
-    
-    
 }
