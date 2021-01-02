@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba2cb7b67cd7ef14f9935fef6a03a878, type: 3}
+  m_Name: Aleydonia
+  m_EditorClassIdentifier: 
+  questName: Aleydonia
+  questDescription: The beginning of something bigs
+  questLevels:
+  - {fileID: 11400000, guid: 35fd1e8a6eb1906429ae9e98d3094855, type: 2}

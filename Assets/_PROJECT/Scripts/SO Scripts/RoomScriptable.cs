@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-[CreateAssetMenu(menuName = "Unit/Room Object")]
+[CreateAssetMenu(menuName = "Quest/Room Object")]
 public class RoomScriptable : ScriptableObject
 {
     [Header("Enemies")]
