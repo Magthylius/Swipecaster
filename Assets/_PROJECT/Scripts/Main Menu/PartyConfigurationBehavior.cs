@@ -83,7 +83,6 @@ public class PartyConfigurationBehavior : MonoBehaviour
         partyInputField.text = curPartyData.partyName;
 
         UpdateCasterInventory();
-        UpdateShelfPlusSlot();
         DisablePickedCaster();
     }
 
