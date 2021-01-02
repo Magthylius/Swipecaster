@@ -24171,11 +24171,6 @@ MonoBehaviour:
   interactionGroup: {fileID: 1344939367}
   configurationGroup: {fileID: 1332182309}
   buttonGroup: {fileID: 1341632018}
-  partyList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   partyConfigurator: {fileID: 1332182310}
   arrowSetter: {fileID: 1963068320}
   transitionSpeed: 20
@@ -25590,6 +25585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb723a7173a617448b650b93e9a2479c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelSelectors: []
 --- !u!1 &2037394576
 GameObject:
   m_ObjectHideFlags: 0
@@ -27761,6 +27757,14 @@ PrefabInstance:
     - target: {fileID: 2186537070390013516, guid: d9b3e6a5e5e9ce948be1d3ffbec8f134, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278334561527619606, guid: d9b3e6a5e5e9ce948be1d3ffbec8f134, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7319532886850118582, guid: d9b3e6a5e5e9ce948be1d3ffbec8f134, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9b3e6a5e5e9ce948be1d3ffbec8f134, type: 3}
