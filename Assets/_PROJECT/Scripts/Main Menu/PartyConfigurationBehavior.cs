@@ -159,7 +159,7 @@ public class PartyConfigurationBehavior : MonoBehaviour
 
     public void Remove(int slot)
     {
-        if (curPartyList.Count <= 0)
+        if (slot >= curPartyList.Count)
         {
             print("party empty!");
             return;
@@ -170,6 +170,13 @@ public class PartyConfigurationBehavior : MonoBehaviour
         DisablePickedCaster();
     }
 
+    public void RemoveDirectly(UnitObject unit)
+    {
+        curPartyList.Remove(unit);
+        UpdatePortraitsPreSave();
+        DisablePickedCaster();
+    }
+    
     public void Add(UnitObject unit)
     {
         if (curPartyList.Count >= 4)
@@ -180,7 +187,6 @@ public class PartyConfigurationBehavior : MonoBehaviour
         
         curPartyList.Add(unit);
         UpdatePortraitsPreSave();
-        DisablePickedCaster();
     }
 
     public void SaveParty()

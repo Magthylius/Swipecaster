@@ -33,6 +33,20 @@ public class PartyInventoryBehaviour : MonoBehaviour
         partyConfigurationBehavior.Add(assignedUnit);
     }
 
+    public void SelfRemove(Button button)
+    {
+        
+        if (!button.IsInteractable())
+        {
+            partyConfigurationBehavior.RemoveDirectly(assignedUnit);
+            button.interactable = true;
+        }
+        else if (button.IsInteractable())
+        {
+            button.interactable = false;
+        }
+    }
+
     #region Accessors
 
     public string GetId() => id;
