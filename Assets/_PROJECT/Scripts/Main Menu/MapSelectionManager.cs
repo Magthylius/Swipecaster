@@ -8,19 +8,19 @@ public class MapSelectionManager : MenuCanvasPage
 {
     public static MapSelectionManager instance;
 
+    public QuestHandler questHandler;
     public CanvasGroup levelSelector;
     public GameObject levelSelectDisabler;
     public float levelSelectorSpeed = 3f;
-    public List<LevelSelectBehavior> selectionList;
-
     public LayoutGroup layoutGroup;
+
+    List<LevelSelectBehavior> selectionList;
     bool layoutActive = false;
     int activeCount = 0;
 
     CanvasGroupFader levelSelectCGF;
     bool showLevelSelect = false;
 
-    //! needs scriptableobject
 
     public override void Awake()
     {
@@ -32,6 +32,7 @@ public class MapSelectionManager : MenuCanvasPage
     void Start()
     {
         levelSelectCGF = new CanvasGroupFader(levelSelector, true, true);
+        selectionList = questHandler.levelSelectors;
     }
 
     void Update()
@@ -55,7 +56,7 @@ public class MapSelectionManager : MenuCanvasPage
 
         foreach (LevelSelectBehavior selects in selectionList)
         {
-            if (selects != self) selects.Deactivate();
+            if (selects != self && selects.gameObject.activeInHierarchy) selects.Deactivate();
         }
     }
 

@@ -37,4 +37,9 @@ public class QuestHandler : MonoBehaviour
             }
         }
     }
+
+    public void BTN_TriggerLevel(QuestObject questObject)
+    {
+        SetupLevelSelectors(questObject);
+    }
 }
