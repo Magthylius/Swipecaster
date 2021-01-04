@@ -7,20 +7,22 @@ public class DamagePopUp : MonoBehaviour
 {
     [SerializeField] private float popUpTime = 1.5f;
     private TextMeshPro _textMesh;
+    public GameObject parent;
 
     private void Awake()
     {
         _textMesh = GetComponent<TextMeshPro>();
-        _textMesh.enabled = false;
+        parent = transform.parent.gameObject;
+        parent.SetActive(false);
     }
 
     public void ShowDamage(int damage) => StartCoroutine(DoPopUp(damage));
 
     private IEnumerator DoPopUp(int damage)
     {
-        _textMesh.enabled = true;
+        parent.SetActive(true);
         _textMesh.text = damage.ToString();
         yield return new WaitForSeconds(popUpTime);
-        _textMesh.enabled = false;
+        parent.SetActive(false);
     }
 }

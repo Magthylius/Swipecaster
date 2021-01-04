@@ -150,6 +150,7 @@ public abstract class Unit : Entity
         GetStatusEffects.ForEach(i => i.DoOnHitEffect(this));
 
         if (damagePopUp == null) return;
+        damagePopUp.transform.parent.gameObject.SetActive(true);
         damagePopUp.ShowDamage(totalDamage);
     }
 
@@ -182,6 +183,7 @@ public abstract class Unit : Entity
         base.Awake();
         _statusEffects = new List<StatusEffect>();
 
+        GetDamagePopUp();
         SetProjectile(new CrowFlies());
         SubscribeHitEvent(TakeDamage);
         SubscribeHealthChangeEvent(CheckDeathEvent);
@@ -210,6 +212,13 @@ public abstract class Unit : Entity
     #endregion
 
     #region Private Methods
+    private void GetDamagePopUp()
+    {
+        if(GetComponentInChildren<DamagePopUp>())
+        {
+            damagePopUp = GetComponentInChildren<DamagePopUp>();
+        }
+    }
 
     private void ResetAttackStatus() => SetAttackStatus(AttackStatus.Normal);
     private void CheckDeathEvent(Unit unit)

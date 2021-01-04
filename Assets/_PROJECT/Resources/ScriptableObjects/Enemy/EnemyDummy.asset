@@ -13,23 +13,29 @@ MonoBehaviour:
   m_Name: EnemyDummy
   m_EditorClassIdentifier: 
   ID: 1001
+  CharacterName: 
+  CharacterMastery: 0
   BaseRarity: 5
+  ArchTypeMajor: -1
   RuneAlignment: 0
   CharacterDescription: Enemy Dummy
   IsAlive: 0
-  MaxLevel: 50
+  MaxLevel: 100
   MaxHealth: 99999
-  MaxAttack: 900
+  MaxAttack: 200
   MaxDefence: 20
-  CurrentLevel: 1
-  LevelTotalHealth: 35842
-  LevelTotalAttack: 323
-  LevelTotalDefence: 7
+  CurrentLevel: 50
+  LevelTotalHealth: 81666
+  LevelTotalAttack: 163
+  LevelTotalDefence: 16
   baseStatMultiplier: 0.33333334
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
+  SkillName: 
   SkillDescription: He is the dumb dumb
+  SummonPrefab: {fileID: 0}
   FullBodyPrefab: {fileID: 9003522907796574238, guid: d86c56820bc77514285a0fb28e3bd9bb, type: 3}
   SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}
   PortraitArt: {fileID: 0}
   FullBodyArt: {fileID: 0}
+  SummonArt: {fileID: 0}
