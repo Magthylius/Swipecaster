@@ -9,6 +9,7 @@ using TMPro;
 public class MainMenuManager : MonoBehaviour
 {
     public static MainMenuManager instance;
+    PartyCanvasManager pcManager;
 
     [Header("Settings")]
     public float transitionSpeed = 2.0f;
@@ -50,6 +51,8 @@ public class MainMenuManager : MonoBehaviour
 
     void Start()
     {
+        pcManager = PartyCanvasManager.instance;
+
         currentPage = homeCanvas;
         currentPage.alpha = 1f;
         currentPage.interactable = true;
@@ -176,6 +179,8 @@ public class MainMenuManager : MonoBehaviour
         if (pageTransition || partyCanvas == currentPage) return;
         ActivateCanvas(partyCanvas);
         HideBottomOverlay();
+
+        pcManager.QuestMode();
         preEnterQuest = true;
     }
     #endregion

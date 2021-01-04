@@ -76,7 +76,7 @@ public class LevelSelectBehavior : MonoBehaviour
 
     void UpdateQuestHandler()
     {
-        questHandler.BTN_EnterLevel(transform.GetSiblingIndex());
+        questHandler.BTN_SelectLevel(transform.GetSiblingIndex());
     }
 
     #region Accessors
