@@ -35,11 +35,11 @@ public class RoomManager : MonoBehaviour
 [System.Serializable]
 public struct RoomSetUp
 {
-    public RoomScriptable roomSO;
+    public RoomObject roomSO;
     public int maxEnemySize;
     public bool isRandom;
 
-    public RoomSetUp(RoomScriptable roomSO)
+    public RoomSetUp(RoomObject roomSO)
     {
         this.roomSO = roomSO;
         bool notNull = roomSO != null;

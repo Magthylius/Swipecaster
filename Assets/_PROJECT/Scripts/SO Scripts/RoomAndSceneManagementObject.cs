@@ -8,8 +8,8 @@ public class RoomAndSceneManagementObject : ScriptableObject
 {
     private const string _roomLocation = "ScriptableObjects/Enemy/Rooms";
     private static bool _isInitialised = false;
-    private static List<RoomScriptable> _resourceRooms = new List<RoomScriptable>();
-    private static Dictionary<string, RoomScriptable> _rooms = new Dictionary<string, RoomScriptable>();
+    private static List<RoomObject> _resourceRooms = new List<RoomObject>();
+    private static Dictionary<string, RoomObject> _rooms = new Dictionary<string, RoomObject>();
     private static EnergyManager _energyManager = null;
     private static SceneTransitionManager _sceneManager = null;
 
@@ -20,7 +20,7 @@ public class RoomAndSceneManagementObject : ScriptableObject
     [SerializeField] private float mediumEnergyCost;
     [SerializeField] private float highEnergyCost;
     [SerializeField] private float superHighEnergyCost;
-    public RoomScriptable ActiveRoom;
+    public RoomObject ActiveRoom;
 
     #region Level & Room Selection
 
@@ -48,7 +48,7 @@ public class RoomAndSceneManagementObject : ScriptableObject
         _energyManager.SpendEnergy(Mathf.Abs(energy));
         _sceneManager.ActivateTransition(BattleStageName);
     }
-    private RoomScriptable GetRoom(string name, out bool active)
+    private RoomObject GetRoom(string name, out bool active)
     {
         active = _rooms.TryGetValue(name, out var value);
         return value;
@@ -58,7 +58,7 @@ public class RoomAndSceneManagementObject : ScriptableObject
         if (NotInitialised)
         {
             _isInitialised = true;
-            _resourceRooms = new List<RoomScriptable>(Resources.LoadAll<RoomScriptable>(_roomLocation));
+            _resourceRooms = new List<RoomObject>(Resources.LoadAll<RoomObject>(_roomLocation));
             _resourceRooms.ForEach(room => _rooms.Add(room.name, room));
         }
         
