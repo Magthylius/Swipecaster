@@ -27,4 +27,6 @@ public class Wickfire : CasterSkill
         _unit = unit;
         EffectDuration0();
     }
+    public Wickfire(int maxSkillCharge, int startEffectDuration, Unit unit, bool ignoreDuration = false)
+        : base(maxSkillCharge, startEffectDuration, unit, ignoreDuration) { }
 }

@@ -52,6 +52,8 @@ public class MothLamp : CasterSkill
         _unit = unit;
         EffectDuration0();
     }
+    public MothLamp(int maxSkillCharge, int startEffectDuration, Unit unit, bool ignoreDuration = false)
+        : base(maxSkillCharge, startEffectDuration, unit, ignoreDuration) { }
 
     private bool LampAlreadySpawned => _lamp != null;
 }

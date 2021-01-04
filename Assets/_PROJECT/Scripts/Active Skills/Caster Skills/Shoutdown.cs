@@ -27,4 +27,6 @@ public class Shoutdown : CasterSkill
         _unit = unit;
         EffectDuration0();
     }
+    public Shoutdown(int maxSkillCharge, int startEffectDuration, Unit unit, bool ignoreDuration = false)
+        : base(maxSkillCharge, startEffectDuration, unit, ignoreDuration) { }
 }

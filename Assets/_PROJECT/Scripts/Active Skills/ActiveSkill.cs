@@ -41,14 +41,15 @@ public abstract class ActiveSkill
     public int GetMaxSkillCharge => _maxSkillCharge;
     public void SetChargeGainPerTurn(int a) => _chargeGainPerTurn = a;
     public int GetChargeGainPerTurn => _chargeGainPerTurn;
+    public int GetCurrentSkillCharge => _currentSkillCharge;
     public void IncreaseSkillCharge() => _currentSkillCharge += (SkillChargeReady || !EffectDurationReached) ? 0 : _chargeGainPerTurn;
     public void SetUnit(Unit a) => _unit = a;
     public Unit GetUnit => _unit;
     public virtual string Description => string.Empty;
 
-    protected void ResetSkillCharge() => _currentSkillCharge = 0;
-    protected void ResetEffectDuration() => _currentEffectDuration = _startEffectDuration;
-    protected void EffectDuration0() => _currentEffectDuration = 0;
+    public void ResetSkillCharge() => _currentSkillCharge = 0;
+    public void ResetEffectDuration() => _currentEffectDuration = _startEffectDuration;
+    public void EffectDuration0() => _currentEffectDuration = 0;
 
     public ActiveSkill()
     {
@@ -60,6 +61,6 @@ public abstract class ActiveSkill
         _unit = null;
     }
 
-    protected bool SkillChargeReady => _currentSkillCharge >= _maxSkillCharge;
-    protected bool EffectDurationReached => _currentEffectDuration <= 0;
+    public bool SkillChargeReady => _currentSkillCharge >= _maxSkillCharge;
+    public bool EffectDurationReached => _currentEffectDuration <= 0;
 }

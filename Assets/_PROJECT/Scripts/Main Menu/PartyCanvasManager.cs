@@ -88,10 +88,6 @@ public class PartyCanvasManager : MenuCanvasPage
         questButtonCGF.StartFadeOut();
 
         mainMenuManager.HideBottomOverlay();
-        
-
-
-        
     }
 
     void PartyMode()
@@ -101,11 +97,17 @@ public class PartyCanvasManager : MenuCanvasPage
         interactionCGF.StartFadeIn();
         configurationCGF.StartFadeOut();
         editButtonCGF.StartFadeOut();
+        mainMenuManager.ShowBottomOverlay();
 
-        if (!mainMenuManager.GetPreEnterQuest())
-            mainMenuManager.ShowBottomOverlay();
+        /*if (!mainMenuManager.GetPreEnterQuest())
+            
         else
-            questButtonCGF.StartFadeIn();
+            questButtonCGF.StartFadeIn();*/
+    }
+
+    public void QuestMode()
+    {
+        questButtonCGF.StartFadeIn();
     }
 
     #region Buttons

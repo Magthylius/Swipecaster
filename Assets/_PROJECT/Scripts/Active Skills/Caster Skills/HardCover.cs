@@ -27,4 +27,7 @@ public class HardCover : CasterSkill
         _unit = unit;
         EffectDuration0();
     }
+
+    public HardCover(int maxSkillCharge, int startEffectDuration, Unit unit, bool ignoreDuration = false)
+        : base(maxSkillCharge, startEffectDuration, unit, ignoreDuration) { }
 }

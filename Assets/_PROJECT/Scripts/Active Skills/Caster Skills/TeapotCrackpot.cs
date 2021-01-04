@@ -28,4 +28,6 @@ public class TeapotCrackpot : CasterSkill
         _unit = unit;
         EffectDuration0();
     }
+    public TeapotCrackpot(int maxSkillCharge, int startEffectDuration, Unit unit, bool ignoreDuration = false)
+        : base(maxSkillCharge, startEffectDuration, unit, ignoreDuration) { }
 }

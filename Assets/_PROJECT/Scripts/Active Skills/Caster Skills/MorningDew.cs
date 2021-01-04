@@ -27,4 +27,7 @@ public class MorningDew : CasterSkill
         _unit = unit;
         EffectDuration0();
     }
+
+    public MorningDew(int maxSkillCharge, int startEffectDuration, Unit unit, bool ignoreDuration = false)
+        : base(maxSkillCharge, startEffectDuration, unit, ignoreDuration) { }
 }
