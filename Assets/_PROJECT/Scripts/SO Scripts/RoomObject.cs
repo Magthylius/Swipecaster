@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 
 [CreateAssetMenu(menuName = "Quest/Room Object")]
-public class RoomScriptable : ScriptableObject
+public class RoomObject : ScriptableObject
 {
     [Header("Enemies")]
     public List<EnemyData> enemies;

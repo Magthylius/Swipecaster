@@ -8,6 +8,6 @@ public class LevelObject : ScriptableObject
     public string levelName;
     [TextArea] public string levelDescription;
 
-    public List<RoomScriptable> levelRooms;
+    public List<RoomObject> levelRooms;
     public bool randomRooms;
 }
