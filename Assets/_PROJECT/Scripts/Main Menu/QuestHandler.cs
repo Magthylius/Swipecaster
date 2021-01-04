@@ -5,14 +5,11 @@ using UnityEngine;
 public class QuestHandler : MonoBehaviour
 {
     public List<LevelSelectBehavior> levelSelectors;
+    SceneTransitionManager stManager;
 
     void Start()
     {
-    }
-
-    void Update()
-    {
-        
+        stManager = SceneTransitionManager.instance;
     }
 
     void SetupLevelSelectors(QuestObject questObject)
@@ -41,5 +38,10 @@ public class QuestHandler : MonoBehaviour
     public void BTN_TriggerLevel(QuestObject questObject)
     {
         SetupLevelSelectors(questObject);
+    }
+
+    public void BTN_EnterLevel(int index)
+    {
+        stManager.ActivateTransition("BattleScene");
     }
 }

@@ -8,7 +8,8 @@ public class LevelSelectBehavior : MonoBehaviour
 {
     public TextMeshProUGUI title;
     public TextMeshProUGUI desc;
-    //public LayoutGroup parent;
+    public QuestHandler questHandler;
+    public Button button;
 
     public float transitionSpeed = 2f;
 
@@ -29,6 +30,7 @@ public class LevelSelectBehavior : MonoBehaviour
         activatedHeight = 2f * originalHeight;
 
         mapManager = MapSelectionManager.instance;
+        button.onClick.AddListener(UpdateQuestHandler);
     }
 
     void Update()
@@ -70,6 +72,11 @@ public class LevelSelectBehavior : MonoBehaviour
     {
         isActivated = false;
         allowTransition = false;
+    }
+
+    void UpdateQuestHandler()
+    {
+        questHandler.BTN_EnterLevel(transform.GetSiblingIndex());
     }
 
     #region Accessors
