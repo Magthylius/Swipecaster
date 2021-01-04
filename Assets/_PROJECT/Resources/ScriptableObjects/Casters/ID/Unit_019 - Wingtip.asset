@@ -12,30 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92b90c025d1a1fb469011c1551b48a75, type: 3}
   m_Name: Unit_019 - Wingtip
   m_EditorClassIdentifier: 
-  ID: 
-  CharacterName: 
+  ID: 019
+  CharacterName: Wingtip
   CharacterMastery: 0
-  BaseRarity: 0
+  BaseRarity: 5
   ArchTypeMajor: -1
-  RuneAlignment: 0
+  RuneAlignment: 5
   CharacterDescription: 
   IsAlive: 0
-  MaxLevel: 0
-  MaxHealth: 0
-  MaxAttack: 0
-  MaxDefence: 0
-  CurrentLevel: 0
-  LevelTotalHealth: 0
-  LevelTotalAttack: 0
-  LevelTotalDefence: 0
+  MaxLevel: 50
+  MaxHealth: 1302
+  MaxAttack: 1052
+  MaxDefence: 412
+  CurrentLevel: 1
+  LevelTotalHealth: 467
+  LevelTotalAttack: 377
+  LevelTotalDefence: 148
   baseStatMultiplier: 0.33333334
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
   SkillName: 
   SkillDescription: 
   SummonPrefab: {fileID: 0}
-  FullBodyPrefab: {fileID: 0}
-  SpriteHolderPrefab: {fileID: 0}
-  PortraitArt: {fileID: 0}
-  FullBodyArt: {fileID: 0}
+  FullBodyPrefab: {fileID: 7792443217028439265, guid: 6795a86ed189bdc41b05d9bb3252ae5c, type: 3}
+  SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}
+  PortraitArt: {fileID: 21300000, guid: a9aaab2d16737d5469394c95bb51c09d, type: 3}
+  FullBodyArt: {fileID: 21300000, guid: 1cc6d87b7a4da014fb1f03bd9b113483, type: 3}
   SummonArt: {fileID: 0}

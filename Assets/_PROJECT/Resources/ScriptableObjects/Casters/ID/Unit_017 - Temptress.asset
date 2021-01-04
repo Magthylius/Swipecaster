@@ -12,30 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e769adad6b278df49b24ab8f62405bd4, type: 3}
   m_Name: Unit_017 - Temptress
   m_EditorClassIdentifier: 
-  ID: 
-  CharacterName: 
+  ID: 017
+  CharacterName: Temptress
   CharacterMastery: 0
-  BaseRarity: 0
+  BaseRarity: 4
   ArchTypeMajor: -1
-  RuneAlignment: 0
+  RuneAlignment: 4
   CharacterDescription: 
   IsAlive: 0
-  MaxLevel: 0
-  MaxHealth: 0
-  MaxAttack: 0
-  MaxDefence: 0
-  CurrentLevel: 0
-  LevelTotalHealth: 0
-  LevelTotalAttack: 0
-  LevelTotalDefence: 0
+  MaxLevel: 50
+  MaxHealth: 1736
+  MaxAttack: 540
+  MaxDefence: 431
+  CurrentLevel: 1
+  LevelTotalHealth: 622
+  LevelTotalAttack: 194
+  LevelTotalDefence: 154
   baseStatMultiplier: 0.33333334
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
   SkillName: 
   SkillDescription: 
   SummonPrefab: {fileID: 0}
-  FullBodyPrefab: {fileID: 0}
-  SpriteHolderPrefab: {fileID: 0}
-  PortraitArt: {fileID: 0}
-  FullBodyArt: {fileID: 0}
+  FullBodyPrefab: {fileID: 7792443217028439265, guid: ce42f9701881cae479ff9780d75b96c8, type: 3}
+  SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}
+  PortraitArt: {fileID: 21300000, guid: 62e7e05a61df9194aa5b71225ad8b715, type: 3}
+  FullBodyArt: {fileID: 21300000, guid: 735fc6570d537ba42969a6c6b21a7bf2, type: 3}
   SummonArt: {fileID: 0}
