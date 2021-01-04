@@ -34,6 +34,7 @@ public class MainMenuManager : MonoBehaviour
 
     bool showBottomOverlay = true;
     bool allowOverlayTransition = false;
+    bool preEnterQuest = false;
 
     [Header("Energy")]
     public TextMeshProUGUI energyCurrent;
@@ -120,6 +121,8 @@ public class MainMenuManager : MonoBehaviour
         showBottomOverlay = false;
         allowOverlayTransition = true;
     }
+
+    public bool GetPreEnterQuest() => preEnterQuest;
     #endregion
 
     #region Buttons
@@ -127,12 +130,14 @@ public class MainMenuManager : MonoBehaviour
     {
         if (pageTransition || partyCanvas == currentPage) return;
         ActivateCanvas(partyCanvas);
+        preEnterQuest = false;
     }
 
     public void BTN_Inventory()
     {
         if (pageTransition || inventoryCanvas == currentPage) return;
         ActivateCanvas(inventoryCanvas);
+        preEnterQuest = false;
     }
 
     public void BTN_HomeMap()
@@ -142,24 +147,36 @@ public class MainMenuManager : MonoBehaviour
 
         if (isAtHome) ActivateCanvas(homeCanvas);
         else ActivateCanvas(mapCanvas);
+        
+        preEnterQuest = false;
     }
 
     public void BTN_Gacha()
     {
         if (pageTransition || gachaCanvas == currentPage) return;
         ActivateCanvas(gachaCanvas);
+        preEnterQuest = false;
     }
 
     public void BTN_Shop()
     {
         if (pageTransition || shopCanvas == currentPage) return;
         ActivateCanvas(shopCanvas);
+        preEnterQuest = false;
     }
 
     public void BTN_Settings()
     {
         if (pageTransition || settingsCanvas == currentPage) return;
         ActivateCanvas(settingsCanvas);
+    }
+    
+    public void BTN_PreEnterQuest()
+    {
+        if (pageTransition || partyCanvas == currentPage) return;
+        ActivateCanvas(partyCanvas);
+        HideBottomOverlay();
+        preEnterQuest = true;
     }
     #endregion
 

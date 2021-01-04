@@ -14,7 +14,8 @@ public class PartyCanvasManager : MenuCanvasPage
     [Header("Object References")]
     public CanvasGroup interactionGroup;
     public CanvasGroup configurationGroup;
-    public CanvasGroup buttonGroup;
+    public CanvasGroup editButtonGroup;
+    public CanvasGroup questButtonGroup;
 
     public PartyConfigurationBehavior partyConfigurator;
     public RectTransform arrowSetter;
@@ -25,7 +26,8 @@ public class PartyCanvasManager : MenuCanvasPage
 
     CanvasGroupFader interactionCGF;
     CanvasGroupFader configurationCGF;
-    CanvasGroupFader buttonCGF;
+    CanvasGroupFader editButtonCGF;
+    CanvasGroupFader questButtonCGF;
 
     PartyGroupBehavior partyGroup;
     
@@ -49,7 +51,8 @@ public class PartyCanvasManager : MenuCanvasPage
         database = DatabaseManager.instance;
         interactionCGF = new CanvasGroupFader(interactionGroup, true, true);
         configurationCGF = new CanvasGroupFader(configurationGroup, true, true);
-        buttonCGF = new CanvasGroupFader(buttonGroup, true, true);
+        editButtonCGF = new CanvasGroupFader(editButtonGroup, true, true);
+        questButtonCGF = new CanvasGroupFader(questButtonGroup, true, true);
         arrowSetter.position = database.GetArrowTransform();
     }
 
@@ -57,7 +60,8 @@ public class PartyCanvasManager : MenuCanvasPage
     {
         interactionCGF.Step(transitionSpeed * Time.unscaledDeltaTime);
         configurationCGF.Step(transitionSpeed * Time.unscaledDeltaTime);
-        buttonCGF.Step(transitionSpeed * Time.unscaledDeltaTime);
+        editButtonCGF.Step(transitionSpeed * Time.unscaledDeltaTime);
+        questButtonCGF.Step(transitionSpeed * Time.unscaledDeltaTime);
         HoldDownTimer();
     }
     
@@ -80,9 +84,14 @@ public class PartyCanvasManager : MenuCanvasPage
 
         interactionCGF.StartFadeOut();
         configurationCGF.StartFadeIn();
-        buttonCGF.StartFadeIn();
+        editButtonCGF.StartFadeIn();
+        questButtonCGF.StartFadeOut();
 
         mainMenuManager.HideBottomOverlay();
+        
+
+
+        
     }
 
     void PartyMode()
@@ -91,9 +100,12 @@ public class PartyCanvasManager : MenuCanvasPage
 
         interactionCGF.StartFadeIn();
         configurationCGF.StartFadeOut();
-        buttonCGF.StartFadeOut();
+        editButtonCGF.StartFadeOut();
 
-        mainMenuManager.ShowBottomOverlay();
+        if (!mainMenuManager.GetPreEnterQuest())
+            mainMenuManager.ShowBottomOverlay();
+        else
+            questButtonCGF.StartFadeIn();
     }
 
     #region Buttons
