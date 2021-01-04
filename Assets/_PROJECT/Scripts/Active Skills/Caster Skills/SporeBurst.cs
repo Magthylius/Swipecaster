@@ -33,4 +33,6 @@ public class SporeBurst : CasterSkill
         _unit = unit;
         EffectDuration0();
     }
+    public SporeBurst(int maxSkillCharge, int startEffectDuration, Unit unit, bool ignoreDuration = false)
+        : base(maxSkillCharge, startEffectDuration, unit, ignoreDuration) { }
 }

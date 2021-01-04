@@ -91,15 +91,13 @@ public abstract class Unit : Entity
     }
     public List<StatusEffect> GetStatusEffects => _statusEffects;
 
-    public void SyncSkillChargeCount() => _skillChargeCount = HasActiveSkill ? GetActiveSkill.GetMaxSkillCharge : 0;
-    public void ResetSkillCharge() => currentSkillCharge = 0;
-    public void AddSkillCharge()
-        => currentSkillCharge = Mathf.Clamp(currentSkillCharge += HasActiveSkill ? GetActiveSkill.GetChargeGainPerTurn : 0, 0, _skillChargeCount);
-    public int GetMaxSkillChargeCount => _skillChargeCount;
-    public int GetCurrentSkillChargeCount => currentSkillCharge;
-    public bool SkillIsReady => currentSkillCharge == _skillChargeCount;
+    public void ResetSkillCharge() => GetActiveSkill?.ResetSkillCharge();
+    public void AddSkillCharge() => GetActiveSkill?.IncreaseSkillCharge();
+    public int GetMaxSkillChargeCount => GetActiveSkill != null ? GetActiveSkill.GetMaxSkillCharge : -1;
+    public int GetCurrentSkillChargeCount => GetActiveSkill != null ? GetActiveSkill.GetCurrentSkillCharge : -1;
+    public bool SkillIsReady => GetActiveSkill != null ? GetActiveSkill.SkillChargeReady : false;
     public ActiveSkill GetActiveSkill => _activeSkill;
-    public void SetActiveSkill(ActiveSkill skill) { _activeSkill = skill; SyncSkillChargeCount(); ResetSkillCharge(); }
+    public void SetActiveSkill(ActiveSkill skill) { _activeSkill = skill; ResetSkillCharge(); }
     public bool HasActiveSkill => _activeSkill != null;
 
     public int GetUnitPriority => priority;
@@ -155,11 +153,15 @@ public abstract class Unit : Entity
         damagePopUp.ShowDamage(totalDamage);
     }
 
+    protected virtual void StartTurnMethods()
+    {
+        UpdatePreStatusEffects();
+    }
+
     protected virtual void EndTurnMethods()
     {
         ResetAttackStatus();
         PostStatusEffect();
-        HandleSkillCount();
     }
 
     protected virtual void OnDestroy()
@@ -168,7 +170,7 @@ public abstract class Unit : Entity
         UnsubscribeHealthChangeEvent(CheckDeathEvent);
         UnsubscribeUseSkillEvent(UpdateStatusEffectsOnSkill);
         UnsubscribeTurnEndEvent(EndTurnMethods);
-        UnsubscribeTurnBeginEvent(UpdatePreStatusEffects);
+        UnsubscribeTurnBeginEvent(StartTurnMethods);
     }
 
     #endregion
@@ -185,7 +187,7 @@ public abstract class Unit : Entity
         SubscribeHealthChangeEvent(CheckDeathEvent);
         SubscribeUseSkillEvent(UpdateStatusEffectsOnSkill);
         SubscribeTurnEndEvent(EndTurnMethods);
-        SubscribeTurnBeginEvent(UpdatePreStatusEffects);
+        SubscribeTurnBeginEvent(StartTurnMethods);
     }
 
     #endregion
@@ -227,7 +229,6 @@ public abstract class Unit : Entity
         GetStatusEffects.ForEach(j => j.DoPreEffect(this));
     }
     private void PostStatusEffect() => GetStatusEffects.ForEach(i => i.DoPostEffect(this));
-    private void HandleSkillCount() => AddSkillCharge();
 
     #endregion
 }
