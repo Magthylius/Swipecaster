@@ -17,6 +17,7 @@ public class SingleTarget : Curative
         Transform[] party = battleStage.casterPositions;
         for(int i = 0; i < party.Length; i++)
         {
+            if (party[i].childCount == 0) continue;
             var unit = party[i].GetChild(0).GetComponent<Unit>();
             if (unit == null) continue;
 

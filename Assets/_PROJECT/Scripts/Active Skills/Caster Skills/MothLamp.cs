@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class MothLamp : CasterSkill
 {
+    private Summon _lamp = null;
+
     public override void TriggerSkill(TargetInfo targetInfo, BattlestageManager battleStage)
     {
+        if (LampAlreadySpawned) return;
+
         var casterEntityPos = battleStage.casterEntityPositions.ToList();
         List<bool> positionAvailable = new List<bool>();
         for (int i = 0; i < casterEntityPos.Count; i++)
@@ -27,9 +31,12 @@ public class MothLamp : CasterSkill
         }
 
         casterEntityPos[index].gameObject.SetActive(true);
-        GetUnit.GetBaseUnit.InstantiateSummon(casterEntityPos[index].position, Quaternion.identity, casterEntityPos[index]);
+        GameObject lampObject = GetUnit.GetBaseUnit.InstantiateSummon(casterEntityPos[index].position, Quaternion.identity, casterEntityPos[index]);
+        _lamp = lampObject.GetComponent<Summon>();
 
         battleStage.RegroupLeftPositions(false);
+
+        ResetSkillCharge();
     }
 
     public override TargetInfo GetActiveSkillTargets(Unit focusTarget, List<Unit> allCasters, List<Unit> allFoes)
@@ -37,7 +44,14 @@ public class MothLamp : CasterSkill
         return TargetInfo.Null;
     }
 
-    public MothLamp() : base() { }
-    public MothLamp(float damageMultiplier, int effectDuration, int maxSkillCharge, int chargeGainPerTurn, Unit unit)
-        : base(damageMultiplier, effectDuration, maxSkillCharge, chargeGainPerTurn, unit) { }
+    public MothLamp(Unit unit)
+    {
+        _maxSkillCharge = 5;
+        _chargeGainPerTurn = 1;
+        _ignoreDuration = true;
+        _unit = unit;
+        EffectDuration0();
+    }
+
+    private bool LampAlreadySpawned => _lamp != null;
 }

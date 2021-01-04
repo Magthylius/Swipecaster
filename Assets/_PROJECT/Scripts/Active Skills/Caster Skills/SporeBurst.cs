@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shoutdown : CasterSkill
+public class SporeBurst : CasterSkill
 {
-    public override string Description 
-        => "Increases all caster DMG by 25%";
+    public override string Description
+        => "Deals +20% damage and converts passed attacks to splash.";
 
     public override TargetInfo GetActiveSkillTargets(Unit focusTarget, List<Unit> allCasters, List<Unit> allFoes)
         => new TargetInfo(focusTarget, null, null, allCasters, allFoes);
@@ -14,13 +14,19 @@ public class Shoutdown : CasterSkill
     {
         if (targetInfo.Casters == null || targetInfo.Casters.Count == 0) return;
 
-        targetInfo.Casters.ForEach(caster => caster.AddStatusEffect(Create.A_Status.AttackUp(_startEffectDuration, 0.25f)));
+        GetUnit.AddStatusEffect(Create.A_Status.AttackUp(_startEffectDuration, 0.2f));
+        GetUnit.SetProjectile(new Splash());
         ResetSkillCharge();
     }
 
-    public Shoutdown(Unit unit)
+    protected override void OnEffectDurationComplete()
     {
-        _startEffectDuration = 1;
+        GetUnit.SetProjectile(new CrowFlies());
+    }
+
+    public SporeBurst(Unit unit)
+    {
+        _startEffectDuration = 2;
         _maxSkillCharge = 3;
         _chargeGainPerTurn = 1;
         _ignoreDuration = false;
