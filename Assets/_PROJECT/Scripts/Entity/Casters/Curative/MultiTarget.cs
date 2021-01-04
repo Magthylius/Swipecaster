@@ -19,6 +19,7 @@ public class MultiTarget : Curative
         List<Unit> healList = new List<Unit>();
         for(int i = 0; i < party.Length; i++)
         {
+            if (party[i].childCount == 0) continue;
             var unit = party[i].GetChild(0).GetComponent<Unit>();
             if (unit == null) continue;
             healList.Add(unit);

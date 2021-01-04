@@ -9,7 +9,8 @@ public class TeapotCrackpot : CasterSkill
 
     public override void TriggerSkill(TargetInfo targetInfo, BattlestageManager battleStage)
     {
-        
+
+        ResetSkillCharge();
     }
 
     public override TargetInfo GetActiveSkillTargets(Unit focusTarget, List<Unit> allCasters, List<Unit> allFoes)
@@ -19,8 +20,12 @@ public class TeapotCrackpot : CasterSkill
         return TargetInfo.Null;
     }
 
-    public TeapotCrackpot() : base() { }
-    public TeapotCrackpot(float damageMultiplier, int effectDuration, int maxSkillCharge, int chargeGainPerTurn, Unit unit)
-         : base(damageMultiplier, effectDuration, maxSkillCharge, chargeGainPerTurn, unit)
-    { }
+    public TeapotCrackpot(Unit unit)
+    {
+        _startEffectDuration = 3;
+        _maxSkillCharge = 3;
+        _chargeGainPerTurn = 1;
+        _unit = unit;
+        EffectDuration0();
+    }
 }

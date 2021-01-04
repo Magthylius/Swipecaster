@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class CasterSkill : ActiveSkill
 {
     public CasterSkill() : base() { }
-    public CasterSkill(float damageMultiplier, int effectDuration, int maxSkillCharge, int chargeGainPerTurn, Unit unit)
-        : base(damageMultiplier, effectDuration, maxSkillCharge, chargeGainPerTurn, unit) { }
+
+    public override void TurnStartCall() { }
+    protected override void OnEffectDurationComplete() { }
 }

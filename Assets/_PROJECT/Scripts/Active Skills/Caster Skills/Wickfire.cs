@@ -2,28 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HardCover : CasterSkill
+public class Wickfire : CasterSkill
 {
     public override string Description
-        => "STUNS all enemies (1 turn)";
+        => "Increases all caster DMG by 25%";
 
     public override TargetInfo GetActiveSkillTargets(Unit focusTarget, List<Unit> allCasters, List<Unit> allFoes)
         => new TargetInfo(focusTarget, null, null, allCasters, allFoes);
 
     public override void TriggerSkill(TargetInfo targetInfo, BattlestageManager battleStage)
     {
-        if (targetInfo.Foes == null || targetInfo.Foes.Count == 0) return;
+        if (targetInfo.Casters == null || targetInfo.Casters.Count == 0) return;
 
-        targetInfo.Foes.ForEach(foe => foe.AddStatusEffect(Create.A_Status.Stun(1)));
+        targetInfo.Casters.ForEach(caster => caster.AddStatusEffect(Create.A_Status.AttackUp(_startEffectDuration, 0.25f)));
         ResetSkillCharge();
     }
 
-    public HardCover(Unit unit)
+    public Wickfire(Unit unit)
     {
-        _startEffectDuration = 0;
-        _maxSkillCharge = 5;
+        _startEffectDuration = 1;
+        _maxSkillCharge = 3;
         _chargeGainPerTurn = 1;
-        _ignoreDuration = true;
+        _ignoreDuration = false;
         _unit = unit;
         EffectDuration0();
     }

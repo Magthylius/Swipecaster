@@ -11,9 +11,10 @@ public class RoomAndSceneManagementObject : ScriptableObject
     private static List<RoomScriptable> _resourceRooms = new List<RoomScriptable>();
     private static Dictionary<string, RoomScriptable> _rooms = new Dictionary<string, RoomScriptable>();
     private static EnergyManager _energyManager = null;
+    private static SceneTransitionManager _sceneManager = null;
 
-    private const int MainMenuIndex = 0;
-    private const int BattleStageIndex = 1;
+    private const string MainMenuName = "MainMenuScene";
+    private const string BattleStageName = "BattleScene";
 
     [SerializeField] private float smallEnergyCost;
     [SerializeField] private float mediumEnergyCost;
@@ -31,8 +32,11 @@ public class RoomAndSceneManagementObject : ScriptableObject
 
     public void ReturnToMainMenu()
     {
+        InitialiseIfAny();
         ActiveRoom = null;
-        SceneManager.LoadScene(MainMenuIndex, LoadSceneMode.Single);
+        if (_sceneManager == null) return;
+
+        _sceneManager.ActivateTransition(MainMenuName);
     }
 
     private void EnterStage(string name, float energy)
@@ -42,7 +46,7 @@ public class RoomAndSceneManagementObject : ScriptableObject
         if (!isActive || _energyManager == null) return;
 
         _energyManager.SpendEnergy(Mathf.Abs(energy));
-        SceneManager.LoadScene(BattleStageIndex, LoadSceneMode.Single);
+        _sceneManager.ActivateTransition(BattleStageName);
     }
     private RoomScriptable GetRoom(string name, out bool active)
     {
@@ -51,12 +55,15 @@ public class RoomAndSceneManagementObject : ScriptableObject
     }
     private void InitialiseIfAny()
     {
-        if (!NotInitialised) return;
-        _isInitialised = true;
-
-        _resourceRooms = new List<RoomScriptable>(Resources.LoadAll<RoomScriptable>(_roomLocation));
-        _resourceRooms.ForEach(room => _rooms.Add(room.name, room));
-        _energyManager = EnergyManager.instance;
+        if (NotInitialised)
+        {
+            _isInitialised = true;
+            _resourceRooms = new List<RoomScriptable>(Resources.LoadAll<RoomScriptable>(_roomLocation));
+            _resourceRooms.ForEach(room => _rooms.Add(room.name, room));
+        }
+        
+        if(_energyManager == null) _energyManager = EnergyManager.instance;
+        if(_sceneManager == null) _sceneManager = SceneTransitionManager.instance;
     }
 
     private bool NotInitialised => !_isInitialised;
