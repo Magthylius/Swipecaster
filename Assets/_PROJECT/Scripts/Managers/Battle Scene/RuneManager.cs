@@ -52,14 +52,13 @@ public class RuneManager : MonoBehaviour
 
     void SpawningInterval(object sender, TickManager.OnTickEvent e)
     {
+        int selfTick = e.tick;
 
-         int selfTick = e.tick;
-
+        if (!allowSpawn) return;
+        
          if (selfTick > targetSpawn)
          {
-             if (allowSpawn)
-                 SpawnItem();
-             
+             SpawnItem();
              targetSpawn += spawnDelay;
          }
         
