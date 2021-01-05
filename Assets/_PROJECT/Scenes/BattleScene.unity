@@ -3256,7 +3256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  infiniteHorizontal: 0
+  infiniteHorizontal: 1
   infiniteVertical: 0
   multiplier: {x: 0, y: 0}
 --- !u!212 &694942154
@@ -4191,7 +4191,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 701992667
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -9292,11 +9292,11 @@ MonoBehaviour:
   - {fileID: 1572839154}
   multiplierList:
   - type: 1
-    multiplier: {x: 1, y: 0}
+    multiplier: {x: 0.95, y: 0}
   - type: 2
-    multiplier: {x: 0.5, y: 0}
+    multiplier: {x: 0, y: 0}
   - type: 3
-    multiplier: {x: 0.3, y: 0}
+    multiplier: {x: 0.5, y: 0}
 --- !u!1 &1134065134
 GameObject:
   m_ObjectHideFlags: 0
@@ -9890,7 +9890,7 @@ TrailRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 701992667
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_Time: 0.5
   m_Parameters:
@@ -10826,8 +10826,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 379644617
+  m_SortingLayer: 3
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 8c5370f5ca964e947ae4aeae80b97ecb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -11487,7 +11487,7 @@ LineRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 701992667
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: -5}
