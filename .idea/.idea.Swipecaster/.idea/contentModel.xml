@@ -26,9 +26,12 @@
               <e p="Caster Skills" t="Include">
                 <e p="CasterSkill.cs" t="Include" />
                 <e p="HardCover.cs" t="Include" />
+                <e p="MorningDew.cs" t="Include" />
                 <e p="MothLamp.cs" t="Include" />
                 <e p="Shoutdown.cs" t="Include" />
+                <e p="SporeBurst.cs" t="Include" />
                 <e p="TeapotCrackpot.cs" t="Include" />
+                <e p="Wickfire.cs" t="Include" />
               </e>
               <e p="Foe Skills" t="Include">
                 <e p="FoeSkill.cs" t="Include" />
@@ -110,6 +113,7 @@
                 <e p="Overhead.cs" t="Include" />
                 <e p="Piercing.cs" t="Include" />
                 <e p="Projectile.cs" t="Include" />
+                <e p="Splash.cs" t="Include" />
                 <e p="SplashOverhead.cs" t="Include" />
                 <e p="TargetInfo.cs" t="Include" />
               </e>
@@ -120,6 +124,10 @@
               <e p="Unit.cs" t="Include" />
               <e p="UnitEntry.cs" t="Include" />
             </e>
+            <e p="Environment" t="Include">
+              <e p="EnvironmentManager.cs" t="Include" />
+              <e p="ParallaxBehaviour.cs" t="Include" />
+            </e>
             <e p="Inventory" t="Include">
               <e p="InventoryDebug.cs" t="Include" />
               <e p="PlayerInventoryData.cs" t="Include" />
@@ -128,6 +136,7 @@
               <e p="CasterInventoryBehavior.cs" t="Include" />
               <e p="GachaCanvasManager.cs" t="Include" />
               <e p="GachaConnectorBehavior.cs" t="Include" />
+              <e p="HomeCanvasManager.cs" t="Include" />
               <e p="InventoryManager.cs" t="Include" />
               <e p="LevelSelectBehavior.cs" t="Include" />
               <e p="MapSelectionManager.cs" t="Include" />
@@ -137,6 +146,7 @@
               <e p="PartyConfigurationBehavior.cs" t="Include" />
               <e p="PartyGroupBehavior.cs" t="Include" />
               <e p="PartyInventoryBehaviour.cs" t="Include" />
+              <e p="QuestHandler.cs" t="Include" />
               <e p="ShopButtonBehavior.cs" t="Include" />
               <e p="ShopCanvasManager.cs" t="Include" />
             </e>
@@ -151,15 +161,24 @@
                 <e p="SettingsManager.cs" t="Include" />
                 <e p="TickManager.cs" t="Include" />
               </e>
+              <e p="General" t="Include">
+                <e p="Audio" t="Include">
+                  <e p="AudioManager.cs" t="Include" />
+                  <e p="AudioTest.cs" t="Include" />
+                  <e p="AudioType.cs" t="Include" />
+                </e>
+              </e>
               <e p="Main Menu" t="Include">
                 <e p="EnergyManager.cs" t="Include" />
                 <e p="MainMenuManager.cs" t="Include" />
+                <e p="SceneTransitionManager.cs" t="Include" />
               </e>
             </e>
             <e p="Namespaces" t="Include">
               <e p="CameraFunctions.cs" t="Include" />
               <e p="ClampFunctions.cs" t="Include" />
               <e p="ConversionFunctions.cs" t="Include" />
+              <e p="Create.cs" t="Include" />
               <e p="LerpFunctions.cs" t="Include" />
             </e>
             <e p="Player" t="Include">
@@ -175,22 +194,49 @@
             </e>
             <e p="Save" t="Include">
               <e p="DatabaseManager.cs" t="Include" />
-              <e p="DatabaseManagerEditor.cs" t="Include" />
+              <e p="Editor" t="Include">
+                <e p="DatabaseManagerEditor.cs" t="Include" />
+              </e>
               <e p="SaveManager.cs" t="Include" />
               <e p="SaveTest.cs" t="Include" />
             </e>
             <e p="SO Scripts" t="Include">
               <e p="CasterParty.cs" t="Include" />
               <e p="GachaBanner.cs" t="Include" />
+              <e p="Levels and Quests" t="Include">
+                <e p="LevelObject.cs" t="Include" />
+                <e p="QuestObject.cs" t="Include" />
+              </e>
               <e p="MenuUnit.cs" t="Include" />
               <e p="RoomAndSceneManagementObject.cs" t="Include" />
-              <e p="RoomScriptable.cs" t="Include" />
+              <e p="RoomObject.cs" t="Include" />
               <e p="SummonObject.cs" t="Include" />
-              <e p="UnitObject.cs" t="Include" />
+              <e p="Unit Objects" t="Include">
+                <e p="Unit_001.cs" t="Include" />
+                <e p="Unit_002.cs" t="Include" />
+                <e p="Unit_003.cs" t="Include" />
+                <e p="Unit_004.cs" t="Include" />
+                <e p="Unit_005.cs" t="Include" />
+                <e p="Unit_006.cs" t="Include" />
+                <e p="Unit_007.cs" t="Include" />
+                <e p="Unit_008.cs" t="Include" />
+                <e p="Unit_009.cs" t="Include" />
+                <e p="Unit_010.cs" t="Include" />
+                <e p="Unit_011.cs" t="Include" />
+                <e p="Unit_012.cs" t="Include" />
+                <e p="Unit_013.cs" t="Include" />
+                <e p="Unit_014.cs" t="Include" />
+                <e p="Unit_015.cs" t="Include" />
+                <e p="Unit_016.cs" t="Include" />
+                <e p="Unit_017.cs" t="Include" />
+                <e p="Unit_018.cs" t="Include" />
+                <e p="Unit_019.cs" t="Include" />
+                <e p="Unit_020.cs" t="Include" />
+                <e p="UnitObject.cs" t="Include" />
+              </e>
             </e>
             <e p="Status Effects" t="Include">
               <e p="AttackUp.cs" t="Include" />
-              <e p="Create.cs" t="Include" />
               <e p="DefenceDown.cs" t="Include" />
               <e p="Flame.cs" t="Include" />
               <e p="Poison.cs" t="Include" />
@@ -1080,7 +1126,7 @@
       <e p="Swipecaster.sln" t="IncludeFlat" />
       <e p="Temp\bin" t="ExcludeRecursive" />
     </e>
-    <e p="C:\Users\mostd\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\mostd\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_Swipecaster.1168460982.00" t="ExcludeRecursive" />
+    <e p="C:\Users\mostd\AppData\Local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\mostd\AppData\Local\JetBrains\Rider2020.3\resharper-host\Local\Transient\Rider\v203\SolutionCaches\_Swipecaster.1168460982.00" t="ExcludeRecursive" />
   </component>
 </project>

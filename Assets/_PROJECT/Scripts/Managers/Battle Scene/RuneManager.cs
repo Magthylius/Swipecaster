@@ -15,7 +15,7 @@ public class RuneManager : MonoBehaviour
     public Transform leftMarginObj;
     public Transform rightMarginObj;
 
-    [Header("Spawn Settings")]
+    [Header("Spawn Settings")] public bool enableSpawn = false;
     public Transform initialSpawn;
     public CanvasScaler referenceScale;
     public GameObject castingGroup;
@@ -54,6 +54,7 @@ public class RuneManager : MonoBehaviour
     {
         int selfTick = e.tick;
 
+        
         if (!allowSpawn) return;
         
          if (selfTick > targetSpawn)

@@ -22,17 +22,11 @@
     <list default="true" id="8b2ff588-542f-45f5-abf5-6973ac360757" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Swipecaster/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Swipecaster/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Swipecaster/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Swipecaster/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/EasyMobile/Packages/ExternalDependencyManager/external-dependency-manager-latest.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/EasyMobile/Packages/PlayMakerActions/PlayMakerActions.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Prefabs/Entities/Cat 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_PROJECT/Prefabs/Entities/Cat 1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Prefabs/Entities/Cat 2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_PROJECT/Prefabs/Entities/Cat 2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Prefabs/Entities/Cat 3.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_PROJECT/Prefabs/Entities/Cat 3.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Prefabs/Entities/Cat 4.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_PROJECT/Prefabs/Entities/Cat 4.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Scenes/Test Scenes/Lee_Scene/Lee_Playground_Battleground.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_PROJECT/Scenes/Test Scenes/Lee_Scene/Lee_Playground_Battleground.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/BattlestageManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/BattlestageManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/TurnBaseManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/TurnBaseManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/TurnBaseManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/TurnBaseManager.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Runes/RuneBehaviour.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Runes/RuneBehaviour.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Scenes/BattleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_PROJECT/Scenes/BattleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Scenes/Test Scenes/Lee Scenes/Lee_Playground_Battleground.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_PROJECT/Scenes/Test Scenes/Lee Scenes/Lee_Playground_Battleground.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/Battle Scene/RuneManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/Battle Scene/RuneManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,78 +36,44 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/TurnBaseManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Inventory/PlayerInventoryData.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyInventoryBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E414E10B-FE5F-4572-9FF1-22F3359DE21B/fc/d2d224c8/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/BattlestageManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Save/SaveManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Save/SaveTest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Save/DatabaseManagerEditor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyCasterInventoryManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/UnitPositionManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/63DD8BF9-8CFA-4BA9-85AF-735EF1A56BA9/22/1a106110/String.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Camera/CameraSizeAdjuster.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Save/SaveManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Environment/ParallaxBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyInventoryBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/General/Audio/AudioTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Environment/EnvironmentManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Save/SaveTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/TurnBaseManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/63DD8BF9-8CFA-4BA9-85AF-735EF1A56BA9/22/1a106110/String.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/UnitPositionManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Camera/CameraManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E414E10B-FE5F-4572-9FF1-22F3359DE21B/fc/d2d224c8/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyCasterInventoryManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/BattlestageManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/63DD8BF9-8CFA-4BA9-85AF-735EF1A56BA9/ea/f860c90c/Array.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Match3_Scripts/TileManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Casting_Scripts/TickSystem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Casting_Scripts/CastingState.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Casting_Scripts/TileManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Casting_Scripts/ObjectPoolingManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Casting_Scripts/LimitVelocity.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Casting_Scripts/SelfDeactivate.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Casting_Scripts/CastingPoolManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Casting_Scripts/CastingManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Casting_Scripts/RuneEnum.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Casting_Scripts/CastingPoolManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Casting_Scripts/RuneType.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Editor/ToDo.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/ToDo.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Editor/ToDoEditor.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Casting_Scripts/PoolManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Casting_Scripts/CastingManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Casting_Scripts/RuneBehaviour.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Camera/CameraSizeAdjuster.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/HeroBehaviour.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/GameState.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/UnitSwapHandler.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/ConnectionManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Runes/RuneBehaviour.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Player/Player.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/UnitPositionManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Runes/RuneManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/ComboManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Save/SaveTest.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Save/LoadManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Save/SaveManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Camera/CameraManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/GameStateEnum.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/TurnBaseManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/BattlestageManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Inventory/InventoryDebug.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Inventory/PlayerInventory.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/InventoryManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scenes/Test Scenes/Jin Scenes/Sprites/InventoryLoad.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Inventory/PlayerInventoryData.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Save/DatabaseManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Save/DatabaseManagerEditor.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/Battle Scene/InformationManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scenes/Test Scenes/Jin Scenes/Sprites/MenuParty.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/SO Scripts/CasterParty.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Inventory/PartyUnitID.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyCasterInventoryManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyCanvasManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyGroupBehavior.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyInventoryBehaviour.cs" />
-        <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyConfigurationBehavior.cs" />
-      </list>
-    </option>
+    <changedPaths>
+      <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/TurnBaseManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/General/Audio/AudioType.cs" />
+      <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/General/Audio/AudioManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/General/Audio/AudioTest.cs" />
+      <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/Battle Scene/RuneManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/Battle Scene/EnvironmentManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Save/DatabaseManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Environment/ParallaxBehaviour.cs" />
+      <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Environment/EnvironmentManager.cs" />
+    </changedPaths>
   </component>
   <component name="ProjectId" id="1lgUKEMQznl8d4VgaS2WyrD60iQ" />
   <component name="ProjectViewState">
@@ -125,7 +85,7 @@
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Indent Rainbow" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -167,6 +127,9 @@
       <workItem from="1609309768055" duration="2148000" />
       <workItem from="1609396124495" duration="6245000" />
       <workItem from="1609491224362" duration="10078000" />
+      <workItem from="1609827647586" duration="2743000" />
+      <workItem from="1609837828355" duration="7616000" />
+      <workItem from="1609851628268" duration="6586000" />
     </task>
     <servers />
   </component>
@@ -186,33 +149,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="832" y="455" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.ChooseSilentCodeCleanupProfileDialog" timestamp="1608638582189">
-      <screen x="62" y="0" width="1858" height="1080" />
-    </state>
-    <state x="832" y="455" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.ChooseSilentCodeCleanupProfileDialog/62.0.1858.1080@62.0.1858.1080" timestamp="1608638582189" />
-    <state x="716" y="384" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1" timestamp="1608638575580">
-      <screen x="62" y="0" width="1858" height="1080" />
-    </state>
-    <state x="716" y="384" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1/62.0.1858.1080@62.0.1858.1080" timestamp="1608638575580" />
-    <state x="719" y="264" key="RiderGenerateDialog" timestamp="1608453925157">
-      <screen x="62" y="0" width="1858" height="1080" />
-    </state>
-    <state x="719" y="264" key="RiderGenerateDialog/62.0.1858.1080@62.0.1858.1080" timestamp="1608453925157" />
-    <state x="316" y="162" key="SettingsEditor" timestamp="1608643303235">
-      <screen x="62" y="0" width="1858" height="1080" />
-    </state>
-    <state x="316" y="162" key="SettingsEditor/62.0.1858.1080@62.0.1858.1080" timestamp="1608643303235" />
-    <state x="337" y="162" key="SettingsEditor/86.0.1834.1080@86.0.1834.1080" timestamp="1608137730899" />
-    <state x="154" y="92" width="1674" height="896" key="VCS.FileHistoryDialog" timestamp="1608225415742">
-      <screen x="62" y="0" width="1858" height="1080" />
-    </state>
-    <state x="154" y="92" width="1674" height="896" key="VCS.FileHistoryDialog/62.0.1858.1080@62.0.1858.1080" timestamp="1608225415742" />
-    <state x="650" y="235" width="681" height="678" key="search.everywhere.popup" timestamp="1608639511449">
-      <screen x="62" y="0" width="1858" height="1080" />
-    </state>
-    <state x="650" y="235" width="681" height="678" key="search.everywhere.popup/62.0.1858.1080@62.0.1858.1080" timestamp="1608639511449" />
-    <state x="666" y="235" width="672" height="678" key="search.everywhere.popup/86.0.1834.1080@86.0.1834.1080" timestamp="1608114842074" />
   </component>
 </project>

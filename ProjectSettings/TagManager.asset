@@ -9,6 +9,7 @@ TagManager:
   - Rune3
   - Hero
   - Foe
+  - BattleCam
   layers:
   - Default
   - TransparentFX
