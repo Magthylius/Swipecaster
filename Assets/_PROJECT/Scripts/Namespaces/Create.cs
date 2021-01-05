@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using Type = System.Type;
-
-namespace Create
+﻿namespace Create
 {
     public static class A_Status
     {

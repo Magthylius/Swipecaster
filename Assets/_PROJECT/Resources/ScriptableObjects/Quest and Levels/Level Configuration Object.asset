@@ -10,10 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0cf2dccff56acc4192475d5dcc1c562, type: 3}
-  m_Name: Room And Scene Management Object
+  m_Name: Level Configuration Object
   m_EditorClassIdentifier: 
-  smallEnergyCost: 0
-  mediumEnergyCost: 0
-  highEnergyCost: 0
-  superHighEnergyCost: 0
-  ActiveRoom: {fileID: 11400000, guid: 11dddc87a8cf3a7449880c17c6d2b774, type: 2}
+  ActiveLevel: {fileID: 11400000, guid: 35fd1e8a6eb1906429ae9e98d3094855, type: 2}
