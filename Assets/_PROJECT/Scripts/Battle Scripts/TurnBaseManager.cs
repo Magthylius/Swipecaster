@@ -14,6 +14,7 @@ public class TurnBaseManager : MonoBehaviour
     RuneManager runeManager;
     InformationManager infoManager;
     CameraManager cameraManager;
+    RoomManager roomManager;
 
     [SerializeField] GameStateEnum battleState;
 
@@ -51,6 +52,7 @@ public class TurnBaseManager : MonoBehaviour
         enemyAttackManager = EnemyAttackManager.instance;
         infoManager = InformationManager.instance;
         cameraManager = CameraManager.instance;
+        roomManager = RoomManager.Instance;
         battleState = GameStateEnum.INIT;
         StartCoroutine(InitBattle());
     }
@@ -154,9 +156,21 @@ public class TurnBaseManager : MonoBehaviour
         }
         else if (battlestageManager.GetEnemyTeam().Count == 0)
         {
-            battleState = GameStateEnum.END;
-            print("Enemy Game Over");
-            return;
+            string msg = "Enemy Game Over";
+            if(roomManager.AnyRoomsLeft)
+            {
+                msg += "... or not just yet.";
+                print(msg);
+                roomManager.SetNextRoomIndex();
+                battlestageManager.AssignEnemiesToRoom();
+            }
+            else
+            {
+                msg += ". GGWP";
+                print(msg);
+                battleState = GameStateEnum.END;
+                return;
+            }
         }
 
         var current = GetCurrentCaster().AsUnit();

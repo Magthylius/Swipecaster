@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class QuestHandler : MonoBehaviour
 {
-    public RoomAndSceneManagementObject roomAndSceneManagement;
+    public LevelConfigurationObject levelConfiguration;
     public List<LevelSelectBehavior> levelSelectors;
 
+    private EnergyManager energyManager;
     SceneTransitionManager stManager;
     QuestObject qObject;
+    private float _energyCost;
 
     void Start()
     {
+        energyManager = EnergyManager.instance;
         stManager = SceneTransitionManager.instance;
+        levelConfiguration = Obtain.A_Scriptable.LevelConfiguration;
     }
 
     void SetupLevelSelectors(QuestObject questObject)
@@ -46,11 +50,17 @@ public class QuestHandler : MonoBehaviour
 
     public void BTN_SelectLevel(int index)
     {
-        roomAndSceneManagement.ActiveRoom = qObject.questLevels[index].levelRooms[0];
+        levelConfiguration.ActiveLevel = qObject.questLevels[index];
+    }
+
+    public void BTN_SetEnergyCost(float energy)
+    {
+        _energyCost = energy;
     }
 
     public void BTN_EnterLevel()
     {
+        energyManager.SpendEnergy(_energyCost);
         stManager.ActivateTransition("BattleScene");
     }
 }

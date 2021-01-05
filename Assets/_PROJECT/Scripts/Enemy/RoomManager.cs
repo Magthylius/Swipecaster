@@ -9,9 +9,21 @@ public class RoomManager : MonoBehaviour
     [SerializeField] private bool isRandom;
     [SerializeField] private List<RoomSetUp> backupRooms;
     [SerializeField] private List<RoomSetUp> rooms;
-    [SerializeField] private RoomAndSceneManagementObject roomConfiguration;
+    [SerializeField] private LevelConfigurationObject roomConfiguration;
+    private int _currentRoomIndex = 0;
+    private int _maxRoomIndex = 0;
 
-    public List<RoomSetUp> Rooms => GetRooms();
+    public List<RoomSetUp> Level => GetAllRooms();
+    public int GetCurrentRoomIndex => _currentRoomIndex;
+    public bool AnyRoomsLeft => _currentRoomIndex < _maxRoomIndex;
+
+    public bool SetNextRoomIndex()
+    {
+        if(!AnyRoomsLeft) return false;
+        _currentRoomIndex = Mathf.Clamp(_currentRoomIndex + 1, 0, _maxRoomIndex);
+        return true;
+    }
+
     private void Awake()
     {
         if (Instance != null) Destroy(gameObject);
@@ -23,11 +35,19 @@ public class RoomManager : MonoBehaviour
     private void SettleActiveRoom()
     {
         rooms = new List<RoomSetUp>();
-        if(roomConfiguration.ActiveRoom != null) rooms.Add(new RoomSetUp(roomConfiguration.ActiveRoom));
+        if (roomConfiguration.ActiveLevel == null) return;
+        int count = roomConfiguration.ActiveLevel.levelRooms.Count;
+        for(int i = 0; i < count; i++) rooms.Add(new RoomSetUp(roomConfiguration.ActiveLevel.levelRooms[i]));
+        _currentRoomIndex = 0;
+        _maxRoomIndex = count - 1;
     }
-    private List<RoomSetUp> GetRooms()
+    private List<RoomSetUp> GetAllRooms()
     {
-        if(rooms.Count == 0) rooms.Add(new RoomSetUp(backupRooms[0].roomSO));
+        if (rooms.Count == 0) 
+        { 
+            rooms.Add(new RoomSetUp(backupRooms[0].roomSO));
+            print("Level Configuration not found.");
+        }
         return rooms;
     }
 }

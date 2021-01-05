@@ -169,10 +169,12 @@ public class BattlestageManager : MonoBehaviour
     {
         var target = selectedTarget.AsUnit();
         var unit = turnBaseManager.GetCurrentCaster().AsUnit();
-        if (unit == null || !unit.SkillIsReady || unit.GetActiveSkill == null) return;
+        if (SkillCriteriaNotMet()) return;
 
         TargetInfo targetInfo = unit.GetActiveSkill.GetActiveSkillTargets(target, (List<Unit>)GetCasterTeamAsUnit(), (List<Unit>)GetEnemyTeamAsUnit());
         unit.UseSkill(targetInfo, this);
+
+        bool SkillCriteriaNotMet() => unit == null || !unit.SkillIsReady || unit.GetActiveSkill == null;
     }
 
     public void RegroupAllPositons(bool instant)
@@ -237,6 +239,45 @@ public class BattlestageManager : MonoBehaviour
         }
     }
 
+    public void AssignEnemiesToRoom()
+    {
+        int index = roomManager.GetCurrentRoomIndex;
+        RoomSetUp theRoom = roomManager.Level[index];
+        if (theRoom.roomSO)
+        {
+            if (theRoom.isRandom)
+            {
+                List<EnemyData> availableEnemyType = new List<EnemyData>();
+                for (int j = 0; j < theRoom.roomSO.enemies.Count; j++)
+                {
+                    if (availableEnemyType.Contains(theRoom.roomSO.enemies[j])) continue;
+                    availableEnemyType.Add(theRoom.roomSO.enemies[j]);
+                }
+
+                int enemySize = UnityEngine.Random.Range(1, theRoom.maxEnemySize);
+
+                for (int i = 0; i < enemySize; i++)
+                {
+                    int randomAvailableEnemy = UnityEngine.Random.Range(0, availableEnemyType.Count);
+                    UnitObject unitObject = availableEnemyType[randomAvailableEnemy].enemySO;
+                    GameObject temp = unitObject.InstantiateUnit(enemyPositions[i].position, Quaternion.identity, enemyPositions[i]);
+                    temp.GetComponent<Foe>().SetCurrentLevel(availableEnemyType[randomAvailableEnemy].level);
+                    enemyTeam.Add(temp);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < theRoom.roomSO.enemies.Count; i++)
+                {
+                    UnitObject unitObject = theRoom.roomSO.enemies[i].enemySO;
+                    GameObject temp = unitObject.InstantiateUnit(enemyPositions[i].position, Quaternion.identity, enemyPositions[i]);
+                    temp.GetComponent<Foe>().SetCurrentLevel(theRoom.roomSO.enemies[i].level);
+                    enemyTeam.Add(temp);
+                }
+            }
+        }
+    }
+
     void InitPositions()
     {
         //! Set gap between 2 teams
@@ -289,42 +330,7 @@ public class BattlestageManager : MonoBehaviour
         foreach (Transform entity in enemyEntityPositions) entity.gameObject.SetActive(false);
 
         //! Set Enemy's Position
-        RoomSetUp theRoom = roomManager.Rooms[0];
-        if(theRoom.roomSO)
-        {
-            if (theRoom.isRandom)
-            {
-                List<EnemyData> availableEnemyType = new List<EnemyData>();
-                for (int j = 0; j < theRoom.roomSO.enemies.Count; j++)
-                {
-                    if (!availableEnemyType.Contains(theRoom.roomSO.enemies[j]))
-                    {
-                        availableEnemyType.Add(theRoom.roomSO.enemies[j]);
-                    }
-                }
-
-                int enemySize = UnityEngine.Random.Range(1, theRoom.maxEnemySize);
-
-                for (int i = 0; i < enemySize; i++)
-                {
-                    int randomAvailableEnemy = UnityEngine.Random.Range(0, availableEnemyType.Count);
-                    UnitObject unitObject = availableEnemyType[randomAvailableEnemy].enemySO;
-                    GameObject temp = unitObject.InstantiateUnit(enemyPositions[i].position, Quaternion.identity, enemyPositions[i]);
-                    temp.GetComponent<Foe>().SetCurrentLevel(availableEnemyType[randomAvailableEnemy].level);
-                    enemyTeam.Add(temp);
-                }
-            }
-            else
-            {
-                for (int i = 0; i < theRoom.roomSO.enemies.Count; i++)
-                {
-                    UnitObject unitObject = theRoom.roomSO.enemies[i].enemySO;
-                    GameObject temp = unitObject.InstantiateUnit(enemyPositions[i].position, Quaternion.identity, enemyPositions[i]);
-                    temp.GetComponent<Foe>().SetCurrentLevel(theRoom.roomSO.enemies[i].level);
-                    enemyTeam.Add(temp);
-                }
-            }
-        }
+        AssignEnemiesToRoom();
 
         RegroupRightPositions(false);
     }
@@ -352,7 +358,6 @@ public class BattlestageManager : MonoBehaviour
     {
         Unit.UnsubscribeDeathEvent(KillUnit);
     }
-
 
     #region Accessors
 

@@ -12,6 +12,7 @@ public class LevelSelectBehavior : MonoBehaviour
     public Button button;
 
     public float transitionSpeed = 2f;
+    [SerializeField] private float energyCost = 10.0f;
 
     RectTransform rectTr;
     MapSelectionManager mapManager;
@@ -76,6 +77,7 @@ public class LevelSelectBehavior : MonoBehaviour
 
     void UpdateQuestHandler()
     {
+        questHandler.BTN_SetEnergyCost(energyCost);
         questHandler.BTN_SelectLevel(transform.GetSiblingIndex());
     }
 

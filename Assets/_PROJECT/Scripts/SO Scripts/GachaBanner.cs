@@ -64,6 +64,7 @@ public class GachaBanner : ScriptableObject
 
     public UnitObject PullCaster()
     {
+        UpdateChances();
         float rarityPullPoint = Random.Range(0f, 1f);
 
         float oneStarPoint = oneStarChance;

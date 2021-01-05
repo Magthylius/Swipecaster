@@ -70,6 +70,8 @@ public class DatabaseManager : MonoBehaviour
 
     public void RefreshInventory()
     {
+        CheckCasterIsAlive();
+        
         foreach (var id in liveCaster)
         {
             for (int i = 0; i < allCasters.Count; i++)
@@ -108,7 +110,6 @@ public class DatabaseManager : MonoBehaviour
         playerData.partyDatabase.Add(new PartyData("Team C", new List<string>(){"001", "002", "003", "004"}));
         playerData.partyDatabase.Add(new PartyData("Team D", new List<string>(){"001", "002", "003", "004"}));
         SaveManager.Save(playerData);
-        playerData = null;
     }
     
     public void SetCasterToAlive(CasterDataStats _caster)
@@ -188,6 +189,7 @@ public class DatabaseManager : MonoBehaviour
                 liveCaster.Add(caster.ID);
             }
         }
+        
     }
     
     
