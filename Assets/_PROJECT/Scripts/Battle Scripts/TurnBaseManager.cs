@@ -213,7 +213,7 @@ public class TurnBaseManager : MonoBehaviour
         highlighter = Instantiate(highlighter);
         highlighter.SetActive(false);
 
-        yield return new WaitForSeconds(delaysInBetween);
+        yield return new WaitForSeconds(3f);
 
         battleState = GameStateEnum.CASTERTURN;
         CasterTurn();
