@@ -7,6 +7,7 @@ using LerpFunctions;
 
 public class InventoryManager : MenuCanvasPage
 {
+    public static InventoryManager instance;
     DatabaseManager databaseManager;
 
     [Header("Inventory")]
@@ -37,6 +38,13 @@ public class InventoryManager : MenuCanvasPage
     CanvasGroupFader textCGF;
     FlexibleRect artFR;
     Image splashArt;
+
+    public override void Awake()
+    {
+        base.Awake();
+        if (instance != null) Destroy(this);
+        else instance = this;
+    }
 
     void Start()
     {

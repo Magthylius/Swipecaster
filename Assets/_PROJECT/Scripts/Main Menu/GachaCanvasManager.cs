@@ -31,6 +31,7 @@ public class GachaCanvasManager : MenuCanvasPage
     GachaCanvasState state = GachaCanvasState.IDLE;
 
     DatabaseManager dataManager;
+    InventoryManager invManager;
 
     [Header("Connector Points")]
     public UILineRenderer uiLine;
@@ -66,6 +67,7 @@ public class GachaCanvasManager : MenuCanvasPage
     void Start()
     {
         dataManager = DatabaseManager.instance;
+        invManager = InventoryManager.instance;
 
         connectedList = new List<GachaConnectorBehavior>();
         linePoints = new List<Vector2>();
@@ -161,33 +163,10 @@ public class GachaCanvasManager : MenuCanvasPage
 
     public void BTN_SummonCharacter()
     {
-        /*int r = Random.Range(0, 5);
-        switch (r)
-        {
-            case 0:
-                Debug.Log("You summoned: Disappointment!");
-                break;
-
-            case 1:
-                Debug.Log("You summoned: Anxiety!");
-                break;
-
-            case 2:
-                Debug.Log("You summoned: Depression!");
-                break;
-
-            case 3:
-                Debug.Log("You summoned: Depression!");
-                break;
-
-            case 4:
-                Debug.Log("You summoned: Pain!");
-                break;
-        }*/
-        //print(activeBanner.GetAllChances());
         UnitObject pull = activeBanner.PullCaster();
-        print("You pulled " + pull.CharacterName);
+        print(pull.CharacterName);
         dataManager.AddCaster(pull.ID);
+        invManager.UpdateCasterInventory();
     }
 
     #region Accessors

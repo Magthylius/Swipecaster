@@ -5,14 +5,15 @@ using UnityEngine;
 
 public class DamagePopUp : MonoBehaviour
 {
-    [SerializeField] private float popUpTime = 1.5f;
+    private float popUpTime = 2.0f;
     private TextMeshPro _textMesh;
-    public GameObject parent;
+    private GameObject parent;
 
     private void Awake()
     {
         _textMesh = GetComponent<TextMeshPro>();
         parent = transform.parent.gameObject;
+        parent.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
         parent.SetActive(false);
     }
 

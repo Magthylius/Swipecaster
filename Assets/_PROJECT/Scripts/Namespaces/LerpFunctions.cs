@@ -215,17 +215,31 @@ namespace LerpFunctions
         {
             canvas.alpha = alpha;
         }
-
+        public void SetInteraction(bool interaction)
+        {
+            canvas.blocksRaycasts = interaction;
+            canvas.interactable = interaction;
+        }
         public void StartFadeIn()
         {
             SetStateFadeIn();
             TriggerFade();
         }
-
         public void StartFadeOut()
         {
             SetStateFadeOut();
             TriggerFade();
+        }
+
+        public void SetTransparent()
+        {
+            SetAlpha(0f);
+            if (affectsTouch) SetInteraction(false);
+        }
+        public void SetOpaque()
+        {
+            SetAlpha(1f);
+            if (affectsTouch) SetInteraction(true);
         }
 
         public void TriggerFade() => allowFade = true;
