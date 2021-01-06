@@ -15,7 +15,7 @@ public enum ParallaxType
 public struct ParallaxMultiplier
 {
     public ParallaxType type;
-    public Vector2 multiplier;
+    public float multiplier;
 }
 
 public class EnvironmentManager : MonoBehaviour

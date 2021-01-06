@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ParallaxBehaviour : MonoBehaviour
 {
@@ -9,58 +10,40 @@ public class ParallaxBehaviour : MonoBehaviour
 
     [Header("Parallax Settings")]
     public ParallaxType type;
-    public bool infiniteHorizontal;
-    public bool infiniteVertical;
-    
-    Transform camTransform;
-    Vector3 lastCameraPos;
-    public Vector2 multiplier;
 
-    float spriteSizeX, spriteSizeY;
+    [SerializeField] float multiplier;
     
+    float sprWidth;
+    float startPos;
+    [SerializeField] float temp;
+    GameObject camTransform;
+
     void Start()
     {
         ENV_Manager = EnvironmentManager.instance;
-        
-        camTransform = GameObject.FindWithTag("BattleCam").GetComponent<Transform>();
-        lastCameraPos = camTransform.position;
-        Sprite spr = GetComponent<SpriteRenderer>().sprite;
-        Texture2D texture = spr.texture;
-        spriteSizeX = (texture.width / spr.pixelsPerUnit) * transform.localScale.x;
-        spriteSizeY = (texture.height / spr.pixelsPerUnit) * transform.localScale.y;
+
+        startPos = transform.position.x;
+        sprWidth = GetComponent<SpriteRenderer>().sprite.bounds.size.x;
+        camTransform = GameObject.FindWithTag("BattleCam");
     }
 
     void LateUpdate()
     {
-        Vector3 deltaPos = camTransform.position - lastCameraPos;
-        transform.position += new Vector3(deltaPos.x * multiplier.x, deltaPos.y * multiplier.y);
-        lastCameraPos = camTransform.position;
+        temp = (camTransform.transform.position.x * (1 - multiplier));
+        //! How far the cam move in world space
+        float dist = (camTransform.transform.position.x * multiplier);
 
-        if (infiniteHorizontal)
-        {
-            if (Mathf.Abs(camTransform.position.x - transform.position.x) >= spriteSizeX) 
-            {
-                float offsetPositionX = (camTransform.position.x - transform.position.x) % spriteSizeX;
-                transform.position = new Vector3(camTransform.position.x + offsetPositionX, transform.position.y);
-            }
-        }
+        transform.position = new Vector3(startPos + dist, transform.position.y, transform.position.z);
 
-        if (infiniteVertical)
-        {
-            if (Mathf.Abs(camTransform.position.x - transform.position.x) >= spriteSizeX) 
-            {
-                float offsetPositionY = (camTransform.position.y - transform.position.y) % spriteSizeY;
-                transform.position = new Vector3(transform.position.x, camTransform.position.y + offsetPositionY);
-            }
-        }
-        
+        if (temp > startPos + sprWidth) startPos += sprWidth;
+        else if (temp < startPos - sprWidth) startPos -= sprWidth;
     }
 
     #region Accessors
 
     public ParallaxType GetType() => type;
 
-    public Vector2 SetMultiplier(Vector2 set) => multiplier = set;
+    public void SetMultiplier(float set) => multiplier = set;
 
     #endregion
 
