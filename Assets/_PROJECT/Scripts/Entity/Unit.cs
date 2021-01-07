@@ -272,6 +272,7 @@ public abstract class Unit : Entity
         SubscribeUseSkillEvent(UpdateStatusEffectsOnSkill);
         SubscribeTurnEndEvent(EndTurnMethods);
         SubscribeTurnBeginEvent(StartTurnMethods);
+		
     }
 
     #endregion
