@@ -30,29 +30,17 @@ public class Piercing : Projectile
         List<Unit> units = new List<Unit>(info.Collateral) { info.Focus };
         return units.Sum(unit => unit != null ? unit.GetTotalDamageInTurn : 0);
     }
-
-
-    public override TargetInfo GetTargets(TargetInfo info)
+    protected override List<Unit> GetCollateralFoes(TargetInfo info)
     {
         var collateral = new List<Unit>();
-        var grazed = new List<Unit>();
         int focusIndex = info.Foes.IndexOf(info.Focus);
-
-        for (int i = focusIndex; i >= 0; i--)
+        for (int i = focusIndex; i < info.Foes.Count; i++)
         {
             if (info.Foes[i] == info.Focus) continue;
 
-            grazed.Add(info.Foes[i]);
+            collateral.Add(info.Foes[i]);
         }
-
-        for (int j = focusIndex; j < info.Foes.Count; j++)
-        {
-            if (info.Foes[j] == info.Focus) continue;
-
-            collateral.Add(info.Foes[j]);
-        }
-
-        return new TargetInfo(info.Focus, collateral, grazed, info.Allies, info.Foes);
+        return collateral;
     }
 
     public Piercing()
@@ -69,6 +57,19 @@ public class Piercing : Projectile
     }
     public Piercing(float damageMultiplier) : base(damageMultiplier)
     {
+        _diminishingMultiplier = new List<float>(4)
+        {
+            1.0f,
+            0.5f,
+            0.25f,
+            0.13f
+        };
+        _currentMultiplier = new List<float>(_diminishingMultiplier);
+    }
+    public Piercing(Unit unit)
+    {
+        SetUnit(unit);
+        _projectileDamageMultiplier = 1.0f;
         _diminishingMultiplier = new List<float>(4)
         {
             1.0f,

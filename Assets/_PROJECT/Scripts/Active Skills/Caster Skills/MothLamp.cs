@@ -1,10 +1,17 @@
+using ConversionFunctions;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class MothLamp : CasterSkill
 {
-    private Summon _lamp = null;
+    [SerializeField] private float reboundPercent = 1.0f;
+    [SerializeField] private Summon lamp = null;
+    private bool LampAlreadySpawned => lamp != null;
+
+    public override string Description
+        => $"Summons a Lamp on Casters side. Enemies that attack this Lamp take {RoundToPercent(reboundPercent)}% of Damage Dealt.";
 
     public override void TriggerSkill(TargetInfo targetInfo, BattlestageManager battleStage)
     {
@@ -24,7 +31,7 @@ public class MothLamp : CasterSkill
         while(!placementFound)
         {
             currentIteration++;
-            if (currentIteration > 50) return;
+            if (currentIteration > 100) return;
 
             index = Random.Range(0, battleStage.casterEntityPositions.Length);
             placementFound = positionAvailable[index];
@@ -32,16 +39,14 @@ public class MothLamp : CasterSkill
 
         casterEntityPos[index].gameObject.SetActive(true);
         GameObject lampObject = GetUnit.GetBaseUnit.InstantiateSummon(casterEntityPos[index].position, Quaternion.identity, casterEntityPos[index]);
-        _lamp = lampObject.GetComponent<Summon>();
-
+        battleStage.GetCasterEntityTeam().Add(lampObject);
         battleStage.RegroupLeftPositions(false);
+        
+        lamp = lampObject.AsSummon();
+        lamp.AddStatusEffect(Create.A_Status.Perm_FixedReboundDamage(reboundPercent));
+        lamp.AddStatusEffect(Create.A_Status.Perm_PriorityUp(1));
 
         ResetSkillCharge();
-    }
-
-    public override TargetInfo GetActiveSkillTargets(Unit focusTarget, List<Unit> allCasters, List<Unit> allFoes)
-    {
-        return TargetInfo.Null;
     }
 
     public MothLamp(Unit unit)
@@ -54,6 +59,4 @@ public class MothLamp : CasterSkill
     }
     public MothLamp(int maxSkillCharge, int startEffectDuration, Unit unit, bool ignoreDuration = false)
         : base(maxSkillCharge, startEffectDuration, unit, ignoreDuration) { }
-
-    private bool LampAlreadySpawned => _lamp != null;
 }
