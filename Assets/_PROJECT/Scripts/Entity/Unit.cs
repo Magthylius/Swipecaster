@@ -63,10 +63,19 @@ public abstract class Unit : Entity
 
     public abstract void UseSkill(TargetInfo targetInfo, BattlestageManager battleStage);
     public abstract void TakeHit(Unit damager, int damageAmount);
-    public abstract void RecieveHealing(Unit healer, int healAmount);
     public abstract void DoAction(TargetInfo targetInfo, RuneCollection runes);
     public abstract int CalculateDamage(TargetInfo targetInfo, RuneCollection runes);
     public abstract TargetInfo GetAffectedTargets(TargetInfo targetInfo);
+
+    #endregion
+
+    #region Public Virtual Methods
+
+    public virtual void RecieveHealing(Unit healer, int healAmount)
+    {
+        if (healAmount <= 0) return;
+        AddCurrentHealth(healAmount);
+    }
 
     #endregion
 
@@ -221,6 +230,8 @@ public abstract class Unit : Entity
         UnsubscribeTurnBeginEvent(StartTurnMethods);
     }
 
+    protected virtual void Start() => ResetAllStats();
+
     #endregion
 
     #region Protected Override Methods
@@ -231,7 +242,6 @@ public abstract class Unit : Entity
         _statusEffects = new List<StatusEffect>();
 
         GetDamagePopUp();
-        ResetAllStats();
         SetProjectile(new CrowFlies());
         SubscribeHitEvent(TakeDamage);
         SubscribeHealthChangeEvent(CheckDeathEvent);
