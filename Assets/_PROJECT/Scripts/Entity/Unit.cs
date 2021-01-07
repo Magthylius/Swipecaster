@@ -74,7 +74,9 @@ public abstract class Unit : Entity
     public virtual void RecieveHealing(Unit healer, int healAmount)
     {
         if (healAmount <= 0) return;
+        Debug.Log(gameObject.name + " being healed.");
         AddCurrentHealth(healAmount);
+        DamagePopUp(healAmount);
     }
 
     #endregion
@@ -204,9 +206,7 @@ public abstract class Unit : Entity
         AddCurrentHealth(-_totalDamageInTurn);
         GetStatusEffects.ForEach(i => i.DoOnHitEffect(GetBattleStageInfo(), _totalDamageInTurn));
 
-        if (damagePopUp == null) return;
-        damagePopUp.transform.parent.gameObject.SetActive(true);
-        damagePopUp.ShowDamage(_totalDamageInTurn);
+        DamagePopUp(_totalDamageInTurn);
     }
 
     protected virtual void StartTurnMethods()
@@ -287,6 +287,13 @@ public abstract class Unit : Entity
         {
             damagePopUp = GetComponentInChildren<DamagePopUp>();
         }
+    }
+
+    private void DamagePopUp(int damage)
+    {
+        if (damagePopUp == null) return;
+        damagePopUp.transform.parent.gameObject.SetActive(true);
+        damagePopUp.ShowDamage(damage);
     }
 
     private void ResetAttackStatus() => SetAttackStatus(AttackStatus.Normal);
