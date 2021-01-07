@@ -28,7 +28,7 @@ public class CameraManager : MonoBehaviour
     public float panSpeed;
 
     [Header("Unit Zoom")] 
-    float unitZoomAnimation = 2;
+    public float unitZoomAnimation = 2;
 
     [Header("Battle Zoom Settings")] 
     public float zoomRotation;
