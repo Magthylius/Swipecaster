@@ -206,7 +206,7 @@ public class CameraManager : MonoBehaviour
 
     public void MoveToUnit(GameObject unit)
     {
-        targetPan = Mathf.Clamp(unit.transform.position.x, leftBound, rightBound);
+        targetPan = unit.transform.position.x;
         allowPan = true;
     }
     
