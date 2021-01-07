@@ -74,9 +74,9 @@ public class CameraManager : MonoBehaviour
         turnBaseManager = TurnBaseManager.instance;
         battlestageManager = BattlestageManager.instance;
 
-        //UpdateCameraBoundary();
+        UpdateCameraBoundary();
         targetZoom = cam.orthographicSize;
-        //cam.transform.position = new Vector3(cam.transform.position.x, bottomBound, cam.transform.position.z);
+        cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z);
         isFree = true;
 
         zoomDifference = maxZoom - minZoom;
@@ -84,7 +84,7 @@ public class CameraManager : MonoBehaviour
 
     void LateUpdate()
     {
-        //UpdateCameraBoundary();
+        UpdateCameraBoundary();
         
         if (allowZoom)
         {
@@ -116,76 +116,76 @@ public class CameraManager : MonoBehaviour
         if (!isInBound || !isFree)
             return;
 
-        // CameraZoom();
-        // CameraPanning();
+        CameraZoom();
+        CameraPanning();
     }
 
-    // void CameraZoom()
-    // {
-    //     if (Input.GetAxisRaw("Mouse ScrollWheel") != 0f)
-    //     {
-    //         allowZoom = true;
-    //         float zoom = Input.GetAxisRaw("Mouse ScrollWheel");
-    //
-    //         targetZoom = Mathf.Clamp(cam.orthographicSize - zoom, minZoom, maxZoom);
-    //     }
-    //
-    //
-    //     if (Input.touchCount == 2)
-    //     {
-    //         Touch firstInput = Input.GetTouch(0);
-    //         Touch secondInput = Input.GetTouch(1);
-    //
-    //         Vector2 firstInputPrevPos = firstInput.position - firstInput.deltaPosition;
-    //         Vector2 secondInputPrevPos = secondInput.position - secondInput.deltaPosition;
-    //
-    //         float prevMagnitude = (firstInputPrevPos - secondInputPrevPos).magnitude;
-    //         float currentMagnitude = (firstInput.position - secondInput.position).magnitude;
-    //
-    //         float difference = currentMagnitude - prevMagnitude;
-    //
-    //         if (difference != 0)
-    //         {
-    //             allowZoom = true;
-    //             targetZoom = Mathf.Clamp(cam.orthographicSize - difference * 0.01f, minZoom, maxZoom);
-    //         }
-    //     }
-    // }
-    //
-    // void CameraPanning()
-    // {
-    //     if (Input.touchCount >= 2) return;
-    //
-    //     if (Input.GetMouseButtonDown(0))
-    //     {
-    //         touchPos = GetWorldPos();
-    //     }
-    //
-    //     if (Input.GetMouseButton(0))
-    //     {
-    //         Vector3 direction = touchPos - GetWorldPos();
-    //         if (direction.sqrMagnitude >= 1) allowPan = true;
-    //
-    //         targetPan = Mathf.Clamp(cam.transform.position.x + direction.x, leftBound, rightBound);
-    //     }
-    // }
+    void CameraZoom()
+    {
+        if (Input.GetAxisRaw("Mouse ScrollWheel") != 0f)
+        {
+            allowZoom = true;
+            float zoom = Input.GetAxisRaw("Mouse ScrollWheel");
+    
+            targetZoom = Mathf.Clamp(cam.orthographicSize - zoom, minZoom, maxZoom);
+        }
+    
+    
+        if (Input.touchCount == 2)
+        {
+            Touch firstInput = Input.GetTouch(0);
+            Touch secondInput = Input.GetTouch(1);
+    
+            Vector2 firstInputPrevPos = firstInput.position - firstInput.deltaPosition;
+            Vector2 secondInputPrevPos = secondInput.position - secondInput.deltaPosition;
+    
+            float prevMagnitude = (firstInputPrevPos - secondInputPrevPos).magnitude;
+            float currentMagnitude = (firstInput.position - secondInput.position).magnitude;
+    
+            float difference = currentMagnitude - prevMagnitude;
+    
+            if (difference != 0)
+            {
+                allowZoom = true;
+                targetZoom = Mathf.Clamp(cam.orthographicSize - difference * 0.01f, minZoom, maxZoom);
+            }
+        }
+    }
+    
+    void CameraPanning()
+    {
+        if (Input.touchCount >= 2) return;
+    
+        if (Input.GetMouseButtonDown(0))
+        {
+            touchPos = GetWorldPos();
+        }
+    
+        if (Input.GetMouseButton(0))
+        {
+            Vector3 direction = touchPos - GetWorldPos();
+            if (direction.sqrMagnitude >= 1) allowPan = true;
+    
+            targetPan = Mathf.Clamp(cam.transform.position.x + direction.x, leftBound, rightBound);
+        }
+    }
 
-    // void UpdateCameraBoundary()
-    // {
-    //     float verticalCamSize = cam.orthographicSize;
-    //     float horizontalCamSize = (verticalCamSize * cam.aspect);
-    //
-    //     Bounds levelBounds = backgroundEnvSpr.bounds;
-    //
-    //     float zoomIndex = (cam.orthographicSize - minZoom) / zoomDifference;
-    //     verticalOffset = Mathf.Lerp(minZoomOffset, maxZoomOffset, zoomIndex);
-    //
-    //     leftBound = (levelBounds.min.x) + (horizontalCamSize + horizontalOffset);
-    //     rightBound = (levelBounds.max.x) - (horizontalCamSize + horizontalOffset);
-    //     bottomBound = (levelBounds.min.y) + (verticalCamSize + verticalOffset);
-    //
-    //     cam.transform.position = new Vector3(cam.transform.position.x, bottomBound, cam.transform.position.z);
-    // }
+    void UpdateCameraBoundary()
+    {
+        float verticalCamSize = cam.orthographicSize;
+        float horizontalCamSize = (verticalCamSize * cam.aspect);
+    
+        Bounds levelBounds = backgroundEnvSpr.bounds;
+    
+        float zoomIndex = (cam.orthographicSize - minZoom) / zoomDifference;
+        verticalOffset = Mathf.Lerp(minZoomOffset, maxZoomOffset, zoomIndex);
+    
+        leftBound = (levelBounds.min.x) + (horizontalCamSize + horizontalOffset);
+        rightBound = (levelBounds.max.x) - (horizontalCamSize + horizontalOffset);
+        bottomBound = (levelBounds.min.y) + (verticalCamSize + verticalOffset);
+    
+        cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z);
+    }
 
     public void ZoomToCenter()
     {
