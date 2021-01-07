@@ -221,6 +221,8 @@ public abstract class Unit : Entity
         UnsubscribeTurnBeginEvent(StartTurnMethods);
     }
 
+    protected virtual void Start() => ResetAllStats();
+
     #endregion
 
     #region Protected Override Methods
@@ -231,7 +233,6 @@ public abstract class Unit : Entity
         _statusEffects = new List<StatusEffect>();
 
         GetDamagePopUp();
-        ResetAllStats();
         SetProjectile(new CrowFlies());
         SubscribeHitEvent(TakeDamage);
         SubscribeHealthChangeEvent(CheckDeathEvent);
