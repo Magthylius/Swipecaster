@@ -16,7 +16,7 @@ public abstract class Summon : Unit
     public override void RecieveHealing(Unit healer, int healAmount) => AddCurrentHealth(healAmount);
     public override void DoAction(TargetInfo targetInfo, RuneCollection runes) { }
     public override int CalculateDamage(TargetInfo targetInfo, RuneCollection runes) => 0;
-    public override TargetInfo GetAffectedTargets(Unit focusTarget, List<Unit> allEntities) => TargetInfo.Null;
+    public override TargetInfo GetAffectedTargets(TargetInfo targetInfo) => TargetInfo.Null;
 
     protected override void Awake()
     {

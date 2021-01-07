@@ -12,7 +12,7 @@ public class SporeBurst : CasterSkill
 
     public override void TriggerSkill(TargetInfo targetInfo, BattlestageManager battleStage)
     {
-        if (targetInfo.Casters == null || targetInfo.Casters.Count == 0) return;
+        if (targetInfo.Allies == null || targetInfo.Allies.Count == 0) return;
 
         GetUnit.AddStatusEffect(Create.A_Status.AttackUp(_startEffectDuration, 0.2f));
         GetUnit.SetProjectile(new Splash());

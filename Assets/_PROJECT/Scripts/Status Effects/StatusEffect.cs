@@ -5,14 +5,15 @@ using Random = UnityEngine.Random;
 
 public abstract class StatusEffect
 {
-    protected string _statusName;
     protected int _remainingTurns;
     protected float _baseResistanceProbability;
     protected bool _permanent;
+    protected Unit _unit;
+    protected Action _selfDestructEvent;
 
     #region Property Methods
 
-    public virtual string StatusName => _statusName;
+    public virtual string StatusName => string.Empty;
     public int RemainingTurns => _remainingTurns;
     public float BaseResistanceProbability => _baseResistanceProbability;
     public bool EffectIsPermanent => _permanent;
@@ -21,11 +22,13 @@ public abstract class StatusEffect
 
     #region Abstract Methods
 
-    public abstract void DoPreEffect(Unit target);
-    public abstract void DoEffectOnAction(Unit target);
-    public abstract void DoOnHitEffect(Unit target);
-    public abstract void DoPostEffect(Unit target);
+    public abstract void DoImmediateEffect(TargetInfo info);
+    public abstract void UpdateStatus();
+    public abstract void DoEffectOnAction(TargetInfo info, int totalDamage);
+    public abstract void DoOnHitEffect(TargetInfo info, int totalDamage);
+    public abstract void DoPostEffect();
     protected abstract int GetCountOfType(List<StatusEffect> statusList);
+    protected abstract void Deinitialise();
 
     #endregion
 
@@ -47,6 +50,12 @@ public abstract class StatusEffect
     public bool ShouldClear() => _remainingTurns <= 0 && !EffectIsPermanent;
     public bool ProbabilityHit(List<StatusEffect> statuses) => Random.Range(0.0f, 1.0f - float.Epsilon) < CalculateResistance(GetCountOfType(statuses));
 
+    public void SetUnit(Unit unit) => _unit = unit;
+
+    public void SubscribeSelfDestructEvent(Action method) => _selfDestructEvent += method;
+    public void UnsubscribeSelfDestructEvent(Action method) => _selfDestructEvent -= method;
+    public void InvokeSelfDestructEvent() => _selfDestructEvent?.Invoke();
+
     #endregion
 
     #region Protected Methods
@@ -64,14 +73,17 @@ public abstract class StatusEffect
     public StatusEffect()
     {
         _remainingTurns = 0;
-        _statusName = string.Empty;
         _baseResistanceProbability = 0.0f;
         _permanent = false;
+        _unit = null;
+        SubscribeSelfDestructEvent(Deinitialise);
     }
     public StatusEffect(int turns, float baseResistance, bool isPermanent)
     {
         _remainingTurns = turns;
         _baseResistanceProbability = baseResistance;
         _permanent = isPermanent;
+        _unit = null;
+        SubscribeSelfDestructEvent(Deinitialise);
     }
 }

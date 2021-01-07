@@ -30,7 +30,7 @@ public class Solitarist : Stoic
 
     #region Private Methods
 
-    private void PassiveHeal() => AddCurrentHealth(Mathf.Abs(passiveHealAmount));
+    private void PassiveHeal() => AddCurrentHealth(Mathf.Abs(currentPassiveHealAmount));
     
     #endregion
 }

@@ -12,9 +12,9 @@ public class Wickfire : CasterSkill
 
     public override void TriggerSkill(TargetInfo targetInfo, BattlestageManager battleStage)
     {
-        if (targetInfo.Casters == null || targetInfo.Casters.Count == 0) return;
+        if (targetInfo.Allies == null || targetInfo.Allies.Count == 0) return;
 
-        targetInfo.Casters.ForEach(caster => caster.AddStatusEffect(Create.A_Status.AttackUp(_startEffectDuration, 0.25f)));
+        targetInfo.Allies.ForEach(caster => caster.AddStatusEffect(Create.A_Status.AttackUp(_startEffectDuration, 0.25f)));
         ResetSkillCharge();
     }
 

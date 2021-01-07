@@ -2,28 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DefenceDown : StatusEffect
+public class DefenceDown : EmptyStatus<DefenceDown>
 {
     #region Variables and Properties
 
     private float _defenceDownPercent;
-    public float DefenceDownPercent => Mathf.Abs(_defenceDownPercent);
+    public int DefenceDownAmount => -Mathf.Abs(Round(_unit.GetBaseDefence * _defenceDownPercent));
     public override string StatusName => "Vulnerable";
 
     #endregion
 
     #region Override Methods
 
-    public override void DoPreEffect(Unit target)
-    {
-        if (ShouldClear()) return;
-        int defenceToDeduct = Mathf.Abs(Round(target.GetBaseDefence * DefenceDownPercent));
-        target.AddCurrentDefence(-defenceToDeduct);
-    }
-    public override void DoEffectOnAction(Unit target) { }
-    public override void DoOnHitEffect(Unit target) { }
-    public override void DoPostEffect(Unit target) => DeductRemainingTurns();
-    protected override int GetCountOfType(List<StatusEffect> statusList) => statusList.OfType<DefenceDown>().Count();
+    public override void UpdateStatus() => _unit.AddCurrentDefence(DefenceDownAmount);
 
     #endregion
 
@@ -33,6 +24,6 @@ public class DefenceDown : StatusEffect
     }
     public DefenceDown(int turns, float baseResistance, bool isPermanent, float defDownPercent) : base(turns, baseResistance, isPermanent)
     {
-        _defenceDownPercent = Mathf.Clamp01(defDownPercent);
+        _defenceDownPercent = Mathf.Abs(defDownPercent);
     }
 }

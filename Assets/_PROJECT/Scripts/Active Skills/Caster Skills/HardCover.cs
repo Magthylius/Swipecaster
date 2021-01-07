@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class HardCover : CasterSkill
 {
@@ -14,7 +12,7 @@ public class HardCover : CasterSkill
     {
         if (targetInfo.Foes == null || targetInfo.Foes.Count == 0) return;
 
-        targetInfo.Foes.ForEach(foe => foe.AddStatusEffect(Create.A_Status.Stun(1)));
+        targetInfo.Foes.ForEach(foe => foe.AddStatusEffect(Create.A_Status.Stun(1, TurnBaseManager.instance)));
         ResetSkillCharge();
     }
 

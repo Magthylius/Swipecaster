@@ -136,17 +136,8 @@ public class ComboManager : MonoBehaviour
 
         var damager = damagerObject.GetComponent<Unit>();
         var target = targetObject.GetComponent<Unit>();
-        var allFoes = new List<Unit>();
-
-        for(int i = 0; i < battleStageManager.enemyPositions.Length; i++)
-        {
-            var e = battleStageManager.enemyPositions[i].GetComponent<Unit>();
-            if (e == null) continue;
-
-            allFoes.Add(e);
-        }
-
-        TargetInfo targetInfo = damager.GetAffectedTargets(target, allFoes);
+        
+        TargetInfo targetInfo = damager.GetAffectedTargets(new TargetInfo(target, null, null, (List<Unit>)battleStageManager.GetCasterTeamAsUnit(), (List<Unit>)battleStageManager.GetEnemyTeamAsUnit()));
         RuneCollection collection = new RuneCollection(gronRune, fyorRune, tehkRune, khuaRune, ayroRune);
         damager.DoAction(targetInfo, collection);
 

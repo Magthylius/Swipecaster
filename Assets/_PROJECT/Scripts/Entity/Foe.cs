@@ -13,8 +13,8 @@ public class Foe : Unit
         GetProjectile.AssignTargetDamage(this, targetInfo, rawDamage);
     }
     public override int CalculateDamage(TargetInfo targetInfo, RuneCollection runes) => GetCurrentAttack;
-    public override TargetInfo GetAffectedTargets(Unit focusTarget, List<Unit> allEntities)
-        => GetProjectile.GetTargets(focusTarget, allEntities);
+    public override TargetInfo GetAffectedTargets(TargetInfo targetInfo)
+        => GetProjectile.GetTargets(targetInfo);
 
     #region Protected Override Methods
 

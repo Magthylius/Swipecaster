@@ -1,4 +1,4 @@
-using System.Collections;
+using ConversionFunctions;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -39,19 +39,10 @@ public class EnemyAttackManager : MonoBehaviour
     {
         print(targetObject.name + "being attacked!");
         if (battleStageManager == null) { return; }
-        var damager = damagerObject.GetComponent<Unit>();
-        var target = targetObject.GetComponent<Unit>();
-        var allCasters = new List<Unit>();
-
-        for (int i = 0; i < battleStageManager.casterPositions.Length; i++)
-        {
-            var e = battleStageManager.casterPositions[i].GetComponent<Unit>();
-            if (e == null) continue;
-
-            allCasters.Add(e);
-        }
-
-        TargetInfo targetInfo = damager.GetAffectedTargets(target, allCasters);
+        var damager = damagerObject.AsUnit();
+        var target = targetObject.AsUnit();
+        
+        TargetInfo targetInfo = damager.GetAffectedTargets(new TargetInfo(target, null, null, (List<Unit>)battleStageManager.GetEnemyTeamAsUnit(), (List<Unit>)battleStageManager.GetCasterTeamAsUnit()));
         RuneCollection collection = new RuneCollection(gronRune, fyorRune, tehkRune, khuaRune, ayroRune);
         damager.DoAction(targetInfo, collection);
     }

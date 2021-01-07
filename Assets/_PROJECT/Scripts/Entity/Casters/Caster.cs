@@ -23,11 +23,16 @@ public abstract class Caster : Unit
         GetActiveSkill.TriggerSkill(targetInfo, battleStage);
     }
     public override void TakeHit(Unit damager, int damageAmount) => InvokeHitEvent(damager, damageAmount);
-    public override void RecieveHealing(Unit healer, int healAmount) => AddCurrentHealth(Mathf.Abs(healAmount));
+    public override void RecieveHealing(Unit healer, int healAmount)
+    {
+        if (healAmount <= 0) return;
+        AddCurrentHealth(healAmount);
+    }
     public override void DoAction(TargetInfo targetInfo, RuneCollection runes)
     {
         int rawDamage = Round(CalculateDamage(targetInfo, runes) * damageMultiplier);
-        GetProjectile.AssignTargetDamage(this, targetInfo, rawDamage);
+        int totalDamage = GetProjectile.AssignTargetDamage(this, targetInfo, rawDamage);
+        GetStatusEffects.ForEach(status => status.DoEffectOnAction(targetInfo, totalDamage));
     }
     public override int CalculateDamage(TargetInfo targetInfo, RuneCollection runes)
     {
@@ -55,8 +60,8 @@ public abstract class Caster : Unit
 
         return Mathf.Abs(Round(totalDamage * statusOutMultiplier));
     }
-    public override TargetInfo GetAffectedTargets(Unit focusTarget, List<Unit> allEntities)
-        => GetProjectile.GetTargets(focusTarget, allEntities);
+    public override TargetInfo GetAffectedTargets(TargetInfo info)
+        => GetProjectile.GetTargets(info);
 
     #endregion
 

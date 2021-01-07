@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Splash : Projectile
@@ -6,9 +7,9 @@ public class Splash : Projectile
     private float _splashDamagePercent;
     public void SetSplashDamagePercent(float percent) => _splashDamagePercent = percent;
 
-    public override void AssignTargetDamage(Unit damager, TargetInfo info, int damage)
+    public override int AssignTargetDamage(Unit damager, TargetInfo info, int damage)
     {
-        if (info.Focus == null) return;
+        if (info.Focus == null) return 0;
 
         float subtotalDamage = damage * _projectileDamageMultiplier;
 
@@ -18,25 +19,28 @@ public class Splash : Projectile
         //! Damage
         info.Focus.TakeHit(damager, Round(subtotalDamage));
         info.Collateral.ForEach(i => i.TakeHit(damager, Round(subtotalDamage * _splashDamagePercent)));
+
+        List<Unit> units = new List<Unit>(info.Collateral) { info.Focus };
+        return units.Sum(unit => unit != null ? unit.GetTotalDamageInTurn : 0);
     }
 
-    public override TargetInfo GetTargets(Unit focus, List<Unit> allEntities)
+    public override TargetInfo GetTargets(TargetInfo info)
     {
         var collateral = new List<Unit>();
         var grazed = new List<Unit>();
-        int focusIndex = allEntities.IndexOf(focus);
+        int focusIndex = info.Foes.IndexOf(info.Focus);
 
         for (int i = focusIndex; i >= 0; i--)
         {
-            if (allEntities[i] == focus) continue;
+            if (info.Foes[i] == info.Focus) continue;
 
-            grazed.Add(allEntities[i]);
+            grazed.Add(info.Foes[i]);
         }
 
-        if (IndexWithinBounds(focusIndex - 1, allEntities)) collateral.Add(allEntities[focusIndex - 1]);
-        if (IndexWithinBounds(focusIndex + 1, allEntities)) collateral.Add(allEntities[focusIndex + 1]);
+        if (IndexWithinBounds(focusIndex - 1, info.Foes)) collateral.Add(info.Foes[focusIndex - 1]);
+        if (IndexWithinBounds(focusIndex + 1, info.Foes)) collateral.Add(info.Foes[focusIndex + 1]);
 
-        return new TargetInfo(focus, collateral, grazed);
+        return new TargetInfo(info.Focus, collateral, grazed, info.Allies, info.Foes);
     }
 
     public Splash()

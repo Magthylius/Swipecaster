@@ -29,7 +29,7 @@ public class SingleTarget : Curative
         }
 
         if (target == null) return;
-        target.RecieveHealing(this, Round(totalDamage * damageToHealPercent));
+        target.RecieveHealing(this, Round(totalDamage * currentPassiveHealPercent));
     }
 
     #endregion

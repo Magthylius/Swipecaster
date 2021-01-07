@@ -2,24 +2,24 @@
 
 public class Overhead : Projectile
 {
-    public override void AssignTargetDamage(Unit damager, TargetInfo info, int damage)
+    public override int AssignTargetDamage(Unit damager, TargetInfo info, int damage)
     {
-        if (info.Focus == null) return;
+        if (info.Focus == null) return 0;
 
         float subtotalDamage = damage * _projectileDamageMultiplier;
 
         //! Damage
         info.Focus.TakeHit(damager, Round(subtotalDamage));
+
+        return info.Focus.GetTotalDamageInTurn;
     }
 
-    public override TargetInfo GetTargets(Unit focus, List<Unit> allEntities)
+    public override TargetInfo GetTargets(TargetInfo info)
     {
-        //if (!allEntities.Contains(focus)) return TargetInfo.Null;
-
         var collateral = new List<Unit>();
         var grazed = new List<Unit>();
 
-        return new TargetInfo(focus, collateral, grazed);
+        return new TargetInfo(info.Focus, collateral, grazed, info.Allies, info.Foes);
     }
 
     public Overhead() => _projectileDamageMultiplier = 1.0f;

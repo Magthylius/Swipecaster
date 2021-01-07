@@ -1,8 +1,4 @@
-﻿using System.Linq;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Stun : StatusEffect
+﻿public class Stun : EmptyStatus<Stun>
 {
     #region Variables and Properties
 
@@ -13,18 +9,20 @@ public class Stun : StatusEffect
 
     #region Override Methods
 
-    public override void DoPreEffect(Unit target)
+    public override void DoImmediateEffect(TargetInfo info) => _unit.SubscribeTurnBeginEvent(SkipTurn);
+    protected override void Deinitialise()
     {
-        if (_turnBaseManager == null) return;
-
-        _turnBaseManager.EndTurn();
+        _unit.UnsubscribeTurnBeginEvent(SkipTurn);
+        base.Deinitialise();
     }
-    public override void DoEffectOnAction(Unit target) { }
-    public override void DoOnHitEffect(Unit target) { }
-    public override void DoPostEffect(Unit target) => DeductRemainingTurns();
-    protected override int GetCountOfType(List<StatusEffect> statusList) => statusList.OfType<Stun>().Count();
 
     #endregion
+
+    private void SkipTurn()
+    {
+        if (_turnBaseManager == null || ShouldClear()) return;
+        _turnBaseManager.EndTurn();
+    }
 
     public Stun() : base()
     {

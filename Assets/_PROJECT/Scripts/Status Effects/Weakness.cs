@@ -1,26 +1,19 @@
-﻿using System.Linq;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Weakness : StatusEffect
+public class Weakness : EmptyStatus<Weakness>
 {
     #region Variables and Properties
 
     private float _damageMultiplier;
-    public float DamageMultiplier => Mathf.Abs(_damageMultiplier);
+    public float DamageMultiplier => _damageMultiplier;
     public override string StatusName => "Weakened";
 
     #endregion
 
     #region Override Methods
 
-    public override void DoPreEffect(Unit target) { }
-    public override void DoEffectOnAction(Unit target) { }
-    public override void DoOnHitEffect(Unit target) { }
-    public override void DoPostEffect(Unit target) => DeductRemainingTurns();
     public override float GetStatusDamageInModifier() => DamageMultiplier;
-    protected override int GetCountOfType(List<StatusEffect> statusList) => statusList.OfType<Weakness>().Count();
-
+    
     #endregion
 
     public Weakness() : base()
@@ -29,6 +22,6 @@ public class Weakness : StatusEffect
     }
     public Weakness(int turns, float baseResistance, bool isPermanent, float damageMultiplier) : base(turns, baseResistance, isPermanent)
     {
-        _damageMultiplier = damageMultiplier;
+        _damageMultiplier = Mathf.Abs(damageMultiplier);
     }
 }

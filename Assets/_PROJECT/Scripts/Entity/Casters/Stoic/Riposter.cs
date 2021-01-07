@@ -36,7 +36,7 @@ public class Riposter : Stoic
     {
         if (!CanRebound(damager)) return;
         PrimeRecentDamager(damager);
-        damager.TakeHit(this, Round(totalDamage * reboundPercent));
+        damager.TakeHit(this, Round(totalDamage * currentReboundPercent));
     }
     private bool CanRebound(Unit damager) => _recentDamager != damager && damager != null;
     private void PrimeRecentDamager(Unit damager) => _recentDamager = damager;

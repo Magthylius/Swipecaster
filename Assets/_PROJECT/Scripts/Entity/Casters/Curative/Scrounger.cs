@@ -24,7 +24,7 @@ public class Scrounger : Curative
             healList.Add(unit);
         }
 
-        healList.ForEach(i => i.RecieveHealing(this, Round(totalDamage * damageToHealPercent)));
+        healList.ForEach(i => i.RecieveHealing(this, Round(totalDamage * currentPassiveHealPercent)));
     }
 
     #endregion

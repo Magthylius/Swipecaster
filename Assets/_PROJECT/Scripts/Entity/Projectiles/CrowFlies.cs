@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class CrowFlies : Projectile
 {
-    public override void AssignTargetDamage(Unit damager, TargetInfo info, int damage)
+    public override int AssignTargetDamage(Unit damager, TargetInfo info, int damage)
     {
-        if (info.Focus == null) return;
+        if (info.Focus == null) return 0;
 
         float subtotalDamage = damage * _projectileDamageMultiplier;
 
@@ -14,22 +14,24 @@ public class CrowFlies : Projectile
 
         //! Damage
         info.Focus.TakeHit(damager, Round(subtotalDamage));
+
+        return info.Focus.GetTotalDamageInTurn;
     }
 
-    public override TargetInfo GetTargets(Unit focus, List<Unit> allEntities)
+    public override TargetInfo GetTargets(TargetInfo info)
     {
         var collateral = new List<Unit>();
         var grazed = new List<Unit>();
-        int focusIndex = allEntities.IndexOf(focus);
+        int focusIndex = info.Foes.IndexOf(info.Focus);
 
         for (int i = focusIndex; i >= 0; i--)
         {
-            if (allEntities[i] == focus) continue;
+            if (info.Foes[i] == info.Focus) continue;
 
-            grazed.Add(allEntities[i]);
+            grazed.Add(info.Foes[i]);
         }
 
-        return new TargetInfo(focus, collateral, grazed);
+        return new TargetInfo(info.Focus, collateral, grazed, info.Allies, info.Foes);
     }
 
     public CrowFlies() => _projectileDamageMultiplier = 1.0f;

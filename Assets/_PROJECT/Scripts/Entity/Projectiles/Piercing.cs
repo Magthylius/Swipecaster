@@ -1,13 +1,20 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 public class Piercing : Projectile
 {
-    private List<float> _diminishingMultiplier = new List<float>();
-    private float Multiplier(int index) => _diminishingMultiplier[index];
+    private static List<float> _diminishingMultiplier = new List<float>();
+    private List<float> _currentMultiplier = new List<float>();
+    private float MultiplierAtIndex(int index) => _currentMultiplier[index];
 
-    public override void AssignTargetDamage(Unit damager, TargetInfo info, int damage)
+    public override List<float> GetDefaultDiminishingMultiplier => _diminishingMultiplier;
+    public override List<float> GetCurrentDiminishingMultiplier => _currentMultiplier;
+    public override void SetDiminishingMultiplier(List<float> multiplier) => _currentMultiplier = multiplier;
+    public override void ResetDiminishingMultiplier() => SetDiminishingMultiplier(_diminishingMultiplier);
+
+    public override int AssignTargetDamage(Unit damager, TargetInfo info, int damage)
     {
-        if (info.Focus == null) return;
+        if (info.Focus == null) return 0;
 
         float subtotalDamage = damage * _projectileDamageMultiplier;
 
@@ -15,36 +22,37 @@ public class Piercing : Projectile
         info.Grazed.ForEach(i => i.InvokeGrazeEvent(damager, Round(subtotalDamage)));
 
         //! Damage
-        info.Focus.TakeHit(damager, Round(subtotalDamage * Multiplier(0)));
+        info.Focus.TakeHit(damager, Round(subtotalDamage * MultiplierAtIndex(0)));
 
         //! Collateral
-        for (int j = 0; j < info.Collateral.Count; j++) info.Collateral[j].InvokeHitEvent(damager, Round(subtotalDamage * Multiplier(j + 1)));
+        for (int j = 0; j < info.Collateral.Count; j++) info.Collateral[j].InvokeHitEvent(damager, Round(subtotalDamage * MultiplierAtIndex(j + 1)));
+
+        List<Unit> units = new List<Unit>(info.Collateral) { info.Focus };
+        return units.Sum(unit => unit != null ? unit.GetTotalDamageInTurn : 0);
     }
 
 
-    public override TargetInfo GetTargets(Unit focus, List<Unit> allEntities)
+    public override TargetInfo GetTargets(TargetInfo info)
     {
-        if (!allEntities.Contains(focus)) return TargetInfo.Null;
-
         var collateral = new List<Unit>();
         var grazed = new List<Unit>();
-        int focusIndex = allEntities.IndexOf(focus);
+        int focusIndex = info.Foes.IndexOf(info.Focus);
 
         for (int i = focusIndex; i >= 0; i--)
         {
-            if (allEntities[i] == focus) continue;
+            if (info.Foes[i] == info.Focus) continue;
 
-            grazed.Add(allEntities[i]);
+            grazed.Add(info.Foes[i]);
         }
 
-        for (int j = focusIndex; j < allEntities.Count; j++)
+        for (int j = focusIndex; j < info.Foes.Count; j++)
         {
-            if (allEntities[j] == focus) continue;
+            if (info.Foes[j] == info.Focus) continue;
 
-            collateral.Add(allEntities[j]);
+            collateral.Add(info.Foes[j]);
         }
 
-        return new TargetInfo(focus, collateral, grazed);
+        return new TargetInfo(info.Focus, collateral, grazed, info.Allies, info.Foes);
     }
 
     public Piercing()
@@ -57,6 +65,7 @@ public class Piercing : Projectile
             0.25f,
             0.13f
         };
+        _currentMultiplier = new List<float>(_diminishingMultiplier);
     }
     public Piercing(float damageMultiplier) : base(damageMultiplier)
     {
@@ -67,9 +76,6 @@ public class Piercing : Projectile
             0.25f,
             0.13f
         };
-    }
-    public Piercing(float damageMultiplier, List<float> diminishingMultiplier) : base(damageMultiplier)
-    {
-        _diminishingMultiplier = diminishingMultiplier;
+        _currentMultiplier = new List<float>(_diminishingMultiplier);
     }
 }

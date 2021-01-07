@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 public class SplashOverhead : Projectile
 {
     private float _splashDamagePercent;
     public void SetSplashDamagePercent(float percent) => _splashDamagePercent = percent;
 
-    public override void AssignTargetDamage(Unit damager, TargetInfo info, int damage)
+    public override int AssignTargetDamage(Unit damager, TargetInfo info, int damage)
     {
-        if (info.Focus == null) return;
+        if (info.Focus == null) return 0;
 
         float subtotalDamage = damage * _projectileDamageMultiplier;
 
@@ -16,20 +17,21 @@ public class SplashOverhead : Projectile
 
         //! Collateral
         info.Collateral.ForEach(i => i.TakeHit(damager, Round(subtotalDamage * _splashDamagePercent)));
+
+        List<Unit> units = new List<Unit>(info.Collateral) { info.Focus };
+        return units.Sum(unit => unit != null ? unit.GetTotalDamageInTurn : 0);
     }
 
-    public override TargetInfo GetTargets(Unit focus, List<Unit> allEntities)
+    public override TargetInfo GetTargets(TargetInfo info)
     {
-        if (!allEntities.Contains(focus)) return TargetInfo.Null;
-
         var collateral = new List<Unit>();
         var grazed = new List<Unit>();
-        int focusIndex = allEntities.IndexOf(focus);
+        int focusIndex = info.Foes.IndexOf(info.Focus);
 
-        if (focusIndex - 1 >= 0) collateral.Add(allEntities[focusIndex - 1]);
-        if (focusIndex + 1 < allEntities.Count) collateral.Add(allEntities[focusIndex + 1]);
+        if (focusIndex - 1 >= 0) collateral.Add(info.Foes[focusIndex - 1]);
+        if (focusIndex + 1 < info.Foes.Count) collateral.Add(info.Foes[focusIndex + 1]);
 
-        return new TargetInfo(focus, collateral, grazed);
+        return new TargetInfo(info.Focus, collateral, grazed, info.Allies, info.Foes);
     }
 
     public SplashOverhead()

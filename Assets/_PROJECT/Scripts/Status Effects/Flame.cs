@@ -2,36 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Flame : StatusEffect
+public class Flame : EmptyStatus<Flame>
 {
     #region Variables and Properties
 
     private float _maxHealthPercent;
     private float _attackDownPercent;
-    public float MaxHealthPercent => Mathf.Abs(_maxHealthPercent);
-    public float AttackDownPercent => Mathf.Abs(_attackDownPercent);
+    public int HealthDownAmount => -Mathf.Abs(Round(_unit.GetMaxHealth * _maxHealthPercent));
+    public int AttackDownAmount => -Mathf.Abs(Round(_unit.GetBaseAttack * _attackDownPercent));
     public override string StatusName => "Aflame";
 
     #endregion
 
     #region Override Methods
 
-    public override void DoPreEffect(Unit target)
+    public override void UpdateStatus() => _unit.AddCurrentAttack(AttackDownAmount);
+    public override void DoPostEffect()
     {
-        if (ShouldClear()) return;
-        int attackToDeduct = Mathf.Abs(Round(target.GetBaseAttack * AttackDownPercent));
-        target.AddCurrentAttack(-attackToDeduct);
+        _unit.AddCurrentHealth(HealthDownAmount);
+        base.DoPostEffect();
     }
-    public override void DoEffectOnAction(Unit target) { }
-    public override void DoOnHitEffect(Unit target) { }
-    public override void DoPostEffect(Unit target)
-    {
-        int hpToDeduct = Mathf.Abs(Round(target.GetMaxHealth * MaxHealthPercent));
-        target.AddCurrentHealth(-hpToDeduct);
-
-        DeductRemainingTurns();
-    }
-    protected override int GetCountOfType(List<StatusEffect> statusList) => statusList.OfType<Flame>().Count();
 
     #endregion
 
@@ -42,7 +32,7 @@ public class Flame : StatusEffect
     }
     public Flame(int turns, float baseResistance, bool isPermanent, float maxHealthPercent, float atkDownPercent) : base(turns, baseResistance, isPermanent)
     {
-        _maxHealthPercent = Mathf.Clamp01(maxHealthPercent);
-        _attackDownPercent = Mathf.Clamp01(atkDownPercent);
+        _maxHealthPercent = Mathf.Abs(maxHealthPercent);
+        _attackDownPercent = Mathf.Abs(atkDownPercent);
     }
 }

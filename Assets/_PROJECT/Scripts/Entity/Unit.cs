@@ -1,3 +1,4 @@
+using ConversionFunctions;
 using ClampFunctions;
 using System;
 using System.Collections.Generic;
@@ -18,15 +19,21 @@ public abstract class Unit : Entity
     [SerializeField] protected float damageMultiplier = 1.0f;
 
     [Header("Recovery")]
-    [SerializeField] protected int passiveHealAmount = 0;
-    [SerializeField] protected float damageToHealPercent = 0.0f;
+    [SerializeField] protected int defaultPassiveHealAmount = 0;
+    protected int currentPassiveHealAmount = 0;
+
+    [SerializeField] protected float defaultPassiveHealPercent = 0.0f;
+    protected float currentPassiveHealPercent = 0.0f;
 
     [Header("Reflection and Deflection")]
-    [SerializeField] protected float reboundPercent = 0.2f;
+    [SerializeField] protected float defaultReboundPercent = 0.2f;
+    protected float currentReboundPercent = 0.2f;
 
     [Header("RNG")]
-    [SerializeField, Range(0.0f, 1.0f)] protected float probability = 0.05f;
-    [SerializeField] private int priority = 1;
+    [SerializeField, Range(0.0f, 1.0f)] protected float defaultProbability = 0.05f;
+    protected float currentProbability = 0.05f;
+    [SerializeField] private int basePriority = 1;
+    private int currentPriority = 0;
     protected const int PartySize = 4;
 
     [Header("Skills")]
@@ -46,6 +53,10 @@ public abstract class Unit : Entity
     private Action _turnBegin;
     private Action _turnEnd;
 
+    [Header("Cache")]
+    private int _totalDamageInTurn = 0;
+    private bool _undying = false;
+
     #endregion
 
     #region Public Abstract Methods
@@ -55,7 +66,7 @@ public abstract class Unit : Entity
     public abstract void RecieveHealing(Unit healer, int healAmount);
     public abstract void DoAction(TargetInfo targetInfo, RuneCollection runes);
     public abstract int CalculateDamage(TargetInfo targetInfo, RuneCollection runes);
-    public abstract TargetInfo GetAffectedTargets(Unit focusTarget, List<Unit> allEntities);
+    public abstract TargetInfo GetAffectedTargets(TargetInfo targetInfo);
 
     #endregion
 
@@ -63,6 +74,7 @@ public abstract class Unit : Entity
 
     public override void SetCurrentHealth(int amount)
     {
+        if (GetUndyingStatus && amount <= 0) amount = 1;
         base.SetCurrentHealth(amount);
         InvokeHealthChangeEvent(this);
     }
@@ -80,7 +92,18 @@ public abstract class Unit : Entity
     public void SetProjectile(Projectile p) => _projectile = p;
     public Projectile GetProjectile => _projectile;
 
-    public void AddStatusEffect(StatusEffect status) => _statusEffects.Add(status);
+    public void UpdateStatusEffects()
+    {
+        ResetAllStats();
+        GetStatusEffects.ForEach(j => j.UpdateStatus());
+    }
+    public void AddStatusEffect(StatusEffect status)
+    {
+        if (status == null) return;
+        status.SetUnit(this);
+        _statusEffects.Add(status);
+        status.DoImmediateEffect(GetBattleStageInfo());
+    }
     public void RemoveAllStatusEffectsOfType(Type effectType)
     {
         for (int i = _statusEffects.Count - 1; i >= 0; i--)
@@ -100,8 +123,31 @@ public abstract class Unit : Entity
     public void SetActiveSkill(ActiveSkill skill) { _activeSkill = skill; ResetSkillCharge(); }
     public bool HasActiveSkill => _activeSkill != null;
 
-    public int GetUnitPriority => priority;
-    public void SetUnitPriority(int newPriority) => priority = newPriority;
+    public int GetPassiveHealAmount => currentPassiveHealAmount;
+    public void SetPassiveHealAmount(int amount) => currentPassiveHealAmount = amount;
+    public void ResetPassiveHealAmount() => currentPassiveHealAmount = defaultPassiveHealAmount;
+
+    public float GetPassiveHealPercent => currentPassiveHealPercent;
+    public void SetPassiveHealPercent(float percent) => currentPassiveHealPercent = percent;
+    public void ResetPassiveHealPercent() => currentPassiveHealPercent = defaultPassiveHealPercent;
+
+    public float GetReboundPercent => currentReboundPercent;
+    public void SetReboundPercent(float percent) => currentReboundPercent = percent;
+    public void ResetReboundPercent() => currentReboundPercent = defaultReboundPercent;
+
+    public float GetProbability => currentProbability;
+    public void SetProbability(float probability) => currentProbability = probability;
+    public void ResetProbability() => currentProbability = defaultProbability;
+
+    public int GetUnitPriority => currentPriority;
+    public void SetUnitPriority(int newPriority) => currentPriority = newPriority;
+    public void ResetPriority() => currentPriority = basePriority;
+
+    public int GetTotalDamageInTurn => _totalDamageInTurn;
+
+    public bool GetUndyingStatus => _undying;
+    public void ActivateUndying() => _undying = true;
+    public void DeactivateUndying() => _undying = false;
 
     #region Events
 
@@ -145,18 +191,19 @@ public abstract class Unit : Entity
         float statusInMultiplier = 1.0f;
         for (int i = 0; i < GetStatusEffects.Count; i++) statusInMultiplier += GetStatusEffects[i].GetStatusDamageInModifier();
 
-        int totalDamage = (Mathf.Abs(Round(damageAmount * statusInMultiplier)) - GetCurrentDefence).Clamp0();
-        AddCurrentHealth(-totalDamage);
-        GetStatusEffects.ForEach(i => i.DoOnHitEffect(this));
+        _totalDamageInTurn = (Mathf.Abs(Round(damageAmount * statusInMultiplier)) - GetCurrentDefence).Clamp0();
+        AddCurrentHealth(-_totalDamageInTurn);
+        GetStatusEffects.ForEach(i => i.DoOnHitEffect(GetBattleStageInfo(), _totalDamageInTurn));
 
         if (damagePopUp == null) return;
         damagePopUp.transform.parent.gameObject.SetActive(true);
-        damagePopUp.ShowDamage(totalDamage);
+        damagePopUp.ShowDamage(_totalDamageInTurn);
     }
 
     protected virtual void StartTurnMethods()
     {
-        UpdatePreStatusEffects();
+        //UpdateStatusEffects();
+        ResetTotalDamageInTurn();
     }
 
     protected virtual void EndTurnMethods()
@@ -184,6 +231,7 @@ public abstract class Unit : Entity
         _statusEffects = new List<StatusEffect>();
 
         GetDamagePopUp();
+        ResetAllStats();
         SetProjectile(new CrowFlies());
         SubscribeHitEvent(TakeDamage);
         SubscribeHealthChangeEvent(CheckDeathEvent);
@@ -196,7 +244,7 @@ public abstract class Unit : Entity
 
     #region Protected Methods
 
-    protected bool ProbabilityHit => Random.Range(0.0f, 1.0f - float.Epsilon) < probability;
+    protected bool ProbabilityHit => Random.Range(0.0f, 1.0f - float.Epsilon) < currentProbability;
     protected int Round(float number) => Mathf.RoundToInt(number);
     protected int ToInt(bool statement) => Convert.ToInt32(statement);
     protected void ResetAtkDefStats()
@@ -204,9 +252,20 @@ public abstract class Unit : Entity
         SetCurrentAttack(GetBaseAttack);
         SetCurrentDefence(GetBaseDefence);
     }
+    protected void ResetAllStats()
+    {
+        ResetAtkDefStats();
+        ResetAttackStatus();
+        ResetPriority();
+        ResetPassiveHealAmount();
+        ResetPassiveHealPercent();
+        ResetReboundPercent();
+        ResetProbability();
+    }
     protected void ResetAllEffects()
     {
-
+        ResetAllStats();
+        GetStatusEffects.Clear();
     }
 
     #endregion
@@ -225,19 +284,17 @@ public abstract class Unit : Entity
     {
         if (GetCurrentHealth <= 0) InvokeDeathEvent(unit);
     }
-    private void UpdateStatusEffectsOnSkill(Unit unit, ActiveSkill skill) => UpdatePreStatusEffects();
-    private void UpdatePreStatusEffects()
+    private void UpdateStatusEffectsOnSkill(Unit unit, ActiveSkill skill) => UpdateStatusEffects();
+    private void PostStatusEffect() => GetStatusEffects.ForEach(i => i.DoPostEffect());
+
+    private TargetInfo GetBattleStageInfo()
     {
-        ResetAtkDefStats();
+        var battleStage = BattlestageManager.instance;
+        if (battleStage == null) return TargetInfo.Null;
 
-        for (int i = GetStatusEffects.Count - 1; i >= 0; i--)
-        {
-            if (GetStatusEffects[i].ShouldClear()) GetStatusEffects.RemoveAt(i);
-        }
-
-        GetStatusEffects.ForEach(j => j.DoPreEffect(this));
+        return new TargetInfo(battleStage.GetSelectedTarget().AsUnit(), null, null, (List<Unit>)battleStage.GetCasterTeamAsUnit(), (List<Unit>)battleStage.GetEnemyTeamAsUnit());
     }
-    private void PostStatusEffect() => GetStatusEffects.ForEach(i => i.DoPostEffect(this));
+    private void ResetTotalDamageInTurn() => _totalDamageInTurn = 0;
 
     #endregion
 }

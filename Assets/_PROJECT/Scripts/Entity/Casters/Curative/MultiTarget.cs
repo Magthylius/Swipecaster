@@ -31,7 +31,7 @@ public class MultiTarget : Curative
             for(int i = 0; i < deleteCount; i++) healList.RemoveAt(Random.Range(0, healList.Count));
         }
 
-        healList.ForEach(i => i.RecieveHealing(this, Round(totalDamage * damageToHealPercent)));
+        healList.ForEach(i => i.RecieveHealing(this, Round(totalDamage * currentPassiveHealPercent)));
     }
 
     #endregion

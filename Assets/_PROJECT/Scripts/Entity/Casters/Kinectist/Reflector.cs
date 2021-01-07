@@ -38,7 +38,7 @@ public class Reflector : Kinectist
         if (!ProbabilityHit || triggerOnce) return;
         triggerOnce = true;
         damager.SetAttackStatus(AttackStatus.Reflected);
-        damager.TakeHit(this, Round(damageAmount * reboundPercent));
+        damager.TakeHit(this, Round(damageAmount * currentReboundPercent));
     }
 
     private void ResetTrigger() => triggerOnce = false;
