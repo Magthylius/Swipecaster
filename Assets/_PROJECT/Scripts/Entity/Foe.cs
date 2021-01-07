@@ -6,7 +6,6 @@ public class Foe : Unit
 {
     public override void UseSkill(TargetInfo targetInfo, BattlestageManager battleStage) { }
     public override void TakeHit(Unit damager, int damageAmount) => InvokeHitEvent(damager, damageAmount);
-    public override void RecieveHealing(Unit healer, int healAmount) { }
     public override void DoAction(TargetInfo targetInfo, RuneCollection runes)
     {
         int rawDamage = Round(CalculateDamage(targetInfo, runes) * damageMultiplier);

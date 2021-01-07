@@ -23,11 +23,6 @@ public abstract class Caster : Unit
         GetActiveSkill.TriggerSkill(targetInfo, battleStage);
     }
     public override void TakeHit(Unit damager, int damageAmount) => InvokeHitEvent(damager, damageAmount);
-    public override void RecieveHealing(Unit healer, int healAmount)
-    {
-        if (healAmount <= 0) return;
-        AddCurrentHealth(healAmount);
-    }
     public override void DoAction(TargetInfo targetInfo, RuneCollection runes)
     {
         int rawDamage = Round(CalculateDamage(targetInfo, runes) * damageMultiplier);
