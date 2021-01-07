@@ -20,7 +20,7 @@ TagManager:
   - UIFX
   - Runes
   - Units
-  - 
+  - Environment
   - 
   - 
   - 
@@ -49,6 +49,9 @@ TagManager:
     locked: 0
   - name: Background
     uniqueID: 1592225735
+    locked: 0
+  - name: Midground
+    uniqueID: 175052163
     locked: 0
   - name: Unit
     uniqueID: 3631903331
