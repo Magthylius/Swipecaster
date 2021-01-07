@@ -107,7 +107,7 @@ public class CameraManager : MonoBehaviour
             {
                 cam.transform.position = new Vector3(targetPan, cam.transform.position.y, cam.transform.position.z);
                 allowPan = false;
-                print("derp");
+                //print("derp");
             }
         }
 
