@@ -71,6 +71,8 @@ public class DatabaseManager : MonoBehaviour
     public void RefreshInventory()
     {
         CheckCasterIsAlive();
+
+        playerAvailableCasters = new List<UnitObject>();
         
         foreach (var id in liveCaster)
         {
