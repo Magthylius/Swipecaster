@@ -1,18 +1,18 @@
-using System.Collections.Generic;
+using UnityEngine;
 
+[System.Serializable]
 public class HardCover : CasterSkill
 {
-    public override string Description
-        => "STUNS all enemies (1 turn)";
+    [SerializeField] private int _stunTurns = 1;
 
-    public override TargetInfo GetActiveSkillTargets(Unit focusTarget, List<Unit> allCasters, List<Unit> allFoes)
-        => new TargetInfo(focusTarget, null, null, allCasters, allFoes);
+    public override string Description
+        => $"STUNS all enemies for {_stunTurns} turn(s).";
 
     public override void TriggerSkill(TargetInfo targetInfo, BattlestageManager battleStage)
     {
         if (targetInfo.Foes == null || targetInfo.Foes.Count == 0) return;
 
-        targetInfo.Foes.ForEach(foe => foe.AddStatusEffect(Create.A_Status.Stun(1, TurnBaseManager.instance)));
+        targetInfo.Foes.ForEach(foe => foe.AddStatusEffect(Create.A_Status.Stun(_stunTurns, TurnBaseManager.instance)));
         ResetSkillCharge();
     }
 

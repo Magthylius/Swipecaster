@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public abstract class CasterSkill : ActiveSkill
 {
     public CasterSkill() : base() { }
@@ -15,6 +11,7 @@ public abstract class CasterSkill : ActiveSkill
         EffectDuration0();
     }
 
+    public override TargetInfo GetActiveSkillTargets(TargetInfo targetInfo) => targetInfo;
     public override void TurnStartCall() { }
     protected override void OnEffectDurationComplete() { }
 }

@@ -26,7 +26,7 @@ public abstract class Caster : Unit
     public override void DoAction(TargetInfo targetInfo, RuneCollection runes)
     {
         int rawDamage = Round(CalculateDamage(targetInfo, runes) * damageMultiplier);
-        int totalDamage = GetProjectile.AssignTargetDamage(this, targetInfo, rawDamage);
+        int totalDamage = GetCurrentProjectile.AssignTargetDamage(this, targetInfo, rawDamage);
         GetStatusEffects.ForEach(status => status.DoEffectOnAction(targetInfo, totalDamage));
     }
     public override int CalculateDamage(TargetInfo targetInfo, RuneCollection runes)
@@ -56,7 +56,7 @@ public abstract class Caster : Unit
         return Mathf.Abs(Round(totalDamage * statusOutMultiplier));
     }
     public override TargetInfo GetAffectedTargets(TargetInfo info)
-        => GetProjectile.GetTargets(info);
+        => GetCurrentProjectile.GetTargets(info);
 
     #endregion
 

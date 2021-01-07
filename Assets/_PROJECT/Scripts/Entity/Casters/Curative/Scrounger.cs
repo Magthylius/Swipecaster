@@ -12,7 +12,7 @@ public class Scrounger : Curative
         if (battleStage == null) return;
 
         int rawDamage = CalculateDamage(targetInfo, runes);
-        int totalDamage = GetProjectile.AssignTargetDamage(this, targetInfo, rawDamage);
+        int totalDamage = GetCurrentProjectile.AssignTargetDamage(this, targetInfo, rawDamage);
         GetStatusEffects.ForEach(status => status.DoEffectOnAction(targetInfo, totalDamage));
 
         List<Unit> party = new List<Unit>(battleStage.GetCasterTeamAsUnit());

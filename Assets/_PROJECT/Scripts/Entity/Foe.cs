@@ -9,11 +9,11 @@ public class Foe : Unit
     public override void DoAction(TargetInfo targetInfo, RuneCollection runes)
     {
         int rawDamage = Round(CalculateDamage(targetInfo, runes) * damageMultiplier);
-        GetProjectile.AssignTargetDamage(this, targetInfo, rawDamage);
+        GetCurrentProjectile.AssignTargetDamage(this, targetInfo, rawDamage);
     }
     public override int CalculateDamage(TargetInfo targetInfo, RuneCollection runes) => GetCurrentAttack;
     public override TargetInfo GetAffectedTargets(TargetInfo targetInfo)
-        => GetProjectile.GetTargets(targetInfo);
+        => GetCurrentProjectile.GetTargets(targetInfo);
 
     #region Protected Override Methods
 

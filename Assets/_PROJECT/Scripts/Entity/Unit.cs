@@ -12,8 +12,10 @@ public abstract class Unit : Entity
 
     //! Attributes
     private AttackStatus _attackStatus = AttackStatus.Normal;
-    private Projectile _projectile;
+    private Projectile _currentProjectile;
+    private Projectile _defaultProjectile;
     private List<StatusEffect> _statusEffects;
+    private bool _projectileLock = false;
     [SerializeField] private bool isPlayer;
 
     [Header("Other Multipliers")]
@@ -101,8 +103,27 @@ public abstract class Unit : Entity
     public void SetAttackStatus(AttackStatus status) => _attackStatus = status;
     public AttackStatus GetAttackStatus => _attackStatus;
 
-    public void SetProjectile(Projectile p) => _projectile = p;
-    public Projectile GetProjectile => _projectile;
+    public void SetProjectileLock(bool statement) => _projectileLock = statement;
+    public void SetProjectile(Projectile p)
+    {
+        if (_projectileLock) return;
+        _defaultProjectile = p;
+    }
+    public void SubstituteProjectile(Projectile p)
+    {
+        if (_projectileLock) return;
+        _currentProjectile = p;
+    }
+    public void ResetProjectile()
+    {
+        if (_projectileLock) return;
+        _currentProjectile = GetDefaultProjectile;
+    }
+    public Projectile GetCurrentProjectile => _currentProjectile;
+    private Projectile GetDefaultProjectile
+    {
+        get => _defaultProjectile;
+    }
 
     public void UpdateStatusEffects()
     {
@@ -212,7 +233,6 @@ public abstract class Unit : Entity
 
     protected virtual void StartTurnMethods()
     {
-        //UpdateStatusEffects();
         ResetTotalDamageInTurn();
     }
 
@@ -220,6 +240,7 @@ public abstract class Unit : Entity
     {
         ResetAttackStatus();
         PostStatusEffect();
+        ResetProjectile();
     }
 
     protected virtual void OnDestroy()
@@ -229,6 +250,7 @@ public abstract class Unit : Entity
         UnsubscribeUseSkillEvent(UpdateStatusEffectsOnSkill);
         UnsubscribeTurnEndEvent(EndTurnMethods);
         UnsubscribeTurnBeginEvent(StartTurnMethods);
+        GetStatusEffects.ForEach(status => status.InvokeSelfDestructEvent());
     }
 
     protected virtual void Start() => ResetAllStats();
@@ -277,6 +299,7 @@ public abstract class Unit : Entity
     {
         ResetAllStats();
         GetStatusEffects.Clear();
+        ResetProjectile();
     }
 
     #endregion
@@ -314,7 +337,7 @@ public abstract class Unit : Entity
         var battleStage = BattlestageManager.instance;
         if (battleStage == null) return TargetInfo.Null;
 
-        return new TargetInfo(battleStage.GetSelectedTarget().AsUnit(), null, null, (List<Unit>)battleStage.GetCasterTeamAsUnit(), (List<Unit>)battleStage.GetEnemyTeamAsUnit());
+        return new TargetInfo(battleStage.GetSelectedTarget().AsUnit(), null, null, battleStage.GetCasterTeamAsUnit(), battleStage.GetEnemyTeamAsUnit());
     }
     private void ResetTotalDamageInTurn() => _totalDamageInTurn = 0;
 

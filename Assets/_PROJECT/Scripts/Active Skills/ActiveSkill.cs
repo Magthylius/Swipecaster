@@ -15,7 +15,7 @@ public abstract class ActiveSkill
 
     public abstract void TurnStartCall();
     public abstract void TriggerSkill(TargetInfo targetInfo, BattlestageManager battleStage);
-    public abstract TargetInfo GetActiveSkillTargets(Unit focusTarget, List<Unit> allCasters, List<Unit> allFoes);
+    public abstract TargetInfo GetActiveSkillTargets(TargetInfo targetInfo);
     protected abstract void OnEffectDurationComplete();
     public virtual void TurnEndCall()
     {
@@ -24,6 +24,7 @@ public abstract class ActiveSkill
     }
 
     protected int Round(float number) => Mathf.RoundToInt(number);
+    protected int RoundToPercent(float number) => Round(number * 100);
 
     public void SetSkillDamageMultiplier(float a) => _skillDamageMultiplier = a;
     public float GetSkillDamageMultiplier => _skillDamageMultiplier;

@@ -16,10 +16,14 @@ namespace Create
         public static StatusEffect DamageTakenUp(int turns, float percent) => new DamageTakenUp(turns, Zero, false, percent);
         public static StatusEffect DamageToDistributedPartyHeal(int turns, float percent) => new DamageToDistributedPartyHeal(turns, Zero, false, percent);
         public static StatusEffect PriorityUp(int turns, int increment) => new PriorityUp(turns, Zero, false, increment);
+        public static StatusEffect Perm_PriorityUp(int increment) => new PriorityUp(0, Zero, true, increment);
         public static StatusEffect ReboundDamageUp(int turns, float percent) => new ReboundDamageUp(turns, Zero, false, percent);
         public static StatusEffect ReboundRateUpKinectist(int turns, float percent) => new ReboundRateUpKinectist(turns, Zero, false, percent);
         public static StatusEffect Ununaliving(int turns) => new Ununaliving(turns, Zero, false);
         public static StatusEffect PierceDamageUp(int turns, List<float> multipliers) => new PierceDamageUp(turns, Zero, false, multipliers);
+        public static StatusEffect FixedReboundDamage(int turns, float fixedPercent) => new FixedReboundDamage(turns, Zero, false, fixedPercent);
+        public static StatusEffect Perm_FixedReboundDamage(float fixedPercent) => new FixedReboundDamage(0, Zero, true, fixedPercent);
+        public static StatusEffect ProjectileLocker(int turns, Projectile projectile) => new ProjectileLocker(turns, Zero, false, projectile);
     }
 
     public static class A_Skill

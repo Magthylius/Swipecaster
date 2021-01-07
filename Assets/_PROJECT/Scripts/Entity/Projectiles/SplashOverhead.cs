@@ -23,15 +23,14 @@ public class SplashOverhead : Projectile
     }
 
     public override TargetInfo GetTargets(TargetInfo info)
+        => new TargetInfo(info.Focus, GetCollateralFoes(info), new List<Unit>(), info.Allies, info.Foes);
+    protected override List<Unit> GetCollateralFoes(TargetInfo info)
     {
         var collateral = new List<Unit>();
-        var grazed = new List<Unit>();
         int focusIndex = info.Foes.IndexOf(info.Focus);
-
-        if (focusIndex - 1 >= 0) collateral.Add(info.Foes[focusIndex - 1]);
-        if (focusIndex + 1 < info.Foes.Count) collateral.Add(info.Foes[focusIndex + 1]);
-
-        return new TargetInfo(info.Focus, collateral, grazed, info.Allies, info.Foes);
+        if (IndexWithinBounds(focusIndex - 1, info.Foes)) collateral.Add(info.Foes[focusIndex - 1]);
+        if (IndexWithinBounds(focusIndex + 1, info.Foes)) collateral.Add(info.Foes[focusIndex + 1]);
+        return collateral;
     }
 
     public SplashOverhead()
@@ -42,5 +41,11 @@ public class SplashOverhead : Projectile
     public SplashOverhead(float damageMultiplier, float splashDamagePercent) : base(damageMultiplier)
     {
         _splashDamagePercent = splashDamagePercent;
+    }
+    public SplashOverhead(Unit unit)
+    {
+        SetUnit(unit);
+        _projectileDamageMultiplier = 1.0f;
+        _splashDamagePercent = 0.3f;
     }
 }

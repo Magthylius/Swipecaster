@@ -26,7 +26,5 @@ public class Lamp : Summon
         base.Awake();
 
         SetIsPlayer(true);
-        currentReboundPercent = 1.0f;
-        SetUnitPriority(2);
     }
 }

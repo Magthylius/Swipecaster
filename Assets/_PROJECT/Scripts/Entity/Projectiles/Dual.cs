@@ -27,7 +27,16 @@ public class Dual : Projectile
         var collateral = new List<Unit>();
         var grazed = new List<Unit>();
         int focusIndex = info.Foes.IndexOf(info.Focus);
+        int thisIndex = info.Allies.IndexOf(GetUnit);
 
+        if (GetUnit != null)
+        {
+            for (int i = thisIndex; i >= 0; i--)
+            {
+                if (i == thisIndex) continue;
+                grazed.Add(info.Allies[i]);
+            }
+        }
         for (int i = focusIndex; i >= 0; i--)
         {
             if (info.Foes[i] == info.Focus) continue;
@@ -50,7 +59,24 @@ public class Dual : Projectile
 
         return new TargetInfo(info.Focus, collateral, grazed, info.Allies, info.Foes);
     }
+    protected override List<Unit> GetCollateralFoes(TargetInfo info)
+    {
+        var collateral = new List<Unit>();
+        var temp = new List<Unit>(info.Foes);
+        if(info.Foes.Count >= 2)
+        {
+            temp.Remove(info.Focus);
+            collateral.Add(info.Foes[Random.Range(0, info.Foes.Count)]);
+            return collateral;
+        }
+        return new List<Unit>();
+    }
 
     public Dual() => _projectileDamageMultiplier = 1.0f;
     public Dual(float damageMultiplier) : base(damageMultiplier) { }
+    public Dual(Unit unit)
+    {
+        SetUnit(unit);
+        _projectileDamageMultiplier = 1.0f;
+    }
 }
