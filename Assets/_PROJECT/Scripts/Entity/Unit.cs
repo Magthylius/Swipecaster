@@ -266,6 +266,7 @@ public abstract class Unit : Entity
 
         GetDamagePopUp();
         SetProjectile(new CrowFlies());
+		ResetProjectile();
         SubscribeHitEvent(TakeDamage);
         SubscribeHealthChangeEvent(CheckDeathEvent);
         SubscribeUseSkillEvent(UpdateStatusEffectsOnSkill);

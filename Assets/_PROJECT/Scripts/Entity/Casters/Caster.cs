@@ -75,7 +75,6 @@ public abstract class Caster : Unit
     {
         base.Awake();
         SetIsPlayer(true);
-		ResetProjectile();
     }
 
     protected override void StartTurnMethods()
