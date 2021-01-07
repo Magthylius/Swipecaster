@@ -55,11 +55,11 @@ MonoBehaviour:
   _currentDefence: 0
   isPlayer: 0
   damageMultiplier: 1
-  passiveHealAmount: 0
-  damageToHealPercent: 0
-  reboundPercent: 0.2
-  probability: 0.05
-  priority: 1
+  defaultPassiveHealAmount: 0
+  defaultPassiveHealPercent: 1
+  defaultReboundPercent: 0.2
+  defaultProbability: 0.05
+  basePriority: 1
   currentSkillCharge: 0
   _skillChargeCount: 0
   damagePopUp: {fileID: 7356635539377800474}
@@ -127,7 +127,7 @@ SortingGroup:
   m_GameObject: {fileID: 7792443217028439265}
   m_Enabled: 1
   m_SortingLayerID: -663063965
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
 --- !u!114 &-6017469588657768702
 MonoBehaviour:
