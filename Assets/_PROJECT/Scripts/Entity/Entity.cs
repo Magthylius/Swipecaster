@@ -28,6 +28,7 @@ public abstract class Entity : MonoBehaviour
     public int GetCurrentHealth => _currentHealth;
     public void AddCurrentHealth(int amount) => SetCurrentHealth(_currentHealth + amount);
     public virtual void SetCurrentHealth(int amount) => _currentHealth = Mathf.Clamp(amount, 0, GetMaxHealth);
+    public float GetHealthRatio => GetCurrentHealth / GetMaxHealth;
 
     public int GetCurrentLevel => baseUnit.CurrentLevel;
     public void SetCurrentLevel(int amount) { baseUnit.CurrentLevel = amount; CalculateActualStats(); }

@@ -11,20 +11,12 @@ public class Scrounger : Curative
         var battleStage = BattlestageManager.instance;
         if (battleStage == null) return;
 
-        int totalDamage = CalculateDamage(targetInfo, runes);
-        GetProjectile.AssignTargetDamage(this, targetInfo, totalDamage);
+        int rawDamage = CalculateDamage(targetInfo, runes);
+        int totalDamage = GetProjectile.AssignTargetDamage(this, targetInfo, rawDamage);
+        GetStatusEffects.ForEach(status => status.DoEffectOnAction(targetInfo, totalDamage));
 
-        Transform[] party = battleStage.casterPositions;
-        List<Unit> healList = new List<Unit>();
-        for (int i = 0; i < party.Length; i++)
-        {
-            if (party[i].childCount == 0) continue;
-            var unit = party[i].GetChild(0).GetComponent<Unit>();
-            if (unit == null) continue;
-            healList.Add(unit);
-        }
-
-        healList.ForEach(i => i.RecieveHealing(this, Round(totalDamage * currentPassiveHealPercent)));
+        List<Unit> party = new List<Unit>(battleStage.GetCasterTeamAsUnit());
+        party.ForEach(i => i.RecieveHealing(this, Round(totalDamage * currentPassiveHealPercent)));
     }
 
     #endregion

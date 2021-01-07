@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SingleTarget : Curative
 {
@@ -12,23 +13,27 @@ public class SingleTarget : Curative
         if (battleStage == null) return;
 
         int totalDamage = CalculateDamage(targetInfo, runes);
-        int lowestHp = int.MaxValue;
-        Unit target = null;
-        Transform[] party = battleStage.casterPositions;
-        for(int i = 0; i < party.Length; i++)
-        {
-            if (party[i].childCount == 0) continue;
-            var unit = party[i].GetChild(0).GetComponent<Unit>();
-            if (unit == null) continue;
 
-            if(unit.GetCurrentHealth < lowestHp)
+        float lowestHpRatio = 1.0f;
+        Unit target = null;
+        List<Unit> party = (List<Unit>)battleStage.GetCasterTeamAsUnit();
+        for(int i = 0; i < party.Count; i++)
+        {
+            var unit = party[i];
+            float unitHealthRatio = unit.GetHealthRatio;
+            if(unitHealthRatio < lowestHpRatio)
             {
-                lowestHp = unit.GetCurrentHealth;
+                lowestHpRatio = unitHealthRatio;
                 target = unit;
             }
         }
 
-        if (target == null) return;
+        if (target == null)
+        {
+            var list = (List<Unit>)battleStage.GetCasterTeamAsUnit();
+            target = list[Random.Range(0, list.Count)];
+            if (target == null) return;
+        }
         target.RecieveHealing(this, Round(totalDamage * currentPassiveHealPercent));
     }
 

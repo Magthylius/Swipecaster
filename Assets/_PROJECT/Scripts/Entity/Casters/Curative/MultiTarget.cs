@@ -4,7 +4,7 @@ using UnityEngine;
 public class MultiTarget : Curative
 {
     [SerializeField] private bool randomHeal;
-    [SerializeField, Range(2, 4)] private int targetCount;
+    [SerializeField, Range(2, 4)] private int randomTargetCount;
 
     #region Public Override Methods
 
@@ -15,23 +15,15 @@ public class MultiTarget : Curative
 
         int totalDamage = CalculateDamage(targetInfo, runes);
         
-        Transform[] party = battleStage.casterPositions;
-        List<Unit> healList = new List<Unit>();
-        for(int i = 0; i < party.Length; i++)
-        {
-            if (party[i].childCount == 0) continue;
-            var unit = party[i].GetChild(0).GetComponent<Unit>();
-            if (unit == null) continue;
-            healList.Add(unit);
-        }
+        List<Unit> party = new List<Unit>(battleStage.GetCasterTeamAsUnit());
 
         if(randomHeal)
         {
-            int deleteCount = PartySize - targetCount;
-            for(int i = 0; i < deleteCount; i++) healList.RemoveAt(Random.Range(0, healList.Count));
+            int deleteCount = PartySize - randomTargetCount;
+            for(int i = 0; i < deleteCount; i++) party.RemoveAt(Random.Range(0, party.Count));
         }
 
-        healList.ForEach(i => i.RecieveHealing(this, Round(totalDamage * currentPassiveHealPercent)));
+        party.ForEach(i => i.RecieveHealing(this, Round(totalDamage * currentPassiveHealPercent)));
     }
 
     #endregion
