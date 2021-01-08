@@ -123,6 +123,8 @@ public class DatabaseManager : MonoBehaviour
         {
             parties[i].activeUnits = defaultParty.activeUnits;
             parties[i].partyName = "Team " + letter;
+
+            letter++;
         }
 
         activeParty = parties[0];

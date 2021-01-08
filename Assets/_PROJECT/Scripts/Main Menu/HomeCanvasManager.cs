@@ -9,9 +9,11 @@ public class HomeCanvasManager : MenuCanvasPage
     DatabaseManager dataManager;
     InventoryManager invManager;
 
+
     public CanvasGroup resetCanvasGroup;
     public float transitionSpeed = 5f;
-
+    public PartyGroupBehavior[] partyConfig;
+    
     CanvasGroupFader resetCGF;
 
     public override void Awake()
@@ -52,6 +54,10 @@ public class HomeCanvasManager : MenuCanvasPage
         {
             dataManager.GenerateNewSaveData();
             invManager.UpdateCasterInventory();
+            foreach (PartyGroupBehavior _partyGroup in partyConfig)
+            {
+                _partyGroup.UpdateAll();
+            }
         }
 
         resetCGF.StartFadeOut();

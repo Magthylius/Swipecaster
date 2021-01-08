@@ -24767,12 +24767,12 @@ MonoBehaviour:
     arrowTransform: {x: 0, y: 0, z: 0}
   liveCaster: []
   parties:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  defaultParty: {fileID: 0}
-  activeParty: {fileID: 0}
+  - {fileID: 11400000, guid: 370d7414df42f124c9dc4302a332f455, type: 2}
+  - {fileID: 11400000, guid: 7a3e1ce80c37a2b4597aa38157db9481, type: 2}
+  - {fileID: 11400000, guid: 9c6c93598ef0ef740a68064699190ebd, type: 2}
+  - {fileID: 11400000, guid: a59d8c9ee6aecd94a89ecd6ce19189bb, type: 2}
+  defaultParty: {fileID: 11400000, guid: d32ec00648bc195408e87872e85f92ee, type: 2}
+  activeParty: {fileID: 11400000, guid: 841d043e77972de4fac9d66dfbf3ef93, type: 2}
 --- !u!224 &1610538348 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1055314239308554422, guid: 730f6a41ce2fd544bbae7b66e51e5a09, type: 3}
