@@ -10786,7 +10786,7 @@ MonoBehaviour:
   minZoom: 1.5
   maxZoom: 3.5
   panSpeed: 4
-  unitZoomAnimation: 2
+  unitZoomAnimation: 3.5
   zoomRotation: 3
   zoomSpeed: 1
   countdown: 3

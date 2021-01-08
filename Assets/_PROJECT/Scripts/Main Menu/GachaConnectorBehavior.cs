@@ -33,7 +33,7 @@ public class GachaConnectorBehavior : MonoBehaviour
         isActivated = activation;
     }
 
-    #region accessors
+    #region Accessors
     public Vector2 center => selfCenter;
     public GachaPoint type => pointType;
     #endregion
