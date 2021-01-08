@@ -1,12 +1,12 @@
 using System.Linq;
 using System.Collections.Generic;
 
-public abstract class EmptyStatus<T> : StatusEffect where T : StatusEffect
+public abstract class StatusTemplate<T> : StatusEffect where T : StatusEffect
 {
     public override void DoImmediateEffect(TargetInfo info) => _unit.UpdateStatusEffects();
     public override void UpdateStatus() { }
     public override void DoEffectOnAction(TargetInfo info, int totalDamage) { }
-    public override void DoOnHitEffect(TargetInfo info, int totalDamage) { }
+    public override void DoOnHitEffect(Unit damager, TargetInfo info, int totalDamage) { }
     public override void DoPostEffect()
     {
         DeductRemainingTurns();
@@ -19,7 +19,7 @@ public abstract class EmptyStatus<T> : StatusEffect where T : StatusEffect
         _unit.GetStatusEffects.Remove(this);
     }
 
-    public EmptyStatus() : base() { }
-    public EmptyStatus(int turns, float baseResistance, bool isPermanent)
+    public StatusTemplate() : base() { }
+    public StatusTemplate(int turns, float baseResistance, bool isPermanent)
         : base(turns, baseResistance, isPermanent) { }
 }

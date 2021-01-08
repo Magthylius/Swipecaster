@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Poison : EmptyStatus<Poison>
+public class Poison : StatusTemplate<Poison>
 {
     #region Variables and Properties
 

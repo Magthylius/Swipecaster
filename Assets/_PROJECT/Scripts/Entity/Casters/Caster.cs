@@ -32,23 +32,27 @@ public abstract class Caster : Unit
     public override int CalculateDamage(TargetInfo targetInfo, RuneCollection runes)
     {
         int totalDamage = 0;
-        var relations = RuneRelations.GetRelations(GetRuneType);
-        for (int i = 0; i < runes.GetAllStorages.Count; i++)
+        if (!RuneCollection.Equals(runes, RuneCollection.Null))
         {
-            var r = runes.GetAllStorages[i];
-            for (int j = 0; j < relations.Advantage.Count; j++)
+            var relations = RuneRelations.GetRelations(GetRuneType);
+            for (int i = 0; i < runes.GetAllStorages.Count; i++)
             {
-                totalDamage += Round(GetCurrentAttack * r.amount * runeAdvantageMultiplier) * ToInt(relations.Advantage[j] == r.runeType);
-                r.amount *= ToInt(relations.Advantage[j] != r.runeType);
-            }
-            for (int k = 0; k < relations.Weakness.Count; k++)
-            {
-                totalDamage += Round(GetCurrentAttack * r.amount * runeWeaknessMultiplier) * ToInt(relations.Weakness[k] == r.runeType);
-                r.amount *= ToInt(relations.Weakness[k] != r.runeType);
-            }
+                var r = runes.GetAllStorages[i];
+                for (int j = 0; j < relations.Advantage.Count; j++)
+                {
+                    totalDamage += Round(GetCurrentAttack * r.amount * runeAdvantageMultiplier) * ToInt(relations.Advantage[j] == r.runeType);
+                    r.amount *= ToInt(relations.Advantage[j] != r.runeType);
+                }
+                for (int k = 0; k < relations.Weakness.Count; k++)
+                {
+                    totalDamage += Round(GetCurrentAttack * r.amount * runeWeaknessMultiplier) * ToInt(relations.Weakness[k] == r.runeType);
+                    r.amount *= ToInt(relations.Weakness[k] != r.runeType);
+                }
 
-            totalDamage += GetCurrentAttack * r.amount;
+                totalDamage += GetCurrentAttack * r.amount;
+            }
         }
+        else totalDamage += GetCurrentAttack;
 
         float statusOutMultiplier = 1.0f;
         for (int i = 0; i < GetStatusEffects.Count; i++) statusOutMultiplier += GetStatusEffects[i].GetStatusDamageOutModifier();

@@ -2,7 +2,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PierceDamageUp : EmptyStatus<PierceDamageUp>
+public class PierceDamageUp : StatusTemplate<PierceDamageUp>
 {
     #region Variables and Properties
 

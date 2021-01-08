@@ -25,7 +25,7 @@ public abstract class StatusEffect
     public abstract void DoImmediateEffect(TargetInfo info);
     public abstract void UpdateStatus();
     public abstract void DoEffectOnAction(TargetInfo info, int totalDamage);
-    public abstract void DoOnHitEffect(TargetInfo info, int totalDamage);
+    public abstract void DoOnHitEffect(Unit damager, TargetInfo info, int totalDamage);
     public abstract void DoPostEffect();
     protected abstract int GetCountOfType(List<StatusEffect> statusList);
     protected abstract void Deinitialise();

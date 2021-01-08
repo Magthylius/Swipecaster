@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class Corrosion : EmptyStatus<Corrosion>
+public class Corrosion : StatusTemplate<Corrosion>
 {
     #region Variables and Properties
 
     private int _stackCount;
     public int StackCount => Mathf.Abs(_stackCount);
     public override string StatusName => "Corrosion";
-    private StatusEffect OnHitStatus => Create.A_Status.DefenceDown(_remainingTurns);
+    private StatusEffect OnHitStatus => Create.A_Status.Vulnerability(_remainingTurns);
 
     #endregion
 

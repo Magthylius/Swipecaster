@@ -1,4 +1,4 @@
-﻿public class Stun : EmptyStatus<Stun>
+﻿public class Stun : StatusTemplate<Stun>
 {
     #region Variables and Properties
 

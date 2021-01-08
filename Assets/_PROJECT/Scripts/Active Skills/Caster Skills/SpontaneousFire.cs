@@ -1,18 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SpontaneousFire : MonoBehaviour
+[System.Serializable]
+public class SpontaneousFire : CasterSkill
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private int effectTurns = 1;
+    private StatusEffect StatusToApply => Create.A_Status.Aflame(effectTurns);
+
+    public override string Description
+        => $"All enemies gain a stacking {effectTurns} turn AFLAME status.";
+
+    public override void TriggerSkill(TargetInfo targetInfo, BattlestageManager battleStage)
     {
-        
+        if (targetInfo.Foes.Count == 0) return;
+        targetInfo.Foes.ForEach(foe => foe.AddStatusEffect(StatusToApply));
+        ResetSkillCharge();
     }
 
-    // Update is called once per frame
-    void Update()
+    public SpontaneousFire(Unit unit)
     {
-        
+        _startEffectDuration = 1;
+        _maxSkillCharge = 3;
+        _chargeGainPerTurn = 1;
+        _ignoreDuration = false;
+        _unit = unit;
+        EffectDuration0();
     }
+    public SpontaneousFire(int maxSkillCharge, int startEffectDuration, Unit unit, bool ignoreDuration = false)
+        : base(maxSkillCharge, startEffectDuration, unit, ignoreDuration) { }
 }

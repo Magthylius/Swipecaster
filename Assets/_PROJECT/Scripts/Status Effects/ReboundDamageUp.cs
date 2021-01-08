@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ReboundDamageUp : EmptyStatus<ReboundDamageUp>
+public class ReboundDamageUp : StatusTemplate<ReboundDamageUp>
 {
     #region Variables and Properties
 

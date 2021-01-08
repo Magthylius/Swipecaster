@@ -1,4 +1,4 @@
-public class Ununaliving : EmptyStatus<Ununaliving>
+public class Ununaliving : StatusTemplate<Ununaliving>
 {
     #region Variables and Properties
 

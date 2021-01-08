@@ -226,7 +226,7 @@ public abstract class Unit : Entity
 
         _totalDamageInTurn = (Mathf.Abs(Round(damageAmount * statusInMultiplier)) - GetCurrentDefence).Clamp0();
         AddCurrentHealth(-_totalDamageInTurn);
-        GetStatusEffects.ForEach(i => i.DoOnHitEffect(GetBattleStageInfo(), _totalDamageInTurn));
+        GetStatusEffects?.ForEach(i => i.DoOnHitEffect(damager, GetBattleStageInfo(), _totalDamageInTurn));
 
         DamagePopUp(_totalDamageInTurn,true);
     }
@@ -332,7 +332,7 @@ public abstract class Unit : Entity
         if (GetCurrentHealth <= 0) InvokeDeathEvent(unit);
     }
     private void UpdateStatusEffectsOnSkill(Unit unit, ActiveSkill skill) => UpdateStatusEffects();
-    private void PostStatusEffect() => GetStatusEffects.ForEach(i => i.DoPostEffect());
+    private void PostStatusEffect() => GetStatusEffects?.ForEach(i => i.DoPostEffect());
 
     private TargetInfo GetBattleStageInfo()
     {

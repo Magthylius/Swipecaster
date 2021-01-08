@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FixedReboundDamage : EmptyStatus<FixedReboundDamage>
+public class FixedReboundDamage : StatusTemplate<FixedReboundDamage>
 {
     #region Variables and Properties
 

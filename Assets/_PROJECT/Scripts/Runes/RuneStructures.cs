@@ -17,6 +17,8 @@ public struct RuneStorage
     public RuneType runeType;
     public int amount;
     public static RuneStorage Null => new RuneStorage(RuneType.NULL, 0);
+    public static bool Equals(RuneStorage storage, RuneStorage otherStorage)
+        => storage.runeType == otherStorage.runeType && storage.amount == otherStorage.amount;
 
     public RuneStorage(RuneType _runeType, int _amount)
     {
@@ -81,6 +83,12 @@ public struct RuneCollection
     public RuneStorage AyroRunes => _allRunes[Convert.ToInt32(RuneType.AYRO) - 1];
     public List<RuneStorage> GetAllStorages => _allRunes;
     public static RuneCollection Null => new RuneCollection(RuneStorage.Null, RuneStorage.Null, RuneStorage.Null, RuneStorage.Null, RuneStorage.Null);
+    public static bool Equals(RuneCollection coll1, RuneCollection coll2)
+        => RuneStorage.Equals(coll1.GronRunes, coll2.GronRunes) &&
+           RuneStorage.Equals(coll1.FyorRunes, coll2.FyorRunes) &&
+           RuneStorage.Equals(coll1.TehkRunes, coll2.TehkRunes) &&
+           RuneStorage.Equals(coll1.KhuaRunes, coll2.KhuaRunes) &&
+           RuneStorage.Equals(coll1.AyroRunes, coll2.AyroRunes);
 
     public RuneCollection(RuneStorage gron, RuneStorage fyor, RuneStorage tehk, RuneStorage khua, RuneStorage ayro)
     {

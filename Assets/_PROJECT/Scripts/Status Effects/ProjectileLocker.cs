@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ProjectileLocker : EmptyStatus<ProjectileLocker>
+public class ProjectileLocker : StatusTemplate<ProjectileLocker>
 {
     #region Variables and Properties
 
