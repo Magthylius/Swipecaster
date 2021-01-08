@@ -19,6 +19,11 @@ public class DatabaseManager : MonoBehaviour
     List<UnitObject> allCasters = new List<UnitObject>();
     List<UnitObject> playerAvailableCasters = new List<UnitObject>();
     
+    
+    [Header("Scriptable Object")] 
+    public CasterParty[] parties;
+    public CasterParty defaultParty;
+    public CasterParty activeParty;
 
     void Awake()
     {
@@ -105,12 +110,23 @@ public class DatabaseManager : MonoBehaviour
         playerData = new PlayerInventoryData();
         playerData.casterDatabase.Add(new CasterDataStats("001", 1, 0, true));
         playerData.casterDatabase.Add(new CasterDataStats("002", 1, 0, true));
-        playerData.casterDatabase.Add(new CasterDataStats("003", 1, 0, true));
         playerData.casterDatabase.Add(new CasterDataStats("004", 1, 0, true));
-        playerData.partyDatabase.Add(new PartyData("Team A", new List<string>(){"001", "002", "003", "004"}));
-        playerData.partyDatabase.Add(new PartyData("Team B", new List<string>(){"001", "002", "003", "004"}));
-        playerData.partyDatabase.Add(new PartyData("Team C", new List<string>(){"001", "002", "003", "004"}));
-        playerData.partyDatabase.Add(new PartyData("Team D", new List<string>(){"001", "002", "003", "004"}));
+        playerData.casterDatabase.Add(new CasterDataStats("006", 1, 0, true));
+        playerData.partyDatabase.Add(new PartyData("Team A", new List<string>(){"001", "002", "004", "006"}));
+        playerData.partyDatabase.Add(new PartyData("Team B", new List<string>(){"001", "002", "004", "006"}));
+        playerData.partyDatabase.Add(new PartyData("Team C", new List<string>(){"001", "002", "004", "006"}));
+        playerData.partyDatabase.Add(new PartyData("Team D", new List<string>(){"001", "002", "004", "006"}));
+
+        char letter = 'A';
+        
+        for (int i = 0; i < parties.Length; i++)
+        {
+            parties[i].activeUnits = defaultParty.activeUnits;
+            parties[i].partyName = "Team " + letter;
+        }
+
+        activeParty = parties[0];
+        
         SaveManager.Save(playerData);
     }
     

@@ -24766,6 +24766,13 @@ MonoBehaviour:
     partyDatabase: []
     arrowTransform: {x: 0, y: 0, z: 0}
   liveCaster: []
+  parties:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  defaultParty: {fileID: 0}
+  activeParty: {fileID: 0}
 --- !u!224 &1610538348 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1055314239308554422, guid: 730f6a41ce2fd544bbae7b66e51e5a09, type: 3}
