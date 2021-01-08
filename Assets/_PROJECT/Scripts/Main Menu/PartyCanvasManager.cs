@@ -119,6 +119,7 @@ public class PartyCanvasManager : MenuCanvasPage
         partyConfigurator.UpdateShelfPlusSlot();
 
         EditMode();
+        print("Yeah");
     }
 
     public void BTN_ApplyEdit()
@@ -136,6 +137,7 @@ public class PartyCanvasManager : MenuCanvasPage
         partyGroup = _partyGroup;
         isHoldComplete = false;
         timer = 0;
+        
     }
 
     public void BTN_OnHoldUp(RectTransform shelf)
@@ -148,7 +150,7 @@ public class PartyCanvasManager : MenuCanvasPage
             database.SetArrowTransform(arrowPosition);
             partyConfigurator.SetActiveParty(party);
         }
-
+        
         isHoldComplete = true;
         timer = 0;
     }
