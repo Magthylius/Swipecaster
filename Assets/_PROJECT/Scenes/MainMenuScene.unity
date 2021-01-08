@@ -16216,6 +16216,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resetCanvasGroup: {fileID: 2145194710}
   transitionSpeed: 15
+  partyConfig:
+  - {fileID: 1973488790}
+  - {fileID: 910174827}
+  - {fileID: 1515154465}
+  - {fileID: 1202435068}
 --- !u!1 &1151498311
 GameObject:
   m_ObjectHideFlags: 0
