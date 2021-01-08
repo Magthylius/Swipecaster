@@ -10777,14 +10777,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1404324106}
-  horizontalOffset: 0.5
-  minZoomOffset: 1
+  horizontalOffset: 0
+  minZoomOffset: 1.5
   maxZoomOffset: -0.5
+  edgeBound: 20
   verticalOffset: 0
   zoomModifierSpeed: 5
   minZoom: 1.5
   maxZoom: 3.5
   panSpeed: 4
+  unitZoomAnimation: 2
   zoomRotation: 3
   zoomSpeed: 1
   countdown: 3
