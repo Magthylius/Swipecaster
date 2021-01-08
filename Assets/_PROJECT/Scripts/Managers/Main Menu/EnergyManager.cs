@@ -61,6 +61,7 @@ public class EnergyManager : MonoBehaviour
     void OnSceneLoad(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == "MainMenuScene") CheckMainMenu();
+        if (inMainMenu) UpdateEnergyUI();
     }
 
     public float GetCurrentEnergy => currentEnergy;
