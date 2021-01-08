@@ -12,10 +12,11 @@ public class CameraManager : MonoBehaviour
 
     public Camera cam;
 
-    [Header("Edge offset values")] 
+    [Header("Edge offset values")]
     public float horizontalOffset;
     public float minZoomOffset = 1.5f;
     public float maxZoomOffset = -0.5f;
+    public float edgeBound;
     [SerializeField] float verticalOffset;
 
     [Header("Zoom settings")] 
@@ -50,6 +51,7 @@ public class CameraManager : MonoBehaviour
 
     Vector3 touchPos;
     Transform targetUnit;
+    float currentCamPos;
 
     #region Debug Zoom Animation
 
@@ -75,11 +77,20 @@ public class CameraManager : MonoBehaviour
         battlestageManager = BattlestageManager.instance;
 
         UpdateCameraBoundary();
+        UpdateCurrentCameraPosition();
         targetZoom = cam.orthographicSize;
         cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z);
         isFree = true;
 
         zoomDifference = maxZoom - minZoom;
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            UpdateCurrentCameraPosition();
+        }
     }
 
     void LateUpdate()
@@ -166,10 +177,15 @@ public class CameraManager : MonoBehaviour
             Vector3 direction = touchPos - GetWorldPos();
             if (direction.sqrMagnitude >= 1) allowPan = true;
     
-            targetPan = Mathf.Clamp(cam.transform.position.x + direction.x, leftBound, rightBound);
+            targetPan = Mathf.Clamp(cam.transform.position.x + direction.x, currentCamPos - edgeBound, currentCamPos + edgeBound);
         }
     }
 
+    void UpdateCurrentCameraPosition()
+    {
+        currentCamPos = cam.transform.position.x;
+    }
+    
     void UpdateCameraBoundary()
     {
         float verticalCamSize = cam.orthographicSize;
@@ -183,8 +199,8 @@ public class CameraManager : MonoBehaviour
         leftBound = (levelBounds.min.x) + (horizontalCamSize + horizontalOffset);
         rightBound = (levelBounds.max.x) - (horizontalCamSize + horizontalOffset);
         bottomBound = (levelBounds.min.y) + (verticalCamSize + verticalOffset);
-    
-        cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z);
+        
+        cam.transform.position = new Vector3(Mathf.Clamp(cam.transform.position.x, currentCamPos - edgeBound, currentCamPos + edgeBound) , cam.transform.position.y, cam.transform.position.z);
     }
 
     public void ZoomToCenter()
