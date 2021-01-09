@@ -31,7 +31,7 @@ public class ConnectionManager : MonoBehaviour
 
     void Update()
     {
-
+        /*
         if (Input.GetMouseButton(0))
         {
             if (EventSystem.current.IsPointerOverGameObject())
@@ -46,6 +46,7 @@ public class ConnectionManager : MonoBehaviour
             {
                 if (hit.collider.CompareTag("Rune1"))
                 {
+                    print(hit.collider.name);
                     Transform tempTransform = hit.collider.transform;
                     RuneBehaviour tempRB = tempTransform.GetComponent<RuneBehaviour>();
 
@@ -66,6 +67,7 @@ public class ConnectionManager : MonoBehaviour
                     }
                 }
             }
+
         }
 
 
@@ -102,7 +104,28 @@ public class ConnectionManager : MonoBehaviour
                     rune.GetComponent<RuneBehaviour>().ResetToActivateSprite();
                 }
             }
-        }
+        } */
+
+        if (selectionStarted)
+        {
+            //print(Input.touchCount);
+            if (Input.GetMouseButtonUp(0))
+            {
+                selectionStarted = false;
+                Time.timeScale = 1.0f;
+                line.gameObject.SetActive(false);
+
+                if (selectionList.Count >= 2)
+                {
+                    comboManager.CollectDamage();
+                }
+
+                foreach (var rune in selectionList)
+                {
+                    rune.GetComponent<RuneBehaviour>().ResetToActivateSprite();
+                }
+            }
+        }    
     }
 
     public void StartSelection(RuneBehaviour rune)
