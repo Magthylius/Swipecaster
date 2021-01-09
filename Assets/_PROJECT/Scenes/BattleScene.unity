@@ -10786,7 +10786,7 @@ MonoBehaviour:
   minZoom: 1.5
   maxZoom: 3.5
   panSpeed: 4
-  unitZoomAnimation: 3.5
+  unitZoomAnimation: 3
   zoomRotation: 3
   zoomSpeed: 1
   countdown: 3
@@ -10880,7 +10880,7 @@ SpriteRenderer:
   m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8c5370f5ca964e947ae4aeae80b97ecb, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.50980395}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
