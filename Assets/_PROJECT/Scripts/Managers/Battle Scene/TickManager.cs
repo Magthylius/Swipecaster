@@ -19,6 +19,8 @@ public class TickManager : MonoBehaviour
     public float setTick = 0.2f;
     float maxTick;
 
+    bool allowTick = false;
+
     int tick = 0;
     float tickTimer;
 
@@ -32,14 +34,27 @@ public class TickManager : MonoBehaviour
 
     void Update()
     {
-        tickTimer += Time.deltaTime;
-        if (tickTimer >= maxTick)
+        if (allowTick)
         {
-            tickTimer -= maxTick;
-            tick++;
-            if (OnTick != null) OnTick(this, new OnTickEvent {tick = tick});
+            tickTimer += Time.deltaTime;
+            if (tickTimer >= maxTick)
+            {
+                tickTimer -= maxTick;
+                tick++;
+                if (OnTick != null) OnTick(this, new OnTickEvent { tick = tick });
 
-            //print("Tick: " + tick);
+                //print("Tick: " + tick);
+            }
         }
+    }
+
+    public void StartTick()
+    {
+        allowTick = true;
+    }
+
+    public void StopTick()
+    {
+        allowTick = false;
     }
 }
