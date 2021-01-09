@@ -56,7 +56,6 @@ public class RuneManager : MonoBehaviour
     {
         int selfTick = e.tick;
 
-        
         if (!allowSpawn) return;
         
         if (selfTick > targetSpawn)
