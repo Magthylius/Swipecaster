@@ -2,7 +2,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ReboundRateUpKinectist : EmptyStatus<ReboundRateUpKinectist>
+public class ReboundRateUpKinectist : StatusTemplate<ReboundRateUpKinectist>
 {
     #region Variables and Properties
 

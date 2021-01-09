@@ -15,13 +15,14 @@ public class Overhead : Projectile
     }
 
     public override TargetInfo GetTargets(TargetInfo info)
-    {
-        var collateral = new List<Unit>();
-        var grazed = new List<Unit>();
-
-        return new TargetInfo(info.Focus, collateral, grazed, info.Allies, info.Foes);
-    }
+        => new TargetInfo(info.Focus, new List<Unit>(), new List<Unit>(), info.Allies, info.Foes);
+    protected override List<Unit> GetCollateralFoes(TargetInfo info) => new List<Unit>();
 
     public Overhead() => _projectileDamageMultiplier = 1.0f;
     public Overhead(float damageMultiplier) : base(damageMultiplier) { }
+    public Overhead(Unit unit)
+    {
+        SetUnit(unit);
+        _projectileDamageMultiplier = 1.0f;
+    }
 }

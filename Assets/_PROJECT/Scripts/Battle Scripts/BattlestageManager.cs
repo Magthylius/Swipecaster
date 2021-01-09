@@ -36,6 +36,8 @@ public class BattlestageManager : MonoBehaviour
 
     List<GameObject> playerTeam = new List<GameObject>();
     List<GameObject> enemyTeam = new List<GameObject>();
+    List<GameObject> playerEntityTeam = new List<GameObject>();
+    List<GameObject> enemyEntityTeam = new List<GameObject>();
 
     [Header("Target Selection")] 
     [SerializeField] private GameObject selectedTarget = null;
@@ -47,7 +49,6 @@ public class BattlestageManager : MonoBehaviour
     bool allowExecutionAction { get; set; }
     
     Transform casterExecutionTransform, enemyExecutionTransform;
-    Vector3 prevPosCaster, prevPosEnemy;
     Vector3 prevScaleCaster, prevScaleEnemy;
     SortingGroup casterSortGroup, enemySortingGroup;
 
@@ -123,10 +124,10 @@ public class BattlestageManager : MonoBehaviour
 
                 if (casterExecutionTransform)
                     casterExecutionTransform.position = Vector3.Lerp(casterExecutionTransform.position,
-                    new Vector3(prevPosCaster.x, prevPosCaster.y, prevPosCaster.z), speed * Time.unscaledDeltaTime);
+                    new Vector3(casterExecutionTransform.parent.position.x, casterExecutionTransform.parent.position.y, casterExecutionTransform.parent.position.z), speed * Time.unscaledDeltaTime);
                 
                 enemyExecutionTransform.position = Vector3.Lerp(enemyExecutionTransform.position,
-                    new Vector3(prevPosEnemy.x, prevPosEnemy.y, prevPosEnemy.z), speed * Time.unscaledDeltaTime);
+                    new Vector3(enemyExecutionTransform.parent.position.x, enemyExecutionTransform.parent.position.y, enemyExecutionTransform.parent.position.z), speed * Time.unscaledDeltaTime);
                 
             }
         }
@@ -144,7 +145,6 @@ public class BattlestageManager : MonoBehaviour
     {
         timer = countdownTimer;
         casterExecutionTransform = _caster.transform;
-        prevPosCaster = casterExecutionTransform.position;
         prevScaleCaster = casterExecutionTransform.localScale;
         casterExecutionTransform.localScale = new Vector3(0.25f, 0.25f, 1);
         //casterSortGroup = _turnBaseManager.GetCurrentCaster().GetComponent<SortingGroup>();
@@ -155,7 +155,6 @@ public class BattlestageManager : MonoBehaviour
         {
             enemyExecutionTransform = _enemy.transform;
             enemySortingGroup = enemyExecutionTransform.GetComponent<SortingGroup>();
-            prevPosEnemy = enemyExecutionTransform.position;
             prevScaleEnemy = enemyExecutionTransform.localScale;
             enemyExecutionTransform.localScale = new Vector3(-0.25f, 0.25f, 1);
             enemySortingGroup.sortingOrder = 1;
@@ -171,7 +170,7 @@ public class BattlestageManager : MonoBehaviour
         var unit = turnBaseManager.GetCurrentCaster().AsUnit();
         if (SkillCriteriaNotMet()) return;
 
-        TargetInfo targetInfo = unit.GetActiveSkill.GetActiveSkillTargets(target, (List<Unit>)GetCasterTeamAsUnit(), (List<Unit>)GetEnemyTeamAsUnit());
+        TargetInfo targetInfo = unit.GetActiveSkill.GetActiveSkillTargets(new TargetInfo(target, null, null, GetCasterTeamAsUnit(), GetEnemyTeamAsUnit()));
         unit.UseSkill(targetInfo, this);
 
         bool SkillCriteriaNotMet() => unit == null || !unit.SkillIsReady || unit.GetActiveSkill == null;
@@ -366,18 +365,31 @@ public class BattlestageManager : MonoBehaviour
 
     public List<GameObject> GetCastersTeam() => playerTeam;
     public List<GameObject> GetEnemyTeam() => enemyTeam;
+    public List<GameObject> GetCasterEntityTeam() => playerEntityTeam;
+    public List<GameObject> GetEnemyEntityTeam() => enemyEntityTeam;
 
-    public IEnumerable<Unit> GetCasterTeamAsUnit()
+    public List<Unit> GetCasterTeamAsUnit()
     {
         var list = new List<Unit>();
         GetCastersTeam().ForEach(o => list.Add(o.GetComponent<Unit>()));
         return list;
     }
-
-    public IEnumerable<Unit> GetEnemyTeamAsUnit()
+    public List<Unit> GetEnemyTeamAsUnit()
     {
         var list = new List<Unit>();
         GetEnemyTeam().ForEach(o => list.Add(o.GetComponent<Unit>()));
+        return list;
+    }
+    public List<Summon> GetCasterEntitiesAsSummon()
+    {
+        var list = new List<Summon>();
+        GetCasterEntityTeam().ForEach(o => list.Add(o.GetComponent<Summon>()));
+        return list;
+    }
+    public List<Summon> GetEnemyEntitiesAsSummon()
+    {
+        var list = new List<Summon>();
+        GetEnemyEntityTeam().ForEach(o => list.Add(o.GetComponent<Summon>()));
         return list;
     }
 

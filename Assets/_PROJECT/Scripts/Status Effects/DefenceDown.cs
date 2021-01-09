@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DefenceDown : EmptyStatus<DefenceDown>
+public class DefenceDown : StatusTemplate<DefenceDown>
 {
     #region Variables and Properties
 

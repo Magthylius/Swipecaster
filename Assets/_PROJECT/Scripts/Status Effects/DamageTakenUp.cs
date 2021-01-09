@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DamageTakenUp : EmptyStatus<DamageTakenUp>
+public class DamageTakenUp : StatusTemplate<DamageTakenUp>
 {
     #region Variables and Properties
 

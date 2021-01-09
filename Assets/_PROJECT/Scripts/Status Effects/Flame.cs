@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Flame : EmptyStatus<Flame>
+public class Flame : StatusTemplate<Flame>
 {
     #region Variables and Properties
 

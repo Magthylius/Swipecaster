@@ -1,7 +1,7 @@
 using System.Linq;
 using UnityEngine;
 
-public class AttackToPartyHeal : EmptyStatus<AttackToPartyHeal>
+public class AttackToPartyHeal : StatusTemplate<AttackToPartyHeal>
 {
     #region Variables and Properties
 

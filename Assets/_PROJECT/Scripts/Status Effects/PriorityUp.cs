@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PriorityUp : EmptyStatus<PriorityUp>
+public class PriorityUp : StatusTemplate<PriorityUp>
 {
     #region Variables and Properties
 

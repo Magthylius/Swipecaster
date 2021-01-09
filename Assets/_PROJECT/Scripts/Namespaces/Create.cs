@@ -6,8 +6,10 @@ namespace Create
     {
         private static readonly float Zero = 0.0f;
         public static StatusEffect Stun(int turns, TurnBaseManager turnBase) => new Stun(turns, 1.0f, false, turnBase);
-        public static StatusEffect DefenceDown(int turns) => new DefenceDown(turns, 0.5f, false, 0.1f);
-        public static StatusEffect Flame(int turns) => new Flame(turns, 0.35f, false, 0.05f, 0.05f);
+        public static StatusEffect Vulnerability(int turns) => new DefenceDown(turns, 0.5f, false, 0.1f);
+        public static StatusEffect DefenceDown(int turns, float percent) => new DefenceDown(turns, 0.5f, false, percent);
+        public static StatusEffect Aflame(int turns) => new Flame(turns, 0.35f, false, 0.05f, 0.05f);
+        public static StatusEffect Flame(int turns, float maxHPPercent, float atkDownPercent) => new Flame(turns, 0.35f, false, maxHPPercent, atkDownPercent);
         public static StatusEffect Poison(int turns) => new Poison(turns, 0.35f, false, 0.05f, 0.05f);
         public static StatusEffect Weakness(int turns) => new Weakness(turns, 0.65f, false, 0.2f);
         public static StatusEffect AttackUp(int turns, float percent) => new AttackUp(turns, Zero, false, percent);
@@ -16,10 +18,15 @@ namespace Create
         public static StatusEffect DamageTakenUp(int turns, float percent) => new DamageTakenUp(turns, Zero, false, percent);
         public static StatusEffect DamageToDistributedPartyHeal(int turns, float percent) => new DamageToDistributedPartyHeal(turns, Zero, false, percent);
         public static StatusEffect PriorityUp(int turns, int increment) => new PriorityUp(turns, Zero, false, increment);
+        public static StatusEffect Perm_PriorityUp(int increment) => new PriorityUp(0, Zero, true, increment);
         public static StatusEffect ReboundDamageUp(int turns, float percent) => new ReboundDamageUp(turns, Zero, false, percent);
         public static StatusEffect ReboundRateUpKinectist(int turns, float percent) => new ReboundRateUpKinectist(turns, Zero, false, percent);
         public static StatusEffect Ununaliving(int turns) => new Ununaliving(turns, Zero, false);
-        public static StatusEffect PierceDamageUp(int turns, List<float> multipliers) => new PierceDamageUp(turns, Zero, false, multipliers);
+        public static StatusEffect PierceDamageUp(int turns, List<float> additiveMultiplier) => new PierceDamageUp(turns, Zero, false, additiveMultiplier);
+        public static StatusEffect FixedReboundDamage(int turns, float fixedPercent) => new FixedReboundDamage(turns, Zero, false, fixedPercent);
+        public static StatusEffect Perm_FixedReboundDamage(float fixedPercent) => new FixedReboundDamage(0, Zero, true, fixedPercent);
+        public static StatusEffect ProjectileLocker(int turns, Projectile projectile) => new ProjectileLocker(turns, Zero, false, projectile);
+        public static StatusEffect ReboundingStatus(int turns, StatusEffect statusToRebound) => new ReboundingStatus(turns, Zero, false, statusToRebound);
     }
 
     public static class A_Skill

@@ -59,7 +59,6 @@ public class SceneTransitionManager : MonoBehaviour
 
     void DeactivateTransition()
     {
-        print("called");
         SetObjectActives(false);
         canvasCG.StartFadeOut();
     }

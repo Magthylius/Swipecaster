@@ -125,6 +125,7 @@ public class GachaCanvasManager : MenuCanvasPage
 
         connectedList = new List<GachaConnectorBehavior>();
         linePoints = new List<Vector2>();
+        uiLine.UpdatePoints(linePoints);
 
         summonButton.gameObject.SetActive(false);
         instructionText.gameObject.SetActive(true);

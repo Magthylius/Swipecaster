@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DamageToDistributedPartyHeal : EmptyStatus<DamageToDistributedPartyHeal>
+public class DamageToDistributedPartyHeal : StatusTemplate<DamageToDistributedPartyHeal>
 {
     #region Variables and Properties
 
@@ -12,7 +12,7 @@ public class DamageToDistributedPartyHeal : EmptyStatus<DamageToDistributedParty
 
     #region Override Methods
 
-    public override void DoOnHitEffect(TargetInfo info, int totalDamage)
+    public override void DoOnHitEffect(Unit damager, TargetInfo info, int totalDamage)
     {
         if (info.Allies == null) return;
 

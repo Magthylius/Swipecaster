@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Weakness : EmptyStatus<Weakness>
+public class Weakness : StatusTemplate<Weakness>
 {
     #region Variables and Properties
 

@@ -2,7 +2,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackUp : EmptyStatus<AttackUp>
+public class AttackUp : StatusTemplate<AttackUp>
 {
     #region Variables and Properties
 

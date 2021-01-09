@@ -194,6 +194,7 @@ MonoBehaviour:
   questHandler: {fileID: 2036368856}
   button: {fileID: 2111484603}
   transitionSpeed: 8
+  energyCost: 10
 --- !u!222 &3197486
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1148,6 +1149,7 @@ MonoBehaviour:
   questHandler: {fileID: 2036368856}
   button: {fileID: 602292260}
   transitionSpeed: 8
+  energyCost: 10
 --- !u!114 &61620524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6557,6 +6559,7 @@ MonoBehaviour:
   questHandler: {fileID: 2036368856}
   button: {fileID: 1521203701}
   transitionSpeed: 8
+  energyCost: 10
 --- !u!114 &453150384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12792,6 +12795,7 @@ MonoBehaviour:
   questHandler: {fileID: 2036368856}
   button: {fileID: 250509926}
   transitionSpeed: 8
+  energyCost: 10
 --- !u!114 &974809753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14116,7 +14120,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -14524,6 +14528,7 @@ MonoBehaviour:
   questHandler: {fileID: 2036368856}
   button: {fileID: 784389689}
   transitionSpeed: 8
+  energyCost: 10
 --- !u!114 &1070588107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14987,6 +14992,7 @@ MonoBehaviour:
   questHandler: {fileID: 2036368856}
   button: {fileID: 467688523}
   transitionSpeed: 8
+  energyCost: 10
 --- !u!114 &1080237028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16210,6 +16216,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resetCanvasGroup: {fileID: 2145194710}
   transitionSpeed: 15
+  partyConfig:
+  - {fileID: 1973488790}
+  - {fileID: 910174827}
+  - {fileID: 1515154465}
+  - {fileID: 1202435068}
 --- !u!1 &1151498311
 GameObject:
   m_ObjectHideFlags: 0
@@ -22384,6 +22395,7 @@ MonoBehaviour:
   questHandler: {fileID: 2036368856}
   button: {fileID: 1162159328}
   transitionSpeed: 8
+  energyCost: 10
 --- !u!114 &1490587420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23610,6 +23622,7 @@ MonoBehaviour:
   questHandler: {fileID: 2036368856}
   button: {fileID: 1553340567}
   transitionSpeed: 8
+  energyCost: 10
 --- !u!114 &1557861391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24758,6 +24771,13 @@ MonoBehaviour:
     partyDatabase: []
     arrowTransform: {x: 0, y: 0, z: 0}
   liveCaster: []
+  parties:
+  - {fileID: 11400000, guid: 370d7414df42f124c9dc4302a332f455, type: 2}
+  - {fileID: 11400000, guid: 7a3e1ce80c37a2b4597aa38157db9481, type: 2}
+  - {fileID: 11400000, guid: 9c6c93598ef0ef740a68064699190ebd, type: 2}
+  - {fileID: 11400000, guid: a59d8c9ee6aecd94a89ecd6ce19189bb, type: 2}
+  defaultParty: {fileID: 11400000, guid: d32ec00648bc195408e87872e85f92ee, type: 2}
+  activeParty: {fileID: 11400000, guid: 841d043e77972de4fac9d66dfbf3ef93, type: 2}
 --- !u!224 &1610538348 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1055314239308554422, guid: 730f6a41ce2fd544bbae7b66e51e5a09, type: 3}
@@ -26490,7 +26510,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -26965,7 +26985,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -30355,7 +30375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb723a7173a617448b650b93e9a2479c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomAndSceneManagement: {fileID: 11400000, guid: b4cd5a1c9119936409cb70238dad25c9, type: 2}
+  levelConfiguration: {fileID: 0}
   levelSelectors:
   - {fileID: 3197485}
   - {fileID: 1490587419}
