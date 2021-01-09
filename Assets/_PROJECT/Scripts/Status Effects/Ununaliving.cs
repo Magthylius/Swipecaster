@@ -8,10 +8,10 @@ public class Ununaliving : StatusTemplate<Ununaliving>
 
     #region Override Methods
 
-    public override void UpdateStatus() => _unit.ActivateUndying();
+    public override void UpdateStatus() => GetUnit.ActivateUndying();
     protected override void Deinitialise()
     {
-        _unit.DeactivateUndying();
+        GetUnit.DeactivateUndying();
         base.Deinitialise();
     }
 

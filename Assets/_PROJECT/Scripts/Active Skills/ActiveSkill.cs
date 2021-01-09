@@ -25,6 +25,25 @@ public abstract class ActiveSkill
 
     protected int Round(float number) => Mathf.RoundToInt(number);
     protected int RoundToPercent(float number) => Round(number * 100);
+    protected static List<Unit> GetUnitsFromTransformChild0(List<Transform> unitTransforms)
+    {
+        var list = new List<Unit>();
+        foreach (var u in unitTransforms)
+        {
+            if (u.childCount == 0)
+            {
+                list.Add(null);
+                continue;
+            }
+            list.Add(u.GetChild(0).GetComponent<Unit>());
+        }
+        return list;
+    }
+    protected static bool UnitFound(Unit unit) => unit != null;
+    protected static bool WithinRange<T>(int index, List<T> list) => index >= 0 && index < list.Count;
+    protected int AssignDamage(TargetInfo info, int damage) => GetUnit.GetCurrentProjectile.AssignTargetDamage(GetUnit, info, damage);
+    protected TargetInfo GetFocusTarget(Unit target) => new TargetInfo(target, new List<Unit>(), new List<Unit>());
+    protected TargetInfo GetFocusAndGrazed(Unit target, List<Unit> grazed) => new TargetInfo(target, new List<Unit>(), grazed);
 
     public void SetSkillDamageMultiplier(float a) => _skillDamageMultiplier = a;
     public float GetSkillDamageMultiplier => _skillDamageMultiplier;

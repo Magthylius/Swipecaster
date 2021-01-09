@@ -102,7 +102,7 @@ public class TurnBaseManager : MonoBehaviour
         infoManager.UpdateCasterProtrait(current);
         infoManager.UpdateSkillChargeBar(current);
 
-        current.InvokeTurnBeginEvent();
+        current.InvokeSelfTurnBeginEvent();
     }
 
     void EnemyTurn()
@@ -116,7 +116,7 @@ public class TurnBaseManager : MonoBehaviour
         print("Is " + enemy.name + " turn");
 
         var current = GetCurrentCaster().AsUnit();
-        if (current != null) current.InvokeTurnBeginEvent();
+        if (current != null) current.InvokeSelfTurnBeginEvent();
 
         OnEnemyAttack();
     }
@@ -174,7 +174,7 @@ public class TurnBaseManager : MonoBehaviour
         }
 
         var current = GetCurrentCaster().AsUnit();
-        if (current != null) current.InvokeTurnEndEvent();
+        if (current != null) current.InvokeSelfTurnEndEvent();
 
         switch (battleState)
         {

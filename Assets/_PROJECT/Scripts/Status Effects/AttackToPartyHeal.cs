@@ -14,7 +14,7 @@ public class AttackToPartyHeal : StatusTemplate<AttackToPartyHeal>
     #region Override Methods
 
     public override void DoEffectOnAction(TargetInfo info, int totalDamage)
-        => info.Allies.ToList().ForEach(caster => caster.RecieveHealing(_unit, HealAmount(totalDamage)));
+        => info.Allies.ToList().ForEach(caster => caster.RecieveHealing(GetUnit, HealAmount(totalDamage)));
 
     #endregion
 

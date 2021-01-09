@@ -17,7 +17,7 @@ public class DamageToDistributedPartyHeal : StatusTemplate<DamageToDistributedPa
         if (info.Allies == null) return;
 
         var healAmountPer = HealAmountPer(totalDamage, info.Allies.Count);
-        info.Allies.ForEach(caster => caster.RecieveHealing(_unit, healAmountPer));
+        info.Allies.ForEach(caster => caster.RecieveHealing(GetUnit, healAmountPer));
     }
 
     #endregion

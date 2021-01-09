@@ -11,7 +11,7 @@ public class Deflector : Kinectist
     {
         base.Awake();
         SubscribeGrazeEvent(Deflect);
-        SubscribeTurnEndEvent(ResetTrigger);
+        SubscribeSelfTurnEndEvent(ResetTrigger);
 
         SetArchMinor(ArchTypeMinor.Deflector);
     }
@@ -20,7 +20,7 @@ public class Deflector : Kinectist
     {
         base.OnDestroy();
         UnsubscribeGrazeEvent(Deflect);
-        UnsubscribeTurnEndEvent(ResetTrigger);
+        UnsubscribeSelfTurnEndEvent(ResetTrigger);
     }
 
     protected override void TakeDamage(Unit damager, int damageAmount)

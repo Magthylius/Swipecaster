@@ -12,10 +12,10 @@ public class FixedReboundDamage : StatusTemplate<FixedReboundDamage>
 
     #region Override Methods
 
-    public override void UpdateStatus() => _unit.SetReboundPercent(FixedReboundPercent);
+    public override void UpdateStatus() => GetUnit.SetReboundPercent(FixedReboundPercent);
     protected override void Deinitialise()
     {
-        _unit.ResetReboundPercent();
+        GetUnit.ResetReboundPercent();
         base.Deinitialise();
     }
 

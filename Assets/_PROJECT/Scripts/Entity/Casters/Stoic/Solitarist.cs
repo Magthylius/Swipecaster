@@ -15,7 +15,7 @@ public class Solitarist : Stoic
     protected override void Awake()
     {
         base.Awake();
-        SubscribeTurnBeginEvent(PassiveHeal);
+        SubscribeSelfTurnBeginEvent(PassiveHeal);
 
         SetArchMinor(ArchTypeMinor.Solitarist);
     }
@@ -23,7 +23,7 @@ public class Solitarist : Stoic
     protected override void OnDestroy()
     {
         base.OnDestroy();
-        UnsubscribeTurnBeginEvent(PassiveHeal);
+        UnsubscribeSelfTurnBeginEvent(PassiveHeal);
     }
 
     #endregion

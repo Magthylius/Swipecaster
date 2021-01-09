@@ -14,13 +14,13 @@ public class ProjectileLocker : StatusTemplate<ProjectileLocker>
 
     public override void DoImmediateEffect(TargetInfo info)
     {
-        _unit.SetProjectileLock(false);
-        _unit.SubstituteProjectile(ProjectileToLock);
-        _unit.SetProjectileLock(true);
+        GetUnit.SetProjectileLock(false);
+        GetUnit.SubstituteProjectile(ProjectileToLock);
+        GetUnit.SetProjectileLock(true);
     }
     protected override void Deinitialise()
     {
-        _unit.SetProjectileLock(false);
+        GetUnit.SetProjectileLock(false);
         base.Deinitialise();
     }
 

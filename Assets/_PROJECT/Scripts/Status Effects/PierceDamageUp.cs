@@ -8,18 +8,18 @@ public class PierceDamageUp : StatusTemplate<PierceDamageUp>
 
     private const int MaxPierceSize = 4;
     private List<float> _additiveMultiplier;
-    public List<float> DamageUpMultiplier => MultiplierSum(_unit.GetCurrentProjectile.GetCurrentDiminishingMultiplier, _additiveMultiplier);
-    public List<float> ResetDamageUpMultiplier => MultiplierSubtract(_unit.GetCurrentProjectile.GetCurrentDiminishingMultiplier, _additiveMultiplier);
+    public List<float> DamageUpMultiplier => MultiplierSum(GetUnit.GetCurrentProjectile.GetCurrentDiminishingMultiplier, _additiveMultiplier);
+    public List<float> ResetDamageUpMultiplier => MultiplierSubtract(GetUnit.GetCurrentProjectile.GetCurrentDiminishingMultiplier, _additiveMultiplier);
     public override string StatusName => "Piercing Damage Up";
 
     #endregion
 
     #region Override Methods
 
-    public override void UpdateStatus() => _unit.GetCurrentProjectile.SetDiminishingMultiplier(DamageUpMultiplier);
+    public override void UpdateStatus() => GetUnit.GetCurrentProjectile.SetDiminishingMultiplier(DamageUpMultiplier);
     protected override void Deinitialise()
     {
-        _unit.GetCurrentProjectile.SetDiminishingMultiplier(ResetDamageUpMultiplier);
+        GetUnit.GetCurrentProjectile.SetDiminishingMultiplier(ResetDamageUpMultiplier);
         base.Deinitialise();
     }
 

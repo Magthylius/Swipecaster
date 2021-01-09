@@ -5,18 +5,18 @@ public class PriorityUp : StatusTemplate<PriorityUp>
     #region Variables and Properties
 
     private int _priorityIncrement;
-    private int PriorityIncrementAmount => Mathf.Abs(_unit.GetUnitPriority + _priorityIncrement);
-    private int PriorityResetAmount => Mathf.Abs(_unit.GetUnitPriority - _priorityIncrement);
+    private int PriorityIncrementAmount => Mathf.Abs(GetUnit.GetUnitPriority + _priorityIncrement);
+    private int PriorityResetAmount => Mathf.Abs(GetUnit.GetUnitPriority - _priorityIncrement);
     public override string StatusName => "Priority Up";
 
     #endregion
 
     #region Override Methods
 
-    public override void UpdateStatus() => _unit.SetUnitPriority(PriorityIncrementAmount);
+    public override void UpdateStatus() => GetUnit.SetUnitPriority(PriorityIncrementAmount);
     protected override void Deinitialise()
     {
-        _unit.SetUnitPriority(PriorityResetAmount);
+        GetUnit.SetUnitPriority(PriorityResetAmount);
         base.Deinitialise();
     }
 

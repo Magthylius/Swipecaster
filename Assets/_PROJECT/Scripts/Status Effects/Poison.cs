@@ -8,18 +8,18 @@ public class Poison : StatusTemplate<Poison>
 
     private float _maxHealthPercent;
     private float _defenceDownPercent;
-    public int HealthDownAmount => -Mathf.Abs(Round(_unit.GetMaxHealth * _maxHealthPercent));
-    public int DefenceDownAmount => -Mathf.Abs(Round(_unit.GetBaseDefence * _defenceDownPercent));
+    public int HealthDownAmount => -Mathf.Abs(Round(GetUnit.GetMaxHealth * _maxHealthPercent));
+    public int DefenceDownAmount => -Mathf.Abs(Round(GetUnit.GetBaseDefence * _defenceDownPercent));
     public override string StatusName => "Poisoned";
 
     #endregion
 
     #region Override Methods
 
-    public override void UpdateStatus() => _unit.AddCurrentDefence(DefenceDownAmount);
+    public override void UpdateStatus() => GetUnit.AddCurrentDefence(DefenceDownAmount);
     public override void DoPostEffect()
     {
-        _unit.AddCurrentHealth(HealthDownAmount);
+        GetUnit.AddCurrentHealth(HealthDownAmount);
         base.DoPostEffect();
     }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public abstract class StatusTemplate<T> : StatusEffect where T : StatusEffect
 {
-    public override void DoImmediateEffect(TargetInfo info) => _unit.UpdateStatusEffects();
+    public override void DoImmediateEffect(TargetInfo info) => GetUnit.UpdateStatusEffects();
     public override void UpdateStatus() { }
     public override void DoEffectOnAction(TargetInfo info, int totalDamage) { }
     public override void DoOnHitEffect(Unit damager, TargetInfo info, int totalDamage) { }
@@ -16,7 +16,8 @@ public abstract class StatusTemplate<T> : StatusEffect where T : StatusEffect
     protected override void Deinitialise()
     {
         UnsubscribeSelfDestructEvent(Deinitialise);
-        _unit.GetStatusEffects.Remove(this);
+        GetUnit.GetStatusEffects.Remove(this);
+        GetUnit.UpdateStatusEffects();
     }
 
     public StatusTemplate() : base() { }

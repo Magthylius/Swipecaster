@@ -29,12 +29,15 @@ public abstract class Entity : MonoBehaviour
     public void AddCurrentHealth(int amount) => SetCurrentHealth(_currentHealth + amount);
     public virtual void SetCurrentHealth(int amount) => _currentHealth = Mathf.Clamp(amount, 0, GetMaxHealth);
     public float GetHealthRatio => GetCurrentHealth / GetMaxHealth;
+    public virtual void Suicide() => SetCurrentHealth(-1);
 
     public int GetCurrentLevel => baseUnit.CurrentLevel;
     public void SetCurrentLevel(int amount) { baseUnit.CurrentLevel = amount; CalculateActualStats(); }
 
     public UnitObject GetBaseUnit => baseUnit;
     public void SetBaseUnit(UnitObject newUnit) { baseUnit = newUnit; CalculateActualStats(); }
+
+    public virtual SummonObject GetBaseSummon => null;
 
     public void SetRuneType(RuneType type) => baseUnit.RuneAlignment = type;
     public RuneType GetRuneType => baseUnit.RuneAlignment;

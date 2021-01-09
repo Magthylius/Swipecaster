@@ -7,14 +7,14 @@ public class AttackUp : StatusTemplate<AttackUp>
     #region Variables and Properties
 
     private float _attackUpPercent;
-    public int AttackUpAmount => Mathf.Abs(Round(_unit.GetBaseAttack * _attackUpPercent));
+    public int AttackUpAmount => Mathf.Abs(Round(GetUnit.GetBaseAttack * _attackUpPercent));
     public override string StatusName => "ATK Up";
 
     #endregion
 
     #region Override Methods
 
-    public override void UpdateStatus() => _unit.AddCurrentAttack(AttackUpAmount);
+    public override void UpdateStatus() => GetUnit.AddCurrentAttack(AttackUpAmount);
 
     #endregion
 

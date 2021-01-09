@@ -11,7 +11,7 @@ public class Riposter : Stoic
     protected override void Awake()
     {
         base.Awake();
-        SubscribeTurnEndEvent(ResetRecentDamager);
+        SubscribeSelfTurnEndEvent(ResetRecentDamager);
 
         SetArchMinor(ArchTypeMinor.Riposter);
     }
@@ -19,7 +19,7 @@ public class Riposter : Stoic
     protected override void OnDestroy()
     {
         base.OnDestroy();
-        UnsubscribeTurnEndEvent(ResetRecentDamager);
+        UnsubscribeSelfTurnEndEvent(ResetRecentDamager);
     }
 
     protected override void TakeDamage(Unit damager, int damageAmount)

@@ -49,12 +49,14 @@ public abstract class Unit : Entity
 
     [Header("Action Events")]
     private static Action<Unit> _deathEvent;
+    private static Action _allTurnBegin;
+    private static Action _allTurnEnd;
     private Action<Unit, int> _grazeEvent;
     private Action<Unit, int> _hitEvent;
     private Action<Unit> _healthChangeEvent;
     private Action<Unit, ActiveSkill> _useSkillEvent;
-    private Action _turnBegin;
-    private Action _turnEnd;
+    private Action _selfTurnBegin;
+    private Action _selfTurnEnd;
 
     [Header("Cache")]
     private int _totalDamageInTurn = 0;
@@ -91,6 +93,12 @@ public abstract class Unit : Entity
         if (GetUndyingStatus && amount <= 0) amount = 1;
         base.SetCurrentHealth(amount);
         InvokeHealthChangeEvent(this);
+    }
+
+    public override void Suicide()
+    {
+        DeactivateUndying();
+        base.Suicide();
     }
 
     #endregion
@@ -142,9 +150,10 @@ public abstract class Unit : Entity
         for (int i = _statusEffects.Count - 1; i >= 0; i--)
         {
             var effect = _statusEffects[i];
-            if (effect.GetType() == effectType) _statusEffects.RemoveAt(i);
+            if (effect.GetType() == effectType) _statusEffects[i].InvokeSelfDestructEvent();
         }
     }
+    public void RemoveAllStatusEffects() => GetStatusEffects.ForEach(status => status.InvokeSelfDestructEvent());
     public List<StatusEffect> GetStatusEffects => _statusEffects;
 
     public void ResetSkillCharge() => GetActiveSkill?.ResetSkillCharge();
@@ -188,6 +197,14 @@ public abstract class Unit : Entity
     public static void UnsubscribeDeathEvent(Action<Unit> method) => _deathEvent -= method;
     public static void InvokeDeathEvent(Unit a) => _deathEvent?.Invoke(a);
 
+    public static void SubscribeAllTurnBeginEvent(Action method) => _allTurnBegin += method;
+    public static void UnsubscribeAllTurnBeginEvent(Action method) => _allTurnBegin -= method;
+    public static void InvokeAllTurnBeginEvent() => _allTurnBegin?.Invoke();
+    
+    public static void SubscribeAllTurnEndEvent(Action method) => _allTurnEnd += method;
+    public static void UnsubscribeAllTurnEndEvent(Action method) => _allTurnEnd -= method;
+    public static void InvokeAllTurnEndEvent() => _allTurnEnd?.Invoke();
+
     public void SubscribeGrazeEvent(Action<Unit, int> method) => _grazeEvent += method;
     public void UnsubscribeGrazeEvent(Action<Unit, int> method) => _grazeEvent -= method;
     public void InvokeGrazeEvent(Unit a, int b) => _grazeEvent?.Invoke(a, b);
@@ -204,13 +221,13 @@ public abstract class Unit : Entity
     public void UnsubscribeUseSkillEvent(Action<Unit, ActiveSkill> method) => _useSkillEvent -= method;
     public void InvokeUseSkillEvent(Unit a, ActiveSkill b) => _useSkillEvent?.Invoke(a, b);
 
-    public void SubscribeTurnBeginEvent(Action method) => _turnBegin += method;
-    public void UnsubscribeTurnBeginEvent(Action method) => _turnBegin -= method;
-    public void InvokeTurnBeginEvent() => _turnBegin?.Invoke();
+    public void SubscribeSelfTurnBeginEvent(Action method) => _selfTurnBegin += method;
+    public void UnsubscribeSelfTurnBeginEvent(Action method) => _selfTurnBegin -= method;
+    public void InvokeSelfTurnBeginEvent() => _selfTurnBegin?.Invoke();
 
-    public void SubscribeTurnEndEvent(Action method) => _turnEnd += method;
-    public void UnsubscribeTurnEndEvent(Action method) => _turnEnd -= method;
-    public void InvokeTurnEndEvent() => _turnEnd?.Invoke();
+    public void SubscribeSelfTurnEndEvent(Action method) => _selfTurnEnd += method;
+    public void UnsubscribeSelfTurnEndEvent(Action method) => _selfTurnEnd -= method;
+    public void InvokeSelfTurnEndEvent() => _selfTurnEnd?.Invoke();
 
     #endregion
 
@@ -233,11 +250,13 @@ public abstract class Unit : Entity
 
     protected virtual void StartTurnMethods()
     {
+        InvokeAllTurnBeginEvent();
         ResetTotalDamageInTurn();
     }
 
     protected virtual void EndTurnMethods()
     {
+        InvokeAllTurnEndEvent();
         ResetAttackStatus();
         PostStatusEffect();
         ResetProjectile();
@@ -248,9 +267,9 @@ public abstract class Unit : Entity
         UnsubscribeHitEvent(TakeDamage);
         UnsubscribeHealthChangeEvent(CheckDeathEvent);
         UnsubscribeUseSkillEvent(UpdateStatusEffectsOnSkill);
-        UnsubscribeTurnEndEvent(EndTurnMethods);
-        UnsubscribeTurnBeginEvent(StartTurnMethods);
-        GetStatusEffects.ForEach(status => status.InvokeSelfDestructEvent());
+        UnsubscribeSelfTurnEndEvent(EndTurnMethods);
+        UnsubscribeSelfTurnBeginEvent(StartTurnMethods);
+        RemoveAllStatusEffects();
     }
 
     protected virtual void Start() => ResetAllStats();
@@ -270,9 +289,8 @@ public abstract class Unit : Entity
         SubscribeHitEvent(TakeDamage);
         SubscribeHealthChangeEvent(CheckDeathEvent);
         SubscribeUseSkillEvent(UpdateStatusEffectsOnSkill);
-        SubscribeTurnEndEvent(EndTurnMethods);
-        SubscribeTurnBeginEvent(StartTurnMethods);
-		
+        SubscribeSelfTurnEndEvent(EndTurnMethods);
+        SubscribeSelfTurnBeginEvent(StartTurnMethods);
     }
 
     #endregion
@@ -300,7 +318,7 @@ public abstract class Unit : Entity
     protected void ResetAllEffects()
     {
         ResetAllStats();
-        GetStatusEffects.Clear();
+        RemoveAllStatusEffects();
         ResetProjectile();
     }
 

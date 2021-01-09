@@ -8,10 +8,12 @@ namespace Create
         public static StatusEffect Stun(int turns, TurnBaseManager turnBase) => new Stun(turns, 1.0f, false, turnBase);
         public static StatusEffect Vulnerability(int turns) => new DefenceDown(turns, 0.5f, false, 0.1f);
         public static StatusEffect DefenceDown(int turns, float percent) => new DefenceDown(turns, 0.5f, false, percent);
+        public static StatusEffect DefenceUp(int turns, float percent) => new DefenceUp(turns, Zero, false, percent);
         public static StatusEffect Aflame(int turns) => new Flame(turns, 0.35f, false, 0.05f, 0.05f);
         public static StatusEffect Flame(int turns, float maxHPPercent, float atkDownPercent) => new Flame(turns, 0.35f, false, maxHPPercent, atkDownPercent);
         public static StatusEffect Poison(int turns) => new Poison(turns, 0.35f, false, 0.05f, 0.05f);
         public static StatusEffect Weakness(int turns) => new Weakness(turns, 0.65f, false, 0.2f);
+        public static StatusEffect AttackDown(int turns, float percent) => new AttackDown(turns, Zero, false, percent);
         public static StatusEffect AttackUp(int turns, float percent) => new AttackUp(turns, Zero, false, percent);
         public static StatusEffect AttackToPartyHeal(int turns, float percent) => new AttackToPartyHeal(turns, Zero, false, percent);
         public static StatusEffect Corrosion(int turns, int stacks) => new Corrosion(turns, Zero, false, stacks);
@@ -27,6 +29,9 @@ namespace Create
         public static StatusEffect Perm_FixedReboundDamage(float fixedPercent) => new FixedReboundDamage(0, Zero, true, fixedPercent);
         public static StatusEffect ProjectileLocker(int turns, Projectile projectile) => new ProjectileLocker(turns, Zero, false, projectile);
         public static StatusEffect ReboundingStatus(int turns, StatusEffect statusToRebound) => new ReboundingStatus(turns, Zero, false, statusToRebound);
+        public static StatusEffect StatusOnAttack(int turns, StatusEffect statusToApply) => new StatusOnAttack(turns, Zero, false, statusToApply);
+        public static StatusEffect BeatDrumEffect(int turns, float atkPercent, Unit parent, BattlestageManager battleStage)
+            => new BeatDrumEffect(turns, Zero, false, atkPercent, parent, battleStage);
     }
 
     public static class A_Skill
@@ -46,7 +51,7 @@ namespace Create
         public static ActiveSkill TwinShell(Unit unit) => new TeapotCrackpot(unit);
         public static ActiveSkill GeminiPetrification(Unit unit) => new TeapotCrackpot(unit);
         public static ActiveSkill SandCorrosion(Unit unit) => new TeapotCrackpot(unit);
-        public static ActiveSkill DrumBeater(Unit unit) => new TeapotCrackpot(unit);
+        public static ActiveSkill DrumBeater(Unit unit) => new DrumBeater(4, 3, unit);
         public static ActiveSkill LuringDesire(Unit unit) => new TeapotCrackpot(unit);
         public static ActiveSkill BackRotation(Unit unit) => new TeapotCrackpot(unit);
         public static ActiveSkill RollingThunder(Unit unit) => new TeapotCrackpot(unit);

@@ -383,16 +383,16 @@ public class BattlestageManager : MonoBehaviour
         GetEnemyTeam().ForEach(o => list.Add(o.GetComponent<Unit>()));
         return list;
     }
-    public List<Summon> GetCasterEntitiesAsSummon()
+    public List<Unit> GetCasterEntitiesAsUnit()
     {
-        var list = new List<Summon>();
-        GetCasterEntityTeam().ForEach(o => list.Add(o.GetComponent<Summon>()));
+        var list = new List<Unit>();
+        GetCasterEntityTeam().ForEach(o => list.Add(o.GetComponent<Unit>()));
         return list;
     }
-    public List<Summon> GetEnemyEntitiesAsSummon()
+    public List<Unit> GetEnemyEntitiesAsUnit()
     {
-        var list = new List<Summon>();
-        GetEnemyEntityTeam().ForEach(o => list.Add(o.GetComponent<Summon>()));
+        var list = new List<Unit>();
+        GetEnemyEntityTeam().ForEach(o => list.Add(o.GetComponent<Unit>()));
         return list;
     }
 

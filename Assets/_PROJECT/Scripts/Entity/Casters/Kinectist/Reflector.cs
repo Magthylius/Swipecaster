@@ -11,7 +11,7 @@ public class Reflector : Kinectist
     {
         base.Awake();
         SubscribeGrazeEvent(Reflect);
-        SubscribeTurnEndEvent(ResetTrigger);
+        SubscribeSelfTurnEndEvent(ResetTrigger);
 
         SetArchMinor(ArchTypeMinor.Reflector);
     }
@@ -20,7 +20,7 @@ public class Reflector : Kinectist
     {
         base.OnDestroy();
         UnsubscribeGrazeEvent(Reflect);
-        UnsubscribeTurnEndEvent(ResetTrigger);
+        UnsubscribeSelfTurnEndEvent(ResetTrigger);
     }
 
     protected override void TakeDamage(Unit damager, int damageAmount)

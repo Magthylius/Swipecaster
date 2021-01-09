@@ -8,18 +8,18 @@ public class Flame : StatusTemplate<Flame>
 
     private float _maxHealthPercent;
     private float _attackDownPercent;
-    public int HealthDownAmount => -Mathf.Abs(Round(_unit.GetMaxHealth * _maxHealthPercent));
-    public int AttackDownAmount => -Mathf.Abs(Round(_unit.GetBaseAttack * _attackDownPercent));
+    public int HealthDownAmount => -Mathf.Abs(Round(GetUnit.GetMaxHealth * _maxHealthPercent));
+    public int AttackDownAmount => -Mathf.Abs(Round(GetUnit.GetBaseAttack * _attackDownPercent));
     public override string StatusName => "Aflame";
 
     #endregion
 
     #region Override Methods
 
-    public override void UpdateStatus() => _unit.AddCurrentAttack(AttackDownAmount);
+    public override void UpdateStatus() => GetUnit.AddCurrentAttack(AttackDownAmount);
     public override void DoPostEffect()
     {
-        _unit.AddCurrentHealth(HealthDownAmount);
+        GetUnit.AddCurrentHealth(HealthDownAmount);
         base.DoPostEffect();
     }
 

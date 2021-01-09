@@ -1,18 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SecondScar : MonoBehaviour
+[System.Serializable]
+public class SecondScar : CasterSkill
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private int effectTurns = 3;
+    [SerializeField] private float atkUpPercent = 0.2f;
+    private StatusEffect AttackUpStatus => Create.A_Status.AttackUp(effectTurns, atkUpPercent);
+    private StatusEffect UndyingStatus => Create.A_Status.Ununaliving(effectTurns);
+
+    public override string Description
+        => $"Attack +{RoundToPercent(atkUpPercent)}%. " +
+           $"{GetUnit.GetBaseUnit.CharacterName}'s HP will not drop below 1 for the duration of the skill.";
+
+    public override void TriggerSkill(TargetInfo targetInfo, BattlestageManager battleStage)
     {
-        
+        GetUnit.AddStatusEffect(AttackUpStatus);
+        GetUnit.AddStatusEffect(UndyingStatus);
+        ResetSkillCharge();
     }
 
-    // Update is called once per frame
-    void Update()
+    public SecondScar(Unit unit)
     {
-        
+        _startEffectDuration = 3;
+        _maxSkillCharge = 5;
+        _chargeGainPerTurn = 1;
+        _ignoreDuration = true;
+        _unit = unit;
+        EffectDuration0();
     }
+
+    public SecondScar(int maxSkillCharge, int startEffectDuration, Unit unit, bool ignoreDuration = false)
+        : base(maxSkillCharge, startEffectDuration, unit, ignoreDuration) { }
 }

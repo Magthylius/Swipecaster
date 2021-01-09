@@ -9,10 +9,10 @@
 
     #region Override Methods
 
-    public override void DoImmediateEffect(TargetInfo info) => _unit.SubscribeTurnBeginEvent(SkipTurn);
+    public override void DoImmediateEffect(TargetInfo info) => GetUnit.SubscribeSelfTurnBeginEvent(SkipTurn);
     protected override void Deinitialise()
     {
-        _unit.UnsubscribeTurnBeginEvent(SkipTurn);
+        GetUnit.UnsubscribeSelfTurnBeginEvent(SkipTurn);
         base.Deinitialise();
     }
 
