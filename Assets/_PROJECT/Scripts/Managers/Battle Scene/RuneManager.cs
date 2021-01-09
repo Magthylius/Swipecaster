@@ -67,23 +67,24 @@ public class RuneManager : MonoBehaviour
     void SpawnItem()
     {
         Vector2 tempPos;
-        int loopCount = 0;
-        do
-        {
-            tempPos = new Vector2(Random.Range(leftSide, rightSide), topSide);
-
-            if (loopCount > 100)
-            {
-                Debug.LogError("Loop exceeded 100!");
-                return;
-            }
-
-        } while (tempPos.x > lastPos.x - runeWidth && tempPos.x < lastPos.x + runeWidth);
 
         //tempPos = new Vector2(Random.Range(leftSide, rightSide), topSide);
 
         for (int i = 0; i < spawnNum; i++)
         {
+            int loopCount = 0;
+            do
+            {
+                tempPos = new Vector2(Random.Range(leftSide, rightSide), topSide);
+
+                if (loopCount > 100)
+                {
+                    Debug.LogError("Loop exceeded 100!");
+                    return;
+                }
+
+            } while (tempPos.x > lastPos.x - runeWidth && tempPos.x < lastPos.x + runeWidth);
+
             RuneType runeType = (RuneType) Random.Range(1, (int)RuneType.RUNE_TOTAL);
             GameObject item = castPool.GetPooledObject(runeType);
             if (item != null)
@@ -130,6 +131,7 @@ public class RuneManager : MonoBehaviour
     public void SpawnActivate()
     {
         allowSpawn = true;
+        TickManager.instance.StartTick();
     }
 
     public void SpawnDeactivate()
@@ -139,6 +141,7 @@ public class RuneManager : MonoBehaviour
         {
             activeRuneList[0].GetComponent<RuneBehaviour>().Deactivate();
         }
+        TickManager.instance.StopTick();
     }
 
     #region Queries
