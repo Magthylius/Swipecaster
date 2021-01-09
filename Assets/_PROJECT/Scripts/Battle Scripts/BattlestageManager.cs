@@ -49,7 +49,6 @@ public class BattlestageManager : MonoBehaviour
     bool allowExecutionAction { get; set; }
     
     Transform casterExecutionTransform, enemyExecutionTransform;
-    Vector3 prevPosCaster, prevPosEnemy;
     Vector3 prevScaleCaster, prevScaleEnemy;
     SortingGroup casterSortGroup, enemySortingGroup;
 
@@ -125,10 +124,10 @@ public class BattlestageManager : MonoBehaviour
 
                 if (casterExecutionTransform)
                     casterExecutionTransform.position = Vector3.Lerp(casterExecutionTransform.position,
-                    new Vector3(prevPosCaster.x, prevPosCaster.y, prevPosCaster.z), speed * Time.unscaledDeltaTime);
+                    new Vector3(casterExecutionTransform.parent.position.x, casterExecutionTransform.parent.position.y, casterExecutionTransform.parent.position.z), speed * Time.unscaledDeltaTime);
                 
                 enemyExecutionTransform.position = Vector3.Lerp(enemyExecutionTransform.position,
-                    new Vector3(prevPosEnemy.x, prevPosEnemy.y, prevPosEnemy.z), speed * Time.unscaledDeltaTime);
+                    new Vector3(enemyExecutionTransform.parent.position.x, enemyExecutionTransform.parent.position.y, enemyExecutionTransform.parent.position.z), speed * Time.unscaledDeltaTime);
                 
             }
         }
@@ -146,7 +145,6 @@ public class BattlestageManager : MonoBehaviour
     {
         timer = countdownTimer;
         casterExecutionTransform = _caster.transform;
-        prevPosCaster = casterExecutionTransform.position;
         prevScaleCaster = casterExecutionTransform.localScale;
         casterExecutionTransform.localScale = new Vector3(0.25f, 0.25f, 1);
         //casterSortGroup = _turnBaseManager.GetCurrentCaster().GetComponent<SortingGroup>();
@@ -157,7 +155,6 @@ public class BattlestageManager : MonoBehaviour
         {
             enemyExecutionTransform = _enemy.transform;
             enemySortingGroup = enemyExecutionTransform.GetComponent<SortingGroup>();
-            prevPosEnemy = enemyExecutionTransform.position;
             prevScaleEnemy = enemyExecutionTransform.localScale;
             enemyExecutionTransform.localScale = new Vector3(-0.25f, 0.25f, 1);
             enemySortingGroup.sortingOrder = 1;

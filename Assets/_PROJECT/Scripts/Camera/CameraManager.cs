@@ -34,6 +34,7 @@ public class CameraManager : MonoBehaviour
     [Header("Battle Zoom Settings")] 
     public float zoomRotation;
     public float zoomSpeed;
+    public float moveSpeed = 0.3f;
     
 
     float leftBound, rightBound, topBound, bottomBound;
@@ -48,6 +49,7 @@ public class CameraManager : MonoBehaviour
 
     bool isInBound { get; set; }
     bool isFree { get; set; }
+    bool combatLerping { get; set;}
 
     Vector3 touchPos;
     Transform targetUnit;
@@ -81,6 +83,7 @@ public class CameraManager : MonoBehaviour
         targetZoom = cam.orthographicSize;
         cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z);
         isFree = true;
+        combatLerping = false;
 
         zoomDifference = maxZoom - minZoom;
     }
@@ -96,8 +99,10 @@ public class CameraManager : MonoBehaviour
     void LateUpdate()
     {
         UpdateCameraBoundary();
-        
-        if (allowZoom)
+
+        if (combatLerping) return;
+
+            if (allowZoom)
         {
             cam.orthographicSize =
                 Mathf.Lerp(cam.orthographicSize, targetZoom, zoomModifierSpeed * Time.unscaledDeltaTime);
@@ -214,7 +219,7 @@ public class CameraManager : MonoBehaviour
 
         isFree = false;
         targetZoom = unitZoomAnimation;
-        targetPan = battlestageCenter.transform.position.x;
+        targetPan = battlestageCenter.position.x;
         allowPan = true;
         allowZoom = true;
         StartCoroutine(ZoomInTimer());
@@ -244,6 +249,8 @@ public class CameraManager : MonoBehaviour
     {
         float timer = 0;
         float rotValue = 0;
+        float targetValue = cam.transform.position.x;
+        combatLerping = true;
 
 
         while (timer <= countdown)
@@ -252,12 +259,16 @@ public class CameraManager : MonoBehaviour
             if (turnBaseManager.GetCurrentState() == GameStateEnum.CASTERTURN)
             {
                 rotValue = Mathf.Lerp(rotValue, zoomRotation, timer / zoomSpeed);
+                targetValue = Mathf.Lerp(targetValue, battlestageCenter.position.x, timer / moveSpeed);
                 cam.transform.rotation = Quaternion.Euler(0,0,rotValue);
+                cam.transform.position = new Vector3(targetValue, cam.transform.position.y, cam.transform.position.z);
             }
             else if(turnBaseManager.GetCurrentState() == GameStateEnum.ENEMYTURN)
             {
                 rotValue = Mathf.Lerp(rotValue, -zoomRotation, timer / zoomSpeed);
+                targetValue = Mathf.Lerp(targetValue, battlestageCenter.position.x, timer / moveSpeed);
                 cam.transform.rotation = Quaternion.Euler(0,0,rotValue);
+                cam.transform.position = new Vector3(targetValue, cam.transform.position.y, cam.transform.position.z);
             }
             
             timer += Time.deltaTime;    
@@ -265,6 +276,7 @@ public class CameraManager : MonoBehaviour
             yield return null;
         }
         
+        cam.transform.position = new Vector3(battlestageCenter.position.x, cam.transform.position.y, cam.transform.position.z);
         
         targetPan = prevPan;
         targetZoom = prevZoom;
@@ -286,6 +298,7 @@ public class CameraManager : MonoBehaviour
         cam.transform.rotation = Quaternion.Euler(0,0,0);
         battlestageManager.ResetSortingOrder();
         isFree = true;
+        combatLerping = false;
     }
 
     #region Accessors
