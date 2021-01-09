@@ -8,12 +8,15 @@ public class ConnectionManager : MonoBehaviour
     ComboManager comboManager;
 
     public LineRenderer line;
-
+    public UILineRenderer uiLine;
     
     RuneType selectionType;
     bool selectionStarted;
+    float runeHalfWidth;
     Camera cam;
+
     List<RuneBehaviour> selectionList = new List<RuneBehaviour>();
+    List<Vector2> linePosList = new List<Vector2>();
 
     void Awake()
     {
@@ -27,6 +30,8 @@ public class ConnectionManager : MonoBehaviour
     void Start()
     {
         comboManager = ComboManager.instance;
+        runeHalfWidth = RuneManager.instance.RuneWidth;
+        UpdateLines();
     }
 
     void Update()
@@ -124,8 +129,33 @@ public class ConnectionManager : MonoBehaviour
                 {
                     rune.GetComponent<RuneBehaviour>().ResetToActivateSprite();
                 }
+
+                selectionList = new List<RuneBehaviour>();
+                linePosList = new List<Vector2>();
+                uiLine.UpdatePoints(linePosList);
             }
         }    
+    }
+
+    public void LateUpdate()
+    {
+        if (selectionList.Count > 0)
+        {
+            UpdateLines();
+        }
+    }
+
+    void UpdateLines()
+    {
+        linePosList = new List<Vector2>();
+        foreach (RuneBehaviour rune in selectionList)
+        {
+            Vector2 pos = rune.runeCenter;
+            pos.y += uiLine.gridSize.y * 0.5f - runeHalfWidth;
+            linePosList.Add(pos);
+            //print(pos);
+        }
+        uiLine.UpdatePoints(linePosList);
     }
 
     public void StartSelection(RuneBehaviour rune)
@@ -134,6 +164,7 @@ public class ConnectionManager : MonoBehaviour
         selectionType = rune.type;
         selectionList = new List<RuneBehaviour>();
         selectionList.Add(rune);
+
         Time.timeScale = 0.2f;
     }
 
@@ -161,6 +192,7 @@ public class ConnectionManager : MonoBehaviour
     public RuneType GetSelectionType() => selectionType;
 
     public List<RuneBehaviour> GetSelectedRuneList() => selectionList;
+    
 
     #endregion
 }

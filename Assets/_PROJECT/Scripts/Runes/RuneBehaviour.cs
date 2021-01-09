@@ -126,7 +126,7 @@ public class RuneBehaviour : MonoBehaviour
 
     public void Selected()
     {
-        if (isPaused) return;
+        if (isPaused || selected) return;
         if (allowMouse && !Input.GetMouseButton(0)) return;
         
         if (!connectionManager.GetSelectionStart())
@@ -162,7 +162,7 @@ public class RuneBehaviour : MonoBehaviour
     public RuneType GetRuneType() => type;
     public GameObject GetSelf() => self;
     public Vector2 GetPosition() => transform.position;
-
+    public Vector2 runeCenter => (rt.offsetMax + rt.offsetMin) * 0.5f;
     public bool GetSelected() => selected;
 
     public bool SetSelected(bool set) => selected = set;

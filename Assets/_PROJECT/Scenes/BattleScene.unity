@@ -9662,6 +9662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   line: {fileID: 1716553768}
+  uiLine: {fileID: 803903878}
 --- !u!1 &1264890180
 GameObject:
   m_ObjectHideFlags: 0
@@ -9898,7 +9899,6 @@ MonoBehaviour:
   offsetMult: 0.1
   maxVelocity: 1000
   spawnNum: 1
-  runeWidth: 100
   castingState: 0
   leftSide: -10
   rightSide: 10
@@ -10400,7 +10400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0fe10b0465537a45923a4667fabfac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  setTick: 0.05
+  setTick: 0.025
 --- !u!4 &1436904356
 Transform:
   m_ObjectHideFlags: 0

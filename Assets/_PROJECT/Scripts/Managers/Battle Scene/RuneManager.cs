@@ -27,12 +27,11 @@ public class RuneManager : MonoBehaviour
     [Header("Rune Settings")]
     public float maxVelocity;
     public int spawnNum;
-    public float runeWidth = 100f;
     [SerializeField] GameState castingState = GameState.PRE_CASTING;
 
     int targetSpawn;
     [SerializeField] float leftSide, rightSide, topSide;
-    
+    float runeWidth = 100f;
     bool allowSpawn = false;
     Vector2 lastPos = new Vector2(0,0);
     
@@ -141,6 +140,9 @@ public class RuneManager : MonoBehaviour
 
         FlexibleRect cgRT = new FlexibleRect(castingGroup.GetComponent<RectTransform>());
 
+        RectTransform rt = castPool.GetPooledObject(RuneType.TEHK).GetComponent<RectTransform>();
+        runeWidth = rt.rect.width;
+
         float halfRWidth = runeWidth * 0.5f;
         leftSide = cgRT.center.x - cgRT.halfWidth + halfRWidth;
         rightSide = cgRT.center.x + cgRT.halfWidth - halfRWidth;
@@ -167,6 +169,7 @@ public class RuneManager : MonoBehaviour
 
     #region Queries
     public List<GameObject> GetActiveRuneList() => activeRuneList;
+    public float RuneWidth => runeWidth;
     #endregion
 
 }
