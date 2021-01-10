@@ -10858,9 +10858,10 @@ MonoBehaviour:
   minZoom: 1.5
   maxZoom: 3.5
   panSpeed: 4
-  unitZoomAnimation: 3
+  unitZoomAnimation: 3.25
   zoomRotation: 3
   zoomSpeed: 1
+  moveSpeed: 0.3
   countdown: 3
   backgroundEnvSpr: {fileID: 1866144033}
   battlestageCenter: {fileID: 1457096772}
