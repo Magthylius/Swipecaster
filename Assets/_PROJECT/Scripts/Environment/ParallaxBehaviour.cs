@@ -75,7 +75,7 @@ public class ParallaxBehaviour : MonoBehaviour
             dist = (camObj.transform.position.x * multiplier);
 
             Vector3 curPos = transform.position;
-            curPos.x = startPos - dist;
+            curPos.x = dist;
             
             if (leftBound > -horizontalCamSize + camObj.transform.position.x)
             {
