@@ -10,32 +10,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c6c211917ecd9b5478cd99917e8a68ab, type: 3}
-  m_Name: Unit_005 -
+  m_Name: Unit_005 - Mausoleum [Missing]
   m_EditorClassIdentifier: 
-  ID: 
-  CharacterName: 
+  ID: 005
+  CharacterName: Mausoleum
   CharacterMastery: 0
   BaseRarity: 0
-  ArchTypeMajor: -1
-  RuneAlignment: 0
+  ArchTypeMajor: 1
+  RuneAlignment: 1
   CharacterDescription: 
   IsAlive: 0
-  MaxLevel: 0
-  MaxHealth: 0
-  MaxAttack: 0
-  MaxDefence: 0
-  CurrentLevel: 0
-  LevelTotalHealth: 0
-  LevelTotalAttack: 0
-  LevelTotalDefence: 0
+  MaxLevel: 50
+  MaxHealth: 2212
+  MaxAttack: 528
+  MaxDefence: 822
+  CurrentLevel: 1
+  LevelTotalHealth: 793
+  LevelTotalAttack: 189
+  LevelTotalDefence: 295
   baseStatMultiplier: 0.33333334
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
-  SkillName: 
-  SkillDescription: 
+  SkillName: Cryptic Mark
+  SkillDescription: Increase DMG taken by 100%. Enemies that deal DMG to this caster
+    -50% DEF.
   SummonPrefab: {fileID: 0}
-  FullBodyPrefab: {fileID: 0}
-  SpriteHolderPrefab: {fileID: 0}
+  FullBodyPrefab: {fileID: 7792443217028439265, guid: f9084d54fa2d0dd438f41258880c7be1, type: 3}
+  SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}
   PortraitArt: {fileID: 0}
   FullBodyArt: {fileID: 0}
   SummonArt: {fileID: 0}

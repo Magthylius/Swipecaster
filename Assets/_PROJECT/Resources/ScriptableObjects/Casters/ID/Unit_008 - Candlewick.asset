@@ -16,7 +16,7 @@ MonoBehaviour:
   CharacterName: Candlewick
   CharacterMastery: 0
   BaseRarity: 3
-  ArchTypeMajor: -1
+  ArchTypeMajor: 4
   RuneAlignment: 5
   CharacterDescription: 
   IsAlive: 0
@@ -31,8 +31,8 @@ MonoBehaviour:
   baseStatMultiplier: 0.33333334
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
-  SkillName: 
-  SkillDescription: 
+  SkillName: Wickfire
+  SkillDescription: Changes damage to distributed spread, +20% damage.
   SummonPrefab: {fileID: 0}
   FullBodyPrefab: {fileID: 7792443217028439265, guid: 57ecedea955ebe54aa70b7fe604c8a89, type: 3}
   SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}

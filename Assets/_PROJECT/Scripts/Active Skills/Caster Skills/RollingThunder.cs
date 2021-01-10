@@ -5,14 +5,14 @@ using UnityEngine;
 [System.Serializable]
 public class RollingThunder : CasterSkill
 {
-    [SerializeField] private int effectTurns = 1;
+    [SerializeField] private int effectTurns = 3;
     [SerializeField] private int stackCount = 1;
     [SerializeField] private float attackPercent = 0.6f;
     private StatusEffect StatusToApply => Create.A_Status.Vulnerability(effectTurns);
 
     public override string Description
         => $"Drops bombs ({RoundToPercent(attackPercent)}% ATK) on ALL enemy positions. " +
-           $"All affected enemies suffer {stackCount} stack(s) and {effectTurns} turns VULNERABLE status.";
+           $"All affected enemies suffer {stackCount} stack(s) and {effectTurns} turn(s) VULNERABLE status.";
 
     public override void TriggerSkill(TargetInfo targetInfo, BattlestageManager battleStage)
     {

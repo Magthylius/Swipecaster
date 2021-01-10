@@ -16,7 +16,7 @@ MonoBehaviour:
   CharacterName: Ocha
   CharacterMastery: 0
   BaseRarity: 4
-  ArchTypeMajor: -1
+  ArchTypeMajor: 0
   RuneAlignment: 1
   CharacterDescription: Meow
   IsAlive: 0
@@ -31,8 +31,8 @@ MonoBehaviour:
   baseStatMultiplier: 0.33333334
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
-  SkillName: 
-  SkillDescription: 
+  SkillName: Teapot Crackpot
+  SkillDescription: Heals team with 10% of current ATK, adds deflection by 15%
   SummonPrefab: {fileID: 0}
   FullBodyPrefab: {fileID: 7792443217028439265, guid: 49aca36adaa74dc42bfdd8d4cd745cd5, type: 3}
   SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}

@@ -300,6 +300,7 @@ public abstract class Unit : Entity
 
         GetDamagePopUp();
         SetDefaultProjectile(new CrowFlies());
+        HandleActiveSkill();
         ResetProjectile();
         SubscribeHitEvent(TakeDamage);
         SubscribeHealthChangeEvent(CheckDeathEvent);
@@ -367,6 +368,12 @@ public abstract class Unit : Entity
     }
     private void ResetTotalDamageInTurn() => _totalDamageInTurn = 0;
     private bool StatusEffectsNullOrEmpty => _statusEffects == null || _statusEffects.Count == 0;
+    
+    private void HandleActiveSkill()
+    {
+        var skill = GetBaseUnit.GetUnitActiveSkill(this);
+        SetActiveSkill(skill);
+    }
 
     #endregion
 }

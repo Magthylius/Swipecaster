@@ -13,7 +13,7 @@ public class DrumBeater : CasterSkill
     private StatusEffect BeatDrumStatus => Create.A_Status.BeatDrumEffect(effectTurns, BattlestageManager.instance);
 
     public override string Description
-        => $"Summons a BEAT DRUM in a random enemy entity position. The BEAT DRUM does {RoundToPercent(attackPercent)}% of Rhythms' ATK " +
+        => $"Summons a BEAT DRUM in a random Enemy entity position. The BEAT DRUM does {RoundToPercent(attackPercent)}% of Rhythms' ATK " +
            $"per turn, adjacent enemies recieve a permanent WEAKENED status until BEAT DRUM dies ({effectTurns} turns " +
            $"to death).";
 

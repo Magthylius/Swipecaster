@@ -9,7 +9,7 @@ public class Shoutdown : CasterSkill
     [SerializeField] private float _damageMultiplier = 0.25f;
 
     public override string Description 
-        => $"Increases all caster DMG by {RoundToPercent(_damageMultiplier)}%";
+        => $"Increases all caster DMG by {RoundToPercent(_damageMultiplier)}%.";
 
     public override void TriggerSkill(TargetInfo targetInfo, BattlestageManager battleStage)
     {

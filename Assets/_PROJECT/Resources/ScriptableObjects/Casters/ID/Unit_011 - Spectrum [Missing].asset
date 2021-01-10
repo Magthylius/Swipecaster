@@ -10,32 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8c8d0cf6bb2736468541190b3c2ee6c, type: 3}
-  m_Name: Unit_011 -
+  m_Name: Unit_011 - Spectrum [Missing]
   m_EditorClassIdentifier: 
-  ID: 
-  CharacterName: 
+  ID: 011
+  CharacterName: Spectrum
   CharacterMastery: 0
   BaseRarity: 0
-  ArchTypeMajor: -1
-  RuneAlignment: 0
+  ArchTypeMajor: 0
+  RuneAlignment: 5
   CharacterDescription: 
   IsAlive: 0
-  MaxLevel: 0
-  MaxHealth: 0
-  MaxAttack: 0
-  MaxDefence: 0
-  CurrentLevel: 0
-  LevelTotalHealth: 0
-  LevelTotalAttack: 0
-  LevelTotalDefence: 0
+  MaxLevel: 50
+  MaxHealth: 1782
+  MaxAttack: 501
+  MaxDefence: 468
+  CurrentLevel: 1
+  LevelTotalHealth: 639
+  LevelTotalAttack: 180
+  LevelTotalDefence: 168
   baseStatMultiplier: 0.33333334
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
-  SkillName: 
-  SkillDescription: 
+  SkillName: Wavering Mist
+  SkillDescription: Increases all Kinectist passive skill chances by 10%.
   SummonPrefab: {fileID: 0}
-  FullBodyPrefab: {fileID: 0}
-  SpriteHolderPrefab: {fileID: 0}
+  FullBodyPrefab: {fileID: 7792443217028439265, guid: df6a5d7c228f67443bfa82af78ed2afb, type: 3}
+  SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}
   PortraitArt: {fileID: 0}
   FullBodyArt: {fileID: 0}
   SummonArt: {fileID: 0}

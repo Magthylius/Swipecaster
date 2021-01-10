@@ -16,7 +16,7 @@ MonoBehaviour:
   CharacterName: Crosshair
   CharacterMastery: 0
   BaseRarity: 3
-  ArchTypeMajor: -1
+  ArchTypeMajor: 2
   RuneAlignment: 5
   CharacterDescription: 
   IsAlive: 0
@@ -31,8 +31,9 @@ MonoBehaviour:
   baseStatMultiplier: 0.33333334
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
-  SkillName: 
-  SkillDescription: 
+  SkillName: Withering Mark
+  SkillDescription: Randomly hits 2 enemies. Each enemy hit gets a 3 stack 2 turns
+    VULNERABLE status.
   SummonPrefab: {fileID: 0}
   FullBodyPrefab: {fileID: 7792443217028439265, guid: d75c49ac803565d46bf930d3525427b3, type: 3}
   SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}

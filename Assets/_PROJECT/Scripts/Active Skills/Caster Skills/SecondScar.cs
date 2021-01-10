@@ -10,7 +10,7 @@ public class SecondScar : CasterSkill
 
     public override string Description
         => $"Attack +{RoundToPercent(atkUpPercent)}%. " +
-           $"{GetUnit.GetBaseUnit.CharacterName}'s HP will not drop below 1 for the duration of the skill.";
+           $"HP will not drop below 1 for the duration of the skill.";
 
     public override void TriggerSkill(TargetInfo targetInfo, BattlestageManager battleStage)
     {

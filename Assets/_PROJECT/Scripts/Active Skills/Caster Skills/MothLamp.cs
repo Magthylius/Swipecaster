@@ -17,7 +17,7 @@ public class MothLamp : CasterSkill
     private StatusEffect ReboundStatus => Create.A_Status.Perm_FixedReboundDamage(reboundPercent);
 
     public override string Description
-        => $"Summons a Lamp on Casters side. Enemies that attack this Lamp take {RoundToPercent(reboundPercent)}% of Damage Dealt.";
+        => $"Summons a LAMP on a random Caster entity position. Enemies that attack this LAMP take {RoundToPercent(reboundPercent)}% of DMG Dealt.";
 
     public override void TriggerSkill(TargetInfo targetInfo, BattlestageManager battleStage)
     {

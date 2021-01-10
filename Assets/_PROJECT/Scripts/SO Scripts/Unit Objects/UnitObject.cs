@@ -33,7 +33,7 @@ public class UnitObject : ScriptableObject
 
     [Header("Skill")]
     public string SkillName;
-    [TextArea(1, 5)] public string SkillDescription;
+    [TextArea(3, 5)] public string SkillDescription;
     public GameObject SummonPrefab;
 
     [Header("UI/Visual")]
@@ -92,7 +92,7 @@ public class UnitObject : ScriptableObject
     #region ID Specific Methods
 
     public virtual ActiveSkill GetUnitActiveSkill(Unit unit) => null;
-
+    
     #endregion
 
     #region Public Calculation Method
@@ -133,13 +133,22 @@ public class UnitObject : ScriptableObject
         float linearGradient = (info.baseStatCap - info.baseStat) / MaxLevel;
         return linearGradient * CurrentLevel + info.baseStat;
     }
-	
-	private void OnValidate()
+
+    private void UpdateSkillData(ActiveSkill skill)
+    {
+        if (skill != null)
+        {
+            SkillName = skill.Name;
+            SkillDescription = skill.Description;
+        }
+    }
+
+    private void OnValidate()
 	{
 		if(CurrentLevel < 1) CurrentLevel = 1;
 		if(CurrentLevel > MaxLevel) CurrentLevel = MaxLevel;
-		
 		CalculateActualStats();
+        UpdateSkillData(GetUnitActiveSkill(null));
 	}
 
     #endregion

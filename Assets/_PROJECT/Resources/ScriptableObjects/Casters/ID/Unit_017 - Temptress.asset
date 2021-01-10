@@ -16,7 +16,7 @@ MonoBehaviour:
   CharacterName: Temptress
   CharacterMastery: 0
   BaseRarity: 4
-  ArchTypeMajor: -1
+  ArchTypeMajor: 5
   RuneAlignment: 4
   CharacterDescription: 
   IsAlive: 0
@@ -31,8 +31,9 @@ MonoBehaviour:
   baseStatMultiplier: 0.33333334
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
-  SkillName: 
-  SkillDescription: 
+  SkillName: Luring Desire
+  SkillDescription: Enemies focus on this caster. Heals team by 75% distributed of
+    all damage taken.
   SummonPrefab: {fileID: 0}
   FullBodyPrefab: {fileID: 7792443217028439265, guid: ce42f9701881cae479ff9780d75b96c8, type: 3}
   SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}

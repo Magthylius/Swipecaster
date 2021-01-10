@@ -16,7 +16,7 @@ MonoBehaviour:
   CharacterName: Rhythm
   CharacterMastery: 0
   BaseRarity: 4
-  ArchTypeMajor: -1
+  ArchTypeMajor: 3
   RuneAlignment: 4
   CharacterDescription: 
   IsAlive: 0
@@ -31,11 +31,13 @@ MonoBehaviour:
   baseStatMultiplier: 0.33333334
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
-  SkillName: 
-  SkillDescription: 
-  SummonPrefab: {fileID: 0}
+  SkillName: Drum Beater
+  SkillDescription: Summons a BEAT DRUM in a random enemy entity position. The BEAT
+    DRUM does 35% of Rhythms' ATK per turn, adjacent enemies recieve a permanent
+    WEAKENED status until BEAT DRUM dies (3 turns to death).
+  SummonPrefab: {fileID: 7792443217028439265, guid: 45ac3fb8b75d27040b90c67b2f3fdd55, type: 3}
   FullBodyPrefab: {fileID: 7792443217028439265, guid: 9409afdc0fb8a4e408959d7610d74d78, type: 3}
   SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}
   PortraitArt: {fileID: 21300000, guid: 99f2a4a9cd99a8b43bd6eb1c40c747b7, type: 3}
   FullBodyArt: {fileID: 21300000, guid: ca6ac26408a418344b458181bf26e9ef, type: 3}
-  SummonArt: {fileID: 0}
+  SummonArt: {fileID: 2848640792621507367, guid: 813a7113e8b30a64bb694e7e454fa145, type: 3}

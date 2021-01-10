@@ -10,32 +10,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6fd1b32b4b987154cbbc3c93b542bd6c, type: 3}
-  m_Name: Unit_020 -
+  m_Name: Unit_020 - Backscar [Missing]
   m_EditorClassIdentifier: 
-  ID: 
-  CharacterName: 
+  ID: 020
+  CharacterName: Backscar
   CharacterMastery: 0
   BaseRarity: 0
-  ArchTypeMajor: -1
-  RuneAlignment: 0
+  ArchTypeMajor: 1
+  RuneAlignment: 3
   CharacterDescription: 
   IsAlive: 0
-  MaxLevel: 0
-  MaxHealth: 0
-  MaxAttack: 0
-  MaxDefence: 0
-  CurrentLevel: 0
-  LevelTotalHealth: 0
-  LevelTotalAttack: 0
-  LevelTotalDefence: 0
+  MaxLevel: 50
+  MaxHealth: 2187
+  MaxAttack: 506
+  MaxDefence: 727
+  CurrentLevel: 1
+  LevelTotalHealth: 784
+  LevelTotalAttack: 181
+  LevelTotalDefence: 261
   baseStatMultiplier: 0.33333334
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
-  SkillName: 
-  SkillDescription: 
+  SkillName: Second Scar
+  SkillDescription: Attack +20%. HP will not drop below 1 for the duration of the
+    skill.
   SummonPrefab: {fileID: 0}
-  FullBodyPrefab: {fileID: 0}
-  SpriteHolderPrefab: {fileID: 0}
+  FullBodyPrefab: {fileID: 7792443217028439265, guid: 9e0d9254a6e5d1a44a01a85e9ef8941d, type: 3}
+  SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}
   PortraitArt: {fileID: 0}
   FullBodyArt: {fileID: 0}
   SummonArt: {fileID: 0}

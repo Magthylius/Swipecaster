@@ -9,7 +9,7 @@ public class SporeBurst : CasterSkill
     [SerializeField] private float _damageMultiplier = 0.2f;
 
     public override string Description
-        => $"Deals +{RoundToPercent(_damageMultiplier)}% damage and converts passed attacks to splash.";
+        => $"Deals +{RoundToPercent(_damageMultiplier)}% DMG and converts passing friendly attacks to splash.";
 
     public override void TriggerSkill(TargetInfo targetInfo, BattlestageManager battleStage)
     {

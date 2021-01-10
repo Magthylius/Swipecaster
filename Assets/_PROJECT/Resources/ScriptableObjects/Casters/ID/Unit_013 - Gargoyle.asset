@@ -16,7 +16,7 @@ MonoBehaviour:
   CharacterName: Gargoyle
   CharacterMastery: 0
   BaseRarity: 3
-  ArchTypeMajor: -1
+  ArchTypeMajor: 6
   RuneAlignment: 3
   CharacterDescription: 
   IsAlive: 0
@@ -31,8 +31,9 @@ MonoBehaviour:
   baseStatMultiplier: 0.33333334
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
-  SkillName: 
-  SkillDescription: 
+  SkillName: Twin Shell
+  SkillDescription: ATK +15%. Hits an extra target when attacking. If Golem is in
+    the team, further ATK +10%
   SummonPrefab: {fileID: 0}
   FullBodyPrefab: {fileID: 7792443217028439265, guid: 6795a86ed189bdc41b05d9bb3252ae5c, type: 3}
   SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}

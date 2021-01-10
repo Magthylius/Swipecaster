@@ -16,7 +16,7 @@ MonoBehaviour:
   CharacterName: Nightlight
   CharacterMastery: 0
   BaseRarity: 3
-  ArchTypeMajor: -1
+  ArchTypeMajor: 3
   RuneAlignment: 2
   CharacterDescription: 
   IsAlive: 0
@@ -31,8 +31,9 @@ MonoBehaviour:
   baseStatMultiplier: 0.33333334
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
-  SkillName: 
-  SkillDescription: 
+  SkillName: Moth Lamp
+  SkillDescription: Summons a Lamp on Casters side. Enemies that attack this Lamp
+    take 100% of Damage Dealt.
   SummonPrefab: {fileID: 7792443217028439265, guid: 6af8fc6b1de16174e9880336f66d73d4, type: 3}
   FullBodyPrefab: {fileID: 7792443217028439265, guid: 10be517f440303741970a9d383486a1f, type: 3}
   SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}

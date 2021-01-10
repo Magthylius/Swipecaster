@@ -32,6 +32,7 @@ public abstract class ActiveSkill
 
     #region Protected Methods
 
+    protected static string OneDecimal(float number) => number.ToString("0.0");
     protected int Round(float number) => Mathf.RoundToInt(number);
     protected int RoundToPercent(float number) => Round(number * 100);
     protected static List<Unit> GetUnitsFromTransformChild0(List<Transform> unitTransforms)
@@ -53,6 +54,7 @@ public abstract class ActiveSkill
     protected int AssignDamage(TargetInfo info, int damage) => GetUnit.GetCurrentProjectile.AssignTargetDamage(GetUnit, info, damage);
     protected TargetInfo GetFocusTarget(Unit target) => new TargetInfo(target, new List<Unit>(), new List<Unit>());
     protected TargetInfo GetFocusAndGrazed(Unit target, List<Unit> grazed) => new TargetInfo(target, new List<Unit>(), grazed);
+    protected string GetCharacterName => UnitFound(GetUnit) ? GetUnit.GetBaseUnit.CharacterName : CachedCharacterName;
 
     #endregion
 
@@ -70,6 +72,8 @@ public abstract class ActiveSkill
     public void SetUnit(Unit a) => _unit = a;
     public Unit GetUnit => _unit;
     public virtual string Description => string.Empty;
+    public virtual string Name => string.Empty;
+    public string CachedCharacterName { get => string.Empty; set => CachedCharacterName = value; }
 
     public bool SkillChargeReady => _currentSkillCharge >= _maxSkillCharge;
     public bool EffectDurationReached => _currentEffectDuration <= 0 && !_freezeSkillCharge;

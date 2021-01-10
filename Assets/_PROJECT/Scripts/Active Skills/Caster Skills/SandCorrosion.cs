@@ -12,7 +12,7 @@ public class SandCorrosion : CasterSkill
     private StatusEffect StatusOnAttackStatus => Create.A_Status.StatusOnAttack(statusOnAttackEffectTurns, CorrosionStatus);
 
     public override string Description
-        => $"All enemies hit by {GetUnit.GetBaseUnit.CharacterName} gains a "
+        => $"All enemies hit by this unit gain a "
          + $"{corrosionEffectStacks} stacking {corrosionEffectTurns} turn VULNERABLE status.";
 
     public override void TriggerSkill(TargetInfo targetInfo, BattlestageManager battleStage)

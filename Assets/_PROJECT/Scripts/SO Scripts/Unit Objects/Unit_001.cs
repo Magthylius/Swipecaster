@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Unit/ID/Unit Object 001")]
 public class Unit_001 : UnitObject
 {
-    public override ActiveSkill GetUnitActiveSkill(Unit unit) => base.GetUnitActiveSkill(unit);
+    public override ActiveSkill GetUnitActiveSkill(Unit unit) => Create.A_Skill.TeapotCrackpot(unit);
 }

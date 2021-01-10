@@ -3,11 +3,11 @@ using UnityEngine;
 [System.Serializable]
 public class SpontaneousFire : CasterSkill
 {
-    [SerializeField] private int effectTurns = 1;
+    [SerializeField] private int effectTurns = 3;
     private StatusEffect StatusToApply => Create.A_Status.Aflame(effectTurns);
 
     public override string Description
-        => $"All enemies gain a stacking {effectTurns} turn AFLAME status.";
+        => $"All enemies gain a {effectTurns} turn AFLAME status.";
 
     public override void TriggerSkill(TargetInfo targetInfo, BattlestageManager battleStage)
     {

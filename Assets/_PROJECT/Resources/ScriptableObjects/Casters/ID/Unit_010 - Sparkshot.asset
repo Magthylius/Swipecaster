@@ -16,7 +16,7 @@ MonoBehaviour:
   CharacterName: Sparkshot
   CharacterMastery: 0
   BaseRarity: 3
-  ArchTypeMajor: -1
+  ArchTypeMajor: 2
   RuneAlignment: 3
   CharacterDescription: 
   IsAlive: 0
@@ -31,8 +31,8 @@ MonoBehaviour:
   baseStatMultiplier: 0.33333334
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
-  SkillName: 
-  SkillDescription: 
+  SkillName: Gauss Caliber
+  SkillDescription: Changes piercing multiplier to [2.0x, 1.5x, 0.7x, 0.5x].
   SummonPrefab: {fileID: 0}
   FullBodyPrefab: {fileID: 7792443217028439265, guid: 460cab7ba77acb042953ef780e39dd50, type: 3}
   SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}

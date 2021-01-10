@@ -40,21 +40,21 @@ namespace Create
         public static ActiveSkill HardCover(Unit unit) => new HardCover(2, 1, unit);
         public static ActiveSkill MorningDew(Unit unit) => new MorningDew(1, 1, unit);
         public static ActiveSkill CrypticMark(Unit unit) => new CrypticMark(2, 1, unit);
-        public static ActiveSkill MothLamp(Unit unit) => new MothLamp(0, 5, unit, true);
-        public static ActiveSkill SporeBurst(Unit unit) => new TeapotCrackpot(unit);
-        public static ActiveSkill Wickfire(Unit unit) => new TeapotCrackpot(unit);
-        public static ActiveSkill SpontaneousFire(Unit unit) => new TeapotCrackpot(unit);
-        public static ActiveSkill GaussCaliber(Unit unit) => new TeapotCrackpot(unit);
-        public static ActiveSkill WaveringMist(Unit unit) => new TeapotCrackpot(unit);
-        public static ActiveSkill WitheringMark(Unit unit) => new TeapotCrackpot(unit);
-        public static ActiveSkill TwinShell(Unit unit) => new TeapotCrackpot(unit);
-        public static ActiveSkill GeminiPetrification(Unit unit) => new TeapotCrackpot(unit);
-        public static ActiveSkill SandCorrosion(Unit unit) => new TeapotCrackpot(unit);
-        public static ActiveSkill DrumBeater(Unit unit) => new DrumBeater(4, 3, unit);
-        public static ActiveSkill LuringDesire(Unit unit) => new TeapotCrackpot(unit);
-        public static ActiveSkill BackRotation(Unit unit) => new TeapotCrackpot(unit);
-        public static ActiveSkill RollingThunder(Unit unit) => new TeapotCrackpot(unit);
-        public static ActiveSkill SecondScar(Unit unit) => new TeapotCrackpot(unit);
-        public static ActiveSkill KuroiTaiyou(Unit unit) => new TeapotCrackpot(unit);
+        public static ActiveSkill MothLamp(Unit unit) => new MothLamp(5, 0, unit, true);
+        public static ActiveSkill SporeBurst(Unit unit) => new SporeBurst(3, 2, unit);
+        public static ActiveSkill Wickfire(Unit unit) => new Wickfire(5, 5, unit);
+        public static ActiveSkill SpontaneousFire(Unit unit) => new SpontaneousFire(3, 1, unit);
+        public static ActiveSkill GaussCaliber(Unit unit) => new GaussCaliber(5, 3, unit);
+        public static ActiveSkill WaveringMist(Unit unit) => new WaveringMist(5, 3, unit);
+        public static ActiveSkill WitheringMark(Unit unit) => new WitheringMark(5, 1, unit);
+        public static ActiveSkill TwinShell(Unit unit) => new TwinShell(3, 1, unit);
+        public static ActiveSkill GeminiPetrification(Unit unit) => new GeminiPetrification(4, 3, unit);
+        public static ActiveSkill SandCorrosion(Unit unit) => new SandCorrosion(3, 1, unit);
+        public static ActiveSkill DrumBeater(Unit unit) => new DrumBeater(4, 0, unit, true);
+        public static ActiveSkill LuringDesire(Unit unit) => new LuringDesire(5, 1, unit);
+        public static ActiveSkill BackRotation(Unit unit) => new BackRotation(3, 1, unit);
+        public static ActiveSkill RollingThunder(Unit unit) => new RollingThunder(4, 1, unit);
+        public static ActiveSkill SecondScar(Unit unit) => new SecondScar(5, 3, unit);
+        public static ActiveSkill BlackSun(Unit unit) => new BlackSun(5, 1, unit);
     }
 }

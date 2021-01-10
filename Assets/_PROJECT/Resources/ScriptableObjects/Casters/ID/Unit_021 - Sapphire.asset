@@ -9,34 +9,33 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24297df33bb2b0e4aa52159abb69afcd, type: 3}
-  m_Name: Unit_018 - Torque
+  m_Script: {fileID: 11500000, guid: 43a1e53aad7cc1c4ca644051aef1450f, type: 3}
+  m_Name: Unit_021 - Sapphire
   m_EditorClassIdentifier: 
-  ID: 018
-  CharacterName: Torque
+  ID: 021
+  CharacterName: Sapphire
   CharacterMastery: 0
-  BaseRarity: 4
+  BaseRarity: 5
   ArchTypeMajor: 2
-  RuneAlignment: 4
+  RuneAlignment: 0
   CharacterDescription: 
   IsAlive: 0
   MaxLevel: 50
-  MaxHealth: 1186
-  MaxAttack: 688
-  MaxDefence: 437
+  MaxHealth: 1241
+  MaxAttack: 999
+  MaxDefence: 570
   CurrentLevel: 1
-  LevelTotalHealth: 425
-  LevelTotalAttack: 247
-  LevelTotalDefence: 157
+  LevelTotalHealth: 445
+  LevelTotalAttack: 358
+  LevelTotalDefence: 204
   baseStatMultiplier: 0.33333334
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
-  SkillName: Back Rotation
-  SkillDescription: Attack turns default. Pushes enemy back 1 position and apply
-    STUN.
+  SkillName: 
+  SkillDescription: 
   SummonPrefab: {fileID: 0}
   FullBodyPrefab: {fileID: 7792443217028439265, guid: d760d9b997ceb2c4ca27184b8c1dc5b1, type: 3}
   SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}
-  PortraitArt: {fileID: 21300000, guid: 3804aa828437d01488d2570c8aaf9108, type: 3}
-  FullBodyArt: {fileID: 21300000, guid: b1a8fb2e838461d4b95241914d8d5e1f, type: 3}
+  PortraitArt: {fileID: 21300000, guid: 58d57f253c250b240b5a632b04b99ea6, type: 3}
+  FullBodyArt: {fileID: 21300000, guid: 6d05a13eca9689146bbfc12dbbd60d5c, type: 3}
   SummonArt: {fileID: 0}

@@ -11,7 +11,7 @@ public class TeapotCrackpot : CasterSkill
 
     public override string Description
         => $"Heals team with {RoundToPercent(_damageToHealPercent)}% of current ATK, "
-         + $"adds deflection by {RoundToPercent(_reboundPercent)}%";
+         + $"adds deflection by {RoundToPercent(_reboundPercent)}%.";
 
     public override void TriggerSkill(TargetInfo targetInfo, BattlestageManager battleStage)
     {

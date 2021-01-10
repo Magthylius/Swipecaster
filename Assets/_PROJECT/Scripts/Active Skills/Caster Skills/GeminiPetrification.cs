@@ -18,7 +18,7 @@ public class GeminiPetrification : CasterSkill
 
     public override string Description
         => $"ATK -{RoundToPercent(atkDownMultiplier)}%. DEF +{RoundToPercent(baseDefenceMultiplier)}%. "
-         + $"Priority + {priorityUpAmount}. "
+         + $"Priority +{priorityUpAmount}. "
          + $"If {casterName} is in the team, {casterName}'s DEF +{RoundToPercent(extraDefenceMultiplier)}%";
 
     public override void TriggerSkill(TargetInfo targetInfo, BattlestageManager battleStage)

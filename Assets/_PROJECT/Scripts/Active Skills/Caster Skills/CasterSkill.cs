@@ -1,3 +1,6 @@
+using ConversionFunctions;
+using System.ComponentModel;
+
 public abstract class CasterSkill : ActiveSkill
 {
     public CasterSkill() : base() { }
@@ -12,6 +15,7 @@ public abstract class CasterSkill : ActiveSkill
         ResetEffectDuration();
     }
 
+    public override string Name => TypeDescriptor.GetClassName(GetType()).AddSpacesBeforeCapitalLetters(false);
     public override TargetInfo GetActiveSkillTargets(TargetInfo targetInfo) => targetInfo;
     public override void TurnStartCall() { }
     protected override void OnEffectDurationComplete() { }

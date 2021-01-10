@@ -16,7 +16,7 @@ MonoBehaviour:
   CharacterName: Golem
   CharacterMastery: 0
   BaseRarity: 3
-  ArchTypeMajor: -1
+  ArchTypeMajor: 1
   RuneAlignment: 2
   CharacterDescription: 
   IsAlive: 0
@@ -31,8 +31,9 @@ MonoBehaviour:
   baseStatMultiplier: 0.33333334
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
-  SkillName: 
-  SkillDescription: 
+  SkillName: Gemini Petrification
+  SkillDescription: ATK -60%. DEF +60%. Priority + 3. If Gargoyle is in the team,
+    Gargoyle's DEF +30%
   SummonPrefab: {fileID: 0}
   FullBodyPrefab: {fileID: 7792443217028439265, guid: 143c919cd382d46479193f19f7ab5576, type: 3}
   SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}
