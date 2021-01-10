@@ -11,33 +11,87 @@ public class ParallaxBehaviour : MonoBehaviour
     [Header("Parallax Settings")]
     public ParallaxType type;
 
-    [SerializeField] float multiplier;
-    
-    float sprWidth;
-    float startPos;
-    [SerializeField] float temp;
-    GameObject camTransform;
+    public bool loop;
 
+    [SerializeField] float multiplier;
+
+    float startPos;
+    float sprWidth;
+    float temp;
+    float verticalCamSize;
+    float horizontalCamSize;
+    float dist;
+    Vector2 screenBound;
+
+    GameObject camObj;
+    Camera cam;
+    SpriteRenderer sprRenderer;
+    Bounds bound;
+
+    [SerializeField] float leftBound, rightBound;
+    
+    
     void Start()
     {
         ENV_Manager = EnvironmentManager.instance;
 
         startPos = transform.position.x;
-        sprWidth = GetComponent<SpriteRenderer>().sprite.bounds.size.x;
-        camTransform = GameObject.FindWithTag("BattleCam");
+        sprRenderer = GetComponent<SpriteRenderer>();
+        camObj = GameObject.FindWithTag("BattleCam");
+        cam = camObj.GetComponent<Camera>();
+        sprWidth = sprRenderer.sprite.bounds.size.x;
+        bound = sprRenderer.bounds;
+        
+        verticalCamSize = cam.orthographicSize;
+        horizontalCamSize = (verticalCamSize * cam.aspect);
+        
+
+
+    }
+
+    void Update()
+    {
+        leftBound = (-bound.extents.x) + transform.position.x;
+        rightBound = (bound.extents.x) + transform.position.x;
     }
 
     void LateUpdate()
     {
-        temp = (camTransform.transform.position.x * (1 - multiplier));
-        //! How far the cam move in world space
-        float dist = (camTransform.transform.position.x * multiplier);
+        if (loop)
+        {
+            temp = (camObj.transform.position.x * (1 - multiplier));
+            //! How far the cam move in world space
+            dist = (camObj.transform.position.x * multiplier);
+            
+            transform.position = new Vector3(startPos + dist, transform.position.y, transform.position.z);
+            
+            if (temp > startPos + sprWidth) startPos += sprWidth;
+            else if (temp < startPos - sprWidth) startPos -= sprWidth;
+        }
+        else
+        {
+            
+            //! How far the cam move in world space
+            dist = (camObj.transform.position.x * multiplier);
 
-        transform.position = new Vector3(startPos + dist, transform.position.y, transform.position.z);
+            Vector3 curPos = transform.position;
+            curPos.x = dist;
+            
+            if (leftBound > -horizontalCamSize + camObj.transform.position.x)
+            {
+                print("left");
+            }
+            else if (rightBound < horizontalCamSize + camObj.transform.position.x)
+            {
+                print("right");
+            }
+            else
+                transform.position = curPos;
 
-        if (temp > startPos + sprWidth) startPos += sprWidth;
-        else if (temp < startPos - sprWidth) startPos -= sprWidth;
+
+        }
     }
+    
 
     #region Accessors
 
