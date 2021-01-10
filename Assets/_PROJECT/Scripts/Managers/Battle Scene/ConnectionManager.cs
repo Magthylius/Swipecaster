@@ -113,6 +113,15 @@ public class ConnectionManager : MonoBehaviour
 
         if (selectionStarted)
         {
+            if (selectionList.Count >= 2)
+            {
+                if (!comboManager.GetIsStart())
+                {
+                    comboManager.SetCountdownTimer();
+                    comboManager.SetIsStart();
+                }
+            }
+
             //print(Input.touchCount);
             if (Input.GetMouseButtonUp(0))
             {
