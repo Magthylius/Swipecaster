@@ -20,12 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b2ff588-542f-45f5-abf5-6973ac360757" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Swipecaster/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Swipecaster/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Swipecaster/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Swipecaster/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Resources/ScriptableObjects/MenuCaster/Default.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_PROJECT/Resources/ScriptableObjects/MenuCaster/Default.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Scenes/MainMenuScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_PROJECT/Scenes/MainMenuScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/HomeCanvasManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/HomeCanvasManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyConfigurationBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyConfigurationBehavior.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Environment/ParallaxBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Environment/ParallaxBehaviour.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,17 +41,24 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Inventory/PlayerInventoryData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Camera/CameraSizeAdjuster.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Save/DatabaseManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Save/SaveManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Environment/ParallaxBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Player/Player.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyCanvasManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyInventoryBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/General/Audio/AudioTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Environment/EnvironmentManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/Battle Scene/RuneManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Save/SaveTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/HomeCanvasManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/TurnBaseManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/UnitPositionManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/Battle Scene/TickManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Camera/CameraManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyCasterInventoryManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/BattlestageManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/Battle Scene/ConnectionManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -67,10 +69,10 @@
       <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/Battle Scene/RuneManager.cs" />
       <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/Battle Scene/EnvironmentManager.cs" />
       <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Save/DatabaseManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Environment/ParallaxBehaviour.cs" />
       <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Environment/EnvironmentManager.cs" />
       <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyConfigurationBehavior.cs" />
       <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/HomeCanvasManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Environment/ParallaxBehaviour.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1lgUKEMQznl8d4VgaS2WyrD60iQ" />
