@@ -30,18 +30,17 @@ namespace Create
         public static StatusEffect ProjectileLocker(int turns, Projectile projectile) => new ProjectileLocker(turns, Zero, false, projectile);
         public static StatusEffect ReboundingStatus(int turns, StatusEffect statusToRebound) => new ReboundingStatus(turns, Zero, false, statusToRebound);
         public static StatusEffect StatusOnAttack(int turns, StatusEffect statusToApply) => new StatusOnAttack(turns, Zero, false, statusToApply);
-        public static StatusEffect BeatDrumEffect(int turns, float atkPercent, Unit parent, BattlestageManager battleStage)
-            => new BeatDrumEffect(turns, Zero, false, atkPercent, parent, battleStage);
+        public static StatusEffect BeatDrumEffect(int turns, BattlestageManager battleStage) => new BeatDrumEffect(turns, Zero, false, battleStage);
     }
 
     public static class A_Skill
     {
-        public static ActiveSkill TeapotCrackpot(Unit unit) => new TeapotCrackpot(unit);
-        public static ActiveSkill Shoutdown(Unit unit) => new TeapotCrackpot(unit);
-        public static ActiveSkill HardCover(Unit unit) => new TeapotCrackpot(unit);
-        public static ActiveSkill MorningDew(Unit unit) => new TeapotCrackpot(unit);
-        public static ActiveSkill CrypticMark(Unit unit) => new TeapotCrackpot(unit);
-        public static ActiveSkill MothLamp(Unit unit) => new TeapotCrackpot(unit);
+        public static ActiveSkill TeapotCrackpot(Unit unit) => new TeapotCrackpot(3, 3, unit);
+        public static ActiveSkill Shoutdown(Unit unit) => new Shoutdown(3, 1, unit);
+        public static ActiveSkill HardCover(Unit unit) => new HardCover(2, 1, unit);
+        public static ActiveSkill MorningDew(Unit unit) => new MorningDew(1, 1, unit);
+        public static ActiveSkill CrypticMark(Unit unit) => new CrypticMark(2, 1, unit);
+        public static ActiveSkill MothLamp(Unit unit) => new MothLamp(0, 5, unit, true);
         public static ActiveSkill SporeBurst(Unit unit) => new TeapotCrackpot(unit);
         public static ActiveSkill Wickfire(Unit unit) => new TeapotCrackpot(unit);
         public static ActiveSkill SpontaneousFire(Unit unit) => new TeapotCrackpot(unit);

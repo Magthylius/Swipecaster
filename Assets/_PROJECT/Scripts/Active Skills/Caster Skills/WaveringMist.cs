@@ -26,7 +26,7 @@ public class WaveringMist : CasterSkill
         _startEffectDuration = 3;
         _maxSkillCharge = 5;
         _chargeGainPerTurn = 1;
-        _ignoreDuration = true;
+        _freezeSkillCharge = true;
         _unit = unit;
         EffectDuration0();
     }

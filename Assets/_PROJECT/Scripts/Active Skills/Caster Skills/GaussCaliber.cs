@@ -44,7 +44,7 @@ public class GaussCaliber : CasterSkill
         _startEffectDuration = 3;
         _maxSkillCharge = 5;
         _chargeGainPerTurn = 1;
-        _ignoreDuration = false;
+        _freezeSkillCharge = false;
         _unit = unit;
         EffectDuration0();
     }

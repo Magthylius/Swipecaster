@@ -8,7 +8,13 @@ public class MothLamp : CasterSkill
 {
     [SerializeField] private float reboundPercent = 1.0f;
     [SerializeField] private Lamp lamp = null;
+    [SerializeField] private float hpPercent = 0.85f;
+    [SerializeField] private float atkPercent = 0.0f;
+    [SerializeField] private float defPercent = 1.5f;
+    [SerializeField] private int setPriority = 2;
     private bool LampAlreadySpawned => lamp != null;
+    private StatusEffect PriorityStatus => Create.A_Status.Perm_PriorityUp(PriorityDifference);
+    private StatusEffect ReboundStatus => Create.A_Status.Perm_FixedReboundDamage(reboundPercent);
 
     public override string Description
         => $"Summons a Lamp on Casters side. Enemies that attack this Lamp take {RoundToPercent(reboundPercent)}% of Damage Dealt.";
@@ -24,6 +30,8 @@ public class MothLamp : CasterSkill
         HandleLamp(lampObject);
         ResetSkillCharge();
     }
+
+    #region Private Methods
 
     private List<bool> IdentifyAvailablePositions(List<Transform> casterEntityPos)
     {
@@ -69,22 +77,33 @@ public class MothLamp : CasterSkill
     {
         lamp = lampObject.AsType<Lamp>();
         if (lamp == null) return;
-        lamp.AddStatusEffect(Create.A_Status.Perm_FixedReboundDamage(reboundPercent));
-        lamp.AddStatusEffect(Create.A_Status.Perm_PriorityUp(1));
+        HandleSummonObject(lamp.GetBaseSummon);
+        lamp.AddStatusEffect(ReboundStatus);
+        lamp.AddStatusEffect(PriorityStatus);
+        lamp.UpdateStatusEffects();
         Unit.SubscribeDeathEvent(NullLamp);
+    }
+    private void HandleSummonObject(SummonObject summonObject)
+    {
+        if (summonObject == null) return;
+        summonObject.SetStatMultipliers(hpPercent, atkPercent, defPercent);
+        summonObject.CalculateMaxStats(GetUnit);
     }
     private void NullLamp(Unit unit)
     {
         Unit.UnsubscribeDeathEvent(NullLamp);
-        if (lamp == null) return;
         if (unit == lamp) lamp = null;
+        UnfreezeSkillCharge();
     }
+    private int PriorityDifference => (setPriority <= lamp.GetUnitPriority) ? 0 : setPriority - lamp.GetUnitPriority;
+
+    #endregion
 
     public MothLamp(Unit unit)
     {
         _maxSkillCharge = 5;
         _chargeGainPerTurn = 1;
-        _ignoreDuration = true;
+        _freezeSkillCharge = true;
         _unit = unit;
         EffectDuration0();
     }

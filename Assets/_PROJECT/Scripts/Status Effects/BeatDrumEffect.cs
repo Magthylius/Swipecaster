@@ -7,10 +7,6 @@ public class BeatDrumEffect : StatusTemplate<BeatDrumEffect>
     #region Variables and Properties
 
     private BattlestageManager _battleStage;
-    private float _parentAtkPercent;
-    private Unit _parentUnit;
-    public float ParentAttackPercent => _parentAtkPercent;
-    public Unit GetParentUnit => _parentUnit;
     public override string StatusName => "Beat Drum Effect";
     private int effectTurns = 2;
     private StatusEffect StatusToApply => Create.A_Status.Weakness(effectTurns);
@@ -20,7 +16,6 @@ public class BeatDrumEffect : StatusTemplate<BeatDrumEffect>
     #region Override Methods
 
     public override void DoImmediateEffect(TargetInfo info) => Unit.SubscribeAllTurnEndEvent(DoActionAndApplyEffects);
-
     protected override void Deinitialise()
     {
         Unit.UnsubscribeAllTurnEndEvent(DoActionAndApplyEffects);
@@ -36,26 +31,18 @@ public class BeatDrumEffect : StatusTemplate<BeatDrumEffect>
     {
         var enemyPos = _battleStage.enemyPositions.ToList();
         var enemyEntityPos = _battleStage.enemyEntityPositions.ToList();
-        int damage = CalculateDamage();
+        int damage = GetUnit.CalculateDamage(TargetInfo.Null, RuneCollection.Null);
         HandleTargets(enemyPos, enemyEntityPos, damage);
     }
 
-    private int CalculateDamage()
+    private void HandleTargets(List<Transform> enemyPositions, List<Transform> enemyEntityPositions, int damage)
     {
-        GetUnit.GetBaseSummon.MaxAttack = Round(GetParentUnit.GetCurrentAttack * ParentAttackPercent);
-        GetUnit.UpdateStatusEffects();
-        return GetUnit.CalculateDamage(TargetInfo.Null, RuneCollection.Null);
-    }
-
-    private void HandleTargets(List<Transform> enemyPos, List<Transform> enemyEntityPos, int damage)
-    {
-        int selfIndex = GetUnitsFromTransformChild0(enemyEntityPos).IndexOf(GetUnit);
-        List<Unit> targets = GetAdjacentUnits(selfIndex, enemyPos);
+        int entityIndex = GetUnitsFromTransformChild0(enemyEntityPositions).IndexOf(GetUnit);
+        List<Unit> targets = GetUnitsAdjacentToEntity(entityIndex, enemyPositions);
         targets.ForEach(unit => unit.TakeHit(GetUnit, damage));
         targets.ForEach(unit => unit.AddStatusEffect(StatusToApply));
     }
-
-    private static List<Unit> GetAdjacentUnits(int entityIndex, List<Transform> unitObjects)
+    private static List<Unit> GetUnitsAdjacentToEntity(int entityIndex, List<Transform> unitObjects)
     {
         var list = new List<Unit>();
         var units = GetUnitsFromTransformChild0(unitObjects);
@@ -66,14 +53,9 @@ public class BeatDrumEffect : StatusTemplate<BeatDrumEffect>
 
     #endregion
 
-    public BeatDrumEffect() : base()
+    public BeatDrumEffect() : base() => _battleStage = null;
+    public BeatDrumEffect(int turns, float baseResistance, bool isPermanent, BattlestageManager battleStage) : base(turns, baseResistance, isPermanent)
     {
-        _parentUnit = null;
-    }
-    public BeatDrumEffect(int turns, float baseResistance, bool isPermanent, float parentAtkPercent, Unit parentUnit, BattlestageManager battleStage) : base(turns, baseResistance, isPermanent)
-    {
-        _parentAtkPercent = Mathf.Abs(parentAtkPercent);
-        _parentUnit = parentUnit;
         _battleStage = battleStage;
     }
 }

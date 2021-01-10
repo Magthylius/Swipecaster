@@ -50,7 +50,7 @@ public class GeminiPetrification : CasterSkill
         _startEffectDuration = 3;
         _maxSkillCharge = 4;
         _chargeGainPerTurn = 1;
-        _ignoreDuration = true;
+        _freezeSkillCharge = true;
         _unit = unit;
         EffectDuration0();
     }
