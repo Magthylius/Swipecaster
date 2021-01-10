@@ -50,9 +50,10 @@ public class UnitObject : ScriptableObject
     public void SyncDataForCaster(CasterDataStats data)
 	{
 		if(data.ID != ID) return;
-		
 		CurrentLevel = data.CurLevel;
+        CharacterMastery = data.Mastery;
         IsAlive = data.IsAlive;
+        CalculateActualStats();
 	}
 	
 	public CasterDataStats GetCasterData() => new CasterDataStats(ID, CurrentLevel, CharacterMastery, IsAlive);
@@ -101,15 +102,12 @@ public class UnitObject : ScriptableObject
     {
         StatInfo currentInfo;
 
-        //! Health
         currentInfo = GenerateStatInfo(MaxHealth);
         LevelTotalHealth = Mathf.RoundToInt(CalculateLevelParabolicStat(currentInfo) + CalculateLevelLinearStat(currentInfo));
 
-        //! Attack
         currentInfo = GenerateStatInfo(MaxAttack);
         LevelTotalAttack = Mathf.RoundToInt(CalculateLevelParabolicStat(currentInfo) + CalculateLevelLinearStat(currentInfo));
 
-        //! Defence
         currentInfo = GenerateStatInfo(MaxDefence);
         LevelTotalDefence = Mathf.RoundToInt(CalculateLevelParabolicStat(currentInfo) + CalculateLevelLinearStat(currentInfo));
     }

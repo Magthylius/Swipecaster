@@ -1,8 +1,5 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using LerpFunctions;
 using UnityEngine;
 
 public class DatabaseManager : MonoBehaviour
@@ -51,6 +48,7 @@ public class DatabaseManager : MonoBehaviour
 
         CheckCasterIsAlive();
         RefreshInventory();
+        UpdateUnitObjectsWithDataStats();
         
         DontDestroyOnLoad(this.gameObject);
     }
@@ -59,7 +57,7 @@ public class DatabaseManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.O))
         {
-            SaveManager.Save(playerData);
+            Save();
         }
 
         if (Input.GetKeyDown(KeyCode.P))
@@ -128,7 +126,13 @@ public class DatabaseManager : MonoBehaviour
         }
 
         activeParty = parties[0];
-        
+
+        Save();
+    }
+
+    public void Save()
+    {
+        UpdateDataStatsWithUnitObjects();
         SaveManager.Save(playerData);
     }
     
@@ -140,8 +144,8 @@ public class DatabaseManager : MonoBehaviour
         {
             playerData.casterDatabase[CDIndex].IsAlive = true;
             CheckCasterIsAlive();
-            SaveManager.Save(playerData);
-            
+            Save();
+
         }
         else
             print("Caster already alive");
@@ -155,7 +159,7 @@ public class DatabaseManager : MonoBehaviour
         {
             playerData.casterDatabase[CDIndex].IsAlive = false;
             CheckCasterIsAlive();
-            SaveManager.Save(playerData);
+            Save();
         }
         else
             print("Caster already dead");
@@ -176,7 +180,7 @@ public class DatabaseManager : MonoBehaviour
                     break;
                 }
             }
-            SaveManager.Save(playerData);
+            Save();
         }
         else
         {
@@ -188,14 +192,14 @@ public class DatabaseManager : MonoBehaviour
                     break;
                 }
             }
-            SaveManager.Save(playerData);
+            Save();
         }
     }
 
     public void SetArrowTransform(Vector3 arrow)
     {
         playerData.arrowTransform = arrow;
-        SaveManager.Save(playerData);
+        Save();
     }
 
     void CheckCasterIsAlive()
@@ -211,18 +215,20 @@ public class DatabaseManager : MonoBehaviour
         }
         
     }
-    
-    
+
+    private void UpdateUnitObjectsWithDataStats() => GetDatabaseStatUnitPairs().ToList().ForEach(pair => pair.Unit.SyncDataForCaster(pair.Stat));
+    private void UpdateDataStatsWithUnitObjects() => playerData.casterDatabase = new List<CasterDataStats>(GetDatabaseStatUnitPairs().Select(x => x.Unit.GetCasterData()));
+    private IEnumerable<StatUnitPair> GetDatabaseStatUnitPairs() => GetCasterDataStats().Join(AllUnitObjects, stat => stat.ID, unit => unit.ID, (s, u) => new StatUnitPair(s, u));
+
     #region Accessors
-    
+
     public List<PartyData> GetPartyData() => playerData.partyDatabase;
     public List<CasterDataStats> GetCasterDataStats() => playerData.casterDatabase;
     public List<UnitObject> PlayerCasters => playerAvailableCasters;
     public List<UnitObject> AllCasters => allCasters;
     public PlayerInventoryData GetPlayerData() => playerData;
     public Vector3 GetArrowTransform() => playerData.arrowTransform;
+    public IEnumerable<UnitObject> AllUnitObjects => Resources.LoadAll<UnitObject>(casterLocation);
 
     #endregion
-
-
 }

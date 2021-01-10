@@ -19,7 +19,7 @@ public class DatabaseManagerEditor : Editor
         
         if (GUILayout.Button("Save"))
         {
-            SaveManager.Save(databaseManager.GetPlayerData());
+            databaseManager.Save();
         }
         
         EditorGUILayout.Space();

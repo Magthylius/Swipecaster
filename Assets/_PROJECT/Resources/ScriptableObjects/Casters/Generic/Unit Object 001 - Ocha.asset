@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 001
   CharacterName: Ocha
+  CharacterMastery: 0
   BaseRarity: 4
+  ArchTypeMajor: -1
   RuneAlignment: 1
   CharacterDescription: Meow Test Meow
-  IsAlive: 0
+  IsAlive: 1
   MaxLevel: 50
   MaxHealth: 1716
   MaxAttack: 510
@@ -29,8 +31,11 @@ MonoBehaviour:
   baseStatMultiplier: 0.33333334
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
+  SkillName: 
   SkillDescription: Meow Ta Ta Meow Meow Meow!
+  SummonPrefab: {fileID: 0}
   FullBodyPrefab: {fileID: 7792443217028439265, guid: 49aca36adaa74dc42bfdd8d4cd745cd5, type: 3}
   SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}
   PortraitArt: {fileID: 21300000, guid: 697505e0e6bcd5f4488b28e6fc3fea3b, type: 3}
   FullBodyArt: {fileID: 21300000, guid: 8e8d0990b150d9a439faf3e11b2a21c3, type: 3}
+  SummonArt: {fileID: 0}

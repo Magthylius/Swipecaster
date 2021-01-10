@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 003
   CharacterName: Scholar
+  CharacterMastery: 0
   BaseRarity: 4
+  ArchTypeMajor: -1
   RuneAlignment: 3
   CharacterDescription: Meow Test Meow
-  IsAlive: 0
+  IsAlive: 1
   MaxLevel: 50
   MaxHealth: 1039
   MaxAttack: 676
@@ -29,8 +31,11 @@ MonoBehaviour:
   baseStatMultiplier: 0.33333334
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
+  SkillName: 
   SkillDescription: Meow Ta Ta Meow Meow Meow!
+  SummonPrefab: {fileID: 0}
   FullBodyPrefab: {fileID: 7792443217028439265, guid: 1f0996bd42a98da43acd16b77f44a252, type: 3}
   SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}
   PortraitArt: {fileID: 5246488047841285458, guid: 57833438ead80274ba3c75a3b38191b4, type: 3}
   FullBodyArt: {fileID: 5246488047841285458, guid: 57833438ead80274ba3c75a3b38191b4, type: 3}
+  SummonArt: {fileID: 0}
