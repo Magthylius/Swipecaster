@@ -1,3 +1,4 @@
+using ConversionFunctions;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -21,40 +22,44 @@ public class InformationManager : MonoBehaviour
     public TextMeshProUGUI aquaCount;
     public TextMeshProUGUI tehkCount;
 
-    public void UpdateCasterProtrait(Unit unit)
+    #region Update UI Methods
+
+    public void SyncUserInterfaceToUnit(Unit unit)
     {
         if (unit == null) return;
+        UpdateCasterProtrait(unit);
+        UpdateSkillChargeBar(unit);
+        UpdateSkillDescription(unit);
+    }
 
+    private void UpdateCasterProtrait(Unit unit)
+    {
         Sprite spriteArt = unit.GetBaseUnit.PortraitArt;
         if (spriteArt == null) return;
         casterPortrait.sprite = spriteArt;
     }
 
-    public void UpdateSkillChargeBar(Unit unit)
+    private void UpdateSkillChargeBar(Unit unit)
     {
-        if (unit == null) return;
-
-        float fill = 0.01f;
-        if (unit.GetMaxSkillChargeCount != 0) fill = unit.GetCurrentSkillChargeCount / unit.GetMaxSkillChargeCount;
-
+        float fill = HasValidMaxSkillCharge(unit) ? unit.GetCurrentSkillChargeCount / unit.GetMaxSkillChargeCount : 0.01f;
         skillChargeBar.fillAmount = fill;
     }
+
+    private void UpdateSkillDescription(Unit unit) => skillTextMesh.text = unit.GetBaseUnit.SkillDescription;
 
     private void UpdateHealthBar(Unit unit)
     {
         if (_turnBaseManager == null) return;
+        var currentUnit = _turnBaseManager.GetCurrentCaster().AsUnit();
+        if (currentUnit == null || currentUnit != unit) return;
 
-        var unitObject = _turnBaseManager.GetCurrentCaster();
-        if (unitObject == null) return;
-
-        var currentUnit = unitObject.GetComponent<Unit>();
-        if (currentUnit != unit) return;
-
-        float fill = 0.01f;
-        if (unit.GetMaxHealth != 0) fill = unit.GetCurrentHealth / unit.GetMaxHealth;
-
+        float fill = HasValidMaxHealth(currentUnit) ? currentUnit.GetCurrentHealth / currentUnit.GetMaxHealth : 0.01f;
         healthBar.fillAmount = fill;
     }
+
+    #endregion
+
+    #region Events
 
     private void SubscribeAllEvents()
     {
@@ -81,6 +86,15 @@ public class InformationManager : MonoBehaviour
             _subscriptionList.Remove(unit);
         }
     }
+
+    #endregion
+
+    #region Shorthands
+
+    private static bool HasValidMaxSkillCharge(Unit unit) => unit.GetMaxSkillChargeCount > 0;
+    private static bool HasValidMaxHealth(Unit unit) => unit.GetMaxHealth > 0;
+
+    #endregion
 
     void Awake()
     {

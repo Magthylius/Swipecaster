@@ -94,15 +94,13 @@ public class TurnBaseManager : MonoBehaviour
             caster.transform.position.z);
         highlighter.SetActive(true);
 
-        print("Is " + caster.name + " turn");
         isPlayerTurn = true;
 
         var current = GetCurrentCaster().AsUnit();
-        if (current == null) return;
-        infoManager.UpdateCasterProtrait(current);
-        infoManager.UpdateSkillChargeBar(current);
-
+        infoManager.SyncUserInterfaceToUnit(current);
         current.InvokeSelfTurnBeginEvent();
+
+        print("Its " + current.GetBaseUnit.CharacterName + "'s turn");
     }
 
     void EnemyTurn()
@@ -116,7 +114,7 @@ public class TurnBaseManager : MonoBehaviour
         print("Is " + enemy.name + " turn");
 
         var current = GetCurrentCaster().AsUnit();
-        if (current != null) current.InvokeSelfTurnBeginEvent();
+        current.InvokeSelfTurnBeginEvent();
 
         OnEnemyAttack();
     }

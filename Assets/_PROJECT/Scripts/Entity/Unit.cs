@@ -166,9 +166,8 @@ public abstract class Unit : Entity
     #region Active Skill
 
     public void ResetSkillCharge() => GetActiveSkill?.ResetSkillCharge();
-    public int GetMaxSkillChargeCount => HasActiveSkill ? GetActiveSkill.GetMaxSkillCharge : -1;
-
-    public int GetCurrentSkillChargeCount => HasActiveSkill ? GetActiveSkill.GetCurrentSkillCharge : -1;
+    public int GetMaxSkillChargeCount => HasActiveSkill ? GetActiveSkill.GetMaxSkillCharge : 0;
+    public int GetCurrentSkillChargeCount => HasActiveSkill ? GetActiveSkill.GetCurrentSkillCharge : 0;
     public bool SkillIsReady => HasActiveSkill ? GetActiveSkill.SkillChargeReady : false;
     public bool HasActiveSkill => _activeSkill != null;
     public ActiveSkill GetActiveSkill => _activeSkill;
