@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public abstract class Caster : Unit
@@ -55,7 +56,7 @@ public abstract class Caster : Unit
         else totalDamage += GetCurrentAttack;
 
         float statusOutMultiplier = 1.0f;
-        for (int i = 0; i < GetStatusEffects.Count; i++) statusOutMultiplier += GetStatusEffects[i].GetStatusDamageOutModifier();
+        statusOutMultiplier += GetStatusEffects.Sum(status => status.GetStatusDamageOutModifier());
 
         return Mathf.Abs(Round(totalDamage * statusOutMultiplier));
     }

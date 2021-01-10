@@ -10,7 +10,7 @@ public class Spreader : Antipathic
     {
         base.Awake();
         
-        SetProjectile(new Blast());
+        SetDefaultProjectile(new Blast());
         SetArchMinor(ArchTypeMinor.Spreader);
     }
 
