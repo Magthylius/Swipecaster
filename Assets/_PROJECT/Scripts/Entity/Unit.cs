@@ -3,7 +3,6 @@ using ClampFunctions;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 using Random = UnityEngine.Random;
 using System.Linq;
 
@@ -287,7 +286,11 @@ public abstract class Unit : Entity
         RemoveAllStatusEffects();
     }
 
-    protected virtual void Start() => ResetAllStats();
+    protected virtual void Start()
+    {
+        HandleActiveSkill();
+        ResetAllStats();
+    }
 
     #endregion
 
@@ -300,7 +303,6 @@ public abstract class Unit : Entity
 
         GetDamagePopUp();
         SetDefaultProjectile(new CrowFlies());
-        HandleActiveSkill();
         ResetProjectile();
         SubscribeHitEvent(TakeDamage);
         SubscribeHealthChangeEvent(CheckDeathEvent);
@@ -372,6 +374,7 @@ public abstract class Unit : Entity
     private void HandleActiveSkill()
     {
         var skill = GetBaseUnit.GetUnitActiveSkill(this);
+        if (skill == null) return;
         SetActiveSkill(skill);
     }
 
