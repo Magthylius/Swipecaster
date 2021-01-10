@@ -2,13 +2,13 @@ public class Ununaliving : StatusTemplate<Ununaliving>
 {
     #region Variables and Properties
 
-    public override string StatusName => "Roar of the Undying";
+    public override string StatusName => "Scar of the Undying";
 
     #endregion
 
     #region Override Methods
 
-    public override void UpdateStatus() => GetUnit.ActivateUndying();
+    public override void DoImmediateEffect(TargetInfo info) => GetUnit.ActivateUndying();
     protected override void Deinitialise()
     {
         GetUnit.DeactivateUndying();
@@ -18,7 +18,5 @@ public class Ununaliving : StatusTemplate<Ununaliving>
     #endregion
 
     public Ununaliving() : base() { }
-    public Ununaliving(int turns, float baseResistance, bool isPermanent) : base(turns, baseResistance, isPermanent)
-    {
-    }
+    public Ununaliving(int turns, float baseResistance, bool isPermanent) : base(turns, baseResistance, isPermanent) { }
 }

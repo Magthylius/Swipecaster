@@ -10,7 +10,7 @@ public class DrumBeater : CasterSkill
     [SerializeField] private float attackPercent = 0.35f;
     [SerializeField] private BeatDrum beatDrum = null;
     private bool BeatDrumAlreadySpawned => beatDrum != null;
-    private StatusEffect BeatDrumStatus => Create.A_Status.BeatDrumEffect(effectTurns, attackPercent, GetUnit, BattlestageManager.instance);
+    private StatusEffect BeatDrumStatus => Create.A_Status.BeatDrumEffect(effectTurns, BattlestageManager.instance);
 
     public override string Description
         => $"Summons a BEAT DRUM in a random enemy entity position. The BEAT DRUM does {RoundToPercent(attackPercent)}% of Rhythms' ATK " +
@@ -28,6 +28,8 @@ public class DrumBeater : CasterSkill
         HandleBeatDrum(drumObject);
         ResetSkillCharge();
     }
+
+    #region Private Methods
 
     private int SelectRandomPositionIndex(List<bool> positionAvailable, BattlestageManager battleStage)
     {
@@ -69,22 +71,32 @@ public class DrumBeater : CasterSkill
     {
         beatDrum = drumObject.AsType<BeatDrum>();
         if (beatDrum == null) return;
+        HandleSummonObject(beatDrum.GetBaseSummon);
         beatDrum.AddStatusEffect(BeatDrumStatus);
+        beatDrum.UpdateStatusEffects();
         Unit.SubscribeDeathEvent(NullDrum);
+    }
+    private void HandleSummonObject(SummonObject summonObject)
+    {
+        if (summonObject == null) return;
+        summonObject.SetAttackMultiplier(attackPercent);
+        summonObject.CalculateMaxStats(GetUnit);
     }
     private void NullDrum(Unit unit)
     {
         Unit.UnsubscribeDeathEvent(NullDrum);
-        if (beatDrum == null) return;
         if (unit == beatDrum) beatDrum = null;
+        UnfreezeSkillCharge();
     }
+
+    #endregion
 
     public DrumBeater(Unit unit)
     {
-        _startEffectDuration = effectTurns;
+        _startEffectDuration = 0;
         _maxSkillCharge = 4;
         _chargeGainPerTurn = 1;
-        _ignoreDuration = true;
+        _freezeSkillCharge = true;
         _unit = unit;
         EffectDuration0();
     }

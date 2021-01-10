@@ -39,13 +39,15 @@ public abstract class StatusEffect
     public virtual void DeductRemainingTurns()
     {
         if (ShouldClear() || EffectIsPermanent) return;
-
         _remainingTurns--;
     }
 
     #endregion
 
     #region Public Methods
+
+    public static StatusEffect Null => new NullStatus();
+    public static List<StatusEffect> NullList => new List<StatusEffect>(1) { Null };
 
     public bool ShouldClear() => _remainingTurns <= 0 && !EffectIsPermanent;
     public bool ProbabilityHit(List<StatusEffect> statuses) => Random.Range(0.0f, 1.0f - float.Epsilon) < CalculateResistance(GetCountOfType(statuses));

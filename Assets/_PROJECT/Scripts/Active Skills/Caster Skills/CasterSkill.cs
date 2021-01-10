@@ -6,9 +6,10 @@ public abstract class CasterSkill : ActiveSkill
         _startEffectDuration = startEffectDuration;
         _maxSkillCharge = maxSkillCharge;
         _chargeGainPerTurn = 1;
-        _ignoreDuration = ignoreDuration;
+        _freezeSkillCharge = ignoreDuration;
         _unit = unit;
-        EffectDuration0();
+        ResetSkillCharge();
+        ResetEffectDuration();
     }
 
     public override TargetInfo GetActiveSkillTargets(TargetInfo targetInfo) => targetInfo;

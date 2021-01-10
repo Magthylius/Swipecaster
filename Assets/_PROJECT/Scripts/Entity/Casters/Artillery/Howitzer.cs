@@ -10,7 +10,7 @@ public class Howitzer : Artillery
     {
         base.Awake();
         
-        SetProjectile(new Overhead());
+        SetDefaultProjectile(new Overhead());
         SetArchMinor(ArchTypeMinor.Howitzer);
     }
 

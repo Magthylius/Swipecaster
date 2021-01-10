@@ -5,18 +5,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Random = UnityEngine.Random;
+using System.Linq;
 
 public abstract class Unit : Entity
 {
     #region Variable Definitions
 
     //! Attributes
+    [Header("Information")]
+    protected const int PartySize = 4;
     private AttackStatus _attackStatus = AttackStatus.Normal;
     private Projectile _currentProjectile;
     private Projectile _defaultProjectile;
     private List<StatusEffect> _statusEffects;
     private bool _projectileLock = false;
+    private bool _undying = false;
     [SerializeField] private bool isPlayer;
+    [SerializeField] private int _totalDamageInTurn = 0;
 
     [Header("Other Multipliers")]
     [SerializeField] protected float damageMultiplier = 1.0f;
@@ -37,11 +42,8 @@ public abstract class Unit : Entity
     protected float currentProbability = 0.05f;
     [SerializeField] private int basePriority = 1;
     private int currentPriority = 0;
-    protected const int PartySize = 4;
 
     [Header("Skills")]
-    [SerializeField] private int currentSkillCharge;
-    [SerializeField] private int _skillChargeCount;
     [SerializeField] private ActiveSkill _activeSkill;
 
     [Header("UI")]
@@ -57,10 +59,6 @@ public abstract class Unit : Entity
     private Action<Unit, ActiveSkill> _useSkillEvent;
     private Action _selfTurnBegin;
     private Action _selfTurnEnd;
-
-    [Header("Cache")]
-    private int _totalDamageInTurn = 0;
-    private bool _undying = false;
 
     #endregion
 
@@ -79,7 +77,6 @@ public abstract class Unit : Entity
     public virtual void RecieveHealing(Unit healer, int healAmount)
     {
         if (healAmount <= 0) return;
-        Debug.Log(gameObject.name + " being healed.");
         AddCurrentHealth(healAmount);
         DamagePopUp(healAmount, false);
     }
@@ -105,14 +102,22 @@ public abstract class Unit : Entity
 
     #region Public Methods
 
+    #region Unit Info
+
+    public int GetTotalDamageInTurn => _totalDamageInTurn;
+
     public void SetIsPlayer(bool statement) => isPlayer = statement;
     public bool GetIsPlayer => isPlayer;
 
     public void SetAttackStatus(AttackStatus status) => _attackStatus = status;
     public AttackStatus GetAttackStatus => _attackStatus;
 
+    #endregion
+
+    #region Projectile
+
     public void SetProjectileLock(bool statement) => _projectileLock = statement;
-    public void SetProjectile(Projectile p)
+    public void SetDefaultProjectile(Projectile p)
     {
         if (_projectileLock) return;
         _defaultProjectile = p;
@@ -128,10 +133,11 @@ public abstract class Unit : Entity
         _currentProjectile = GetDefaultProjectile;
     }
     public Projectile GetCurrentProjectile => _currentProjectile;
-    private Projectile GetDefaultProjectile
-    {
-        get => _defaultProjectile;
-    }
+    private Projectile GetDefaultProjectile => _defaultProjectile;
+
+    #endregion
+
+    #region Status Effects
 
     public void UpdateStatusEffects()
     {
@@ -154,16 +160,24 @@ public abstract class Unit : Entity
         }
     }
     public void RemoveAllStatusEffects() => GetStatusEffects.ForEach(status => status.InvokeSelfDestructEvent());
-    public List<StatusEffect> GetStatusEffects => _statusEffects;
+    public List<StatusEffect> GetStatusEffects => StatusEffectsNullOrEmpty ? StatusEffect.NullList : _statusEffects;
+
+    #endregion
+
+    #region Active Skill
 
     public void ResetSkillCharge() => GetActiveSkill?.ResetSkillCharge();
-    public void AddSkillCharge() => GetActiveSkill?.IncreaseSkillCharge();
-    public int GetMaxSkillChargeCount => GetActiveSkill != null ? GetActiveSkill.GetMaxSkillCharge : -1;
-    public int GetCurrentSkillChargeCount => GetActiveSkill != null ? GetActiveSkill.GetCurrentSkillCharge : -1;
-    public bool SkillIsReady => GetActiveSkill != null ? GetActiveSkill.SkillChargeReady : false;
+    public int GetMaxSkillChargeCount => HasActiveSkill ? GetActiveSkill.GetMaxSkillCharge : -1;
+
+    public int GetCurrentSkillChargeCount => HasActiveSkill ? GetActiveSkill.GetCurrentSkillCharge : -1;
+    public bool SkillIsReady => HasActiveSkill ? GetActiveSkill.SkillChargeReady : false;
+    public bool HasActiveSkill => _activeSkill != null;
     public ActiveSkill GetActiveSkill => _activeSkill;
     public void SetActiveSkill(ActiveSkill skill) { _activeSkill = skill; ResetSkillCharge(); }
-    public bool HasActiveSkill => _activeSkill != null;
+
+    #endregion
+
+    #region Misc Stats
 
     public int GetPassiveHealAmount => currentPassiveHealAmount;
     public void SetPassiveHealAmount(int amount) => currentPassiveHealAmount = amount;
@@ -185,11 +199,11 @@ public abstract class Unit : Entity
     public void SetUnitPriority(int newPriority) => currentPriority = newPriority;
     public void ResetPriority() => currentPriority = basePriority;
 
-    public int GetTotalDamageInTurn => _totalDamageInTurn;
-
     public bool GetUndyingStatus => _undying;
     public void ActivateUndying() => _undying = true;
     public void DeactivateUndying() => _undying = false;
+
+    #endregion
 
     #region Events
 
@@ -200,7 +214,7 @@ public abstract class Unit : Entity
     public static void SubscribeAllTurnBeginEvent(Action method) => _allTurnBegin += method;
     public static void UnsubscribeAllTurnBeginEvent(Action method) => _allTurnBegin -= method;
     public static void InvokeAllTurnBeginEvent() => _allTurnBegin?.Invoke();
-    
+
     public static void SubscribeAllTurnEndEvent(Action method) => _allTurnEnd += method;
     public static void UnsubscribeAllTurnEndEvent(Action method) => _allTurnEnd -= method;
     public static void InvokeAllTurnEndEvent() => _allTurnEnd?.Invoke();
@@ -238,14 +252,15 @@ public abstract class Unit : Entity
     protected virtual void TakeDamage(Unit damager, int damageAmount)
     {
         if (damager.GetAttackStatus != AttackStatus.Normal) return;
+
         float statusInMultiplier = 1.0f;
-        for (int i = 0; i < GetStatusEffects.Count; i++) statusInMultiplier += GetStatusEffects[i].GetStatusDamageInModifier();
+        statusInMultiplier += GetStatusEffects.Sum(status => status.GetStatusDamageInModifier());
 
         _totalDamageInTurn = (Mathf.Abs(Round(damageAmount * statusInMultiplier)) - GetCurrentDefence).Clamp0();
         AddCurrentHealth(-_totalDamageInTurn);
-        GetStatusEffects?.ForEach(i => i.DoOnHitEffect(damager, GetBattleStageInfo(), _totalDamageInTurn));
+        GetStatusEffects.ForEach(i => i.DoOnHitEffect(damager, GetBattleStageInfo(), _totalDamageInTurn));
 
-        DamagePopUp(_totalDamageInTurn,true);
+        DamagePopUp(_totalDamageInTurn, true);
     }
 
     protected virtual void StartTurnMethods()
@@ -284,8 +299,8 @@ public abstract class Unit : Entity
         _statusEffects = new List<StatusEffect>();
 
         GetDamagePopUp();
-        SetProjectile(new CrowFlies());
-		ResetProjectile();
+        SetDefaultProjectile(new CrowFlies());
+        ResetProjectile();
         SubscribeHitEvent(TakeDamage);
         SubscribeHealthChangeEvent(CheckDeathEvent);
         SubscribeUseSkillEvent(UpdateStatusEffectsOnSkill);
@@ -325,22 +340,14 @@ public abstract class Unit : Entity
     #endregion
 
     #region Private Methods
-    private void GetDamagePopUp()
-    {
-        if(GetComponentInChildren<DamagePopUp>())
-        {
-            damagePopUp = GetComponentInChildren<DamagePopUp>();
-        }
-    }
 
+    private void GetDamagePopUp() => damagePopUp = GetComponentInChildren<DamagePopUp>();
     private void DamagePopUp(int damage, bool isDamage)
     {
         if (damagePopUp == null) return;
-
-        if (isDamage) damagePopUp.GetComponent<TextMeshPro>().color = Color.red;
-        else damagePopUp.GetComponent<TextMeshPro>().color = Color.green;
-
+        Color textColour = isDamage ? Color.red : Color.green;
         damagePopUp.transform.parent.gameObject.SetActive(true);
+        damagePopUp.SetTextColour(textColour);
         damagePopUp.ShowDamage(damage);
     }
 
@@ -356,10 +363,10 @@ public abstract class Unit : Entity
     {
         var battleStage = BattlestageManager.instance;
         if (battleStage == null) return TargetInfo.Null;
-
         return new TargetInfo(battleStage.GetSelectedTarget().AsUnit(), null, null, battleStage.GetCasterTeamAsUnit(), battleStage.GetEnemyTeamAsUnit());
     }
     private void ResetTotalDamageInTurn() => _totalDamageInTurn = 0;
+    private bool StatusEffectsNullOrEmpty => _statusEffects == null || _statusEffects.Count == 0;
 
     #endregion
 }

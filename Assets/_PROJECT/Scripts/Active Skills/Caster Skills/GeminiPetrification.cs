@@ -43,14 +43,13 @@ public class GeminiPetrification : CasterSkill
 
     private Unit GetUnitByCasterName(TargetInfo targetInfo) => targetInfo.Allies.Where(ally => MatchesCasterName(ally)).FirstOrDefault();
     private bool MatchesCasterName(Unit ally) => ally.GetBaseUnit.CharacterName == casterName;
-    private static bool UnitFound(Unit unit) => unit != null;
 
     public GeminiPetrification(Unit unit)
     {
         _startEffectDuration = 3;
         _maxSkillCharge = 4;
         _chargeGainPerTurn = 1;
-        _ignoreDuration = true;
+        _freezeSkillCharge = true;
         _unit = unit;
         EffectDuration0();
     }

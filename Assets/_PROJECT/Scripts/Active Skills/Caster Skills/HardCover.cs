@@ -21,7 +21,7 @@ public class HardCover : CasterSkill
         _startEffectDuration = 0;
         _maxSkillCharge = 5;
         _chargeGainPerTurn = 1;
-        _ignoreDuration = true;
+        _freezeSkillCharge = true;
         _unit = unit;
         EffectDuration0();
     }

@@ -10,7 +10,7 @@ public class ArtilleryOverhead : Artillery
     {
         base.Awake();
 
-        SetProjectile(new SplashOverhead());
+        SetDefaultProjectile(new SplashOverhead());
         SetArchMinor(ArchTypeMinor.Artillery_Overhead);
     }
 

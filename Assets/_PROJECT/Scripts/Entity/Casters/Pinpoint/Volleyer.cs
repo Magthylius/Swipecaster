@@ -10,7 +10,7 @@ public class Volleyer : Pinpoint
     {
         base.Awake();
 
-        SetProjectile(new Dual());
+        SetDefaultProjectile(new Dual());
         SetArchMinor(ArchTypeMinor.Volleyer);
     }
 

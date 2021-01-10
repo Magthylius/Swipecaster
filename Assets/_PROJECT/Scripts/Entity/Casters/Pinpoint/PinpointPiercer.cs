@@ -10,7 +10,7 @@ public class PinpointPiercer : Pinpoint
     {
         base.Awake();
 
-        SetProjectile(new Piercing());
+        SetDefaultProjectile(new Piercing());
         SetArchMinor(ArchTypeMinor.Pinpoint_Piercer);
     }
 

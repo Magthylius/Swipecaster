@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class Lamp : Summon
 {
     private Unit _latestDamager = null;
@@ -21,10 +17,15 @@ public class Lamp : Summon
         _latestDamager = null;
     }
 
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        transform.parent.gameObject.SetActive(false);
+    }
+
     protected override void Awake()
     {
         base.Awake();
-
         SetIsPlayer(true);
     }
 }

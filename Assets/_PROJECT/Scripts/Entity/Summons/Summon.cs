@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public abstract class Summon : Unit
@@ -13,9 +14,14 @@ public abstract class Summon : Unit
 
     public override void UseSkill(TargetInfo targetInfo, BattlestageManager battleStage) { }
     public override void TakeHit(Unit damager, int damageAmount) => InvokeHitEvent(damager, damageAmount);
-    public override void RecieveHealing(Unit healer, int healAmount) => AddCurrentHealth(healAmount);
     public override void DoAction(TargetInfo targetInfo, RuneCollection runes) { }
-    public override int CalculateDamage(TargetInfo targetInfo, RuneCollection runes) => 0;
+    public override int CalculateDamage(TargetInfo targetInfo, RuneCollection runes)
+    {
+        int totalDamage = GetCurrentAttack;
+        float statusOutMultiplier = 1.0f;
+        statusOutMultiplier += GetStatusEffects.Sum(status => status.GetStatusDamageOutModifier());
+        return Mathf.Abs(Round(totalDamage * statusOutMultiplier));
+    }
     public override TargetInfo GetAffectedTargets(TargetInfo targetInfo) => TargetInfo.Null;
 
     protected override void Awake()

@@ -59,7 +59,7 @@ public class BackRotation : CasterSkill
         _startEffectDuration = 1;
         _maxSkillCharge = 3;
         _chargeGainPerTurn = 1;
-        _ignoreDuration = true;
+        _freezeSkillCharge = true;
         _unit = unit;
         EffectDuration0();
     }

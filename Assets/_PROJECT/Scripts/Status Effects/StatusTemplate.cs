@@ -16,7 +16,8 @@ public abstract class StatusTemplate<T> : StatusEffect where T : StatusEffect
     protected override void Deinitialise()
     {
         UnsubscribeSelfDestructEvent(Deinitialise);
-        GetUnit.GetStatusEffects.Remove(this);
+        var list = GetUnit.GetStatusEffects;
+        if(list.Contains(this)) list.Remove(this);
         GetUnit.UpdateStatusEffects();
     }
 

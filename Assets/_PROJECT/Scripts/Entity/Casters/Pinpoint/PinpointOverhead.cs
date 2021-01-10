@@ -10,7 +10,7 @@ public class PinpointOverhead : Pinpoint
     {
         base.Awake();
 
-        SetProjectile(new Overhead());
+        SetDefaultProjectile(new Overhead());
         SetArchMinor(ArchTypeMinor.Pinpoint_Overhead);
     }
 
