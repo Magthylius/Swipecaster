@@ -15,7 +15,7 @@ public class InformationManager : MonoBehaviour
     [SerializeField] private Image healthBar;
     [SerializeField] private Image skillChargeBar;
     [SerializeField] private Image casterPortrait;
-    [SerializeField] private GameObject skillActivator;
+    [SerializeField] private TextMeshProUGUI skillTextMesh;
 
     public TextMeshProUGUI fyorCount;
     public TextMeshProUGUI aquaCount;
@@ -56,21 +56,31 @@ public class InformationManager : MonoBehaviour
         healthBar.fillAmount = fill;
     }
 
-    private void SubscribeEvents()
+    private void SubscribeAllEvents()
     {
         if (_battleStageManager == null) return;
-
-        var casterList = _battleStageManager.GetCastersTeam();
-        foreach (var casterObject in casterList)
+        var casterList = _battleStageManager.GetCasterTeamAsUnit();
+        casterList.ForEach(caster => SubscribeAndAdd(caster));
+        Unit.SubscribeDeathEvent(UnsubscribeUnit);
+    }
+    private void SubscribeAndAdd(Unit caster)
+    {
+        caster.SubscribeHealthChangeEvent(UpdateHealthBar);
+        _subscriptionList.Add(caster);
+    }
+    private void UnsubscribeAllEvents()
+    {
+        _subscriptionList.ForEach(caster => caster.UnsubscribeHealthChangeEvent(UpdateHealthBar));
+        Unit.UnsubscribeDeathEvent(UnsubscribeUnit);
+    }
+    private void UnsubscribeUnit(Unit unit)
+    {
+        if(_subscriptionList.Contains(unit))
         {
-            var caster = casterObject.GetComponent<Unit>();
-            if (caster == null) continue;
-
-            caster.SubscribeHealthChangeEvent(UpdateHealthBar);
-            _subscriptionList.Add(caster);
+            unit.UnsubscribeHealthChangeEvent(UpdateHealthBar);
+            _subscriptionList.Remove(unit);
         }
     }
-    private void UnsubscribeEvents() => _subscriptionList.ForEach(caster => caster.UnsubscribeHealthChangeEvent(UpdateHealthBar));
 
     void Awake()
     {
@@ -82,11 +92,11 @@ public class InformationManager : MonoBehaviour
     {
         _turnBaseManager = TurnBaseManager.instance;
         _battleStageManager = BattlestageManager.instance;
-        SubscribeEvents();
+        SubscribeAllEvents();
         EndConnectionUI();
     }
 
-    private void OnDestroy() => UnsubscribeEvents();
+    private void OnDestroy() => UnsubscribeAllEvents();
 
     public void UpdateConnectionUI(RuneStorage storage)
     {

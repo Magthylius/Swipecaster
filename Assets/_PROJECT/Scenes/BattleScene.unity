@@ -2793,7 +2793,7 @@ MonoBehaviour:
   healthBar: {fileID: 1737482268}
   skillChargeBar: {fileID: 262287319}
   casterPortrait: {fileID: 1410585892}
-  skillActivator: {fileID: 1855558218}
+  skillTextMesh: {fileID: 242328788}
   fyorCount: {fileID: 1709844587}
   aquaCount: {fileID: 22301499}
   tehkCount: {fileID: 673411414}
@@ -12956,7 +12956,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   skillChargeBar: {fileID: 0}
   casterPortrait: {fileID: 0}
-  skillActivator: {fileID: 0}
+  skillTextMesh: {fileID: 0}
   fyorCount: {fileID: 1709844587}
   aquaCount: {fileID: 22301499}
   tehkCount: {fileID: 673411414}
