@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CameraFunctions;
+using UnityEngine.UI;
 
 public class RuneBehaviour : MonoBehaviour
 {
@@ -12,12 +13,16 @@ public class RuneBehaviour : MonoBehaviour
     public RuneType type;
     public Sprite activatedSprite;
     public Sprite deactivatedSprite;
+    public bool imageMode = false;
 
     Rigidbody2D rb;
     Transform _transform;
+    RectTransform rt;
     GameObject self;
-    Vector2 positionInScreen;
     SpriteRenderer sr;
+    Image img;
+
+    Vector2 positionInScreen;
     float spriteHeight;
 
     float maxVelocity;
@@ -31,9 +36,14 @@ public class RuneBehaviour : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         _transform = GetComponent<Transform>();
+        rt = GetComponent<RectTransform>();
         cam = Camera.main;
         self = gameObject;
         sr = GetComponent<SpriteRenderer>();
+        img = GetComponent<Image>();
+
+        if (imageMode) sr.enabled = false;
+        else img.enabled = false;
     }
     
     void Start()
@@ -47,6 +57,8 @@ public class RuneBehaviour : MonoBehaviour
 
         settingsManager.pausedEvent.AddListener(SetStatePaused);
         settingsManager.unpausedEvent.AddListener(SetStateUnpaused);
+
+        Deactivate();
     }
     
     void Update()
@@ -60,12 +72,16 @@ public class RuneBehaviour : MonoBehaviour
             if (!allowMouse && Input.touchCount < 1)
             {
                 selected = false;
-                sr.sprite = deactivatedSprite;
+
+                if (imageMode) img.sprite = deactivatedSprite;
+                else sr.sprite = deactivatedSprite;
             }
             else if (allowMouse && Input.GetMouseButtonUp(0))
             {
                 selected = false;
-                sr.sprite = deactivatedSprite;
+
+                if (imageMode) img.sprite = deactivatedSprite;
+                else sr.sprite = deactivatedSprite;
             }
         }
     }
@@ -89,13 +105,19 @@ public class RuneBehaviour : MonoBehaviour
         if (selected) connectionManager.Disconnect(this);
 
         selected = false;
-        sr.sprite = deactivatedSprite;
+        if (imageMode) img.sprite = deactivatedSprite;
+        else sr.sprite = deactivatedSprite;
     }
 
     public void SelfDeactivate()
     {
         if (isPaused) return;
-        if (!sr.isVisible)
+
+        if (!imageMode && !sr.isVisible)
+        {
+            Deactivate();
+        }
+        else if (imageMode && Cam.IsVisibleFrom(rt, cam))
         {
             Deactivate();
         }
@@ -104,19 +126,25 @@ public class RuneBehaviour : MonoBehaviour
 
     public void Selected()
     {
-        if (isPaused) return;
+        if (isPaused || selected) return;
         if (allowMouse && !Input.GetMouseButton(0)) return;
-
+        
         if (!connectionManager.GetSelectionStart())
         {
             selected = true;
-            sr.sprite = activatedSprite;
+            //print("selection!");
+            if (imageMode) img.sprite = activatedSprite;
+            else sr.sprite = activatedSprite;
+
             connectionManager.StartSelection(this);
         }
         else if (connectionManager.GetSelectionType() == type)
         {
             selected = true;
-            sr.sprite = activatedSprite;
+
+            if (imageMode) img.sprite = activatedSprite;
+            else sr.sprite = activatedSprite;
+
             connectionManager.Connect(this);
         }
     }
@@ -125,14 +153,16 @@ public class RuneBehaviour : MonoBehaviour
     {
         if (isPaused) return;
         selected = false;
-        sr.sprite = deactivatedSprite;
+
+        if (imageMode) img.sprite = deactivatedSprite;
+        else sr.sprite = deactivatedSprite;
     }
 
     #region Queries
     public RuneType GetRuneType() => type;
     public GameObject GetSelf() => self;
     public Vector2 GetPosition() => transform.position;
-
+    public Vector2 runeCenter => (rt.offsetMax + rt.offsetMin) * 0.5f;
     public bool GetSelected() => selected;
 
     public bool SetSelected(bool set) => selected = set;
