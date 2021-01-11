@@ -99,6 +99,7 @@ public class PartyCanvasManager : MenuCanvasPage
         editButtonCGF.StartFadeOut();
         mainMenuManager.ShowBottomOverlay();
 
+        DialogueManager.instance.unlockButton();
         /*if (!mainMenuManager.GetPreEnterQuest())
             
         else

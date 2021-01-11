@@ -11893,6 +11893,7 @@ GameObject:
   - component: {fileID: 879360061}
   - component: {fileID: 879360060}
   - component: {fileID: 879360059}
+  - component: {fileID: 879360062}
   m_Layer: 5
   m_Name: Gacha
   m_TagString: Untagged
@@ -11975,6 +11976,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 879360062}
+        m_TargetAssemblyTypeName: DialogueTrigger, Assembly-CSharp
+        m_MethodName: TriggerDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &879360060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12013,6 +12026,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 879360057}
   m_CullTransparentMesh: 1
+--- !u!114 &879360062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879360057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4f2a3509b1fadc458fc8040c7f06e6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    dialogueInfo: {fileID: 11400000, guid: 1dc1f38269ad0544cb059daf5b0ab1a9, type: 2}
+    guidedButton: {fileID: 0}
 --- !u!224 &880369573 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1055314239308554422, guid: 730f6a41ce2fd544bbae7b66e51e5a09, type: 3}
@@ -16246,6 +16274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resetCanvasGroup: {fileID: 2145194710}
   transitionSpeed: 15
+  partyConfig: []
 --- !u!1 &1151498311
 GameObject:
   m_ObjectHideFlags: 0
@@ -21470,7 +21499,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1399489637
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25210,6 +25239,9 @@ MonoBehaviour:
     partyDatabase: []
     arrowTransform: {x: 0, y: 0, z: 0}
   liveCaster: []
+  parties: []
+  defaultParty: {fileID: 0}
+  activeParty: {fileID: 0}
 --- !u!224 &1610538348 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1055314239308554422, guid: 730f6a41ce2fd544bbae7b66e51e5a09, type: 3}
@@ -31710,6 +31742,7 @@ MonoBehaviour:
   summonButton: {fileID: 116330411}
   instructionText: {fileID: 313925117}
   activeBanner: {fileID: 11400000, guid: 4d6de19612515ce4f90b3530967eb31a, type: 2}
+  isTutorialed: 0
 --- !u!1 &2075774589
 GameObject:
   m_ObjectHideFlags: 0
@@ -32069,6 +32102,12 @@ MonoBehaviour:
   guidedDialogues:
   - dialogueInfo: {fileID: 11400000, guid: bfecf3af1295fd949b0c5a32721f0c91, type: 2}
     guidedButton: {fileID: 526579346}
+  - dialogueInfo: {fileID: 11400000, guid: 6ac4b052af66b59488ad3e73a4973ea9, type: 2}
+    guidedButton: {fileID: 879360059}
+  - dialogueInfo: {fileID: 11400000, guid: 3bf96ed3d13ec2c4cbbb07d053ddbef9, type: 2}
+    guidedButton: {fileID: 2095384697}
+  butttonParent: {fileID: 29100957}
+  tutorialPhase: 0
 --- !u!4 &2092335702
 Transform:
   m_ObjectHideFlags: 0
@@ -32095,6 +32134,7 @@ GameObject:
   - component: {fileID: 2095384699}
   - component: {fileID: 2095384698}
   - component: {fileID: 2095384697}
+  - component: {fileID: 2095384700}
   m_Layer: 5
   m_Name: Party
   m_TagString: Untagged
@@ -32177,6 +32217,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2095384700}
+        m_TargetAssemblyTypeName: DialogueTrigger, Assembly-CSharp
+        m_MethodName: TriggerDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2095384698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32215,6 +32267,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2095384695}
   m_CullTransparentMesh: 1
+--- !u!114 &2095384700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095384695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4f2a3509b1fadc458fc8040c7f06e6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    dialogueInfo: {fileID: 11400000, guid: d61f708692b71d6468e8e039b756323d, type: 2}
+    guidedButton: {fileID: 0}
 --- !u!1 &2105332812
 GameObject:
   m_ObjectHideFlags: 0

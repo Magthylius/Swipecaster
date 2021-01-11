@@ -57,6 +57,9 @@ public class GachaCanvasManager : MenuCanvasPage
     [Header("Gacha Settings")]
     public GachaBanner activeBanner;
 
+    [Header("Tutorial Condition")]
+    public bool isTutorialed;
+
     public override void Awake()
     {
         base.Awake();
@@ -164,6 +167,12 @@ public class GachaCanvasManager : MenuCanvasPage
 
     public void BTN_SummonCharacter()
     {
+        if (!isTutorialed)
+        {
+            DialogueManager.instance.guideToParty();
+            isTutorialed = true;
+        }
+
         UnitObject pull = activeBanner.PullCaster();
         print(pull.CharacterName);
         dataManager.AddCaster(pull.ID);
