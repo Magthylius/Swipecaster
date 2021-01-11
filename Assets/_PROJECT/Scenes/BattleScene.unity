@@ -9667,6 +9667,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   line: {fileID: 1716553768}
   uiLine: {fileID: 803903878}
+  castingGroupOffset: {fileID: 1728044591}
 --- !u!1 &1264890180
 GameObject:
   m_ObjectHideFlags: 0
