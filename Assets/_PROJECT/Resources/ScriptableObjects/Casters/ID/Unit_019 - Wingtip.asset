@@ -19,7 +19,7 @@ MonoBehaviour:
   ArchTypeMajor: 6
   RuneAlignment: 5
   CharacterDescription: 
-  IsAlive: 0
+  IsAlive: 1
   MaxLevel: 50
   MaxHealth: 1302
   MaxAttack: 1052
@@ -33,7 +33,7 @@ MonoBehaviour:
   baseStatCapMultiplier: 0.4
   SkillName: Rolling Thunder
   SkillDescription: Drops bombs (60% ATK) on ALL enemy positions. All affected enemies
-    suffer 1 stack(s) and 1 turns VULNERABLE status.
+    suffer 1 stack(s) and 3 turn(s) VULNERABLE status.
   SummonPrefab: {fileID: 0}
   FullBodyPrefab: {fileID: 7792443217028439265, guid: 6795a86ed189bdc41b05d9bb3252ae5c, type: 3}
   SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}

@@ -32,7 +32,7 @@ MonoBehaviour:
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
   SkillName: Gemini Petrification
-  SkillDescription: ATK -60%. DEF +60%. Priority + 3. If Gargoyle is in the team,
+  SkillDescription: ATK -60%. DEF +60%. Priority +3. If Gargoyle is in the team,
     Gargoyle's DEF +30%
   SummonPrefab: {fileID: 0}
   FullBodyPrefab: {fileID: 7792443217028439265, guid: 143c919cd382d46479193f19f7ab5576, type: 3}

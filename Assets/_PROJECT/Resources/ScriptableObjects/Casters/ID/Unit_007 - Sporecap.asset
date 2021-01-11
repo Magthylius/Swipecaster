@@ -32,7 +32,7 @@ MonoBehaviour:
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
   SkillName: Spore Burst
-  SkillDescription: Deals +20% damage and converts passed attacks to splash.
+  SkillDescription: Deals +20% DMG and converts passing friendly attacks to splash.
   SummonPrefab: {fileID: 0}
   FullBodyPrefab: {fileID: 7792443217028439265, guid: 828fd644f89f15348b49e64b9f2de8c4, type: 3}
   SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}

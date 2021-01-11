@@ -19,7 +19,7 @@ MonoBehaviour:
   ArchTypeMajor: 1
   RuneAlignment: 1
   CharacterDescription: 
-  IsAlive: 0
+  IsAlive: 1
   MaxLevel: 50
   MaxHealth: 2212
   MaxAttack: 528

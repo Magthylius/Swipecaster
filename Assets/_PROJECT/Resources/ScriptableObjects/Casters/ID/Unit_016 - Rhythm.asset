@@ -19,7 +19,7 @@ MonoBehaviour:
   ArchTypeMajor: 3
   RuneAlignment: 4
   CharacterDescription: 
-  IsAlive: 0
+  IsAlive: 1
   MaxLevel: 50
   MaxHealth: 1542
   MaxAttack: 582
@@ -32,7 +32,7 @@ MonoBehaviour:
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
   SkillName: Drum Beater
-  SkillDescription: Summons a BEAT DRUM in a random enemy entity position. The BEAT
+  SkillDescription: Summons a BEAT DRUM in a random Enemy entity position. The BEAT
     DRUM does 35% of Rhythms' ATK per turn, adjacent enemies recieve a permanent
     WEAKENED status until BEAT DRUM dies (3 turns to death).
   SummonPrefab: {fileID: 7792443217028439265, guid: 45ac3fb8b75d27040b90c67b2f3fdd55, type: 3}

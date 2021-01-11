@@ -32,7 +32,7 @@ MonoBehaviour:
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
   SkillName: Spontaneous Fire
-  SkillDescription: All enemies gain a stacking 1 turn AFLAME status.
+  SkillDescription: All enemies gain a 3 turn AFLAME status.
   SummonPrefab: {fileID: 0}
   FullBodyPrefab: {fileID: 7792443217028439265, guid: eac9ea3507bf6ce46927b9a7fa20db13, type: 3}
   SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}

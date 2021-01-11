@@ -19,7 +19,7 @@ MonoBehaviour:
   ArchTypeMajor: 2
   RuneAlignment: 0
   CharacterDescription: 
-  IsAlive: 0
+  IsAlive: 1
   MaxLevel: 50
   MaxHealth: 1241
   MaxAttack: 999
@@ -31,8 +31,8 @@ MonoBehaviour:
   baseStatMultiplier: 0.33333334
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
-  SkillName: 
-  SkillDescription: 
+  SkillName: Black Sun
+  SkillDescription: Deals 500% DMG to all enemies overhead.
   SummonPrefab: {fileID: 0}
   FullBodyPrefab: {fileID: 7792443217028439265, guid: d760d9b997ceb2c4ca27184b8c1dc5b1, type: 3}
   SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}

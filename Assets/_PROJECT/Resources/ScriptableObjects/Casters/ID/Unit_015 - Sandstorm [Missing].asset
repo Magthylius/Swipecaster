@@ -19,7 +19,7 @@ MonoBehaviour:
   ArchTypeMajor: 7
   RuneAlignment: 1
   CharacterDescription: 
-  IsAlive: 0
+  IsAlive: 1
   MaxLevel: 50
   MaxHealth: 971
   MaxAttack: 794
@@ -32,7 +32,7 @@ MonoBehaviour:
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
   SkillName: Sand Corrosion
-  SkillDescription: All enemies hit by this unit gains a 2 stacking 2 turn VULNERABLE
+  SkillDescription: All enemies hit by this unit gain a 2 stacking 2 turn VULNERABLE
     status.
   SummonPrefab: {fileID: 0}
   FullBodyPrefab: {fileID: 7792443217028439265, guid: 1f0996bd42a98da43acd16b77f44a252, type: 3}

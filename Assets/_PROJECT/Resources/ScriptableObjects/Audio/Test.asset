@@ -12,4 +12,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d482a1a55d42cbe46a318c75a765fcbd, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: 
-  audioList: []
+  audioList:
+  - clip: {fileID: 8300000, guid: 4fa72a3c9df2c2c43b2af25339766f5a, type: 3}
+    name: Fart
+    volume: 0.859
+  - clip: {fileID: 8300000, guid: c8ce3fe664051a844ac43270499eda36, type: 3}
+    name: Musik
+    volume: 0.859
+  - clip: {fileID: 8300000, guid: 4fa72a3c9df2c2c43b2af25339766f5a, type: 3}
+    name: Fart
+    volume: 0.859
+  soundPacks:
+  - name: FartPack
+    audioList:
+    - clip: {fileID: 8300000, guid: e0ad1e31c7ab21640a4f7ca0374fc3cc, type: 3}
+      name: 
+      volume: 0.88
+    - clip: {fileID: 8300000, guid: 4fa72a3c9df2c2c43b2af25339766f5a, type: 3}
+      name: 
+      volume: 0.88
+    - clip: {fileID: 8300000, guid: 7ad81d96ee020774887a512e51a416e7, type: 3}
+      name: 
+      volume: 0.88
+  - name: ExamplePack1
+    audioList:
+    - clip: {fileID: 8300000, guid: e0ad1e31c7ab21640a4f7ca0374fc3cc, type: 3}
+      name: 
+      volume: 0.88
+    - clip: {fileID: 8300000, guid: 4fa72a3c9df2c2c43b2af25339766f5a, type: 3}
+      name: 
+      volume: 0.88
+    - clip: {fileID: 8300000, guid: 7ad81d96ee020774887a512e51a416e7, type: 3}
+      name: 
+      volume: 0.88
+  - name: ExamplePack2
+    audioList:
+    - clip: {fileID: 8300000, guid: e0ad1e31c7ab21640a4f7ca0374fc3cc, type: 3}
+      name: 
+      volume: 0.88
+    - clip: {fileID: 8300000, guid: 4fa72a3c9df2c2c43b2af25339766f5a, type: 3}
+      name: 
+      volume: 0.88
+    - clip: {fileID: 8300000, guid: 7ad81d96ee020774887a512e51a416e7, type: 3}
+      name: 
+      volume: 0.88
