@@ -40,7 +40,6 @@ public class AudioManager : MonoBehaviour
         {
             if(temp[i].name == _name)
             {
-                print("play");
                 return temp[i].audioList[Random.Range(0, temp[i].audioList.Count)];
             }
         }
