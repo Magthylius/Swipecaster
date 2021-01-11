@@ -9,11 +9,11 @@ public class ConnectionManager : MonoBehaviour
 
     public LineRenderer line;
     public UILineRenderer uiLine;
+    public RectTransform castingGroupOffset;
     
     RuneType selectionType;
     bool selectionStarted;
-    float runeHalfWidth;
-    Camera cam;
+    float offsetHeight;
 
     List<RuneBehaviour> selectionList = new List<RuneBehaviour>();
     List<Vector2> linePosList = new List<Vector2>();
@@ -23,15 +23,15 @@ public class ConnectionManager : MonoBehaviour
         if (instance != null) Destroy(gameObject);
         else instance = this;
 
-        cam = Camera.main;
         line.gameObject.SetActive(false);
     }
 
     void Start()
     {
         comboManager = ComboManager.instance;
-        runeHalfWidth = RuneManager.instance.RuneWidth;
         UpdateLines();
+
+        offsetHeight = castingGroupOffset.rect.height * 0.5f;
     }
 
     void Update()
@@ -85,7 +85,7 @@ public class ConnectionManager : MonoBehaviour
         foreach (RuneBehaviour rune in selectionList)
         {
             Vector2 pos = rune.runeCenter;
-            pos.y += uiLine.gridSize.y * 0.5f;
+            pos.y += uiLine.gridSize.y * 0.5f + offsetHeight;
             linePosList.Add(pos);
             //print(pos);
         }
