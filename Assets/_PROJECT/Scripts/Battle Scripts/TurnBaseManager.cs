@@ -113,7 +113,7 @@ public class TurnBaseManager : MonoBehaviour
         highlighter.SetActive(false);
         print("Is " + enemy.name + " turn");
 
-        var current = GetCurrentCaster().AsUnit();
+        var current = GetCurrentEnemy().AsUnit();
         current.InvokeSelfTurnBeginEvent();
 
         OnEnemyAttack();
@@ -171,12 +171,11 @@ public class TurnBaseManager : MonoBehaviour
             }
         }
 
-        var current = GetCurrentCaster().AsUnit();
-        if (current != null) current.InvokeSelfTurnEndEvent();
-
         switch (battleState)
         {
             case GameStateEnum.CASTERTURN:
+
+                GetCurrentCaster().AsUnit().InvokeSelfTurnEndEvent();
 
                 //! if the entire casters team finish their turn, is enemy team turns
                 if (casterUnitTurn >= castersOrderList.Count - 1)
@@ -196,7 +195,9 @@ public class TurnBaseManager : MonoBehaviour
                 break;
 
             case GameStateEnum.ENEMYTURN:
-                
+
+                GetCurrentEnemy().AsUnit().InvokeSelfTurnEndEvent();
+
                 //! if the entire casters team finish their turn, is enemy team turns
                 if (enemyUnitTurn >= battlestageManager.GetEnemyTeam().Count - 1)
                 {
@@ -260,6 +261,7 @@ public class TurnBaseManager : MonoBehaviour
 
     public GameStateEnum GetCurrentState() => battleState;
     public GameObject GetCurrentCaster() => caster;
+    public GameObject GetCurrentEnemy() => enemy;
 
     public bool GetIsPLayerTurn() => isPlayerTurn;
     
