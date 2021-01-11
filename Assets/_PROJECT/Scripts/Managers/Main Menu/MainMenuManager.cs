@@ -11,8 +11,9 @@ public class MainMenuManager : MonoBehaviour
     public static MainMenuManager instance;
     PartyCanvasManager pcManager;
 
-    [Header("Settings")]
-    public float transitionSpeed = 2.0f;
+    [Header("Overlay")]
+    public GameObject mapIcon;
+    public GameObject campfireIcon;
 
     [Header("Canvas Pages")]
     public CanvasGroup partyCanvas;
@@ -30,6 +31,7 @@ public class MainMenuManager : MonoBehaviour
 
     [Header("Settings")]
     public RectTransform bottomOverlay;
+    public float transitionSpeed = 2.0f;
     public float overlaySpeed = 4f;
     FlexibleRect bottomOverlayFR;
 
@@ -60,6 +62,9 @@ public class MainMenuManager : MonoBehaviour
         currentPage.transform.SetAsLastSibling();
 
         bottomOverlayFR = new FlexibleRect(bottomOverlay);
+
+        campfireIcon.SetActive(false);
+        mapIcon.SetActive(true);
     }
 
     void Update()
@@ -112,6 +117,13 @@ public class MainMenuManager : MonoBehaviour
         energyMax.text = maxEnergy.ToString();
     }
 
+    void ResetHomeMap()
+    {
+        isAtHome = true;
+        mapIcon.SetActive(false);
+        campfireIcon.SetActive(true);
+    }
+
     #region Accessors
     public void ShowBottomOverlay()
     {
@@ -134,6 +146,8 @@ public class MainMenuManager : MonoBehaviour
         if (pageTransition || partyCanvas == currentPage) return;
         ActivateCanvas(partyCanvas);
         preEnterQuest = false;
+
+        ResetHomeMap();
     }
 
     public void BTN_Inventory()
@@ -141,6 +155,8 @@ public class MainMenuManager : MonoBehaviour
         if (pageTransition || inventoryCanvas == currentPage) return;
         ActivateCanvas(inventoryCanvas);
         preEnterQuest = false;
+
+        ResetHomeMap();
     }
 
     public void BTN_HomeMap()
@@ -148,8 +164,18 @@ public class MainMenuManager : MonoBehaviour
         if (pageTransition) return;
         if (currentPage == homeCanvas || currentPage == mapCanvas) isAtHome = !isAtHome;
 
-        if (isAtHome) ActivateCanvas(homeCanvas);
-        else ActivateCanvas(mapCanvas);
+        if (isAtHome)
+        {
+            ActivateCanvas(homeCanvas);
+            mapIcon.SetActive(true);
+            campfireIcon.SetActive(false);
+        }
+        else
+        {
+            ActivateCanvas(mapCanvas);
+            mapIcon.SetActive(false);
+            campfireIcon.SetActive(true);
+        }
         
         preEnterQuest = false;
     }
@@ -159,6 +185,8 @@ public class MainMenuManager : MonoBehaviour
         if (pageTransition || gachaCanvas == currentPage) return;
         ActivateCanvas(gachaCanvas);
         preEnterQuest = false;
+
+        ResetHomeMap();
     }
 
     public void BTN_Shop()
@@ -166,6 +194,8 @@ public class MainMenuManager : MonoBehaviour
         if (pageTransition || shopCanvas == currentPage) return;
         ActivateCanvas(shopCanvas);
         preEnterQuest = false;
+
+        ResetHomeMap();
     }
 
     public void BTN_Settings()
