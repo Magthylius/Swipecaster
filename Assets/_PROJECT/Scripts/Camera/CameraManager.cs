@@ -54,6 +54,8 @@ public class CameraManager : MonoBehaviour
     Vector3 touchPos;
     Transform targetUnit;
     float currentCamPos;
+    float zoomPercentage;
+    float actualUnitZoom;
 
     #region Debug Zoom Animation
 
@@ -86,6 +88,12 @@ public class CameraManager : MonoBehaviour
         combatLerping = false;
 
         zoomDifference = maxZoom - minZoom;
+
+        float difference = maxZoom - unitZoomAnimation;
+
+        zoomPercentage = difference / maxZoom * 100;
+
+        print(zoomPercentage);
     }
 
     void Update()
@@ -102,7 +110,7 @@ public class CameraManager : MonoBehaviour
 
         if (combatLerping) return;
 
-            if (allowZoom)
+        if (allowZoom)
         {
             cam.orthographicSize =
                 Mathf.Lerp(cam.orthographicSize, targetZoom, zoomModifierSpeed * Time.unscaledDeltaTime);
@@ -212,16 +220,13 @@ public class CameraManager : MonoBehaviour
     {
         //! Get Target Unit
         targetUnit = battlestageCenter.transform;
-
-        //! 
+        
         prevZoom = targetZoom;
         prevPan = targetPan;
 
         isFree = false;
         targetZoom = unitZoomAnimation;
         targetPan = battlestageCenter.position.x;
-        allowPan = true;
-        allowZoom = true;
         StartCoroutine(ZoomInTimer());
     }
 
@@ -249,6 +254,7 @@ public class CameraManager : MonoBehaviour
     {
         float timer = 0;
         float rotValue = 0;
+        float zoomValue = cam.orthographicSize;
         float targetValue = cam.transform.position.x;
         combatLerping = true;
 
@@ -260,8 +266,10 @@ public class CameraManager : MonoBehaviour
             {
                 rotValue = Mathf.Lerp(rotValue, zoomRotation, timer / zoomSpeed);
                 targetValue = Mathf.Lerp(targetValue, battlestageCenter.position.x, timer / moveSpeed);
+                zoomValue = Mathf.Lerp(zoomValue, targetZoom, timer / zoomSpeed);
                 cam.transform.rotation = Quaternion.Euler(0,0,rotValue);
                 cam.transform.position = new Vector3(targetValue, cam.transform.position.y, cam.transform.position.z);
+                cam.orthographicSize = zoomValue;
             }
             else if(turnBaseManager.GetCurrentState() == GameStateEnum.ENEMYTURN)
             {
@@ -286,7 +294,6 @@ public class CameraManager : MonoBehaviour
         
         while (timer < zoomSpeed)
         {
-            
             rotValue = Mathf.Lerp(rotValue, 0, timer / zoomSpeed);
             cam.transform.rotation = Quaternion.Euler(0,0,rotValue);
             
@@ -305,6 +312,8 @@ public class CameraManager : MonoBehaviour
 
     public void SetIsFree(bool _isFree) => isFree = _isFree;
     public bool GetIsFree() => isFree;
+
+    public float GetZoomPercentage() => zoomPercentage;
 
     #endregion
 }
