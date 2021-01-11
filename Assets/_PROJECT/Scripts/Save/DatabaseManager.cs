@@ -77,11 +77,11 @@ public class DatabaseManager : MonoBehaviour
 
         playerAvailableCasters = new List<UnitObject>();
         
-        foreach (var id in liveCaster)
+        foreach (CasterDataStats _caster in playerData.casterDatabase)
         {
             for (int i = 0; i < allCasters.Count; i++)
             {
-                if (id == allCasters[i].ID)
+                if (_caster.ID == allCasters[i].ID)
                 {
                     if (!playerAvailableCasters.Contains(allCasters[i]))
                     {
