@@ -301,4 +301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SFX_Source: {fileID: 8056538669350647595}
   BGM_Source: {fileID: 1955595542359239252}
-  soundList: []
+  soundList:
+  - clip: {fileID: 0}
+    type: 0
+    volume: 0

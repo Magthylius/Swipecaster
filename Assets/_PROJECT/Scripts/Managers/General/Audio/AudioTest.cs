@@ -7,6 +7,8 @@ public class AudioTest : MonoBehaviour
 {
     AudioManager AM;
 
+    public AudioData audioSo;
+    
     void Start()
     {
         AM = AudioManager.instance;
@@ -14,6 +16,6 @@ public class AudioTest : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.S)) AM.PlaySFX(AudioType.SFX_FART);
+        if(Input.GetKeyDown(KeyCode.S)) AM.PlayRandomSFX(audioSo, "FartPack");
     }
 }
