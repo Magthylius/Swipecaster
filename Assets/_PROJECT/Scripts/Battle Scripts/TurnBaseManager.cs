@@ -97,10 +97,9 @@ public class TurnBaseManager : MonoBehaviour
         isPlayerTurn = true;
 
         var current = GetCurrentCaster().AsUnit();
+        print("Its " + current.GetEntityName + "'s turn");
         infoManager.SyncUserInterfaceToUnit(current);
         current.InvokeSelfTurnBeginEvent();
-
-        print("Its " + current.GetBaseUnit.CharacterName + "'s turn");
     }
 
     void EnemyTurn()
@@ -246,7 +245,7 @@ public class TurnBaseManager : MonoBehaviour
     IEnumerator EnemyAttack()
     {
         cameraManager.ZoomToCenter();
-        enemyAttackManager.CalculatePriotity(enemy);
+        enemyAttackManager.CalculatePriority(enemy);
         battlestageManager.ExecuteAction(enemyAttackManager.GetCaster(), enemy);
         while (!cameraManager.GetIsFree())
         {

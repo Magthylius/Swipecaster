@@ -1,3 +1,4 @@
+using System;
 using System.Text;
 using UnityEngine;
 
@@ -12,6 +13,8 @@ namespace ConversionFunctions
 
         public static T AsType<T>(this GameObject gameObject) where T : Component => gameObject != null ? gameObject.GetComponent<T>() : null;
         public static T AsType<T>(this T tee) where T : Component => tee != null ? tee.GetComponent<T>() : null;
+
+        public static float AsFloat(this int number) => number;
     }
 
     public static class TenshiStrings

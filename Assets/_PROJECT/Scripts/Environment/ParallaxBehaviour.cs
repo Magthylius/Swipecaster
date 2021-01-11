@@ -20,7 +20,7 @@ public class ParallaxBehaviour : MonoBehaviour
     float temp;
     float verticalCamSize;
     float horizontalCamSize;
-    float dist;
+    [SerializeField] float dist;
     Vector2 screenBound;
 
     GameObject camObj;
@@ -77,15 +77,18 @@ public class ParallaxBehaviour : MonoBehaviour
             Vector3 curPos = transform.position;
             curPos.x = dist;
             
-            if (leftBound > -horizontalCamSize + camObj.transform.position.x)
-            {
-                print("left");
-            }
-            else if (rightBound < horizontalCamSize + camObj.transform.position.x)
-            {
-                print("right");
-            }
-            else
+            print(dist + transform.position.x);
+            
+            
+            // if (leftBound > -horizontalCamSize + camObj.transform.position.x)
+            // {
+            //     print("left");
+            // }
+            // else if (rightBound < horizontalCamSize + camObj.transform.position.x)
+            // {
+            //     print("right");
+            // }
+            // else
                 transform.position = curPos;
 
 

@@ -54,7 +54,7 @@ public abstract class ActiveSkill
     protected int AssignDamage(TargetInfo info, int damage) => GetUnit.GetCurrentProjectile.AssignTargetDamage(GetUnit, info, damage);
     protected TargetInfo GetFocusTarget(Unit target) => new TargetInfo(target, new List<Unit>(), new List<Unit>());
     protected TargetInfo GetFocusAndGrazed(Unit target, List<Unit> grazed) => new TargetInfo(target, new List<Unit>(), grazed);
-    protected string GetCharacterName => UnitFound(GetUnit) ? GetUnit.GetBaseUnit.CharacterName : CachedCharacterName;
+    protected string GetCharacterName => UnitFound(GetUnit) ? GetUnit.GetEntityName : CachedCharacterName;
 
     #endregion
 
@@ -77,6 +77,7 @@ public abstract class ActiveSkill
 
     public bool SkillChargeReady => _currentSkillCharge >= _maxSkillCharge;
     public bool EffectDurationReached => _currentEffectDuration <= 0 && !_freezeSkillCharge;
+    public void FreezeSkillCharge() => _freezeSkillCharge = true;
     public void UnfreezeSkillCharge() => _freezeSkillCharge = false;
     public void ResetSkillCharge() => _currentSkillCharge = 0;
     public void ResetEffectDuration() => _currentEffectDuration = _startEffectDuration;

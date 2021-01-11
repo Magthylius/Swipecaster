@@ -1,5 +1,6 @@
 using ConversionFunctions;
 using System.ComponentModel;
+using UnityEngine;
 
 public abstract class CasterSkill : ActiveSkill
 {
@@ -12,7 +13,7 @@ public abstract class CasterSkill : ActiveSkill
         _freezeSkillCharge = ignoreDuration;
         _unit = unit;
         ResetSkillCharge();
-        ResetEffectDuration();
+        EffectDuration0();
     }
 
     public override string Name => TypeDescriptor.GetClassName(GetType()).AddSpacesBeforeCapitalLetters(false);

@@ -1,3 +1,4 @@
+using ConversionFunctions;
 using UnityEngine;
 
 public abstract class Entity : MonoBehaviour
@@ -9,7 +10,7 @@ public abstract class Entity : MonoBehaviour
     [SerializeField] private int _currentHealth;
     [SerializeField] private int _currentAttack;
     [SerializeField] private int _currentDefence;
-
+    
     #endregion
 
     #region Public (Virtual) Methods
@@ -28,7 +29,7 @@ public abstract class Entity : MonoBehaviour
     public int GetCurrentHealth => _currentHealth;
     public void AddCurrentHealth(int amount) => SetCurrentHealth(_currentHealth + amount);
     public virtual void SetCurrentHealth(int amount) => _currentHealth = Mathf.Clamp(amount, 0, GetMaxHealth);
-    public float GetHealthRatio => GetCurrentHealth / GetMaxHealth;
+    public float GetHealthRatio => GetMaxHealth > 0 ? GetCurrentHealth / GetMaxHealth.AsFloat() : 0.0f;
     public virtual void Suicide() => SetCurrentHealth(-1);
 
     public int GetCurrentLevel => baseUnit.CurrentLevel;
@@ -38,6 +39,7 @@ public abstract class Entity : MonoBehaviour
     public void SetBaseUnit(UnitObject newUnit) { baseUnit = newUnit; CalculateActualStats(); }
 
     public virtual SummonObject GetBaseSummon => null;
+    public virtual string GetEntityName => baseUnit != null ? baseUnit.CharacterName : name;
 
     public void SetRuneType(RuneType type) => baseUnit.RuneAlignment = type;
     public RuneType GetRuneType => baseUnit.RuneAlignment;
