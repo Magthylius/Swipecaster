@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partyName: Squad
   activeUnits:
-  - {fileID: 11400000, guid: 1f02333c637b40c478d39b88de70c18a, type: 2}
-  - {fileID: 11400000, guid: 9695ed1ed58629d4c9348597e62f8536, type: 2}
-  - {fileID: 11400000, guid: f64ec0ffb3997444c9882531b498bf30, type: 2}
-  - {fileID: 11400000, guid: 2db0922edd5e9774eb1a305558985d2c, type: 2}
+  - {fileID: 11400000, guid: 14c47bdde94a06246839d3a07f9c1209, type: 2}
+  - {fileID: 11400000, guid: 8f96211e4d99d5c41bdd9a22d82c552f, type: 2}
+  - {fileID: 11400000, guid: ff100d155d04b3f4a9e5f06f35af4135, type: 2}
+  - {fileID: 11400000, guid: dcc39e962f89bb740ade2651ab1f173b, type: 2}

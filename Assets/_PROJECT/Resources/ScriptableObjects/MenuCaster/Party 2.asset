@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partyName: Squad Bravo
   activeUnits:
-  - {fileID: 11400000, guid: aa5c31b08424036488b0011ec08c0302, type: 2}
-  - {fileID: 11400000, guid: dd7d2e8f18c0d6f49bbe430968e93bed, type: 2}
+  - {fileID: 11400000, guid: 2599189e5766f5d49b5963220a26116d, type: 2}
+  - {fileID: 11400000, guid: 4bac09f816f0b3845b1ceff6eba720c3, type: 2}

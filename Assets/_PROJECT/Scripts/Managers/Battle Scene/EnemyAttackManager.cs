@@ -37,7 +37,7 @@ public class EnemyAttackManager : MonoBehaviour
 
     public void EnemyAttack(GameObject damagerObject, GameObject targetObject)
     {
-        print(targetObject.name + "being attacked!");
+        print(targetObject.AsUnit().GetEntityName + " is being attacked!");
         if (battleStageManager == null) { return; }
         var damager = damagerObject.AsUnit();
         var target = targetObject.AsUnit();
@@ -47,7 +47,7 @@ public class EnemyAttackManager : MonoBehaviour
         damager.DoAction(targetInfo, collection);
     }
 
-    public void CalculatePriotity(GameObject attacker)
+    public void CalculatePriority(GameObject attacker)
     {
         for (int i = 0; i < battleStageManager.GetCastersTeam().Count; i++)
         {

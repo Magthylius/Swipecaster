@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partyName: Squad Delta
   activeUnits:
-  - {fileID: 11400000, guid: f7448f282a1da544f99405f812c4d011, type: 2}
-  - {fileID: 11400000, guid: 9695ed1ed58629d4c9348597e62f8536, type: 2}
-  - {fileID: 11400000, guid: aa5c31b08424036488b0011ec08c0302, type: 2}
-  - {fileID: 11400000, guid: dd7d2e8f18c0d6f49bbe430968e93bed, type: 2}
+  - {fileID: 11400000, guid: 38833d5b39b4cdb42960896d0a32990e, type: 2}
+  - {fileID: 11400000, guid: 8f96211e4d99d5c41bdd9a22d82c552f, type: 2}
+  - {fileID: 11400000, guid: 2599189e5766f5d49b5963220a26116d, type: 2}
+  - {fileID: 11400000, guid: 4bac09f816f0b3845b1ceff6eba720c3, type: 2}

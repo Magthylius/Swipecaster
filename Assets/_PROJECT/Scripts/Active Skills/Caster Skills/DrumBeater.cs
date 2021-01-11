@@ -26,7 +26,9 @@ public class DrumBeater : CasterSkill
         GameObject drumObject = InstantiateSummon(enemyEntityPos, index);
         HandleBattleStage(battleStage, drumObject);
         HandleBeatDrum(drumObject);
+
         ResetSkillCharge();
+        FreezeSkillCharge();
     }
 
     #region Private Methods

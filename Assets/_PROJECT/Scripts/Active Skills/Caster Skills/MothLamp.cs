@@ -28,7 +28,9 @@ public class MothLamp : CasterSkill
         GameObject lampObject = InstantiateSummon(casterEntityPos, index);
         HandleBattleStage(battleStage, lampObject);
         HandleLamp(lampObject);
+        
         ResetSkillCharge();
+        FreezeSkillCharge();
     }
 
     #region Private Methods

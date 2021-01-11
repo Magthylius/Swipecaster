@@ -28,6 +28,7 @@ public class InformationManager : MonoBehaviour
     {
         if (unit == null) return;
         UpdateCasterProtrait(unit);
+        UpdateHealthBar(unit);
         UpdateSkillChargeBar(unit);
         UpdateSkillDescription(unit);
     }
@@ -39,22 +40,14 @@ public class InformationManager : MonoBehaviour
         casterPortrait.sprite = spriteArt;
     }
 
-    private void UpdateSkillChargeBar(Unit unit)
-    {
-        float fill = HasValidMaxSkillCharge(unit) ? unit.GetCurrentSkillChargeCount / unit.GetMaxSkillChargeCount : 0.01f;
-        skillChargeBar.fillAmount = fill;
-    }
-
+    private void UpdateSkillChargeBar(Unit unit) => skillChargeBar.fillAmount = unit.GetSkillChargeRatio;
     private void UpdateSkillDescription(Unit unit) => skillTextMesh.text = unit.GetBaseUnit.SkillDescription;
-
-    private void UpdateHealthBar(Unit unit)
+    private void UpdateHealthBar(Unit unit) => healthBar.fillAmount = unit.GetHealthRatio;
+    private void UpdateHealthBarIfCurrentUnit(Unit unit)
     {
-        if (_turnBaseManager == null) return;
-        var currentUnit = _turnBaseManager.GetCurrentCaster().AsUnit();
-        if (currentUnit == null || currentUnit != unit) return;
-
-        float fill = HasValidMaxHealth(currentUnit) ? currentUnit.GetCurrentHealth / currentUnit.GetMaxHealth : 0.01f;
-        healthBar.fillAmount = fill;
+        var curUnit = _turnBaseManager.GetCurrentCaster().AsUnit();
+        if (unit != curUnit) return;
+        UpdateHealthBar(unit);
     }
 
     #endregion
@@ -70,19 +63,19 @@ public class InformationManager : MonoBehaviour
     }
     private void SubscribeAndAdd(Unit caster)
     {
-        caster.SubscribeHealthChangeEvent(UpdateHealthBar);
+        caster.SubscribeHealthChangeEvent(UpdateHealthBarIfCurrentUnit);
         _subscriptionList.Add(caster);
     }
     private void UnsubscribeAllEvents()
     {
-        _subscriptionList.ForEach(caster => caster.UnsubscribeHealthChangeEvent(UpdateHealthBar));
+        _subscriptionList.ForEach(caster => caster.UnsubscribeHealthChangeEvent(UpdateHealthBarIfCurrentUnit));
         Unit.UnsubscribeDeathEvent(UnsubscribeUnit);
     }
     private void UnsubscribeUnit(Unit unit)
     {
         if(_subscriptionList.Contains(unit))
         {
-            unit.UnsubscribeHealthChangeEvent(UpdateHealthBar);
+            unit.UnsubscribeHealthChangeEvent(UpdateHealthBarIfCurrentUnit);
             _subscriptionList.Remove(unit);
         }
     }

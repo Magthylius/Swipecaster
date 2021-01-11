@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partyName: Squad Charlie
   activeUnits:
-  - {fileID: 11400000, guid: f7448f282a1da544f99405f812c4d011, type: 2}
-  - {fileID: 11400000, guid: f7448f282a1da544f99405f812c4d011, type: 2}
-  - {fileID: 11400000, guid: f7448f282a1da544f99405f812c4d011, type: 2}
+  - {fileID: 11400000, guid: 38833d5b39b4cdb42960896d0a32990e, type: 2}
+  - {fileID: 11400000, guid: 38833d5b39b4cdb42960896d0a32990e, type: 2}
+  - {fileID: 11400000, guid: 38833d5b39b4cdb42960896d0a32990e, type: 2}

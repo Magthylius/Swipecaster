@@ -6,6 +6,7 @@ public abstract class Summon : Unit
     [SerializeField] private SummonObject baseSummon;
 
     public override SummonObject GetBaseSummon => baseSummon;
+    public override string GetEntityName => baseSummon != null ? baseSummon.SummonName : name;
     public override int GetBaseAttack => GetBaseSummon.MaxAttack;
     public override int GetBaseDefence => GetBaseSummon.MaxDefence;
     public override int GetMaxHealth => GetBaseSummon.MaxHealth;

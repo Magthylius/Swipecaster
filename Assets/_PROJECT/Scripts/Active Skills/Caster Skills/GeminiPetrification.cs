@@ -42,7 +42,7 @@ public class GeminiPetrification : CasterSkill
     }
 
     private Unit GetUnitByCasterName(TargetInfo targetInfo) => targetInfo.Allies.Where(ally => MatchesCasterName(ally)).FirstOrDefault();
-    private bool MatchesCasterName(Unit ally) => ally.GetBaseUnit.CharacterName == casterName;
+    private bool MatchesCasterName(Unit ally) => ally.GetEntityName == casterName;
 
     public GeminiPetrification(Unit unit)
     {
