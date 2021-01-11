@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Solitarist : Stoic
@@ -15,9 +13,8 @@ public class Solitarist : Stoic
     protected override void Awake()
     {
         base.Awake();
-        SubscribeSelfTurnBeginEvent(PassiveHeal);
-
         SetArchMinor(ArchTypeMinor.Solitarist);
+        SubscribeSelfTurnBeginEvent(PassiveHeal);
     }
 
     protected override void OnDestroy()
@@ -30,7 +27,7 @@ public class Solitarist : Stoic
 
     #region Private Methods
 
-    private void PassiveHeal() => AddCurrentHealth(Mathf.Abs(currentPassiveHealAmount));
+    private void PassiveHeal() => AddCurrentHealth(Mathf.Abs(GetPassiveHealAmount));
     
     #endregion
 }

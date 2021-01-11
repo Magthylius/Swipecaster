@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class Howitzer : Artillery
 {
     #region Protected Override Methods
@@ -9,9 +5,8 @@ public class Howitzer : Artillery
     protected override void Awake()
     {
         base.Awake();
-        
-        SetDefaultProjectile(new Overhead());
         SetArchMinor(ArchTypeMinor.Howitzer);
+        SetDefaultProjectile(new Overhead(this));
     }
 
     #endregion

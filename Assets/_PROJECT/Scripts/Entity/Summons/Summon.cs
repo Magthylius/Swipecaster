@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -24,9 +22,15 @@ public abstract class Summon : Unit
     }
     public override TargetInfo GetAffectedTargets(TargetInfo targetInfo) => TargetInfo.Null;
 
-    protected override void Awake()
+    protected override void Start()
     {
-        base.Awake();
+        base.Start();
         baseSummon.CalculateMaxStats(this);
+    }
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        transform.parent.gameObject.SetActive(false);
     }
 }

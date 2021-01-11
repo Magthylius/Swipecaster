@@ -8,7 +8,7 @@ public class Foe : Unit
     public override void TakeHit(Unit damager, int damageAmount) => InvokeHitEvent(damager, damageAmount);
     public override void DoAction(TargetInfo targetInfo, RuneCollection runes)
     {
-        int rawDamage = Round(CalculateDamage(targetInfo, runes) * damageMultiplier);
+        int rawDamage = Round(CalculateDamage(targetInfo, runes) * GetDamageMultiplier);
         GetCurrentProjectile.AssignTargetDamage(this, targetInfo, rawDamage);
     }
     public override int CalculateDamage(TargetInfo targetInfo, RuneCollection runes) => GetCurrentAttack;

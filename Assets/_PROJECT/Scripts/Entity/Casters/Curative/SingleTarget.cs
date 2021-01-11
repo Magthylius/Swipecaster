@@ -13,10 +13,9 @@ public class SingleTarget : Curative
         if (battleStage == null) return;
 
         int totalDamage = CalculateDamage(targetInfo, runes);
-
         float lowestHpRatio = 1.0f;
         Unit target = null;
-        List<Unit> party = (List<Unit>)battleStage.GetCasterTeamAsUnit();
+        List<Unit> party = battleStage.GetCasterTeamAsUnit();
         for(int i = 0; i < party.Count; i++)
         {
             var unit = party[i];
@@ -30,11 +29,11 @@ public class SingleTarget : Curative
 
         if (target == null)
         {
-            var list = (List<Unit>)battleStage.GetCasterTeamAsUnit();
+            var list = new List<Unit>(battleStage.GetCasterTeamAsUnit());
             target = list[Random.Range(0, list.Count)];
             if (target == null) return;
         }
-        target.RecieveHealing(this, Round(totalDamage * currentPassiveHealPercent));
+        target.RecieveHealing(this, Round(totalDamage * GetPassiveHealPercent));
     }
 
     #endregion
@@ -44,7 +43,6 @@ public class SingleTarget : Curative
     protected override void Awake()
     {
         base.Awake();
-
         SetArchMinor(ArchTypeMinor.SingleTarget);
     }
 

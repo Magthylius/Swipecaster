@@ -172,6 +172,7 @@ public class BattlestageManager : MonoBehaviour
 
         TargetInfo targetInfo = unit.GetActiveSkill.GetActiveSkillTargets(new TargetInfo(target, null, null, GetCasterTeamAsUnit(), GetEnemyTeamAsUnit()));
         unit.UseSkill(targetInfo, this);
+        unit.InvokeUseSkillEvent(unit, unit.GetActiveSkill);
 
         bool SkillCriteriaNotMet() => unit == null || !unit.SkillIsReady || unit.GetActiveSkill == null;
     }

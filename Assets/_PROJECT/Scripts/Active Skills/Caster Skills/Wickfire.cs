@@ -15,7 +15,7 @@ public class Wickfire : CasterSkill
     {
         if (targetInfo.Allies == null || targetInfo.Allies.Count == 0) return;
 
-        GetUnit.AddStatusEffect(Create.A_Status.ProjectileLocker(effectTurns, new Blast()));
+        GetUnit.AddStatusEffect(Create.A_Status.ProjectileLocker(effectTurns, new Blast(GetUnit)));
         GetUnit.AddStatusEffect(Create.A_Status.AttackUp(effectTurns, damageMultiplier));
         ResetSkillCharge();
     }

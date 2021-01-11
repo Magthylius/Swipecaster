@@ -21,7 +21,7 @@ public class SporeBurst : CasterSkill
     }
     protected override void OnEffectDurationComplete() => GetUnit.UnsubscribeGrazeEvent(ConvertPassingProjectile);
 
-    private void ConvertPassingProjectile(Unit attacker, int potentialDamage) => attacker.SubstituteProjectile(new Splash());
+    private void ConvertPassingProjectile(Unit attacker, int potentialDamage) => attacker.SubstituteProjectile(new Splash(GetUnit));
 
     public SporeBurst(Unit unit)
     {

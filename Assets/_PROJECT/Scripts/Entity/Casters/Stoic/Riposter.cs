@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class Riposter : Stoic
 {
     private Unit _recentDamager = null;
@@ -11,9 +7,8 @@ public class Riposter : Stoic
     protected override void Awake()
     {
         base.Awake();
-        SubscribeSelfTurnEndEvent(ResetRecentDamager);
-
         SetArchMinor(ArchTypeMinor.Riposter);
+        SubscribeSelfTurnEndEvent(ResetRecentDamager);
     }
 
     protected override void OnDestroy()
@@ -36,7 +31,7 @@ public class Riposter : Stoic
     {
         if (!CanRebound(damager)) return;
         PrimeRecentDamager(damager);
-        damager.TakeHit(this, Round(totalDamage * currentReboundPercent));
+        damager.TakeHit(this, Round(totalDamage * GetReboundPercent));
     }
     private bool CanRebound(Unit damager) => _recentDamager != damager && damager != null;
     private void PrimeRecentDamager(Unit damager) => _recentDamager = damager;

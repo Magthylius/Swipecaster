@@ -1,18 +1,16 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Tauntist : Stoic
 {
-    //! this has higher 'priority' than usual units
+    [SerializeField] private int priorityIncrement = 5;
 
     #region Protected Override Methods
 
     protected override void Awake()
     {
         base.Awake();
-
         SetArchMinor(ArchTypeMinor.Tauntist);
+        SetUnitPriority(GetUnitPriority + priorityIncrement);
     }
 
     #endregion

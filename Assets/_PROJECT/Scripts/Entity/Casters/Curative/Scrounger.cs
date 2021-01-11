@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class Scrounger : Curative
 {
@@ -15,8 +13,8 @@ public class Scrounger : Curative
         int totalDamage = GetCurrentProjectile.AssignTargetDamage(this, targetInfo, rawDamage);
         GetStatusEffects.ForEach(status => status.DoEffectOnAction(targetInfo, totalDamage));
 
-        List<Unit> party = new List<Unit>(battleStage.GetCasterTeamAsUnit());
-        party.ForEach(i => i.RecieveHealing(this, Round(totalDamage * currentPassiveHealPercent)));
+        List<Unit> party = battleStage.GetCasterTeamAsUnit();
+        party.ForEach(i => i.RecieveHealing(this, Round(totalDamage * GetPassiveHealPercent)));
     }
 
     #endregion
@@ -26,7 +24,6 @@ public class Scrounger : Curative
     protected override void Awake()
     {
         base.Awake();
-
         SetArchMinor(ArchTypeMinor.Scrounger);
     }
 

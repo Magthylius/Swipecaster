@@ -8,19 +8,13 @@ public class Lamp : Summon
 
         if (_latestDamager == damager) return;
         _latestDamager = damager;
-        damager.TakeHit(damager, Round(damageAmount * currentReboundPercent));
+        damager.TakeHit(damager, Round(damageAmount * GetReboundPercent));
     }
 
     protected override void EndTurnMethods()
     {
         base.EndTurnMethods();
         _latestDamager = null;
-    }
-
-    protected override void OnDestroy()
-    {
-        base.OnDestroy();
-        transform.parent.gameObject.SetActive(false);
     }
 
     protected override void Awake()
