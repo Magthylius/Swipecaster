@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class PinpointOverhead : Pinpoint
 {
     #region Protected Override Methods
@@ -9,9 +5,8 @@ public class PinpointOverhead : Pinpoint
     protected override void Awake()
     {
         base.Awake();
-
-        SetDefaultProjectile(new Overhead());
         SetArchMinor(ArchTypeMinor.Pinpoint_Overhead);
+        SetDefaultProjectile(new Overhead(this));
     }
 
     #endregion

@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class Spreader : Antipathic
 {
     #region Protected Override Methods
@@ -9,8 +5,7 @@ public class Spreader : Antipathic
     protected override void Awake()
     {
         base.Awake();
-        
-        SetDefaultProjectile(new Blast());
+        SetDefaultProjectile(new Blast(this));
         SetArchMinor(ArchTypeMinor.Spreader);
     }
 

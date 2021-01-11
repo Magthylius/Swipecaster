@@ -23,22 +23,22 @@ public abstract class Unit : Entity
     [SerializeField] private int _totalDamageInTurn = 0;
 
     [Header("Other Multipliers")]
-    [SerializeField] protected float damageMultiplier = 1.0f;
+    [SerializeField] private float damageMultiplier = 1.0f;
 
     [Header("Recovery")]
-    [SerializeField] protected int defaultPassiveHealAmount = 0;
-    protected int currentPassiveHealAmount = 0;
+    [SerializeField] private int defaultPassiveHealAmount = 0;
+    private int currentPassiveHealAmount = 0;
 
-    [SerializeField] protected float defaultPassiveHealPercent = 0.0f;
-    protected float currentPassiveHealPercent = 0.0f;
+    [SerializeField] private float defaultPassiveHealPercent = 0.0f;
+    private float currentPassiveHealPercent = 0.0f;
 
     [Header("Reflection and Deflection")]
-    [SerializeField] protected float defaultReboundPercent = 0.2f;
-    protected float currentReboundPercent = 0.2f;
+    [SerializeField] private float defaultReboundPercent = 0.2f;
+    private float currentReboundPercent = 0.2f;
 
     [Header("RNG")]
-    [SerializeField, Range(0.0f, 1.0f)] protected float defaultProbability = 0.05f;
-    protected float currentProbability = 0.05f;
+    [SerializeField, Range(0.0f, 1.0f)] private float defaultProbability = 0.05f;
+    private float currentProbability = 0.05f;
     [SerializeField] private int basePriority = 1;
     private int currentPriority = 0;
 
@@ -177,6 +177,10 @@ public abstract class Unit : Entity
 
     #region Misc Stats
 
+    public float GetDamageMultiplier => damageMultiplier;
+    public void AddDamageMultiplier(float addition) => SetDamageMultiplier(GetDamageMultiplier + addition);
+    public void SetDamageMultiplier(float amount) => damageMultiplier = amount.Clamp0();
+
     public int GetPassiveHealAmount => currentPassiveHealAmount;
     public void SetPassiveHealAmount(int amount) => currentPassiveHealAmount = amount;
     public void ResetPassiveHealAmount() => currentPassiveHealAmount = defaultPassiveHealAmount;
@@ -207,15 +211,15 @@ public abstract class Unit : Entity
 
     public static void SubscribeDeathEvent(Action<Unit> method) => _deathEvent += method;
     public static void UnsubscribeDeathEvent(Action<Unit> method) => _deathEvent -= method;
-    public static void InvokeDeathEvent(Unit a) => _deathEvent?.Invoke(a);
+    protected static void InvokeDeathEvent(Unit a) => _deathEvent?.Invoke(a);
 
     public static void SubscribeAllTurnBeginEvent(Action method) => _allTurnBegin += method;
     public static void UnsubscribeAllTurnBeginEvent(Action method) => _allTurnBegin -= method;
-    public static void InvokeAllTurnBeginEvent() => _allTurnBegin?.Invoke();
+    protected static void InvokeAllTurnBeginEvent() => _allTurnBegin?.Invoke();
 
     public static void SubscribeAllTurnEndEvent(Action method) => _allTurnEnd += method;
     public static void UnsubscribeAllTurnEndEvent(Action method) => _allTurnEnd -= method;
-    public static void InvokeAllTurnEndEvent() => _allTurnEnd?.Invoke();
+    protected static void InvokeAllTurnEndEvent() => _allTurnEnd?.Invoke();
 
     public void SubscribeGrazeEvent(Action<Unit, int> method) => _grazeEvent += method;
     public void UnsubscribeGrazeEvent(Action<Unit, int> method) => _grazeEvent -= method;
@@ -301,7 +305,7 @@ public abstract class Unit : Entity
         _statusEffects = new List<StatusEffect>();
 
         GetDamagePopUp();
-        SetDefaultProjectile(new CrowFlies());
+        SetDefaultProjectile(new CrowFlies(this));
         ResetProjectile();
         SubscribeHitEvent(TakeDamage);
         SubscribeHealthChangeEvent(CheckDeathEvent);

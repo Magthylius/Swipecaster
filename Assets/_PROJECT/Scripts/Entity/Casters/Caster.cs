@@ -26,7 +26,7 @@ public abstract class Caster : Unit
     public override void TakeHit(Unit damager, int damageAmount) => InvokeHitEvent(damager, damageAmount);
     public override void DoAction(TargetInfo targetInfo, RuneCollection runes)
     {
-        int rawDamage = Round(CalculateDamage(targetInfo, runes) * damageMultiplier);
+        int rawDamage = Round(CalculateDamage(targetInfo, runes) * GetDamageMultiplier);
         int totalDamage = GetCurrentProjectile.AssignTargetDamage(this, targetInfo, rawDamage);
         GetStatusEffects.ForEach(status => status.DoEffectOnAction(targetInfo, totalDamage));
     }

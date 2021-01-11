@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class Antagomancer : Conjuror
 {
     #region Protected Override Methods
@@ -9,7 +5,6 @@ public class Antagomancer : Conjuror
     protected override void Awake()
     {
         base.Awake();
-
         SetArchMinor(ArchTypeMinor.Antagomancer);
     }
 

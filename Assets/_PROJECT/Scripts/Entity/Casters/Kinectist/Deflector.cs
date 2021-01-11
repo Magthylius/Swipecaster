@@ -3,17 +3,14 @@ using UnityEngine;
 
 public class Deflector : Kinectist
 {
-    private bool triggerOnce = false;
-
     #region Protected Override Methods
 
     protected override void Awake()
     {
         base.Awake();
+        SetArchMinor(ArchTypeMinor.Deflector);
         SubscribeGrazeEvent(Deflect);
         SubscribeSelfTurnEndEvent(ResetTrigger);
-
-        SetArchMinor(ArchTypeMinor.Deflector);
     }
 
     protected override void OnDestroy()
@@ -35,12 +32,10 @@ public class Deflector : Kinectist
 
     private void Deflect(Unit damager, int damageAmount)
     {
-        if (!ProbabilityHit || triggerOnce) return;
-        triggerOnce = true;
+        if (!ProbabilityHit || TriggerOnce) return;
+        TriggerOnce = true;
         damager.SetAttackStatus(AttackStatus.Deflected);
     }
-
-    private void ResetTrigger() => triggerOnce = false;
 
     #endregion
 }
