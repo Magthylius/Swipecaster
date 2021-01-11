@@ -1,4 +1,4 @@
-using System.Collections;
+using ConversionFunctions;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -11,18 +11,11 @@ public abstract class Caster : Unit
     [SerializeField] private ArchTypeMajor archMajor = ArchTypeMajor.None;
     [SerializeField] private ArchTypeMinor archMinor = ArchTypeMinor.None;
 
-    [Header("Rune Relation Multiplier")]
-    [SerializeField] protected float runeAdvantageMultiplier = 1.5f;
-    [SerializeField] protected float runeWeaknessMultiplier = 0.5f;
-
     #endregion
 
     #region Public Override Methods
 
-    public override void UseSkill(TargetInfo targetInfo, BattlestageManager battleStage)
-    {
-        GetActiveSkill.TriggerSkill(targetInfo, battleStage);
-    }
+    public override void UseSkill(TargetInfo targetInfo, BattlestageManager battleStage) => GetActiveSkill.TriggerSkill(targetInfo, battleStage);
     public override void TakeHit(Unit damager, int damageAmount) => InvokeHitEvent(damager, damageAmount);
     public override void DoAction(TargetInfo targetInfo, RuneCollection runes)
     {
@@ -32,28 +25,14 @@ public abstract class Caster : Unit
     }
     public override int CalculateDamage(TargetInfo targetInfo, RuneCollection runes)
     {
-        int totalDamage = 0;
-        if (!RuneCollection.Equals(runes, RuneCollection.Null))
+        int totalDamage = GetCurrentAttack;
+        if (runes != RuneCollection.Null)
         {
             var relations = RuneRelations.GetRelations(GetRuneType);
-            for (int i = 0; i < runes.GetAllStorages.Count; i++)
-            {
-                var r = runes.GetAllStorages[i];
-                for (int j = 0; j < relations.Advantage.Count; j++)
-                {
-                    totalDamage += Round(GetCurrentAttack * r.amount * runeAdvantageMultiplier) * ToInt(relations.Advantage[j] == r.runeType);
-                    r.amount *= ToInt(relations.Advantage[j] != r.runeType);
-                }
-                for (int k = 0; k < relations.Weakness.Count; k++)
-                {
-                    totalDamage += Round(GetCurrentAttack * r.amount * runeWeaknessMultiplier) * ToInt(relations.Weakness[k] == r.runeType);
-                    r.amount *= ToInt(relations.Weakness[k] != r.runeType);
-                }
-
-                totalDamage += GetCurrentAttack * r.amount;
-            }
+            var advan = relations.Advantage.Single(); var weak = relations.Weakness.Single();
+            float cummulatedRuneMultiplier = 1.0f + runes.GetAllStorages.Sum(rune => rune.Value.amount * GetRuneMultiplier(advan, weak, rune.Key));
+            totalDamage = Round(totalDamage * cummulatedRuneMultiplier);
         }
-        else totalDamage += GetCurrentAttack;
 
         float statusOutMultiplier = 1.0f;
         statusOutMultiplier += GetStatusEffects.Sum(status => status.GetStatusDamageOutModifier());
@@ -92,6 +71,18 @@ public abstract class Caster : Unit
     {
         base.EndTurnMethods();
         GetActiveSkill?.TurnEndCall();
+    }
+
+    #endregion
+
+    #region Private Methods
+
+    private float GetRuneMultiplier(RuneType advantage, RuneType weakness, RuneType thisType)
+    {
+        return
+            (advantage != thisType && weakness != thisType).AsInt() * 1.0f +
+            (advantage == thisType).AsInt() * GetRuneAdvantageMultiplier() +
+            (weakness == thisType).AsInt() * GetRuneWeaknessMultiplier();
     }
 
     #endregion

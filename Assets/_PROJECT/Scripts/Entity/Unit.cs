@@ -14,6 +14,8 @@ public abstract class Unit : Entity
     [Header("Information")]
     protected const int PartySize = 4;
     private AttackStatus _attackStatus = AttackStatus.Normal;
+    private OnAttackEdge _onAttackEdge = OnAttackEdge.NoAttack;
+    private OnHitEdge _onHitEdge = OnHitEdge.Idle;
     private Projectile _currentProjectile;
     private Projectile _defaultProjectile;
     private List<StatusEffect> _statusEffects;
@@ -21,6 +23,10 @@ public abstract class Unit : Entity
     private bool _undying = false;
     [SerializeField] private bool isPlayer;
     [SerializeField] private int _totalDamageInTurn = 0;
+
+    [Header("Rune Relation Multiplier")]
+    [SerializeField] private float runeAdvantageMultiplier = 1.5f;
+    [SerializeField] private float runeWeaknessMultiplier = 0.5f;
 
     [Header("Other Multipliers")]
     [SerializeField] private float damageMultiplier = 1.0f;
@@ -99,17 +105,80 @@ public abstract class Unit : Entity
 
     #endregion
 
-    #region Public Methods
+    #region Public & Private Methods (Get, Set, Query)
 
-    #region Unit Info
+    #region Unit Info (Public & Private mix)
 
+    private void ResetTotalDamageInTurn() => _totalDamageInTurn = 0;
+    private void SetTotalDamageInTurn(int damage) => _totalDamageInTurn = damage;
     public int GetTotalDamageInTurn => _totalDamageInTurn;
 
     public void SetIsPlayer(bool statement) => isPlayer = statement;
     public bool GetIsPlayer => isPlayer;
 
+    private void ResetAttackStatus() => _attackStatus = AttackStatus.Normal;
     public void SetAttackStatus(AttackStatus status) => _attackStatus = status;
     public AttackStatus GetAttackStatus => _attackStatus;
+
+    private void ResetOnAttackEdge() => _onAttackEdge = OnAttackEdge.NoAttack;
+    private void SetOnAttackEdge(OnAttackEdge edge) => _onAttackEdge = edge;
+    private OnAttackEdge GetOnAttackEdge => _onAttackEdge;
+
+    private void ResetOnHitEdge() => _onHitEdge = OnHitEdge.Idle;
+    public void SetOnHitEdge(OnHitEdge edge) => _onHitEdge = edge;
+    public OnHitEdge GetOnHitEdge => _onHitEdge;
+
+    #endregion
+
+    #region Rune
+
+    public float GetEdgeMultiplierAgainstTarget(Unit target)
+    {
+        SetOnAttackEdge(IdentifyAttackEdgeAgainstUnit(target));
+        target.SetOnHitEdge(IdentifyTargetHitEdge());
+        return GetEdgeMultiplier();
+    }
+
+    private OnAttackEdge IdentifyAttackEdgeAgainstUnit(Unit comparingUnit)
+    {
+        var otherRuneRelations = RuneRelations.GetRelations(comparingUnit.GetRuneType);
+        var otherAdvant = otherRuneRelations.Advantage.Single(); var otherWeak = otherRuneRelations.Weakness.Single();
+        var thisType = GetRuneType;
+
+        bool neutral = otherAdvant != thisType && otherWeak != thisType;
+        bool advantage = otherWeak == thisType;
+        bool weakness = otherAdvant == thisType;
+
+        return
+            (neutral, advantage, weakness) switch
+            {
+                (true, false, false) => OnAttackEdge.Neutral,
+                (false, true, false) => OnAttackEdge.Advantage,
+                (false, false, true) => OnAttackEdge.Weak,
+                _ => OnAttackEdge.NoAttack,
+            };
+    }
+    private OnHitEdge IdentifyTargetHitEdge() =>
+        GetOnAttackEdge switch
+        {
+            OnAttackEdge.NoAttack => OnHitEdge.Idle,
+            OnAttackEdge.Neutral => OnHitEdge.Neutral,
+            OnAttackEdge.Advantage => OnHitEdge.Weak,
+            OnAttackEdge.Weak => OnHitEdge.Advantage,
+            _ => OnHitEdge.Idle,
+        };
+
+    private float GetEdgeMultiplier() =>
+        GetOnAttackEdge switch
+        {
+            OnAttackEdge.Neutral => 1.0f,
+            OnAttackEdge.Advantage => GetRuneAdvantageMultiplier(),
+            OnAttackEdge.Weak => GetRuneWeaknessMultiplier(),
+            _ => 0.0f,
+        };
+
+    protected float GetRuneAdvantageMultiplier() => runeAdvantageMultiplier;
+    protected float GetRuneWeaknessMultiplier() => runeWeaknessMultiplier;
 
     #endregion
 
@@ -160,6 +229,9 @@ public abstract class Unit : Entity
     }
     public void RemoveAllStatusEffects() => GetStatusEffects.ForEach(status => status.InvokeSelfDestructEvent());
     public List<StatusEffect> GetStatusEffects => StatusEffectsNullOrEmpty ? StatusEffect.NullList : _statusEffects;
+    private bool StatusEffectsNullOrEmpty => _statusEffects == null || _statusEffects.Count == 0;
+    private void UpdateStatusEffectsOnSkill(Unit unit, ActiveSkill skill) => UpdateStatusEffects();
+    private void PostStatusEffect() => GetStatusEffects?.ForEach(i => i.DoPostEffect());
 
     #endregion
 
@@ -173,10 +245,16 @@ public abstract class Unit : Entity
     public bool HasActiveSkill => _activeSkill != null;
     public ActiveSkill GetActiveSkill => _activeSkill;
     public void SetActiveSkill(ActiveSkill skill) { _activeSkill = skill; ResetSkillCharge(); }
+    private void HandleActiveSkill()
+    {
+        var skill = GetBaseUnit.GetUnitActiveSkill(this);
+        if (skill == null) return;
+        SetActiveSkill(skill);
+    }
 
     #endregion
 
-    #region Misc Stats
+    #region Arch Specific Stats
 
     public float GetDamageMultiplier => damageMultiplier;
     public void AddDamageMultiplier(float addition) => SetDamageMultiplier(GetDamageMultiplier + addition);
@@ -256,14 +334,15 @@ public abstract class Unit : Entity
     {
         if (damager.GetAttackStatus != AttackStatus.Normal) return;
 
-        float statusInMultiplier = 1.0f;
-        statusInMultiplier += GetStatusEffects.Sum(status => status.GetStatusDamageInModifier());
+        float statusInMultiplier = 1.0f + GetStatusEffects.Sum(status => status.GetStatusDamageInModifier());
+        float runeMultiplier = damager.GetEdgeMultiplierAgainstTarget(this);
+        int totalRawDamage = AbsRound(damageAmount * statusInMultiplier * runeMultiplier);
 
-        _totalDamageInTurn = (Mathf.Abs(Round(damageAmount * statusInMultiplier)) - GetCurrentDefence).Clamp0();
-        AddCurrentHealth(-_totalDamageInTurn);
-        GetStatusEffects.ForEach(i => i.DoOnHitEffect(damager, GetBattleStageInfo(), _totalDamageInTurn));
+        SetTotalDamageInTurn((totalRawDamage - GetCurrentDefence).Clamp0());
+        AddCurrentHealth(-GetTotalDamageInTurn);
+        GetStatusEffects.ForEach(i => i.DoOnHitEffect(damager, GetBattleStageInfo(), GetTotalDamageInTurn));
 
-        DamagePopUp(_totalDamageInTurn, true);
+        DamagePopUp(GetTotalDamageInTurn, true);
     }
 
     protected virtual void StartTurnMethods()
@@ -278,6 +357,8 @@ public abstract class Unit : Entity
         ResetAttackStatus();
         PostStatusEffect();
         ResetProjectile();
+        ResetOnAttackEdge();
+        ResetOnHitEdge();
     }
 
     protected virtual void OnDestroy()
@@ -321,6 +402,7 @@ public abstract class Unit : Entity
 
     protected bool ProbabilityHit => Random.Range(0.0f, 1.0f - float.Epsilon) < currentProbability;
     protected int Round(float number) => Mathf.RoundToInt(number);
+    protected int AbsRound(float number) => Mathf.Abs(Round(number));
     protected int ToInt(bool statement) => Convert.ToInt32(statement);
     protected void ResetAtkDefStats()
     {
@@ -358,36 +440,17 @@ public abstract class Unit : Entity
         damagePopUp.ShowDamage(damage);
     }
 
-    private void ResetAttackStatus() => SetAttackStatus(AttackStatus.Normal);
     private void CheckDeathEvent(Unit unit)
     {
         if (GetCurrentHealth <= 0) InvokeDeathEvent(unit);
     }
-    private void UpdateStatusEffectsOnSkill(Unit unit, ActiveSkill skill) => UpdateStatusEffects();
-    private void PostStatusEffect() => GetStatusEffects?.ForEach(i => i.DoPostEffect());
-
+    
     private TargetInfo GetBattleStageInfo()
     {
         var battleStage = BattlestageManager.instance;
         if (battleStage == null) return TargetInfo.Null;
         return new TargetInfo(battleStage.GetSelectedTarget().AsUnit(), null, null, battleStage.GetCasterTeamAsUnit(), battleStage.GetEnemyTeamAsUnit());
     }
-    private void ResetTotalDamageInTurn() => _totalDamageInTurn = 0;
-    private bool StatusEffectsNullOrEmpty => _statusEffects == null || _statusEffects.Count == 0;
     
-    private void HandleActiveSkill()
-    {
-        var skill = GetBaseUnit.GetUnitActiveSkill(this);
-        if (skill == null) return;
-        SetActiveSkill(skill);
-    }
-
     #endregion
-}
-
-public enum AttackStatus
-{
-    Normal = 0,
-    Deflected,
-    Reflected
 }

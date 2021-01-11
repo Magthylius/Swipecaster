@@ -1,66 +1,64 @@
+using ConversionFunctions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public enum RuneType
 {
-    NULL = 0,
+    NULL = -1,
     GRON, FYOR, TEHK, KHUA, AYRO,
-    RUNE_TOTAL,
-    
-    LIGHT,
-    DARK,
-    MIND
+    RUNE_TOTAL
 }
 
-public struct RuneStorage
+public struct RuneStorage : IEquatable<RuneStorage>
 {
     public RuneType runeType;
     public int amount;
     public static RuneStorage Null => new RuneStorage(RuneType.NULL, 0);
-    public static bool Equals(RuneStorage storage, RuneStorage otherStorage)
-        => storage.runeType == otherStorage.runeType && storage.amount == otherStorage.amount;
-
+    
     public RuneStorage(RuneType _runeType, int _amount)
     {
         runeType = _runeType;
         amount = _amount;
     }
+
+    #region Equals and Operators
+
+    public override bool Equals(object obj) => obj is RuneStorage storage && Equals(storage);
+    public bool Equals(RuneStorage other) => runeType == other.runeType && amount == other.amount;
+    public override int GetHashCode()
+    {
+        int hashCode = -1298878394;
+        hashCode = hashCode * -1521134295 + runeType.GetHashCode();
+        hashCode = hashCode * -1521134295 + amount.GetHashCode();
+        return hashCode;
+    }
+    public static bool operator ==(RuneStorage left, RuneStorage right) => left.Equals(right);
+    public static bool operator !=(RuneStorage left, RuneStorage right) => !(left == right);
+
+    #endregion
 }
 
 public struct RuneRelations
 {
     private List<RuneType> _advantage;
     private List<RuneType> _weakness;
-    public List<RuneType> Advantage => _advantage;
-    public List<RuneType> Weakness => _weakness;
+    public readonly List<RuneType> Advantage => _advantage;
+    public readonly List<RuneType> Weakness => _weakness;
 
     public static RuneRelations GetRelations(RuneType rune)
     {
-        var advant = new List<RuneType>();
-        var weak = new List<RuneType>();
-
-        switch (rune)
+        var (Advantage, Weakness) = rune switch
         {
-            case RuneType.GRON:
-                advant.Add(RuneType.TEHK); weak.Add(RuneType.AYRO);
-                break;
-            case RuneType.FYOR:
-                advant.Add(RuneType.AYRO); weak.Add(RuneType.KHUA);
-                break;
-            case RuneType.TEHK:
-                advant.Add(RuneType.KHUA); weak.Add(RuneType.GRON);
-                break;
-            case RuneType.KHUA:
-                advant.Add(RuneType.FYOR); weak.Add(RuneType.TEHK);
-                break;
-            case RuneType.AYRO:
-                advant.Add(RuneType.GRON); weak.Add(RuneType.FYOR);
-                break;
-            case RuneType.NULL:
-                break;
-        }
+            RuneType.GRON => (Advantage: RuneType.TEHK, Weakness: RuneType.AYRO),
+            RuneType.FYOR => (Advantage: RuneType.AYRO, Weakness: RuneType.KHUA),
+            RuneType.TEHK => (Advantage: RuneType.KHUA, Weakness: RuneType.GRON),
+            RuneType.KHUA => (Advantage: RuneType.FYOR, Weakness: RuneType.TEHK),
+            RuneType.AYRO => (Advantage: RuneType.GRON, Weakness: RuneType.FYOR),
+            _ => (Advantage: RuneType.NULL, Weakness: RuneType.NULL),
+        };
 
-        return new RuneRelations(new List<RuneType>(advant), new List<RuneType>(weak));
+        return new RuneRelations(new List<RuneType>() { Advantage }, new List<RuneType>() { Weakness });
     }
 
     public RuneRelations(List<RuneType> advantage, List<RuneType> weakness)
@@ -70,35 +68,63 @@ public struct RuneRelations
     }
 }
 
-public struct RuneCollection
+public struct RuneCollection : IEquatable<RuneCollection>
 {
-    private List<RuneStorage> _allRunes;
+    private Dictionary<RuneType, RuneStorage> _allRunes;
 
-    public int TotalRuneCount
+    public readonly int TotalRuneCount
         => GronRunes.amount + FyorRunes.amount + TehkRunes.amount + KhuaRunes.amount + AyroRunes.amount;
-    public RuneStorage GronRunes => _allRunes[Convert.ToInt32(RuneType.GRON) - 1];
-    public RuneStorage FyorRunes => _allRunes[Convert.ToInt32(RuneType.FYOR) - 1];
-    public RuneStorage TehkRunes => _allRunes[Convert.ToInt32(RuneType.TEHK) - 1];
-    public RuneStorage KhuaRunes => _allRunes[Convert.ToInt32(RuneType.KHUA) - 1];
-    public RuneStorage AyroRunes => _allRunes[Convert.ToInt32(RuneType.AYRO) - 1];
-    public List<RuneStorage> GetAllStorages => _allRunes;
+    public readonly RuneStorage GronRunes => _allRunes[RuneType.GRON];
+    public readonly RuneStorage FyorRunes => _allRunes[RuneType.FYOR];
+    public readonly RuneStorage TehkRunes => _allRunes[RuneType.TEHK];
+    public readonly RuneStorage KhuaRunes => _allRunes[RuneType.KHUA];
+    public readonly RuneStorage AyroRunes => _allRunes[RuneType.AYRO];
+    public readonly Dictionary<RuneType, RuneStorage> GetAllStorages => _allRunes;
+    public readonly RuneStorage GetRuneStorage(RuneType runeType) => _allRunes[runeType];
     public static RuneCollection Null => new RuneCollection(RuneStorage.Null, RuneStorage.Null, RuneStorage.Null, RuneStorage.Null, RuneStorage.Null);
-    public static bool Equals(RuneCollection coll1, RuneCollection coll2)
-        => RuneStorage.Equals(coll1.GronRunes, coll2.GronRunes) &&
-           RuneStorage.Equals(coll1.FyorRunes, coll2.FyorRunes) &&
-           RuneStorage.Equals(coll1.TehkRunes, coll2.TehkRunes) &&
-           RuneStorage.Equals(coll1.KhuaRunes, coll2.KhuaRunes) &&
-           RuneStorage.Equals(coll1.AyroRunes, coll2.AyroRunes);
+    public static bool REquals(RuneCollection coll1, RuneCollection coll2)
+        => coll1.GronRunes == coll2.GronRunes &&
+           coll1.FyorRunes == coll2.FyorRunes &&
+           coll1.TehkRunes == coll2.TehkRunes &&
+           coll1.KhuaRunes == coll2.KhuaRunes &&
+           coll1.AyroRunes == coll2.AyroRunes;
 
     public RuneCollection(RuneStorage gron, RuneStorage fyor, RuneStorage tehk, RuneStorage khua, RuneStorage ayro)
     {
-        _allRunes = new List<RuneStorage>(Convert.ToInt32(RuneType.RUNE_TOTAL) - 1)
+        _allRunes = new Dictionary<RuneType, RuneStorage>
         {
-            gron,
-            fyor,
-            tehk,
-            khua,
-            ayro
+            { RuneType.GRON, gron },
+            { RuneType.FYOR, fyor },
+            { RuneType.TEHK, tehk },
+            { RuneType.KHUA, khua },
+            { RuneType.AYRO, ayro }
         };
     }
+
+    #region Equals and Operators
+
+    public override bool Equals(object obj) => obj is RuneCollection collection && Equals(collection);
+    public bool Equals(RuneCollection other)
+        => GronRunes.Equals(other.GronRunes) &&
+           FyorRunes.Equals(other.FyorRunes) &&
+           TehkRunes.Equals(other.TehkRunes) &&
+           KhuaRunes.Equals(other.KhuaRunes) &&
+           AyroRunes.Equals(other.AyroRunes);
+    public override int GetHashCode()
+    {
+        int hashCode = -2088774972;
+        hashCode = hashCode * -1521134295 + EqualityComparer<Dictionary<RuneType, RuneStorage>>.Default.GetHashCode(_allRunes);
+        hashCode = hashCode * -1521134295 + GronRunes.GetHashCode();
+        hashCode = hashCode * -1521134295 + FyorRunes.GetHashCode();
+        hashCode = hashCode * -1521134295 + TehkRunes.GetHashCode();
+        hashCode = hashCode * -1521134295 + KhuaRunes.GetHashCode();
+        hashCode = hashCode * -1521134295 + AyroRunes.GetHashCode();
+        hashCode = hashCode * -1521134295 + TotalRuneCount.GetHashCode();
+        hashCode = hashCode * -1521134295 + EqualityComparer<Dictionary<RuneType, RuneStorage>>.Default.GetHashCode(GetAllStorages);
+        return hashCode;
+    }
+    public static bool operator ==(RuneCollection left, RuneCollection right) => left.Equals(right);
+    public static bool operator !=(RuneCollection left, RuneCollection right) => !(left == right);
+
+    #endregion
 }

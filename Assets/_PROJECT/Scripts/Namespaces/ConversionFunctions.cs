@@ -1,6 +1,8 @@
 using System;
+using System.ComponentModel;
 using System.Text;
 using UnityEngine;
+using Component = UnityEngine.Component;
 
 namespace ConversionFunctions
 {
@@ -15,10 +17,16 @@ namespace ConversionFunctions
         public static T AsType<T>(this T tee) where T : Component => tee != null ? tee.GetComponent<T>() : null;
 
         public static float AsFloat(this int number) => number;
+        public static int AsInt<T>(this T item) where T : Enum => Convert.ToInt32(item);
+        public static int AsInt(this float item) => Mathf.RoundToInt(item);
+        public static int AsInt(this bool item) => Convert.ToInt32(item);
+        public static bool AsBool(this int item) => Convert.ToBoolean(item);
     }
 
     public static class TenshiStrings
     {
+        public static string NameOfClass<T>(this T type) where T : class => TypeDescriptor.GetClassName(type.GetType());
+
         public static string AddSpacesBeforeCapitalLetters(this string text, bool hasAcronym)
         {
             if (string.IsNullOrWhiteSpace(text)) return string.Empty;
