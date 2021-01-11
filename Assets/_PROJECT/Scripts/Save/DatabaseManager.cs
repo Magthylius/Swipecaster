@@ -6,7 +6,7 @@ public class DatabaseManager : MonoBehaviour
 {
     public static DatabaseManager instance;
 
-    string casterLocation = "ScriptableObjects/Casters/Generic";
+    string casterLocation = "ScriptableObjects/Casters/ID";
     
     [SerializeField] PlayerInventoryData playerData;
 
@@ -77,7 +77,7 @@ public class DatabaseManager : MonoBehaviour
 
         playerAvailableCasters = new List<UnitObject>();
         
-        foreach (var id in liveCaster)
+        foreach (var id in playerData.casterDatabase)
         {
             for (int i = 0; i < allCasters.Count; i++)
             {
