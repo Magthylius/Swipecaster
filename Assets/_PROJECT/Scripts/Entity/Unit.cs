@@ -83,7 +83,7 @@ public abstract class Unit : Entity
     {
         if (healAmount <= 0) return;
         AddCurrentHealth(healAmount);
-        DamagePopUp(healAmount, false);
+        TriggerDamagePopUp(healAmount, false);
     }
 
     #endregion
@@ -344,7 +344,7 @@ public abstract class Unit : Entity
         AddCurrentHealth(-GetTotalDamageInTurn);
         GetStatusEffects.ForEach(i => i.DoOnHitEffect(damager, GetBattleStageInfo(), GetTotalDamageInTurn));
 
-        DamagePopUp(GetTotalDamageInTurn, true);
+        TriggerDamagePopUp(GetTotalDamageInTurn, true);
     }
 
     protected virtual void StartTurnMethods()
@@ -433,7 +433,7 @@ public abstract class Unit : Entity
     #region Private Methods
 
     private void GetDamagePopUp() => damagePopUp = GetComponentInChildren<DamagePopUp>();
-    private void DamagePopUp(int damage, bool isDamage)
+    private void TriggerDamagePopUp(int damage, bool isDamage)
     {
         if (damagePopUp == null) return;
         damagePopUp.ShowPopUp(damage, true);

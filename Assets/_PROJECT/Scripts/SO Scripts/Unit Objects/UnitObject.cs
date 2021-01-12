@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Unit/Unit Object")]
 public class UnitObject : ScriptableObject
 {
     [Header("General")]
@@ -88,33 +87,37 @@ public class UnitObject : ScriptableObject
         return summonObject;
     }
 
+    public virtual void CalculateRandomisedStats() => CalculateActualStats(1200, 500, 500);
+
     #endregion
 
     #region ID Specific Methods
 
     public virtual ActiveSkill GetUnitActiveSkill(Unit unit) => null;
-    
+
     #endregion
 
     #region Public Calculation Method
 
-    public void CalculateActualStats()
-    {
-        StatInfo currentInfo;
-
-        currentInfo = GenerateStatInfo(MaxHealth);
-        LevelTotalHealth = Mathf.RoundToInt(CalculateLevelParabolicStat(currentInfo) + CalculateLevelLinearStat(currentInfo));
-
-        currentInfo = GenerateStatInfo(MaxAttack);
-        LevelTotalAttack = Mathf.RoundToInt(CalculateLevelParabolicStat(currentInfo) + CalculateLevelLinearStat(currentInfo));
-
-        currentInfo = GenerateStatInfo(MaxDefence);
-        LevelTotalDefence = Mathf.RoundToInt(CalculateLevelParabolicStat(currentInfo) + CalculateLevelLinearStat(currentInfo));
-    }
+    public void CalculateActualStats() => CalculateActualStats(MaxHealth, MaxAttack, MaxDefence);
 
     #endregion
 
-    #region Private Methods
+    #region Private & Protected Methods
+
+    protected void CalculateActualStats(int maxHealth, int maxAttack, int maxDefence)
+    {
+        StatInfo currentInfo;
+
+        currentInfo = GenerateStatInfo(maxHealth);
+        LevelTotalHealth = Mathf.RoundToInt(CalculateLevelParabolicStat(currentInfo) + CalculateLevelLinearStat(currentInfo));
+
+        currentInfo = GenerateStatInfo(maxAttack);
+        LevelTotalAttack = Mathf.RoundToInt(CalculateLevelParabolicStat(currentInfo) + CalculateLevelLinearStat(currentInfo));
+
+        currentInfo = GenerateStatInfo(maxDefence);
+        LevelTotalDefence = Mathf.RoundToInt(CalculateLevelParabolicStat(currentInfo) + CalculateLevelLinearStat(currentInfo));
+    }
 
     private StatInfo GenerateStatInfo(float maxCap)
         => new StatInfo(maxCap * baseStatMultiplier, maxCap * paraCapMultiplier, maxCap * baseStatCapMultiplier);
@@ -132,22 +135,25 @@ public class UnitObject : ScriptableObject
         return linearGradient * CurrentLevel + info.baseStat;
     }
 
+    private void ClampCurrentLevel()
+    {
+        if (CurrentLevel < 1) CurrentLevel = 1;
+        if (CurrentLevel > MaxLevel) CurrentLevel = MaxLevel;
+    }
+
     private void UpdateSkillData(ActiveSkill skill)
     {
-        if (skill != null)
-        {
-            SkillName = skill.Name;
-            SkillDescription = skill.Description;
-        }
+        if (skill == null) return;
+        SkillName = skill.Name;
+        SkillDescription = skill.Description;
     }
 
     private void OnValidate()
-	{
-		if(CurrentLevel < 1) CurrentLevel = 1;
-		if(CurrentLevel > MaxLevel) CurrentLevel = MaxLevel;
-		CalculateActualStats();
+    {
+        ClampCurrentLevel();
+        CalculateActualStats();
         UpdateSkillData(GetUnitActiveSkill(null));
-	}
+    }
 
     #endregion
 }
