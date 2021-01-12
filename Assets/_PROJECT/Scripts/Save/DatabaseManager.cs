@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using UnityEngine;
 
@@ -106,6 +107,7 @@ public class DatabaseManager : MonoBehaviour
     public void GenerateNewSaveData()
     {
         playerData = new PlayerInventoryData();
+        playerData.currencyDatabase = new CurrencyData(1000, 10);
         playerData.casterDatabase.Add(new CasterDataStats("001", 1, 0, true));
         playerData.casterDatabase.Add(new CasterDataStats("002", 1, 0, true));
         playerData.casterDatabase.Add(new CasterDataStats("004", 1, 0, true));
@@ -164,16 +166,16 @@ public class DatabaseManager : MonoBehaviour
             print("Caster already dead");
     }
 
-    public void AddCaster(string _id)
+    public void AddCaster(string id)
     {
-        if (playerData.casterDatabase.Any(item => item.ID == _id))
+        if (playerData.casterDatabase.Any(item => item.ID == id))
         {
             //! maybe a duplicate function?
             print("Already Exist");
 
             for (int i = 0; i < playerAvailableCasters.Count; i++)
             {
-                if (playerAvailableCasters[i].ID == _id)
+                if (playerAvailableCasters[i].ID == id)
                 {
                     playerData.casterDatabase[i].Mastery++;
                     break;
@@ -185,9 +187,9 @@ public class DatabaseManager : MonoBehaviour
         {
             for (int i = 0; i < allCasters.Count; i++)
             {
-                if (allCasters[i].ID == _id)
+                if (allCasters[i].ID == id)
                 {
-                    playerData.casterDatabase.Add(new CasterDataStats(_id, 1, 0, true));
+                    playerData.casterDatabase.Add(new CasterDataStats(id, 1, 0, true));
                     break;
                 }
             }
@@ -212,9 +214,39 @@ public class DatabaseManager : MonoBehaviour
                 liveCaster.Add(caster.ID);
             }
         }
-        
     }
 
+    // ! true == premium currency
+    // ! false == regular currency
+
+    public void PurchaseDeduction(int price, bool isPremium)
+    {
+        if (isPremium)
+        {
+            playerData.currencyDatabase.PremiumCurrency -= price;
+        }
+        else
+        {
+            playerData.currencyDatabase.Currency -= price;
+        }
+        
+        Save();
+    }
+
+    public void AddCurrency(int price, bool isPremium)
+    {
+        if (isPremium)
+        {
+            playerData.currencyDatabase.PremiumCurrency += price;
+        }
+        else
+        {
+            playerData.currencyDatabase.Currency += price;
+        }
+        
+        Save();
+    }
+    
     private void UpdateUnitObjectsWithDataStats() => GetDatabaseStatUnitPairs().ToList().ForEach(pair => pair.Unit.SyncDataForCaster(pair.Stat));
     private void UpdateDataStatsWithUnitObjects() => playerData.casterDatabase = new List<CasterDataStats>(GetDatabaseStatUnitPairs().Select(x => x.Unit.GetCasterData()));
     private IEnumerable<StatUnitPair> GetDatabaseStatUnitPairs() => GetCasterDataStats().Join(AllUnitObjects, stat => stat.ID, unit => unit.ID, (s, u) => new StatUnitPair(s, u));
@@ -228,6 +260,9 @@ public class DatabaseManager : MonoBehaviour
     public PlayerInventoryData GetPlayerData() => playerData;
     public Vector3 GetArrowTransform() => playerData.arrowTransform;
     public IEnumerable<UnitObject> AllUnitObjects => Resources.LoadAll<UnitObject>(casterLocation);
+
+    public int GetCurrency() => playerData.currencyDatabase.Currency;
+    public int GetPremiumCurrency() => playerData.currencyDatabase.PremiumCurrency;
 
     #endregion
 }
