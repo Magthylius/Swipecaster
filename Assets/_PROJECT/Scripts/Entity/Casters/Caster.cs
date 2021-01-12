@@ -1,5 +1,4 @@
 using ConversionFunctions;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -26,19 +25,11 @@ public abstract class Caster : Unit
     public override int CalculateDamage(TargetInfo targetInfo, RuneCollection runes)
     {
         int totalDamage = GetCurrentAttack;
-        if (runes != RuneCollection.Null)
-        {
-            var relations = RuneRelations.GetRelations(GetRuneType);
-            var advan = relations.Advantage.Single(); var weak = relations.Weakness.Single();
-            float cummulatedRuneMultiplier = 1.0f + runes.GetAllStorages.Sum(rune => rune.Value.amount * GetRuneMultiplier(advan, weak, rune.Key));
-            totalDamage = Round(totalDamage * cummulatedRuneMultiplier);
-        }
-
-        float statusOutMultiplier = 1.0f;
-        statusOutMultiplier += GetStatusEffects.Sum(status => status.GetStatusDamageOutModifier());
-
-        return Mathf.Abs(Round(totalDamage * statusOutMultiplier));
+        float cummulatedRuneMultiplier = 1.0f + CalculateCummulatedRuneMultiplier(runes) * NotEmptyCollection(runes).AsInt();
+        float statusOutMultiplier = 1.0f + GetStatusEffects.Sum(status => status.GetStatusDamageOutModifier());
+        return AbsRound(totalDamage * cummulatedRuneMultiplier * statusOutMultiplier);
     }
+
     public override TargetInfo GetAffectedTargets(TargetInfo info)
         => GetCurrentProjectile.GetTargets(info);
 
@@ -75,15 +66,32 @@ public abstract class Caster : Unit
 
     #endregion
 
-    #region Private Methods
+    #region Private & Protected Methods
 
-    private float GetRuneMultiplier(RuneType advantage, RuneType weakness, RuneType thisType)
+    protected float CalculateCummulatedRuneMultiplier(RuneCollection runes)
+        => runes.GetAllStorages.Sum(rune => rune.Value.amount * GetRuneMultiplierFor(rune.Key));
+
+    private float GetRuneMultiplierFor(RuneType comparingType)
     {
+        var relations = GetRuneRelations(GetRuneType);
+        var advantage = relations.SingleAdvantage;
+        var weakness = relations.SingleWeakness;
+
         return
-            (advantage != thisType && weakness != thisType).AsInt() * 1.0f +
-            (advantage == thisType).AsInt() * GetRuneAdvantageMultiplier() +
-            (weakness == thisType).AsInt() * GetRuneWeaknessMultiplier();
+            (IsNeutral(), IsAdvantage(), IsWeakness()) switch
+            {
+                (true, false, false) => 1.0f,
+                (false, true, false) => GetRuneAdvantageMultiplier(),
+                (false, false, true) => GetRuneWeaknessMultiplier(),
+                _ => 0.0f,
+            };
+
+        bool IsNeutral() => advantage != comparingType && weakness != comparingType;
+        bool IsAdvantage() => advantage == comparingType;
+        bool IsWeakness() => weakness == comparingType;
     }
+
+    private static bool NotEmptyCollection(RuneCollection runes) => runes != RuneCollection.Null;
 
     #endregion
 }

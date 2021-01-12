@@ -43,8 +43,10 @@ public struct RuneRelations
 {
     private List<RuneType> _advantage;
     private List<RuneType> _weakness;
-    public readonly List<RuneType> Advantage => _advantage;
-    public readonly List<RuneType> Weakness => _weakness;
+    public readonly List<RuneType> AdvantageList => _advantage;
+    public readonly List<RuneType> WeaknessList => _weakness;
+    public readonly RuneType SingleAdvantage => _advantage.Single();
+    public readonly RuneType SingleWeakness => _weakness.Single();
 
     public static RuneRelations GetRelations(RuneType rune)
     {

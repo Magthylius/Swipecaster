@@ -138,11 +138,14 @@ public abstract class Unit : Entity
         target.SetOnHitEdge(IdentifyTargetHitEdge());
         return GetEdgeMultiplier();
     }
+    public RuneRelations GetRuneRelations() => RuneRelations.GetRelations(GetRuneType);
+    public static RuneRelations GetRuneRelations(RuneType runeType) => RuneRelations.GetRelations(runeType);
 
     private OnAttackEdge IdentifyAttackEdgeAgainstUnit(Unit comparingUnit)
     {
-        var otherRuneRelations = RuneRelations.GetRelations(comparingUnit.GetRuneType);
-        var otherAdvant = otherRuneRelations.Advantage.Single(); var otherWeak = otherRuneRelations.Weakness.Single();
+        var otherRuneRelations = GetRuneRelations(comparingUnit.GetRuneType);
+        var otherAdvant = otherRuneRelations.SingleAdvantage;
+        var otherWeak = otherRuneRelations.SingleWeakness;
         var thisType = GetRuneType;
 
         bool neutral = otherAdvant != thisType && otherWeak != thisType;
@@ -167,7 +170,6 @@ public abstract class Unit : Entity
             OnAttackEdge.Weak => OnHitEdge.Advantage,
             _ => OnHitEdge.Idle,
         };
-
     private float GetEdgeMultiplier() =>
         GetOnAttackEdge switch
         {
