@@ -25,13 +25,13 @@
               <e p="ActiveSkill.cs" t="Include" />
               <e p="Caster Skills" t="Include">
                 <e p="BackRotation.cs" t="Include" />
+                <e p="BlackSun.cs" t="Include" />
                 <e p="CasterSkill.cs" t="Include" />
                 <e p="CrypticMark.cs" t="Include" />
                 <e p="DrumBeater.cs" t="Include" />
                 <e p="GaussCaliber.cs" t="Include" />
                 <e p="GeminiPetrification.cs" t="Include" />
                 <e p="HardCover.cs" t="Include" />
-                <e p="KuroiTaiyou.cs" t="Include" />
                 <e p="LuringDesire.cs" t="Include" />
                 <e p="MorningDew.cs" t="Include" />
                 <e p="MothLamp.cs" t="Include" />
@@ -63,6 +63,10 @@
             <e p="Camera" t="Include">
               <e p="CameraManager.cs" t="Include" />
               <e p="CameraSizeAdjuster.cs" t="Include" />
+            </e>
+            <e p="Dialogue" t="Include">
+              <e p="DialogueManager.cs" t="Include" />
+              <e p="DialogueTrigger.cs" t="Include" />
             </e>
             <e p="Editor" t="Include">
               <e p="HierarchyLabel.cs" t="Include" />
@@ -132,11 +136,13 @@
                 <e p="TargetInfo.cs" t="Include" />
               </e>
               <e p="Summons" t="Include">
+                <e p="BeatDrum.cs" t="Include" />
                 <e p="Lamp.cs" t="Include" />
                 <e p="Summon.cs" t="Include" />
               </e>
               <e p="Unit.cs" t="Include" />
               <e p="UnitEntry.cs" t="Include" />
+              <e p="UnitEnums.cs" t="Include" />
             </e>
             <e p="Environment" t="Include">
               <e p="EnvironmentManager.cs" t="Include" />
@@ -153,6 +159,7 @@
               <e p="HomeCanvasManager.cs" t="Include" />
               <e p="InventoryManager.cs" t="Include" />
               <e p="LevelSelectBehavior.cs" t="Include" />
+              <e p="MapCloudsBehavior.cs" t="Include" />
               <e p="MapSelectionManager.cs" t="Include" />
               <e p="MenuCanvasPage.cs" t="Include" />
               <e p="PartyCanvasManager.cs" t="Include" />
@@ -214,9 +221,12 @@
               </e>
               <e p="SaveManager.cs" t="Include" />
               <e p="SaveTest.cs" t="Include" />
+              <e p="StatUnitPair.cs" t="Include" />
             </e>
             <e p="SO Scripts" t="Include">
+              <e p="AudioData.cs" t="Include" />
               <e p="CasterParty.cs" t="Include" />
+              <e p="DialogueInfo.cs" t="Include" />
               <e p="GachaBanner.cs" t="Include" />
               <e p="LevelConfigurationObject.cs" t="Include" />
               <e p="Levels and Quests" t="Include">
@@ -247,26 +257,33 @@
                 <e p="Unit_018.cs" t="Include" />
                 <e p="Unit_019.cs" t="Include" />
                 <e p="Unit_020.cs" t="Include" />
+                <e p="Unit_021.cs" t="Include" />
                 <e p="UnitObject.cs" t="Include" />
               </e>
             </e>
             <e p="Status Effects" t="Include">
+              <e p="AttackDown.cs" t="Include" />
               <e p="AttackToPartyHeal.cs" t="Include" />
               <e p="AttackUp.cs" t="Include" />
+              <e p="BeatDrumEffect.cs" t="Include" />
               <e p="Corrosion.cs" t="Include" />
               <e p="DamageTakenUp.cs" t="Include" />
               <e p="DamageToDistributedPartyHeal.cs" t="Include" />
               <e p="DefenceDown.cs" t="Include" />
-              <e p="EmptyStatus.cs" t="Include" />
+              <e p="DefenceUp.cs" t="Include" />
               <e p="FixedReboundDamage.cs" t="Include" />
               <e p="Flame.cs" t="Include" />
+              <e p="NullStatus.cs" t="Include" />
               <e p="PierceDamageUp.cs" t="Include" />
               <e p="Poison.cs" t="Include" />
               <e p="PriorityUp.cs" t="Include" />
               <e p="ProjectileLocker.cs" t="Include" />
               <e p="ReboundDamageUp.cs" t="Include" />
+              <e p="ReboundingStatus.cs" t="Include" />
               <e p="ReboundRateUpKinectist.cs" t="Include" />
               <e p="StatusEffect.cs" t="Include" />
+              <e p="StatusOnAttack.cs" t="Include" />
+              <e p="StatusTemplate.cs" t="Include" />
               <e p="Stun.cs" t="Include" />
               <e p="Ununaliving.cs" t="Include" />
               <e p="Weakness.cs" t="Include" />

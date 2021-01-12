@@ -20,7 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b2ff588-542f-45f5-abf5-6973ac360757" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Environment/ParallaxBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Environment/ParallaxBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Swipecaster/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Swipecaster/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Swipecaster/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Swipecaster/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +42,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Inventory/PlayerInventoryData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Camera/CameraSizeAdjuster.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://D:/Slow Af Repo/Playground 3D/Library/PackageCache/com.unity.render-pipelines.core@8.2.0/Runtime/Utilities/CoreUtils.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Save/DatabaseManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Save/SaveManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Environment/ParallaxBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
@@ -53,6 +55,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Save/SaveTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/HomeCanvasManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/TurnBaseManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/SO Scripts/AudioData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/UnitPositionManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/Battle Scene/TickManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_PROJECT/Scripts/Camera/CameraManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -64,15 +67,18 @@
     <changedPaths>
       <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/TurnBaseManager.cs" />
       <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/General/Audio/AudioType.cs" />
-      <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/General/Audio/AudioManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/General/Audio/AudioTest.cs" />
       <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/Battle Scene/RuneManager.cs" />
       <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/Battle Scene/EnvironmentManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Save/DatabaseManager.cs" />
       <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Environment/EnvironmentManager.cs" />
       <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyConfigurationBehavior.cs" />
       <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/HomeCanvasManager.cs" />
       <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Environment/ParallaxBehaviour.cs" />
+      <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/BattlestageManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Camera/CameraManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Save/DatabaseManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/SO Scripts/AudioData.cs" />
+      <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/General/Audio/AudioTest.cs" />
+      <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/General/Audio/AudioManager.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1lgUKEMQznl8d4VgaS2WyrD60iQ" />
@@ -134,6 +140,9 @@
       <workItem from="1609851628268" duration="6586000" />
       <workItem from="1610106058618" duration="160000" />
       <workItem from="1610106352226" duration="369000" />
+      <workItem from="1610283925370" duration="4633000" />
+      <workItem from="1610340713656" duration="15983000" />
+      <workItem from="1610437729747" duration="2381000" />
     </task>
     <servers />
   </component>
