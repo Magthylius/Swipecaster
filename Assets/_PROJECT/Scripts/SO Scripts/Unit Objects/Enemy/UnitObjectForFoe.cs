@@ -6,8 +6,10 @@ public class UnitObjectForFoe : UnitObject
     [Header("Foe Settings")]
     [SerializeField, Range(1.0f, 5000.0f)] private float minRandomHealth;
     [SerializeField, Range(1.0f, 5000.0f)] private float maxRandomHealth;
+    [Space(5)]
     [SerializeField, Range(1.0f, 5000.0f)] private float minRandomAttack;
     [SerializeField, Range(1.0f, 5000.0f)] private float maxRandomAttack;
+    [Space(5)]
     [SerializeField, Range(1.0f, 5000.0f)] private float minRandomDefence;
     [SerializeField, Range(1.0f, 5000.0f)] private float maxRandomDefence;
 
