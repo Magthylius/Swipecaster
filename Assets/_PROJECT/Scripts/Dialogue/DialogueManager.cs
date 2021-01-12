@@ -88,7 +88,7 @@ public class DialogueManager : MonoBehaviour
         DisplayNextSentence();
     }
 
-    private void DisplayNextSentence()
+    public void DisplayNextSentence()
     {
         if(sentences.Count == 0)
         {
@@ -103,7 +103,6 @@ public class DialogueManager : MonoBehaviour
     private void EndDialogue()
     {
         animator.SetBool("isOpen", false);
-        Debug.Log("End of conversations");
     }
 
     [ContextMenu("Unlock")]
