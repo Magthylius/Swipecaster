@@ -109,10 +109,10 @@ public class DatabaseManager : MonoBehaviour
         playerData.casterDatabase.Add(new CasterDataStats("001", 1, 0, true));
         playerData.casterDatabase.Add(new CasterDataStats("002", 1, 0, true));
         playerData.casterDatabase.Add(new CasterDataStats("004", 1, 0, true));
-        playerData.partyDatabase.Add(new PartyData("Team A", new List<string>(){"001", "002", "004"}));
-        playerData.partyDatabase.Add(new PartyData("Team B", new List<string>(){"001", "002", "004"}));
-        playerData.partyDatabase.Add(new PartyData("Team C", new List<string>(){"001", "002", "004"}));
-        playerData.partyDatabase.Add(new PartyData("Team D", new List<string>(){"001", "002", "004"}));
+        playerData.partyDatabase.Add(new PartyData("Team A", new List<string>(){"001"}));
+        playerData.partyDatabase.Add(new PartyData("Team B", new List<string>(){"001"}));
+        playerData.partyDatabase.Add(new PartyData("Team C", new List<string>(){"001"}));
+        playerData.partyDatabase.Add(new PartyData("Team D", new List<string>(){"001"}));
 
         char letter = 'A';
         
