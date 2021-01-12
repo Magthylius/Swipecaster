@@ -9,7 +9,8 @@ public class DialogueTrigger : MonoBehaviour
     public void TriggerDialogue()
     {
         if(dialogue.dialogueInfo.isTriggered) return;
-        
+        if (DialogueManager.instance.tutorialPhase == TutorialPhase.guideFinish) return;
+
         DialogueManager.instance.StartDialogue(dialogue);
         dialogue.dialogueInfo.isTriggered = true;
     }

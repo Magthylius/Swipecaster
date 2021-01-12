@@ -8525,6 +8525,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1055314239308554422, guid: 730f6a41ce2fd544bbae7b66e51e5a09, type: 3}
   m_PrefabInstance: {fileID: 1600318899}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &637248342 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4363851937502216278, guid: 77af10528f6347f4b8c6d045e13eb6e1, type: 3}
+  m_PrefabInstance: {fileID: 1063390338}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &643579701
 GameObject:
   m_ObjectHideFlags: 0
@@ -19941,7 +19946,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c2f10fb0af07ab4798ea3afa03952e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionSpeed: 15
+  mapIcon: {fileID: 637248342}
+  campfireIcon: {fileID: 1321018945}
   partyCanvas: {fileID: 1874627586}
   inventoryCanvas: {fileID: 233503307}
   homeCanvas: {fileID: 1142882402}
@@ -19950,6 +19956,7 @@ MonoBehaviour:
   shopCanvas: {fileID: 2121997435}
   settingsCanvas: {fileID: 1708089187}
   bottomOverlay: {fileID: 1298124339}
+  transitionSpeed: 15
   overlaySpeed: 8
   energyCurrent: {fileID: 798540754}
   energyMax: {fileID: 1680964626}
@@ -20277,6 +20284,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1321009101}
   m_CullTransparentMesh: 1
+--- !u!1 &1321018945 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4363851937502216278, guid: 77af10528f6347f4b8c6d045e13eb6e1, type: 3}
+  m_PrefabInstance: {fileID: 1775598512}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1323908944
 GameObject:
   m_ObjectHideFlags: 0
@@ -25237,6 +25249,9 @@ MonoBehaviour:
   playerData:
     casterDatabase: []
     partyDatabase: []
+    currencyDatabase:
+      Currency: 0
+      PremiumCurrency: 0
     arrowTransform: {x: 0, y: 0, z: 0}
   liveCaster: []
   parties: []
@@ -32107,7 +32122,7 @@ MonoBehaviour:
   - dialogueInfo: {fileID: 11400000, guid: 3bf96ed3d13ec2c4cbbb07d053ddbef9, type: 2}
     guidedButton: {fileID: 2095384697}
   butttonParent: {fileID: 29100957}
-  tutorialPhase: 0
+  tutorialPhase: 3
 --- !u!4 &2092335702
 Transform:
   m_ObjectHideFlags: 0
