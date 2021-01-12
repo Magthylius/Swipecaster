@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 [System.Serializable]
@@ -6,8 +7,10 @@ public class PlayerInventoryData
 {
 	public List<CasterDataStats> casterDatabase = new List<CasterDataStats>();
     public List<PartyData> partyDatabase = new List<PartyData>();
+    public CurrencyData currencyDatabase;
 
     public Vector3 arrowTransform;
+    
 }
 
 [System.Serializable]
@@ -38,5 +41,18 @@ public class PartyData
 	    PartyName = partyName;
 	    CasterConfig = casterConfig;
     }
-    
+}
+
+[System.Serializable]
+public class CurrencyData
+{
+	public int Currency;
+	public int PremiumCurrency;
+
+	public CurrencyData(int currency, int premiumCurrency)
+	{
+		Currency = currency;
+		PremiumCurrency = premiumCurrency;
+	}
+	
 }
