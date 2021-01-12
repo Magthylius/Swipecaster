@@ -436,10 +436,7 @@ public abstract class Unit : Entity
     private void DamagePopUp(int damage, bool isDamage)
     {
         if (damagePopUp == null) return;
-        Color textColour = isDamage ? Color.red : Color.green;
-        damagePopUp.transform.parent.gameObject.SetActive(true);
-        damagePopUp.SetTextColour(textColour);
-        damagePopUp.ShowDamage(damage);
+        damagePopUp.ShowPopUp(damage, true);
     }
 
     private void CheckDeathEvent(Unit unit)
