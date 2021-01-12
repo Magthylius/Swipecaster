@@ -28,7 +28,26 @@ public class DialogueManager : MonoBehaviour
     private void Start()
     {
         sentences = new Queue<string>();
-       // StartDialogue(guidedDialogues[2]);
+        switch(tutorialPhase)
+        {
+            case TutorialPhase.guideToMap:
+                resetTrigger(guidedDialogues[0]);
+                StartDialogue(guidedDialogues[0]);
+                return;
+
+            case TutorialPhase.guideToGacha:
+                resetTrigger(guidedDialogues[1]);
+                StartDialogue(guidedDialogues[1]);
+                return;
+
+            case TutorialPhase.guideToParty:
+                resetTrigger(guidedDialogues[2]);
+                StartDialogue(guidedDialogues[2]);
+                return;
+
+            case TutorialPhase.guideFinish:
+                return;
+        }
     }
 
     public void StartDialogue(GuidedDialogue guidedDialogue)
@@ -69,7 +88,7 @@ public class DialogueManager : MonoBehaviour
         DisplayNextSentence();
     }
 
-    public void DisplayNextSentence()
+    private void DisplayNextSentence()
     {
         if(sentences.Count == 0)
         {
@@ -81,19 +100,26 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = sentence;
     }
 
-    public void EndDialogue()
+    private void EndDialogue()
     {
         animator.SetBool("isOpen", false);
         Debug.Log("End of conversations");
     }
 
-    public void unlockButton()
+    [ContextMenu("Unlock")]
+    public void unlockButtons()
     {
         foreach (Button button in butttonParent.GetComponentsInChildren<Button>())
         {       
             button.GetComponent<Image>().color = Color.white;          
             button.interactable = true;           
         }
+    }
+
+    private void resetTrigger(GuidedDialogue guidedDialogue)
+    {
+        guidedDialogue.dialogueInfo.isTriggered = false;
+        guidedDialogue.guidedButton.GetComponent<DialogueTrigger>().dialogue.dialogueInfo.isTriggered = false;
     }
 
     [ContextMenu("Guide To Map")]
@@ -136,5 +162,6 @@ public enum TutorialPhase
 {
     guideToMap,
     guideToGacha,
-    guideToParty
+    guideToParty,
+    guideFinish
 }
