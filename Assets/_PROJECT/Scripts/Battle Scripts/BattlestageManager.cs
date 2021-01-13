@@ -114,6 +114,7 @@ public class BattlestageManager : MonoBehaviour
                             casterExecutionTransform.position.y, casterExecutionTransform.position.z),
                         speed * Time.unscaledDeltaTime);
 
+                if (enemyExecutionTransform)
                 enemyExecutionTransform.position =
                         Vector3.Lerp(enemyExecutionTransform.position, new Vector3(battlestageCenter.position.x + battleGap,
                                 enemyExecutionTransform.position.y, enemyExecutionTransform.position.z),
@@ -123,12 +124,15 @@ public class BattlestageManager : MonoBehaviour
             {
                 if (casterExecutionTransform)
                     casterExecutionTransform.localScale = prevScaleCaster;
+                
+                if (enemyExecutionTransform)
                 enemyExecutionTransform.localScale = prevScaleEnemy;
 
                 if (casterExecutionTransform)
                     casterExecutionTransform.position = Vector3.Lerp(casterExecutionTransform.position,
                     new Vector3(casterExecutionTransform.parent.position.x, casterExecutionTransform.parent.position.y, casterExecutionTransform.parent.position.z), speed * Time.unscaledDeltaTime);
                 
+                if (enemyExecutionTransform)
                 enemyExecutionTransform.position = Vector3.Lerp(enemyExecutionTransform.position,
                     new Vector3(enemyExecutionTransform.parent.position.x, enemyExecutionTransform.parent.position.y, enemyExecutionTransform.parent.position.z), speed * Time.unscaledDeltaTime);
                 
@@ -140,7 +144,9 @@ public class BattlestageManager : MonoBehaviour
     {
         if (casterSortGroup)
             casterSortGroup.sortingOrder = 0;
-        enemySortingGroup.sortingOrder = 0;
+        
+        if (enemySortingGroup)
+            enemySortingGroup.sortingOrder = 0;
         allowExecutionAction = false;
     }
 
