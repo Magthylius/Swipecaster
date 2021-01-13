@@ -118,21 +118,9 @@ public class RuneBehaviour : MonoBehaviour
     {
         if (isPaused) return;
 
-        // if (!imageMode && !sr.isVisible)
-        // {
-        //     Deactivate();
-        // }
-        // else if (imageMode && Cam.IsVisibleFrom(rt, cam))
-        // {
-        //     Deactivate();
-        // }
-
-
         if (yAxis <= -spriteHeight)
-        {
             Deactivate();
-        }
-        
+
     }
     
 
