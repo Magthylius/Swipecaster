@@ -247,7 +247,7 @@ public class DatabaseManager : MonoBehaviour
         Save();
     }
 
-    
+    [ContextMenu("Restart Tutorial")]
     public void RestartTutorial()
     {
         playerData.tutorialPhase = TutorialPhase.guideToMap;
