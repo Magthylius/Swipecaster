@@ -49,9 +49,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseUnit: {fileID: 11400000, guid: 9f507505bbe8d1545a231196361142fa, type: 2}
-  _currentHealth: 678
-  _currentAttack: 181
-  _currentDefence: 182
+  _currentHealth: 697
+  _currentAttack: 239
+  _currentDefence: 175
   isPlayer: 0
   _totalDamageInTurn: 0
   runeAdvantageMultiplier: 1.5
@@ -185,7 +185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3307974278826585154, guid: 2303b58a9ed7ffb4ca29dc50cd0a4374, type: 3}
       propertyPath: m_LocalScale.x
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7661791650458428091, guid: 2303b58a9ed7ffb4ca29dc50cd0a4374, type: 3}
       propertyPath: m_RootOrder
