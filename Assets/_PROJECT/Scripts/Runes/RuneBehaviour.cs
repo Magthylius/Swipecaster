@@ -23,7 +23,8 @@ public class RuneBehaviour : MonoBehaviour
     Image img;
 
     Vector2 positionInScreen;
-    float spriteHeight;
+    [SerializeField]float spriteHeight;
+    float yAxis;
 
     float maxVelocity;
     bool selected = false;
@@ -41,6 +42,7 @@ public class RuneBehaviour : MonoBehaviour
         self = gameObject;
         sr = GetComponent<SpriteRenderer>();
         img = GetComponent<Image>();
+        
 
         if (imageMode) sr.enabled = false;
         else img.enabled = false;
@@ -59,10 +61,12 @@ public class RuneBehaviour : MonoBehaviour
         settingsManager.unpausedEvent.AddListener(SetStateUnpaused);
 
         Deactivate();
+        spriteHeight = img.rectTransform.sizeDelta.y * 0.5f;
     }
     
     void Update()
     {
+        yAxis = GetComponent<RectTransform>().position.y;
         if (isPaused) return;
 
         SelfDeactivate();
@@ -100,6 +104,7 @@ public class RuneBehaviour : MonoBehaviour
         if (isPaused) return;
         runeManager.GetActiveRuneList().Remove(this.gameObject);
         rb.velocity = new Vector2(0, -10);
+        yAxis = 100;
         gameObject.SetActive(false);
 
         if (selected) connectionManager.Disconnect(this);
@@ -113,14 +118,9 @@ public class RuneBehaviour : MonoBehaviour
     {
         if (isPaused) return;
 
-        if (!imageMode && !sr.isVisible)
-        {
+        if (yAxis <= -spriteHeight)
             Deactivate();
-        }
-        else if (imageMode && Cam.IsVisibleFrom(rt, cam))
-        {
-            Deactivate();
-        }
+
     }
     
 
@@ -156,7 +156,10 @@ public class RuneBehaviour : MonoBehaviour
 
         if (imageMode) img.sprite = deactivatedSprite;
         else sr.sprite = deactivatedSprite;
+        
     }
+
+
 
     #region Queries
     public RuneType GetRuneType() => type;
