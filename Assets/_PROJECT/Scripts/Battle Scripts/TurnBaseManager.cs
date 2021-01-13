@@ -1,23 +1,22 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ConversionFunctions;
-using Random = UnityEngine.Random;
 
 public class TurnBaseManager : MonoBehaviour
 {
     public static TurnBaseManager instance;
     BattlestageManager battlestageManager;
     UnitPositionManager unitPositionManager;
-    ComboManager comboManager;
     EnemyAttackManager enemyAttackManager;
     RuneManager runeManager;
     InformationManager infoManager;
     CameraManager cameraManager;
     RoomManager roomManager;
+    SceneTransitionManager sceneManager;
 
     [SerializeField] GameStateEnum battleState;
+    [SerializeField] private string sceneNameToLoadAfterBattlestageEnd = "MainMenuScene";
 
     [Header("Delay between states")] public float delaysInBetween; // Delays in between states
 
@@ -48,12 +47,12 @@ public class TurnBaseManager : MonoBehaviour
     {
         battlestageManager = BattlestageManager.instance;
         unitPositionManager = UnitPositionManager.instance;
-        comboManager = ComboManager.instance;
         runeManager = RuneManager.instance;
         enemyAttackManager = EnemyAttackManager.instance;
         infoManager = InformationManager.instance;
         cameraManager = CameraManager.instance;
         roomManager = RoomManager.Instance;
+        sceneManager = SceneTransitionManager.instance;
         battleState = GameStateEnum.INIT;
         StartCoroutine(InitBattle());
     }
@@ -169,6 +168,7 @@ public class TurnBaseManager : MonoBehaviour
                 msg += ". GGWP";
                 print(msg);
                 battleState = GameStateEnum.END;
+                sceneManager.ActivateTransition(sceneNameToLoadAfterBattlestageEnd);
                 return;
             }
         }

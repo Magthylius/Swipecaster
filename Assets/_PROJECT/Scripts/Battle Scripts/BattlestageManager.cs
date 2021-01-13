@@ -13,6 +13,7 @@ public class BattlestageManager : MonoBehaviour
     public Transform battlestageCenter;
     public Transform playerTeamGroup, enemyTeamGroup;
     private TurnBaseManager turnBaseManager;
+    private StageTargetHandler targetHandler;
     public Camera battleCamera = null;
 
     [Header("Gaps Settings")] 
@@ -79,7 +80,7 @@ public class BattlestageManager : MonoBehaviour
             Debug.LogWarning("BattlestageManager: Debugging Enabled");
         }
 
-        selectedTarget = enemyTeam[0];
+        SetTarget(enemyTeam[0]);
     }
 
     private void Update()
@@ -139,6 +140,8 @@ public class BattlestageManager : MonoBehaviour
             }
         }
     }
+
+    public void SetStageTargetHandler(StageTargetHandler stageTargetHandler) => targetHandler = stageTargetHandler;
 
     public void ResetSortingOrder()
     {
@@ -349,10 +352,16 @@ public class BattlestageManager : MonoBehaviour
         GameObject o = info.transform.gameObject;
         if (!o.CompareTag("Foe")) return;
 
-        if (selectedTarget == o) selectedTarget = null;
-        else selectedTarget = o;
+        if (selectedTarget == o) SetTarget(null);
+        else SetTarget(o);
     }
-    
+
+    private void SetTarget(GameObject target)
+    {
+        selectedTarget = target;
+        targetHandler.UpdateHandler(GetSelectedTarget());
+    }
+
     void KillUnit(Unit u)
     {
         if (GetCastersTeam().Contains(u.gameObject))
