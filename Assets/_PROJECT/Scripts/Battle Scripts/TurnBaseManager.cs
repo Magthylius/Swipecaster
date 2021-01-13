@@ -116,11 +116,13 @@ public class TurnBaseManager : MonoBehaviour
         cameraManager.MoveToUnit(enemy);
 
         highlighter.SetActive(false);
-        print("Is " + enemy.name + " turn");
+        battlestageManager.GetStageTargetHandler().DeactivateSpriteHolder();
 
         var current = GetCurrentEnemy().AsUnit();
         current.InvokeSelfTurnBeginEvent();
 
+        print("It's " + current.GetEntityName + "'s turn");
+        
         OnEnemyAttack();
     }
 
@@ -241,23 +243,29 @@ public class TurnBaseManager : MonoBehaviour
     IEnumerator CasterAttack()
     {
         cameraManager.ZoomToCenter();
+        highlighter.SetActive(false);
+        battlestageManager.GetStageTargetHandler().DeactivateSpriteHolder();
         battlestageManager.ExecuteAction(caster, battlestageManager.GetSelectedTarget());
         while (!cameraManager.GetIsFree())
         {
             yield return null;
         }
+        battlestageManager.GetStageTargetHandler().ActivateSpriteHolder();
         EndTurn();
     }
 
     IEnumerator EnemyAttack()
     {
         cameraManager.ZoomToCenter();
+        highlighter.SetActive(false);
+        battlestageManager.GetStageTargetHandler().DeactivateSpriteHolder();
         enemyAttackManager.CalculatePriority(enemy);
         battlestageManager.ExecuteAction(enemyAttackManager.GetCaster(), enemy);
         while (!cameraManager.GetIsFree())
         {
             yield return null;
         }
+        battlestageManager.GetStageTargetHandler().ActivateSpriteHolder();
         EndTurn();
     }
     

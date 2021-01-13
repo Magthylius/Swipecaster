@@ -413,6 +413,7 @@ public class BattlestageManager : MonoBehaviour
     }
 
     public GameObject GetSelectedTarget() => selectedTarget;
+    public StageTargetHandler GetStageTargetHandler() => targetHandler;
 
     #endregion
 
