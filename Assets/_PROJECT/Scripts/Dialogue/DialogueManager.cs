@@ -28,8 +28,8 @@ public class DialogueManager : MonoBehaviour
     private void Start()
     {
         sentences = new Queue<string>();
-        tutorialPhase = DatabaseManager.instance.GetTutorialPhase();
-        //DatabaseManager.instance.SaveTutorialState(tutorialPhase);
+        //tutorialPhase = DatabaseManager.instance.GetTutorialPhase();
+        DatabaseManager.instance.SaveTutorialState(tutorialPhase);
 
         switch (tutorialPhase)
         {

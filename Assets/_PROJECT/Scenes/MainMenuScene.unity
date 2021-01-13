@@ -12220,7 +12220,7 @@ MonoBehaviour:
   - dialogueInfo: {fileID: 11400000, guid: 3bf96ed3d13ec2c4cbbb07d053ddbef9, type: 2}
     guidedButton: {fileID: 2095384697}
   buttonParent: {fileID: 29100957}
-  tutorialPhase: 0
+  tutorialPhase: 3
 --- !u!1 &749871469
 GameObject:
   m_ObjectHideFlags: 0
