@@ -29,6 +29,7 @@ public class ConnectionManager : MonoBehaviour
     void Start()
     {
         comboManager = ComboManager.instance;
+        comboManager.TurnEndedEvent.AddListener(ResetCasting);
         UpdateLines();
 
         offsetHeight = castingGroupOffset.rect.height * 0.5f;
@@ -50,23 +51,7 @@ public class ConnectionManager : MonoBehaviour
             //print(Input.touchCount);
             if (Input.GetMouseButtonUp(0))
             {
-                selectionStarted = false;
-                Time.timeScale = 1.0f;
-                line.gameObject.SetActive(false);
-
-                if (selectionList.Count >= 2)
-                {
-                    comboManager.CollectDamage();
-                }
-
-                foreach (var rune in selectionList)
-                {
-                    rune.GetComponent<RuneBehaviour>().ResetToActivateSprite();
-                }
-
-                selectionList = new List<RuneBehaviour>();
-                linePosList = new List<Vector2>();
-                uiLine.UpdatePoints(linePosList);
+                ResetCasting();
             }
         }    
     }
@@ -77,6 +62,27 @@ public class ConnectionManager : MonoBehaviour
         {
             UpdateLines();
         }
+    }
+
+    void ResetCasting()
+    {
+        selectionStarted = false;
+        Time.timeScale = 1.0f;
+        line.gameObject.SetActive(false);
+
+        if (selectionList.Count >= 2)
+        {
+            comboManager.CollectDamage();
+        }
+
+        foreach (var rune in selectionList)
+        {
+            rune.GetComponent<RuneBehaviour>().ResetToActivateSprite();
+        }
+
+        selectionList = new List<RuneBehaviour>();
+        linePosList = new List<Vector2>();
+        uiLine.UpdatePoints(linePosList);
     }
 
     void UpdateLines()

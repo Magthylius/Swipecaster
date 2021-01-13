@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using LerpFunctions;
+using UnityEngine.Events;
 
 public class ComboManager : MonoBehaviour
 {
@@ -18,6 +18,8 @@ public class ComboManager : MonoBehaviour
     SettingsManager settingsManager;
 
     public float runeDamage;
+    public UnityEvent TurnStartedEvent;
+    public UnityEvent TurnEndedEvent;
 
     [Header("Countdown Timer")]
     public float countdownTimer;
@@ -42,6 +44,9 @@ public class ComboManager : MonoBehaviour
             Destroy(this.gameObject);
         else
             instance = this;
+
+        UnityEvent TurnStartedEvent = new UnityEvent();
+        UnityEvent TurnEndedEvent = new UnityEvent();
     }
 
     void Start()
@@ -74,6 +79,8 @@ public class ComboManager : MonoBehaviour
                 runeManager.SpawnDeactivate();
                 AssessRunes(turnBaseManger.GetCurrentCaster(), targetObject);
                 turnBaseManger.OnCasterAttack();
+
+                TurnEndedEvent.Invoke();
             }
         }
         else if (sliderAnim)
@@ -122,7 +129,11 @@ public class ComboManager : MonoBehaviour
     }
 
     public void SetCountdownTimer() => timer = countdownTimer;
-    public void SetIsStart() => isStart = true;
+    public void SetIsStart()
+    {
+        isStart = true;
+        TurnStartedEvent.Invoke();
+    }
     void AssessRunes(GameObject damagerObject, GameObject targetObject)
     {
         print("Gron: " + gronRune.amount + " | Fyor: " + fyorRune.amount + " | Tehk: " + tehkRune.amount + " | Khua: " + khuaRune.amount + " | Ayro: " + ayroRune.amount);
@@ -157,7 +168,8 @@ public class ComboManager : MonoBehaviour
     #region Accessors
     public bool GetIsStart() => isStart;
     public RuneType GetRuneType() => runeType;
-
+    //public UnityEvent TurnStartedEvent => TurnStartedEvent;
+    //public UnityEvent TurnEndedEvent => TurnEndedEvent;
     #endregion
 
 }
