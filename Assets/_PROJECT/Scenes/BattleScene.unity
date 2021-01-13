@@ -872,7 +872,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -30, y: -30}
-  m_SizeDelta: {x: 60, y: 60}
+  m_SizeDelta: {x: 94.0071, y: 63.4879}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &165750343
 MonoBehaviour:
@@ -894,9 +894,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cf8b70102c135ce4f9b1d1a9b5de9457, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f4b092ac907bbaa488e32e3a11ec2260, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -3218,7 +3218,7 @@ MonoBehaviour:
   meterRight2: {fileID: 1325206357}
   settingsCanvas: {fileID: 981931102}
   mainMenuScenePath: MainMenuScene
-  chargeSpeed: 3
+  chargeSpeed: 6
   transitionSpeed: 5
   pausedEvent:
     m_PersistentCalls:
@@ -3287,6 +3287,7 @@ MonoBehaviour:
   type: 1
   loop: 1
   multiplier: 0
+  dist: 0
   leftBound: 0
   rightBound: 0
 --- !u!212 &694942154
@@ -9620,6 +9621,7 @@ MonoBehaviour:
   type: 0
   loop: 0
   multiplier: 0
+  dist: 0
   leftBound: 0
   rightBound: 0
 --- !u!1 &1234312131
@@ -10918,6 +10920,7 @@ MonoBehaviour:
   type: 3
   loop: 1
   multiplier: 0
+  dist: 0
   leftBound: 0
   rightBound: 0
 --- !u!212 &1572839155
@@ -12685,6 +12688,7 @@ MonoBehaviour:
   type: 2
   loop: 1
   multiplier: 0
+  dist: 0
   leftBound: 0
   rightBound: 0
 --- !u!212 &1866144033
