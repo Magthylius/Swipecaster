@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 770b9541b0e444746bcc954fdfbc392c, type: 3}
-  m_Name: EnemyDummy
+  m_Name: EnemyDummy 3
   m_EditorClassIdentifier: 
   ID: 1001
   CharacterName: 
@@ -21,11 +21,11 @@ MonoBehaviour:
   CharacterDescription: Enemy Dummy
   IsAlive: 0
   MaxLevel: 100
-  MaxHealth: 99999
+  MaxHealth: 5000
   MaxAttack: 200
   MaxDefence: 20
   CurrentLevel: 1
-  LevelTotalHealth: 34594
+  LevelTotalHealth: 1730
   LevelTotalAttack: 69
   LevelTotalDefence: 7
   baseStatMultiplier: 0.33333334
