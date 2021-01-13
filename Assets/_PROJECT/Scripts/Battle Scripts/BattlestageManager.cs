@@ -31,6 +31,9 @@ public class BattlestageManager : MonoBehaviour
     [Header("Hero spawn (Debug use)")] 
     public GameObject heroes;
 
+    [Header("Hero Zoom Size")] 
+    public float casterSize = 0.25f;
+
     private Player player;
     private RoomManager roomManager;
 
@@ -146,7 +149,7 @@ public class BattlestageManager : MonoBehaviour
         timer = countdownTimer;
         casterExecutionTransform = _caster.transform;
         prevScaleCaster = casterExecutionTransform.localScale;
-        casterExecutionTransform.localScale = new Vector3(0.25f, 0.25f, 1);
+        casterExecutionTransform.localScale = new Vector3(casterSize, casterSize, 1);
         //casterSortGroup = _turnBaseManager.GetCurrentCaster().GetComponent<SortingGroup>();
         casterSortGroup = _caster.GetComponent<SortingGroup>();
         casterSortGroup.sortingOrder = 1;
@@ -156,7 +159,7 @@ public class BattlestageManager : MonoBehaviour
             enemyExecutionTransform = _enemy.transform;
             enemySortingGroup = enemyExecutionTransform.GetComponent<SortingGroup>();
             prevScaleEnemy = enemyExecutionTransform.localScale;
-            enemyExecutionTransform.localScale = new Vector3(-0.25f, 0.25f, 1);
+            enemyExecutionTransform.localScale = new Vector3(-casterSize, casterSize, 1);
             enemySortingGroup.sortingOrder = 1;
         }
 

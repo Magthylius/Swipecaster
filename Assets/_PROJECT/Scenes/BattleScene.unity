@@ -519,6 +519,7 @@ MonoBehaviour:
   - {fileID: 1208501394}
   - {fileID: 413978741}
   heroes: {fileID: 1342186363962593935, guid: 7bf6f4e9267a7c04199a005ccbddd474, type: 3}
+  casterSize: 0.18
   selectedTarget: {fileID: 0}
   enableEntityDebugging: 1
   speed: 10
