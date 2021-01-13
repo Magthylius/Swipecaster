@@ -213,6 +213,16 @@ public class MainMenuManager : MonoBehaviour
         pcManager.QuestMode();
         preEnterQuest = true;
     }
+
+    public void BTN_CancelPreEnterQuest()
+    {
+        //if (pageTransition || partyCanvas == currentPage) return;
+        ActivateCanvas(mapCanvas);
+        ShowBottomOverlay();
+        print("called");
+        pcManager.PartyMode();
+        preEnterQuest = false;
+    }
     #endregion
 
 }

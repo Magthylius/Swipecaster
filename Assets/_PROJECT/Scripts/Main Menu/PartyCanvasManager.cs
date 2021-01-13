@@ -90,7 +90,7 @@ public class PartyCanvasManager : MenuCanvasPage
         mainMenuManager.HideBottomOverlay();
     }
 
-    void PartyMode()
+    public void PartyMode()
     {
         editMode = false;
 
