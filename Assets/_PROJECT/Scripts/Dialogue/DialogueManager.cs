@@ -51,6 +51,14 @@ public class DialogueManager : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown("a"))
+        {
+            unlockButtons();
+        }
+    }
+
     public void StartDialogue(GuidedDialogue guidedDialogue)
     {
         if (guidedDialogue.dialogueInfo.isTriggered) return;
@@ -131,6 +139,7 @@ public class DialogueManager : MonoBehaviour
     [ContextMenu("Guide to Party")]
     public void guideToParty()
     {
+        if (tutorialPhase == TutorialPhase.guideFinish) return;
         tutorialPhase = TutorialPhase.guideToParty;
         DatabaseManager.instance.SaveTutorialState(tutorialPhase);
         resetTrigger(guidedDialogues[2]);
@@ -149,12 +158,6 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void testButton()
-    {
-        tutorialPhase = TutorialPhase.guideToGacha;
-        DatabaseManager.instance.SaveTutorialState(tutorialPhase);
-        guideToGacha();
-    }
 }
 
 [System.Serializable]
