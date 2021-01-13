@@ -169,7 +169,7 @@ MonoBehaviour:
   battleState: 0
   delaysInBetween: 1
   highlighter: {fileID: 3815654550327746471, guid: be60c9608cbffda49b2f5ffaab4728d1, type: 3}
-  gap: -1
+  gap: 1.25
   caster: {fileID: 0}
   enemy: {fileID: 0}
   castersOrderList: []
