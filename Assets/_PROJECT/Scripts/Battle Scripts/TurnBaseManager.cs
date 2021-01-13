@@ -14,9 +14,11 @@ public class TurnBaseManager : MonoBehaviour
     CameraManager cameraManager;
     RoomManager roomManager;
     SceneTransitionManager sceneManager;
+    DialogueManager dialogueManager;
+    DatabaseManager databaseManager;
 
     [SerializeField] GameStateEnum battleState;
-    [SerializeField] private string sceneNameToLoadAfterBattlestageEnd = "MainMenuScene";
+    [SerializeField] private string sceneNameToLoadAtGameStateEnd = "MainMenuScene";
 
     [Header("Delay between states")] public float delaysInBetween; // Delays in between states
 
@@ -53,6 +55,8 @@ public class TurnBaseManager : MonoBehaviour
         cameraManager = CameraManager.instance;
         roomManager = RoomManager.Instance;
         sceneManager = SceneTransitionManager.instance;
+        dialogueManager = DialogueManager.instance;
+        databaseManager = DatabaseManager.instance;
         battleState = GameStateEnum.INIT;
         StartCoroutine(InitBattle());
     }
@@ -146,31 +150,28 @@ public class TurnBaseManager : MonoBehaviour
     
     public void EndTurn()
     {
+        bool casterWipeout = battlestageManager.GetCastersTeam().Count == 0;
+        bool enemyWipeout = battlestageManager.GetEnemyTeam().Count == 0;
 
-        if (battlestageManager.GetCastersTeam().Count == 0)
+        if (casterWipeout)
         {
             battleState = GameStateEnum.END;
-            print("Caster Game Over");
+            sceneManager.ActivateTransition(sceneNameToLoadAtGameStateEnd);
             return;
         }
-        else if (battlestageManager.GetEnemyTeam().Count == 0)
+        if (enemyWipeout)
         {
-            string msg = "Enemy Game Over";
-            if(roomManager.AnyRoomsLeft)
+            if (roomManager.AnyRoomsLeft)
             {
-                msg += "... or not just yet.";
-                print(msg);
                 roomManager.SetNextRoomIndex();
                 battlestageManager.AssignEnemiesToRoom();
             }
             else
             {
-                msg += ". GGWP";
-                print(msg);
                 battleState = GameStateEnum.END;
-                if (DialogueManager.instance.tutorialPhase == TutorialPhase.guideToMap)
-                    DatabaseManager.instance.SaveTutorialState(TutorialPhase.guideToGacha);
-                sceneManager.ActivateTransition(sceneNameToLoadAfterBattlestageEnd);
+                if (dialogueManager.tutorialPhase == TutorialPhase.guideToMap)
+                    databaseManager.SaveTutorialState(TutorialPhase.guideToGacha);
+                sceneManager.ActivateTransition(sceneNameToLoadAtGameStateEnd);
                 return;
             }
         }

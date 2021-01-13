@@ -64,6 +64,8 @@ public class ShopButtonBehavior : MonoBehaviour
 
                 if (data.shopType == CurrencyType.NORMAL_CURRENCY) dataManager.AddCurrency(data.shopAmount, false);
                 else if (data.shopType == CurrencyType.PREMIUM_CURRENCY) dataManager.AddCurrency(data.shopAmount, true);
+
+                CurrencyManager.instance.UpdateTexts();
             }
             else
             {
@@ -78,6 +80,8 @@ public class ShopButtonBehavior : MonoBehaviour
 
                 if (data.shopType == CurrencyType.NORMAL_CURRENCY) dataManager.AddCurrency(data.shopAmount, false);
                 else if (data.shopType == CurrencyType.PREMIUM_CURRENCY) dataManager.AddCurrency(data.shopAmount, true);
+
+                CurrencyManager.instance.UpdateTexts();
             }
             else
             {
