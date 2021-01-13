@@ -6,11 +6,13 @@ public class QuestHandler : MonoBehaviour
 {
     public LevelConfigurationObject levelConfiguration;
     public List<LevelSelectBehavior> levelSelectors;
+    public string nextLevelName = "BattleScene"; 
 
-    private EnergyManager energyManager;
+    EnergyManager energyManager;
     SceneTransitionManager stManager;
     QuestObject qObject;
-    private float _energyCost;
+
+    float _energyCost;
 
     void Start()
     {
@@ -61,6 +63,6 @@ public class QuestHandler : MonoBehaviour
     public void BTN_EnterLevel()
     {
         energyManager.SpendEnergy(_energyCost);
-        stManager.ActivateTransition("BattleScene");
+        stManager.ActivateTransition(nextLevelName);
     }
 }

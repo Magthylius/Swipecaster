@@ -40,15 +40,17 @@ public class GachaCanvasManager : MenuCanvasPage
     List<GachaConnectorBehavior> connectedList;
     List<Vector2> linePoints;
 
-    bool allowCasting = true;
+    bool allowCasting = false;
 
     [Header("Cover")]
     public Image chargeImg;
-    public Image coverImg;
+    public GameObject actualConnectors;
     public float chargeSpeed = 1f;
-   
+
+    Transform connectorTr;
+    Color chargeColor;
     float charge;
-    float chargePrecision = 0.001f;
+    float chargePrecision = 0.01f;
 
     [Header("Accessories")]
     public CanvasGroup summonButton;
@@ -75,10 +77,15 @@ public class GachaCanvasManager : MenuCanvasPage
         connectedList = new List<GachaConnectorBehavior>();
         linePoints = new List<Vector2>();
 
-        chargeImg.fillAmount = 0f;
+        //chargeImg.fillAmount = 0f;
+        chargeColor = chargeImg.color;
+        chargeImg.color = new Color(chargeImg.color.r, chargeImg.color.g, chargeImg.color.b, 0f);
 
+        actualConnectors.SetActive(false);
         summonButton.gameObject.SetActive(false);
         instructionText.gameObject.SetActive(true);
+
+        connectorTr = actualConnectors.GetComponent<Transform>();
     }
 
     void Update()
@@ -91,7 +98,8 @@ public class GachaCanvasManager : MenuCanvasPage
 
                 if (1f - charge <= chargePrecision)
                 {
-                    state = GachaCanvasState.IDLE;
+                    state = GachaCanvasState.SUMMONING;
+                    allowCasting = true;
                     charge = 1f;
                 }
             }
@@ -106,11 +114,14 @@ public class GachaCanvasManager : MenuCanvasPage
                 }
             }
 
-            chargeImg.fillAmount = charge;
+            //chargeImg.fillAmount = charge;
+            chargeColor.a = charge;
+            chargeImg.color = chargeColor;
             if (charge >= 1f)
             {
                 chargeImg.gameObject.SetActive(false);
                 state = GachaCanvasState.SUMMONING;
+                actualConnectors.SetActive(true);
             }
         }
         else if (state == GachaCanvasState.SUMMONING)
@@ -119,12 +130,25 @@ public class GachaCanvasManager : MenuCanvasPage
             instructionText.gameObject.SetActive(false);
         }
     }
-    
+
+    void FixedUpdate()
+    {
+        if (state == GachaCanvasState.SUMMONING)
+        {
+            connectorTr.Rotate(Vector3.forward, 5 * Time.unscaledDeltaTime);
+        }
+    }
+
     public override void Reset()
     {
         charge = 0f;
+        //chargeImg.gameObject.SetActive(true);
+        //chargeImg.fillAmount = charge;
+
+        chargeColor.a = charge;
+        chargeImg.color = chargeColor;
         chargeImg.gameObject.SetActive(true);
-        chargeImg.fillAmount = charge;
+        actualConnectors.SetActive(false);
 
         connectedList = new List<GachaConnectorBehavior>();
         linePoints = new List<Vector2>();
@@ -157,11 +181,13 @@ public class GachaCanvasManager : MenuCanvasPage
 
     public void CoverCharge()
     {
+        if (allowCasting) return;
         state = GachaCanvasState.CHARGING;
     }
 
     public void CoverDischarge()
     {
+        if (allowCasting) return;
         state = GachaCanvasState.DISCHARGING;
     }
 
