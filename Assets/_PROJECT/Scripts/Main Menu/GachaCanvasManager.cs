@@ -32,6 +32,7 @@ public class GachaCanvasManager : MenuCanvasPage
 
     DatabaseManager dataManager;
     InventoryManager invManager;
+    CurrencyManager currencyManager;
 
     [Header("Connector Points")]
     public UILineRenderer uiLine;
@@ -58,6 +59,7 @@ public class GachaCanvasManager : MenuCanvasPage
 
     [Header("Gacha Settings")]
     public GachaBanner activeBanner;
+    public int pullCost = 5;
 
     [Header("Tutorial Condition")]
     public bool isTutorialed;
@@ -73,6 +75,8 @@ public class GachaCanvasManager : MenuCanvasPage
     {
         dataManager = DatabaseManager.instance;
         invManager = InventoryManager.instance;
+        currencyManager = CurrencyManager.instance;
+        mainMenuManager = MainMenuManager.instance;
 
         connectedList = new List<GachaConnectorBehavior>();
         linePoints = new List<Vector2>();
@@ -199,10 +203,19 @@ public class GachaCanvasManager : MenuCanvasPage
             isTutorialed = true;
         }
 
-        UnitObject pull = activeBanner.PullCaster();
-        print(pull.CharacterName);
-        dataManager.AddCaster(pull.ID);
-        invManager.UpdateCasterInventory();
+        if (currencyManager.HasEnoughCurrency(CurrencyType.PREMIUM_CURRENCY, pullCost))
+        {
+            currencyManager.SpendCurrency(CurrencyType.PREMIUM_CURRENCY, pullCost);
+
+            UnitObject pull = activeBanner.PullCaster();
+            print(pull.CharacterName);
+            dataManager.AddCaster(pull.ID);
+            invManager.UpdateCasterInventory();
+        }
+        else
+        {
+            print("Not enough premium currency!");
+        }
     }
 
     #region Accessors

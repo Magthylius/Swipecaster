@@ -7,6 +7,7 @@ using TMPro;
 public class ShopButtonBehavior : MonoBehaviour
 {
     DatabaseManager dataManager;
+    CurrencyManager currencyManager; //! use currency manager to update texts
     Button _button;
 
     public TextMeshProUGUI title;
@@ -21,6 +22,7 @@ public class ShopButtonBehavior : MonoBehaviour
     {
         _button = GetComponent<Button>();
         dataManager = DatabaseManager.instance;
+        currencyManager = CurrencyManager.instance;
 
         if (_button == null) print("error");
     }
@@ -55,39 +57,12 @@ public class ShopButtonBehavior : MonoBehaviour
 
     public void Buy()
     {
-        if (data.buyType == CurrencyType.NORMAL_CURRENCY)
+        if (data.HasEnoughCurrency())
         {
-            if (dataManager.GetCurrency() >= data.buyCost)
-            {
-                dataManager.PurchaseDeduction(data.buyCost, false);
-
-
-                if (data.shopType == CurrencyType.NORMAL_CURRENCY) dataManager.AddCurrency(data.shopAmount, false);
-                else if (data.shopType == CurrencyType.PREMIUM_CURRENCY) dataManager.AddCurrency(data.shopAmount, true);
-
-                CurrencyManager.instance.UpdateTexts();
-            }
-            else
-            {
-                print("Not enough currency!");
-            }
+            currencyManager.SpendCurrency(data.buyType, data.buyCost);
+            currencyManager.AddCurrency(data.shopType, data.shopAmount);
         }
-        else if (data.buyType == CurrencyType.PREMIUM_CURRENCY)
-        {
-            if (dataManager.GetPremiumCurrency() >= data.buyCost)
-            {
-                dataManager.PurchaseDeduction(data.buyCost, true);
-
-                if (data.shopType == CurrencyType.NORMAL_CURRENCY) dataManager.AddCurrency(data.shopAmount, false);
-                else if (data.shopType == CurrencyType.PREMIUM_CURRENCY) dataManager.AddCurrency(data.shopAmount, true);
-
-                CurrencyManager.instance.UpdateTexts();
-            }
-            else
-            {
-                print("Not enough currency!");
-            }
-        }
+        else print("Not enough currency!");
     }
 
     public Button button => _button;
