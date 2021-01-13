@@ -58,6 +58,8 @@ public class HomeCanvasManager : MenuCanvasPage
             {
                 _partyGroup.UpdateAll();
             }
+
+            CurrencyManager.instance.UpdateTexts();
         }
 
         resetCGF.StartFadeOut();
