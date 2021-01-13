@@ -41,6 +41,7 @@ public class CameraManager : MonoBehaviour
 
     float targetZoom = 0f;
     float prevZoom;
+    float startingZoom;
     bool allowZoom = false;
 
     float targetPan = 0f;
@@ -82,6 +83,7 @@ public class CameraManager : MonoBehaviour
 
         UpdateCameraBoundary();
         UpdateCurrentCameraPosition();
+        startingZoom = cam.orthographicSize;
         targetZoom = cam.orthographicSize;
         cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z);
         isFree = true;
@@ -275,28 +277,30 @@ public class CameraManager : MonoBehaviour
             {
                 rotValue = Mathf.Lerp(rotValue, -zoomRotation, timer / zoomSpeed);
                 targetValue = Mathf.Lerp(targetValue, battlestageCenter.position.x, timer / moveSpeed);
+                zoomValue = Mathf.Lerp(zoomValue, targetZoom, timer / zoomSpeed);
                 cam.transform.rotation = Quaternion.Euler(0,0,rotValue);
                 cam.transform.position = new Vector3(targetValue, cam.transform.position.y, cam.transform.position.z);
+                cam.orthographicSize = zoomValue;
             }
             
             timer += Time.deltaTime;    
 
             yield return null;
+            cam.orthographicSize = targetZoom;
         }
         
         cam.transform.position = new Vector3(battlestageCenter.position.x, cam.transform.position.y, cam.transform.position.z);
         
         targetPan = prevPan;
         targetZoom = prevZoom;
-        allowPan = true;
-        allowZoom = true;
         timer = 0;
         
         while (timer < zoomSpeed)
         {
             rotValue = Mathf.Lerp(rotValue, 0, timer / zoomSpeed);
             cam.transform.rotation = Quaternion.Euler(0,0,rotValue);
-            
+            zoomValue = Mathf.Lerp(zoomValue, startingZoom, timer / zoomSpeed);
+            cam.orthographicSize = zoomValue;
             timer += Time.deltaTime;
 
             yield return null;
