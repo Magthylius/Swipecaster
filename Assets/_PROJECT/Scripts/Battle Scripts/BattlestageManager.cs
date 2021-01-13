@@ -168,7 +168,7 @@ public class BattlestageManager : MonoBehaviour
             enemyExecutionTransform = _enemy.transform;
             enemySortingGroup = enemyExecutionTransform.GetComponent<SortingGroup>();
             prevScaleEnemy = enemyExecutionTransform.localScale;
-            enemyExecutionTransform.localScale = new Vector3(-casterSize, casterSize, 1);
+            enemyExecutionTransform.localScale = new Vector3(casterSize, casterSize, 1);
             enemySortingGroup.sortingOrder = 1;
         }
 

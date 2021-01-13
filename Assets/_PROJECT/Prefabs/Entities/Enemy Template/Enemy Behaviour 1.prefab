@@ -49,9 +49,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseUnit: {fileID: 11400000, guid: 9f507505bbe8d1545a231196361142fa, type: 2}
-  _currentHealth: 634
-  _currentAttack: 193
-  _currentDefence: 148
+  _currentHealth: 697
+  _currentAttack: 239
+  _currentDefence: 175
   isPlayer: 0
   _totalDamageInTurn: 0
   runeAdvantageMultiplier: 1.5
@@ -105,7 +105,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 20, y: 20}

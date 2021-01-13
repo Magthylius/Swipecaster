@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   battleState: 0
+  sceneNameToLoadAtGameStateEnd: MainMenuScene
   delaysInBetween: 1
   highlighter: {fileID: 3815654550327746471, guid: be60c9608cbffda49b2f5ffaab4728d1, type: 3}
   gap: 1.25
@@ -1440,9 +1441,9 @@ MonoBehaviour:
   m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 36
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
@@ -13293,6 +13294,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runeDamage: 10
+  TurnStartedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  TurnEndedEvent:
+    m_PersistentCalls:
+      m_Calls: []
   countdownTimer: 5
   slider: {fileID: 3216388}
 --- !u!1 &2111718399
