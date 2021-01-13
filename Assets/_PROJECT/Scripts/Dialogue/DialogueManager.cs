@@ -11,7 +11,7 @@ public class DialogueManager : MonoBehaviour
     public TMP_Text dialogueText;
     private Queue<string> sentences;
     public List<GuidedDialogue> guidedDialogues = new List<GuidedDialogue>();
-    public GameObject butttonParent;
+    public GameObject buttonParent;
     public static DialogueManager instance;
     public TutorialPhase tutorialPhase;
 
@@ -29,22 +29,20 @@ public class DialogueManager : MonoBehaviour
     {
         sentences = new Queue<string>();
         tutorialPhase = DatabaseManager.instance.GetTutorialPhase();
+        //DatabaseManager.instance.SaveTutorialState(tutorialPhase);
 
         switch (tutorialPhase)
         {
             case TutorialPhase.guideToMap:
-                resetTrigger(guidedDialogues[0]);
-                StartDialogue(guidedDialogues[0]);
+                guideToMap();
                 return;
 
             case TutorialPhase.guideToGacha:
-                resetTrigger(guidedDialogues[1]);
-                StartDialogue(guidedDialogues[1]);
+                guideToGacha();
                 return;
 
             case TutorialPhase.guideToParty:
-                resetTrigger(guidedDialogues[2]);
-                StartDialogue(guidedDialogues[2]);
+                guideToParty();
                 return;
 
             case TutorialPhase.guideFinish:
@@ -65,7 +63,7 @@ public class DialogueManager : MonoBehaviour
         {
             guidedDialogue.guidedButton.GetComponent<Image>().color = Color.red;
 
-            foreach (Button button in butttonParent.GetComponentsInChildren<Button>())
+            foreach (Button button in buttonParent.GetComponentsInChildren<Button>())
             {
                 if(button != guidedDialogue.guidedButton)
                 {
@@ -111,7 +109,7 @@ public class DialogueManager : MonoBehaviour
     [ContextMenu("Unlock")]
     public void unlockButtons()
     {
-        foreach (Button button in butttonParent.GetComponentsInChildren<Button>())
+        foreach (Button button in buttonParent.GetComponentsInChildren<Button>())
         {       
             button.GetComponent<Image>().color = Color.white;          
             button.interactable = true;           
@@ -127,19 +125,29 @@ public class DialogueManager : MonoBehaviour
     [ContextMenu("Guide To Map")]
     public void guideToMap()
     {
+        resetTrigger(guidedDialogues[0]);
         StartDialogue(guidedDialogues[0]);
     }
 
     [ContextMenu("Guide to Gacha")]
     public void guideToGacha()
     {
+        resetTrigger(guidedDialogues[1]);
         StartDialogue(guidedDialogues[1]);
     }
 
     [ContextMenu("Guide to Party")]
     public void guideToParty()
     {
+        resetTrigger(guidedDialogues[2]);
         StartDialogue(guidedDialogues[2]);
+    }
+
+    public void testButton()
+    {
+        tutorialPhase = TutorialPhase.guideToGacha;
+        DatabaseManager.instance.SaveTutorialState(tutorialPhase);
+        guideToGacha();
     }
 }
 
