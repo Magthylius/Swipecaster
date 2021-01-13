@@ -10,6 +10,7 @@ public class PlayerInventoryData
     public CurrencyData currencyDatabase;
 
     public Vector3 arrowTransform;
+    public TutorialPhase tutorialPhase;
     
 }
 

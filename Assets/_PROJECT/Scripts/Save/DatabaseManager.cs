@@ -246,6 +246,18 @@ public class DatabaseManager : MonoBehaviour
         
         Save();
     }
+
+    
+    public void RestartTutorial()
+    {
+        playerData.tutorialPhase = TutorialPhase.guideToMap;
+    }
+
+    public void SaveTutorialState(TutorialPhase _phase)
+    {
+        playerData.tutorialPhase = _phase;
+        Save();
+    }
     
     private void UpdateUnitObjectsWithDataStats() => GetDatabaseStatUnitPairs().ToList().ForEach(pair => pair.Unit.SyncDataForCaster(pair.Stat));
     private void UpdateDataStatsWithUnitObjects() => playerData.casterDatabase = new List<CasterDataStats>(GetDatabaseStatUnitPairs().Select(x => x.Unit.GetCasterData()));
@@ -263,6 +275,7 @@ public class DatabaseManager : MonoBehaviour
 
     public int GetCurrency() => playerData.currencyDatabase.Currency;
     public int GetPremiumCurrency() => playerData.currencyDatabase.PremiumCurrency;
+    public TutorialPhase GetTutorialPhase() => playerData.tutorialPhase;
 
     #endregion
 }

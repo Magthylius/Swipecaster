@@ -16,6 +16,7 @@ public class AudioTest : MonoBehaviour
 
     void Update()
     {
+     
         if(Input.GetKeyDown(KeyCode.S)) AM.PlayRandomSFX(audioSo, "FartPack");
     }
 }
