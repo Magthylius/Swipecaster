@@ -21,6 +21,8 @@ namespace ConversionFunctions
         public static int AsInt(this float item) => Mathf.RoundToInt(item);
         public static int AsInt(this bool item) => Convert.ToInt32(item);
         public static bool AsBool(this int item) => Convert.ToBoolean(item);
+
+        public static Vector2 AsVector2(this Vector3 vector) => new Vector2(vector.x, vector.y);
     }
 
     public static class TenshiStrings
