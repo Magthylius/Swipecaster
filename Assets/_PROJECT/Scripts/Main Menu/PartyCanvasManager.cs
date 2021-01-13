@@ -99,8 +99,9 @@ public class PartyCanvasManager : MenuCanvasPage
         editButtonCGF.StartFadeOut();
         mainMenuManager.ShowBottomOverlay();
 
-        if (DialogueManager.instance.tutorialPhase == TutorialPhase.guideToGacha)
+        if (DialogueManager.instance.tutorialPhase == TutorialPhase.guideToParty)
             DialogueManager.instance.tutorialPhase = TutorialPhase.guideFinish;
+            DatabaseManager.instance.SaveTutorialState(DialogueManager.instance.tutorialPhase);
             DialogueManager.instance.unlockButtons();
 
         /*if (!mainMenuManager.GetPreEnterQuest())
