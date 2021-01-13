@@ -11,7 +11,7 @@ public class UnitObjectForFoe : UnitObject
     [Space(5)]
     [SerializeField, Range(1, 5000)] private int minRandomDefence;
     [SerializeField, Range(1, 5000)] private int maxRandomDefence;
-
+    
     public override void CalculateRandomisedStats()
     {
         if (!MinIsLowerThanMax()) { DebugMinIsLargerThanMaxCase(); return; }

@@ -28,8 +28,8 @@ public class DialogueManager : MonoBehaviour
     private void Start()
     {
         sentences = new Queue<string>();
-        //tutorialPhase = DatabaseManager.instance.GetTutorialPhase();
-        DatabaseManager.instance.SaveTutorialState(tutorialPhase);
+        tutorialPhase = DatabaseManager.instance.GetTutorialPhase();
+       // DatabaseManager.instance.SaveTutorialState(tutorialPhase);
 
         switch (tutorialPhase)
         {
@@ -119,7 +119,9 @@ public class DialogueManager : MonoBehaviour
     private void resetTrigger(GuidedDialogue guidedDialogue)
     {
         guidedDialogue.dialogueInfo.isTriggered = false;
-        guidedDialogue.guidedButton.GetComponent<DialogueTrigger>().dialogue.dialogueInfo.isTriggered = false;
+
+        if(guidedDialogue.guidedButton) 
+            guidedDialogue.guidedButton.GetComponent<DialogueTrigger>().dialogue.dialogueInfo.isTriggered = false;
     }
 
     [ContextMenu("Guide To Map")]

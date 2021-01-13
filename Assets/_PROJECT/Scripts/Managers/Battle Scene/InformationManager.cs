@@ -12,12 +12,17 @@ public class InformationManager : MonoBehaviour
     private BattlestageManager _battleStageManager;
     private List<Unit> _subscriptionList = new List<Unit>();
 
-    [Header("UI")]
+    [Header("Battle Bar")]
     [SerializeField] private Image healthBar;
     [SerializeField] private Image skillChargeBar;
     [SerializeField] private Image casterPortrait;
     [SerializeField] private TextMeshProUGUI skillTextMesh;
 
+    [Header("Battle Stage")]
+    [SerializeField] private GameObject spriteHolderPrefab;
+    [SerializeField] private Sprite prioritySprite;
+
+    [Header("Runes")]
     public TextMeshProUGUI fyorCount;
     public TextMeshProUGUI aquaCount;
     public TextMeshProUGUI tehkCount;
@@ -48,6 +53,29 @@ public class InformationManager : MonoBehaviour
         var curUnit = _turnBaseManager.GetCurrentCaster().AsUnit();
         if (unit != curUnit) return;
         UpdateHealthBar(unit);
+    }
+
+    #endregion
+
+    #region Priority UI Methods
+
+    public GameObject InstantiateSpriteHolder(string holderName, Transform parent, Vector3 scale)
+    {
+        if (spriteHolderPrefab == null) return null;
+        GameObject holder = Instantiate(spriteHolderPrefab, Vector3.zero, Quaternion.identity);
+        holder.name = holderName;
+        holder.transform.localScale = scale;
+        holder.transform.SetParent(parent);
+        SpriteRenderer renderer = holder.GetComponent<SpriteRenderer>();
+        holder.SetActive(false);
+        renderer.enabled = false;
+        return holder;
+    }
+    public GameObject InstantiateSpriteHolder(string holderName, Transform parent, Vector3 scale, Sprite sprite)
+    {
+        var holder = InstantiateSpriteHolder(holderName, parent, scale);
+        holder.GetComponent<SpriteRenderer>().sprite = sprite;
+        return holder;
     }
 
     #endregion
@@ -84,8 +112,8 @@ public class InformationManager : MonoBehaviour
 
     #region Shorthands
 
-    private static bool HasValidMaxSkillCharge(Unit unit) => unit.GetMaxSkillChargeCount > 0;
-    private static bool HasValidMaxHealth(Unit unit) => unit.GetMaxHealth > 0;
+    public Sprite GetPrioritySprite() => prioritySprite;
+
 
     #endregion
 
