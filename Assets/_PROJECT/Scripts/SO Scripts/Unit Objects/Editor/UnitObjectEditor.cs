@@ -12,6 +12,6 @@ public class UnitObjectEditor : Editor
     {
         DrawDefaultInspector();
 
-        if (GUILayout.Button("Randomise Stats")) _unit.CalculateRandomisedStats();
+        //if (GUILayout.Button("Randomise Stats")) _unit.CalculateRandomisedStats();
     }
 }

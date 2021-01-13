@@ -30,4 +30,18 @@ public class ShopData : ScriptableObject
 
         return "NULL";
     }
+
+    public bool HasEnoughCurrency()
+    {
+        switch(buyType)
+        {
+            case CurrencyType.NORMAL_CURRENCY:
+                return DatabaseManager.instance.GetCurrency() >= buyCost;
+
+            case CurrencyType.PREMIUM_CURRENCY:
+                return DatabaseManager.instance.GetPremiumCurrency() >= buyCost;
+        }
+
+        return false;
+    }
 }

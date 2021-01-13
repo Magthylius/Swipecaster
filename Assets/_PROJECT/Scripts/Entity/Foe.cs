@@ -21,6 +21,14 @@ public class Foe : Unit
     {
         base.Awake();
         SetIsPlayer(false);
+        CalculateActualStats();
+    }
+
+    protected override void CalculateActualStats()
+    {
+        if (GetBaseUnit == null) return;
+        GetBaseUnit.CalculateRandomisedStats();
+        UpdateCalculatedStats();
     }
 
     #endregion

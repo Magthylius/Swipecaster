@@ -33,7 +33,8 @@ public abstract class Entity : MonoBehaviour
     public virtual void Suicide() => SetCurrentHealth(-1);
 
     public int GetCurrentLevel => baseUnit.CurrentLevel;
-    public void SetCurrentLevel(int amount) { baseUnit.CurrentLevel = amount; CalculateActualStats(); }
+    public void SetCurrentLevel(int amount) => baseUnit.CurrentLevel = amount;
+    public void SetCurrentLevelAndCalculate(int amount) { baseUnit.CurrentLevel = amount; CalculateActualStats(); }
 
     public UnitObject GetBaseUnit => baseUnit;
     public void SetBaseUnit(UnitObject newUnit) { baseUnit = newUnit; CalculateActualStats(); }
@@ -50,17 +51,16 @@ public abstract class Entity : MonoBehaviour
 
     protected virtual void Awake() => UpdateCalculatedStats();
     protected virtual void OnValidate() => CalculateActualStats();
-
-    #endregion
-
-    #region Protected Methods
-
-    protected void CalculateActualStats()
+    protected virtual void CalculateActualStats()
     {
         if (baseUnit == null) return;
         baseUnit.CalculateActualStats();
         UpdateCalculatedStats();
     }
+
+    #endregion
+
+    #region Protected Methods
 
     protected void UpdateCalculatedStats()
     {

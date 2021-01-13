@@ -165,6 +165,7 @@ public class TurnBaseManager : MonoBehaviour
             {
                 roomManager.SetNextRoomIndex();
                 battlestageManager.AssignEnemiesToRoom();
+                UpdateLiveTeam();
             }
             else
             {

@@ -12,30 +12,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 692b427d9c881e64a8aff1e7ed3f7f1e, type: 3}
   m_Name: Unit_1001
   m_EditorClassIdentifier: 
-  ID: 
-  CharacterName: 
+  ID: 1001
+  CharacterName: Not Original
   CharacterMastery: 0
-  BaseRarity: 0
+  BaseRarity: 3
   ArchTypeMajor: -1
-  RuneAlignment: 0
-  CharacterDescription: 
-  IsAlive: 0
-  MaxLevel: 0
+  RuneAlignment: -1
+  CharacterDescription: Obviously a fake
+  IsAlive: 1
+  MaxLevel: 50
   MaxHealth: 0
   MaxAttack: 0
   MaxDefence: 0
-  CurrentLevel: 0
-  LevelTotalHealth: 0
-  LevelTotalAttack: 0
-  LevelTotalDefence: 0
+  CurrentLevel: 1
+  LevelTotalHealth: 425
+  LevelTotalAttack: 215
+  LevelTotalDefence: 191
   baseStatMultiplier: 0.33333334
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
-  SkillName: 
-  SkillDescription: 
+  SkillName: Exterminate the Cats
+  SkillDescription: Wait... they are not cats?!!!?!?!? [muffled sounds*]
   SummonPrefab: {fileID: 0}
-  FullBodyPrefab: {fileID: 0}
-  SpriteHolderPrefab: {fileID: 0}
-  PortraitArt: {fileID: 0}
-  FullBodyArt: {fileID: 0}
+  FullBodyPrefab: {fileID: 7792443217028439265, guid: 53d3e0ee8a7b59b4ba8e79b86cfde3d9, type: 3}
+  SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}
+  PortraitArt: {fileID: 2848640792621507367, guid: 813a7113e8b30a64bb694e7e454fa145, type: 3}
+  FullBodyArt: {fileID: 2848640792621507367, guid: 813a7113e8b30a64bb694e7e454fa145, type: 3}
   SummonArt: {fileID: 0}
+  randomiseStats: 1
+  minRandomHealth: 1000
+  maxRandomHealth: 2000
+  minRandomAttack: 400
+  maxRandomAttack: 700
+  minRandomDefence: 300
+  maxRandomDefence: 600

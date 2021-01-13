@@ -17632,7 +17632,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 749541256}
         m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
-        m_MethodName: testButton
+        m_MethodName: unlockButtons
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20810,11 +20810,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData:
-    casterDatabase: []
-    partyDatabase: []
+    casterDatabase:
+    - ID: 001
+      CurLevel: 1
+      Mastery: 0
+      IsAlive: 1
+    - ID: 002
+      CurLevel: 1
+      Mastery: 0
+      IsAlive: 1
+    - ID: 004
+      CurLevel: 1
+      Mastery: 0
+      IsAlive: 1
+    partyDatabase:
+    - PartyName: Team A
+      CasterConfig:
+      - 001
+    - PartyName: Team B
+      CasterConfig:
+      - 001
+    - PartyName: Team C
+      CasterConfig:
+      - 001
+    - PartyName: Team D
+      CasterConfig:
+      - 001
     currencyDatabase:
-      Currency: 0
-      PremiumCurrency: 0
+      Currency: 1000
+      PremiumCurrency: 10
     arrowTransform: {x: 0, y: 0, z: 0}
     tutorialPhase: 0
   liveCaster: []
@@ -20824,7 +20848,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9c6c93598ef0ef740a68064699190ebd, type: 2}
   - {fileID: 11400000, guid: a59d8c9ee6aecd94a89ecd6ce19189bb, type: 2}
   defaultParty: {fileID: 11400000, guid: d32ec00648bc195408e87872e85f92ee, type: 2}
-  activeParty: {fileID: 11400000, guid: 841d043e77972de4fac9d66dfbf3ef93, type: 2}
+  activeParty: {fileID: 11400000, guid: 370d7414df42f124c9dc4302a332f455, type: 2}
 --- !u!224 &1610538348 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1055314239308554422, guid: 730f6a41ce2fd544bbae7b66e51e5a09, type: 3}
@@ -26123,7 +26147,7 @@ MonoBehaviour:
   - {fileID: 1581613813}
   - {fileID: 1289895987}
   - {fileID: 1457060087}
-  nextLevelName: BattleScene
+  nextLevelName: Tutorial
 --- !u!1 &2037394576
 GameObject:
   m_ObjectHideFlags: 0
@@ -26808,6 +26832,7 @@ MonoBehaviour:
   summonButton: {fileID: 116330411}
   instructionText: {fileID: 313925117}
   activeBanner: {fileID: 11400000, guid: 4d6de19612515ce4f90b3530967eb31a, type: 2}
+  pullCost: 5
   isTutorialed: 0
 --- !u!1 &2080907888
 GameObject:

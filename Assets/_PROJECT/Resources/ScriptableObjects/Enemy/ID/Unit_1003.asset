@@ -12,30 +12,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce92b29a055b78c41a95d9eda0f59667, type: 3}
   m_Name: Unit_1003
   m_EditorClassIdentifier: 
-  ID: 
-  CharacterName: 
+  ID: 1003
+  CharacterName: NaN
   CharacterMastery: 0
-  BaseRarity: 0
+  BaseRarity: 3
   ArchTypeMajor: -1
-  RuneAlignment: 0
+  RuneAlignment: -1
   CharacterDescription: 
   IsAlive: 0
-  MaxLevel: 0
-  MaxHealth: 0
-  MaxAttack: 0
-  MaxDefence: 0
-  CurrentLevel: 0
-  LevelTotalHealth: 0
-  LevelTotalAttack: 0
-  LevelTotalDefence: 0
+  MaxLevel: 50
+  MaxHealth: 6666
+  MaxAttack: 166
+  MaxDefence: 66
+  CurrentLevel: 2
+  LevelTotalHealth: 2553
+  LevelTotalAttack: 64
+  LevelTotalDefence: 25
   baseStatMultiplier: 0.33333334
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
-  SkillName: 
-  SkillDescription: 
+  SkillName: i'm a scarecrow!
+  SkillDescription: wrong target audience?
   SummonPrefab: {fileID: 0}
-  FullBodyPrefab: {fileID: 0}
-  SpriteHolderPrefab: {fileID: 0}
-  PortraitArt: {fileID: 0}
-  FullBodyArt: {fileID: 0}
+  FullBodyPrefab: {fileID: 7792443217028439265, guid: 53d3e0ee8a7b59b4ba8e79b86cfde3d9, type: 3}
+  SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}
+  PortraitArt: {fileID: 7275292937166824971, guid: 398fbe95c4eb5fb4abe80725f5aa68a9, type: 3}
+  FullBodyArt: {fileID: -3899732228121899826, guid: 398fbe95c4eb5fb4abe80725f5aa68a9, type: 3}
   SummonArt: {fileID: 0}
+  randomiseStats: 0
+  minRandomHealth: 0
+  maxRandomHealth: 0
+  minRandomAttack: 0
+  maxRandomAttack: 0
+  minRandomDefence: 0
+  maxRandomDefence: 0
