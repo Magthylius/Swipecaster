@@ -16,4 +16,5 @@ MonoBehaviour:
   levelDescription: The Tutorial
   levelRooms:
   - {fileID: 11400000, guid: e27480355a00ad04b836712075fddcc2, type: 2}
+  - {fileID: 11400000, guid: 123c7e26f20830a4b9974394683ce185, type: 2}
   randomRooms: 0

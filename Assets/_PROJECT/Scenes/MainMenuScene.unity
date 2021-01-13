@@ -31609,7 +31609,7 @@ MonoBehaviour:
   - {fileID: 1302236271}
   - {fileID: 896648165}
   - {fileID: 74881487}
-  nextLevelName: BattleScene
+  nextLevelName: TutorialScene
 --- !u!1 &2037394576
 GameObject:
   m_ObjectHideFlags: 0
