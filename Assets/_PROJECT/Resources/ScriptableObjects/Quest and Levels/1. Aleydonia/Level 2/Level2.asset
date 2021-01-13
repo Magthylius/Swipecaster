@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Level2
   m_EditorClassIdentifier: 
   levelName: The Outskirts
-  levelDescription: Beyond the town walls.
+  levelDescription: Beyond plains
   levelRooms: []
   randomRooms: 0
