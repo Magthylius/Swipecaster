@@ -106,16 +106,6 @@ public class DialogueManager : MonoBehaviour
         animator.SetBool("isOpen", false);
     }
 
-    [ContextMenu("Unlock")]
-    public void unlockButtons()
-    {
-        foreach (Button button in buttonParent.GetComponentsInChildren<Button>())
-        {       
-            button.GetComponent<Image>().color = Color.white;          
-            button.interactable = true;           
-        }
-    }
-
     private void resetTrigger(GuidedDialogue guidedDialogue)
     {
         guidedDialogue.dialogueInfo.isTriggered = false;
@@ -141,8 +131,22 @@ public class DialogueManager : MonoBehaviour
     [ContextMenu("Guide to Party")]
     public void guideToParty()
     {
+        tutorialPhase = TutorialPhase.guideToParty;
+        DatabaseManager.instance.SaveTutorialState(tutorialPhase);
         resetTrigger(guidedDialogues[2]);
         StartDialogue(guidedDialogues[2]);
+    }
+
+    [ContextMenu("Unlock")]
+    public void unlockButtons()
+    {
+        tutorialPhase = TutorialPhase.guideFinish;
+        DatabaseManager.instance.SaveTutorialState(tutorialPhase);
+        foreach (Button button in buttonParent.GetComponentsInChildren<Button>())
+        {
+            button.GetComponent<Image>().color = Color.white;
+            button.interactable = true;
+        }
     }
 
     public void testButton()
