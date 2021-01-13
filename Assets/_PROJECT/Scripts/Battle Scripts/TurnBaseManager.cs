@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -62,18 +63,20 @@ public class TurnBaseManager : MonoBehaviour
         if (!isPlayerTurn)
             return;
 
-        if (caster)
-        {
-            highlighter.transform.position = new Vector3(caster.transform.position.x, caster.transform.position.y + gap,
-                caster.transform.position.z);
-        }
-
-
         //! End caster's turn
         if (Input.GetKeyDown(KeyCode.Space))
         {
             OnCasterAttack();
             isPlayerTurn = false;
+        }
+    }
+
+    void LateUpdate()
+    {
+        if (caster)
+        {
+            highlighter.transform.position = new Vector3(caster.transform.position.x, caster.transform.position.y + gap,
+                caster.transform.position.z);
         }
     }
 

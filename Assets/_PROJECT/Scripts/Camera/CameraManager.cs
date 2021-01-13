@@ -299,7 +299,7 @@ public class CameraManager : MonoBehaviour
         {
             rotValue = Mathf.Lerp(rotValue, 0, timer / zoomSpeed);
             cam.transform.rotation = Quaternion.Euler(0,0,rotValue);
-            zoomValue = Mathf.Lerp(zoomValue, startingZoom, timer / zoomSpeed);
+            zoomValue = Mathf.Lerp(zoomValue, targetZoom, timer / zoomSpeed);
             cam.orthographicSize = zoomValue;
             timer += Time.deltaTime;
 
