@@ -28,7 +28,9 @@ public class DialogueManager : MonoBehaviour
     private void Start()
     {
         sentences = new Queue<string>();
-        switch(tutorialPhase)
+        tutorialPhase = DatabaseManager.instance.GetTutorialPhase();
+
+        switch (tutorialPhase)
         {
             case TutorialPhase.guideToMap:
                 resetTrigger(guidedDialogues[0]);
@@ -48,6 +50,7 @@ public class DialogueManager : MonoBehaviour
             case TutorialPhase.guideFinish:
                 return;
         }
+
     }
 
     public void StartDialogue(GuidedDialogue guidedDialogue)

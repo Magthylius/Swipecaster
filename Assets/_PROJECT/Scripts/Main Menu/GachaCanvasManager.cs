@@ -169,7 +169,8 @@ public class GachaCanvasManager : MenuCanvasPage
     {
         if (!isTutorialed)
         {
-            DialogueManager.instance.tutorialPhase = TutorialPhase.guideToParty;
+            DatabaseManager.instance.SaveTutorialState(TutorialPhase.guideToParty);
+            //DialogueManager.instance.tutorialPhase = TutorialPhase.guideToParty;
             DialogueManager.instance.guideToParty();
             isTutorialed = true;
         }

@@ -100,7 +100,7 @@ public class PartyCanvasManager : MenuCanvasPage
         mainMenuManager.ShowBottomOverlay();
 
         if (DialogueManager.instance.tutorialPhase == TutorialPhase.guideToGacha)
-            DialogueManager.instance.tutorialPhase = TutorialPhase.guideFinish;
+            DatabaseManager.instance.SaveTutorialState(TutorialPhase.guideFinish);
             DialogueManager.instance.unlockButtons();
 
         /*if (!mainMenuManager.GetPreEnterQuest())
