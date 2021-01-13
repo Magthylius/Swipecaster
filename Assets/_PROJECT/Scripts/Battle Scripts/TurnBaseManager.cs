@@ -168,6 +168,8 @@ public class TurnBaseManager : MonoBehaviour
                 msg += ". GGWP";
                 print(msg);
                 battleState = GameStateEnum.END;
+                if (DialogueManager.instance.tutorialPhase == TutorialPhase.guideToMap)
+                    DatabaseManager.instance.SaveTutorialState(TutorialPhase.guideToGacha);
                 sceneManager.ActivateTransition(sceneNameToLoadAfterBattlestageEnd);
                 return;
             }
