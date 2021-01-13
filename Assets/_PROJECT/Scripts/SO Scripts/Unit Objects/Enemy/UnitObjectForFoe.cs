@@ -3,6 +3,8 @@ using UnityEngine;
 public class UnitObjectForFoe : UnitObject
 {
     [Header("Foe Settings")]
+    [SerializeField] private bool randomiseStats = true;
+    [Space(5)]
     [SerializeField, Range(1, 5000)] private int minRandomHealth;
     [SerializeField, Range(1, 5000)] private int maxRandomHealth;
     [Space(5)]
@@ -14,6 +16,7 @@ public class UnitObjectForFoe : UnitObject
     
     public override void CalculateRandomisedStats()
     {
+        if(!randomiseStats) { CalculateActualStats(); return; }
         if (!MinIsLowerThanMax()) { DebugMinIsLargerThanMaxCase(); return; }
         int randomHealth = Random.Range(minRandomHealth, maxRandomHealth + 1);
         int randomAttack = Random.Range(minRandomAttack, maxRandomAttack + 1);

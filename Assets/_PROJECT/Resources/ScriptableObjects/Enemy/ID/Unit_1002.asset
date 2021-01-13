@@ -12,30 +12,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 854d65c26b7c6334d8b84b938491ab04, type: 3}
   m_Name: Unit_1002
   m_EditorClassIdentifier: 
-  ID: 
-  CharacterName: 
+  ID: 1002
+  CharacterName: Original
   CharacterMastery: 0
-  BaseRarity: 0
+  BaseRarity: 3
   ArchTypeMajor: -1
-  RuneAlignment: 0
-  CharacterDescription: 
+  RuneAlignment: -1
+  CharacterDescription: Obviously real
   IsAlive: 0
-  MaxLevel: 0
-  MaxHealth: 0
-  MaxAttack: 0
-  MaxDefence: 0
-  CurrentLevel: 0
-  LevelTotalHealth: 0
-  LevelTotalAttack: 0
-  LevelTotalDefence: 0
+  MaxLevel: 50
+  MaxHealth: 5000
+  MaxAttack: 500
+  MaxDefence: 50
+  CurrentLevel: 1
+  LevelTotalHealth: 1792
+  LevelTotalAttack: 179
+  LevelTotalDefence: 18
   baseStatMultiplier: 0.33333334
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
-  SkillName: 
-  SkillDescription: 
+  SkillName: Who said that?
+  SkillDescription: WHERE IS HE
   SummonPrefab: {fileID: 0}
-  FullBodyPrefab: {fileID: 0}
-  SpriteHolderPrefab: {fileID: 0}
-  PortraitArt: {fileID: 0}
-  FullBodyArt: {fileID: 0}
+  FullBodyPrefab: {fileID: 7792443217028439265, guid: 53d3e0ee8a7b59b4ba8e79b86cfde3d9, type: 3}
+  SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}
+  PortraitArt: {fileID: 937879577290004041, guid: e6b9bcf87d11f8748ad3b6b77bc8777f, type: 3}
+  FullBodyArt: {fileID: 1015377772615962902, guid: e6b9bcf87d11f8748ad3b6b77bc8777f, type: 3}
   SummonArt: {fileID: 0}
+  randomiseStats: 0
+  minRandomHealth: 0
+  maxRandomHealth: 0
+  minRandomAttack: 0
+  maxRandomAttack: 0
+  minRandomDefence: 0
+  maxRandomDefence: 0

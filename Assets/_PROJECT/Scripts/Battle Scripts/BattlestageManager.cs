@@ -273,7 +273,7 @@ public class BattlestageManager : MonoBehaviour
                     int randomAvailableEnemy = UnityEngine.Random.Range(0, availableEnemyType.Count);
                     UnitObject unitObject = availableEnemyType[randomAvailableEnemy].enemySO;
                     GameObject temp = unitObject.InstantiateUnit(enemyPositions[i].position, Quaternion.identity, enemyPositions[i]);
-                    temp.GetComponent<Foe>().SetCurrentLevel(availableEnemyType[randomAvailableEnemy].level);
+                    temp.GetComponent<Foe>().SetCurrentLevelAndCalculate(availableEnemyType[randomAvailableEnemy].level);
                     enemyTeam.Add(temp);
                 }
             }
@@ -283,7 +283,7 @@ public class BattlestageManager : MonoBehaviour
                 {
                     UnitObject unitObject = theRoom.roomSO.enemies[i].enemySO;
                     GameObject temp = unitObject.InstantiateUnit(enemyPositions[i].position, Quaternion.identity, enemyPositions[i]);
-                    temp.GetComponent<Foe>().SetCurrentLevel(theRoom.roomSO.enemies[i].level);
+                    temp.GetComponent<Foe>().SetCurrentLevelAndCalculate(theRoom.roomSO.enemies[i].level);
                     enemyTeam.Add(temp);
                 }
             }
