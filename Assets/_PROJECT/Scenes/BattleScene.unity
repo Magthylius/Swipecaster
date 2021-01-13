@@ -10866,9 +10866,9 @@ MonoBehaviour:
   minZoom: 1.5
   maxZoom: 3.5
   panSpeed: 4
-  unitZoomAnimation: 3.25
+  unitZoomAnimation: 2.5
   zoomRotation: 3
-  zoomSpeed: 1
+  zoomSpeed: 2
   moveSpeed: 0.3
   countdown: 3
   backgroundEnvSpr: {fileID: 1866144033}
