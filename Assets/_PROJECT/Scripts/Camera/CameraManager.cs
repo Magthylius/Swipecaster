@@ -215,7 +215,7 @@ public class CameraManager : MonoBehaviour
         rightBound = (levelBounds.max.x) - (horizontalCamSize + horizontalOffset);
         bottomBound = (levelBounds.min.y) + (verticalCamSize + verticalOffset);
         
-        cam.transform.position = new Vector3(Mathf.Clamp(cam.transform.position.x, currentCamPos - edgeBound, currentCamPos + edgeBound) , cam.transform.position.y, cam.transform.position.z);
+        cam.transform.position = new Vector3(Mathf.Clamp(cam.transform.position.x, currentCamPos - edgeBound, currentCamPos + edgeBound) , verticalOffset, cam.transform.position.z);
     }
 
     public void ZoomToCenter()

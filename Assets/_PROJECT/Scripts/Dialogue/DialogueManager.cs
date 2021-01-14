@@ -39,7 +39,9 @@ public class DialogueManager : MonoBehaviour
     private void Start()
     {
         sentences = new Queue<string>();
-        tutorialPhase = DatabaseManager.instance.GetTutorialPhase();
+
+        if (DatabaseManager.instance != null)
+            tutorialPhase = DatabaseManager.instance.GetTutorialPhase();
         // DatabaseManager.instance.SaveTutorialState(tutorialPhase);
 
         dialogueFR = new FlexibleRect(dialogueRectTr);
