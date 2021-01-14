@@ -87,6 +87,7 @@ namespace LerpFunctions
             }
         }
 
+        //! Lerp
         public void StartLerp(Vector2 endPos)
         {
             allowTransition = true;
@@ -112,6 +113,7 @@ namespace LerpFunctions
             return false;
         }
 
+        //! Movement
         public void MoveTo(Vector2 targetPosition)
         {
             Vector2 diff = targetPosition - center;
@@ -119,6 +121,13 @@ namespace LerpFunctions
             rectTransform.offsetMin += diff;
         }
 
+        //! Setters
+        public void SetEndPosition(Vector2 targetPos)
+        {
+            endPosition = targetPos;
+        }
+
+        //! Queries
         public Vector2 GetBodyOffset(Vector2 direction)
         {
             return new Vector2(originalPosition.x + (direction.x * width), originalPosition.y + (direction.y * height));

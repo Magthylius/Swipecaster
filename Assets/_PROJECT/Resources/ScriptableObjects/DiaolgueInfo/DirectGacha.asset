@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTriggered: 1
   dialogue:
-    name: Instrutor
+    dialogueName: Heugene
     sentences:
     - Gacha Please
-  speakerSprite: {fileID: 21300000, guid: abbf2d9a438353045a03dd377903b021, type: 3}
+  speakerSprite: {fileID: 21300000, guid: b9993bf66f4ca634f822b22de6d406d2, type: 3}

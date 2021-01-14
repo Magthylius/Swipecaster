@@ -9790,10 +9790,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac83f811c65eafb4eb20406b0c8cd994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 1380760163}
-  name: {fileID: 1380760162}
+  dialogueRectTr: {fileID: 1380760159}
+  dialogueName: {fileID: 1380760162}
   dialogueText: {fileID: 1380760161}
   speakerSpeaker: {fileID: 1380760160}
+  transitionSpeed: 15
   guidedDialogues:
   - dialogueInfo: {fileID: 11400000, guid: bfecf3af1295fd949b0c5a32721f0c91, type: 2}
     guidedButton: {fileID: 526579346}
@@ -18463,7 +18464,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1362477932
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18742,7 +18743,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2989774914669804919, guid: 3249d0e310b73ab4894d5ee5982130d6, type: 3}
       propertyPath: m_Name
-      value: DialoguePanel (1)
+      value: DialoguePanel
       objectReference: {fileID: 0}
     - target: {fileID: 2989774914669804920, guid: 3249d0e310b73ab4894d5ee5982130d6, type: 3}
       propertyPath: m_Pivot.x
@@ -18754,7 +18755,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2989774914669804920, guid: 3249d0e310b73ab4894d5ee5982130d6, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2989774914669804920, guid: 3249d0e310b73ab4894d5ee5982130d6, type: 3}
       propertyPath: m_AnchorMax.x
@@ -18778,7 +18779,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2989774914669804920, guid: 3249d0e310b73ab4894d5ee5982130d6, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -1683.4146
+      value: -1331.8711
       objectReference: {fileID: 0}
     - target: {fileID: 2989774914669804920, guid: 3249d0e310b73ab4894d5ee5982130d6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18814,7 +18815,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2989774914669804920, guid: 3249d0e310b73ab4894d5ee5982130d6, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -842
+      value: -666.2283
       objectReference: {fileID: 0}
     - target: {fileID: 2989774914669804920, guid: 3249d0e310b73ab4894d5ee5982130d6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -18868,11 +18869,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &1380760163 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 2989774914669804921, guid: 3249d0e310b73ab4894d5ee5982130d6, type: 3}
-  m_PrefabInstance: {fileID: 1380760158}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1391332528
 GameObject:
   m_ObjectHideFlags: 0
@@ -27645,7 +27641,7 @@ MonoBehaviour:
   - {fileID: 1581613813}
   - {fileID: 1289895987}
   - {fileID: 1457060087}
-  nextLevelName: Tutorial
+  nextLevelName: BattleScene
 --- !u!1 &2037394576
 GameObject:
   m_ObjectHideFlags: 0

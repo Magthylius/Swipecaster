@@ -3,18 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using LerpFunctions;
 
 public class DialogueManager : MonoBehaviour
 {
-    public Animator animator;
-    public TMP_Text name;
+    public static DialogueManager instance;
+
+    [Header("Dialogue")]
+    public RectTransform dialogueRectTr;
+    public TMP_Text dialogueName;
     public TMP_Text dialogueText;
     public Image speakerSpeaker;
+
+    [Header("Settings")]
+    public float transitionSpeed = 15f;
+
+    [Header("Sentences")]
     private Queue<string> sentences;
     public List<GuidedDialogue> guidedDialogues = new List<GuidedDialogue>();
     public GameObject buttonParent;
-    public static DialogueManager instance;
     public TutorialPhase tutorialPhase;
+
+    FlexibleRect dialogueFR;
 
     #region Singleton
     void Awake()
@@ -30,7 +40,10 @@ public class DialogueManager : MonoBehaviour
     {
         sentences = new Queue<string>();
         tutorialPhase = DatabaseManager.instance.GetTutorialPhase();
-       // DatabaseManager.instance.SaveTutorialState(tutorialPhase);
+        // DatabaseManager.instance.SaveTutorialState(tutorialPhase);
+
+        dialogueFR = new FlexibleRect(dialogueRectTr);
+        dialogueFR.MoveTo(dialogueFR.GetBodyOffset(Vector2.down));
 
         switch (tutorialPhase)
         {
@@ -49,7 +62,6 @@ public class DialogueManager : MonoBehaviour
             case TutorialPhase.guideFinish:
                 return;
         }
-
     }
 
     private void Update()
@@ -58,6 +70,8 @@ public class DialogueManager : MonoBehaviour
         {
             unlockButtons();
         }
+
+        dialogueFR.Step(transitionSpeed * Time.unscaledDeltaTime);
     }
 
     public void StartDialogue(GuidedDialogue guidedDialogue)
@@ -65,10 +79,12 @@ public class DialogueManager : MonoBehaviour
         if (guidedDialogue.dialogueInfo.isTriggered) return;
 
         //animate the UI to pop up
-        animator.SetBool("isOpen", true);
+        //animator.SetBool("isOpen", true);
+        
+        dialogueFR.StartLerp(dialogueFR.originalPosition);
 
         //if got button to be guided, highlight such button.
-        if(guidedDialogue.guidedButton != null)
+        if (guidedDialogue.guidedButton != null)
         {
             guidedDialogue.guidedButton.GetComponent<Image>().color = Color.red;
 
@@ -87,7 +103,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         guidedDialogue.dialogueInfo.isTriggered = true;
-        name.text = guidedDialogue.dialogueInfo.name;
+        dialogueName.text = guidedDialogue.dialogueInfo.dialogue.dialogueName;
 
         if(guidedDialogue.dialogueInfo.speakerSprite)
             speakerSpeaker.sprite = guidedDialogue.dialogueInfo.speakerSprite;
@@ -116,7 +132,9 @@ public class DialogueManager : MonoBehaviour
 
     private void EndDialogue()
     {
-        animator.SetBool("isOpen", false);
+        //animator.SetBool("isOpen", false);
+        //dialogueFR.StartLerp(dialogueFR.originalPosition);
+        dialogueFR.StartLerp(dialogueFR.GetBodyOffset(Vector2.down));
     }
 
     private void resetTrigger(GuidedDialogue guidedDialogue)
@@ -168,7 +186,7 @@ public class DialogueManager : MonoBehaviour
 [System.Serializable]
 public class Dialogue
 {
-    public string name;
+    public string dialogueName;
 
     [TextArea(3,10)]
     public string[] sentences; 
