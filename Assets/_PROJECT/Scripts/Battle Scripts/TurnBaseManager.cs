@@ -242,22 +242,28 @@ public class TurnBaseManager : MonoBehaviour
 
     IEnumerator CasterAttack()
     {
+        UnitObject defenderUnit = null;
+        SpriteRenderer defenderSR = null;
         cameraManager.ZoomToCenter();
         highlighter.SetActive(false);
         battlestageManager.GetStageTargetHandler().DeactivateSpriteHolder();
         battlestageManager.ExecuteAction(caster, battlestageManager.GetSelectedTarget());
 
-        UnitObject defenderUnit = battlestageManager.GetSelectedTarget().GetComponent<Entity>().GetBaseUnit;
-        SpriteRenderer defenderSR = battlestageManager.GetSelectedTarget().GetComponent<SpriteRenderer>();
-        
-        defenderSR.sprite = defenderUnit.FullBodyDamagedArt;
-        
+        if (battlestageManager.GetSelectedTarget())
+        {
+            defenderUnit = battlestageManager.GetSelectedTarget().GetComponent<Entity>().GetBaseUnit;
+            defenderSR = battlestageManager.GetSelectedTarget().GetComponent<SpriteRenderer>();
+            defenderSR.sprite = defenderUnit.FullBodyDamagedArt;
+        }
+        else print("Unit Not Found");
+
         while (!cameraManager.GetIsFree())
         {
             yield return null;
         }
         battlestageManager.GetStageTargetHandler().ActivateSpriteHolder();
-        defenderSR.sprite = defenderUnit.FullBodyArt;
+        if (defenderSR)
+            defenderSR.sprite = defenderUnit.FullBodyArt;
         EndTurn();
     }
 
@@ -279,7 +285,8 @@ public class TurnBaseManager : MonoBehaviour
             yield return null;
         }
         battlestageManager.GetStageTargetHandler().ActivateSpriteHolder();
-        attackSR.sprite = attackerUnit.FullBodyArt;
+        if (attackSR)
+            attackSR.sprite = attackerUnit.FullBodyArt;
         EndTurn();
     }
     

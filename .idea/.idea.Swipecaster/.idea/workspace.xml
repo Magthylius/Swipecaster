@@ -20,10 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b2ff588-542f-45f5-abf5-6973ac360757" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Resources/ScriptableObjects/Enemy/ID/Unit_1001.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_PROJECT/Resources/ScriptableObjects/Enemy/ID/Unit_1001.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Resources/ScriptableObjects/Enemy/ID/Unit_1002.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_PROJECT/Resources/ScriptableObjects/Enemy/ID/Unit_1002.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Resources/ScriptableObjects/Enemy/ID/Unit_1003.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_PROJECT/Resources/ScriptableObjects/Enemy/ID/Unit_1003.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Swipecaster/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Swipecaster/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/TurnBaseManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/TurnBaseManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Camera/CameraManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Camera/CameraManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,14 +73,15 @@
       <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/PartyConfigurationBehavior.cs" />
       <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Main Menu/HomeCanvasManager.cs" />
       <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Environment/ParallaxBehaviour.cs" />
-      <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Camera/CameraManager.cs" />
       <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Save/DatabaseManager.cs" />
       <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/SO Scripts/AudioData.cs" />
       <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/General/Audio/AudioTest.cs" />
       <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Managers/General/Audio/AudioManager.cs" />
       <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Runes/RuneBehaviour.cs" />
       <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/BattlestageManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/EasyMobile/Demo/Scripts/GifDemo/GifDemo.cs" />
       <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/TurnBaseManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Camera/CameraManager.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1lgUKEMQznl8d4VgaS2WyrD60iQ" />

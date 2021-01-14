@@ -35,6 +35,7 @@ public class CameraManager : MonoBehaviour
     [Header("Battle Zoom Settings")] 
     public float zoomRotation;
     public float zoomSpeed;
+    public float attackZoomOffset;
     public float moveSpeed = 0.3f;
     
 
@@ -46,7 +47,8 @@ public class CameraManager : MonoBehaviour
     bool allowZoom = false;
 
     float targetPan = 0f;
-    float prevPan;
+    float prevPanX;
+    float prevPanY;
     bool allowPan = false;
 
     bool isInBound { get; set; }
@@ -109,10 +111,11 @@ public class CameraManager : MonoBehaviour
 
     void LateUpdate()
     {
-        UpdateCameraBoundary();
 
         if (combatLerping) return;
 
+        UpdateCameraBoundary();
+        
         if (allowZoom)
         {
             cam.orthographicSize =
@@ -128,6 +131,7 @@ public class CameraManager : MonoBehaviour
         if (allowPan)
         {
             float actualPan = Mathf.Lerp(cam.transform.position.x, targetPan, panSpeed * Time.unscaledDeltaTime);
+            
             cam.transform.position = new Vector3(actualPan, cam.transform.position.y, cam.transform.position.z);
 
             if (Lerp.NegligibleDistance(cam.transform.position.x , targetPan, 0.001f))
@@ -225,7 +229,8 @@ public class CameraManager : MonoBehaviour
         targetUnit = battlestageCenter.transform;
         
         prevZoom = targetZoom;
-        prevPan = targetPan;
+        prevPanX = targetPan;
+        prevPanY = cam.transform.position.y;
 
         isFree = false;
         targetZoom = unitZoomAnimation;
@@ -258,7 +263,9 @@ public class CameraManager : MonoBehaviour
         float timer = 0;
         float rotValue = 0;
         float zoomValue = cam.orthographicSize;
-        float targetValue = cam.transform.position.x;
+        float targetXValue = cam.transform.position.x;
+        float targetYValue = cam.transform.position.y;
+        float offsetYCam = battlestageCenter.position.y + attackZoomOffset;
         combatLerping = true;
 
 
@@ -268,19 +275,20 @@ public class CameraManager : MonoBehaviour
             if (turnBaseManager.GetCurrentState() == GameStateEnum.CASTERTURN)
             {
                 rotValue = Mathf.Lerp(rotValue, zoomRotation, timer / zoomSpeed);
-                targetValue = Mathf.Lerp(targetValue, battlestageCenter.position.x, timer / moveSpeed);
+                targetXValue = Mathf.Lerp(targetXValue, battlestageCenter.position.x, timer / zoomSpeed);
+                targetYValue = Mathf.Lerp(targetYValue, offsetYCam, timer / moveSpeed);
                 zoomValue = Mathf.Lerp(zoomValue, targetZoom, timer / zoomSpeed);
                 cam.transform.rotation = Quaternion.Euler(0,0,rotValue);
-                cam.transform.position = new Vector3(targetValue, cam.transform.position.y, cam.transform.position.z);
+                cam.transform.position = new Vector3(targetXValue, targetYValue, cam.transform.position.z);
                 cam.orthographicSize = zoomValue;
             }
             else if(turnBaseManager.GetCurrentState() == GameStateEnum.ENEMYTURN)
             {
                 rotValue = Mathf.Lerp(rotValue, -zoomRotation, timer / zoomSpeed);
-                targetValue = Mathf.Lerp(targetValue, battlestageCenter.position.x, timer / moveSpeed);
+                targetXValue = Mathf.Lerp(targetXValue, battlestageCenter.position.x, timer / zoomSpeed);
                 zoomValue = Mathf.Lerp(zoomValue, targetZoom, timer / zoomSpeed);
                 cam.transform.rotation = Quaternion.Euler(0,0,rotValue);
-                cam.transform.position = new Vector3(targetValue, cam.transform.position.y, cam.transform.position.z);
+                cam.transform.position = new Vector3(targetXValue, targetYValue, cam.transform.position.z);
                 cam.orthographicSize = zoomValue;
             }
             
@@ -290,16 +298,18 @@ public class CameraManager : MonoBehaviour
             cam.orthographicSize = targetZoom;
         }
         
-        cam.transform.position = new Vector3(battlestageCenter.position.x, cam.transform.position.y, cam.transform.position.z);
+        cam.transform.position = new Vector3(battlestageCenter.position.x, offsetYCam, cam.transform.position.z);
         
-        targetPan = prevPan;
+        targetPan = prevPanX;
         targetZoom = prevZoom;
         timer = 0;
         
         while (timer < zoomSpeed)
         {
             rotValue = Mathf.Lerp(rotValue, 0, timer / zoomSpeed);
+            targetYValue = Mathf.Lerp(targetYValue, prevPanY, timer / zoomSpeed);
             cam.transform.rotation = Quaternion.Euler(0,0,rotValue);
+            cam.transform.position = new Vector3(transform.position.x, targetYValue, cam.transform.position.z);
             zoomValue = Mathf.Lerp(zoomValue, targetZoom, timer / zoomSpeed);
             cam.orthographicSize = zoomValue;
             timer += Time.deltaTime;
@@ -308,6 +318,7 @@ public class CameraManager : MonoBehaviour
         }
         
         cam.transform.rotation = Quaternion.Euler(0,0,0);
+        cam.transform.position = new Vector3(transform.position.x, prevPanY, cam.transform.position.z);
         battlestageManager.ResetSortingOrder();
         isFree = true;
         combatLerping = false;
