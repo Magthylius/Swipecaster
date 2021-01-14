@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5332317c2854b8458e109ff69e17107, type: 3}
   m_Name: PressGacha
   m_EditorClassIdentifier: 
-  isTriggered: 1
+  isTriggered: 0
   dialogue:
     name: 
     sentences:
     - Hold the button please
+  speakerSprite: {fileID: 0}
