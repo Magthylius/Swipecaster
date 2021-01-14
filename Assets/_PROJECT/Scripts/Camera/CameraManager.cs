@@ -17,7 +17,8 @@ public class CameraManager : MonoBehaviour
     public float minZoomOffset = 1.5f;
     public float maxZoomOffset = -0.5f;
     public float edgeBound;
-    [SerializeField] float verticalOffset;
+    public float camverticalOffset;
+    float verticalOffset;
 
     [Header("Zoom settings")] 
     public float zoomModifierSpeed;
@@ -215,7 +216,7 @@ public class CameraManager : MonoBehaviour
         rightBound = (levelBounds.max.x) - (horizontalCamSize + horizontalOffset);
         bottomBound = (levelBounds.min.y) + (verticalCamSize + verticalOffset);
         
-        cam.transform.position = new Vector3(Mathf.Clamp(cam.transform.position.x, currentCamPos - edgeBound, currentCamPos + edgeBound) , verticalOffset, cam.transform.position.z);
+        cam.transform.position = new Vector3(Mathf.Clamp(cam.transform.position.x, currentCamPos - edgeBound, currentCamPos + edgeBound) , verticalOffset + camverticalOffset, cam.transform.position.z);
     }
 
     public void ZoomToCenter()

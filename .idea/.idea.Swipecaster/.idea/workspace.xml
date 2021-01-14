@@ -20,9 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b2ff588-542f-45f5-abf5-6973ac360757" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Swipecaster/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Swipecaster/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Swipecaster/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Swipecaster/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/TurnBaseManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_PROJECT/Scripts/Battle Scripts/TurnBaseManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Resources/ScriptableObjects/Enemy/ID/Unit_1001.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_PROJECT/Resources/ScriptableObjects/Enemy/ID/Unit_1001.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Resources/ScriptableObjects/Enemy/ID/Unit_1002.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_PROJECT/Resources/ScriptableObjects/Enemy/ID/Unit_1002.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_PROJECT/Resources/ScriptableObjects/Enemy/ID/Unit_1003.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_PROJECT/Resources/ScriptableObjects/Enemy/ID/Unit_1003.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
