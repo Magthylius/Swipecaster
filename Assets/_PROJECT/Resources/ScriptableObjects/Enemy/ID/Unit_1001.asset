@@ -25,9 +25,9 @@ MonoBehaviour:
   MaxAttack: 0
   MaxDefence: 0
   CurrentLevel: 1
-  LevelTotalHealth: 425
-  LevelTotalAttack: 215
-  LevelTotalDefence: 191
+  LevelTotalHealth: 535
+  LevelTotalAttack: 159
+  LevelTotalDefence: 206
   baseStatMultiplier: 0.33333334
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
@@ -37,7 +37,9 @@ MonoBehaviour:
   FullBodyPrefab: {fileID: 7792443217028439265, guid: 53d3e0ee8a7b59b4ba8e79b86cfde3d9, type: 3}
   SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}
   PortraitArt: {fileID: 2848640792621507367, guid: 813a7113e8b30a64bb694e7e454fa145, type: 3}
-  FullBodyArt: {fileID: 2848640792621507367, guid: 813a7113e8b30a64bb694e7e454fa145, type: 3}
+  FullBodyArt: {fileID: 21300000, guid: ca374c20d046f19448f07492813b08d2, type: 3}
+  FullBodyAttackArt: {fileID: 21300000, guid: 92b6d334a38976f408ca258ec353c4f2, type: 3}
+  FullBodyDamagedArt: {fileID: 21300000, guid: 58f40c4310767064ca9684b946942584, type: 3}
   SummonArt: {fileID: 0}
   randomiseStats: 1
   minRandomHealth: 1000

@@ -37,7 +37,9 @@ MonoBehaviour:
   FullBodyPrefab: {fileID: 7792443217028439265, guid: 53d3e0ee8a7b59b4ba8e79b86cfde3d9, type: 3}
   SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}
   PortraitArt: {fileID: 937879577290004041, guid: e6b9bcf87d11f8748ad3b6b77bc8777f, type: 3}
-  FullBodyArt: {fileID: 1015377772615962902, guid: e6b9bcf87d11f8748ad3b6b77bc8777f, type: 3}
+  FullBodyArt: {fileID: 21300000, guid: 063740202d0b1944593c1799edf833d4, type: 3}
+  FullBodyAttackArt: {fileID: 21300000, guid: fe71413751099b14687dfa3034167cd6, type: 3}
+  FullBodyDamagedArt: {fileID: 21300000, guid: e267ffc957b20234781e132922280763, type: 3}
   SummonArt: {fileID: 0}
   randomiseStats: 0
   minRandomHealth: 0
