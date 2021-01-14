@@ -9,6 +9,7 @@ public class DialogueManager : MonoBehaviour
     public Animator animator;
     public TMP_Text name;
     public TMP_Text dialogueText;
+    public Image speakerSpeaker;
     private Queue<string> sentences;
     public List<GuidedDialogue> guidedDialogues = new List<GuidedDialogue>();
     public GameObject buttonParent;
@@ -87,6 +88,10 @@ public class DialogueManager : MonoBehaviour
 
         guidedDialogue.dialogueInfo.isTriggered = true;
         name.text = guidedDialogue.dialogueInfo.name;
+
+        if(guidedDialogue.dialogueInfo.speakerSprite)
+            speakerSpeaker.sprite = guidedDialogue.dialogueInfo.speakerSprite;
+
         sentences.Clear();
 
         foreach (string sentence in guidedDialogue.dialogueInfo.dialogue.sentences)
