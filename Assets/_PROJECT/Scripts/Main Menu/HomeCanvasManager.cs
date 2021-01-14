@@ -9,7 +9,11 @@ public class HomeCanvasManager : MenuCanvasPage
     DatabaseManager dataManager;
     InventoryManager invManager;
 
+    [Header("Settings")]
+    public CanvasGroup settingsCanvasGroup;
+    CanvasGroupFader settingsCGF;
 
+    [Header("Reset")]
     public CanvasGroup resetCanvasGroup;
     public float transitionSpeed = 5f;
     public PartyGroupBehavior[] partyConfig;
@@ -29,18 +33,34 @@ public class HomeCanvasManager : MenuCanvasPage
         invManager = InventoryManager.instance;
 
         resetCGF = new CanvasGroupFader(resetCanvasGroup, true, true);
+        settingsCGF = new CanvasGroupFader(settingsCanvasGroup, true, true);
         resetCGF.SetTransparent();
+        settingsCGF.SetTransparent();
     }
 
     void Update()
     {
         resetCGF.Step(transitionSpeed * Time.unscaledDeltaTime);
+        settingsCGF.Step(transitionSpeed * Time.unscaledDeltaTime);
     }
 
     public override void Reset()
     {
         resetCGF.SetTransparent();
         resetCGF.SetStateFadeIn();
+
+        settingsCGF.SetTransparent();
+        settingsCGF.SetStateFadeIn();
+    }
+
+    public void BTN_ShowSettingsCanvas()
+    {
+        settingsCGF.StartFadeIn();
+    }
+
+    public void BTN_HideSettingsCanvas()
+    {
+        settingsCGF.StartFadeOut();
     }
 
     public void BTN_ShowResetCanvas()
