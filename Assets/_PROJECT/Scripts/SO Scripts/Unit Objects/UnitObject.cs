@@ -40,6 +40,8 @@ public class UnitObject : ScriptableObject
     public GameObject SpriteHolderPrefab;
     public Sprite PortraitArt;
     public Sprite FullBodyArt;
+    public Sprite FullBodyAttackArt;
+    public Sprite FullBodyDamagedArt;
     public Sprite SummonArt;
 
     #region Utility Methods
