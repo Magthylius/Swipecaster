@@ -2781,6 +2781,17 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 2989774914669804921, guid: 3249d0e310b73ab4894d5ee5982130d6, type: 3}
   m_PrefabInstance: {fileID: 451025766}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &451025771 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4570521598662457800, guid: 3249d0e310b73ab4894d5ee5982130d6, type: 3}
+  m_PrefabInstance: {fileID: 451025766}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &551114477
 GameObject:
   m_ObjectHideFlags: 0
@@ -11529,6 +11540,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8533319247731962571, guid: 20c620f4ecbc9764caeb03d314717c77, type: 3}
+      propertyPath: speakerSpeaker
+      value: 
+      objectReference: {fileID: 451025771}
+    - target: {fileID: 8533319247731962571, guid: 20c620f4ecbc9764caeb03d314717c77, type: 3}
       propertyPath: guidedDialogues.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -13530,6 +13545,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runeDamage: 10
+  TurnStartedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  TurnEndedEvent:
+    m_PersistentCalls:
+      m_Calls: []
   countdownTimer: 5
   slider: {fileID: 3216388}
 --- !u!1 &2111718399
