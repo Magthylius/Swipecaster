@@ -85,16 +85,15 @@ public class BattlestageManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.touchCount > 0)
         {
-            Ray ray = battleCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hitInfo = Physics2D.GetRayIntersection(ray);
-            if (hitInfo.collider != null)
+            Touch touch = Input.GetTouch(0);
+            if(touch.phase == TouchPhase.Began)
             {
-                SelectTarget(hitInfo);
+                Ray ray = battleCamera.ScreenPointToRay(touch.position);
+                RaycastHit2D hitInfo = Physics2D.GetRayIntersection(ray);
+                if (hitInfo.collider != null) SelectTarget(hitInfo);
             }
-
-
         }
 
         if (enableEntityDebugging)
