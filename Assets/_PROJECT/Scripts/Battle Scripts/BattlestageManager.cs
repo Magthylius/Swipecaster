@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using LerpFunctions;
 using UnityEngine.Rendering;
+using System.Collections;
 
 public class BattlestageManager : MonoBehaviour
 {
@@ -364,10 +365,18 @@ public class BattlestageManager : MonoBehaviour
 
     void KillUnit(Unit u)
     {
+        StartCoroutine(deathDelay(u));
+    }
+
+    IEnumerator deathDelay(Unit u)
+    {
+        yield return new WaitForSeconds(2);
+
         if (GetCastersTeam().Contains(u.gameObject))
             GetCastersTeam().Remove(u.gameObject);
         else if (GetEnemyTeam().Contains(u.gameObject))
             GetEnemyTeam().Remove(u.gameObject);
+
         Destroy(u.gameObject);
         turnBaseManager.UpdateLiveTeam();
     }

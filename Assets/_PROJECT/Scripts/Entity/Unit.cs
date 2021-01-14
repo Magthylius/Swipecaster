@@ -436,7 +436,7 @@ public abstract class Unit : Entity
     private void TriggerDamagePopUp(int damage, bool isDamage)
     {
         if (damagePopUp == null) return;
-        damagePopUp.ShowPopUp(damage, true);
+        damagePopUp.ShowPopUp(damage, isDamage);
     }
 
     private void CheckDeathEvent(Unit unit)
