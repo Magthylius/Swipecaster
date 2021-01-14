@@ -50,11 +50,11 @@
               <e p="Foe Skills" t="Include">
                 <e p="FoeSkill.cs" t="Include" />
               </e>
-              <e p="StageInfo.cs" t="Include" />
             </e>
             <e p="Battle Scripts" t="Include">
               <e p="BattlestageManager.cs" t="Include" />
               <e p="GameStateEnum.cs" t="Include" />
+              <e p="StageTargetHandler.cs" t="Include" />
               <e p="TurnBaseManager.cs" t="Include" />
               <e p="UnitPositionBehavior.cs" t="Include" />
               <e p="UnitPositionManager.cs" t="Include" />
@@ -170,6 +170,7 @@
               <e p="QuestHandler.cs" t="Include" />
               <e p="ShopButtonBehavior.cs" t="Include" />
               <e p="ShopCanvasManager.cs" t="Include" />
+              <e p="ShopShelfHandler.cs" t="Include" />
             </e>
             <e p="Managers" t="Include">
               <e p="Battle Scene" t="Include">
@@ -190,6 +191,7 @@
                 </e>
               </e>
               <e p="Main Menu" t="Include">
+                <e p="CurrencyManager.cs" t="Include" />
                 <e p="EnergyManager.cs" t="Include" />
                 <e p="MainMenuManager.cs" t="Include" />
                 <e p="SceneTransitionManager.cs" t="Include" />
@@ -235,8 +237,24 @@
               </e>
               <e p="MenuUnit.cs" t="Include" />
               <e p="RoomObject.cs" t="Include" />
+              <e p="ShopData.cs" t="Include" />
               <e p="SummonObject.cs" t="Include" />
               <e p="Unit Objects" t="Include">
+                <e p="Editor" t="Include">
+                  <e p="UnitObjectEditor.cs" t="Include" />
+                </e>
+                <e p="Enemy" t="Include">
+                  <e p="Unit_1001.cs" t="Include" />
+                  <e p="Unit_1002.cs" t="Include" />
+                  <e p="Unit_1003.cs" t="Include" />
+                  <e p="Unit_1004.cs" t="Include" />
+                  <e p="Unit_1005.cs" t="Include" />
+                  <e p="Unit_1006.cs" t="Include" />
+                  <e p="Unit_1007.cs" t="Include" />
+                  <e p="Unit_1008.cs" t="Include" />
+                  <e p="Unit_1009.cs" t="Include" />
+                  <e p="UnitObjectForFoe.cs" t="Include" />
+                </e>
                 <e p="Unit_001.cs" t="Include" />
                 <e p="Unit_002.cs" t="Include" />
                 <e p="Unit_003.cs" t="Include" />

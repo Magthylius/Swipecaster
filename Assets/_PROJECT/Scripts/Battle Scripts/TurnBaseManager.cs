@@ -246,11 +246,18 @@ public class TurnBaseManager : MonoBehaviour
         highlighter.SetActive(false);
         battlestageManager.GetStageTargetHandler().DeactivateSpriteHolder();
         battlestageManager.ExecuteAction(caster, battlestageManager.GetSelectedTarget());
+
+        UnitObject defenderUnit = battlestageManager.GetSelectedTarget().GetComponent<Entity>().GetBaseUnit;
+        SpriteRenderer defenderSR = battlestageManager.GetSelectedTarget().GetComponent<SpriteRenderer>();
+        
+        defenderSR.sprite = defenderUnit.FullBodyDamagedArt;
+        
         while (!cameraManager.GetIsFree())
         {
             yield return null;
         }
         battlestageManager.GetStageTargetHandler().ActivateSpriteHolder();
+        defenderSR.sprite = defenderUnit.FullBodyArt;
         EndTurn();
     }
 
@@ -261,11 +268,18 @@ public class TurnBaseManager : MonoBehaviour
         battlestageManager.GetStageTargetHandler().DeactivateSpriteHolder();
         enemyAttackManager.CalculatePriority(enemy);
         battlestageManager.ExecuteAction(enemyAttackManager.GetCaster(), enemy);
+        
+        UnitObject attackerUnit = caster.GetComponent<Entity>().GetBaseUnit;
+        SpriteRenderer attackSR = caster.GetComponent<SpriteRenderer>();
+
+        attackSR.sprite = attackerUnit.FullBodyAttackArt;
+        
         while (!cameraManager.GetIsFree())
         {
             yield return null;
         }
         battlestageManager.GetStageTargetHandler().ActivateSpriteHolder();
+        attackSR.sprite = attackerUnit.FullBodyArt;
         EndTurn();
     }
     
