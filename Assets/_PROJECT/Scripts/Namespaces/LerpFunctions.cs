@@ -8,6 +8,13 @@ using UnityEngine.Events;
 
 namespace LerpFunctions
 {
+    public enum FaderState
+    {
+        OPAQUE = 0,
+        TRANSPARENT,
+        FADING,
+    }
+
     [Serializable]
     public class OffsetGroup
     {
@@ -258,6 +265,103 @@ namespace LerpFunctions
         public CanvasState State => state;
     }
 
+    [Serializable]
+    public class UIFader
+    {
+        public Graphic uiObject;
+        FaderState state;
+        FaderState targetState;
+
+        Color original;
+        Color opaque;
+        Color transparent;
+
+        bool allowTransition;
+
+        public UIFader(Graphic graphicObject)
+        {
+            uiObject = graphicObject;
+
+            original = graphicObject.color;
+
+            opaque = original;
+            opaque.a = 1f;
+
+            transparent = original;
+            transparent.a = 0f;
+
+            if (Alpha >= 1f) state = FaderState.OPAQUE;
+            else if (Alpha <= 0f) state = FaderState.TRANSPARENT;
+            else state = FaderState.FADING;
+
+            targetState = state;
+        }
+
+        public void Step(float speed)
+        {
+            if (allowTransition)
+            {
+                if (targetState == FaderState.TRANSPARENT)
+                {
+                    uiObject.color = Color.Lerp(uiObject.color, transparent, speed);
+
+                    if (uiObject.color.a <= 0.001f)
+                    {
+                        uiObject.color = transparent;
+                        state = FaderState.TRANSPARENT;
+                        allowTransition = false;
+                    }
+                }
+                else if (targetState == FaderState.OPAQUE)
+                {
+                    uiObject.color = Color.Lerp(uiObject.color, opaque, speed);
+
+                    if (1f - uiObject.color.a <= 0.001f)
+                    {
+                        uiObject.color = opaque;
+                        state = FaderState.OPAQUE;
+                        allowTransition = false;
+                    }
+                }
+                else allowTransition = false;
+            }
+        }
+
+        public void FadeToTransparent()
+        {
+            allowTransition = true;
+            targetState = FaderState.TRANSPARENT;
+        }
+
+        public void FadeToOpaque()
+        {
+            allowTransition = true;
+            targetState = FaderState.OPAQUE;
+        }
+
+        public void ForceTransparent()
+        {
+            uiObject.color = transparent;
+            state = FaderState.TRANSPARENT;
+        }
+
+        public void ForceOpaque()
+        {
+            uiObject.color = opaque;
+            state = FaderState.OPAQUE;
+        }
+        public float Alpha => uiObject.color.a;
+        public Color OriginalColor => original;
+        public Color OpaqueColor => opaque;
+        public Color TransparentColor => transparent;
+        public FaderState CurrentState()
+        {
+            if (Alpha >= 1f) return FaderState.OPAQUE;
+            else if (Alpha <= 0f) return FaderState.TRANSPARENT;
+
+            return FaderState.FADING;
+        }
+    }
     public class Lerp : MonoBehaviour
     {
         // rects

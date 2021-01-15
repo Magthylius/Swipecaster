@@ -20,9 +20,13 @@ public class TurnBaseManager : MonoBehaviour
     [SerializeField] GameStateEnum battleState;
     [SerializeField] private string sceneNameToLoadAtGameStateEnd = "MainMenuScene";
 
-    [Header("Delay between states")] public float delaysInBetween; // Delays in between states
-
+    [Header("Delay between states")]
+    public float delaysInBetween; // Delays in between states
     public GameObject highlighter;
+
+    [Header("Room swapping")]
+    public EnvironmentFader environmentFader;
+    public RoomNumberFader roomNumberFader;
 
     [Header("Highlighter vertical positions")]
     public float gap;
@@ -58,6 +62,9 @@ public class TurnBaseManager : MonoBehaviour
         dialogueManager = DialogueManager.instance;
         databaseManager = DatabaseManager.instance;
         battleState = GameStateEnum.INIT;
+
+        roomNumberFader.ShowRoomText();
+
         StartCoroutine(InitBattle());
     }
 
@@ -166,6 +173,10 @@ public class TurnBaseManager : MonoBehaviour
             if (roomManager.AnyRoomsLeft)
             {
                 roomManager.SetNextRoomIndex();
+
+                environmentFader.StartPingPong();
+                roomNumberFader.ShowRoomText();
+      
                 battlestageManager.AssignEnemiesToRoom();
                 UpdateLiveTeam();
             }
