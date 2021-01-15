@@ -10206,7 +10206,7 @@ MonoBehaviour:
   zoomRotation: 3
   zoomSpeed: 2
   attackZoomOffset: -3
-  moveSpeed: 0.3
+  moveSpeed: 1
   countdown: 3
   backgroundEnvSpr: {fileID: 1866144033}
   battlestageCenter: {fileID: 1457096772}
