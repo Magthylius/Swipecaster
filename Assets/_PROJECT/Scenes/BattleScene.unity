@@ -875,8 +875,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 469.99643, y: 384.25604}
-  m_SizeDelta: {x: 94.00711, y: 63.487915}
+  m_AnchoredPosition: {x: 470, y: 390}
+  m_SizeDelta: {x: 100, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &165750343
 MonoBehaviour:
@@ -1849,10 +1849,10 @@ Camera:
   field of view: 60
   orthographic: 1
   orthographic size: 5.190896
-  m_Depth: -1
+  m_Depth: 1.32
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 247
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1898,7 +1898,7 @@ MonoBehaviour:
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 4087
   m_VolumeTrigger: {fileID: 0}
   m_RenderPostProcessing: 1
   m_Antialiasing: 2
@@ -3762,7 +3762,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1007418785
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8661,8 +8661,8 @@ Canvas:
   m_GameObject: {fileID: 1094320786}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 333797267}
+  m_RenderMode: 1
+  m_Camera: {fileID: 1404324106}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -9398,7 +9398,7 @@ MonoBehaviour:
   castingGroup: {fileID: 1728044590}
   spawnDelay: 5
   offsetMult: 0.1
-  maxVelocity: 1000
+  maxVelocity: 0.8
   spawnNum: 1
   castingState: 0
   leftSide: -10
@@ -9468,7 +9468,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -9500,7 +9500,7 @@ MonoBehaviour:
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 4087
   m_VolumeTrigger: {fileID: 0}
   m_RenderPostProcessing: 1
   m_Antialiasing: 0
@@ -10318,13 +10318,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1094320790}
     m_Modifications:
+    - target: {fileID: 1122848395391109126, guid: 3249d0e310b73ab4894d5ee5982130d6, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1897189480623677520, guid: 3249d0e310b73ab4894d5ee5982130d6, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989774913842699300, guid: 3249d0e310b73ab4894d5ee5982130d6, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 2989774913842699302, guid: 3249d0e310b73ab4894d5ee5982130d6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 702296427}
+    - target: {fileID: 2989774914464754135, guid: 3249d0e310b73ab4894d5ee5982130d6, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 2989774914669804919, guid: 3249d0e310b73ab4894d5ee5982130d6, type: 3}
       propertyPath: m_Name
       value: DialoguePanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989774914669804919, guid: 3249d0e310b73ab4894d5ee5982130d6, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2989774914669804920, guid: 3249d0e310b73ab4894d5ee5982130d6, type: 3}
       propertyPath: m_Pivot.x
@@ -10409,6 +10429,14 @@ PrefabInstance:
     - target: {fileID: 2989774914669804920, guid: 3249d0e310b73ab4894d5ee5982130d6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989774915468489524, guid: 3249d0e310b73ab4894d5ee5982130d6, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8493812656528208868, guid: 3249d0e310b73ab4894d5ee5982130d6, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3249d0e310b73ab4894d5ee5982130d6, type: 3}
