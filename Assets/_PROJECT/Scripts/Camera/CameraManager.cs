@@ -286,6 +286,7 @@ public class CameraManager : MonoBehaviour
             {
                 rotValue = Mathf.Lerp(rotValue, -zoomRotation, timer / zoomSpeed);
                 targetXValue = Mathf.Lerp(targetXValue, battlestageCenter.position.x, timer / zoomSpeed);
+                targetYValue = Mathf.Lerp(targetYValue, offsetYCam, timer / moveSpeed);
                 zoomValue = Mathf.Lerp(zoomValue, targetZoom, timer / zoomSpeed);
                 cam.transform.rotation = Quaternion.Euler(0,0,rotValue);
                 cam.transform.position = new Vector3(targetXValue, targetYValue, cam.transform.position.z);
