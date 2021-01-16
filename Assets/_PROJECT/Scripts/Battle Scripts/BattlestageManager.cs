@@ -194,9 +194,6 @@ public class BattlestageManager : MonoBehaviour
             }
         }
 
-
-        
-
         allowExecutionAction = true;
     }
 
