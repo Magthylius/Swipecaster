@@ -10,15 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d482a1a55d42cbe46a318c75a765fcbd, type: 3}
-  m_Name: RuneAudio
+  m_Name: GachaAudio
   m_EditorClassIdentifier: 
   audioList:
-  - clip: {fileID: 8300000, guid: 3e4fd93bf3b95724f904c4d547bc8ac6, type: 3}
-    name: Connect
-    volume: 1
-  - clip: {fileID: 8300000, guid: fedb61d4263553043985399cd78d0cd9, type: 3}
+  - clip: {fileID: 8300000, guid: 91f4361118fa4494c9599c3fb2271ef4, type: 3}
     name: Break
     volume: 1
-  soundPacks:
-  - name: Connect
-    audioList: []
+  soundPacks: []

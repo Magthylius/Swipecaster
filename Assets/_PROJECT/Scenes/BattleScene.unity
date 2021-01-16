@@ -3100,6 +3100,7 @@ MonoBehaviour:
   skillTextMesh: {fileID: 242328788}
   spriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}
   prioritySprite: {fileID: 21300000, guid: ada19b07525e12f4b96628fa51599ea1, type: 3}
+  allowRuneCount: 0
   fyorCount: {fileID: 1709844587}
   aquaCount: {fileID: 22301499}
   tehkCount: {fileID: 673411414}
@@ -9886,6 +9887,7 @@ MonoBehaviour:
   line: {fileID: 1716553768}
   uiLine: {fileID: 803903878}
   castingGroupOffset: {fileID: 1728044591}
+  audioPack: {fileID: 11400000, guid: 452e13c60cf54a344a95b74b7c293ec5, type: 2}
 --- !u!1 &1264890180
 GameObject:
   m_ObjectHideFlags: 0
@@ -14252,6 +14254,7 @@ MonoBehaviour:
   skillTextMesh: {fileID: 0}
   spriteHolderPrefab: {fileID: 0}
   prioritySprite: {fileID: 0}
+  allowRuneCount: 0
   fyorCount: {fileID: 1709844587}
   aquaCount: {fileID: 22301499}
   tehkCount: {fileID: 673411414}
