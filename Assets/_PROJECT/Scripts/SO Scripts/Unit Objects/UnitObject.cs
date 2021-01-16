@@ -44,6 +44,9 @@ public class UnitObject : ScriptableObject
     public Sprite FullBodyDamagedArt;
     public Sprite SummonArt;
 
+    [Header("Audio Pack")] 
+    public AudioData audioPack;
+
     #region Utility Methods
 
     public string GetArchAsString => ArchTypeMajor.ToString();
