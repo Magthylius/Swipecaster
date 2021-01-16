@@ -31,9 +31,6 @@ public class BattlestageManager : MonoBehaviour
     List<Transform> allLeftPositions;
     List<Transform> allRightPositions;
 
-    [Header("Hero spawn (Debug use)")] 
-    public GameObject heroes;
-
     [Header("Hero Zoom Size")] 
     public float casterSize = 0.25f;
 
@@ -47,6 +44,11 @@ public class BattlestageManager : MonoBehaviour
 
     [Header("Target Selection")] 
     [SerializeField] private GameObject selectedTarget = null;
+
+    [Header("Death VFX")]
+    public GameObject deathSmokeVFXRight;
+    public GameObject deathSmokeVFXLeft;
+    public Transform battleStageParent;
 
     [Header("Debug")] public bool enableEntityDebugging = false;
 
@@ -404,9 +406,15 @@ public class BattlestageManager : MonoBehaviour
         yield return new WaitForSeconds(2);
 
         if (GetCastersTeam().Contains(u.gameObject))
+        {
             GetCastersTeam().Remove(u.gameObject);
+            Instantiate(deathSmokeVFXLeft, u.transform.position, Quaternion.identity, battleStageParent);
+        }
         else if (GetEnemyTeam().Contains(u.gameObject))
+        {
             GetEnemyTeam().Remove(u.gameObject);
+            Instantiate(deathSmokeVFXRight, u.transform.position, Quaternion.identity, battleStageParent);
+        }
 
         turnBaseManager.UpdateLiveTeam();
         if (u.gameObject == GetSelectedTarget()) selectedTarget = null;

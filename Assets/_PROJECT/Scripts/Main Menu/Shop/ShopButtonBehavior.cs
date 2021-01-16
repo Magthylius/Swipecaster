@@ -6,30 +6,29 @@ using TMPro;
 
 public class ShopButtonBehavior : MonoBehaviour
 {
-    DatabaseManager dataManager;
     CurrencyManager currencyManager; //! use currency manager to update texts
     Button _button;
 
+    [Header("References")]
     public TextMeshProUGUI title;
     public TextMeshProUGUI desc;
     public TextMeshProUGUI number;
     public TextMeshProUGUI type;
+    public Image icon;
 
     ShopData data;
     ShopShelfHandler handler;
 
+    [Header("Data")]
+    public IconData asodelData;
+    public IconData gemData;
+
     void Start()
     {
         _button = GetComponent<Button>();
-        dataManager = DatabaseManager.instance;
         currencyManager = CurrencyManager.instance;
 
         if (_button == null) print("error");
-    }
-
-    void Update()
-    {
-        
     }
 
     public void InfoUpdate()
@@ -38,7 +37,22 @@ public class ShopButtonBehavior : MonoBehaviour
         desc.text = data.shopDesc;
         number.text = (transform.GetSiblingIndex() + 1).ToString();
 
-        type.text = ShopData.CurrencyString(data.shopType);
+        //type.text = ShopData.CurrencyString(data.shopType);
+        type.text = data.buyCost.ToString();
+        
+        if (data.buyType == CurrencyType.NORMAL_CURRENCY)
+        {
+            //type.color = asodelData.spriteColor;
+            icon.sprite = asodelData.sprite;
+            icon.color = asodelData.spriteColor;
+        }
+        else if (data.buyType == CurrencyType.PREMIUM_CURRENCY)
+        {
+            //type.color = gemData.spriteColor;
+            icon.sprite = gemData.sprite;
+            icon.color = gemData.spriteColor;
+        }
+
     }
 
     public void Setup(ShopData _data, ShopShelfHandler _handler)
