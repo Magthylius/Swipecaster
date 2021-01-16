@@ -290,7 +290,7 @@ public class TurnBaseManager : MonoBehaviour
         }
         else print("Unit Not Found");
 
-        audioManager.PlayRandomSFX(defenderUnit.audioPack, "Hurt");
+        //audioManager.PlayRandomSFX(defenderUnit.audioPack, "Hurt");
         
         while (!cameraManager.GetIsFree())
         {
@@ -315,7 +315,7 @@ public class TurnBaseManager : MonoBehaviour
 
         attackSR.sprite = attackerUnit.FullBodyAttackArt;
 
-        audioManager.PlayRandomSFX(attackerUnit.audioPack, "Attack");
+        //audioManager.PlayRandomSFX(attackerUnit.audioPack, "Attack");
         
         while (!cameraManager.GetIsFree())
         {
