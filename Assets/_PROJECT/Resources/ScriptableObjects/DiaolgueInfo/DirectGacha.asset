@@ -16,5 +16,8 @@ MonoBehaviour:
   dialogue:
     dialogueName: Heugene
     sentences:
-    - Gacha Please
+    - 'Astounding work, Grand Caster! '
+    - Nyow, you might want to recruit more champions under your regime!
+    - ' I have already highlighted the button where you could summon heroes of your
+      liking! '
   speakerSprite: {fileID: 21300000, guid: b9993bf66f4ca634f822b22de6d406d2, type: 3}

@@ -16,5 +16,11 @@ MonoBehaviour:
   dialogue:
     dialogueName: Heugene
     sentences:
-    - Press party please
+    - Here is where you manage your subjects, Grand Caster!
+    - Remember, teamwork makes the dreamwork ! Some cats works better together than
+      the others!
+    - Look into their abilities and make a party that truly bring the best out of
+      each other!
+    - Lets assign our new friend into the party and off you go to the world of "Insert
+      WorldNameHere"
   speakerSprite: {fileID: 21300000, guid: b9993bf66f4ca634f822b22de6d406d2, type: 3}

@@ -16,5 +16,7 @@ MonoBehaviour:
   dialogue:
     dialogueName: Heugene
     sentences:
-    - Welcome adventurer !  Press this button to start the game !
+    - Meowcome ! I am Heugene. I shall be your humble guide, Grand Caster.
+    - First, I shall show you the rules of  this world.
+    - Please, press the giant middle button I have highlighted for you!
   speakerSprite: {fileID: 21300000, guid: b9993bf66f4ca634f822b22de6d406d2, type: 3}

@@ -16,5 +16,6 @@ MonoBehaviour:
   dialogue:
     dialogueName: Heugene
     sentences:
-    - Please party
+    - Nyow its time for you to put our new friend to good use!
+    - 'Go to the Party button I have kindly highlighted for your highness! '
   speakerSprite: {fileID: 21300000, guid: b9993bf66f4ca634f822b22de6d406d2, type: 3}
