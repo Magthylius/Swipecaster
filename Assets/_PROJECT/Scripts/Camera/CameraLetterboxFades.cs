@@ -17,10 +17,6 @@ public class CameraLetterboxFades : MonoBehaviour
 
         fadeHeight = Screen.height - canvasScaler.referenceResolution.y;
 
-        print(fadeHeight);
-        print(self.offsetMax);
-        print(self.offsetMin);
-
         self.sizeDelta = new Vector2(self.sizeDelta.x, fadeHeight * 0.5f);
 
         if (inverted)
@@ -29,9 +25,5 @@ public class CameraLetterboxFades : MonoBehaviour
             self.offsetMax -= new Vector2(0, fadeHeight * 0.5f);
         }
     }
-    
-    void Update()
-    {
-        
-    }
+
 }
