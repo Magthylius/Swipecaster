@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -6017469588657768702}
   - component: {fileID: 8960784567209589667}
   - component: {fileID: -6318621568976247335}
+  - component: {fileID: 1942120411175938334}
   m_Layer: 8
   m_Name: Caster Volleyer
   m_TagString: Hero
@@ -54,19 +55,19 @@ MonoBehaviour:
   _currentAttack: 0
   _currentDefence: 0
   isPlayer: 0
-  damageMultiplier: 1
-  passiveHealAmount: 0
-  damageToHealPercent: 0
-  reboundPercent: 0.2
-  probability: 0.05
-  priority: 1
-  currentSkillCharge: 0
-  _skillChargeCount: 0
-  damagePopUp: {fileID: 7676470690647257712}
-  archMajor: -1
-  archMinor: -1
+  _totalDamageInTurn: 0
   runeAdvantageMultiplier: 1.5
   runeWeaknessMultiplier: 0.5
+  damageMultiplier: 1
+  defaultPassiveHealAmount: 0
+  defaultPassiveHealPercent: 0
+  defaultReboundPercent: 0.2
+  defaultProbability: 0.05
+  basePriority: 1
+  damagePopUp: {fileID: 7676470690647257712}
+  unitAudio: {fileID: 1942120411175938334}
+  archMajor: -1
+  archMinor: -1
 --- !u!212 &-5714631179511408747
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -127,7 +128,7 @@ SortingGroup:
   m_GameObject: {fileID: 7792443217028439265}
   m_Enabled: 1
   m_SortingLayerID: -663063965
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
 --- !u!114 &-6017469588657768702
 MonoBehaviour:
@@ -188,6 +189,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1942120411175938334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7792443217028439265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 862009513ca9ea74981f9216089c3113, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioData: {fileID: 0}
+  hurtAudioNameKey: Hurt
+  attackAudioNameKey: Attack
+  healAudioNameKey: Heal
 --- !u!1001 &5143115719628316214
 PrefabInstance:
   m_ObjectHideFlags: 0

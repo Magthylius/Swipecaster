@@ -21,6 +21,7 @@ public abstract class Caster : Unit
         int rawDamage = Round(CalculateDamage(targetInfo, runes) * GetDamageMultiplier);
         int totalDamage = GetCurrentProjectile.AssignTargetDamage(this, targetInfo, rawDamage);
         GetStatusEffects.ForEach(status => status.DoEffectOnAction(targetInfo, totalDamage));
+        InvokeOnAttackEvent();
     }
     public override int CalculateDamage(TargetInfo targetInfo, RuneCollection runes)
     {

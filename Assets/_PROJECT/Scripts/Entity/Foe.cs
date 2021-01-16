@@ -10,6 +10,7 @@ public class Foe : Unit
     {
         int rawDamage = Round(CalculateDamage(targetInfo, runes) * GetDamageMultiplier);
         GetCurrentProjectile.AssignTargetDamage(this, targetInfo, rawDamage);
+        InvokeOnAttackEvent();
     }
     public override int CalculateDamage(TargetInfo targetInfo, RuneCollection runes) => GetCurrentAttack;
     public override TargetInfo GetAffectedTargets(TargetInfo targetInfo)

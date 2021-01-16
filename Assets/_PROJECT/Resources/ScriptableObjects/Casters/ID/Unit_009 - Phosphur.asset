@@ -38,4 +38,7 @@ MonoBehaviour:
   SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}
   PortraitArt: {fileID: 21300000, guid: 8a7c9a857512a98458f36aa0f7fe409f, type: 3}
   FullBodyArt: {fileID: 21300000, guid: 42905d83eb3d34443b47040c2c1667c5, type: 3}
+  FullBodyAttackArt: {fileID: 0}
+  FullBodyDamagedArt: {fileID: 0}
   SummonArt: {fileID: 0}
+  audioPack: {fileID: 11400000, guid: 521fa6d4e0b096244bc403567baa0873, type: 2}
