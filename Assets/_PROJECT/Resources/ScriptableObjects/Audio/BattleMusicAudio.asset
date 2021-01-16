@@ -15,5 +15,5 @@ MonoBehaviour:
   audioList:
   - clip: {fileID: 8300000, guid: 651cc02826f688c4cb0a2ed16a637bd4, type: 3}
     name: BGM
-    volume: 1
+    volume: 0.702
   soundPacks: []
