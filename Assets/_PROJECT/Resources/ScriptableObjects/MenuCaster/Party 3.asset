@@ -15,5 +15,3 @@ MonoBehaviour:
   partyName: Team C
   activeUnits:
   - {fileID: 11400000, guid: 38833d5b39b4cdb42960896d0a32990e, type: 2}
-  - {fileID: 11400000, guid: 38833d5b39b4cdb42960896d0a32990e, type: 2}
-  - {fileID: 11400000, guid: 38833d5b39b4cdb42960896d0a32990e, type: 2}
