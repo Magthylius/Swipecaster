@@ -41,7 +41,7 @@ MonoBehaviour:
   FullBodyAttackArt: {fileID: 21300000, guid: 940a345b4ec4d3445bf792bcc674e157, type: 3}
   FullBodyDamagedArt: {fileID: 21300000, guid: 495aeb51794bcd94f90ec2f70d1cc837, type: 3}
   SummonArt: {fileID: 0}
-  audioPack: {fileID: 0}
+  audioPack: {fileID: 11400000, guid: e4b620c6efac990498b8e6aeec6528ed, type: 2}
   randomiseStats: 0
   minRandomHealth: 0
   maxRandomHealth: 0
