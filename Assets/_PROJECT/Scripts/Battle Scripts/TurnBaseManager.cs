@@ -16,6 +16,7 @@ public class TurnBaseManager : MonoBehaviour
     SceneTransitionManager sceneManager;
     DialogueManager dialogueManager;
     DatabaseManager databaseManager;
+    EndResultManager endResultMananger;
 
     [SerializeField] GameStateEnum battleState;
     [SerializeField] private string sceneNameToLoadAtGameStateEnd = "MainMenuScene";
@@ -61,6 +62,7 @@ public class TurnBaseManager : MonoBehaviour
         sceneManager = SceneTransitionManager.instance;
         dialogueManager = DialogueManager.instance;
         databaseManager = DatabaseManager.instance;
+        endResultMananger = EndResultManager.instance;
         battleState = GameStateEnum.INIT;
 
         roomNumberFader.ShowRoomText();
@@ -164,6 +166,7 @@ public class TurnBaseManager : MonoBehaviour
 
         if (casterWipeout)
         {
+            endResultMananger.TriggerResults(false);
             battleState = GameStateEnum.END;
             sceneManager.ActivateTransition(sceneNameToLoadAtGameStateEnd);
             return;
@@ -182,10 +185,11 @@ public class TurnBaseManager : MonoBehaviour
             }
             else
             {
+                endResultMananger.TriggerResults(true);
                 battleState = GameStateEnum.END;
                 if (dialogueManager.tutorialPhase == TutorialPhase.guideToMap)
                     databaseManager.SaveTutorialState(TutorialPhase.guideToGacha);
-                sceneManager.ActivateTransition(sceneNameToLoadAtGameStateEnd);
+                //sceneManager.ActivateTransition(sceneNameToLoadAtGameStateEnd);
                 return;
             }
         }

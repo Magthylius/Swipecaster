@@ -23,10 +23,10 @@ public class StageTargetHandler : MonoBehaviour
     
     public void UpdateHandler(in GameObject target)
     {
-        if (target == null) { DeactivateSpriteHolder(null); return; }
+        if (target == null) { DeactivateSpriteHolderAndReset(); return; }
 
         var targetParent = target.transform.parent;
-        if (targetParent == null) { DeactivateSpriteHolder(null); return; }
+        if (targetParent == null) { DeactivateSpriteHolderAndReset(); return; }
 
         ActivateSpriteHolder(targetParent);
     }
@@ -45,15 +45,19 @@ public class StageTargetHandler : MonoBehaviour
         _spriteHolder.transform.SetParent(transform);
         ActivateSpriteHolder();
     }
-    public void ActivateSpriteHolder()
-    {
-        _spriteHolder.SetActive(true);
-        _spriteRenderer.enabled = true;
-    }
     private void DeactivateSpriteHolder(Transform transform)
     {
         _spriteHolder.transform.SetParent(transform);
         DeactivateSpriteHolder();
+    }
+    private void DeactivateSpriteHolderAndReset()
+    {
+        DeactivateSpriteHolder(null);
+    }
+    public void ActivateSpriteHolder()
+    {
+        _spriteHolder.SetActive(true);
+        _spriteRenderer.enabled = true;
     }
     public void DeactivateSpriteHolder()
     {

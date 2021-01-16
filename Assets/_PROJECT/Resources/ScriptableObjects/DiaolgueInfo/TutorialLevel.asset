@@ -16,8 +16,9 @@ MonoBehaviour:
   dialogue:
     dialogueName: Heugene
     sentences:
-    - Swipe to damage
-    - The more you link, the more damage you deal
-    - Arrange your hero to deal strategic damage
-    - Kill all your enemies and you win !
+    - Grand Caster, now its the time for you to shine!
+    - Link Runes of the same type to deal damage to our pesky foes!
+    - Link as much as you can! The more you link within the time limit, the more
+      damage you deal!
+    - Give it a try!
   speakerSprite: {fileID: 21300000, guid: b9993bf66f4ca634f822b22de6d406d2, type: 3}

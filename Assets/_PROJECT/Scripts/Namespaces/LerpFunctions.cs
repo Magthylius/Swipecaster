@@ -156,6 +156,109 @@ namespace LerpFunctions
     }
 
     [Serializable]
+    public class FlexibleRectCorners : FlexibleRect
+    {
+        enum FRCornerMode
+        {
+            CENTER = 0,
+            MIDDLE
+        }
+
+        public Vector2 originalOffSetMax;
+        public Vector2 originalOffsetMin;
+
+        Vector2 centeredOffsetMax;
+        Vector2 centeredOffsetMin;
+
+        Vector2 middledOffsetMax;
+        Vector2 middledOffsetMin;
+
+        float lerpPrecision = 0.01f;
+        bool cornerTransition = false;
+        bool goingOpen = false;
+        FRCornerMode mode = FRCornerMode.CENTER;
+
+        public FlexibleRectCorners(RectTransform rectTr) : base(rectTr)
+        {
+            originalOffsetMin = rectTr.offsetMin;
+            originalOffSetMax = rectTr.offsetMax;
+
+            //! not a stretching RectTransform
+            if (rectTr.anchorMax == rectTr.anchorMin)
+            {
+                centeredOffsetMax = new Vector2(0f, originalOffSetMax.y);
+                centeredOffsetMin = new Vector2(0f, originalOffsetMin.y);
+
+                middledOffsetMax = new Vector2(originalOffSetMax.x, 0f);
+                middledOffsetMin = new Vector2(originalOffsetMin.x, 0f);
+            }
+
+            mode = FRCornerMode.CENTER;
+            lerpPrecision = 0.01f;
+        }
+
+        public void CornerStep(float speed)
+        {
+            if (cornerTransition)
+            {
+                if (goingOpen) cornerTransition = !CornerLerp(originalOffsetMin, originalOffSetMax, speed);
+                else
+                {
+                    if (mode == FRCornerMode.CENTER) cornerTransition = !CornerLerp(centeredOffsetMin, centeredOffsetMax, speed);
+                    else cornerTransition = !CornerLerp(middledOffsetMin, middledOffsetMax, speed);
+                }
+
+                if (!cornerTransition) goingOpen = !goingOpen;
+            }
+        }
+
+        public void CornerJump(Vector2 minTarget, Vector2 maxTarget)
+        {
+            rectTransform.offsetMin = minTarget;
+            rectTransform.offsetMax = maxTarget;
+        }
+
+        bool CornerLerp(Vector2 minTarget, Vector2 maxTarget, float speed)
+        {
+            rectTransform.offsetMin = Vector2.Lerp(rectTransform.offsetMin, minTarget, speed);
+            rectTransform.offsetMax = Vector2.Lerp(rectTransform.offsetMax, maxTarget, speed);
+
+            if (Vector2.SqrMagnitude(rectTransform.offsetMin - minTarget) <= lerpPrecision * lerpPrecision)
+            {
+                rectTransform.offsetMin = minTarget;
+                rectTransform.offsetMax = maxTarget;
+                return true;
+            }
+            return false;
+        }
+
+        public void StartMiddleLerp()
+        {
+            cornerTransition = true;
+            mode = FRCornerMode.MIDDLE;
+        }
+
+        public void StartCenterLerp()
+        {
+            cornerTransition = true;
+            mode = FRCornerMode.CENTER;
+        }
+
+        public void Open()
+        {
+            goingOpen = false;
+            CornerJump(originalOffsetMin, originalOffSetMax);
+        }
+
+        public void Close()
+        {
+            goingOpen = true;
+            if (mode == FRCornerMode.CENTER) CornerJump(centeredOffsetMin, centeredOffsetMax);
+            else CornerJump(middledOffsetMin, middledOffsetMax);
+        }
+    }
+
+    [Serializable]
     public class CanvasGroupFader
     {
         public enum CanvasState

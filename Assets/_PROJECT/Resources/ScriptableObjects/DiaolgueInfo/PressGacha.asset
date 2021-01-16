@@ -16,5 +16,6 @@ MonoBehaviour:
   dialogue:
     dialogueName: Heugene
     sentences:
-    - Hold the button please
+    - Move your hand onto the Magic Circle and channel your might power!
+    - Soon, a worthy champion shall answer your call!
   speakerSprite: {fileID: 21300000, guid: b9993bf66f4ca634f822b22de6d406d2, type: 3}

@@ -16,5 +16,6 @@ MonoBehaviour:
   dialogue:
     dialogueName: Heugene
     sentences:
-    - 'Select the correct map '
+    - Purrfect! Now please press the dagger marking our destination!
+    - Then, select the Tutorial Level and off we go!
   speakerSprite: {fileID: 21300000, guid: b9993bf66f4ca634f822b22de6d406d2, type: 3}
