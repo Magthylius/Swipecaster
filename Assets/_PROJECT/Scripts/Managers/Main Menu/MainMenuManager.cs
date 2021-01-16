@@ -219,7 +219,7 @@ public class MainMenuManager : MonoBehaviour
         //if (pageTransition || partyCanvas == currentPage) return;
         ActivateCanvas(mapCanvas);
         ShowBottomOverlay();
-        print("called");
+        //print("called");
         pcManager.PartyMode();
         preEnterQuest = false;
     }

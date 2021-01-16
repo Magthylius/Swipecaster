@@ -97,15 +97,14 @@ public class PartyCanvasManager : MenuCanvasPage
         interactionCGF.StartFadeIn();
         configurationCGF.StartFadeOut();
         editButtonCGF.StartFadeOut();
-        mainMenuManager.ShowBottomOverlay();
 
         if (DialogueManager.instance.tutorialPhase == TutorialPhase.guideToParty)
             DialogueManager.instance.unlockButtons();
 
-        /*if (!mainMenuManager.GetPreEnterQuest())
-            
+        if (!mainMenuManager.GetPreEnterQuest())
+            mainMenuManager.ShowBottomOverlay();  
         else
-            questButtonCGF.StartFadeIn();*/
+            questButtonCGF.StartFadeIn();
     }
 
     public void QuestMode()
