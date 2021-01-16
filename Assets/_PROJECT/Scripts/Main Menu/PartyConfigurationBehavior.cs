@@ -233,7 +233,8 @@ public class PartyConfigurationBehavior : MonoBehaviour
         curPartyData.activeUnits = curPartyList;
         curParty.GetComponent<PartyGroupBehavior>().UpdateAll();
 
-        activeParty = curPartyData;
+        activeParty.partyName = curPartyData.partyName;
+        activeParty.activeUnits = curPartyData.activeUnits;
 
         curParty = null;
         curPartyData = null;
