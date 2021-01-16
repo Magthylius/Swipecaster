@@ -121,7 +121,6 @@ public class PartyCanvasManager : MenuCanvasPage
         partyConfigurator.UpdateShelfPlusSlot();
 
         EditMode();
-        print("Yeah");
     }
 
     public void BTN_ApplyEdit()
