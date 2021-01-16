@@ -181,7 +181,8 @@ public class TurnBaseManager : MonoBehaviour
                 roomNumberFader.ShowRoomText();
       
                 battlestageManager.AssignEnemiesToRoom();
-                UpdateLiveTeam();
+                StartCoroutine(InitBattle());
+                return;
             }
             else
             {
@@ -246,12 +247,17 @@ public class TurnBaseManager : MonoBehaviour
     IEnumerator InitBattle()
     {
         UpdateLiveTeam();
-        highlighter = Instantiate(highlighter);
+        if (!highlighter)
+            highlighter = Instantiate(highlighter);
+
         highlighter.SetActive(false);
+        casterUnitTurn = 0;
+        enemyUnitTurn = 0;
 
         yield return new WaitForSeconds(3f);
 
         battleState = GameStateEnum.CASTERTURN;
+        print("yeet");
         CasterTurn();
     }
 
