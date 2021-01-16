@@ -32,11 +32,14 @@ MonoBehaviour:
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
   SkillName: Moth Lamp
-  SkillDescription: Summons a Lamp on Casters side. Enemies that attack this Lamp
-    take 100% of Damage Dealt.
+  SkillDescription: Summons a LAMP on a random Caster entity position. Enemies that
+    attack this LAMP take 100% of DMG Dealt.
   SummonPrefab: {fileID: 7792443217028439265, guid: 6af8fc6b1de16174e9880336f66d73d4, type: 3}
   FullBodyPrefab: {fileID: 7792443217028439265, guid: 10be517f440303741970a9d383486a1f, type: 3}
   SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}
   PortraitArt: {fileID: 21300000, guid: 40b532b3f3442fd42a53425704492684, type: 3}
   FullBodyArt: {fileID: 21300000, guid: b3a3ec3601586af4599fab6bd7c15f2b, type: 3}
+  FullBodyAttackArt: {fileID: 0}
+  FullBodyDamagedArt: {fileID: 0}
   SummonArt: {fileID: 2848640792621507367, guid: 813a7113e8b30a64bb694e7e454fa145, type: 3}
+  audioPack: {fileID: 11400000, guid: 521fa6d4e0b096244bc403567baa0873, type: 2}

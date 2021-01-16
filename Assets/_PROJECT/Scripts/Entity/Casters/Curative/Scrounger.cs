@@ -12,6 +12,7 @@ public class Scrounger : Curative
         int rawDamage = CalculateDamage(targetInfo, runes);
         int totalDamage = GetCurrentProjectile.AssignTargetDamage(this, targetInfo, rawDamage);
         GetStatusEffects.ForEach(status => status.DoEffectOnAction(targetInfo, totalDamage));
+        InvokeOnAttackEvent();
 
         List<Unit> party = battleStage.GetCasterTeamAsUnit();
         party.ForEach(i => i.RecieveHealing(this, Round(totalDamage * GetPassiveHealPercent)));
