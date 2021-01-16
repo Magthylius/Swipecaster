@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3352919399750778963}
   - component: {fileID: 8960784567209589667}
   - component: {fileID: -6318621568976247335}
+  - component: {fileID: -7556717809344538020}
   m_Layer: 8
   m_Name: Enemy Behaviour 1
   m_TagString: Foe
@@ -49,9 +50,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseUnit: {fileID: 11400000, guid: 9f507505bbe8d1545a231196361142fa, type: 2}
-  _currentHealth: 659
-  _currentAttack: 151
-  _currentDefence: 115
+  _currentHealth: 1355
+  _currentAttack: 423
+  _currentDefence: 334
   isPlayer: 0
   _totalDamageInTurn: 0
   runeAdvantageMultiplier: 1.5
@@ -63,6 +64,7 @@ MonoBehaviour:
   defaultProbability: 0.05
   basePriority: 1
   damagePopUp: {fileID: 1215375572753929276}
+  unitAudio: {fileID: -7556717809344538020}
 --- !u!212 &-5714631179511408747
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -172,6 +174,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-7556717809344538020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7792443217028439265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 862009513ca9ea74981f9216089c3113, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioData: {fileID: 0}
+  hurtAudioNameKey: Hurt
+  attackAudioNameKey: Attack
+  healAudioNameKey: Heal
 --- !u!1001 &4410616885645228154
 PrefabInstance:
   m_ObjectHideFlags: 0

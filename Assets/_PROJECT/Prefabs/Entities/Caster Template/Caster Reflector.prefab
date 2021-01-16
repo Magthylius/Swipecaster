@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -6017469588657768702}
   - component: {fileID: 8960784567209589667}
   - component: {fileID: -6318621568976247335}
+  - component: {fileID: -3387899970897385277}
   m_Layer: 8
   m_Name: Caster Reflector
   m_TagString: Hero
@@ -64,6 +65,7 @@ MonoBehaviour:
   defaultProbability: 0.05
   basePriority: 1
   damagePopUp: {fileID: 2021061376404387864}
+  unitAudio: {fileID: -3387899970897385277}
   archMajor: -1
   archMinor: -1
 --- !u!212 &-5714631179511408747
@@ -187,6 +189,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-3387899970897385277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7792443217028439265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 862009513ca9ea74981f9216089c3113, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioData: {fileID: 0}
+  hurtAudioNameKey: Hurt
+  attackAudioNameKey: Attack
+  healAudioNameKey: Heal
 --- !u!1001 &3595008889353802846
 PrefabInstance:
   m_ObjectHideFlags: 0

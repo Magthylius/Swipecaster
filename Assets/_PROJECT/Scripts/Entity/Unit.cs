@@ -54,6 +54,9 @@ public abstract class Unit : Entity
     [Header("UI")]
     [SerializeField] private DamagePopUp damagePopUp;
 
+    [Header("Audio")]
+    [SerializeField] private UnitAudio unitAudio;
+
     [Header("Action Events")]
     private static Action<Unit> _deathEvent;
     private static Action _allTurnBegin;
@@ -64,6 +67,10 @@ public abstract class Unit : Entity
     private Action<Unit, ActiveSkill> _useSkillEvent;
     private Action _selfTurnBegin;
     private Action _selfTurnEnd;
+
+    private Action _onHitMomentEvent;
+    private Action _onAttackEvent;
+    private Action _onHealEvent;
 
     #endregion
 
@@ -83,6 +90,7 @@ public abstract class Unit : Entity
     {
         if (healAmount <= 0) return;
         AddCurrentHealth(healAmount);
+        InvokeOnHealEvent();
         TriggerDamagePopUp(healAmount, false, false);
     }
 
@@ -128,6 +136,8 @@ public abstract class Unit : Entity
     private void ResetOnHitEdge() => _onHitEdge = OnHitEdge.Idle;
     public void SetOnHitEdge(OnHitEdge edge) => _onHitEdge = edge;
     public OnHitEdge GetOnHitEdge => _onHitEdge;
+
+    public UnitAudio GetUnitAudio() => unitAudio;
 
     #endregion
 
@@ -340,6 +350,18 @@ public abstract class Unit : Entity
     public void UnsubscribeSelfTurnEndEvent(Action method) => _selfTurnEnd -= method;
     public void InvokeSelfTurnEndEvent() => _selfTurnEnd?.Invoke();
 
+    public void SubscribeOnHitMomentEvent(Action method) => _onHitMomentEvent += method;
+    public void UnsubscribeOnHitMomentEvent(Action method) => _onHitMomentEvent -= method;
+    public void InvokeOnHitMomentEvent() => _onHitMomentEvent?.Invoke();
+
+    public void SubscribeOnAttackEvent(Action method) => _onAttackEvent += method;
+    public void UnsubscribeOnAttackEvent(Action method) => _onAttackEvent -= method;
+    public void InvokeOnAttackEvent() => _onAttackEvent?.Invoke();
+
+    public void SubscribeOnHealEvent(Action method) => _onHealEvent += method;
+    public void UnsubscribeOnHealEvent(Action method) => _onHealEvent -= method;
+    public void InvokeOnHealEvent() => _onHealEvent?.Invoke();
+
     #endregion
 
     #endregion
@@ -363,6 +385,7 @@ public abstract class Unit : Entity
             AddTotalDamageInTurn(-totalCalculatedDamage);
             totalCalculatedDamage = 0;
         }
+        else InvokeOnHitMomentEvent();
         TriggerDamagePopUp(totalCalculatedDamage, true, isMitigated);
     }
 
@@ -396,6 +419,8 @@ public abstract class Unit : Entity
     {
         HandleActiveSkill();
         ResetAllStats();
+        GetUnitAudio().SetAudioData(GetBaseUnit.audioPack);
+        GetUnitAudio().SetIsPlayer(GetIsPlayer);
     }
 
     #endregion
@@ -411,6 +436,7 @@ public abstract class Unit : Entity
         SetDefaultProjectile(new CrowFlies(this));
         ResetProjectile();
         ResetTotalDamageInTurn();
+        GetUnitAudio().InjectUnit(this);
         SubscribeHitEvent(TakeDamage);
         SubscribeHealthChangeEvent(CheckDeathEvent);
         SubscribeUseSkillEvent(UpdateStatusEffectsOnSkill);
