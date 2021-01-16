@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba2cb7b67cd7ef14f9935fef6a03a878, type: 3}
+  m_Name: Shamillon
+  m_EditorClassIdentifier: 
+  questName: 
+  questDescription: 
+  questLevels:
+  - {fileID: 11400000, guid: 591a05b2954f47b40846eeac3e812806, type: 2}
+  - {fileID: 11400000, guid: 4990113510e2b9c4eaadaa01c8bd648c, type: 2}
+  - {fileID: 11400000, guid: a73d060de54af90438b3c4ff6ec98ef1, type: 2}
+  - {fileID: 11400000, guid: 44d72c84d469ef042beb50755e2aafbe, type: 2}
+  - {fileID: 11400000, guid: 55e0dc1e894c9854db55662536959be3, type: 2}

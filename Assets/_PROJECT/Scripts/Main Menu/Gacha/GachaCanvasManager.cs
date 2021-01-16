@@ -33,7 +33,10 @@ public class GachaCanvasManager : MenuCanvasPage
     DatabaseManager dataManager;
     InventoryManager invManager;
     CurrencyManager currencyManager;
+    AudioManager audioManager;
 
+    public AudioData audioPack;
+    
     [Header("Connector Points")]
     public UILineRenderer uiLine;
     public List<GachaConnectorBehavior> connectorList;
@@ -81,6 +84,7 @@ public class GachaCanvasManager : MenuCanvasPage
         invManager = InventoryManager.instance;
         currencyManager = CurrencyManager.instance;
         mainMenuManager = MainMenuManager.instance;
+        audioManager = AudioManager.instance;
 
         connectedList = new List<GachaConnectorBehavior>();
         linePoints = new List<Vector2>();
@@ -224,6 +228,7 @@ public class GachaCanvasManager : MenuCanvasPage
             invManager.UpdateCasterInventory();
 
             focusBehav.TriggerPullFocus(pull);
+            audioManager.PlaySFX(audioPack, "Break");
         }
         else
         {

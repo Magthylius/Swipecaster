@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26fdf35aefb08814983634e2a0dc94c5, type: 3}
-  m_Name: Level2
+  m_Name: Level5
   m_EditorClassIdentifier: 
-  levelName: The Outskirts
-  levelDescription: A new adventure awaits
+  levelName: Deadly Yearn
+  levelDescription: Ambush is the key to survival
   levelRooms:
-  - {fileID: 11400000, guid: 2ec67892b356ceb45bfedb8d455d3878, type: 2}
-  - {fileID: 11400000, guid: c35ea885b6a13f641bfe6d8af58c5db2, type: 2}
-  - {fileID: 11400000, guid: 58fe0ad6c6654774093549a2bc694bbe, type: 2}
+  - {fileID: 11400000, guid: 1f6fc5c93edd03b4f9a5ab0ab5964cab, type: 2}
+  - {fileID: 11400000, guid: f9b4d8b30f161284a98ab4c27a32a303, type: 2}
+  - {fileID: 11400000, guid: 7b3a39d8d1932c04483918f139ad3434, type: 2}
   randomRooms: 0

@@ -17,3 +17,6 @@ MonoBehaviour:
   questLevels:
   - {fileID: 11400000, guid: 35fd1e8a6eb1906429ae9e98d3094855, type: 2}
   - {fileID: 11400000, guid: e277eb1c72ed1d14c93c18cdc8f3b19d, type: 2}
+  - {fileID: 11400000, guid: 4ece2ad643512474098e72d127f0ea29, type: 2}
+  - {fileID: 11400000, guid: 1c6e5347948a70c41932f44c79e4ad01, type: 2}
+  - {fileID: 11400000, guid: 922777a8354b6f847801fe616d6c08e3, type: 2}

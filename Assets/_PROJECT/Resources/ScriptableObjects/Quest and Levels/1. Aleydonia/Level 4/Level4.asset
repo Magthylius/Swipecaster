@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26fdf35aefb08814983634e2a0dc94c5, type: 3}
-  m_Name: Level2
+  m_Name: Level4
   m_EditorClassIdentifier: 
-  levelName: The Outskirts
-  levelDescription: A new adventure awaits
+  levelName: The Woods
+  levelDescription: Lies beyond the woods
   levelRooms:
-  - {fileID: 11400000, guid: 2ec67892b356ceb45bfedb8d455d3878, type: 2}
-  - {fileID: 11400000, guid: c35ea885b6a13f641bfe6d8af58c5db2, type: 2}
-  - {fileID: 11400000, guid: 58fe0ad6c6654774093549a2bc694bbe, type: 2}
+  - {fileID: 11400000, guid: 4cd5a1f4fd6ad7d4d87359a7e297ec18, type: 2}
+  - {fileID: 11400000, guid: ff166cee04f940f409d3a839dd8b475b, type: 2}
+  - {fileID: 11400000, guid: 3a3fe3a8ad271f445ac4eba660b8e744, type: 2}
   randomRooms: 0

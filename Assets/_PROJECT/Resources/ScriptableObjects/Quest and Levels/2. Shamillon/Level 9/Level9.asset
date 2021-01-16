@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26fdf35aefb08814983634e2a0dc94c5, type: 3}
-  m_Name: Level2
+  m_Name: Level9
   m_EditorClassIdentifier: 
-  levelName: The Outskirts
-  levelDescription: A new adventure awaits
+  levelName: Dune Plains
+  levelDescription: Beyond plains
   levelRooms:
-  - {fileID: 11400000, guid: 2ec67892b356ceb45bfedb8d455d3878, type: 2}
-  - {fileID: 11400000, guid: c35ea885b6a13f641bfe6d8af58c5db2, type: 2}
-  - {fileID: 11400000, guid: 58fe0ad6c6654774093549a2bc694bbe, type: 2}
+  - {fileID: 11400000, guid: 67dd7a4cdcc65474eb49df653435f88f, type: 2}
+  - {fileID: 11400000, guid: 32802ce9ee6a1d54986a231ab626f2d9, type: 2}
   randomRooms: 0

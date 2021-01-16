@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26fdf35aefb08814983634e2a0dc94c5, type: 3}
-  m_Name: Level2
+  m_Name: Level7
   m_EditorClassIdentifier: 
-  levelName: The Outskirts
-  levelDescription: A new adventure awaits
+  levelName: Grassy Plains
+  levelDescription: The Beginning
   levelRooms:
-  - {fileID: 11400000, guid: 2ec67892b356ceb45bfedb8d455d3878, type: 2}
-  - {fileID: 11400000, guid: c35ea885b6a13f641bfe6d8af58c5db2, type: 2}
-  - {fileID: 11400000, guid: 58fe0ad6c6654774093549a2bc694bbe, type: 2}
+  - {fileID: 11400000, guid: 11dddc87a8cf3a7449880c17c6d2b774, type: 2}
+  - {fileID: 11400000, guid: cc9a4d7dd55c1f14d907ef3355220317, type: 2}
   randomRooms: 0
