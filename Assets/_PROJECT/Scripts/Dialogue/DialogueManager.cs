@@ -157,6 +157,10 @@ public class DialogueManager : MonoBehaviour
     [ContextMenu("Guide to Gacha")]
     public void guideToGacha()
     {
+        if(CurrencyManager.instance.PremiumCurrency < 5)
+        {
+            CurrencyManager.instance.AddCurrency(CurrencyType.PREMIUM_CURRENCY, 5 - CurrencyManager.instance.PremiumCurrency);
+        }
         resetTrigger(guidedDialogues[1]);
         StartDialogue(guidedDialogues[1]);
     }
