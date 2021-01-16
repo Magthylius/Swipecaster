@@ -53,6 +53,8 @@ public class EndResultManager : MonoBehaviour
 
     void Start()
     {
+        endingOverlay.gameObject.SetActive(true);
+
         sceneManager = SceneTransitionManager.instance;
         databaseManager = DatabaseManager.instance;
 
