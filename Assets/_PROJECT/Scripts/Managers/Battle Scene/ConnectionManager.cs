@@ -6,10 +6,12 @@ public class ConnectionManager : MonoBehaviour
 {
     public static ConnectionManager instance;
     ComboManager comboManager;
+    AudioManager audioManager;
 
     public LineRenderer line;
     public UILineRenderer uiLine;
     public RectTransform castingGroupOffset;
+    public AudioData audioPack;
     
     RuneType selectionType;
     bool selectionStarted;
@@ -29,6 +31,7 @@ public class ConnectionManager : MonoBehaviour
     void Start()
     {
         comboManager = ComboManager.instance;
+        audioManager = AudioManager.instance;
         comboManager.TurnEndedEvent.AddListener(ResetCasting);
         UpdateLines();
 
@@ -73,6 +76,7 @@ public class ConnectionManager : MonoBehaviour
         if (selectionList.Count >= 2)
         {
             comboManager.CollectDamage();
+            audioManager.PlaySFX(audioPack, "Break");
         }
 
         foreach (var rune in selectionList)
@@ -111,6 +115,7 @@ public class ConnectionManager : MonoBehaviour
     public void Connect(RuneBehaviour rune)
     {
         selectionList.Add(rune);
+        audioManager.PlaySFX(audioPack, "Connect");
     }
 
     public void Disconnect(RuneBehaviour rune)
