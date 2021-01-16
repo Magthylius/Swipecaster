@@ -56,6 +56,7 @@ public class GachaCanvasManager : MenuCanvasPage
     [Header("Accessories")]
     public CanvasGroup summonButton;
     public TextMeshProUGUI instructionText;
+    public GameObject insufficientWarning;
 
     [Header("Gacha Settings")]
     public GachaBanner activeBanner;
@@ -132,6 +133,9 @@ public class GachaCanvasManager : MenuCanvasPage
 
                 summonButton.gameObject.SetActive(true);
                 instructionText.gameObject.SetActive(false);
+
+                if (currencyManager.HasEnoughCurrency(CurrencyType.PREMIUM_CURRENCY, pullCost)) insufficientWarning.SetActive(false);
+                else insufficientWarning.SetActive(true);
             }
         }
         else if (state == GachaCanvasState.SUMMONING)

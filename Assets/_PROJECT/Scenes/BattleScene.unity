@@ -521,9 +521,10 @@ MonoBehaviour:
   - {fileID: 1663153854}
   - {fileID: 1208501394}
   - {fileID: 413978741}
-  heroes: {fileID: 1342186363962593935, guid: 7bf6f4e9267a7c04199a005ccbddd474, type: 3}
   casterSize: 0.18
   selectedTarget: {fileID: 0}
+  deathSmokeVFX: {fileID: 7179148459630617073, guid: 23ae5f65f63e348438cd20bafc1cd44c, type: 3}
+  battleStageParent: {fileID: 1457096772}
   enableEntityDebugging: 1
   speed: 10
   countdownTimer: 3
@@ -4230,7 +4231,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1007418785
 Transform:
   m_ObjectHideFlags: 0
@@ -4321,7 +4322,7 @@ ParticleSystem:
   serializedVersion: 7
   lengthInSec: 2
   simulationSpeed: 1
-  stopAction: 0
+  stopAction: 2
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
