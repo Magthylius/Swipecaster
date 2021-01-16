@@ -12,5 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d482a1a55d42cbe46a318c75a765fcbd, type: 3}
   m_Name: UIAudio
   m_EditorClassIdentifier: 
-  audioList: []
+  audioList:
+  - clip: {fileID: 8300000, guid: f2db420127a65254c9d8eea57579db61, type: 3}
+    name: Click
+    volume: 1
+  - clip: {fileID: 8300000, guid: f2db420127a65254c9d8eea57579db61, type: 3}
+    name: Tap
+    volume: 1
+  - clip: {fileID: 8300000, guid: 2fe02f29d8c0d1f468ee9a69ef878110, type: 3}
+    name: Whoosh
+    volume: 1
   soundPacks: []

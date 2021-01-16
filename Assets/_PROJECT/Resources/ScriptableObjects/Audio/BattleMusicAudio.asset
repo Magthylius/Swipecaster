@@ -10,16 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d482a1a55d42cbe46a318c75a765fcbd, type: 3}
-  m_Name: TurnBasedAudio
+  m_Name: BattleMusicAudio
   m_EditorClassIdentifier: 
   audioList:
-  - clip: {fileID: 8300000, guid: e86e605b9f7883c41941dd5d519d48e0, type: 3}
-    name: BattleEffect
-    volume: 1
-  - clip: {fileID: 8300000, guid: 9a313760dd5eea947ba3e39aa2141851, type: 3}
-    name: WinEffect
-    volume: 1
-  - clip: {fileID: 8300000, guid: 0029fd8cc3493bf4db7d5d2fb57eeb3a, type: 3}
-    name: LostEffect
+  - clip: {fileID: 8300000, guid: 651cc02826f688c4cb0a2ed16a637bd4, type: 3}
+    name: BGM
     volume: 1
   soundPacks: []
