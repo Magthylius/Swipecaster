@@ -153,6 +153,7 @@ namespace LerpFunctions
         public float height => rectTransform.rect.height;
         public float halfWidth => width * 0.5f;
         public float halfHeight => height * 0.5f;
+        public virtual bool IsTransitioning => allowTransition;
     }
 
     [Serializable]
@@ -267,6 +268,7 @@ namespace LerpFunctions
 
         public void DebugEnable() => debugEnabled = true;
         public void DebugDisable() => debugEnabled = false;
+        public override bool IsTransitioning => cornerTransition;
     }
 
     [Serializable]
@@ -375,7 +377,7 @@ namespace LerpFunctions
         public void TriggerFade() => allowFade = true;
         public void SetStateFadeIn() => state = CanvasState.FADE_IN;
         public void SetStateFadeOut() => state = CanvasState.FADE_OUT;
-        public bool isFading => allowFade;
+        public bool IsFading => allowFade;
         public CanvasState State => state;
     }
 

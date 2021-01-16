@@ -167,7 +167,7 @@ public class GachaCanvasManager : MenuCanvasPage
         instructionText.gameObject.SetActive(true);
         state = GachaCanvasState.IDLE;
 
-        allowCasting = true;
+        allowCasting = false;
     }
 
     public void ConnectGachaPoint(GachaPoint point)

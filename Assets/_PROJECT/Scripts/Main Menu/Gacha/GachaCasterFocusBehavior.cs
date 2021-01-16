@@ -23,6 +23,7 @@ public class GachaCasterFocusBehavior : MonoBehaviour
 
     [Header("Settings")]
     public float transitionSpeed = 15f;
+    bool transitionFinished = true;
 
     [Header("Hiding Objects")]
     public List<GameObject> hidingObjects;
@@ -45,6 +46,11 @@ public class GachaCasterFocusBehavior : MonoBehaviour
         fgRectFR.Step(transitionSpeed * Time.unscaledDeltaTime);
         casterRectFR.Step(transitionSpeed * Time.unscaledDeltaTime);
         bgRectFRC.CornerStep(transitionSpeed * Time.unscaledDeltaTime);
+
+        if (!transitionFinished)
+        {
+            transitionFinished = !(fgRectFR.IsTransitioning || casterRectFR.IsTransitioning || bgRectFRC.IsTransitioning);
+        }
     }
 
     void Setup(UnitObject unit)
@@ -64,12 +70,15 @@ public class GachaCasterFocusBehavior : MonoBehaviour
         fgRectFR.StartLerp(fgRectFR.originalPosition);
 
         continueObject.SetActive(true);
-
         foreach (GameObject obj in hidingObjects) obj.SetActive(false);
+
+        transitionFinished = false;
     }
 
     public void BTN_ClosePullFocus()
     {
+        if (!transitionFinished) return;
+
         bgRectFRC.StartCenterLerp();
         casterRectFR.StartLerp(casterRectFR.GetBodyOffset(Vector2.left));
         fgRectFR.StartLerp(fgRectFR.GetBodyOffset(Vector2.right));
