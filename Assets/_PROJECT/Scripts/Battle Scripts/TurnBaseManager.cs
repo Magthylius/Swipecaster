@@ -17,6 +17,7 @@ public class TurnBaseManager : MonoBehaviour
     DialogueManager dialogueManager;
     DatabaseManager databaseManager;
     EndResultManager endResultMananger;
+    AudioManager audioManager;
 
     [SerializeField] GameStateEnum battleState;
     [SerializeField] private string sceneNameToLoadAtGameStateEnd = "MainMenuScene";
@@ -63,6 +64,8 @@ public class TurnBaseManager : MonoBehaviour
         dialogueManager = DialogueManager.instance;
         databaseManager = DatabaseManager.instance;
         endResultMananger = EndResultManager.instance;
+        audioManager = AudioManager.instance;;
+        
         battleState = GameStateEnum.INIT;
 
         roomNumberFader.ShowRoomText();
@@ -281,6 +284,8 @@ public class TurnBaseManager : MonoBehaviour
         }
         else print("Unit Not Found");
 
+        audioManager.PlayRandomSFX(defenderUnit.audioPack, "Hurt");
+        
         while (!cameraManager.GetIsFree())
         {
             yield return null;
@@ -303,6 +308,8 @@ public class TurnBaseManager : MonoBehaviour
         SpriteRenderer attackSR = enemy.GetComponent<SpriteRenderer>();
 
         attackSR.sprite = attackerUnit.FullBodyAttackArt;
+
+        audioManager.PlayRandomSFX(attackerUnit.audioPack, "Attack");
         
         while (!cameraManager.GetIsFree())
         {
