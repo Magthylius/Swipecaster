@@ -116,7 +116,7 @@ public class BattlestageManager : MonoBehaviour
                         speed * Time.unscaledDeltaTime);
 
                 if (enemyExecutionTransform)
-                enemyExecutionTransform.position =
+                    enemyExecutionTransform.position =
                         Vector3.Lerp(enemyExecutionTransform.position, new Vector3(battlestageCenter.position.x + battleGap,
                                 enemyExecutionTransform.position.y, enemyExecutionTransform.position.z),
                             speed * Time.unscaledDeltaTime);
@@ -127,14 +127,14 @@ public class BattlestageManager : MonoBehaviour
                     casterExecutionTransform.localScale = prevScaleCaster;
                 
                 if (enemyExecutionTransform)
-                enemyExecutionTransform.localScale = prevScaleEnemy;
+                    enemyExecutionTransform.localScale = prevScaleEnemy;
 
                 if (casterExecutionTransform)
                     casterExecutionTransform.position = Vector3.Lerp(casterExecutionTransform.position,
                     new Vector3(casterExecutionTransform.parent.position.x, casterExecutionTransform.parent.position.y, casterExecutionTransform.parent.position.z), speed * Time.unscaledDeltaTime);
                 
                 if (enemyExecutionTransform)
-                enemyExecutionTransform.position = Vector3.Lerp(enemyExecutionTransform.position,
+                    enemyExecutionTransform.position = Vector3.Lerp(enemyExecutionTransform.position,
                     new Vector3(enemyExecutionTransform.parent.position.x, enemyExecutionTransform.parent.position.y, enemyExecutionTransform.parent.position.z), speed * Time.unscaledDeltaTime);
                 
             }
@@ -153,24 +153,47 @@ public class BattlestageManager : MonoBehaviour
         allowExecutionAction = false;
     }
 
-    public void ExecuteAction(GameObject _caster, GameObject _enemy)
+    public void ExecuteAction(GameObject _caster, GameObject _enemy, bool isPlayerTurn)
     {
         timer = countdownTimer;
-        casterExecutionTransform = _caster.transform;
-        prevScaleCaster = casterExecutionTransform.localScale;
-        casterExecutionTransform.localScale = new Vector3(casterSize, casterSize, 1);
-        casterSortGroup = _caster.GetComponent<SortingGroup>();
-        casterSortGroup.sortingOrder = 1;
 
-        if (GetSelectedTarget())
+        if (isPlayerTurn)
         {
-            enemyExecutionTransform = _enemy.transform;
-            enemySortingGroup = _enemy.GetComponent<SortingGroup>();
-            prevScaleEnemy = enemyExecutionTransform.localScale;
-            enemyExecutionTransform.localScale = new Vector3(casterSize, casterSize, 1);
-            enemySortingGroup.sortingOrder = 1;
+            casterExecutionTransform = _caster.transform;
+            prevScaleCaster = casterExecutionTransform.localScale;
+            casterExecutionTransform.localScale = new Vector3(casterSize, casterSize, 1);
+            casterSortGroup = _caster.GetComponent<SortingGroup>();
+            casterSortGroup.sortingOrder = 1;
+
+            if (GetSelectedTarget())
+            {
+                enemyExecutionTransform = _enemy.transform;
+                enemySortingGroup = _enemy.GetComponent<SortingGroup>();
+                prevScaleEnemy = enemyExecutionTransform.localScale;
+                enemyExecutionTransform.localScale = new Vector3(casterSize, casterSize, 1);
+                enemySortingGroup.sortingOrder = 1;
+            }
+        }
+        else
+        {
+            casterExecutionTransform = _enemy.transform;
+            prevScaleCaster = casterExecutionTransform.localScale;
+            casterExecutionTransform.localScale = new Vector3(casterSize, casterSize, 1);
+            casterSortGroup = _enemy.GetComponent<SortingGroup>();
+            casterSortGroup.sortingOrder = 1;
+
+            if (GetSelectedTarget())
+            {
+                enemyExecutionTransform = _caster.transform;
+                enemySortingGroup = _caster.GetComponent<SortingGroup>();
+                prevScaleEnemy = enemyExecutionTransform.localScale;
+                enemyExecutionTransform.localScale = new Vector3(casterSize, casterSize, 1);
+                enemySortingGroup.sortingOrder = 1;
+            }
         }
 
+
+        
 
         allowExecutionAction = true;
     }

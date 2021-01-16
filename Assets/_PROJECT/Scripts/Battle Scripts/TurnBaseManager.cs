@@ -262,7 +262,7 @@ public class TurnBaseManager : MonoBehaviour
         cameraManager.ZoomToCenter();
         highlighter.SetActive(false);
         battlestageManager.GetStageTargetHandler().DeactivateSpriteHolder();
-        battlestageManager.ExecuteAction(caster, battlestageManager.GetSelectedTarget());
+        battlestageManager.ExecuteAction(caster, battlestageManager.GetSelectedTarget(), true);
 
         if (battlestageManager.GetSelectedTarget())
         {
@@ -288,10 +288,10 @@ public class TurnBaseManager : MonoBehaviour
         highlighter.SetActive(false);
         battlestageManager.GetStageTargetHandler().DeactivateSpriteHolder();
         enemyAttackManager.CalculatePriority(enemy);
-        battlestageManager.ExecuteAction(enemyAttackManager.GetCaster(), enemy);
+        battlestageManager.ExecuteAction(enemy, enemyAttackManager.GetCaster(), false);
         
-        UnitObject attackerUnit = caster.GetComponent<Entity>().GetBaseUnit;
-        SpriteRenderer attackSR = caster.GetComponent<SpriteRenderer>();
+        UnitObject attackerUnit = enemy.GetComponent<Entity>().GetBaseUnit;
+        SpriteRenderer attackSR = enemy.GetComponent<SpriteRenderer>();
 
         attackSR.sprite = attackerUnit.FullBodyAttackArt;
         
