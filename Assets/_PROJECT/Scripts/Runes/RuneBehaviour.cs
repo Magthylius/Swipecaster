@@ -118,7 +118,7 @@ public class RuneBehaviour : MonoBehaviour
     {
         if (isPaused) return;
 
-        if (yAxis <= -spriteHeight)
+        if (yAxis <= 0)
             Deactivate();
 
     }
