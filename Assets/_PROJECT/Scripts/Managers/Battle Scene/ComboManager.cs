@@ -74,7 +74,7 @@ public class ComboManager : MonoBehaviour
                 sliderAnim = true;
                 timer = countdownTimer;
 
-                GameObject targetObject = (battleStageManager.GetSelectedTarget() != null) ? battleStageManager.GetSelectedTarget() : battleStageManager.GetEnemyTeam()[0];
+                GameObject targetObject = (battleStageManager.GetSelectedTarget() != null) ? battleStageManager.GetSelectedTarget() : battleStageManager.SetGetFirstOrDefaultTarget();
 
                 runeManager.SpawnDeactivate();
                 AssessRunes(turnBaseManger.GetCurrentCaster(), targetObject);

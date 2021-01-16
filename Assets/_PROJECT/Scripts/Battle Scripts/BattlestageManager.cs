@@ -355,18 +355,16 @@ public class BattlestageManager : MonoBehaviour
         else SetTarget(o);
     }
 
-    private void SetTarget(GameObject target)
+    private GameObject SetTarget(GameObject target)
     {
         selectedTarget = target;
         targetHandler.UpdateHandler(GetSelectedTarget());
+        return selectedTarget;
     }
 
-    void KillUnit(Unit u)
-    {
-        StartCoroutine(deathDelay(u));
-    }
+    void KillUnit(Unit u) => StartCoroutine(DeathDelay(u));
 
-    IEnumerator deathDelay(Unit u)
+    IEnumerator DeathDelay(Unit u)
     {
         yield return new WaitForSeconds(2);
 
@@ -377,6 +375,9 @@ public class BattlestageManager : MonoBehaviour
 
         Destroy(u.gameObject);
         turnBaseManager.UpdateLiveTeam();
+
+        if (GetSelectedTarget() != null) yield break;
+        SetGetFirstOrDefaultTarget();
     }
     
     void OnDestroy()
@@ -421,6 +422,7 @@ public class BattlestageManager : MonoBehaviour
 
     public GameObject GetSelectedTarget() => selectedTarget;
     public StageTargetHandler GetStageTargetHandler() => targetHandler;
+    public GameObject SetGetFirstOrDefaultTarget() => SetTarget(GetEnemyTeam().FirstOrDefault());
 
     #endregion
 
