@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level3
   m_EditorClassIdentifier: 
   levelName: Dune Plains
-  levelDescription: Passing through the treacherous weather.
+  levelDescription: Passing through the treacherous weather
   levelRooms:
   - {fileID: 11400000, guid: 67dd7a4cdcc65474eb49df653435f88f, type: 2}
   - {fileID: 11400000, guid: 32802ce9ee6a1d54986a231ab626f2d9, type: 2}

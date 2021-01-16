@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26fdf35aefb08814983634e2a0dc94c5, type: 3}
   m_Name: Level10
   m_EditorClassIdentifier: 
-  levelName: The Outskirts
-  levelDescription: Beyond plains
+  levelName: The Sorrow of Nenlast
+  levelDescription: Ash and soot is all over it
   levelRooms:
-  - {fileID: 11400000, guid: 4cd5a1f4fd6ad7d4d87359a7e297ec18, type: 2}
-  - {fileID: 11400000, guid: ff166cee04f940f409d3a839dd8b475b, type: 2}
-  - {fileID: 11400000, guid: 3a3fe3a8ad271f445ac4eba660b8e744, type: 2}
+  - {fileID: 11400000, guid: 9156fb1d5220c6b4e934ba51efe18fb9, type: 2}
+  - {fileID: 11400000, guid: 39b3a070b567a1744a3eb382c8c067f3, type: 2}
+  - {fileID: 11400000, guid: fefa44cf885bd7243bcda6701766ebb3, type: 2}
   randomRooms: 0

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26fdf35aefb08814983634e2a0dc94c5, type: 3}
   m_Name: Level7
   m_EditorClassIdentifier: 
-  levelName: Grassy Plains
-  levelDescription: The Beginning
+  levelName: Scourge Land
+  levelDescription: Path of the great suffering
   levelRooms:
-  - {fileID: 11400000, guid: 11dddc87a8cf3a7449880c17c6d2b774, type: 2}
-  - {fileID: 11400000, guid: cc9a4d7dd55c1f14d907ef3355220317, type: 2}
+  - {fileID: 11400000, guid: 2b4253195074e504b900c8fbc5e63c50, type: 2}
+  - {fileID: 11400000, guid: 24c5bbe21754ef64ab4f48ee7ded8449, type: 2}
   randomRooms: 0

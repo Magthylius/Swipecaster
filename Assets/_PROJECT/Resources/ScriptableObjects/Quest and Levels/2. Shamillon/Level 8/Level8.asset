@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26fdf35aefb08814983634e2a0dc94c5, type: 3}
   m_Name: Level8
   m_EditorClassIdentifier: 
-  levelName: The Outskirts
-  levelDescription: Beyond plains
+  levelName: Beyond Bahamut's Bridge
+  levelDescription: From south of Dortmund as far as Essen and beyond
   levelRooms:
-  - {fileID: 11400000, guid: 2ec67892b356ceb45bfedb8d455d3878, type: 2}
-  - {fileID: 11400000, guid: c35ea885b6a13f641bfe6d8af58c5db2, type: 2}
-  - {fileID: 11400000, guid: 58fe0ad6c6654774093549a2bc694bbe, type: 2}
+  - {fileID: 11400000, guid: 16a6c102fa9659245a880daa2169ee22, type: 2}
+  - {fileID: 11400000, guid: 702fb46dde2a98e4c9d1d2b492c804de, type: 2}
+  - {fileID: 11400000, guid: 707a97283cf6b544d9c779f418b8d518, type: 2}
   randomRooms: 0
