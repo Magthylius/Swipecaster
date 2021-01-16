@@ -369,7 +369,6 @@ public abstract class Unit : Entity
     protected virtual void StartTurnMethods()
     {
         InvokeAllTurnBeginEvent();
-        ResetTotalDamageInTurn();
     }
 
     protected virtual void EndTurnMethods()
@@ -380,6 +379,7 @@ public abstract class Unit : Entity
         ResetProjectile();
         ResetOnAttackEdge();
         ResetOnHitEdge();
+        ResetTotalDamageInTurn();
     }
 
     protected virtual void OnDestroy()
@@ -410,6 +410,7 @@ public abstract class Unit : Entity
         GetDamagePopUp();
         SetDefaultProjectile(new CrowFlies(this));
         ResetProjectile();
+        ResetTotalDamageInTurn();
         SubscribeHitEvent(TakeDamage);
         SubscribeHealthChangeEvent(CheckDeathEvent);
         SubscribeUseSkillEvent(UpdateStatusEffectsOnSkill);
