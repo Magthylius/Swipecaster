@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98f97db78843ab84f8a92760b6ebf3bd, type: 3}
   m_Name: Party 4
   m_EditorClassIdentifier: 
-  partyName: Squad Delta
+  partyName: Team D
   activeUnits:
   - {fileID: 11400000, guid: 38833d5b39b4cdb42960896d0a32990e, type: 2}
   - {fileID: 11400000, guid: 8f96211e4d99d5c41bdd9a22d82c552f, type: 2}
