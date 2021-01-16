@@ -30,15 +30,12 @@ MonoBehaviour:
       volume: 1
   - name: Attack
     audioList:
-    - clip: {fileID: 8300000, guid: 6711ffeeb3b1ab84b8fc8663f1c39e5c, type: 3}
+    - clip: {fileID: 8300000, guid: c8501212184781e4e81142c72da656dc, type: 3}
       name: 
       volume: 1
-    - clip: {fileID: 8300000, guid: 3301beee2ec1f6747b4920d7870643c1, type: 3}
+    - clip: {fileID: 8300000, guid: 7b5be721d32dac440b4531dd1edafa3b, type: 3}
       name: 
       volume: 1
-    - clip: {fileID: 8300000, guid: fb1b2076ee32a764b863012c1fbf5d05, type: 3}
+    - clip: {fileID: 8300000, guid: ec8aefb1b2814ca49a7831ca0f339cd5, type: 3}
       name: 
       volume: 1
-    - clip: {fileID: 0}
-      name: 
-      volume: 0
