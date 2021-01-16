@@ -59,6 +59,7 @@ public class AudioManager : MonoBehaviour
     
     public void PlayRandomSFX(AudioData _audioData, string _name)
     {
+        print("Yes");
         SoundFile sound = GetRandomSound(_audioData, _name);
         if(sound != null)
         {
