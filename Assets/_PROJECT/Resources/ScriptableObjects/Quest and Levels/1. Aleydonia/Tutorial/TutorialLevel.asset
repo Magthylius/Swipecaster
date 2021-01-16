@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26fdf35aefb08814983634e2a0dc94c5, type: 3}
   m_Name: TutorialLevel
   m_EditorClassIdentifier: 
-  levelName: Tutorial Level
-  levelDescription: The Tutorial
+  levelName: The Staging
+  levelDescription: Learn the basics here
   levelRooms:
   - {fileID: 11400000, guid: e27480355a00ad04b836712075fddcc2, type: 2}
   - {fileID: 11400000, guid: 123c7e26f20830a4b9974394683ce185, type: 2}
