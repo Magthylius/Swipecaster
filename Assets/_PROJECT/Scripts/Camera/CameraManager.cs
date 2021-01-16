@@ -98,7 +98,7 @@ public class CameraManager : MonoBehaviour
 
         zoomPercentage = difference / maxZoom * 100;
 
-        print(zoomPercentage);
+        //print(zoomPercentage);
     }
 
     void Update()
