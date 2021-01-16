@@ -23,6 +23,7 @@ public class InformationManager : MonoBehaviour
     [SerializeField] private Sprite prioritySprite;
 
     [Header("Runes")]
+    public bool allowRuneCount;
     public TextMeshProUGUI fyorCount;
     public TextMeshProUGUI aquaCount;
     public TextMeshProUGUI tehkCount;
@@ -135,6 +136,8 @@ public class InformationManager : MonoBehaviour
 
     public void UpdateConnectionUI(RuneStorage storage)
     {
+        if (!allowRuneCount) return;
+
         TextMeshProUGUI text = null;
         switch (storage.runeType)
         {
