@@ -17,7 +17,7 @@ public class SporeBurst : CasterSkill
 
         GetUnit.AddStatusEffect(Create.A_Status.AttackUp(_effectTurns, _damageMultiplier));
         GetUnit.SubscribeGrazeEvent(ConvertPassingProjectile);
-        ResetSkillCharge();
+        ResetChargeAndEffectDuration();
     }
     protected override void OnEffectDurationComplete() => GetUnit.UnsubscribeGrazeEvent(ConvertPassingProjectile);
 

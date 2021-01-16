@@ -32,10 +32,12 @@ public class Reflector : Kinectist
 
     private void Reflect(Unit damager, int damageAmount)
     {
-        if (!ProbabilityHit || TriggerOnce) return;
-        TriggerOnce = true;
-        damager.SetAttackStatus(AttackStatus.Reflected);
-        damager.TakeHit(this, Round(damageAmount * GetReboundPercent));
+        if (ProbabilityHit && !TriggerOnce)
+        {
+            TriggerOnce = true;
+            damager.SetAttackStatus(AttackStatus.Reflected);
+            damager.TakeHit(this, Round(damageAmount * GetReboundPercent));
+        }
     }
 
     #endregion

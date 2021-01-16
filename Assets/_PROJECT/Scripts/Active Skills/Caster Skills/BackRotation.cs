@@ -15,7 +15,7 @@ public class BackRotation : CasterSkill
     {
         GetUnit.AddStatusEffect(ProjectileStatus);
         FindAndActOnTarget(targetInfo, battleStage);
-        ResetSkillCharge();
+        ResetChargeAndEffectDuration();
     }
 
     private void FindAndActOnTarget(TargetInfo targetInfo, BattlestageManager battleStage)

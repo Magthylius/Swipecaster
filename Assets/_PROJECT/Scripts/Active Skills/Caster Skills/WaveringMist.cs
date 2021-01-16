@@ -16,7 +16,7 @@ public class WaveringMist : CasterSkill
         targetInfo.Allies.
             Where(ally => IsKinectist(ally)).ToList().
             ForEach(ally => ally.AddStatusEffect(StatusToApply));
-        ResetSkillCharge();
+        ResetChargeAndEffectDuration();
     }
 
     private bool IsKinectist(Unit unit) => unit.GetBaseUnit.ArchTypeMajor == ArchTypeMajor.Kinectist;

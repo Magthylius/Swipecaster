@@ -27,9 +27,10 @@ public class DamagePopUp : MonoBehaviour
         offsetObj.transform.localPosition -= new Vector3(2.0f, 0.0f, 0f);
     }
 
-    public void ShowPopUp(int damage, bool isDamage)
+    public void ShowPopUp(int damage, bool isDamage, bool isMitigated)
     {
         Color textColour = isDamage ? Color.red : Color.green;
+        if (isMitigated) textColour = Color.gray;
         transform.parent.gameObject.SetActive(true);
         SetTextColour(textColour);
         ShowDamage(damage);

@@ -27,7 +27,7 @@ public class DrumBeater : CasterSkill
         HandleBattleStage(battleStage, drumObject);
         HandleBeatDrum(drumObject);
 
-        ResetSkillCharge();
+        ResetChargeAndEffectDuration();
         FreezeSkillCharge();
     }
 

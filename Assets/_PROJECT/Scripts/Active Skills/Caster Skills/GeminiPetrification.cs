@@ -26,7 +26,7 @@ public class GeminiPetrification : CasterSkill
         var unit = GetUnitByCasterName(targetInfo);
         HandleSelfStatusEffects();
         HandleOtherStatusEffects(unit);
-        ResetSkillCharge();
+        ResetChargeAndEffectDuration();
     }
 
     private void HandleOtherStatusEffects(Unit unit)

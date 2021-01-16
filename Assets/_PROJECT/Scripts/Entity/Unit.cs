@@ -83,7 +83,7 @@ public abstract class Unit : Entity
     {
         if (healAmount <= 0) return;
         AddCurrentHealth(healAmount);
-        TriggerDamagePopUp(healAmount, false);
+        TriggerDamagePopUp(healAmount, false, false);
     }
 
     #endregion
@@ -110,6 +110,7 @@ public abstract class Unit : Entity
     #region Unit Info (Public & Private mix)
 
     private void ResetTotalDamageInTurn() => _totalDamageInTurn = 0;
+    private void AddTotalDamageInTurn(int damageAddition) => SetTotalDamageInTurn(GetTotalDamageInTurn + damageAddition);
     private void SetTotalDamageInTurn(int damage) => _totalDamageInTurn = damage;
     public int GetTotalDamageInTurn => _totalDamageInTurn;
 
@@ -229,11 +230,24 @@ public abstract class Unit : Entity
             if (effect.GetType() == effectType) _statusEffects[i].InvokeSelfDestructEvent();
         }
     }
-    public void RemoveAllStatusEffects() => GetStatusEffects.ForEach(status => status.InvokeSelfDestructEvent());
+    public void RemoveAllStatusEffects()
+    {
+        try
+        {
+            foreach (var status in GetStatusEffects.ToList())
+            {
+                status.InvokeSelfDestructEvent();
+            }
+        }
+        catch (Exception exception)
+        {
+            Debug.LogWarning($"Status effects could not be unloaded properly: {exception}");
+        }
+    }
     public List<StatusEffect> GetStatusEffects => StatusEffectsNullOrEmpty ? StatusEffect.NullList : _statusEffects;
     private bool StatusEffectsNullOrEmpty => _statusEffects == null || _statusEffects.Count == 0;
     private void UpdateStatusEffectsOnSkill(Unit unit, ActiveSkill skill) => UpdateStatusEffects();
-    private void PostStatusEffect() => GetStatusEffects?.ForEach(i => i.DoPostEffect());
+    private void PostStatusEffect() => GetStatusEffects.ToList().ForEach(i => i.DoPostEffect());
 
     #endregion
 
@@ -334,17 +348,22 @@ public abstract class Unit : Entity
 
     protected virtual void TakeDamage(Unit damager, int damageAmount)
     {
-        if (damager.GetAttackStatus != AttackStatus.Normal) return;
-
+        bool isMitigated = damager.GetAttackStatus != AttackStatus.Normal;
         float statusInMultiplier = 1.0f + GetStatusEffects.Sum(status => status.GetStatusDamageInModifier());
         float runeMultiplier = damager.GetEdgeMultiplierAgainstTarget(this);
         int totalRawDamage = AbsRound(damageAmount * statusInMultiplier * runeMultiplier);
+        int totalCalculatedDamage = (totalRawDamage - GetCurrentDefence).Clamp0();
 
-        SetTotalDamageInTurn((totalRawDamage - GetCurrentDefence).Clamp0());
+        AddTotalDamageInTurn(totalCalculatedDamage);
         AddCurrentHealth(-GetTotalDamageInTurn);
         GetStatusEffects.ForEach(i => i.DoOnHitEffect(damager, GetBattleStageInfo(), GetTotalDamageInTurn));
 
-        TriggerDamagePopUp(GetTotalDamageInTurn, true);
+        if (isMitigated)
+        {
+            AddTotalDamageInTurn(-totalCalculatedDamage);
+            totalCalculatedDamage = 0;
+        }
+        TriggerDamagePopUp(totalCalculatedDamage, true, isMitigated);
     }
 
     protected virtual void StartTurnMethods()
@@ -433,10 +452,10 @@ public abstract class Unit : Entity
     #region Private Methods
 
     private void GetDamagePopUp() => damagePopUp = GetComponentInChildren<DamagePopUp>();
-    private void TriggerDamagePopUp(int damage, bool isDamage)
+    private void TriggerDamagePopUp(int damage, bool isDamage, bool isMitigated)
     {
         if (damagePopUp == null) return;
-        damagePopUp.ShowPopUp(damage, isDamage);
+        damagePopUp.ShowPopUp(damage, isDamage, isMitigated);
     }
 
     private void CheckDeathEvent(Unit unit)

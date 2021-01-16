@@ -13,7 +13,7 @@ public class HardCover : CasterSkill
         if (targetInfo.Foes == null || targetInfo.Foes.Count == 0) return;
 
         targetInfo.Foes.ForEach(foe => foe.AddStatusEffect(Create.A_Status.Stun(_stunTurns, TurnBaseManager.instance)));
-        ResetSkillCharge();
+        ResetChargeAndEffectDuration();
     }
 
     public HardCover(Unit unit)

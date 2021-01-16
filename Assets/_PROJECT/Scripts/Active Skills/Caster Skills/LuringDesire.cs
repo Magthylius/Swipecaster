@@ -16,7 +16,7 @@ public class LuringDesire : CasterSkill
     {
         GetUnit.AddStatusEffect(PriorityUpStatus);
         GetUnit.AddStatusEffect(HealOnDamagedStatus);
-        ResetSkillCharge();
+        ResetChargeAndEffectDuration();
     }
 
     public LuringDesire(Unit unit)

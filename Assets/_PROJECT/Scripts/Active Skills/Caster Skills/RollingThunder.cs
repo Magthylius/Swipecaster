@@ -19,7 +19,7 @@ public class RollingThunder : CasterSkill
         int damage = CalculateDamage();
         var allFoes = GetAllFoeAlignedUnits(battleStage);
         HandleFoes(damage, allFoes);
-        ResetSkillCharge();
+        ResetChargeAndEffectDuration();
     }
 
     private int CalculateDamage() => Round(GetUnit.CalculateDamage(TargetInfo.Null, RuneCollection.Null) * attackPercent);

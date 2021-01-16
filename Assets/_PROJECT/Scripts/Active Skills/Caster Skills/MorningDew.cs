@@ -16,7 +16,7 @@ public class MorningDew : CasterSkill
         if (targetInfo.Foes == null || targetInfo.Foes.Count == 0) return;
 
         _unit.AddStatusEffect(Create.A_Status.AttackToPartyHeal(_effectTurns, _damageToHealPercent));
-        ResetSkillCharge();
+        ResetChargeAndEffectDuration();
     }
 
     public MorningDew(Unit unit)

@@ -17,7 +17,7 @@ public class Wickfire : CasterSkill
 
         GetUnit.AddStatusEffect(Create.A_Status.ProjectileLocker(effectTurns, new Blast(GetUnit)));
         GetUnit.AddStatusEffect(Create.A_Status.AttackUp(effectTurns, damageMultiplier));
-        ResetSkillCharge();
+        ResetChargeAndEffectDuration();
     }
 
     public Wickfire(Unit unit)

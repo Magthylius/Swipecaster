@@ -15,6 +15,7 @@ public class BattlestageManager : MonoBehaviour
     public Transform playerTeamGroup, enemyTeamGroup;
     private TurnBaseManager turnBaseManager;
     private StageTargetHandler targetHandler;
+    private InformationManager infoManager;
     public Camera battleCamera = null;
 
     [Header("Gaps Settings")] 
@@ -74,6 +75,7 @@ public class BattlestageManager : MonoBehaviour
         player = Player.Instance;
         roomManager = RoomManager.Instance;
         turnBaseManager = TurnBaseManager.instance;
+        infoManager = InformationManager.instance;
         InitPositions();
 
         if (enableEntityDebugging)
@@ -203,12 +205,20 @@ public class BattlestageManager : MonoBehaviour
         var target = selectedTarget.AsUnit();
         var unit = turnBaseManager.GetCurrentCaster().AsUnit();
         if (SkillCriteriaNotMet()) return;
-
-        TargetInfo targetInfo = unit.GetActiveSkill.GetActiveSkillTargets(new TargetInfo(target, null, null, GetCasterTeamAsUnit(), GetEnemyTeamAsUnit()));
-        unit.UseSkill(targetInfo, this);
-        unit.InvokeUseSkillEvent(unit, unit.GetActiveSkill);
-
         bool SkillCriteriaNotMet() => unit == null || !unit.SkillIsReady || unit.GetActiveSkill == null;
+        try
+        {
+            TargetInfo targetInfo = unit.GetActiveSkill.GetActiveSkillTargets(new TargetInfo(target, null, null, GetCasterTeamAsUnit(), GetEnemyTeamAsUnit()));
+            unit.UseSkill(targetInfo, this);
+            unit.InvokeUseSkillEvent(unit, unit.GetActiveSkill);
+            infoManager.SyncUserInterfaceToUnit(unit);
+        }
+        catch(Exception exception)
+        {
+            string skillName = string.Empty;
+            if (unit.GetActiveSkill != null) skillName = unit.GetActiveSkill.Name;
+            Debug.LogWarning($"Cannot activate skill {skillName}: {exception}");
+        }
     }
 
     public void RegroupAllPositons(bool instant)
@@ -312,6 +322,11 @@ public class BattlestageManager : MonoBehaviour
         }
     }
 
+    public void HandleTargetIfNull()
+    {
+        if (GetSelectedTarget() == null) SetGetFirstOrDefaultTarget();
+    }
+
     void InitPositions()
     {
         //! Set gap between 2 teams
@@ -396,11 +411,9 @@ public class BattlestageManager : MonoBehaviour
         else if (GetEnemyTeam().Contains(u.gameObject))
             GetEnemyTeam().Remove(u.gameObject);
 
-        Destroy(u.gameObject);
         turnBaseManager.UpdateLiveTeam();
-
-        if (GetSelectedTarget() != null) yield break;
-        SetGetFirstOrDefaultTarget();
+        if (u.gameObject == GetSelectedTarget()) selectedTarget = null;
+        Destroy(u.gameObject);
     }
     
     void OnDestroy()
@@ -445,7 +458,7 @@ public class BattlestageManager : MonoBehaviour
 
     public GameObject GetSelectedTarget() => selectedTarget;
     public StageTargetHandler GetStageTargetHandler() => targetHandler;
-    public GameObject SetGetFirstOrDefaultTarget() => SetTarget(GetEnemyTeam().FirstOrDefault());
+    public GameObject SetGetFirstOrDefaultTarget() => SetTarget(GetEnemyTeam().FirstOrDefault(t => t != null));
 
     #endregion
 

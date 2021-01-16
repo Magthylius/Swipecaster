@@ -21,7 +21,7 @@ public class TwinShell : CasterSkill
         var unit = GetUnitByCasterName(targetInfo);
         float totalMultiplier = CalculateTotalMultiplier(unit);
         HandleStatusEffects(totalMultiplier);
-        ResetSkillCharge();
+        ResetChargeAndEffectDuration();
     }
 
     private void HandleStatusEffects(float totalMultiplier)

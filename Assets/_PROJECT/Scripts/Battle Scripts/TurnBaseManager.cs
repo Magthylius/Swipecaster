@@ -175,6 +175,7 @@ public class TurnBaseManager : MonoBehaviour
         {
             if (roomManager.AnyRoomsLeft)
             {
+                GetCurrentCaster().AsUnit().InvokeSelfTurnEndEvent();
                 roomManager.SetNextRoomIndex();
 
                 environmentFader.StartPingPong();
@@ -194,6 +195,8 @@ public class TurnBaseManager : MonoBehaviour
                 return;
             }
         }
+
+        battlestageManager.HandleTargetIfNull();
 
         switch (battleState)
         {

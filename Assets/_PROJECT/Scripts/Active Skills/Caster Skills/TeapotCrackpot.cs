@@ -17,7 +17,7 @@ public class TeapotCrackpot : CasterSkill
     {
         GetUnit.AddStatusEffect(Create.A_Status.AttackToPartyHeal(_effectTurns, _damageToHealPercent));
         GetUnit.AddStatusEffect(Create.A_Status.ReboundDamageUp(_effectTurns, _reboundPercent));
-        ResetSkillCharge();
+        ResetChargeAndEffectDuration();
     }
 
     public TeapotCrackpot(Unit unit)

@@ -16,7 +16,7 @@ public class SecondScar : CasterSkill
     {
         GetUnit.AddStatusEffect(AttackUpStatus);
         GetUnit.AddStatusEffect(UndyingStatus);
-        ResetSkillCharge();
+        ResetChargeAndEffectDuration();
     }
 
     public SecondScar(Unit unit)

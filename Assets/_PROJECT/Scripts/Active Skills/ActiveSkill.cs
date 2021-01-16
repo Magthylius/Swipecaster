@@ -63,12 +63,16 @@ public abstract class ActiveSkill
     public void DeductEffectDuration()
     {
         _currentEffectDuration = Mathf.Clamp(_currentEffectDuration - 1, 0, _startEffectDuration);
-        if (_currentEffectDuration > 0 || _freezeSkillCharge) return;
+        if (_freezeSkillCharge || _currentEffectDuration != 0) return;
         OnEffectDurationComplete();
     }
     public int GetMaxSkillCharge => _maxSkillCharge;
     public int GetCurrentSkillCharge => _currentSkillCharge;
-    public void IncreaseSkillCharge() => _currentSkillCharge += (SkillChargeReady || !EffectDurationReached) ? 0 : _chargeGainPerTurn;
+    public void IncreaseSkillCharge()
+    {
+        if (SkillChargeReady || !EffectDurationReached) return;
+        _currentSkillCharge += _chargeGainPerTurn;
+    }
     public void SetUnit(Unit a) => _unit = a;
     public Unit GetUnit => _unit;
     public virtual string Description => string.Empty;
@@ -82,6 +86,11 @@ public abstract class ActiveSkill
     public void ResetSkillCharge() => _currentSkillCharge = 0;
     public void ResetEffectDuration() => _currentEffectDuration = _startEffectDuration;
     public void EffectDuration0() => _currentEffectDuration = 0;
+    public void ResetChargeAndEffectDuration()
+    {
+        ResetSkillCharge();
+        ResetEffectDuration();
+    }
 
     #endregion
 

@@ -29,7 +29,7 @@ public class MothLamp : CasterSkill
         HandleBattleStage(battleStage, lampObject);
         HandleLamp(lampObject);
         
-        ResetSkillCharge();
+        ResetChargeAndEffectDuration();
         FreezeSkillCharge();
     }
 

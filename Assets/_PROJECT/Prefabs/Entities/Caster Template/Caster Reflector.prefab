@@ -54,19 +54,18 @@ MonoBehaviour:
   _currentAttack: 0
   _currentDefence: 0
   isPlayer: 0
+  _totalDamageInTurn: 0
+  runeAdvantageMultiplier: 1.5
+  runeWeaknessMultiplier: 0.5
   damageMultiplier: 1
-  passiveHealAmount: 0
-  damageToHealPercent: 0
-  reboundPercent: 0.2
-  probability: 0.05
-  priority: 1
-  currentSkillCharge: 0
-  _skillChargeCount: 0
+  defaultPassiveHealAmount: 0
+  defaultPassiveHealPercent: 0
+  defaultReboundPercent: 0.2
+  defaultProbability: 0.05
+  basePriority: 1
   damagePopUp: {fileID: 2021061376404387864}
   archMajor: -1
   archMinor: -1
-  runeAdvantageMultiplier: 1.5
-  runeWeaknessMultiplier: 0.5
 --- !u!212 &-5714631179511408747
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -127,7 +126,7 @@ SortingGroup:
   m_GameObject: {fileID: 7792443217028439265}
   m_Enabled: 1
   m_SortingLayerID: -663063965
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
 --- !u!114 &-6017469588657768702
 MonoBehaviour:

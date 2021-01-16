@@ -10,7 +10,7 @@ public abstract class CasterSkill : ActiveSkill
         _chargeGainPerTurn = 1;
         _freezeSkillCharge = ignoreDuration;
         _unit = unit;
-        ResetSkillCharge();
+        ResetChargeAndEffectDuration();
         EffectDuration0();
     }
 

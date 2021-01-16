@@ -13,7 +13,7 @@ public class SpontaneousFire : CasterSkill
     {
         if (targetInfo.Foes.Count == 0) return;
         targetInfo.Foes.ForEach(foe => foe.AddStatusEffect(StatusToApply));
-        ResetSkillCharge();
+        ResetChargeAndEffectDuration();
     }
 
     public SpontaneousFire(Unit unit)

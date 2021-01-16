@@ -16,7 +16,7 @@ public class Shoutdown : CasterSkill
         if (targetInfo.Allies == null || targetInfo.Allies.Count == 0) return;
 
         targetInfo.Allies.ForEach(caster => caster.AddStatusEffect(Create.A_Status.AttackUp(_effectTurns, _damageMultiplier)));
-        ResetSkillCharge();
+        ResetChargeAndEffectDuration();
     }
 
     public Shoutdown(Unit unit)

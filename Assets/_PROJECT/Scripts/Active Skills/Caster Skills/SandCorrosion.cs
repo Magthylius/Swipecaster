@@ -18,7 +18,7 @@ public class SandCorrosion : CasterSkill
     public override void TriggerSkill(TargetInfo targetInfo, BattlestageManager battleStage)
     {
         GetUnit.AddStatusEffect(StatusOnAttackStatus);
-        ResetSkillCharge();
+        ResetChargeAndEffectDuration();
     }
 
     public SandCorrosion(Unit unit)

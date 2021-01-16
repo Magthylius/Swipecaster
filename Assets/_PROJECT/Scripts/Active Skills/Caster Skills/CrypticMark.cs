@@ -18,7 +18,7 @@ public class CrypticMark : CasterSkill
     {
         GetUnit.AddStatusEffect(Create.A_Status.DamageTakenUp(effectTurns, damageTakenMultiplier));
         GetUnit.AddStatusEffect(Create.A_Status.ReboundingStatus(effectTurns, StatusToRebound));
-        ResetSkillCharge();
+        ResetChargeAndEffectDuration();
     }
 
     public CrypticMark(Unit unit)

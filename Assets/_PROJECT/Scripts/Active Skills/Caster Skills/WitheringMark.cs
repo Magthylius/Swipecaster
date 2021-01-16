@@ -16,7 +16,7 @@ public class WitheringMark : CasterSkill
     {
         var hitTargets = SkillAttackTargets(targetInfo);
         ApplyStatusOnHitTargets(hitTargets);
-        ResetSkillCharge();
+        ResetChargeAndEffectDuration();
     }
 
     private void ApplyStatusOnHitTargets(List<Unit> hitTargets)

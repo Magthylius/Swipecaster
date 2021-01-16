@@ -15,7 +15,7 @@ public class BlackSun : CasterSkill
         int damage = Round(GetUnit.CalculateDamage(TargetInfo.Null, RuneCollection.Null) * damageMultiplier);
         var allFoes = GetAllFoeAlignedUnits(battleStage);
         allFoes.ForEach(foe => foe.TakeHit(GetUnit, damage));
-        ResetSkillCharge();
+        ResetChargeAndEffectDuration();
     }
 
     private static List<Unit> GetAllFoeAlignedUnits(BattlestageManager battleStage)

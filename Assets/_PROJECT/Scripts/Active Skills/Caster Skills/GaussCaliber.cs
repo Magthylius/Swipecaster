@@ -19,7 +19,7 @@ public class GaussCaliber : CasterSkill
     public override void TriggerSkill(TargetInfo targetInfo, BattlestageManager battleStage)
     {
         GetUnit.AddStatusEffect(Create.A_Status.PierceDamageUp(effectTurns, AdditiveMultiplier));
-        ResetSkillCharge();
+        ResetChargeAndEffectDuration();
     }
 
     private static List<float> CalculateAdditiveMultiplier()
