@@ -9413,7 +9413,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 1164302385}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -9996,8 +9996,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endingOverlay: {fileID: 1476480500}
-  resultText: {fileID: 409580981}
   resultRT: {fileID: 1979225118}
+  resultText: {fileID: 409580981}
+  rewardText: {fileID: 1556497145}
+  rewardIcon: {fileID: 1802285645}
   transitionSpeed: 15
   victoryText: VICTORY
   victoryColor: {r: 0.08627451, g: 0.427451, b: 1, a: 1}
@@ -10005,6 +10007,14 @@ MonoBehaviour:
   defeatColor: {r: 0.9716981, g: 0.2979263, b: 0.2979263, a: 1}
   centerLerp: 1
   nextLevelName: MainMenuScene
+  normalCurrencyIcon: {fileID: 11400000, guid: cccdf37e6ffbc2c4582dc0161147f4d8, type: 2}
+  premiumCurrencyIcon: {fileID: 11400000, guid: 5b3a2544027dfea4a891619c3c729a9b, type: 2}
+  victoryReward:
+    type: 2
+    amount: 750
+  defeatReward:
+    type: 2
+    amount: 50
 --- !u!1 &1404324105
 GameObject:
   m_ObjectHideFlags: 0

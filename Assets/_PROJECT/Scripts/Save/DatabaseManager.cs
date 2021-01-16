@@ -247,6 +247,12 @@ public class DatabaseManager : MonoBehaviour
         Save();
     }
 
+    public void AddCurrency(int amount, CurrencyType type)
+    {
+        if (type == CurrencyType.NORMAL_CURRENCY) AddCurrency(amount, false);
+        else if (type == CurrencyType.PREMIUM_CURRENCY) AddCurrency(amount, true);
+    }
+
     [ContextMenu("Restart Tutorial")]
     public void RestartTutorial()
     {
