@@ -3574,6 +3574,7 @@ MonoBehaviour:
   dialogueName: {fileID: 1602576916}
   dialogueText: {fileID: 1602576915}
   speakerSpeaker: {fileID: 1602576917}
+  continueButton: {fileID: 1132526564}
   transitionSpeed: 15
   guidedDialogues:
   - dialogueInfo: {fileID: 11400000, guid: 41d34d3db1593b94295d82a65bde902b, type: 2}
@@ -9468,6 +9469,17 @@ MonoBehaviour:
     multiplier: 0.7
   - type: 3
     multiplier: 0.3
+--- !u!114 &1132526564 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4726691461331530937, guid: 3249d0e310b73ab4894d5ee5982130d6, type: 3}
+  m_PrefabInstance: {fileID: 1602576913}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1164302382
 GameObject:
   m_ObjectHideFlags: 0
@@ -11292,6 +11304,14 @@ PrefabInstance:
     - target: {fileID: 2989774915468489524, guid: 3249d0e310b73ab4894d5ee5982130d6, type: 3}
       propertyPath: m_Layer
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4726691461331530937, guid: 3249d0e310b73ab4894d5ee5982130d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 702296427}
+    - target: {fileID: 4726691461331530937, guid: 3249d0e310b73ab4894d5ee5982130d6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisplayNextSentence
       objectReference: {fileID: 0}
     - target: {fileID: 8493812656528208868, guid: 3249d0e310b73ab4894d5ee5982130d6, type: 3}
       propertyPath: m_Layer

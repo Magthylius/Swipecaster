@@ -14,6 +14,7 @@ public class DialogueManager : MonoBehaviour
     public TMP_Text dialogueName;
     public TMP_Text dialogueText;
     public Image speakerSpeaker;
+    public Button continueButton;
 
     [Header("Settings")]
     public float transitionSpeed = 15f;
@@ -78,6 +79,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(GuidedDialogue guidedDialogue)
     {
+        continueButton.gameObject.SetActive(true);
         if (guidedDialogue.dialogueInfo.isTriggered) return;
 
         //animate the UI to pop up
@@ -134,8 +136,7 @@ public class DialogueManager : MonoBehaviour
 
     private void EndDialogue()
     {
-        //animator.SetBool("isOpen", false);
-        //dialogueFR.StartLerp(dialogueFR.originalPosition);
+        continueButton.gameObject.SetActive(false);
         dialogueFR.StartLerp(dialogueFR.GetBodyOffset(Vector2.down));
     }
 
