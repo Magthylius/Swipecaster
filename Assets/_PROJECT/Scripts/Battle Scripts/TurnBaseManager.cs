@@ -22,6 +22,8 @@ public class TurnBaseManager : MonoBehaviour
     [SerializeField] GameStateEnum battleState;
     [SerializeField] private string sceneNameToLoadAtGameStateEnd = "MainMenuScene";
 
+    public AudioData audioPack;
+    
     [Header("Delay between states")]
     public float delaysInBetween; // Delays in between states
     public GameObject highlighter;
@@ -69,6 +71,7 @@ public class TurnBaseManager : MonoBehaviour
         battleState = GameStateEnum.INIT;
 
         roomNumberFader.ShowRoomText();
+        audioManager.PlaySFX(audioPack,"BattleEffect");
 
         StartCoroutine(InitBattle());
     }
@@ -172,6 +175,7 @@ public class TurnBaseManager : MonoBehaviour
             endResultMananger.TriggerResults(false);
             battleState = GameStateEnum.END;
             sceneManager.ActivateTransition(sceneNameToLoadAtGameStateEnd);
+            audioManager.PlaySFX(audioPack,"LoseEffect");
             return;
         }
         if (enemyWipeout)
@@ -186,12 +190,14 @@ public class TurnBaseManager : MonoBehaviour
       
                 battlestageManager.AssignEnemiesToRoom();
                 StartCoroutine(InitBattle());
+                audioManager.PlaySFX(audioPack,"BattleEffect");
                 return;
             }
             else
             {
                 endResultMananger.TriggerResults(true);
                 battleState = GameStateEnum.END;
+                audioManager.PlaySFX(audioPack,"WinEffect");
                 if (dialogueManager.tutorialPhase == TutorialPhase.guideToMap)
                     databaseManager.SaveTutorialState(TutorialPhase.guideToGacha);
                 //sceneManager.ActivateTransition(sceneNameToLoadAtGameStateEnd);

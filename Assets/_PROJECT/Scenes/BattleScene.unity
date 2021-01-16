@@ -168,6 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   battleState: 0
   sceneNameToLoadAtGameStateEnd: MainMenuScene
+  audioPack: {fileID: 11400000, guid: 70845f028d7867747ac402b1ebf8ac5e, type: 2}
   delaysInBetween: 1
   highlighter: {fileID: 3815654550327746471, guid: be60c9608cbffda49b2f5ffaab4728d1, type: 3}
   environmentFader: {fileID: 2143965025}
@@ -2746,11 +2747,11 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1510552349}
     m_Modifications:
     - target: {fileID: 3241042431615086286, guid: 7f76165e04093804d9f3d40e2ef2279f, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3241042431615086286, guid: 7f76165e04093804d9f3d40e2ef2279f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2770,15 +2771,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3241042431615086286, guid: 7f76165e04093804d9f3d40e2ef2279f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3241042431615086286, guid: 7f76165e04093804d9f3d40e2ef2279f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3241042431615086286, guid: 7f76165e04093804d9f3d40e2ef2279f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3241042431615086286, guid: 7f76165e04093804d9f3d40e2ef2279f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2798,19 +2799,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f76165e04093804d9f3d40e2ef2279f, type: 3}
---- !u!1 &426587296 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8072698288178701538, guid: 7f76165e04093804d9f3d40e2ef2279f, type: 3}
+--- !u!4 &426587298 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3241042431615086286, guid: 7f76165e04093804d9f3d40e2ef2279f, type: 3}
   m_PrefabInstance: {fileID: 426587295}
   m_PrefabAsset: {fileID: 0}
---- !u!81 &426587297
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 426587296}
-  m_Enabled: 1
 --- !u!1 &428560926
 GameObject:
   m_ObjectHideFlags: 0
@@ -11011,6 +11004,7 @@ Transform:
   - {fileID: 1782044442}
   - {fileID: 702296426}
   - {fileID: 1375387411}
+  - {fileID: 426587298}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
