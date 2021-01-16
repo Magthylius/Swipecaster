@@ -178,6 +178,8 @@ namespace LerpFunctions
         bool goingOpen = false;
         FRCornerMode mode = FRCornerMode.CENTER;
 
+        bool debugEnabled = false;
+
         public FlexibleRectCorners(RectTransform rectTr) : base(rectTr)
         {
             originalOffsetMin = rectTr.offsetMin;
@@ -192,6 +194,7 @@ namespace LerpFunctions
                 middledOffsetMax = new Vector2(originalOffSetMax.x, 0f);
                 middledOffsetMin = new Vector2(originalOffsetMin.x, 0f);
             }
+            else Debug.LogError("Strecthed RectTr!");
 
             mode = FRCornerMode.CENTER;
             lerpPrecision = 0.01f;
@@ -208,6 +211,7 @@ namespace LerpFunctions
                     else cornerTransition = !CornerLerp(middledOffsetMin, middledOffsetMax, speed);
                 }
 
+                if (debugEnabled) Debug.Log("Corner transitioning");
                 if (!cornerTransition) goingOpen = !goingOpen;
             }
         }
@@ -234,12 +238,16 @@ namespace LerpFunctions
 
         public void StartMiddleLerp()
         {
+            if (debugEnabled) Debug.Log("Middle lerp triggered");
+
             cornerTransition = true;
             mode = FRCornerMode.MIDDLE;
         }
 
         public void StartCenterLerp()
         {
+            if (debugEnabled) Debug.Log("Center lerp triggered");
+
             cornerTransition = true;
             mode = FRCornerMode.CENTER;
         }
@@ -256,6 +264,9 @@ namespace LerpFunctions
             if (mode == FRCornerMode.CENTER) CornerJump(centeredOffsetMin, centeredOffsetMax);
             else CornerJump(middledOffsetMin, middledOffsetMax);
         }
+
+        public void DebugEnable() => debugEnabled = true;
+        public void DebugDisable() => debugEnabled = false;
     }
 
     [Serializable]

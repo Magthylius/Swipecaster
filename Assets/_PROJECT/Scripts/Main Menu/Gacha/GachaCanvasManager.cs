@@ -61,6 +61,9 @@ public class GachaCanvasManager : MenuCanvasPage
     public GachaBanner activeBanner;
     public int pullCost = 5;
 
+    [Header("Gacha Focus")]
+    public GachaCasterFocusBehavior focusBehav;
+
     [Header("Tutorial Condition")]
     public bool isTutorialed;
 
@@ -126,12 +129,14 @@ public class GachaCanvasManager : MenuCanvasPage
                 chargeImg.gameObject.SetActive(false);
                 state = GachaCanvasState.SUMMONING;
                 actualConnectors.SetActive(true);
+
+                summonButton.gameObject.SetActive(true);
+                instructionText.gameObject.SetActive(false);
             }
         }
         else if (state == GachaCanvasState.SUMMONING)
         {
-            summonButton.gameObject.SetActive(true);
-            instructionText.gameObject.SetActive(false);
+            
         }
     }
 
@@ -161,6 +166,8 @@ public class GachaCanvasManager : MenuCanvasPage
         summonButton.gameObject.SetActive(false);
         instructionText.gameObject.SetActive(true);
         state = GachaCanvasState.IDLE;
+
+        allowCasting = true;
     }
 
     public void ConnectGachaPoint(GachaPoint point)
@@ -208,9 +215,11 @@ public class GachaCanvasManager : MenuCanvasPage
             currencyManager.SpendCurrency(CurrencyType.PREMIUM_CURRENCY, pullCost);
 
             UnitObject pull = activeBanner.PullCaster();
-            print(pull.CharacterName);
+            
             dataManager.AddCaster(pull.ID);
             invManager.UpdateCasterInventory();
+
+            focusBehav.TriggerPullFocus(pull);
         }
         else
         {

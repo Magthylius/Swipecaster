@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: Langar-Thin SDF 1
+  m_Name: Langar-Thin
   m_EditorClassIdentifier: 
-  hashCode: 676211025
+  hashCode: -1100923935
   material: {fileID: 8982596912799090254}
-  materialHashCode: 1198377169
+  materialHashCode: 444003489
   m_Version: 1.1.0
   m_SourceFontFileGUID: 3780ff61f9978ca4dbf44674fe7cd171
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 3780ff61f9978ca4dbf44674fe7cd171, type: 3}
