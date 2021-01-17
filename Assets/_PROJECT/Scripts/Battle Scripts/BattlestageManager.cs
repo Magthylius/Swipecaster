@@ -63,6 +63,7 @@ public class BattlestageManager : MonoBehaviour
     SortingGroup casterSortGroup, enemySortingGroup;
 
     float timer;
+    bool isRunningEnd;
 
     void Awake()
     {
