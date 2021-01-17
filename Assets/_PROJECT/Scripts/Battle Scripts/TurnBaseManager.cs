@@ -236,6 +236,7 @@ public class TurnBaseManager : MonoBehaviour
                     //! Next caster turn
                     casterUnitTurn++;
                     CasterTurn();
+                    unitPositionManager.ResetIsPressed();
                 }
 
                 break;
@@ -249,6 +250,7 @@ public class TurnBaseManager : MonoBehaviour
                     enemyUnitTurn = 0;
                     battleState = GameStateEnum.CASTERTURN;
                     CasterTurn();
+                    unitPositionManager.ResetIsPressed();
                 }
                 else
                 {
@@ -278,8 +280,8 @@ public class TurnBaseManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
         battleState = GameStateEnum.CASTERTURN;
-        print("yeet");
         CasterTurn();
+        unitPositionManager.ResetIsPressed();
     }
 
     IEnumerator CasterAttack()

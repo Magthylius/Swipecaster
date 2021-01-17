@@ -8,6 +8,8 @@ public class UnitPositionManager : MonoBehaviour
     BattlestageManager battleStageManager;
     TurnBaseManager turnBaseManager;
 
+    bool isPressed = true;
+
     [SerializeField]GameObject holder;
 
     void Awake()
@@ -41,7 +43,7 @@ public class UnitPositionManager : MonoBehaviour
 
     public void SwapLeftPosition()
     {
-        if (turnBaseManager.GetCurrentState() != GameStateEnum.CASTERTURN)
+        if (turnBaseManager.GetCurrentState() != GameStateEnum.CASTERTURN || isPressed)
             return;
         
         GameObject temp;
@@ -69,14 +71,14 @@ public class UnitPositionManager : MonoBehaviour
         }
         
         turnBaseManager.OnActionExecute();
-        
+        isPressed = true;
         temp = null;
         tempHolderPos = Vector2.zero;
     }
 
     public void SwapRightPosition()
     {
-        if (turnBaseManager.GetCurrentState() != GameStateEnum.CASTERTURN)
+        if (turnBaseManager.GetCurrentState() != GameStateEnum.CASTERTURN || isPressed)
             return;
         
         GameObject temp;
@@ -103,7 +105,7 @@ public class UnitPositionManager : MonoBehaviour
         }
 
         turnBaseManager.OnActionExecute();
-        
+        isPressed = true;
         temp = null;
         tempHolderPos = Vector2.zero;
     }
@@ -111,6 +113,7 @@ public class UnitPositionManager : MonoBehaviour
     #region Accessors
 
     public GameObject SetHolder(GameObject _holder) => holder = _holder;
+    public bool ResetIsPressed() => isPressed = false;
 
     #endregion
 
