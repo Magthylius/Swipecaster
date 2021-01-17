@@ -291,6 +291,7 @@ public class BattlestageManager : MonoBehaviour
                         .SetTargetPosition(new Vector2((unitGap * activeMult), obj.localPosition.y));
                     activeMult++;
 
+                    if (obj.childCount == 0) continue;
                     AddActiveRightPosition(obj.GetChild(0).AsUnit());
                 }
             }

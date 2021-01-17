@@ -67,22 +67,10 @@ public abstract class Projectile
 
     protected int Round(float number) => Mathf.RoundToInt(number);
     protected bool IndexWithinBounds(int index, List<Unit> list) => index >= 0 && index < list.Count;
-    protected List<Unit> GetGrazedUnits(TargetInfo info) => GetGrazedAllies(info).Join(GetGrazedFoes(info));
+    protected List<Unit> GetGrazedUnits(TargetInfo info) => GetGrazedAllies(info).Concat(GetGrazedFoes(info)).ToList();
 
     #endregion
 
     public Projectile() => _projectileDamageMultiplier = 1.0f;
     public Projectile(float damageMultiplier) => _projectileDamageMultiplier = Mathf.Abs(damageMultiplier);
-}
-
-public static class Extension
-{
-    public static List<T> Join<T>(this List<T> first, List<T> second)
-    {
-        if (first == null && second == null) return new List<T>();
-        if (first == null) return second;
-        if (second == null) return first;
-
-        return first.Concat(second).ToList();
-    }
 }

@@ -27,7 +27,7 @@ public class RollingThunder : CasterSkill
     {
         var allFoes = battleStage.GetEnemyTeamAsUnit();
         var allFoeEntities = battleStage.GetEnemyEntitiesAsUnit().Where(e => !e.GetIsPlayer).ToList();
-        allFoes = allFoes.Join(allFoeEntities);
+        allFoes = allFoes.Concat(allFoeEntities).ToList();
         return allFoes;
     }
     private void HandleFoes(int damage, List<Unit> allFoes)
