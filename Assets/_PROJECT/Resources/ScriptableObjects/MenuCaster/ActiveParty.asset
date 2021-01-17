@@ -14,5 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partyName: Team A
   activeUnits:
-  - {fileID: 11400000, guid: 4bac09f816f0b3845b1ceff6eba720c3, type: 2}
-  - {fileID: 11400000, guid: 6ff95d92c171bdb4a934594c22ba8d12, type: 2}
+  - {fileID: 11400000, guid: 38833d5b39b4cdb42960896d0a32990e, type: 2}
