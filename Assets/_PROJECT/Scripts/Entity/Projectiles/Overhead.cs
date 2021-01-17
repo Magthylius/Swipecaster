@@ -15,8 +15,8 @@ public class Overhead : Projectile
     }
 
     public override TargetInfo GetTargets(TargetInfo info)
-        => new TargetInfo(info.Focus, new List<Unit>(), new List<Unit>(), info.Allies, info.Foes);
-    protected override List<Unit> GetCollateralFoes(TargetInfo info) => new List<Unit>();
+        => new TargetInfo(info.Focus, null, null, info.Allies, info.Foes, info.AllAllyEntities, info.AllFoeEntities);
+    protected override List<Unit> GetCollateralFoes(TargetInfo info) => null;
 
     public Overhead() => _projectileDamageMultiplier = 1.0f;
     public Overhead(float damageMultiplier) : base(damageMultiplier) { }

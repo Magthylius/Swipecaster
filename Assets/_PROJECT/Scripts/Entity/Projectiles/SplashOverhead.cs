@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Obtain;
+using System.Collections.Generic;
 using System.Linq;
 
 public class SplashOverhead : Projectile
@@ -28,8 +29,8 @@ public class SplashOverhead : Projectile
     {
         var collateral = new List<Unit>();
         int focusIndex = info.Foes.IndexOf(info.Focus);
-        if (IndexWithinBounds(focusIndex - 1, info.Foes)) collateral.Add(info.Foes[focusIndex - 1]);
-        if (IndexWithinBounds(focusIndex + 1, info.Foes)) collateral.Add(info.Foes[focusIndex + 1]);
+        if (info.AllFoeEntities.ValidIndex(focusIndex - 1)) collateral.Add(info.AllFoeEntities[focusIndex - 1]);
+        if (info.AllFoeEntities.ValidIndex(focusIndex + 1)) collateral.Add(info.AllFoeEntities[focusIndex + 1]);
         return collateral;
     }
 

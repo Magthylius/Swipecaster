@@ -17,6 +17,7 @@ namespace ConversionFunctions
         public static T AsType<T>(this T tee) where T : Component => tee != null ? tee.GetComponent<T>() : null;
 
         public static float AsFloat(this int number) => number;
+        public static float AsFloat(this bool boolean) => boolean.AsInt();
         public static int AsInt<T>(this T item) where T : Enum => Convert.ToInt32(item);
         public static int AsInt(this float item) => Mathf.RoundToInt(item);
         public static int AsInt(this bool item) => Convert.ToInt32(item);

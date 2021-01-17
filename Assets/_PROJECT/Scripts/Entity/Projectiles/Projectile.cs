@@ -17,7 +17,7 @@ public abstract class Projectile
     #region Public Virtual Methods
 
     public virtual TargetInfo GetTargets(TargetInfo info)
-        => new TargetInfo(info.Focus, GetCollateralFoes(info), GetGrazedUnits(info), info.Allies, info.Foes);
+        => new TargetInfo(info.Focus, GetCollateralFoes(info), GetGrazedUnits(info), info.Allies, info.Foes, info.AllAllyEntities, info.AllFoeEntities);
     public virtual List<float> GetDefaultDiminishingMultiplier => null;
     public virtual List<float> GetCurrentDiminishingMultiplier => null;
     public virtual void SetDiminishingMultiplier(List<float> multiplier) { }
@@ -40,23 +40,23 @@ public abstract class Projectile
     {
         if (GetUnit == null) return null;
         var grazed = new List<Unit>();
-        int thisIndex = info.Allies.IndexOf(GetUnit);
+        int thisIndex = info.AllAllyEntities.IndexOf(GetUnit);
 
         for (int i = thisIndex; i >= 0; i--)
         {
             if (i == thisIndex) continue;
-            grazed.Add(info.Allies[i]);
+            grazed.Add(info.AllAllyEntities[i]);
         }
         return grazed;
     }
     protected virtual List<Unit> GetGrazedFoes(TargetInfo info)
     {
         var grazed = new List<Unit>();
-        int focusIndex = info.Foes.IndexOf(info.Focus);
+        int focusIndex = info.AllFoeEntities.IndexOf(info.Focus);
         for (int i = focusIndex; i >= 0; i--)
         {
             if (info.Foes[i] == info.Focus) continue;
-            grazed.Add(info.Foes[i]);
+            grazed.Add(info.AllFoeEntities[i]);
         }
         return grazed;
     }
@@ -66,7 +66,6 @@ public abstract class Projectile
     #region Protected Methods
 
     protected int Round(float number) => Mathf.RoundToInt(number);
-    protected bool IndexWithinBounds(int index, List<Unit> list) => index >= 0 && index < list.Count;
     protected List<Unit> GetGrazedUnits(TargetInfo info) => GetGrazedAllies(info).Concat(GetGrazedFoes(info)).ToList();
 
     #endregion

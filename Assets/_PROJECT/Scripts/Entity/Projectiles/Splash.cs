@@ -1,3 +1,4 @@
+using Obtain;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -25,9 +26,9 @@ public class Splash : Projectile
     protected override List<Unit> GetCollateralFoes(TargetInfo info)
     {
         var collateral = new List<Unit>();
-        int focusIndex = info.Foes.IndexOf(info.Focus);
-        if (IndexWithinBounds(focusIndex - 1, info.Foes)) collateral.Add(info.Foes[focusIndex - 1]);
-        if (IndexWithinBounds(focusIndex + 1, info.Foes)) collateral.Add(info.Foes[focusIndex + 1]);
+        int focusIndex = info.AllFoeEntities.IndexOf(info.Focus);
+        if (info.AllFoeEntities.ValidIndex(focusIndex - 1)) collateral.Add(info.AllFoeEntities[focusIndex - 1]);
+        if (info.AllFoeEntities.ValidIndex(focusIndex + 1)) collateral.Add(info.AllFoeEntities[focusIndex + 1]);
         return collateral;
     }
 

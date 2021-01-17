@@ -1,12 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using Obtain;
+using System.Collections.Generic;
 using System.Linq;
 
 public class Piercing : Projectile
 {
     private static List<float> _diminishingMultiplier = new List<float>();
     private List<float> _currentMultiplier = new List<float>();
-    private float MultiplierAtIndex(int index) => _currentMultiplier[index];
-
+    private float MultiplierAtIndex(int index)
+    {
+        if(!_currentMultiplier.ValidIndex(index)) return 0.0f;
+        return _currentMultiplier[index];
+    }
     public override List<float> GetDefaultDiminishingMultiplier => _diminishingMultiplier;
     public override List<float> GetCurrentDiminishingMultiplier => _currentMultiplier;
     public override void SetDiminishingMultiplier(List<float> multiplier) => _currentMultiplier = multiplier;
@@ -25,7 +29,8 @@ public class Piercing : Projectile
         info.Focus.TakeHit(damager, Round(subtotalDamage * MultiplierAtIndex(0)));
 
         //! Collateral
-        for (int j = 0; j < info.Collateral.Count; j++) info.Collateral[j].InvokeHitEvent(damager, Round(subtotalDamage * MultiplierAtIndex(j + 1)));
+        int count = info.Collateral.Count;
+        for (int j = 0; j < count; j++) info.Collateral[j].InvokeHitEvent(damager, Round(subtotalDamage * MultiplierAtIndex(j + 1)));
 
         List<Unit> units = new List<Unit>(info.Collateral) { info.Focus };
         return units.Sum(unit => unit != null ? unit.GetTotalDamageInTurn : 0);
@@ -33,12 +38,12 @@ public class Piercing : Projectile
     protected override List<Unit> GetCollateralFoes(TargetInfo info)
     {
         var collateral = new List<Unit>();
-        int focusIndex = info.Foes.IndexOf(info.Focus);
-        for (int i = focusIndex; i < info.Foes.Count; i++)
+        int focusIndex = info.AllFoeEntities.IndexOf(info.Focus);
+        for (int i = focusIndex; i < info.AllFoeEntities.Count; i++)
         {
-            if (info.Foes[i] == info.Focus) continue;
+            if (info.AllFoeEntities[i] == info.Focus) continue;
 
-            collateral.Add(info.Foes[i]);
+            collateral.Add(info.AllFoeEntities[i]);
         }
         return collateral;
     }
