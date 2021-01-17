@@ -176,6 +176,8 @@ public class GachaCanvasManager : MenuCanvasPage
         state = GachaCanvasState.IDLE;
 
         allowCasting = false;
+
+        focusBehav.ResetFocus();
     }
 
     public void ConnectGachaPoint(GachaPoint point)

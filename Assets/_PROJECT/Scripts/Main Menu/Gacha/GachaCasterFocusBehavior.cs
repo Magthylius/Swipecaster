@@ -34,11 +34,7 @@ public class GachaCasterFocusBehavior : MonoBehaviour
         casterRectFR = new FlexibleRect(casterRectTr);
         bgRectFRC = new FlexibleRectCorners(bgRectTr);
 
-        fgRectFR.MoveTo(fgRectFR.GetBodyOffset(Vector2.right));
-        casterRectFR.MoveTo(casterRectFR.GetBodyOffset(Vector2.left));
-        bgRectFRC.Close();
-
-        continueObject.SetActive(false);
+        ResetFocus();
     }
 
     void Update()
@@ -85,5 +81,14 @@ public class GachaCasterFocusBehavior : MonoBehaviour
 
         continueObject.SetActive(false);
         foreach (GameObject obj in hidingObjects) obj.SetActive(true);
+    }
+
+    public void ResetFocus()
+    {
+        fgRectFR.MoveTo(fgRectFR.GetBodyOffset(Vector2.right));
+        casterRectFR.MoveTo(casterRectFR.GetBodyOffset(Vector2.left));
+        bgRectFRC.Close();
+
+        continueObject.SetActive(false);
     }
 }
