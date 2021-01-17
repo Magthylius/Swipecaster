@@ -285,5 +285,7 @@ public class DatabaseManager : MonoBehaviour
     public int GetPremiumCurrency() => playerData.currencyDatabase.PremiumCurrency;
     public TutorialPhase GetTutorialPhase() => playerData.tutorialPhase;
 
+    public void SelfAddDefaultHighliter(Transform _highlighter) => defaultHighliter = _highlighter;
+
     #endregion
 }
