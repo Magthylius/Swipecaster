@@ -39,8 +39,11 @@ public class UnitPositionManager : MonoBehaviour
         }
     }
 
-    void SwapLeftPosition()
+    public void SwapLeftPosition()
     {
+        if (turnBaseManager.GetCurrentState() != GameStateEnum.CASTERTURN)
+            return;
+        
         GameObject temp;
         int curCasterIndex;
         Vector2 tempHolderPos;
@@ -65,12 +68,17 @@ public class UnitPositionManager : MonoBehaviour
 
         }
         
+        turnBaseManager.OnSwapUnit();
+        
         temp = null;
         tempHolderPos = Vector2.zero;
     }
 
-    void SwapRightPosition()
+    public void SwapRightPosition()
     {
+        if (turnBaseManager.GetCurrentState() != GameStateEnum.CASTERTURN)
+            return;
+        
         GameObject temp;
         int curCasterIndex;
         Vector2 tempHolderPos;
@@ -94,6 +102,8 @@ public class UnitPositionManager : MonoBehaviour
             battleStageManager.GetCastersTeam()[curCasterIndex] = temp;
         }
 
+        turnBaseManager.OnSwapUnit();
+        
         temp = null;
         tempHolderPos = Vector2.zero;
     }

@@ -157,6 +157,12 @@ public class TurnBaseManager : MonoBehaviour
         StartCoroutine(EnemyAttack());
     }
 
+    public void OnSwapUnit()
+    {
+        if (battleState != GameStateEnum.CASTERTURN) return;
+        StartCoroutine(SwapPosition());
+    }
+
     public void UpdateLiveTeam()
     {
         castersOrderList = new List<GameObject>(battlestageManager.GetCastersTeam());
@@ -328,6 +334,12 @@ public class TurnBaseManager : MonoBehaviour
         battlestageManager.GetStageTargetHandler().ActivateSpriteHolder();
         if (attackSR)
             attackSR.sprite = attackerUnit.FullBodyArt;
+        EndTurn();
+    }
+
+    IEnumerator SwapPosition()
+    {
+        yield return new WaitForSeconds(3f);
         EndTurn();
     }
     
