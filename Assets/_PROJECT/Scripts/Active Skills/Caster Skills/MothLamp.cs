@@ -2,6 +2,7 @@ using ConversionFunctions;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using Obtain;
 
 [System.Serializable]
 public class MothLamp : CasterSkill
@@ -26,6 +27,7 @@ public class MothLamp : CasterSkill
         var positionAvailable = IdentifyAvailablePositions(casterEntityPos);
         int index = SelectRandomPositionIndex(positionAvailable, battleStage);
         GameObject lampObject = InstantiateSummon(casterEntityPos, index);
+        if (lampObject == null) return;
         HandleBattleStage(battleStage, lampObject);
         HandleLamp(lampObject);
         
@@ -53,8 +55,7 @@ public class MothLamp : CasterSkill
         bool placementFound = false;
         while (!placementFound)
         {
-            currentIteration++;
-            if (currentIteration > 100) return 0;
+            if (currentIteration++ > 100) return -1;
 
             index = Random.Range(0, battleStage.casterEntityPositions.Length);
             placementFound = positionAvailable[index];
@@ -64,6 +65,7 @@ public class MothLamp : CasterSkill
 
     private GameObject InstantiateSummon(List<Transform> casterEntityPos, int index)
     {
+        if (!casterEntityPos.ValidIndex(index)) return null;
         casterEntityPos[index].gameObject.SetActive(true);
         GameObject lampObject = GetUnit.GetBaseUnit.InstantiateSummon(casterEntityPos[index].position, Quaternion.identity, casterEntityPos[index]);
         return lampObject;

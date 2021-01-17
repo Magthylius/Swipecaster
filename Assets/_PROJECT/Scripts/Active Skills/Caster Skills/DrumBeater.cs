@@ -1,4 +1,5 @@
 using ConversionFunctions;
+using Obtain;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -24,6 +25,7 @@ public class DrumBeater : CasterSkill
         var positionAvailable = IdentifyAvailablePositions(enemyEntityPos);
         int index = SelectRandomPositionIndex(positionAvailable, battleStage);
         GameObject drumObject = InstantiateSummon(enemyEntityPos, index);
+        if (drumObject == null) return;
         HandleBattleStage(battleStage, drumObject);
         HandleBeatDrum(drumObject);
 
@@ -40,8 +42,7 @@ public class DrumBeater : CasterSkill
         bool placementFound = false;
         while (!placementFound)
         {
-            currentIteration++;
-            if (currentIteration > 100) return 0;
+            if (currentIteration++ > 100) return -1;
 
             index = Random.Range(0, battleStage.casterEntityPositions.Length);
             placementFound = positionAvailable[index];
@@ -60,6 +61,7 @@ public class DrumBeater : CasterSkill
     }
     private GameObject InstantiateSummon(List<Transform> enemyEntityPos, int index)
     {
+        if (!enemyEntityPos.ValidIndex(index)) return null;
         enemyEntityPos[index].gameObject.SetActive(true);
         GameObject drumObject = GetUnit.GetBaseUnit.InstantiateSummon(enemyEntityPos[index].position, Quaternion.identity, enemyEntityPos[index]);
         return drumObject;
