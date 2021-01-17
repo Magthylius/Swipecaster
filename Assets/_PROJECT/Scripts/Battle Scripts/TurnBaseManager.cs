@@ -40,6 +40,8 @@ public class TurnBaseManager : MonoBehaviour
 
     bool isPlayerTurn;
 
+    bool isEnding = false;
+    
     [SerializeField] GameObject caster;
     [SerializeField] GameObject enemy;
     [SerializeField] List<GameObject> castersOrderList;
@@ -149,18 +151,21 @@ public class TurnBaseManager : MonoBehaviour
     {
         if (battleState != GameStateEnum.CASTERTURN) return;
         StartCoroutine(CasterAttack());
+        isEnding = true;
     }
 
     void OnEnemyAttack()
     {
         if (battleState != GameStateEnum.ENEMYTURN) return; 
         StartCoroutine(EnemyAttack());
+        isEnding = true;
     }
 
     public void OnActionExecute()
     {
-        if (battleState != GameStateEnum.CASTERTURN) return;
+        if (battleState != GameStateEnum.CASTERTURN || isEnding) return;
         StartCoroutine(ActionExecute());
+        isEnding = true;
     }
 
     public void UpdateLiveTeam()
@@ -183,6 +188,7 @@ public class TurnBaseManager : MonoBehaviour
             battleState = GameStateEnum.END;
             sceneManager.ActivateTransition(sceneNameToLoadAtGameStateEnd);
             audioManager.PlaySFX(audioPack,"LoseEffect");
+            isEnding = false;
             return;
         }
         if (enemyWipeout)
@@ -198,8 +204,10 @@ public class TurnBaseManager : MonoBehaviour
       
                 battlestageManager.AssignEnemiesToRoom();
                 StartCoroutine(InitBattle());
+                print("yeah");
                 audioManager.PlaySFX(audioPack,"BattleEffect");
                 battlestageManager.SetGetFirstOrDefaultTarget();
+                isEnding = false;
                 return;
             }
             else
@@ -210,6 +218,7 @@ public class TurnBaseManager : MonoBehaviour
                 if (dialogueManager.tutorialPhase == TutorialPhase.guideToMap)
                     databaseManager.SaveTutorialState(TutorialPhase.guideToGacha);
                 //sceneManager.ActivateTransition(sceneNameToLoadAtGameStateEnd);
+                isEnding = false;
                 return;
             }
         }
@@ -261,6 +270,7 @@ public class TurnBaseManager : MonoBehaviour
 
                 break;
         }
+        isEnding = false;
     }
 
     
