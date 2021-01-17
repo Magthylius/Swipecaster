@@ -434,6 +434,7 @@ public class BattlestageManager : MonoBehaviour
         turnBaseManager.UpdateLiveTeam();
         if (u.gameObject == GetSelectedTarget()) selectedTarget = null;
         Destroy(u.gameObject);
+        CheckIfEnemyTeamAlive();
     }
 
     public void CheckIfEnemyTeamAlive()
