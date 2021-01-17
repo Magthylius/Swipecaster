@@ -157,10 +157,10 @@ public class TurnBaseManager : MonoBehaviour
         StartCoroutine(EnemyAttack());
     }
 
-    public void OnSwapUnit()
+    public void OnActionExecute()
     {
         if (battleState != GameStateEnum.CASTERTURN) return;
-        StartCoroutine(SwapPosition());
+        StartCoroutine(ActionExecute());
     }
 
     public void UpdateLiveTeam()
@@ -337,7 +337,7 @@ public class TurnBaseManager : MonoBehaviour
         EndTurn();
     }
 
-    IEnumerator SwapPosition()
+    IEnumerator ActionExecute()
     {
         yield return new WaitForSeconds(3f);
         EndTurn();

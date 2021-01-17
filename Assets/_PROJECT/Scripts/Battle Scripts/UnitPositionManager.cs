@@ -68,7 +68,7 @@ public class UnitPositionManager : MonoBehaviour
 
         }
         
-        turnBaseManager.OnSwapUnit();
+        turnBaseManager.OnActionExecute();
         
         temp = null;
         tempHolderPos = Vector2.zero;
@@ -102,7 +102,7 @@ public class UnitPositionManager : MonoBehaviour
             battleStageManager.GetCastersTeam()[curCasterIndex] = temp;
         }
 
-        turnBaseManager.OnSwapUnit();
+        turnBaseManager.OnActionExecute();
         
         temp = null;
         tempHolderPos = Vector2.zero;

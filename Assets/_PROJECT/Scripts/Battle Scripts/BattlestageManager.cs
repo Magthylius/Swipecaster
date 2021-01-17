@@ -435,6 +435,12 @@ public class BattlestageManager : MonoBehaviour
         if (u.gameObject == GetSelectedTarget()) selectedTarget = null;
         Destroy(u.gameObject);
     }
+
+    public void CheckIfEnemyTeamAlive()
+    {
+        if (enemyTeam.Count <= 0)
+            turnBaseManager.OnActionExecute();
+    }
     
     void OnDestroy()
     {
