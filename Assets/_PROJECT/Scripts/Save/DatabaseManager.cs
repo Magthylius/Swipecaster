@@ -23,6 +23,8 @@ public class DatabaseManager : MonoBehaviour
     public CasterParty defaultParty;
     public CasterParty activeParty;
 
+    public Transform defaultHighliter;
+
     void Awake()
     {
         if (instance != null)
@@ -125,7 +127,7 @@ public class DatabaseManager : MonoBehaviour
 
             letter++;
         }
-
+        playerData.arrowTransform = defaultHighliter.position;
         activeParty = parties[0];
 
         Save();
