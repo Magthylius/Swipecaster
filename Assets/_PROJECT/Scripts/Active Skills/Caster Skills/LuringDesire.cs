@@ -3,7 +3,7 @@ using UnityEngine;
 [System.Serializable]
 public class LuringDesire : CasterSkill
 {
-    [SerializeField] private int effectTurns = 1;
+    [SerializeField] private int effectTurns = 3;
     [SerializeField] private int priorityUpAmount = 99;
     [SerializeField] private float healPercent = 0.75f;
     private StatusEffect PriorityUpStatus => Create.A_Status.PriorityUp(effectTurns, priorityUpAmount);
