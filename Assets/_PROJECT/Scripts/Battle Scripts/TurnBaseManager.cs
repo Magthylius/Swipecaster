@@ -163,7 +163,7 @@ public class TurnBaseManager : MonoBehaviour
 
     public void OnActionExecute()
     {
-        if (battleState != GameStateEnum.CASTERTURN && isEnding) return;
+        if (battleState != GameStateEnum.CASTERTURN || isEnding) return;
         StartCoroutine(ActionExecute());
         isEnding = true;
     }
