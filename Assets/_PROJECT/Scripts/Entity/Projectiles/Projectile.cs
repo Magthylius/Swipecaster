@@ -55,7 +55,7 @@ public abstract class Projectile
         int focusIndex = info.AllFoeEntities.IndexOf(info.Focus);
         for (int i = focusIndex; i >= 0; i--)
         {
-            if (info.Foes[i] == info.Focus) continue;
+            if (info.AllFoeEntities[i] == info.Focus) continue;
             grazed.Add(info.AllFoeEntities[i]);
         }
         return grazed;

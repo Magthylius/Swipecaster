@@ -209,6 +209,7 @@ public class TurnBaseManager : MonoBehaviour
         }
 
         battlestageManager.HandleTargetIfNull();
+        battlestageManager.RegroupAllPositons(true);
 
         switch (battleState)
         {

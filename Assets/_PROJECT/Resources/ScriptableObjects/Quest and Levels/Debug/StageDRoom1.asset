@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98f97db78843ab84f8a92760b6ebf3bd, type: 3}
-  m_Name: ActiveParty
+  m_Script: {fileID: 11500000, guid: 74b9f84b2eeb2dc4292cf80572d16c5a, type: 3}
+  m_Name: StageDRoom1
   m_EditorClassIdentifier: 
-  partyName: Team A
-  activeUnits:
-  - {fileID: 11400000, guid: 4bac09f816f0b3845b1ceff6eba720c3, type: 2}
-  - {fileID: 11400000, guid: 8b4d7b9aa0b5c4d4aba963d89fba613d, type: 2}
+  enemies:
+  - enemySO: {fileID: 11400000, guid: dadfb4837a7388842ad2c591765fa847, type: 2}
+    level: 1
+  maxEnemySize: 0
+  isRandom: 0

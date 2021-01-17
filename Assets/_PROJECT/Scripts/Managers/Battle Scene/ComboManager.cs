@@ -150,8 +150,8 @@ public class ComboManager : MonoBehaviour
 
         var activeAllies = battleStageManager.GetCasterTeamAsUnit();
         var activeFoes = battleStageManager.GetEnemyTeamAsUnit();
-        var allAllyEntities = battleStageManager.GetActiveLeftPositions();
-        var allFoeEntities = battleStageManager.GetActiveRightPositions();
+        var allAllyEntities = battleStageManager.GetActiveLeftPositions().Where(u => u != null).ToList();
+        var allFoeEntities = battleStageManager.GetActiveRightPositions().Where(u => u != null).ToList();
 
         TargetInfo targetInfo = damager.GetAffectedTargets(new TargetInfo(target, null, null, activeAllies, activeFoes, allAllyEntities, allFoeEntities));
         RuneCollection collection = new RuneCollection(gronRune, fyorRune, tehkRune, khuaRune, ayroRune);

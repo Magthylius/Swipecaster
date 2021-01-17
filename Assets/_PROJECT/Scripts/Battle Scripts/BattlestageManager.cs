@@ -335,6 +335,7 @@ public class BattlestageManager : MonoBehaviour
                 }
             }
         }
+        RegroupRightPositions(true);
     }
 
     public void HandleTargetIfNull()
@@ -395,8 +396,6 @@ public class BattlestageManager : MonoBehaviour
 
         //! Set Enemy's Position
         AssignEnemiesToRoom();
-
-        RegroupRightPositions(false);
     }
 
     private void SelectTarget(RaycastHit2D info)

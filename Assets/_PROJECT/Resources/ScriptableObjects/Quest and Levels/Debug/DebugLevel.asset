@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26fdf35aefb08814983634e2a0dc94c5, type: 3}
+  m_Name: DebugLevel
+  m_EditorClassIdentifier: 
+  levelName: The Staging
+  levelDescription: Learn the basics here
+  levelRooms:
+  - {fileID: 11400000, guid: e27480355a00ad04b836712075fddcc2, type: 2}
+  - {fileID: 11400000, guid: 123c7e26f20830a4b9974394683ce185, type: 2}
+  randomRooms: 0
