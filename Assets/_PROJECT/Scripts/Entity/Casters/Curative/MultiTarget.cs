@@ -23,6 +23,7 @@ public class MultiTarget : Curative
         }
 
         party.ForEach(i => i.RecieveHealing(this, Round(totalDamage * GetPassiveHealPercent)));
+        GetStatusEffects.ForEach(status => status.DoEffectOnAction(targetInfo, totalDamage));
     }
 
     #endregion

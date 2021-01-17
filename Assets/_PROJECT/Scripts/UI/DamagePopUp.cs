@@ -7,20 +7,20 @@ public class DamagePopUp : MonoBehaviour
 {
     private float popUpTime = 2.0f;
     private TextMeshPro _textMesh;
-    private GameObject parent;
+    private GameObject _parent;
     private GameObject offsetObj;
 
     private void Awake()
     {
         _textMesh = GetComponent<TextMeshPro>();
-        parent = transform.parent.gameObject;
-        parent.SetActive(false);
+        _parent = transform.parent.gameObject;
+        _parent.SetActive(false);
         
         //create parent to offset
         offsetObj = new GameObject("PopUpOffset");
-        offsetObj.transform.position = parent.transform.position;
-        offsetObj.transform.SetParent(parent.transform.parent);
-        parent.transform.SetParent(offsetObj.transform);
+        offsetObj.transform.position = _parent.transform.position;
+        offsetObj.transform.SetParent(_parent.transform.parent);
+        _parent.transform.SetParent(offsetObj.transform);
         offsetObj.transform.localScale = new Vector3(1, 1, 1);
 
         //offset
@@ -31,9 +31,17 @@ public class DamagePopUp : MonoBehaviour
     {
         Color textColour = isDamage ? Color.red : Color.green;
         if (isMitigated) textColour = Color.gray;
-        transform.parent.gameObject.SetActive(true);
-        SetTextColour(textColour);
-        ShowDamage(damage);
+        if(!_parent.activeInHierarchy)
+        {
+            _parent.SetActive(true);
+            SetTextColour(textColour);
+            ShowDamage(damage);
+        }
+        else
+        {
+            int cummulatedDamage = int.Parse(_textMesh.text);
+            _textMesh.text = (cummulatedDamage + damage).ToString();
+        }
     }
 
     public void SetTextColour(Color color) => _textMesh.color = color;
@@ -41,10 +49,10 @@ public class DamagePopUp : MonoBehaviour
 
     private IEnumerator DoPopUp(int damage)
     {
-        parent.SetActive(true);
+        _parent.SetActive(true);
         _textMesh.text = damage.ToString();
         yield return new WaitForSeconds(popUpTime);
-        parent.SetActive(false);
+        _parent.SetActive(false);
     }
 
     private Transform GetUnit()

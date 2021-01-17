@@ -10,7 +10,6 @@ public abstract class Unit : Entity
 {
     #region Variable Definitions
 
-    //! Attributes
     [Header("Information")]
     protected const int PartySize = 4;
     private AttackStatus _attackStatus = AttackStatus.Normal;

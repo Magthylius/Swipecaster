@@ -34,6 +34,7 @@ public class SingleTarget : Curative
             if (target == null) return;
         }
         target.RecieveHealing(this, Round(totalDamage * GetPassiveHealPercent));
+        GetStatusEffects.ForEach(status => status.DoEffectOnAction(targetInfo, totalDamage));
     }
 
     #endregion
