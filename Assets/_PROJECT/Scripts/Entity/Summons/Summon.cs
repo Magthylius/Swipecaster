@@ -26,6 +26,7 @@ public abstract class Summon : Unit
     protected override void Start()
     {
         base.Start();
+        GetUnitAudio().SetAudioData(GetBaseSummon.AudioPack);
         baseSummon.CalculateMaxStats(this);
     }
 

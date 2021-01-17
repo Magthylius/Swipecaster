@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Summon Drum
   m_EditorClassIdentifier: 
   SummonName: Beat Drum
-  RuneAlignment: 0
+  RuneAlignment: 4
   Description: Beat the drum
   MaxHealth: 0
   MaxAttack: 0
@@ -21,3 +21,6 @@ MonoBehaviour:
   healthMultiplier: 1
   attackMultiplier: 1
   defenceMultiplier: 1
+  Prefab: {fileID: 7792443217028439265, guid: 45ac3fb8b75d27040b90c67b2f3fdd55, type: 3}
+  ArtIdle: {fileID: 937879577290004041, guid: e6b9bcf87d11f8748ad3b6b77bc8777f, type: 3}
+  AudioPack: {fileID: 0}

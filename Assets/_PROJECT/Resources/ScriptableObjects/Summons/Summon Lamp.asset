@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Summon Lamp
   m_EditorClassIdentifier: 
   SummonName: Lamp
-  RuneAlignment: 0
+  RuneAlignment: 2
   Description: Just a friendly neighbourhood lamp!
   MaxHealth: 0
   MaxAttack: 0
@@ -21,3 +21,6 @@ MonoBehaviour:
   healthMultiplier: 1
   attackMultiplier: 1
   defenceMultiplier: 1
+  Prefab: {fileID: 7792443217028439265, guid: 6af8fc6b1de16174e9880336f66d73d4, type: 3}
+  ArtIdle: {fileID: 2848640792621507367, guid: 813a7113e8b30a64bb694e7e454fa145, type: 3}
+  AudioPack: {fileID: 0}

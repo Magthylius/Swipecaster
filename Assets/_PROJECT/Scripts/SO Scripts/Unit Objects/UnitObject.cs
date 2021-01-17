@@ -33,16 +33,14 @@ public class UnitObject : ScriptableObject
     [Header("Skill")]
     public string SkillName;
     [TextArea(3, 5)] public string SkillDescription;
-    public GameObject SummonPrefab;
+    public SummonObject SummonObject;
 
     [Header("UI/Visual")]
     public GameObject FullBodyPrefab;
-    public GameObject SpriteHolderPrefab;
     public Sprite PortraitArt;
     public Sprite FullBodyArt;
     public Sprite FullBodyAttackArt;
     public Sprite FullBodyDamagedArt;
-    public Sprite SummonArt;
 
     [Header("Audio Pack")] 
     public AudioData audioPack;
@@ -81,15 +79,8 @@ public class UnitObject : ScriptableObject
 
     public GameObject InstantiateSummon(Vector3 position, Quaternion rotation, Transform parent)
     {
-        GameObject summonObject = null;
-        if (SummonPrefab == null) return summonObject;
-        summonObject = Instantiate(SummonPrefab, position, rotation, parent);
-
-        var spriteRenderer = summonObject.GetComponent<SpriteRenderer>();
-        if (spriteRenderer == null || SummonArt == null) return summonObject;
-        spriteRenderer.sprite = SummonArt;
-
-        return summonObject;
+        if (SummonObject == null) return null;
+        return SummonObject.InstantiateSummon(position, rotation, parent);
     }
 
     public virtual void CalculateRandomisedStats() => CalculateActualStats(1200, 500, 500);

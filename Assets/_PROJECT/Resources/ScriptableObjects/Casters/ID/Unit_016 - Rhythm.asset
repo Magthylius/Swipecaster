@@ -35,12 +35,10 @@ MonoBehaviour:
   SkillDescription: Summons a BEAT DRUM in a random Enemy entity position. The BEAT
     DRUM does 35% of Rhythms' ATK per turn, adjacent enemies recieve a permanent
     WEAKENED status until BEAT DRUM dies (3 turns to death).
-  SummonPrefab: {fileID: 7792443217028439265, guid: 45ac3fb8b75d27040b90c67b2f3fdd55, type: 3}
+  SummonObject: {fileID: 11400000, guid: 2b09aa45637702f4c945a9e951ec1195, type: 2}
   FullBodyPrefab: {fileID: 7792443217028439265, guid: 9409afdc0fb8a4e408959d7610d74d78, type: 3}
-  SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}
   PortraitArt: {fileID: 21300000, guid: 99f2a4a9cd99a8b43bd6eb1c40c747b7, type: 3}
   FullBodyArt: {fileID: 21300000, guid: ca6ac26408a418344b458181bf26e9ef, type: 3}
   FullBodyAttackArt: {fileID: 0}
   FullBodyDamagedArt: {fileID: 0}
-  SummonArt: {fileID: 2848640792621507367, guid: 813a7113e8b30a64bb694e7e454fa145, type: 3}
   audioPack: {fileID: 11400000, guid: 521fa6d4e0b096244bc403567baa0873, type: 2}

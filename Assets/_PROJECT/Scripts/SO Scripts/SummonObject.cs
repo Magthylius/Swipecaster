@@ -20,6 +20,13 @@ public class SummonObject : ScriptableObject
     [SerializeField] private float attackMultiplier = 1.0f;
     [SerializeField] private float defenceMultiplier = 1.0f;
 
+    [Header("UI/Visual")]
+    public GameObject Prefab;
+    public Sprite ArtIdle;
+
+    [Header("Audio Pack")]
+    public AudioData AudioPack;
+
     public void CalculateMaxStats(Unit unit)
     {
         MaxHealth = Round(unit.GetMaxHealth * healthMultiplier);
@@ -37,6 +44,19 @@ public class SummonObject : ScriptableObject
     public void SetHealthMultiplier(float multiplier) => healthMultiplier = multiplier;
     public void SetAttackMultiplier(float multiplier) => attackMultiplier = multiplier;
     public void SetDefenceMultiplier(float multiplier) => defenceMultiplier = multiplier;
+
+    public GameObject InstantiateSummon(Vector3 position, Quaternion rotation, Transform parent)
+    {
+        GameObject summon = null;
+        if (Prefab == null) return summon;
+        summon = Instantiate(Prefab, position, rotation, parent);
+
+        var spriteRenderer = summon.GetComponent<SpriteRenderer>();
+        if (spriteRenderer == null || ArtIdle == null) return summon;
+        spriteRenderer.sprite = ArtIdle;
+
+        return summon;
+    }
 
     private int Round(float number) => Mathf.RoundToInt(number);
 }

@@ -429,7 +429,7 @@ public abstract class Unit : Entity
     {
         HandleActiveSkill();
         ResetAllStats();
-        GetUnitAudio().SetAudioData(GetBaseUnit.audioPack);
+        if(GetBaseUnit != null) GetUnitAudio().SetAudioData(GetBaseUnit.audioPack);
         GetUnitAudio().SetIsPlayer(GetIsPlayer);
     }
 
