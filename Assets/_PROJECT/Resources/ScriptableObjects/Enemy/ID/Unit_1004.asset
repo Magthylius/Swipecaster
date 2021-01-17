@@ -12,30 +12,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c292d2c8f50bd84a94e52a928188b2b, type: 3}
   m_Name: Unit_1004
   m_EditorClassIdentifier: 
-  ID: 
-  CharacterName: 
+  ID: 1004
+  CharacterName: Keen Nose
   CharacterMastery: 0
-  BaseRarity: 0
+  BaseRarity: 3
   ArchTypeMajor: -1
-  RuneAlignment: 0
+  RuneAlignment: -1
   CharacterDescription: 
   IsAlive: 0
-  MaxLevel: 0
-  MaxHealth: 0
-  MaxAttack: 0
-  MaxDefence: 0
-  CurrentLevel: 0
-  LevelTotalHealth: 0
-  LevelTotalAttack: 0
-  LevelTotalDefence: 0
+  MaxLevel: 100
+  MaxHealth: 8000
+  MaxAttack: 100
+  MaxDefence: 50
+  CurrentLevel: 1
+  LevelTotalHealth: 2768
+  LevelTotalAttack: 35
+  LevelTotalDefence: 17
   baseStatMultiplier: 0.33333334
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
-  SkillName: 
-  SkillDescription: 
-  SummonPrefab: {fileID: 0}
-  FullBodyPrefab: {fileID: 0}
-  SpriteHolderPrefab: {fileID: 0}
+  SkillName: the smell of fresh meat!
+  SkillDescription: hmm, it smells like me..!
+  SummonObject: {fileID: 0}
+  FullBodyPrefab: {fileID: 7792443217028439265, guid: 53d3e0ee8a7b59b4ba8e79b86cfde3d9, type: 3}
   PortraitArt: {fileID: 0}
   FullBodyArt: {fileID: 0}
-  SummonArt: {fileID: 0}
+  FullBodyAttackArt: {fileID: 0}
+  FullBodyDamagedArt: {fileID: 0}
+  audioPack: {fileID: 0}
+  randomiseStats: 1
+  minRandomHealth: 0
+  maxRandomHealth: 0
+  minRandomAttack: 0
+  maxRandomAttack: 0
+  minRandomDefence: 0
+  maxRandomDefence: 0

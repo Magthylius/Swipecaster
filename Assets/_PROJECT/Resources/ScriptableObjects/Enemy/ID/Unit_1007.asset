@@ -20,11 +20,11 @@ MonoBehaviour:
   RuneAlignment: 0
   CharacterDescription: 
   IsAlive: 0
-  MaxLevel: 0
+  MaxLevel: 100
   MaxHealth: 0
   MaxAttack: 0
   MaxDefence: 0
-  CurrentLevel: 0
+  CurrentLevel: 1
   LevelTotalHealth: 0
   LevelTotalAttack: 0
   LevelTotalDefence: 0
@@ -33,9 +33,17 @@ MonoBehaviour:
   baseStatCapMultiplier: 0.4
   SkillName: 
   SkillDescription: 
-  SummonPrefab: {fileID: 0}
-  FullBodyPrefab: {fileID: 0}
-  SpriteHolderPrefab: {fileID: 0}
+  SummonObject: {fileID: 0}
+  FullBodyPrefab: {fileID: 7792443217028439265, guid: 53d3e0ee8a7b59b4ba8e79b86cfde3d9, type: 3}
   PortraitArt: {fileID: 0}
   FullBodyArt: {fileID: 0}
-  SummonArt: {fileID: 0}
+  FullBodyAttackArt: {fileID: 0}
+  FullBodyDamagedArt: {fileID: 0}
+  audioPack: {fileID: 0}
+  randomiseStats: 1
+  minRandomHealth: 0
+  maxRandomHealth: 0
+  minRandomAttack: 0
+  maxRandomAttack: 0
+  minRandomDefence: 0
+  maxRandomDefence: 0

@@ -20,11 +20,11 @@ MonoBehaviour:
   RuneAlignment: -1
   CharacterDescription: Obviously a fake
   IsAlive: 1
-  MaxLevel: 50
+  MaxLevel: 100
   MaxHealth: 0
   MaxAttack: 0
   MaxDefence: 0
-  CurrentLevel: 50
+  CurrentLevel: 1
   LevelTotalHealth: 0
   LevelTotalAttack: 0
   LevelTotalDefence: 0
@@ -33,19 +33,17 @@ MonoBehaviour:
   baseStatCapMultiplier: 0.4
   SkillName: Exterminate the Cats
   SkillDescription: Wait... they are not cats?!!!?!?!? [muffled sounds*]
-  SummonPrefab: {fileID: 0}
+  SummonObject: {fileID: 0}
   FullBodyPrefab: {fileID: 7792443217028439265, guid: 53d3e0ee8a7b59b4ba8e79b86cfde3d9, type: 3}
-  SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}
   PortraitArt: {fileID: 2848640792621507367, guid: 813a7113e8b30a64bb694e7e454fa145, type: 3}
   FullBodyArt: {fileID: 21300000, guid: ca374c20d046f19448f07492813b08d2, type: 3}
   FullBodyAttackArt: {fileID: 21300000, guid: 92b6d334a38976f408ca258ec353c4f2, type: 3}
   FullBodyDamagedArt: {fileID: 21300000, guid: 58f40c4310767064ca9684b946942584, type: 3}
-  SummonArt: {fileID: 0}
   audioPack: {fileID: 11400000, guid: e4b620c6efac990498b8e6aeec6528ed, type: 2}
   randomiseStats: 1
   minRandomHealth: 1000
-  maxRandomHealth: 2000
+  maxRandomHealth: 3000
   minRandomAttack: 400
-  maxRandomAttack: 700
+  maxRandomAttack: 600
   minRandomDefence: 300
   maxRandomDefence: 600

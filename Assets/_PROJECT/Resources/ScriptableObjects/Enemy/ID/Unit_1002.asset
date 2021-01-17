@@ -20,27 +20,25 @@ MonoBehaviour:
   RuneAlignment: -1
   CharacterDescription: Obviously real
   IsAlive: 0
-  MaxLevel: 50
+  MaxLevel: 100
   MaxHealth: 5000
   MaxAttack: 500
   MaxDefence: 50
-  CurrentLevel: 50
-  LevelTotalHealth: 5000
-  LevelTotalAttack: 500
-  LevelTotalDefence: 50
+  CurrentLevel: 1
+  LevelTotalHealth: 1730
+  LevelTotalAttack: 173
+  LevelTotalDefence: 17
   baseStatMultiplier: 0.33333334
   paraCapMultiplier: 0.6
   baseStatCapMultiplier: 0.4
   SkillName: Who said that?
   SkillDescription: WHERE IS HE
-  SummonPrefab: {fileID: 0}
+  SummonObject: {fileID: 0}
   FullBodyPrefab: {fileID: 7792443217028439265, guid: 53d3e0ee8a7b59b4ba8e79b86cfde3d9, type: 3}
-  SpriteHolderPrefab: {fileID: 1117401070948025223, guid: 319199732979ad048a205a8b39c353d8, type: 3}
   PortraitArt: {fileID: 937879577290004041, guid: e6b9bcf87d11f8748ad3b6b77bc8777f, type: 3}
   FullBodyArt: {fileID: 21300000, guid: 063740202d0b1944593c1799edf833d4, type: 3}
   FullBodyAttackArt: {fileID: 21300000, guid: fe71413751099b14687dfa3034167cd6, type: 3}
   FullBodyDamagedArt: {fileID: 21300000, guid: e267ffc957b20234781e132922280763, type: 3}
-  SummonArt: {fileID: 0}
   audioPack: {fileID: 11400000, guid: e4b620c6efac990498b8e6aeec6528ed, type: 2}
   randomiseStats: 0
   minRandomHealth: 0
