@@ -14,8 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies:
   - enemySO: {fileID: 11400000, guid: dadfb4837a7388842ad2c591765fa847, type: 2}
-    level: 2
+    level: 1
   - enemySO: {fileID: 11400000, guid: dadfb4837a7388842ad2c591765fa847, type: 2}
-    level: 2
+    level: 1
+  - enemySO: {fileID: 11400000, guid: dadfb4837a7388842ad2c591765fa847, type: 2}
+    level: 1
+  - enemySO: {fileID: 11400000, guid: dadfb4837a7388842ad2c591765fa847, type: 2}
+    level: 1
   maxEnemySize: 0
   isRandom: 0

@@ -40,7 +40,28 @@ public class DamagePopUp : MonoBehaviour
         else
         {
             int cummulatedDamage = int.Parse(_textMesh.text);
-            _textMesh.text = (cummulatedDamage + damage).ToString();
+            string newDamage = string.Empty;
+            if (_textMesh.color == Color.red)
+            {
+                if(isDamage) newDamage = (cummulatedDamage + damage).ToString();
+                else
+                {
+                    float diff = cummulatedDamage - damage;
+                    if (diff < 0) SetTextColour(Color.green);
+                    newDamage = Mathf.Abs(diff).ToString();
+                }
+            }
+            else if(_textMesh.color == Color.green)
+            {
+                if(isDamage)
+                {
+                    float diff = cummulatedDamage - damage;
+                    if (diff < 0) SetTextColour(Color.red);
+                    newDamage = Mathf.Abs(diff).ToString();
+                }
+                else newDamage = (cummulatedDamage + damage).ToString();
+            }
+            _textMesh.text = newDamage;
         }
     }
 

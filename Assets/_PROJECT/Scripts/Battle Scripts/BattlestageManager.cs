@@ -209,7 +209,7 @@ public class BattlestageManager : MonoBehaviour
         bool SkillCriteriaNotMet() => unit == null || !unit.SkillIsReady || unit.GetActiveSkill == null;
         try
         {
-            TargetInfo targetInfo = unit.GetActiveSkill.GetActiveSkillTargets(new TargetInfo(target, null, null, GetCasterTeamAsUnit(), GetEnemyTeamAsUnit()));
+            TargetInfo targetInfo = unit.GetActiveSkill.GetActiveSkillTargets(new TargetInfo(target, null, null, GetCasterTeamAsUnit(), GetEnemyTeamAsUnit(), GetActiveLeftPositions(), GetActiveRightPositions()));
             unit.UseSkill(targetInfo, this);
             unit.InvokeUseSkillEvent(unit, unit.GetActiveSkill);
             infoManager.SyncUserInterfaceToUnit(unit);

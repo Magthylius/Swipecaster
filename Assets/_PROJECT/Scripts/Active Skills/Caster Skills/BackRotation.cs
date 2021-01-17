@@ -4,7 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public class BackRotation : CasterSkill
 {
-    [SerializeField] private int effectTurns = 1;
+    [SerializeField] private int effectTurns = 4;
     private StatusEffect ProjectileStatus => Create.A_Status.ProjectileLocker(effectTurns, new CrowFlies(GetUnit));
     private StatusEffect StunStatus => Create.A_Status.Stun(effectTurns, TurnBaseManager.instance);
     

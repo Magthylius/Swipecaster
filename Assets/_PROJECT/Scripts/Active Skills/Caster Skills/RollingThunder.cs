@@ -25,10 +25,7 @@ public class RollingThunder : CasterSkill
     private int CalculateDamage() => Round(GetUnit.CalculateDamage(TargetInfo.Null, RuneCollection.Null) * attackPercent);
     private static List<Unit> GetAllFoeAlignedUnits(BattlestageManager battleStage)
     {
-        var allFoes = battleStage.GetEnemyTeamAsUnit();
-        var allFoeEntities = battleStage.GetEnemyEntitiesAsUnit().Where(e => !e.GetIsPlayer).ToList();
-        allFoes = allFoes.Concat(allFoeEntities).ToList();
-        return allFoes;
+        return battleStage.GetActiveRightPositions();
     }
     private void HandleFoes(int damage, List<Unit> allFoes)
     {
