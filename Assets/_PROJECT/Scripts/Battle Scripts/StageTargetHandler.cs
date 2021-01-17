@@ -50,10 +50,6 @@ public class StageTargetHandler : MonoBehaviour
         _spriteHolder.transform.SetParent(transform);
         DeactivateSpriteHolder();
     }
-    private void DeactivateSpriteHolderAndReset()
-    {
-        DeactivateSpriteHolder(null);
-    }
     public void ActivateSpriteHolder()
     {
         _spriteHolder.SetActive(true);
@@ -63,5 +59,9 @@ public class StageTargetHandler : MonoBehaviour
     {
         _spriteHolder.SetActive(false);
         _spriteRenderer.enabled = false;
+    }
+    public void DeactivateSpriteHolderAndReset()
+    {
+        DeactivateSpriteHolder(null);
     }
 }

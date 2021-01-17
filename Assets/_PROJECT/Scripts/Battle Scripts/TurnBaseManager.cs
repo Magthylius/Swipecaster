@@ -172,6 +172,7 @@ public class TurnBaseManager : MonoBehaviour
 
         if (casterWipeout)
         {
+            battlestageManager.GetStageTargetHandler().DeactivateSpriteHolderAndReset();
             endResultMananger.TriggerResults(false);
             battleState = GameStateEnum.END;
             sceneManager.ActivateTransition(sceneNameToLoadAtGameStateEnd);
@@ -180,6 +181,7 @@ public class TurnBaseManager : MonoBehaviour
         }
         if (enemyWipeout)
         {
+            battlestageManager.GetStageTargetHandler().DeactivateSpriteHolderAndReset();
             if (roomManager.AnyRoomsLeft)
             {
                 GetCurrentCaster().AsUnit().InvokeSelfTurnEndEvent();
@@ -191,6 +193,7 @@ public class TurnBaseManager : MonoBehaviour
                 battlestageManager.AssignEnemiesToRoom();
                 StartCoroutine(InitBattle());
                 audioManager.PlaySFX(audioPack,"BattleEffect");
+                battlestageManager.SetGetFirstOrDefaultTarget();
                 return;
             }
             else
@@ -211,11 +214,10 @@ public class TurnBaseManager : MonoBehaviour
         {
             case GameStateEnum.CASTERTURN:
 
-                GetCurrentCaster().AsUnit().InvokeSelfTurnEndEvent();
-
                 //! if the entire casters team finish their turn, is enemy team turns
                 if (casterUnitTurn >= castersOrderList.Count - 1)
                 {
+                    GetCurrentCaster().AsUnit().InvokeSelfTurnEndEvent();
                     casterUnitTurn = 0;
                     battleState = GameStateEnum.ENEMYTURN;
                     enemy = battlestageManager.GetCurrentEnemy(enemyUnitTurn);
@@ -223,6 +225,7 @@ public class TurnBaseManager : MonoBehaviour
                 }
                 else
                 {
+                    GetCurrentCaster().AsUnit().InvokeSelfTurnEndEvent();
                     //! Next caster turn
                     casterUnitTurn++;
                     CasterTurn();
@@ -232,11 +235,10 @@ public class TurnBaseManager : MonoBehaviour
 
             case GameStateEnum.ENEMYTURN:
 
-                GetCurrentEnemy().AsUnit().InvokeSelfTurnEndEvent();
-
                 //! if the entire casters team finish their turn, is enemy team turns
                 if (enemyUnitTurn >= battlestageManager.GetEnemyTeam().Count - 1)
                 {
+                    Unit.InvokeAllTurnEndEvent();
                     enemyUnitTurn = 0;
                     battleState = GameStateEnum.CASTERTURN;
                     CasterTurn();
@@ -309,7 +311,8 @@ public class TurnBaseManager : MonoBehaviour
         battlestageManager.GetStageTargetHandler().DeactivateSpriteHolder();
         enemyAttackManager.CalculatePriority(enemy);
         battlestageManager.ExecuteAction(enemy, enemyAttackManager.GetCaster(), false);
-        
+        infoManager.SyncUserInterfaceToUnit(GetCurrentCaster().AsUnit());
+
         UnitObject attackerUnit = enemy.GetComponent<Entity>().GetBaseUnit;
         SpriteRenderer attackSR = enemy.GetComponent<SpriteRenderer>();
 

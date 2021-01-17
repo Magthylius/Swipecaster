@@ -60,8 +60,8 @@ MonoBehaviour:
   runeWeaknessMultiplier: 0.5
   damageMultiplier: 1
   defaultPassiveHealAmount: 0
-  defaultPassiveHealPercent: 1
-  defaultReboundPercent: 0.2
+  defaultPassiveHealPercent: 0.5
+  defaultReboundPercent: 0
   defaultProbability: 0.05
   basePriority: 1
   damagePopUp: {fileID: 7356635539377800474}

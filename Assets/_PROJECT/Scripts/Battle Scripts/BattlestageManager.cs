@@ -30,6 +30,8 @@ public class BattlestageManager : MonoBehaviour
     public Transform[] enemyEntityPositions;
     List<Transform> allLeftPositions;
     List<Transform> allRightPositions;
+    List<Unit> allActiveLeftPositions;
+    List<Unit> allActiveRightPositions;
 
     [Header("Hero Zoom Size")] 
     public float casterSize = 0.25f;
@@ -460,6 +462,9 @@ public class BattlestageManager : MonoBehaviour
         GetEnemyEntityTeam().ForEach(o => list.Add(o.GetComponent<Unit>()));
         return list;
     }
+
+    public List<Unit> GetActiveLeftPositions() => allActiveLeftPositions;
+    public List<Unit> GetActiveRightPositions() => allActiveRightPositions;
 
     public GameObject GetSelectedTarget() => selectedTarget;
     public StageTargetHandler GetStageTargetHandler() => targetHandler;

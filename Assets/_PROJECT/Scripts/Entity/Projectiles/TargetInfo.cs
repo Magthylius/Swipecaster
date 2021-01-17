@@ -8,21 +8,27 @@ public struct TargetInfo : IEquatable<TargetInfo>
     private List<Unit> _grazedTargets;
     private List<Unit> _allAllies;
     private List<Unit> _allFoes;
+    private List<Unit> _allyEntities;
+    private List<Unit> _foeEntities;
 
     public Unit Focus => _focusTarget;
     public List<Unit> Collateral => _collateralTargets;
     public List<Unit> Grazed => _grazedTargets;
     public List<Unit> Allies => _allAllies;
     public List<Unit> Foes => _allFoes;
+    public List<Unit> AllyEntities => _allyEntities;
+    public List<Unit> FoeEntities => _foeEntities;
     public static TargetInfo Null => new TargetInfo(null, new List<Unit>(), new List<Unit>());
 
-    public TargetInfo(Unit focusTarget, List<Unit> collateralTargets, List<Unit> grazedTargets, List<Unit> allAllies = null, List<Unit> allFoes = null)
+    public TargetInfo(Unit focusTarget, List<Unit> collateralTargets, List<Unit> grazedTargets, List<Unit> allAllies = null, List<Unit> allFoes = null, List<Unit> allAllyEntities = null, List<Unit> allFoeEntities = null)
     {
         _focusTarget = focusTarget;
         _collateralTargets = collateralTargets;
         _grazedTargets = grazedTargets;
         _allAllies = allAllies;
         _allFoes = allFoes;
+        _allyEntities = allAllyEntities;
+        _foeEntities = allFoeEntities;
     }
 
     #region Equals and Operators

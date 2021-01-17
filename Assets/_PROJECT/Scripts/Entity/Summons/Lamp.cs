@@ -11,9 +11,9 @@ public class Lamp : Summon
         damager.TakeHit(damager, Round(damageAmount * GetReboundPercent));
     }
 
-    protected override void EndTurnMethods()
+    protected override void EndTurnAllMethods()
     {
-        base.EndTurnMethods();
+        base.EndTurnAllMethods();
         _latestDamager = null;
     }
 

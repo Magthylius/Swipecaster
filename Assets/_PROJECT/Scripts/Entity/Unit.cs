@@ -324,7 +324,7 @@ public abstract class Unit : Entity
 
     public static void SubscribeAllTurnEndEvent(Action method) => _allTurnEnd += method;
     public static void UnsubscribeAllTurnEndEvent(Action method) => _allTurnEnd -= method;
-    protected static void InvokeAllTurnEndEvent() => _allTurnEnd?.Invoke();
+    public static void InvokeAllTurnEndEvent() => _allTurnEnd?.Invoke();
 
     public void SubscribeGrazeEvent(Action<Unit, int> method) => _grazeEvent += method;
     public void UnsubscribeGrazeEvent(Action<Unit, int> method) => _grazeEvent -= method;
@@ -389,14 +389,22 @@ public abstract class Unit : Entity
         TriggerDamagePopUp(totalCalculatedDamage, true, isMitigated);
     }
 
-    protected virtual void StartTurnMethods()
+    protected virtual void StartTurnSelfMethods()
     {
-        InvokeAllTurnBeginEvent();
+        if(GetIsPlayer) InvokeAllTurnBeginEvent();
+    }
+    protected virtual void StartTurnAllMethods()
+    {
+        
     }
 
-    protected virtual void EndTurnMethods()
+    protected virtual void EndTurnSelfMethods()
     {
-        InvokeAllTurnEndEvent();
+        if (GetIsPlayer) InvokeAllTurnEndEvent();
+        else EndTurnAllMethods();
+    }
+    protected virtual void EndTurnAllMethods()
+    {
         ResetAttackStatus();
         PostStatusEffect();
         ResetProjectile();
@@ -410,8 +418,10 @@ public abstract class Unit : Entity
         UnsubscribeHitEvent(TakeDamage);
         UnsubscribeHealthChangeEvent(CheckDeathEvent);
         UnsubscribeUseSkillEvent(UpdateStatusEffectsOnSkill);
-        UnsubscribeSelfTurnEndEvent(EndTurnMethods);
-        UnsubscribeSelfTurnBeginEvent(StartTurnMethods);
+        UnsubscribeSelfTurnBeginEvent(StartTurnSelfMethods);
+        UnsubscribeSelfTurnEndEvent(EndTurnSelfMethods);
+        UnsubscribeAllTurnBeginEvent(StartTurnAllMethods);
+        UnsubscribeAllTurnEndEvent(EndTurnAllMethods);
         RemoveAllStatusEffects();
     }
 
@@ -440,8 +450,10 @@ public abstract class Unit : Entity
         SubscribeHitEvent(TakeDamage);
         SubscribeHealthChangeEvent(CheckDeathEvent);
         SubscribeUseSkillEvent(UpdateStatusEffectsOnSkill);
-        SubscribeSelfTurnEndEvent(EndTurnMethods);
-        SubscribeSelfTurnBeginEvent(StartTurnMethods);
+        SubscribeSelfTurnBeginEvent(StartTurnSelfMethods);
+        SubscribeSelfTurnEndEvent(EndTurnSelfMethods);
+        SubscribeAllTurnBeginEvent(StartTurnAllMethods);
+        SubscribeAllTurnEndEvent(EndTurnAllMethods);
     }
 
     #endregion

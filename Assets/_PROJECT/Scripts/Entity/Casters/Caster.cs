@@ -53,15 +53,15 @@ public abstract class Caster : Unit
         SetIsPlayer(true);
     }
 
-    protected override void StartTurnMethods()
+    protected override void StartTurnAllMethods()
     {
-        base.StartTurnMethods();
+        base.StartTurnAllMethods();
         GetActiveSkill?.TurnStartCall();
     }
 
-    protected override void EndTurnMethods()
+    protected override void EndTurnAllMethods()
     {
-        base.EndTurnMethods();
+        base.EndTurnAllMethods();
         GetActiveSkill?.TurnEndCall();
     }
 
