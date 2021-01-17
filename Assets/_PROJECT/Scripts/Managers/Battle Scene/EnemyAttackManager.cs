@@ -41,8 +41,13 @@ public class EnemyAttackManager : MonoBehaviour
         if (battleStageManager == null) { return; }
         var damager = damagerObject.AsUnit();
         var target = targetObject.AsUnit();
-        
-        TargetInfo targetInfo = damager.GetAffectedTargets(new TargetInfo(target, null, null, (List<Unit>)battleStageManager.GetEnemyTeamAsUnit(), (List<Unit>)battleStageManager.GetCasterTeamAsUnit()));
+
+        var activeAllies = battleStageManager.GetEnemyTeamAsUnit();
+        var activeFoes = battleStageManager.GetCasterTeamAsUnit();
+        var allAllyEntities = battleStageManager.GetActiveRightPositions();
+        var allFoeEntities = battleStageManager.GetActiveLeftPositions();
+
+        TargetInfo targetInfo = damager.GetAffectedTargets(new TargetInfo(target, null, null, activeAllies, activeFoes, allAllyEntities, allFoeEntities));
         RuneCollection collection = new RuneCollection(gronRune, fyorRune, tehkRune, khuaRune, ayroRune);
         damager.DoAction(targetInfo, collection);
     }

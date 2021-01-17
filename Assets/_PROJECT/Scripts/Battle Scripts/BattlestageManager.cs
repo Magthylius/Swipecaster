@@ -230,6 +230,7 @@ public class BattlestageManager : MonoBehaviour
 
     public void RegroupLeftPositions(bool instant)
     {
+        ResetActiveLeftPositions();
         int activeMult = 0;
         if (instant)
         {
@@ -239,6 +240,9 @@ public class BattlestageManager : MonoBehaviour
                 {
                     obj.localPosition = new Vector2(-(unitGap * activeMult), obj.localPosition.y);
                     activeMult++;
+
+                    if (obj.childCount == 0) continue;
+                    AddActiveLeftPosition(obj.GetChild(0).AsUnit());
                 }
             }
         }
@@ -251,6 +255,9 @@ public class BattlestageManager : MonoBehaviour
                     obj.GetComponent<UnitPositionBehavior>()
                         .SetTargetPosition(new Vector2(-(unitGap * activeMult), obj.localPosition.y));
                     activeMult++;
+
+                    if (obj.childCount == 0) continue;
+                    AddActiveLeftPosition(obj.GetChild(0).AsUnit());
                 }
             }
         }
@@ -258,6 +265,7 @@ public class BattlestageManager : MonoBehaviour
 
     public void RegroupRightPositions(bool instant)
     {
+        ResetActiveRightPositions();
         int activeMult = 0;
         if (instant)
         {
@@ -267,6 +275,9 @@ public class BattlestageManager : MonoBehaviour
                 {
                     obj.localPosition = new Vector2((unitGap * activeMult), obj.localPosition.y);
                     activeMult++;
+
+                    if (obj.childCount == 0) continue;
+                    AddActiveRightPosition(obj.GetChild(0).AsUnit());
                 }
             }
         }
@@ -279,6 +290,8 @@ public class BattlestageManager : MonoBehaviour
                     obj.GetComponent<UnitPositionBehavior>()
                         .SetTargetPosition(new Vector2((unitGap * activeMult), obj.localPosition.y));
                     activeMult++;
+
+                    AddActiveRightPosition(obj.GetChild(0).AsUnit());
                 }
             }
         }
@@ -427,6 +440,11 @@ public class BattlestageManager : MonoBehaviour
     {
         Unit.UnsubscribeDeathEvent(KillUnit);
     }
+
+    private void ResetActiveLeftPositions() => allActiveLeftPositions = new List<Unit>();
+    private void AddActiveLeftPosition(Unit unit) => allActiveLeftPositions.Add(unit);
+    private void ResetActiveRightPositions() => allActiveRightPositions = new List<Unit>();
+    private void AddActiveRightPosition(Unit unit) => allActiveRightPositions.Add(unit);
 
     #region Accessors
 

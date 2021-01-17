@@ -6,29 +6,29 @@ public struct TargetInfo : IEquatable<TargetInfo>
     private Unit _focusTarget;
     private List<Unit> _collateralTargets;
     private List<Unit> _grazedTargets;
-    private List<Unit> _allAllies;
-    private List<Unit> _allFoes;
-    private List<Unit> _allyEntities;
-    private List<Unit> _foeEntities;
+    private List<Unit> _activeAllies;
+    private List<Unit> _activeFoes;
+    private List<Unit> _allAllyEntities;
+    private List<Unit> _allFoeEntities;
 
     public Unit Focus => _focusTarget;
     public List<Unit> Collateral => _collateralTargets;
     public List<Unit> Grazed => _grazedTargets;
-    public List<Unit> Allies => _allAllies;
-    public List<Unit> Foes => _allFoes;
-    public List<Unit> AllyEntities => _allyEntities;
-    public List<Unit> FoeEntities => _foeEntities;
+    public List<Unit> Allies => _activeAllies;
+    public List<Unit> Foes => _activeFoes;
+    public List<Unit> AllAllyEntities => _allAllyEntities;
+    public List<Unit> AllFoeEntities => _allFoeEntities;
     public static TargetInfo Null => new TargetInfo(null, new List<Unit>(), new List<Unit>());
 
-    public TargetInfo(Unit focusTarget, List<Unit> collateralTargets, List<Unit> grazedTargets, List<Unit> allAllies = null, List<Unit> allFoes = null, List<Unit> allAllyEntities = null, List<Unit> allFoeEntities = null)
+    public TargetInfo(Unit focusTarget, List<Unit> collateralTargets, List<Unit> grazedTargets, List<Unit> activeAllies = null, List<Unit> activeFoes = null, List<Unit> allAllyEntities = null, List<Unit> allFoeEntities = null)
     {
         _focusTarget = focusTarget;
         _collateralTargets = collateralTargets;
         _grazedTargets = grazedTargets;
-        _allAllies = allAllies;
-        _allFoes = allFoes;
-        _allyEntities = allAllyEntities;
-        _foeEntities = allFoeEntities;
+        _activeAllies = activeAllies;
+        _activeFoes = activeFoes;
+        _allAllyEntities = allAllyEntities;
+        _allFoeEntities = allFoeEntities;
     }
 
     #region Equals and Operators
