@@ -15,9 +15,9 @@ MonoBehaviour:
   enemies:
   - enemySO: {fileID: 11400000, guid: 9f507505bbe8d1545a231196361142fa, type: 2}
     level: 50
-  - enemySO: {fileID: 11400000, guid: 6cf2caf96a88f5341b16a7f05106d3da, type: 2}
+  - enemySO: {fileID: 11400000, guid: ea98d172cf1795e43bfeaa9b1dd59758, type: 2}
     level: 60
-  - enemySO: {fileID: 11400000, guid: 9f507505bbe8d1545a231196361142fa, type: 2}
+  - enemySO: {fileID: 11400000, guid: ea98d172cf1795e43bfeaa9b1dd59758, type: 2}
     level: 80
   maxEnemySize: 0
   isRandom: 0
