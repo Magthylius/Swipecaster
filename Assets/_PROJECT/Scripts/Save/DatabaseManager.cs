@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using UnityEngine;
 
@@ -30,7 +29,10 @@ public class DatabaseManager : MonoBehaviour
         if (instance != null)
             Destroy(this.gameObject);
         else
-            instance = this;    
+        {
+            instance = this;
+            HandleDebugger();
+        }
         
         UnitObject[] tempCaster = Resources.LoadAll<UnitObject>(casterLocation);
 
@@ -286,6 +288,19 @@ public class DatabaseManager : MonoBehaviour
     public TutorialPhase GetTutorialPhase() => playerData.tutorialPhase;
 
     public void SelfAddDefaultHighliter(Transform _highlighter) => defaultHighliter = _highlighter;
+
+    #endregion
+
+    #region Debug
+
+    private void HandleDebugger()
+    {
+        #if UNITY_EDITOR
+        Debug.unityLogger.logEnabled = true;
+        #else
+        Debug.unityLogger.logEnabled = false;
+        #endif
+    }
 
     #endregion
 }
